@@ -12,6 +12,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:material_ui/material_ui.dart';
 
+import 'fake_reminders.dart';
 import 'support.dart';
 
 /// Loads the real app fonts so layout in tests matches the device (the
@@ -54,12 +55,14 @@ class TestApp {
   TestApp(this.pack)
     : db = memoryDb(),
       clock = FakeClock(),
-      speech = SilentSpeech();
+      speech = SilentSpeech(),
+      reminders = FakeReminderPlatform();
 
   final ContentPack pack;
   final AppDatabase db;
   final FakeClock clock;
   final SilentSpeech speech;
+  final FakeReminderPlatform reminders;
 
   Future<void> pump(
     WidgetTester tester, {
@@ -80,6 +83,7 @@ class TestApp {
           speechProvider.overrideWithValue(speech),
           clockProvider.overrideWithValue(clock.call),
           fsrsFuzzProvider.overrideWithValue(false),
+          reminderPlatformProvider.overrideWithValue(reminders),
         ],
         child: EspanolProApp(initialLocation: location),
       ),

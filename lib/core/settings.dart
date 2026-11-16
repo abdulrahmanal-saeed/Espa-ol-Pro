@@ -13,6 +13,8 @@ class AppSettings {
     this.showEnglish = false,
     this.desiredRetention = 0.9,
     this.autoPlayAudio = true,
+    this.reminderEnabled = false,
+    this.reminderMinuteOfDay = 19 * 60,
   });
 
   /// 20 (quick), 45 (standard) or 60 (intensive).
@@ -31,6 +33,14 @@ class AppSettings {
   final double desiredRetention;
   final bool autoPlayAudio;
 
+  /// Daily local study reminder. Off until the learner turns it on.
+  final bool reminderEnabled;
+
+  /// Local time of the reminder, as minutes after midnight (0–1439).
+  final int reminderMinuteOfDay;
+  int get reminderHour => reminderMinuteOfDay ~/ 60;
+  int get reminderMinute => reminderMinuteOfDay % 60;
+
   static const accents = {
     'es-MX': 'إسبانية المكسيك (أمريكا اللاتينية)',
     'es-ES': 'إسبانية إسبانيا',
@@ -46,6 +56,8 @@ class AppSettings {
     bool? showEnglish,
     double? desiredRetention,
     bool? autoPlayAudio,
+    bool? reminderEnabled,
+    int? reminderMinuteOfDay,
   }) => AppSettings(
     dailyMinutes: dailyMinutes ?? this.dailyMinutes,
     themeMode: themeMode ?? this.themeMode,
@@ -55,6 +67,8 @@ class AppSettings {
     showEnglish: showEnglish ?? this.showEnglish,
     desiredRetention: desiredRetention ?? this.desiredRetention,
     autoPlayAudio: autoPlayAudio ?? this.autoPlayAudio,
+    reminderEnabled: reminderEnabled ?? this.reminderEnabled,
+    reminderMinuteOfDay: reminderMinuteOfDay ?? this.reminderMinuteOfDay,
   );
 
   Map<String, String> toMap() => {
@@ -66,6 +80,8 @@ class AppSettings {
     'showEnglish': '$showEnglish',
     'desiredRetention': '$desiredRetention',
     'autoPlayAudio': '$autoPlayAudio',
+    'reminderEnabled': '$reminderEnabled',
+    'reminderMinuteOfDay': '$reminderMinuteOfDay',
   };
 
   /// Tolerant of missing/corrupt values: anything invalid falls back to the
@@ -76,6 +92,7 @@ class AppSettings {
     final retention = double.tryParse(m['desiredRetention'] ?? '');
     final scale = double.tryParse(m['textScale'] ?? '');
     final rate = double.tryParse(m['speechRate'] ?? '');
+    final reminderAt = int.tryParse(m['reminderMinuteOfDay'] ?? '');
     return AppSettings(
       dailyMinutes: const [20, 45, 60].contains(minutes)
           ? minutes!
@@ -91,6 +108,11 @@ class AppSettings {
           ? d.desiredRetention
           : retention.clamp(0.8, 0.95),
       autoPlayAudio: m['autoPlayAudio'] != 'false',
+      reminderEnabled: m['reminderEnabled'] == 'true',
+      reminderMinuteOfDay:
+          reminderAt != null && reminderAt >= 0 && reminderAt < 1440
+          ? reminderAt
+          : d.reminderMinuteOfDay,
     );
   }
 }

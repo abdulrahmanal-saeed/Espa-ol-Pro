@@ -7,6 +7,7 @@ import 'package:material_ui/material_ui.dart';
 
 import '../../core/backup/backup_service.dart';
 import '../../core/providers.dart';
+import '../../core/reminders/reminder_service.dart';
 import '../../core/settings.dart';
 import '../../core/widgets/common.dart';
 
@@ -102,6 +103,7 @@ class SettingsScreen extends ConsumerWidget {
               ),
             ),
           ]),
+          const _ReminderSection(),
           group('الصوت', [
             padded(
               DropdownButtonFormField<String>(
@@ -399,5 +401,152 @@ class SettingsScreen extends ConsumerWidget {
       ),
     );
     return result ?? false;
+  }
+}
+
+/// Daily local study reminder: on/off, time, and the OS permission state.
+class _ReminderSection extends ConsumerWidget {
+  const _ReminderSection();
+
+  static String _time(int minuteOfDay) =>
+      '${(minuteOfDay ~/ 60).toString().padLeft(2, '0')}:'
+      '${(minuteOfDay % 60).toString().padLeft(2, '0')}';
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final t = Theme.of(context);
+    final s = ref.watch(settingsProvider);
+    final state = ref.watch(reminderStateProvider);
+    void update(AppSettings next) =>
+        ref.read(settingsProvider.notifier).update(next);
+
+    Widget notice(IconData icon, String text, {Widget? action}) => Padding(
+      padding: const EdgeInsets.fromLTRB(16, 4, 16, 12),
+      child: Container(
+        key: const ValueKey('reminder-notice'),
+        padding: const EdgeInsets.all(12),
+        decoration: BoxDecoration(
+          color: t.colorScheme.errorContainer,
+          borderRadius: BorderRadius.circular(12),
+        ),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [
+            Row(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Icon(icon, color: t.colorScheme.onErrorContainer),
+                const SizedBox(width: 10),
+                Expanded(
+                  child: Text(
+                    text,
+                    style: TextStyle(
+                      color: t.colorScheme.onErrorContainer,
+                      height: 1.6,
+                    ),
+                  ),
+                ),
+              ],
+            ),
+            ?action,
+          ],
+        ),
+      ),
+    );
+
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.stretch,
+      children: [
+        const SectionTitle('التذكير اليومي'),
+        Card(
+          child: Padding(
+            padding: const EdgeInsets.symmetric(vertical: 8),
+            child: Column(
+              children: [
+                SwitchListTile(
+                  key: const ValueKey('reminder-switch'),
+                  title: const Text('ذكّرني بالدراسة كل يوم'),
+                  subtitle: const Text(
+                    'إشعار محلي من جهازك فقط، بلا إنترنت وبلا خوادم.',
+                  ),
+                  value: s.reminderEnabled,
+                  onChanged: (v) async {
+                    if (v) {
+                      // Ask once, at the moment the learner turns it on.
+                      await ref
+                          .read(reminderPlatformProvider)
+                          .requestPermission();
+                    }
+                    update(s.copyWith(reminderEnabled: v));
+                  },
+                ),
+                ListTile(
+                  key: const ValueKey('reminder-time'),
+                  enabled: s.reminderEnabled,
+                  leading: const Icon(Icons.schedule_rounded),
+                  title: const Text('وقت التذكير'),
+                  trailing: Directionality(
+                    textDirection: TextDirection.ltr,
+                    child: Text(
+                      _time(s.reminderMinuteOfDay),
+                      style: t.textTheme.titleMedium,
+                    ),
+                  ),
+                  onTap: () async {
+                    final picked = await showTimePicker(
+                      context: context,
+                      initialTime: TimeOfDay(
+                        hour: s.reminderHour,
+                        minute: s.reminderMinute,
+                      ),
+                      helpText: 'اختر وقت التذكير',
+                    );
+                    if (picked != null) {
+                      update(
+                        s.copyWith(
+                          reminderMinuteOfDay: picked.hour * 60 + picked.minute,
+                        ),
+                      );
+                    }
+                  },
+                ),
+                if (s.reminderEnabled && state == ReminderState.blockedBySystem)
+                  notice(
+                    Icons.notifications_off_outlined,
+                    'التذكير مجدول، لكن أندرويد يمنع إشعارات هذا التطبيق، فلن يظهر. اسمح بالإشعارات، أو فعّلها من: الإعدادات ← التطبيقات ← Español Pro ← الإشعارات.',
+                    action: Align(
+                      alignment: AlignmentDirectional.centerStart,
+                      child: TextButton(
+                        key: const ValueKey('reminder-allow'),
+                        onPressed: () => ref
+                            .read(reminderStateProvider.notifier)
+                            .requestPermission(),
+                        child: const Text('اسمح بالإشعارات'),
+                      ),
+                    ),
+                  ),
+                if (s.reminderEnabled && state == ReminderState.failed)
+                  notice(
+                    Icons.error_outline_rounded,
+                    'تعذّر جدولة التذكير على هذا الجهاز. باقي التطبيق يعمل كالمعتاد.',
+                  ),
+                if (s.reminderEnabled && state == ReminderState.scheduled)
+                  Padding(
+                    padding: const EdgeInsets.fromLTRB(16, 0, 16, 8),
+                    child: Text(
+                      'يصل التذكير قرب هذا الوقت؛ قد يؤخّره أندرويد بضع دقائق لتوفير البطارية.',
+                      key: const ValueKey('reminder-ok'),
+                      style: t.textTheme.bodySmall!.copyWith(
+                        color: t.colorScheme.onSurfaceVariant,
+                        height: 1.6,
+                      ),
+                    ),
+                  ),
+              ],
+            ),
+          ),
+        ),
+      ],
+    );
   }
 }

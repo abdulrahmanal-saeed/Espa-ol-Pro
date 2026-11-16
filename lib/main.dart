@@ -1,6 +1,7 @@
 import 'package:flutter/services.dart' show rootBundle;
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:material_ui/material_ui.dart';
+import 'package:timezone/data/latest_all.dart' as tzdata;
 
 import 'app/app.dart';
 import 'app/theme.dart';
@@ -8,6 +9,8 @@ import 'core/content/content_parser.dart';
 import 'core/content/models.dart';
 import 'core/db/database.dart';
 import 'core/providers.dart';
+import 'core/reminders/plugin_reminder_platform.dart';
+import 'core/reminders/reminder_service.dart';
 import 'core/settings.dart';
 import 'core/speech/speech_service.dart';
 
@@ -19,11 +22,22 @@ void main() {
 }
 
 class _Boot {
-  const _Boot(this.db, this.content, this.settings, this.speech);
+  const _Boot(
+    this.db,
+    this.content,
+    this.settings,
+    this.speech,
+    this.reminders,
+    this.taps,
+    this.startRoute,
+  );
   final AppDatabase db;
   final ContentPack content;
   final AppSettings settings;
   final SpeechService speech;
+  final ReminderPlatform reminders;
+  final ValueNotifier<String?> taps;
+  final String startRoute;
 }
 
 /// Opens the database, loads settings and the bundled content package, then
@@ -39,6 +53,7 @@ class Bootstrap extends StatefulWidget {
 class _BootstrapState extends State<Bootstrap> {
   late Future<_Boot> _future = _load();
   AppDatabase? _db;
+  final _taps = ValueNotifier<String?>(null);
 
   Future<_Boot> _load() async {
     final db = _db ??= AppDatabase.onDevice();
@@ -48,12 +63,26 @@ class _BootstrapState extends State<Bootstrap> {
     );
     final speech = DeviceTtsSpeech();
     await speech.configure(accent: settings.accent, rate: settings.speechRate);
-    return _Boot(db, content, settings, speech);
+
+    // Local reminders. A failure here must never stop the app from opening.
+    tzdata.initializeTimeZones();
+    final reminders = PluginReminderPlatform();
+    final taps = _taps;
+    var startRoute = '/home';
+    try {
+      await reminders.initialize(
+        onTap: (payload) => taps.value = safeReminderRoute(payload),
+      );
+      startRoute =
+          safeReminderRoute(await reminders.launchPayload()) ?? startRoute;
+    } catch (_) {}
+    return _Boot(db, content, settings, speech, reminders, taps, startRoute);
   }
 
   @override
   void dispose() {
     _db?.close();
+    _taps.dispose();
     super.dispose();
   }
 
@@ -69,8 +98,10 @@ class _BootstrapState extends State<Bootstrap> {
             contentProvider.overrideWithValue(boot.content),
             initialSettingsProvider.overrideWithValue(boot.settings),
             speechProvider.overrideWithValue(boot.speech),
+            reminderPlatformProvider.overrideWithValue(boot.reminders),
+            notificationTapsProvider.overrideWithValue(boot.taps),
           ],
-          child: const EspanolProApp(),
+          child: EspanolProApp(initialLocation: boot.startRoute),
         );
       }
       return MaterialApp(

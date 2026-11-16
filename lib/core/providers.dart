@@ -1,6 +1,6 @@
 import 'dart:async';
 
-import 'package:flutter/widgets.dart' show AppLifecycleListener;
+import 'package:flutter/widgets.dart' show AppLifecycleListener, ValueNotifier;
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'backup/backup_service.dart';
@@ -9,6 +9,8 @@ import 'db/database.dart';
 import 'learning/exercises.dart';
 import 'learning/progress_repository.dart';
 import 'phrases/saved_phrases_repository.dart';
+import 'reminders/plugin_reminder_platform.dart';
+import 'reminders/reminder_service.dart';
 import 'settings.dart';
 import 'speech/speech_service.dart';
 import 'srs/due_counter.dart';
@@ -40,6 +42,7 @@ class SettingsNotifier extends Notifier<AppSettings> {
     await ref
         .read(speechProvider)
         .configure(accent: next.accent, rate: next.speechRate);
+    await ref.read(reminderStateProvider.notifier).sync(next);
   }
 }
 
@@ -147,3 +150,50 @@ final savedPhraseKeysProvider = Provider<Set<String>>(
       p.phraseKey,
   },
 );
+
+// ---- local study reminders -------------------------------------------------
+
+/// Overridden with a fake in tests; the real one talks to Android.
+final reminderPlatformProvider = Provider<ReminderPlatform>(
+  (ref) => PluginReminderPlatform(),
+);
+
+final reminderServiceProvider = Provider<ReminderService>(
+  (ref) => ReminderService(
+    ref.watch(reminderPlatformProvider),
+    clock: ref.watch(clockProvider),
+  ),
+);
+
+/// Last known reminder state, for the settings screen.
+class ReminderStateNotifier extends Notifier<ReminderState> {
+  @override
+  ReminderState build() => ReminderState.off;
+
+  Future<ReminderState> sync([AppSettings? settings]) async {
+    final result = await ref
+        .read(reminderServiceProvider)
+        .sync(settings ?? ref.read(settingsProvider));
+    state = result;
+    return result;
+  }
+
+  /// Asks the OS for notification permission, then re-checks.
+  Future<ReminderState> requestPermission() async {
+    await ref.read(reminderPlatformProvider).requestPermission();
+    return sync();
+  }
+}
+
+final reminderStateProvider =
+    NotifierProvider<ReminderStateNotifier, ReminderState>(
+      ReminderStateNotifier.new,
+    );
+
+/// Routes requested by tapping a notification while the app is running.
+/// Set by the platform callback, consumed by the app root.
+final notificationTapsProvider = Provider<ValueNotifier<String?>>((ref) {
+  final taps = ValueNotifier<String?>(null);
+  ref.onDispose(taps.dispose);
+  return taps;
+});
