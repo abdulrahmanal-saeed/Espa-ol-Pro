@@ -3,12 +3,20 @@
 owner: ChatGPT
 review_status: APPROVED
 review_id: REVIEW-004
-updated_at_utc: 2026-11-16T17:52:00Z
+updated_at_utc: 2026-11-16T17:54:50.088Z
 reviewed_commit_sha: ef35c1ee3a8944a9a4d1d4f7191648ff9a58051e
 reviewed_application_sha: 65324da6e0e2b6d110ca8b550ce4e761096241ec
 reviewed_followup_test_sha: b0c1b9aba99a3648ebe49d29cdb958926eb9f343
 reviewed_pull_request: https://github.com/abdulrahmanal-saeed/Espa-ol-Pro/pull/2
-project_acceptance: PHASE_1_PENDING_REMAINING_DEVICE_QA_AND_LINGUISTIC_VALIDATION
+project_acceptance: PHASE_1_CORE_DEVICE_CHECKS_OWNER_CONFIRMED_LINGUISTIC_VALIDATION_PENDING
+
+## Owner-reported device QA addendum (2026-11-16)
+
+**The project owner explicitly confirmed testing the following with Codex on a real device and reported all working:** (1) reviews and progress after closing/reopening the app, (2) backup export and restore, (3) learning without an internet connection, (4) Spanish audio playback, and (5) on-screen keyboard interaction. This is **firsthand owner acceptance evidence**, not a test independently witnessed or reproduced by ChatGPT. The previous "remaining physical Android acceptance matrix" below is superseded for these five flows. Do not ask the owner to repeat them without new evidence of regression.
+
+Still not covered by this confirmation: every accent/voice/speed variant; all wrong-answer recovery cases on device; every Settings/theme accessibility case; first A1 transition on-device after completing all Pre-A1; and an independent Spanish language/etymology content review. Automated tests cover some of these paths, but this addendum does not claim manual device proof for them.
+
+The latest inspected application SHA is unchanged, so this is an evidence update to REVIEW-004 rather than a new code review or REVIEW-005. Future changes still require a new handoff and code review.
 
 ## Verdict — engineering fixes approved, not the entire product
 
@@ -38,12 +46,11 @@ Review evidence:
 
 ## Remaining follow-ups (not a reversal of engineering approval)
 
-### P2 — Complete the remaining physical Android acceptance matrix
+### P2 — Owner completed the five previously reported device smoke-test flows
 
-- Reference `docs/REVIEW_HANDOFF.md` §4. Only the first-lesson path has a documented successful phone run.
-- Still check: actual Spanish TTS voice/accent/speed; wrong-answer retry and accent input; FSRS countdown and persistence across background/kill/relaunch; airplane mode; backup export/reset/restore through Android picker; app settings/theme; and first A1 lesson after Pre-A1 prerequisites.
-- Record test device, Android version, APK SHA/version, observed pass/fail, reproduction, and screenshots **without personal content**. Do not claim that emulator instability proves an app bug.
-- Phase 1 cannot receive full acceptance until critical manual flows pass.
+- The owner has now directly confirmed that review persistence after closing the app, backup export/restore, offline operation, audio, and keyboard **work on-device** during testing with Codex. This clears those five previously outstanding smoke-test items on owner testimony.
+- Remaining optional/deeper manual checks are not covered by that statement (full audio variant matrix, accent-specific input, every theme/setting, A1 transition on device). Ask implementer to update their own device-evidence docs and note actual test device/build, without exposing personal data.
+- The core engineering foundation and these smoke tests are acceptable to continue development. Qualified Spanish content validation remains a separate gate; do not misrepresent the full Pre-A1→C2 roadmap as finished.
 
 ### P2 — Communication bridge and current docs are stale on main
 
@@ -67,7 +74,7 @@ Review evidence:
 ## Next steps
 
 1. Keep merged Phase 1 engineering fixes as provisionally approved; do not rewrite, revert, or force-push them.
-2. Complete and record remaining manual Android checks, with special attention to native file picker backup and FSRS interruption/restart.
+2. Treat owner-confirmed offline, audio, keyboard, backup/restore, and review-after-relaunch flows as completed smoke tests; request Codex to update its device-evidence documentation. Schedule only genuinely uncovered deeper device tests when useful.
 3. Correct Claude-owned bridge status and outdated PR draft references without editing `CHATGPT_REVIEW.md`.
 4. Continue agreed Phase 1.1 and beyond as separate reviewable commits/PRs. Include actual head SHA, test/CI evidence, and handoff to reviewer.
 5. **Do not treat this engineering approval as owner confirmation of completed Phase 1 or completed Español Pro.** Project monitoring remains active.
