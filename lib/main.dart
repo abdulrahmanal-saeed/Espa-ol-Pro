@@ -80,6 +80,13 @@ class _BootstrapState extends State<Bootstrap> {
         home: Directionality(
           textDirection: TextDirection.rtl,
           child: Scaffold(
+            // Same colour as the native Android splash, so the hand-over
+            // from the system splash to Flutter is seamless.
+            backgroundColor: snap.hasError
+                ? null
+                : (MediaQuery.platformBrightnessOf(context) == Brightness.dark
+                      ? brandTealNight
+                      : brandTeal),
             body: Center(
               child: snap.hasError
                   ? Padding(
@@ -106,25 +113,59 @@ class _BootstrapState extends State<Bootstrap> {
                         ],
                       ),
                     )
-                  : const Column(
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        Text(
-                          'Español Pro',
-                          style: TextStyle(
-                            fontFamily: spanishFont,
-                            fontSize: 30,
-                            fontWeight: FontWeight.w700,
-                          ),
-                        ),
-                        SizedBox(height: 24),
-                        CircularProgressIndicator(),
-                      ],
-                    ),
+                  : const BrandSplash(),
             ),
           ),
         ),
       );
     },
+  );
+}
+
+/// The «ñ» mark and wordmark, matching the launcher icon and native splash.
+class BrandSplash extends StatelessWidget {
+  const BrandSplash({super.key});
+
+  @override
+  Widget build(BuildContext context) => Semantics(
+    label: 'Español Pro — جارٍ التحميل',
+    child: const Column(
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        Text(
+          'ñ',
+          style: TextStyle(
+            fontFamily: spanishFont,
+            fontSize: 96,
+            height: 1,
+            fontWeight: FontWeight.w700,
+            color: Colors.white,
+          ),
+        ),
+        SizedBox(height: 16),
+        Directionality(
+          textDirection: TextDirection.ltr,
+          child: Text(
+            'Español Pro',
+            style: TextStyle(
+              fontFamily: spanishFont,
+              fontSize: 24,
+              fontWeight: FontWeight.w600,
+              color: Colors.white,
+              letterSpacing: 0.5,
+            ),
+          ),
+        ),
+        SizedBox(height: 32),
+        SizedBox(
+          width: 28,
+          height: 28,
+          child: CircularProgressIndicator(
+            strokeWidth: 2.5,
+            color: Colors.white,
+          ),
+        ),
+      ],
+    ),
   );
 }
