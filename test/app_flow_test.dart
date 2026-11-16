@@ -584,6 +584,160 @@ void main() {
     await app.dispose(tester);
   });
 
+  testWidgets('home due counter goes live when a card falls due, no DB write', (
+    tester,
+  ) async {
+    final app = TestApp(pack);
+    final lesson = pack.orderedLessons.first;
+    await completeViaRepo(app, lesson);
+    final reviews = ReviewRepository(
+      app.db,
+      clock: app.clock.call,
+      enableFuzzing: false,
+    );
+    // Clear everything due now: recognition cards move days ahead.
+    for (final c in await reviews.dueCards()) {
+      await reviews.rate(c.id, fsrs.Rating.easy);
+    }
+    await app.pump(tester);
+    expect(find.textContaining('ابدأ بمراجعة'), findsNothing);
+    final logsBefore = (await app.db.select(app.db.reviewLogs).get()).length;
+
+    // Production cards were created due exactly one day after the lesson.
+    const almost = Duration(hours: 23, minutes: 59, seconds: 59);
+    app.clock.advance(almost);
+    await tester.pump(almost);
+    expect(find.textContaining('ابدأ بمراجعة'), findsNothing);
+
+    app.clock.advance(const Duration(seconds: 2));
+    await tester.pump(const Duration(seconds: 2));
+    await tester.pumpAndSettle();
+    expect(
+      find.text('ابدأ بمراجعة ${lesson.items.length} بطاقة'),
+      findsOneWidget,
+    );
+    // Nothing was written: the count changed because time passed.
+    expect((await app.db.select(app.db.reviewLogs).get()).length, logsBefore);
+    await app.dispose(tester);
+  });
+
+  testWidgets('save phrases from the dictionary, annotate, remove and undo', (
+    tester,
+  ) async {
+    final app = TestApp(pack);
+    await completeViaRepo(app, pack.orderedLessons.first);
+    await app.pump(tester, location: '/library');
+    await tester.tapSettled(find.widgetWithText(EsText, 'casa'));
+    // The headword and its example sentence, from the vocabulary sheet.
+    await tester.tapKey('save-phrase-casa');
+    await tester.tapKey('save-phrase-mi casa es tu casa');
+    // Saving the same sentence again from the same place removes it, so tap
+    // the headword twice more to prove the toggle and that it ends saved.
+    await tester.tapKey('save-phrase-casa');
+    await tester.tapKey('save-phrase-casa');
+    var rows = await app.db.select(app.db.savedPhrases).get();
+    expect(rows.map((r) => r.es).toSet(), {'casa', 'Mi casa es tu casa.'});
+    final example = rows.firstWhere((r) => r.es != 'casa');
+    expect(example.sourceKind, 'example');
+    expect(example.sourceLessonId, pack.orderedLessons.first.id);
+
+    await tester.tapAt(const Offset(20, 20)); // dismiss the sheet
+    await tester.pumpAndSettle();
+    await tester.tapSettled(find.text('عباراتي'));
+    expect(find.byKey(const ValueKey('phrase-casa')), findsOneWidget);
+    expect(
+      find.byKey(const ValueKey('phrase-mi casa es tu casa')),
+      findsOneWidget,
+    );
+
+    // Personal note.
+    await tester.tapKey('phrase-note-mi casa es tu casa');
+    await tester.enterText(
+      find.byKey(const ValueKey('phrase-note-field')),
+      'ترحيب بضيف في البيت',
+    );
+    await tester.tapKey('phrase-note-save');
+    expect(find.text('ترحيب بضيف في البيت'), findsOneWidget);
+
+    // Search.
+    await tester.enterText(find.byKey(const ValueKey('phrase-search')), 'ضيف');
+    await tester.pumpAndSettle();
+    expect(find.byKey(const ValueKey('phrase-casa')), findsNothing);
+    await tester.enterText(find.byKey(const ValueKey('phrase-search')), '');
+    await tester.pumpAndSettle();
+
+    // Remove, then undo: the row comes back with its note and date.
+    final before = (await app.db.select(app.db.savedPhrases).get()).firstWhere(
+      (r) => r.es != 'casa',
+    );
+    await tester.tapKey('phrase-remove-mi casa es tu casa');
+    expect(
+      find.byKey(const ValueKey('phrase-mi casa es tu casa')),
+      findsNothing,
+    );
+    await tester.tapSettled(find.text('تراجع'));
+    rows = await app.db.select(app.db.savedPhrases).get();
+    expect(rows.firstWhere((r) => r.es != 'casa').toJson(), before.toJson());
+    await app.dispose(tester);
+  });
+
+  testWidgets(
+    'time on an unrated card is stored when the app is backgrounded',
+    (tester) async {
+      final app = TestApp(pack);
+      await completeViaRepo(app, pack.orderedLessons.first);
+      final sessionsBefore =
+          (await app.db.select(app.db.studySessions).get()).length;
+      await app.pump(tester, location: '/review');
+      expect(find.byKey(const ValueKey('review-reveal')), findsOneWidget);
+
+      // The learner looks at the card for over a second, then leaves the app
+      // without rating it. Review time uses a real stopwatch, so wait for real.
+      await tester.runAsync(
+        () => Future<void>.delayed(const Duration(milliseconds: 1200)),
+      );
+      for (final state in [
+        AppLifecycleState.inactive,
+        AppLifecycleState.hidden,
+        AppLifecycleState.paused,
+      ]) {
+        tester.binding.handleAppLifecycleStateChanged(state);
+        await tester.pump();
+      }
+      await tester.runAsync(
+        () => Future<void>.delayed(const Duration(milliseconds: 50)),
+      );
+      var review = (await app.db.select(app.db.studySessions).get())
+          .where((r) => r.kind == 'review')
+          .toList();
+      expect(review.length, 1, reason: 'stored before the process could die');
+      expect(review.single.seconds, greaterThanOrEqualTo(1));
+      expect(await app.db.select(app.db.reviewLogs).get(), isEmpty);
+
+      // Back in the app, the card is rated: no second counts the same time.
+      for (final state in [
+        AppLifecycleState.hidden,
+        AppLifecycleState.inactive,
+        AppLifecycleState.resumed,
+      ]) {
+        tester.binding.handleAppLifecycleStateChanged(state);
+        await tester.pump();
+      }
+      await tester.tapKey('review-reveal');
+      await tester.tapKey('rate-good');
+      review = (await app.db.select(app.db.studySessions).get())
+          .where((r) => r.kind == 'review')
+          .toList();
+      final total = review.fold<int>(0, (n, r) => n + r.seconds);
+      expect(total, lessThanOrEqualTo(3), reason: 'no double counting');
+      expect(
+        (await app.db.select(app.db.studySessions).get()).length,
+        greaterThan(sessionsBefore),
+      );
+      await app.dispose(tester);
+    },
+  );
+
   testWidgets('empty review queue shows a helpful empty state', (tester) async {
     final app = TestApp(pack);
     await app.pump(tester, location: '/review');

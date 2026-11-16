@@ -9,6 +9,7 @@ import '../../app/theme.dart';
 import '../../core/content/models.dart';
 import '../../core/db/database.dart';
 import '../../core/learning/answer_evaluator.dart';
+import '../../core/learning/progress_repository.dart';
 import '../../core/providers.dart';
 import '../../core/srs/review_repository.dart';
 import '../../core/widgets/common.dart';
@@ -52,14 +53,23 @@ class _ReviewScreenState extends ConsumerState<ReviewScreen> {
   bool _foreground = true;
   bool _busy = false;
 
+  // Captured up front: `ref` must not be used while the widget is disposing.
+  late final ProgressRepository _progress = ref.read(
+    progressRepositoryProvider,
+  );
+
   @override
   void initState() {
     super.initState();
+    _progress;
     final state = WidgetsBinding.instance.lifecycleState;
     _foreground = state == null || state == AppLifecycleState.resumed;
     _lifecycle = AppLifecycleListener(
       onStateChange: (state) {
         _foreground = state == AppLifecycleState.resumed;
+        // Leaving the foreground may be the last chance before the process
+        // is killed: store the time spent on the card that is still open.
+        if (!_foreground) _flushUnrated();
         if (_foreground) _promote();
         _updateTimers();
       },
@@ -72,6 +82,7 @@ class _ReviewScreenState extends ConsumerState<ReviewScreen> {
     _ticker?.cancel();
     _lifecycle.dispose();
     _session.stop();
+    _flushUnrated();
     _card.stop();
     _controller.dispose();
     super.dispose();
@@ -120,6 +131,23 @@ class _ReviewScreenState extends ConsumerState<ReviewScreen> {
       _updateTimers();
       _autoPlay();
     }
+  }
+
+  /// Stores study time not yet covered by a rating (the learner looked at a
+  /// card but left without rating it). Advances [_savedSeconds] first, so a
+  /// later rating never counts the same seconds twice.
+  void _flushUnrated() {
+    final elapsed = _session.elapsed.inSeconds.clamp(0, 5400);
+    final pending = elapsed - _savedSeconds;
+    if (pending <= 0) return;
+    _savedSeconds = elapsed;
+    // Not awaited: this runs from lifecycle callbacks and dispose, which
+    // cannot wait. A failure here loses only these seconds, never a review.
+    unawaited(
+      _progress
+          .logStudy(kind: 'review', seconds: pending)
+          .catchError((Object _) {}),
+    );
   }
 
   void _finishEarly() {

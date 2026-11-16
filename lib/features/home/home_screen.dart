@@ -31,7 +31,6 @@ class HomeScreen extends ConsumerWidget {
     final clock = ref.watch(clockProvider);
     final progressAsync = ref.watch(lessonProgressProvider);
     final sessions = ref.watch(sessionsProvider).value ?? const [];
-    final cards = ref.watch(cardsProvider).value ?? const [];
     final logs = ref.watch(reviewLogsProvider).value ?? const [];
     final errors = ref.watch(errorsProvider).value ?? const [];
 
@@ -60,7 +59,6 @@ class HomeScreen extends ConsumerWidget {
         builder: (progress) {
           final now = clock();
           final today = dayKey(now.toLocal());
-          final nowMs = now.toUtc().millisecondsSinceEpoch;
           final startOfDay = DateTime(
             now.toLocal().year,
             now.toLocal().month,
@@ -73,7 +71,8 @@ class HomeScreen extends ConsumerWidget {
           final learned = completed.expand((l) => l.items).toList();
           final todaySessions = sessions.where((s) => s.day == today).toList();
           final secondsToday = ProgressRepository.secondsOn(sessions, today);
-          final due = cards.where((c) => c.due <= nowMs).length;
+          // Live: updates when the next card falls due, without polling.
+          final due = ref.watch(dueSummaryProvider).dueNow;
           final plan = buildDailyPlan(
             PlannerInput(
               dailyMinutes: settings.dailyMinutes,
