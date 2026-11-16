@@ -1,107 +1,79 @@
-# Claude Code → ChatGPT: Implementation Handoff
+# Codex → ChatGPT: Implementation Handoff
 
-owner: Claude Code
+owner: Codex
+implementer: Codex
 handoff_status: READY_FOR_REVIEW
-handoff_id: PHASE1-005
-updated_at_utc: 2026-11-16T20:25:00Z
-review_requested_for_sha: 68adae7fdda173b053ffc07f70522f887d4f5105
+handoff_id: PHASE1-006
+updated_at_utc: 2026-11-16T22:10:26Z
+review_requested_for_sha: ce1155c195314cee40578747d53fce780078308a
 branch: feat/phase-1.1-reminders
 pull_request: https://github.com/abdulrahmanal-saeed/Espa-ol-Pro/pull/4
-base: feat/phase-1.1-foundation (PR #3) — stacked, merge after PR #3
-last_review_acknowledged: REVIEW-005
-project_status: PHASE_1_1_PART_B_READY_FOR_REVIEW__DEVICE_CHECK_PENDING
+base: feat/phase-1.1-foundation (PR #3)
+last_review_acknowledged: REVIEW-006
+project_status: PHASE_1_1_PART_B_REVIEW_AND_DEVICE_CHECK_PENDING
 
-> This file on the PR #4 branch describes **PR #4 only**. PR #3's handoff is
-> `PHASE1-004` on `feat/phase-1.1-foundation`. `review_requested_for_sha` is
-> the last commit that changes application code on this branch: the merge
-> that brings PR #3's REVIEW-005 fix into the reminders work.
+This handoff covers PR #4. The owner transferred implementation to Codex
+on 2026-11-17. The previous [PHASE1-005 handoff by Claude Code](https://github.com/abdulrahmanal-saeed/Espa-ol-Pro/blob/36f4d6dc450b19e900d339f16237da2fb768cf71/AI_BRIDGE/CLAUDE_STATUS.md)
+remains in Git history.
 
-## Response to REVIEW-005 (PR #4 findings)
+## Response to REVIEW-006
 
-- **P2 — no separate handoff:** this file is PR #4's own handoff.
-- **P2 — native delivery unverified on Android:** still true. Nothing here
-  claims device delivery. The checklist is below; it needs the owner's
-  phone.
-- PR #4 stays stacked on PR #3 and must not be merged before PR #3.
-  Merging this branch's history is additive; there was no force-push.
-
-## What PR #4 contains
-
-Daily local study reminder. Reminder commits: `1544b52` (feature), `e4343da`
-(docs), `405ec84` (plugin pin). `72c09d7` and its revert `09480a7` are a
-failed `compileSdk 37` attempt, kept in history as is (no force-push).
-
-- **Settings → «التذكير اليومي»:** on/off (off by default) and a time picker.
-- **Local only.** `flutter_local_notifications` 22.3.3 (BSD-3), `timezone` (BSD-2), `flutter_timezone` (Apache-2.0). Nothing goes to a server.
-- **Inexact daily alarm** (`inexactAllowWhileIdle`), so no exact-alarm permission. Android may deliver it a few minutes late; the UI says so.
-- **No duplicates.** One fixed id (`7001`), cancelled before every schedule. The service reschedules only when the zone or the chosen time changes.
-- **Re-synced** on launch, on every resume and on settings changes. A time-zone change therefore reschedules it, and the wall-clock time is kept across daylight-saving changes.
-- **Survives restarts.** The boot receiver (`ScheduledNotificationBootReceiver`, not exported) restores it after a reboot or app update. New permission: `RECEIVE_BOOT_COMPLETED`. `POST_NOTIFICATIONS` is requested once, when the learner turns reminders on.
-- **OS-blocked state:** the schedule is kept, Settings explains the situation, and offers the permission prompt plus the system-settings path.
-- **Taps** open Home, both while running and from a cold start, through an allow-list (`/home`, `/review`).
-- **Failure-safe:** a plugin failure never blocks startup, and Settings shows "could not schedule".
-
-### Why 22.3.3 and not 23.x
-
-23.x depends on `androidx.core 1.19`, which needs `compileSdk 37`. The APK
-job failed with Flutter's default 36. Installing `platforms;android-37` on
-the runner failed because no package exists under that name; the build
-hinted at a "37.1" minor-version scheme. 22.3.3, the latest 22.x, compiles
-against 36 with the same API, so the app stays on Flutter's default toolchain.
+- `ReminderService` serializes schedule and cancel operations for ID 7001.
+  The running operation finishes and queued requests superseded by a
+  newer request skip platform work. The latest saved settings determine
+  the final OS alarm. A repeat sync with the same time and zone only
+  rechecks notification permission.
+- Settings saves run in request order. The scheduler reads the last
+  successful save after startup, resume or a Settings change. An older
+  platform result cannot replace the latest `ReminderStateNotifier`
+  result. Time and permission dialogs apply their edits to current settings.
+- A failed platform mutation leaves the alarm state unknown. A later disable
+  cancels the ID even if a failed scheduling call had already written it.
+  A failed permission check leaves the confirmed schedule cached.
+- The Android adapter, alarm ID, inexact scheduling, timezone/DST rules,
+  boot receiver, and offline behavior use the existing implementation.
 
 ## Verification
 
-Local, at `68adae7`:
+- Local Flutter 3.50.0 resolved dependencies. Formatting, static analysis,
+  the content validator and Drift regeneration passed. The regenerated
+  database file matched Git. The full suite passed **169 tests**, including
+  nine new regression tests. The staged secret scan found no matches.
+- Six of seven gated service regressions reproduced failures on the original
+  code. The fixed code passed both the service and widget tests covering
+  enable/disable, 19:00→20:00, rapid on/off/on, a late cancellation, a failed
+  write and retry, queued cleanup after a partial write, app resume during a
+  saved change, and stale Android permission results. The tests assert the
+  fake OS pending alarms and the state shown by Settings.
+- Local Windows Gradle could not download a Kotlin plugin dependency.
+  [GitHub Actions at the code SHA](https://github.com/abdulrahmanal-saeed/Espa-ol-Pro/actions/runs/43966228374)
+  passed **Format, analyze, content, tests** and **Android debug APK**.
+  The [PR checks](https://github.com/abdulrahmanal-saeed/Espa-ol-Pro/pull/4/checks)
+  track the handoff revision as well.
 
-| Check | Result |
-|---|---|
-| `dart format --output=none --set-exit-if-changed lib test tool test_screenshots` | 0 changed |
-| `flutter analyze --fatal-infos` | No issues |
-| `flutter test` | **160 passed**: PR #3's 140 plus 20 reminder tests; 2 full runs |
+## Independent review requested
 
-GitHub Actions:
+Re-review `ce1155c195314cee40578747d53fce780078308a` against
+[REVIEW-006](https://github.com/abdulrahmanal-saeed/Espa-ol-Pro/blob/99ed6970339f250ba0b0accb740634c25cb8f675/AI_BRIDGE/CHATGPT_REVIEW.md).
+Check that an older OS call or permission result cannot win, and that
+the failed-operation paths still converge to the latest saved preference.
+The reviewer report remains owned by ChatGPT.
 
-| Head | Tests job | APK job |
-|---|---|---|
-| `405ec84` (plugin pin) | success | **success** (run 43943864128) |
-| `68adae7` (merge of PR #3 fix) | success | **failure**: `Gradle threw an error while downloading artifacts from the network`, 6 s into the build |
-| `8ad7910` (this handoff; app code identical to `68adae7`) | success | **success** (run 43947107816) |
+## Merge order and Android acceptance
 
-The `68adae7` failure was a dependency download error on the runner. The
-re-run on `8ad7910`, whose application code is identical, built the APK
-successfully, so it was transient.
-
-Reminder tests:
-
-- `test/reminders_test.dart` (fake platform recording every call):
-  - next-fire time, month/year rollover, and the Madrid daylight-saving change;
-  - exactly one schedule across repeated syncs, and cancel-before-schedule;
-  - rescheduling in the new zone after a time-zone change;
-  - off cancels, and leftovers are cleared once on a fresh start;
-  - the OS-blocked state, failure and retry, and unknown-zone fallback;
-  - the route allow-list, and settings persistence with corrupt-value fallback.
-- `test/app_flow_test.dart`:
-  - turning it on asks once, schedules one and persists;
-  - resume does not reschedule;
-  - turning it off cancels;
-  - the blocked-notification notice and allow flow;
-  - taps navigate, and unknown routes are ignored.
-
-## Not verified — device checklist for the owner
-
-None of this has run on a phone. After PR #3 and PR #4 are merged:
-
-1. Turn the reminder on → Android asks for notification permission once → allow.
-2. Set the time 3–5 minutes ahead, lock the phone → the notification arrives (possibly a few minutes late).
-3. Swipe the app away, wait for the notification, tap it → the app opens on Home.
-4. Restart the phone → the reminder still arrives the next day.
-5. Deny notifications in system settings → Settings shows the explanation.
-6. Turn the reminder off → nothing arrives.
-
-## Specific review request
-
-1. Permission and manifest footprint: is anything broader than needed?
-2. Any path that can create a second schedule, or leave one after "off"?
-3. Cold-start tap handling and the route allow-list.
-
-I will not merge either PR; merging is the owner's decision.
+- [PR #3](https://github.com/abdulrahmanal-saeed/Espa-ol-Pro/pull/3) is ready
+  at the REVIEW-006-approved head `732b08504840923d04739fccb40f1a2a5ac0cf62`.
+  Its [CI](https://github.com/abdulrahmanal-saeed/Espa-ol-Pro/actions/runs/43946907184)
+  passed with 140 tests and an APK. A merge simulation against current
+  `main` had no conflicts. Owner authorization is pending.
+- PR #4 remains stacked on PR #3. After #3 merges, retarget #4 to `main`,
+  verify the resulting diff and CI, and confirm independent approval and
+  owner authorization for #4.
+- The [Phase 1.1 device checklist](../docs/REVIEW_HANDOFF.md#7-phase-11-android-acceptance)
+  covers the icon and splash, saved phrases, upgrading v3→v4, permission,
+  actual delivery, tapping from a closed app, cancelling and reboot
+  recovery. Native Phase 1.1 checks are pending. The original Phase 1
+  device results remain recorded in REVIEW-004.
+- The first Phase 1.2 slice can reuse the bundled content validator,
+  local Spanish TTS and saved-phrase storage for graded dialogue practice.
+  Phase 1.1 acceptance remains the dependency for advancing the roadmap.
