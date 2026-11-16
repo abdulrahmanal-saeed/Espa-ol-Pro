@@ -3,10 +3,10 @@
 owner: ChatGPT
 review_status: CHANGES_REQUESTED
 review_id: REVIEW-005
-updated_at_utc: 2026-11-16T19:39:59.457Z
+updated_at_utc: 2026-11-16T20:04:00.487Z
 reviewed_application_sha: cd4abab203ccdc2acd29da88ca80a3b6c6831cd9
 reviewed_pr3_head_sha: 528bb03379074b029f5b445072d2e64567f3752a
-reviewed_pr4_head_sha: e4343da8a66ebaecdc0b8ef665e39f42a3ef0563
+reviewed_pr4_head_sha: 405ec841bad7a9b232c3185655006465fe27abfc
 reviewed_pull_requests: https://github.com/abdulrahmanal-saeed/Espa-ol-Pro/pull/3 ; https://github.com/abdulrahmanal-saeed/Espa-ol-Pro/pull/4
 project_acceptance: PHASE_1_1_PENDING_FIXES_AND_CI
 
@@ -25,6 +25,15 @@ This is a **new** review of Phase 1.1, not a repeat of REVIEW-004. Inspected REA
 - Decision for **PR #3 specifically**: `CHANGES_REQUESTED` until this P2 is corrected with failure/concurrency tests, or the owner explicitly accepts a documented study-time accuracy limitation. CI success alone does not validate the failure path.
 - No new implementation SHA exists since REVIEW-005, so this is an evidence/status addendum, **not a redundant REVIEW-006**.
 - PR #4 is stacked on PR #3 and is reviewed separately. Do not merge it before PR #3 and do not treat PR #3 CI as PR #4 native notification verification.
+
+## PR #4 updated-head verification (2026-11-16) — build blocker resolved, device gate open
+
+- Newly inspected PR #4 head: `405ec841bad7a9b232c3185655006465fe27abfc` (previously reviewed `e4343da8a66ebaecdc0b8ef665e39f42a3ef0563`). The intervening API-37 attempt `72c09d7` failed CI; the current head pins `flutter_local_notifications` from 23.0.2 to **22.3.3**, updates the dependency lockfile and architecture docs, and restores compatibility with the default Android compile SDK. The latest diff does **not** change the notification scheduling implementation itself.
+- **Independently verified:** GitHub Actions https://github.com/abdulrahmanal-saeed/Espa-ol-Pro/actions/runs/43943864128 completed **successfully** on exactly `405ec841`. Both jobs (format/analyze/content/tests and Android debug APK) passed. This closes the earlier CI build failure, not the native-device delivery evidence gap.
+- **P2 still open (handoff):** `AI_BRIDGE/CLAUDE_STATUS.md` on PR #4 head remains `PHASE1-003` referencing PR #3 / `cd4abab`; Claude must publish an accurate PR #4 head handoff. Main remains stale as previously noted.
+- **P2 still open (native QA):** CI success and fake-platform tests do not verify Android notification delivery, permission denial, cold-start tap, reboot restore, or timezone changes. A real-device test report is still required before claiming native behavior accepted.
+- **PR #3 remains unchanged** at `528bb033`; its study-time persistence P2 remains pending. PR #4 is stacked on it and must not be merged first.
+- **Decision:** `CHANGES_REQUESTED` for the combined Phase 1.1 milestone; no new P0/P1 established in the dependency/build fix. Do not conflate a successful APK build with on-device notification verification. No merge or deploy.
 
 ## Findings (ranked)
 
