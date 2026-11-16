@@ -30,7 +30,7 @@ Milestone: **Phase 1 — Working educational foundation** (first reviewable drop
 | Progress survives closing and reopening the database | `persistence_test` |
 | Backup export / restore / reject-invalid / reset | `persistence_test` |
 
-Test run for this drop: **92 tests, all passing** (`flutter test`), analyzer
+Test run for this drop: **93 tests, all passing** (`flutter test`), analyzer
 clean with `--fatal-infos`, formatter clean, content validator clean.
 
 ## Implemented but NOT verified on a device
@@ -70,8 +70,8 @@ These exist in code but could not be exercised in the build environment
    phrasing is marked wrong. Acceptable at Pre-A1/A1; AI feedback is the
    Phase 2 fix.
 3. The due-review badge refreshes on data change and navigation, not on a timer.
-4. "Lessons completed today" counts lesson study sessions, so repeating an old
-   lesson also satisfies the daily lesson goal.
+4. Repeating an already-completed lesson today also satisfies the daily lesson
+   goal (it counts completions dated today, not only first completions).
 5. Review queue is capped at 60 cards per session.
 6. Curriculum entities are in JSON, not SQL tables (deliberate — DATABASE.md).
 

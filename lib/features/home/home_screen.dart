@@ -82,10 +82,13 @@ class HomeScreen extends ConsumerWidget {
                   .where((l) => l.reviewedAt >= startOfDay)
                   .length,
               nextLesson: next,
-              lessonsCompletedToday: todaySessions
-                  .where((s) => s.kind == 'lesson')
-                  .map((s) => s.refId)
-                  .toSet()
+              // From completion timestamps, not from study-time rows.
+              lessonsCompletedToday: progress.values
+                  .where(
+                    (p) =>
+                        ProgressRepository.isCompleted(p) &&
+                        (p.lastCompletedAt ?? 0) >= startOfDay,
+                  )
                   .length,
               learnedItems: learned.length,
               openErrors: errors.where(ProgressRepository.isOpenError).length,

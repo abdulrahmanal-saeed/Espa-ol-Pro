@@ -115,7 +115,12 @@ class ProgressRepository {
             ),
           );
       final created = await reviews.ensureCardsForLesson(lesson);
-      await logStudy(kind: 'lesson', refId: lesson.id, seconds: seconds);
+      // A completed lesson always leaves a study record, however fast.
+      await logStudy(
+        kind: 'lesson',
+        refId: lesson.id,
+        seconds: seconds < 1 ? 1 : seconds,
+      );
       return LessonOutcome(
         score: score,
         newCards: created,

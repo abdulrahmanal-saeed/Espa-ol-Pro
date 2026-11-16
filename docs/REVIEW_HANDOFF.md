@@ -23,7 +23,7 @@ flutter build apk --debug    # needs Android SDK; CI does this too
 
 Expected: formatter reports 0 changed; analyzer "No issues found"; validator
 prints `12 lessons, 101 vocabulary items, 299 activities (172 graded)` and
-`OK`; `flutter test` reports 92 passing.
+`OK`; `flutter test` reports 93 passing.
 
 CI: `.github/workflows/ci.yml` → jobs **Format, analyze, content, tests** and
 **Android debug APK** (uploads `espanol-pro-debug-apk`).

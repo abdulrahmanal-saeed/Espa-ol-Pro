@@ -77,6 +77,18 @@ void main() {
       expect((await reviews.allCards()).length, l(0).items.length * 2);
     });
 
+    test('an instantly completed lesson still leaves a study record', () async {
+      await repo.completeLesson(
+        l(0),
+        score: 1,
+        seconds: 0,
+        contentVersion: pack.version,
+      );
+      final sessions = await db.select(db.studySessions).get();
+      expect(sessions.single.kind, 'lesson');
+      expect(sessions.single.seconds, 1);
+    });
+
     test('nextLesson is null once every shipped lesson is done', () async {
       for (final lesson in pack.orderedLessons) {
         await complete(lesson);
