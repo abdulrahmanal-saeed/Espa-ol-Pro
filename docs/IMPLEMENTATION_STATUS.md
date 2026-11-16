@@ -37,6 +37,11 @@ content. Phase 1.1 work is in progress on later PRs.
 | Progress survives closing and reopening the database | `persistence_test` |
 | Backup export / restore / reset; v1–v3 restore compatibility and rejection of malformed fields with every existing row preserved | `persistence_test` |
 | Review ratings, FSRS state, and active study time commit together and survive reopening SQLite | `persistence_test`, including failure during the study-time write |
+| **Phase 1.1:** saved phrases («عباراتي»): save from vocabulary, examples, lesson notes and the grammar reference; search, audio, note, remove with undo; one record per sentence | `saved_phrases_test`, `app_flow_test` |
+| **Phase 1.1:** schema v4 (`saved_phrases`), migration v3→v4 on a real file; backups include and validate it; pre-v4 restores and progress resets keep saved phrases | `persistence_test` |
+| **Phase 1.1:** live due-review counter on Home and Practice: one timer to the next due instant, no polling, recomputed on resume | `due_counter_test`, `app_flow_test` (clock-controlled, no DB write) |
+| **Phase 1.1:** time on an opened but unrated review card is stored when the app is backgrounded or the screen closes, without double counting (REVIEW-004 P2) | `app_flow_test` |
+| **Phase 1.1:** app identity: adaptive icon with themed (monochrome) layer, density PNGs, Android 12+ and legacy splash, matching in-app loading screen | `branding_test` (resources and colours); not yet seen on a device |
 
 Local Windows verification used Flutter 3.50.0. All 105 tests passed,
 including the A1 unlock regression. Analysis passed with `--fatal-infos`,
@@ -65,7 +70,8 @@ remain at v3.
 - Not covered by that confirmation: every accent/voice/speed variant, every
   Settings/theme case, and the A1 transition on device. Automated tests
   cover some of these paths. See [device evidence](REVIEW_HANDOFF.md#4-android-device-checks).
-- The app icon and splash use the Flutter defaults.
+- Phase 1.1 replaces the default icon and splash. Their appearance on a
+  device has not been checked yet.
 
 ## Not implemented (and not claimed)
 
