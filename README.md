@@ -66,6 +66,7 @@ CI (`.github/workflows/ci.yml`) runs all of the above and builds the debug APK.
 | [`docs/ROADMAP.md`](docs/ROADMAP.md) | Phases 1–5 with acceptance criteria |
 | [`docs/IMPLEMENTATION_STATUS.md`](docs/IMPLEMENTATION_STATUS.md) | Implemented / tested / incomplete / blocked |
 | [`docs/REVIEW_HANDOFF.md`](docs/REVIEW_HANDOFF.md) | How to inspect, build, test and evaluate |
+| [`AI_BRIDGE/PROJECT_PLAN.md`](AI_BRIDGE/PROJECT_PLAN.md) | Full project plan: every requirement with done / partial / not started / blocked |
 | [`AI_BRIDGE/`](AI_BRIDGE/) | Implementer ↔ reviewer handoff protocol |
 
 ## Privacy

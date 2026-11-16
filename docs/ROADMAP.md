@@ -1,5 +1,8 @@
 # Roadmap
 
+> Short overview. The authoritative, per-requirement plan with status is
+> [`AI_BRIDGE/PROJECT_PLAN.md`](../AI_BRIDGE/PROJECT_PLAN.md).
+
 A phase is done only when its acceptance criteria are verified by tests or a
 documented manual check — never because screens exist.
 
