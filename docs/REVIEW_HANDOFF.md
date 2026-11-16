@@ -87,14 +87,18 @@ build could not resolve Gradle repository hosts.
   dictation, and seven recognition plus seven production cards. The owner
   responded positively when asked about the audio. Voice availability and
   accent/speed variants were not independently checked.
-- **Remaining runtime checks:** wrong-answer recovery, keyboard and accent
-  keys, review countdown and rating persistence across backgrounding and
-  restart, airplane mode, the native backup picker, and the transition to A1.
-  The regression tests exercise wrong-answer recovery, SQLite persistence,
-  due-time gating and the A1 unlock.
+- **Owner-confirmed (REVIEW-004 addendum):** the owner tested with Codex on
+  a real device and reported all working: review and progress after closing
+  and reopening, backup export and restore, offline learning, Spanish audio,
+  and the on-screen keyboard. Do not ask the owner to repeat these unless a
+  change touches them or a regression is reported.
+- **Not covered by that confirmation:** every accent/voice/speed variant,
+  every Settings/theme case, and the A1 transition on device. The regression
+  tests exercise wrong-answer recovery, SQLite persistence, due-time gating
+  and the A1 unlock.
 
-Install the CI APK on an Android device with a Spanish TTS voice and follow
-this checklist on a test profile or an empty app install.
+The full checklist below remains available for regression checks after
+changes that touch these flows.
 
 1. First launch shows the Arabic RTL home with "ابدأ درسك الأول".
 2. Complete lesson 1; hear Spanish on teach cards and listening items.
@@ -120,7 +124,6 @@ this checklist on a test profile or an empty app install.
 
 ## 6. Honest limits of this drop
 
-The remaining Android checks, independent acceptance, and a native Spanish
-teacher review are pending. See
+A native Spanish teacher review of the content is pending. See
 [`IMPLEMENTATION_STATUS.md`](IMPLEMENTATION_STATUS.md) for roadmap features
 outside Phase 1.

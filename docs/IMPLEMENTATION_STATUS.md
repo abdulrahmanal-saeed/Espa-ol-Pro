@@ -1,10 +1,14 @@
 # Implementation status
 
-**Phase 1 — Working educational foundation**, pending acceptance. The fixes
-for REVIEW-002 are in code commit `65324da6e0e2b6d110ca8b550ce4e761096241ec`
-on [draft PR #2](https://github.com/abdulrahmanal-saeed/Espa-ol-Pro/pull/2).
-The PR tracks the latest head and checks. See [the review handoff](REVIEW_HANDOFF.md)
-for Android verification and the remaining acceptance checks.
+**Phase 1 — Working educational foundation.** PR #1 and PR #2 are merged
+into `main` (PR #2 merge: `ef35c1e`). REVIEW-004 approved the Phase 1
+engineering fixes (last reviewed application code: `65324da`). CI on the
+merge passed with 105 tests and a debug APK
+([run 43918437105](https://github.com/abdulrahmanal-saeed/Espa-ol-Pro/actions/runs/43918437105)).
+
+The owner confirmed five Android device checks with Codex (see below).
+The remaining Phase 1 acceptance gate is a human review of the Spanish
+content. Phase 1.1 work is in progress on later PRs.
 
 ## Implemented and covered by automated tests
 
@@ -51,8 +55,16 @@ remain at v3.
   the attempt.
 - On a Samsung Galaxy A15 running Android 16, the APK opened and the learner
   completed the first lesson. The on-device database contained 11 correct
-  graded attempts and 14 FSRS cards. See [device evidence](REVIEW_HANDOFF.md#4-android-device-checks)
-  for the outstanding checks.
+  graded attempts and 14 FSRS cards.
+- **Owner-confirmed device checks (passed).** The owner tested these with
+  Codex on a real Android device and reported all working, recorded in
+  REVIEW-004: (1) reviews and progress after closing and reopening the app,
+  (2) backup export and restore, (3) learning offline, (4) Spanish audio,
+  (5) on-screen keyboard. This is owner testimony, not automated or
+  reviewer-witnessed evidence.
+- Not covered by that confirmation: every accent/voice/speed variant, every
+  Settings/theme case, and the A1 transition on device. Automated tests
+  cover some of these paths. See [device evidence](REVIEW_HANDOFF.md#4-android-device-checks).
 - The app icon and splash use the Flutter defaults.
 
 ## Not implemented (and not claimed)
