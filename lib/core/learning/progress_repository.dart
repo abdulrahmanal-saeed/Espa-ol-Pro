@@ -1,4 +1,5 @@
 import 'package:drift/drift.dart';
+import 'package:fsrs/fsrs.dart' as fsrs;
 
 import '../content/models.dart';
 import '../db/database.dart';
@@ -257,6 +258,20 @@ class ProgressRepository {
   }
 
   // ---- study time ----------------------------------------------------------
+
+  /// Checkpoints active study time with the rating and its FSRS state.
+  Future<ReviewCard> rateReview(
+    int cardId,
+    fsrs.Rating rating, {
+    required int durationMs,
+    required int activeSeconds,
+  }) {
+    return db.transaction(() async {
+      final card = await reviews.rate(cardId, rating, durationMs: durationMs);
+      await logStudy(kind: 'review', seconds: activeSeconds);
+      return card;
+    });
+  }
 
   Future<void> logStudy({
     required String kind,

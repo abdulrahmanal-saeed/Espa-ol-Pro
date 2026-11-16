@@ -478,6 +478,86 @@ void main() {
     await app.dispose(tester);
   });
 
+  testWidgets('a failed save keeps the answer on both first try and retry', (
+    tester,
+  ) async {
+    final app = TestApp(pack);
+    final lesson = pack.orderedLessons.first;
+    final steps = ExerciseBuilder(pack).buildLesson(lesson);
+    final target = steps.whereType<ChoiceExercise>().first;
+    final wrong = (target.correctIndex + 1) % target.options.length;
+    final continued = find.byKey(const ValueKey('continue-button'));
+
+    Future<void> failNextSave() => app.db.customStatement('''
+      CREATE TEMP TRIGGER fail_attempt BEFORE INSERT ON activity_attempts
+      BEGIN SELECT RAISE(ABORT, 'test write failure'); END
+    ''');
+    Future<void> allowSave() =>
+        app.db.customStatement('DROP TRIGGER fail_attempt');
+    Future<void> expectFailure() async {
+      await tester.tapSettled(find.text('تحقّق'));
+      expect(find.text('تعذّر حفظ إجابتك. حاول مرة أخرى.'), findsOneWidget);
+      expect(find.text('إجابة صحيحة'), findsNothing);
+      expect(find.text('إجابة غير صحيحة'), findsNothing);
+      expect(continued, findsNothing);
+      expect(find.text('أكملت الدرس'), findsNothing);
+    }
+
+    await app.pump(tester, location: '/lesson/${lesson.id}');
+    await tester.tapKey('start-lesson');
+    for (final step in steps) {
+      if (step != target) {
+        await tester.answer(step);
+        continue;
+      }
+      await failNextSave();
+      final before = await app.db.select(app.db.activityAttempts).get();
+      await tester.tapKey('option-$wrong');
+      await expectFailure();
+      expect(await app.db.select(app.db.activityAttempts).get(), before);
+      await tester.tapSettled(find.byTooltip('خروج'));
+      expect(find.textContaining('ستفقد إجابتك الحالية'), findsOneWidget);
+      await tester.tapSettled(find.text('متابعة التعلّم'));
+      await allowSave();
+      await tester.tapKey('retry-answer-save');
+      expect(find.text('إجابة غير صحيحة'), findsOneWidget);
+      await tester.tapKey('continue-button');
+    }
+
+    await failNextSave();
+    await tester.tapKey('option-${target.correctIndex}');
+    await expectFailure();
+    final firstAttempts = await app.db.select(app.db.activityAttempts).get();
+    expect(firstAttempts.where((a) => a.attemptNumber == 2), isEmpty);
+    expect(
+      (await app.db.select(app.db.lessonProgress).get()).single.status,
+      'started',
+    );
+    await allowSave();
+    await tester.tapKey('retry-answer-save');
+    expect(find.text('إجابة صحيحة'), findsOneWidget);
+    await tester.tapKey('continue-button');
+
+    final attempts = await app.db.select(app.db.activityAttempts).get();
+    final targetAttempts = attempts.where((a) => a.activityId == target.id);
+    expect(targetAttempts.map((a) => a.attemptNumber), [1, 2]);
+    expect(targetAttempts.map((a) => a.userAnswer), [
+      target.options[wrong],
+      target.options[target.correctIndex],
+    ]);
+    expect(attempts.length, firstAttempts.length + 1);
+    final measured = steps
+        .whereType<Exercise>()
+        .where((e) => e.isMeasured)
+        .length;
+    expect(
+      (await app.db.select(app.db.lessonProgress).get()).single.bestScore,
+      closeTo((measured - 1) / measured, 1e-9),
+    );
+    expect(tester.takeException(), isNull);
+    await app.dispose(tester);
+  });
+
   testWidgets('empty review queue shows a helpful empty state', (tester) async {
     final app = TestApp(pack);
     await app.pump(tester, location: '/review');

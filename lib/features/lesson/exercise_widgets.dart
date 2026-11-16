@@ -388,9 +388,15 @@ class _StepScaffold extends StatelessWidget {
 // ---------------------------------------------------------------------------
 
 class ChoiceView extends StatefulWidget {
-  const ChoiceView(this.ex, {super.key, required this.onSubmit});
+  const ChoiceView(
+    this.ex, {
+    super.key,
+    required this.onSubmit,
+    required this.showResult,
+  });
   final ChoiceExercise ex;
   final OnSubmit onSubmit;
+  final bool showResult;
 
   @override
   State<ChoiceView> createState() => _ChoiceViewState();
@@ -441,7 +447,7 @@ class _ChoiceViewState extends State<ChoiceView> {
                   text: ex.options[i],
                   isSpanish: ex.optionsAreSpanish,
                   selected: _selected == i,
-                  color: !_submitted
+                  color: !widget.showResult
                       ? null
                       : i == ex.correctIndex
                       ? colors.success

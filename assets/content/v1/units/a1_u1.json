@@ -4,7 +4,7 @@
   {
    "id": "g_nationality",
    "title_ar": "الجنسيات: التذكير والتأنيث",
-   "body_ar": "• المنتهية بـ o تصير a للمؤنث: egipcio ← egipcia، mexicano ← mexicana.\n• المنتهية بحرف ساكن يُضاف لها a: español ← española، inglés ← inglesa.\n• المنتهية بـ e أو í لا تتغيّر: árabe، saudí، emiratí، marroquí.\n\nجنسيات عربية أخرى: sirio/siria (سوري)، jordano/jordana (أردني)، libanés/libanesa (لبناني).\n\nالمطابقة في الجنس مألوفة لك من العربية (مصري/مصرية).\nتنبيه: الجنسيات واللغات تُكتب بحرف صغير في الإسبانية: árabe، inglés، español.",
+   "body_ar": "• من الأسماء والصفات التي يتغيّر آخرها: egipcio ← egipcia، mexicano ← mexicana.\n• أمثلة على إضافة a: español ← española، inglés ← inglesa.\n• أمثلة تبقى صيغتها نفسها في المذكر والمؤنث: árabe، saudí، emiratí، marroquí.\n\nجنسيات عربية أخرى: sirio/siria (سوري)، jordano/jordana (أردني)، libanés/libanesa (لبناني).\n\nالمطابقة في الجنس مألوفة لك من العربية (مصري/مصرية).\nتنبيه: الجنسيات واللغات تُكتب بحرف صغير في الإسبانية: árabe، inglés، español.",
    "examples": [
     {
      "es": "Soy egipcio.",
@@ -42,7 +42,7 @@
   {
    "id": "g_professions",
    "title_ar": "المهنة بلا أداة نكرة",
-   "body_ar": "عند ذكر المهنة بعد ser لا نضع un / una:\nSoy gerente. (وليس: Soy un gerente)\nLaura es vendedora.\n\nهذا يطابق العربية «أنا مدير» ويخالف الإنجليزية «I am a manager».\n\nكثير من المهن لها صيغة مؤنثة: vendedor ← vendedora. وبعضها لا يتغيّر: el gerente / la gerente.",
+   "body_ar": "عند ذكر المهنة وحدها بعد ser، نستعملها عادةً بدون un أو una:\nSoy gerente. (أنا مدير.)\nLaura es vendedora. (لاورا بائعة.)\n\nإذا أضفت وصفاً فقد تظهر الأداة: Soy un buen vendedor. (أنا بائع جيد.)\n\nكثير من المهن لها صيغة مؤنثة: vendedor ← vendedora. وبعضها لا يتغيّر: el gerente / la gerente.",
    "examples": [
     {
      "es": "Soy gerente de ventas.",
@@ -406,7 +406,7 @@
     },
     {
      "type": "respond",
-     "prompt_ar": "عميل يسألك: «¿Hablas español?». أجب: نعم، قليلاً.",
+     "prompt_ar": "عميل يسألك بصيغة رسمية: «¿Habla usted español?». قل إنك تتكلّم الإسبانية قليلاً.",
      "accepted": [
       "Sí, un poco",
       "Un poco",
@@ -416,7 +416,7 @@
       "Sí, un poco de español",
       "Hablo un poco"
      ],
-     "audio_es": "¿Hablas español?"
+     "audio_es": "¿Habla usted español?"
     },
     {
      "type": "speak",
@@ -629,7 +629,7 @@
     {
      "type": "note",
      "title_ar": "المهنة بلا un / una",
-     "body_ar": "بعد ser نذكر المهنة مباشرة:\nSoy gerente. — أنا مدير.\nLaura es vendedora. — لاورا بائعة.\n\nكما في العربية «أنا مدير»، وبخلاف الإنجليزية «I am a manager».",
+     "body_ar": "عند ذكر المهنة وحدها بعد ser، لا نحتاج عادةً إلى un أو una:\nSoy gerente. — أنا مدير.\nLaura es vendedora. — لاورا بائعة.\n\nإذا أضفت وصفاً فقد تظهر الأداة: Soy un buen vendedor. — أنا بائع جيد.",
      "examples": [
       {
        "es": "Soy gerente de ventas.",

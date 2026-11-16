@@ -236,6 +236,53 @@ void main() {
     await db.close();
   });
 
+  test('review time commits with a rating and survives interruption', () async {
+    final file = File('${tmp.path}/review.sqlite');
+    final clock = FakeClock();
+    var db = open(file);
+    final reviews = ReviewRepository(
+      db,
+      clock: clock.call,
+      enableFuzzing: false,
+    );
+    final repo = ProgressRepository(db, reviews, clock: clock.call);
+    await reviews.ensureCardsForLesson(pack.orderedLessons.first);
+    final card = (await reviews.dueCards()).first;
+    await db.customStatement('''
+      CREATE TEMP TRIGGER fail_study BEFORE INSERT ON study_sessions
+      BEGIN SELECT RAISE(ABORT, 'test write failure'); END
+    ''');
+    await expectLater(
+      repo.rateReview(
+        card.id,
+        fsrs.Rating.good,
+        durationMs: 6800,
+        activeSeconds: 6,
+      ),
+      throwsA(isA<raw.SqliteException>()),
+    );
+    expect(await db.select(db.reviewLogs).get(), isEmpty);
+    expect((await reviews.dueCards()).first, card);
+    await db.customStatement('DROP TRIGGER fail_study');
+    final updated = await repo.rateReview(
+      card.id,
+      fsrs.Rating.good,
+      durationMs: 6800,
+      activeSeconds: 6,
+    );
+    // Close without any end-of-session write.
+    await db.close();
+
+    db = open(file);
+    final log = (await db.select(db.reviewLogs).get()).single;
+    expect(log.cardId, card.id);
+    expect(log.dueAfter, updated.due);
+    final study = (await db.select(db.studySessions).get()).single;
+    expect(study.kind, 'review');
+    expect(study.seconds, 6);
+    await db.close();
+  });
+
   group('backup', () {
     Future<AppDatabase> seeded() async {
       final db = memoryDb();
@@ -491,6 +538,73 @@ void main() {
       expect((await target.select(target.reviewCards).get()), isNotEmpty);
       await db.close();
       await target.close();
+    });
+
+    test(
+      'schema-v2 restores measured flags and defaults attempt numbers',
+      () async {
+        final db = await seeded();
+        final doc = jsonDecode(
+          await BackupService(
+            db,
+          ).exportJson(now: DateTime.utc(2026), contentVersion: pack.version),
+        ) as Map<String, dynamic>;
+        doc['schema_version'] = 2;
+        final row = (doc['tables']['activity_attempts'] as List).single as Map;
+        row
+          ..remove('attemptNumber')
+          ..['isMeasured'] = false;
+        final target = memoryDb();
+        await BackupService(target).restoreJson(jsonEncode(doc));
+        final attempt =
+            (await target.select(target.activityAttempts).get()).single;
+        expect(attempt.isMeasured, isFalse);
+        expect(attempt.attemptNumber, 1);
+        expect(await target.select(target.errorRecords).get(), isNotEmpty);
+        await db.close();
+        await target.close();
+      },
+    );
+
+    test('invalid schema-defined fields preserve all current rows', () async {
+      final db = await seeded();
+      final service = BackupService(db);
+      final before = await snapshot(db);
+      final backup = await service.exportJson(
+        now: DateTime.utc(2026),
+        contentVersion: pack.version,
+      );
+      final cases = <(int, String, String, Object?)>[
+        (2, 'activity_attempts', 'isMeasured', null),
+        (3, 'activity_attempts', 'isMeasured', null),
+        (3, 'activity_attempts', 'attemptNumber', null),
+        (3, 'activity_attempts', 'attemptNumber', -1),
+        (3, 'activity_attempts', 'attemptNumber', 3),
+        (3, 'lesson_progress', 'status', 'unknown'),
+        (3, 'lesson_progress', 'bestScore', 1.5),
+        (3, 'lesson_progress', 'lastScore', -0.1),
+        (3, 'review_cards', 'cardType', 'unknown'),
+        (3, 'review_cards', 'due', -1),
+        (3, 'review_logs', 'dueAfter', 8640000000000001),
+      ];
+      for (final (version, table, field, value) in cases) {
+        final doc = jsonDecode(backup) as Map<String, dynamic>;
+        doc['schema_version'] = version;
+        final row = (doc['tables'][table] as List).first as Map;
+        if (value == null) {
+          row.remove(field);
+        } else {
+          row[field] = value;
+        }
+        final reason = 'schema $version, $table.$field = $value';
+        await expectLater(
+          service.restoreJson(jsonEncode(doc)),
+          throwsA(isA<BackupException>()),
+          reason: reason,
+        );
+        expect(await snapshot(db), before, reason: reason);
+      }
+      await db.close();
     });
 
     test(

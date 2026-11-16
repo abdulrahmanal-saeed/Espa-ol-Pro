@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import '../db/database.dart';
+import '../srs/review_repository.dart';
 
 class BackupException implements Exception {
   BackupException(this.message);
@@ -131,8 +132,8 @@ class BackupService {
     final progress = parse('lesson_progress', LessonProgressData.fromJson);
     final attempts = parse('activity_attempts', (j) {
       // Columns added after the backup was written get their defaults.
-      j.putIfAbsent('isMeasured', () => true);
-      j.putIfAbsent('attemptNumber', () => 1);
+      if (schema < 2) j.putIfAbsent('isMeasured', () => true);
+      if (schema < 3) j.putIfAbsent('attemptNumber', () => 1);
       return ActivityAttempt.fromJson(j);
     });
     final cards = parse('review_cards', ReviewCard.fromJson);
@@ -169,6 +170,34 @@ class BackupService {
         logs.any((l) => l.rating < 1 || l.rating > 4)) {
       throw BackupException('النسخة الاحتياطية تحتوي قيماً غير صالحة.');
     }
+    void validate(String table, bool valid) {
+      if (!valid) {
+        throw BackupException('قيم غير صالحة في الجدول "$table".');
+      }
+    }
+
+    validate(
+      'activity_attempts',
+      attempts.every((a) => a.attemptNumber == 1 || a.attemptNumber == 2),
+    );
+    validate(
+      'lesson_progress',
+      progress.every(
+        (p) =>
+            (p.status == 'started' || p.status == 'completed') &&
+            _validScore(p.bestScore) &&
+            _validScore(p.lastScore),
+      ),
+    );
+    validate(
+      'review_cards',
+      cards.every(
+        (c) =>
+            (c.cardType == cardRecognition || c.cardType == cardProduction) &&
+            _validDue(c.due),
+      ),
+    );
+    validate('review_logs', logs.every((l) => _validDue(l.dueAfter)));
 
     await db.transaction(() async {
       await db.delete(db.reviewLogs).go();
@@ -189,6 +218,12 @@ class BackupService {
       });
     });
   }
+
+  static bool _validScore(double score) => score >= 0 && score <= 1;
+
+  // Dart DateTime supports up to 100 million days on either side of the epoch.
+  static bool _validDue(int millis) =>
+      millis >= 0 && millis <= 8640000000000000;
 
   /// Deletes all learner data (settings are kept).
   Future<void> resetProgress() async {
