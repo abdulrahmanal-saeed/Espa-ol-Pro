@@ -3,7 +3,7 @@
 owner: ChatGPT
 review_status: CHANGES_REQUESTED
 review_id: REVIEW-005
-updated_at_utc: 2026-11-16T19:35:09Z
+updated_at_utc: 2026-11-16T19:39:59.457Z
 reviewed_application_sha: cd4abab203ccdc2acd29da88ca80a3b6c6831cd9
 reviewed_pr3_head_sha: 528bb03379074b029f5b445072d2e64567f3752a
 reviewed_pr4_head_sha: e4343da8a66ebaecdc0b8ef665e39f42a3ef0563
@@ -15,6 +15,16 @@ project_acceptance: PHASE_1_1_PENDING_FIXES_AND_CI
 This is a **new** review of Phase 1.1, not a repeat of REVIEW-004. Inspected README, REVIEW-004, stale status on main, the READY_FOR_REVIEW handoff on PR #3 head, and PR #4 head's inherited status file. Inspected changed file lists and source for backup validation, saved-phrase repository, live due counter, review study-time flushing, Android reminder manifest, reminder service/plugin, settings and tests. PR #4 is a stacked draft PR targeting PR #3's head, not main. Its `CLAUDE_STATUS.md` still points to PR #3 and code SHA `cd4abab`; therefore PR #4 has no separate current READY_FOR_REVIEW handoff. It was nevertheless inspected because it is new code.
 
 **Verified:** PR #3's code SHA `cd4abab` has successful GitHub Actions run 43939088514 (format/analyze/content/tests and Android APK). The implementer reports 130 local tests; the successful CI result is independently visible. At this check, the newer PR #3 head `528bb03` and PR #4 head `e4343da` each had GitHub Actions still **in progress** (runs 43940635854 and 43940831053). Do not infer their final results. No new device install of these feature branches is confirmed. The owner's earlier five device checks apply to the previously merged baseline, not these new features.
+
+## PR #3 follow-up verification — same code SHA, final CI now green
+
+- Checked PR #3 head `528bb03379074b029f5b445072d2e64567f3752a` directly. It is still an **open draft PR**, not merged.
+- GitHub Actions run https://github.com/abdulrahmanal-saeed/Espa-ol-Pro/actions/runs/43940635854 has now **completed successfully on this exact head**: formatting, analyzer, content checks, generated code, unit/widget tests, secret scan, Android NDK installation, APK build, and artifact upload all succeeded.
+- Re-inspected `lib/core/srs/due_counter.dart`, `lib/core/phrases/saved_phrases_repository.dart`, `lib/features/phrases/saved_phrases_view.dart`, backup/restore, and the relevant widget test. Core saved-phrase identity, live due-time calculation and duplicate prevention have associated tests; no new P0/P1 identified in these paths.
+- **The previously documented P2 in `lib/features/review/review_screen.dart` remains unresolved at PR #3 head.** `_flushUnrated()` advances `_savedSeconds` before its fire-and-forget database write succeeds and catches errors without retry. `_rate()` can await its transaction while a lifecycle callback triggers a concurrent flush, making overlapping time accounting possible. The existing `time on an unrated card is stored when the app is backgrounded` widget test verifies the happy path only; it does not inject a failed flush or in-flight rating race.
+- Decision for **PR #3 specifically**: `CHANGES_REQUESTED` until this P2 is corrected with failure/concurrency tests, or the owner explicitly accepts a documented study-time accuracy limitation. CI success alone does not validate the failure path.
+- No new implementation SHA exists since REVIEW-005, so this is an evidence/status addendum, **not a redundant REVIEW-006**.
+- PR #4 is stacked on PR #3 and is reviewed separately. Do not merge it before PR #3 and do not treat PR #3 CI as PR #4 native notification verification.
 
 ## Findings (ranked)
 
