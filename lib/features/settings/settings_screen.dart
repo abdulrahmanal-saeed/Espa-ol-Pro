@@ -214,7 +214,9 @@ class SettingsScreen extends ConsumerWidget {
             ListTile(
               leading: const Icon(Icons.download_rounded),
               title: const Text('استعادة نسخة احتياطية'),
-              subtitle: const Text('تستبدل كل البيانات الحالية'),
+              subtitle: const Text(
+                'تعرض محتوى الملف أولاً، ثم تستبدل البيانات الحالية',
+              ),
               onTap: () => _import(context, ref),
             ),
             ListTile(
@@ -302,15 +304,16 @@ class SettingsScreen extends ConsumerWidget {
     }
   }
 
+  static const _tableLabels = {
+    'lesson_progress': 'دروس',
+    'review_cards': 'بطاقات مراجعة',
+    'review_logs': 'مراجعات مسجّلة',
+    'activity_attempts': 'إجابات',
+    'error_records': 'أخطاء في الدفتر',
+  };
+
   Future<void> _import(BuildContext context, WidgetRef ref) async {
     final messenger = ScaffoldMessenger.of(context);
-    final confirmed = await _confirm(
-      context,
-      title: 'استعادة نسخة احتياطية؟',
-      body: 'ستُستبدل كل بياناتك الحالية بمحتوى الملف. يُفضّل تصدير نسخة من الوضع الحالي أولاً.',
-      action: 'اختر الملف',
-    );
-    if (!confirmed) return;
     try {
       final files = await FilePicker.pickFiles(
         type: FileType.custom,
@@ -318,6 +321,24 @@ class SettingsScreen extends ConsumerWidget {
       );
       if (files.isEmpty) return;
       final json = utf8.decode(await files.first.readAsBytes());
+      // Show what the file contains BEFORE anything is replaced.
+      final summary = BackupService.summarize(json);
+      final lines = [
+        for (final e in _tableLabels.entries)
+          '${e.value}: ${summary[e.key] ?? 0}',
+      ].join('\n');
+      if (!context.mounted) return;
+      final confirmed = await _confirm(
+        context,
+        title: 'استعادة هذه النسخة؟',
+        body:
+            'محتوى الملف:\n$lines\n\n'
+            'ستُستبدل كل بياناتك الحالية بمحتوى هذا الملف. '
+            'إن كان الملف ناقصاً أو تالفاً فسيُرفض ولن يتغيّر شيء.',
+        action: 'استعد',
+        destructive: true,
+      );
+      if (!confirmed) return;
       await ref.read(backupServiceProvider).restoreJson(json);
       final restored = await SettingsRepository(ref.read(databaseProvider))
           .load();

@@ -65,6 +65,11 @@ class ActivityAttempts extends Table {
   /// False for self-assessed activities (e.g. listen-and-repeat) that must
   /// never count as measured accuracy.
   BoolColumn get isMeasured => boolean().withDefault(const Constant(true))();
+
+  /// 1 for the first time an exercise is answered inside a run, 2 for the
+  /// prompted retry (schema v3). Only first attempts are independent
+  /// evidence of ability; retries are remediation.
+  IntColumn get attemptNumber => integer().withDefault(const Constant(1))();
   TextColumn get userAnswer => text().withDefault(const Constant(''))();
   TextColumn get expected => text().withDefault(const Constant(''))();
   IntColumn get createdAt => integer()();
@@ -178,7 +183,7 @@ class AppDatabase extends _$AppDatabase {
     );
   }
 
-  static const int latestSchemaVersion = 2;
+  static const int latestSchemaVersion = 3;
 
   @override
   int get schemaVersion => latestSchemaVersion;
@@ -196,6 +201,11 @@ class AppDatabase extends _$AppDatabase {
         // self-assessed speaking practice is never reported as accuracy.
         await m.createTable(errorRecords);
         await m.addColumn(activityAttempts, activityAttempts.isMeasured);
+      }
+      if (from < 3) {
+        // v3: tell first attempts apart from prompted retries. Existing rows
+        // default to 1 because earlier versions did not record the difference.
+        await m.addColumn(activityAttempts, activityAttempts.attemptNumber);
       }
       await _createIndexes();
     },

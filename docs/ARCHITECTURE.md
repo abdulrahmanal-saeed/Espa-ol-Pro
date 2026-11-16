@@ -82,7 +82,8 @@ in the app, in tests and in the CLI.
 5. **FSRS is delegated, not reimplemented.** `ReviewRepository` only persists
    state and enforces invariants (atomic rating + log, idempotent card
    creation, UTC instants). A wrong typed answer on a production card can only
-   be rated *Again*.
+   be rated *Again*. A card is offered only when `due <= now`: short learning
+   steps wait behind a countdown instead of being answered early.
 6. **The daily plan is a pure function** (`buildDailyPlan`): deterministic,
    explainable, every block carries its reason.
 7. **No CEFR estimate is shown.** Progress shows evidence (attempts, accuracy,

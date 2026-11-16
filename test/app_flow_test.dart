@@ -232,6 +232,17 @@ void main() {
       );
       expect(find.text('راجع ما أخطأت فيه'), findsOneWidget);
 
+      // Every answer was persisted; the two retries are marked as such.
+      final attempts = await app.db.select(app.db.activityAttempts).get();
+      expect(attempts.length, steps.whereType<Exercise>().length + 2);
+      final retries = attempts.where((a) => a.attemptNumber == 2).toList();
+      expect(retries.length, 2);
+      expect(retries.every((a) => a.isCorrect), isTrue);
+      expect(retries.map((a) => a.activityId).toSet(), {
+        firstChoice.id,
+        firstTyped.id,
+      });
+
       final errors = await app.db.select(app.db.errorRecords).get();
       expect(errors.length, 2);
       expect(errors.map((e) => e.incorrect), contains('zzz'));
@@ -286,18 +297,58 @@ void main() {
     // Rating is impossible before the answer is revealed.
     expect(find.byKey(const ValueKey('rate-good')), findsNothing);
 
-    var ratings = 0;
-    while (find.byKey(const ValueKey('review-reveal')).evaluate().isNotEmpty) {
-      await tester.tapKey('review-reveal');
-      for (final r in ['again', 'hard', 'good', 'easy']) {
-        expect(find.byKey(ValueKey('rate-$r')), findsOneWidget);
+    Future<int> ratePass() async {
+      var n = 0;
+      while (find
+          .byKey(const ValueKey('review-reveal'))
+          .evaluate()
+          .isNotEmpty) {
+        await tester.tapKey('review-reveal');
+        for (final r in ['again', 'hard', 'good', 'easy']) {
+          expect(find.byKey(ValueKey('rate-$r')), findsOneWidget);
+        }
+        await tester.tapKey('rate-good');
+        expect(++n, lessThan(40), reason: 'session must terminate');
       }
-      await tester.tapKey('rate-good');
-      ratings++;
-      expect(ratings, lessThan(40), reason: 'session must terminate');
+      return n;
     }
+
+    // First pass: every new card moves to its 10-minute learning step.
+    var ratings = await ratePass();
+    expect(ratings, lesson.items.length);
+
+    // None of them may be answered before it is due.
+    expect(find.byKey(const ValueKey('review-waiting')), findsOneWidget);
+    expect(find.text('البطاقة التالية بعد 10:00'), findsOneWidget);
+    expect(find.byKey(const ValueKey('review-reveal')), findsNothing);
+    expect(find.byKey(const ValueKey('rate-good')), findsNothing);
+    final nowMs = app.clock.now.millisecondsSinceEpoch;
+    final afterFirst = await app.db.select(app.db.reviewCards).get();
+    expect(
+      afterFirst
+          .where((c) => c.cardType == cardRecognition)
+          .every((c) => c.due == nowMs + 600000 && c.reps == 1),
+      isTrue,
+    );
+
+    // One second before the step is due: still locked.
+    app.clock.advance(const Duration(minutes: 9, seconds: 59));
+    await tester.pump(const Duration(seconds: 1));
+    await tester.pumpAndSettle();
+    expect(find.text('البطاقة التالية بعد 00:01'), findsOneWidget);
+    expect(find.byKey(const ValueKey('review-reveal')), findsNothing);
+    expect((await app.db.select(app.db.reviewLogs).get()).length, ratings);
+
+    // At the due instant the cards become available again.
+    app.clock.advance(const Duration(seconds: 1));
+    await tester.pump(const Duration(seconds: 1));
+    await tester.pumpAndSettle();
+    expect(find.byKey(const ValueKey('review-waiting')), findsNothing);
+    expect(find.byKey(const ValueKey('review-reveal')), findsOneWidget);
+    ratings += await ratePass();
+
     expect(find.text('انتهت مراجعة اليوم'), findsOneWidget);
-    // New cards pass two learning steps inside the session.
+    // New cards pass two learning steps, each at its own due time.
     expect(ratings, lesson.items.length * 2);
 
     final cards = await app.db.select(app.db.reviewCards).get();
@@ -313,7 +364,14 @@ void main() {
       ),
       isTrue,
     );
-    expect((await app.db.select(app.db.reviewLogs).get()).length, ratings);
+    final logs = await app.db.select(app.db.reviewLogs).get();
+    expect(logs.length, ratings);
+    // The second review of each card happened no earlier than its due time.
+    for (final c in recognition) {
+      final mine = logs.where((l) => l.cardId == c.id).toList();
+      expect(mine.length, 2);
+      expect(mine[1].reviewedAt, greaterThanOrEqualTo(mine[0].dueAfter));
+    }
     await tester.tapKey('review-done');
     await app.dispose(tester);
     // Leaving the screen logs the review as study time.
@@ -360,6 +418,63 @@ void main() {
     );
     await tester.tapKey('review-check');
     expect(find.byKey(const ValueKey('rate-good')), findsOneWidget);
+    await app.dispose(tester);
+  });
+
+  testWidgets('a waiting review session can be ended; cards stay scheduled', (
+    tester,
+  ) async {
+    final app = TestApp(pack);
+    final lesson = pack.orderedLessons.first;
+    await completeViaRepo(app, lesson);
+    await app.pump(tester, location: '/review');
+    while (find.byKey(const ValueKey('review-reveal')).evaluate().isNotEmpty) {
+      await tester.tapKey('review-reveal');
+      await tester.tapKey('rate-again');
+    }
+    // "Again" on a new card = 1-minute step: locked, with a countdown.
+    expect(find.text('البطاقة التالية بعد 01:00'), findsOneWidget);
+    await tester.tapKey('review-finish-early');
+    expect(find.text('انتهت مراجعة اليوم'), findsOneWidget);
+
+    // Nothing was lost: a minute later the same cards are due again.
+    final reviews = ReviewRepository(
+      app.db,
+      clock: app.clock.call,
+      enableFuzzing: false,
+    );
+    expect(await reviews.dueCount(), 0);
+    app.clock.advance(const Duration(minutes: 1));
+    expect(await reviews.dueCount(), lesson.items.length);
+    await app.dispose(tester);
+  });
+
+  testWidgets('answers are saved before the run moves on, even when leaving', (
+    tester,
+  ) async {
+    final app = TestApp(pack);
+    final lesson = pack.orderedLessons.first;
+    final steps = ExerciseBuilder(pack).buildLesson(lesson);
+    await app.pump(tester, location: '/lesson/${lesson.id}');
+    await tester.tapKey('start-lesson');
+
+    // Answer up to and including the third exercise, then leave at once.
+    var answered = 0;
+    for (final step in steps) {
+      await tester.answer(step);
+      if (step is Exercise && ++answered == 3) break;
+    }
+    await tester.tapSettled(find.byTooltip('خروج'));
+    await tester.tapSettled(find.text('خروج'));
+    expect(tester.takeException(), isNull);
+
+    final attempts = await app.db.select(app.db.activityAttempts).get();
+    expect(attempts.length, 3);
+    expect(attempts.every((a) => a.attemptNumber == 1), isTrue);
+    // The lesson is started, not completed, and nothing was scheduled.
+    final progress = await app.db.select(app.db.lessonProgress).get();
+    expect(progress.single.status, 'started');
+    expect(await app.db.select(app.db.reviewCards).get(), isEmpty);
     await app.dispose(tester);
   });
 

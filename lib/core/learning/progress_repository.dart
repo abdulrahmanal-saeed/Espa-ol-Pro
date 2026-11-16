@@ -137,6 +137,7 @@ class ProgressRepository {
     required String userAnswer,
     required String context,
     String? lessonId,
+    int attemptNumber = 1,
   }) async {
     final now = _nowMs;
     await db.transaction(() async {
@@ -152,6 +153,7 @@ class ProgressRepository {
               context: context,
               isCorrect: isCorrect,
               isMeasured: Value(ex.isMeasured),
+              attemptNumber: Value(attemptNumber),
               userAnswer: Value(userAnswer),
               expected: Value(ex.expected),
               createdAt: now,
@@ -235,10 +237,15 @@ class ProgressRepository {
   Future<List<ErrorRecord>> openErrors() async =>
       (await db.select(db.errorRecords).get()).where(isOpenError).toList();
 
+  /// First-try accuracy per skill. Prompted retries are excluded: answering
+  /// correctly right after being shown the answer is not independent
+  /// evidence of ability.
   Future<List<SkillEvidence>> skillEvidence() async {
-    final rows = await (db.select(
-      db.activityAttempts,
-    )..where((t) => t.isMeasured.equals(true))).get();
+    final rows =
+        await (db.select(db.activityAttempts)..where(
+              (t) => t.isMeasured.equals(true) & t.attemptNumber.equals(1),
+            ))
+            .get();
     return [
       for (final s in skills)
         SkillEvidence(

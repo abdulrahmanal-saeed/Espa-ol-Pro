@@ -38,7 +38,12 @@ class ExerciseRunner extends StatefulWidget {
   });
 
   final List<LessonStep> steps;
-  final void Function(Exercise ex, Submission s) onAttempt;
+
+  /// Persists one answer. Awaited before the run advances, so no attempt
+  /// can be lost by finishing or leaving quickly. [attemptNumber] is 1 for
+  /// the first answer and 2 for the prompted retry.
+  final Future<void> Function(Exercise ex, Submission s, int attemptNumber)
+  onAttempt;
   final void Function(RunResult result) onFinished;
   final VoidCallback onExit;
 
@@ -79,8 +84,23 @@ class _ExerciseRunnerState extends State<ExerciseRunner> {
     });
   }
 
-  void _submitted(Exercise ex, Submission s) {
-    widget.onAttempt(ex, s);
+  bool _saving = false;
+
+  Future<void> _submitted(Exercise ex, Submission s) async {
+    if (_saving) return;
+    _saving = true;
+    final attemptNumber = _firstTry.containsKey(ex.id) ? 2 : 1;
+    try {
+      await widget.onAttempt(ex, s, attemptNumber);
+    } catch (e) {
+      if (mounted) {
+        ScaffoldMessenger.of(context)
+            .showSnackBar(SnackBar(content: Text('تعذّر حفظ إجابتك: $e')));
+      }
+    } finally {
+      _saving = false;
+    }
+    if (!mounted) return;
     if (!ex.isMeasured) {
       _next();
       return;

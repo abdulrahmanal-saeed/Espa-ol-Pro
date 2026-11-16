@@ -48,7 +48,10 @@ class ProgressScreen extends ConsumerWidget {
 
     final mature = logs.where((l) => l.stateBefore == 2).toList();
     final recalled = mature.where((l) => l.rating > 1).length;
-    final measured = attempts.where((a) => a.isMeasured).toList();
+    // First attempts only: prompted retries are remediation, not evidence.
+    final measured = attempts
+        .where((a) => a.isMeasured && a.attemptNumber == 1)
+        .toList();
 
     Widget kv(String k, String v) => Padding(
       padding: const EdgeInsets.symmetric(vertical: 6),
@@ -238,7 +241,7 @@ class ProgressScreen extends ConsumerWidget {
           ),
 
           // ---- skills -------------------------------------------------------
-          const SectionTitle('دلائل المهارات'),
+          const SectionTitle('دلائل المهارات — المحاولة الأولى فقط'),
           Card(
             child: Padding(
               padding: const EdgeInsets.all(16),

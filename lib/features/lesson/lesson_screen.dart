@@ -100,7 +100,7 @@ class _LessonScreenState extends ConsumerState<LessonScreen> {
         body: ExerciseRunner(
           steps: _steps,
           onExit: _leave,
-          onAttempt: (ex, s) => ref
+          onAttempt: (ex, s, attemptNumber) => ref
               .read(progressRepositoryProvider)
               .recordAttempt(
                 ex,
@@ -108,6 +108,7 @@ class _LessonScreenState extends ConsumerState<LessonScreen> {
                 userAnswer: s.answer,
                 context: 'lesson',
                 lessonId: lesson.id,
+                attemptNumber: attemptNumber,
               ),
           onFinished: (r) => _finish(lesson, r),
         ),

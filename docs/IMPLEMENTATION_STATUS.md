@@ -4,7 +4,8 @@ Four states are kept strictly apart: **implemented and tested**, **implemented
 but not verified**, **not implemented**, **blocked**. Exact commit references
 for the current handoff are in [`AI_BRIDGE/CLAUDE_STATUS.md`](../AI_BRIDGE/CLAUDE_STATUS.md).
 
-Milestone: **Phase 1 — Working educational foundation** (first reviewable drop).
+Milestone: **Phase 1 — Working educational foundation**, including the fixes
+requested in REVIEW-001.
 
 ## Implemented and covered by automated tests
 
@@ -19,18 +20,20 @@ Milestone: **Phase 1 — Working educational foundation** (first reviewable drop
 | Wrong answers: detected, explained, retried once, excluded from first-try score | `app_flow_test` |
 | Lesson completion, best score, prerequisite unlocking | `progress_test`, `app_flow_test` |
 | FSRS-6 scheduling: learning steps, graduation, lapses, growth, retention setting, idempotent cards, atomic history, UTC instants | `fsrs_test` |
-| Review UI: reveal-before-rate, four ratings with intervals, in-session learning steps, production cards with forced *Again* on a wrong answer | `app_flow_test` |
+| Review UI: reveal-before-rate, four ratings with intervals, production cards with forced *Again* on a wrong answer | `app_flow_test` |
+| Learning steps are never answerable before their due instant (waiting state with countdown) | `app_flow_test` (clock-controlled) |
+| Every answer is persisted before the run advances; retries stored as attempt 2 and excluded from skill evidence | `app_flow_test`, `progress_test` |
 | Practice: listening, writing, pronunciation (self-assessed), error-focused | `exercise_builder_test`, `app_flow_test` (writing run) |
 | Error notebook: one record per target, count, reopen, resolved after two correct answers | `progress_test`, `app_flow_test` |
 | Daily plan for 20/45/60 min, deterministic, with reasons | `progress_test`, `app_flow_test` |
 | Study time, streak, 14-day chart, skill evidence, FSRS stats | `progress_test`, `fsrs_test` |
 | Personal dictionary with search, work filter and language connections; grammar reference | `app_flow_test` |
 | Settings persisted in SQLite, tolerant of corrupt values | `progress_test`, `app_flow_test` |
-| SQLite schema v2, migration v1→v2 on a real file | `persistence_test` |
+| SQLite schema v3, migrations v1→v3 and v2→v3 on real files | `persistence_test` |
 | Progress survives closing and reopening the database | `persistence_test` |
-| Backup export / restore / reject-invalid / reset | `persistence_test` |
+| Backup export / restore / reset; truncated, inconsistent or damaged backups rejected with data unchanged | `persistence_test` |
 
-Test run for this drop: **93 tests, all passing** (`flutter test`), analyzer
+Test run for this drop: **100 tests, all passing** (`flutter test`), analyzer
 clean with `--fatal-infos`, formatter clean, content validator clean.
 
 ## Implemented but NOT verified on a device
@@ -39,7 +42,9 @@ These exist in code but could not be exercised in the build environment
 (no Android SDK or device available there):
 
 - **Android build.** Not built locally. Verified only by the CI job
-  `Android debug APK` — check its result for the referenced commit.
+  `Android debug APK` — check its result for the referenced commit. The job
+  failed on two docs-only commits because the runner's NDK download was
+  corrupt; the workflow now installs and verifies the NDK with retries.
 - **Spanish audio (device TTS).** The call path is tested with a fake; real
   voice output, voice availability detection and the accent/speed settings
   need a phone.
@@ -70,10 +75,16 @@ These exist in code but could not be exercised in the build environment
    phrasing is marked wrong. Acceptable at Pre-A1/A1; AI feedback is the
    Phase 2 fix.
 3. The due-review badge refreshes on data change and navigation, not on a timer.
+   (Inside a review session, waiting cards are released by a one-second timer.)
 4. Repeating an already-completed lesson today also satisfies the daily lesson
    goal (it counts completions dated today, not only first completions).
 5. Review queue is capped at 60 cards per session.
 6. Curriculum entities are in JSON, not SQL tables (deliberate — DATABASE.md).
+7. Spelling quality is not yet reported separately: an answer accepted with
+   an accent reminder is stored as correct. Planned for Phase 1.2 together
+   with stricter accent requirements at higher levels.
+8. Attempts recorded before schema v3 all count as first attempts, because
+   the distinction was not stored then.
 
 ## Blocked
 
