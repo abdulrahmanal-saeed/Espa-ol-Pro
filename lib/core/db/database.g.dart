@@ -906,6 +906,18 @@ class $ActivityAttemptsTable extends ActivityAttempts
     ),
     defaultValue: const Constant(true),
   );
+  static const VerificationMeta _attemptNumberMeta = const VerificationMeta(
+    'attemptNumber',
+  );
+  @override
+  late final GeneratedColumn<int> attemptNumber = GeneratedColumn<int>(
+    'attempt_number',
+    aliasedName,
+    false,
+    type: DriftSqlType.int,
+    requiredDuringInsert: false,
+    defaultValue: const Constant(1),
+  );
   static const VerificationMeta _userAnswerMeta = const VerificationMeta(
     'userAnswer',
   );
@@ -952,6 +964,7 @@ class $ActivityAttemptsTable extends ActivityAttempts
     context,
     isCorrect,
     isMeasured,
+    attemptNumber,
     userAnswer,
     expected,
     createdAt,
@@ -1032,6 +1045,15 @@ class $ActivityAttemptsTable extends ActivityAttempts
         isMeasured.isAcceptableOrUnknown(data['is_measured']!, _isMeasuredMeta),
       );
     }
+    if (data.containsKey('attempt_number')) {
+      context.handle(
+        _attemptNumberMeta,
+        attemptNumber.isAcceptableOrUnknown(
+          data['attempt_number']!,
+          _attemptNumberMeta,
+        ),
+      );
+    }
     if (data.containsKey('user_answer')) {
       context.handle(
         _userAnswerMeta,
@@ -1097,6 +1119,10 @@ class $ActivityAttemptsTable extends ActivityAttempts
         DriftSqlType.bool,
         data['${effectivePrefix}is_measured'],
       )!,
+      attemptNumber: attachedDatabase.typeMapping.read(
+        DriftSqlType.int,
+        data['${effectivePrefix}attempt_number'],
+      )!,
       userAnswer: attachedDatabase.typeMapping.read(
         DriftSqlType.string,
         data['${effectivePrefix}user_answer'],
@@ -1135,6 +1161,11 @@ class ActivityAttempt extends DataClass implements Insertable<ActivityAttempt> {
   /// False for self-assessed activities (e.g. listen-and-repeat) that must
   /// never count as measured accuracy.
   final bool isMeasured;
+
+  /// 1 for the first time an exercise is answered inside a run, 2 for the
+  /// prompted retry (schema v3). Only first attempts are independent
+  /// evidence of ability; retries are remediation.
+  final int attemptNumber;
   final String userAnswer;
   final String expected;
   final int createdAt;
@@ -1148,6 +1179,7 @@ class ActivityAttempt extends DataClass implements Insertable<ActivityAttempt> {
     required this.context,
     required this.isCorrect,
     required this.isMeasured,
+    required this.attemptNumber,
     required this.userAnswer,
     required this.expected,
     required this.createdAt,
@@ -1168,6 +1200,7 @@ class ActivityAttempt extends DataClass implements Insertable<ActivityAttempt> {
     map['context'] = Variable<String>(context);
     map['is_correct'] = Variable<bool>(isCorrect);
     map['is_measured'] = Variable<bool>(isMeasured);
+    map['attempt_number'] = Variable<int>(attemptNumber);
     map['user_answer'] = Variable<String>(userAnswer);
     map['expected'] = Variable<String>(expected);
     map['created_at'] = Variable<int>(createdAt);
@@ -1189,6 +1222,7 @@ class ActivityAttempt extends DataClass implements Insertable<ActivityAttempt> {
       context: Value(context),
       isCorrect: Value(isCorrect),
       isMeasured: Value(isMeasured),
+      attemptNumber: Value(attemptNumber),
       userAnswer: Value(userAnswer),
       expected: Value(expected),
       createdAt: Value(createdAt),
@@ -1210,6 +1244,7 @@ class ActivityAttempt extends DataClass implements Insertable<ActivityAttempt> {
       context: serializer.fromJson<String>(json['context']),
       isCorrect: serializer.fromJson<bool>(json['isCorrect']),
       isMeasured: serializer.fromJson<bool>(json['isMeasured']),
+      attemptNumber: serializer.fromJson<int>(json['attemptNumber']),
       userAnswer: serializer.fromJson<String>(json['userAnswer']),
       expected: serializer.fromJson<String>(json['expected']),
       createdAt: serializer.fromJson<int>(json['createdAt']),
@@ -1228,6 +1263,7 @@ class ActivityAttempt extends DataClass implements Insertable<ActivityAttempt> {
       'context': serializer.toJson<String>(context),
       'isCorrect': serializer.toJson<bool>(isCorrect),
       'isMeasured': serializer.toJson<bool>(isMeasured),
+      'attemptNumber': serializer.toJson<int>(attemptNumber),
       'userAnswer': serializer.toJson<String>(userAnswer),
       'expected': serializer.toJson<String>(expected),
       'createdAt': serializer.toJson<int>(createdAt),
@@ -1244,6 +1280,7 @@ class ActivityAttempt extends DataClass implements Insertable<ActivityAttempt> {
     String? context,
     bool? isCorrect,
     bool? isMeasured,
+    int? attemptNumber,
     String? userAnswer,
     String? expected,
     int? createdAt,
@@ -1257,6 +1294,7 @@ class ActivityAttempt extends DataClass implements Insertable<ActivityAttempt> {
     context: context ?? this.context,
     isCorrect: isCorrect ?? this.isCorrect,
     isMeasured: isMeasured ?? this.isMeasured,
+    attemptNumber: attemptNumber ?? this.attemptNumber,
     userAnswer: userAnswer ?? this.userAnswer,
     expected: expected ?? this.expected,
     createdAt: createdAt ?? this.createdAt,
@@ -1278,6 +1316,9 @@ class ActivityAttempt extends DataClass implements Insertable<ActivityAttempt> {
       isMeasured: data.isMeasured.present
           ? data.isMeasured.value
           : this.isMeasured,
+      attemptNumber: data.attemptNumber.present
+          ? data.attemptNumber.value
+          : this.attemptNumber,
       userAnswer: data.userAnswer.present
           ? data.userAnswer.value
           : this.userAnswer,
@@ -1298,6 +1339,7 @@ class ActivityAttempt extends DataClass implements Insertable<ActivityAttempt> {
           ..write('context: $context, ')
           ..write('isCorrect: $isCorrect, ')
           ..write('isMeasured: $isMeasured, ')
+          ..write('attemptNumber: $attemptNumber, ')
           ..write('userAnswer: $userAnswer, ')
           ..write('expected: $expected, ')
           ..write('createdAt: $createdAt')
@@ -1316,6 +1358,7 @@ class ActivityAttempt extends DataClass implements Insertable<ActivityAttempt> {
     context,
     isCorrect,
     isMeasured,
+    attemptNumber,
     userAnswer,
     expected,
     createdAt,
@@ -1333,6 +1376,7 @@ class ActivityAttempt extends DataClass implements Insertable<ActivityAttempt> {
           other.context == this.context &&
           other.isCorrect == this.isCorrect &&
           other.isMeasured == this.isMeasured &&
+          other.attemptNumber == this.attemptNumber &&
           other.userAnswer == this.userAnswer &&
           other.expected == this.expected &&
           other.createdAt == this.createdAt);
@@ -1348,6 +1392,7 @@ class ActivityAttemptsCompanion extends UpdateCompanion<ActivityAttempt> {
   final Value<String> context;
   final Value<bool> isCorrect;
   final Value<bool> isMeasured;
+  final Value<int> attemptNumber;
   final Value<String> userAnswer;
   final Value<String> expected;
   final Value<int> createdAt;
@@ -1361,6 +1406,7 @@ class ActivityAttemptsCompanion extends UpdateCompanion<ActivityAttempt> {
     this.context = const Value.absent(),
     this.isCorrect = const Value.absent(),
     this.isMeasured = const Value.absent(),
+    this.attemptNumber = const Value.absent(),
     this.userAnswer = const Value.absent(),
     this.expected = const Value.absent(),
     this.createdAt = const Value.absent(),
@@ -1375,6 +1421,7 @@ class ActivityAttemptsCompanion extends UpdateCompanion<ActivityAttempt> {
     required String context,
     required bool isCorrect,
     this.isMeasured = const Value.absent(),
+    this.attemptNumber = const Value.absent(),
     this.userAnswer = const Value.absent(),
     this.expected = const Value.absent(),
     required int createdAt,
@@ -1394,6 +1441,7 @@ class ActivityAttemptsCompanion extends UpdateCompanion<ActivityAttempt> {
     Expression<String>? context,
     Expression<bool>? isCorrect,
     Expression<bool>? isMeasured,
+    Expression<int>? attemptNumber,
     Expression<String>? userAnswer,
     Expression<String>? expected,
     Expression<int>? createdAt,
@@ -1408,6 +1456,7 @@ class ActivityAttemptsCompanion extends UpdateCompanion<ActivityAttempt> {
       if (context != null) 'context': context,
       if (isCorrect != null) 'is_correct': isCorrect,
       if (isMeasured != null) 'is_measured': isMeasured,
+      if (attemptNumber != null) 'attempt_number': attemptNumber,
       if (userAnswer != null) 'user_answer': userAnswer,
       if (expected != null) 'expected': expected,
       if (createdAt != null) 'created_at': createdAt,
@@ -1424,6 +1473,7 @@ class ActivityAttemptsCompanion extends UpdateCompanion<ActivityAttempt> {
     Value<String>? context,
     Value<bool>? isCorrect,
     Value<bool>? isMeasured,
+    Value<int>? attemptNumber,
     Value<String>? userAnswer,
     Value<String>? expected,
     Value<int>? createdAt,
@@ -1438,6 +1488,7 @@ class ActivityAttemptsCompanion extends UpdateCompanion<ActivityAttempt> {
       context: context ?? this.context,
       isCorrect: isCorrect ?? this.isCorrect,
       isMeasured: isMeasured ?? this.isMeasured,
+      attemptNumber: attemptNumber ?? this.attemptNumber,
       userAnswer: userAnswer ?? this.userAnswer,
       expected: expected ?? this.expected,
       createdAt: createdAt ?? this.createdAt,
@@ -1474,6 +1525,9 @@ class ActivityAttemptsCompanion extends UpdateCompanion<ActivityAttempt> {
     if (isMeasured.present) {
       map['is_measured'] = Variable<bool>(isMeasured.value);
     }
+    if (attemptNumber.present) {
+      map['attempt_number'] = Variable<int>(attemptNumber.value);
+    }
     if (userAnswer.present) {
       map['user_answer'] = Variable<String>(userAnswer.value);
     }
@@ -1498,6 +1552,7 @@ class ActivityAttemptsCompanion extends UpdateCompanion<ActivityAttempt> {
           ..write('context: $context, ')
           ..write('isCorrect: $isCorrect, ')
           ..write('isMeasured: $isMeasured, ')
+          ..write('attemptNumber: $attemptNumber, ')
           ..write('userAnswer: $userAnswer, ')
           ..write('expected: $expected, ')
           ..write('createdAt: $createdAt')
@@ -4465,6 +4520,7 @@ typedef $$ActivityAttemptsTableCreateCompanionBuilder =
       required String context,
       required bool isCorrect,
       Value<bool> isMeasured,
+      Value<int> attemptNumber,
       Value<String> userAnswer,
       Value<String> expected,
       required int createdAt,
@@ -4480,6 +4536,7 @@ typedef $$ActivityAttemptsTableUpdateCompanionBuilder =
       Value<String> context,
       Value<bool> isCorrect,
       Value<bool> isMeasured,
+      Value<int> attemptNumber,
       Value<String> userAnswer,
       Value<String> expected,
       Value<int> createdAt,
@@ -4536,6 +4593,11 @@ class $$ActivityAttemptsTableFilterComposer
 
   ColumnFilters<bool> get isMeasured => $composableBuilder(
     column: $table.isMeasured,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<int> get attemptNumber => $composableBuilder(
+    column: $table.attemptNumber,
     builder: (column) => ColumnFilters(column),
   );
 
@@ -4609,6 +4671,11 @@ class $$ActivityAttemptsTableOrderingComposer
     builder: (column) => ColumnOrderings(column),
   );
 
+  ColumnOrderings<int> get attemptNumber => $composableBuilder(
+    column: $table.attemptNumber,
+    builder: (column) => ColumnOrderings(column),
+  );
+
   ColumnOrderings<String> get userAnswer => $composableBuilder(
     column: $table.userAnswer,
     builder: (column) => ColumnOrderings(column),
@@ -4664,6 +4731,11 @@ class $$ActivityAttemptsTableAnnotationComposer
 
   GeneratedColumn<bool> get isMeasured => $composableBuilder(
     column: $table.isMeasured,
+    builder: (column) => column,
+  );
+
+  GeneratedColumn<int> get attemptNumber => $composableBuilder(
+    column: $table.attemptNumber,
     builder: (column) => column,
   );
 
@@ -4725,6 +4797,7 @@ class $$ActivityAttemptsTableTableManager
                 Value<String> context = const Value.absent(),
                 Value<bool> isCorrect = const Value.absent(),
                 Value<bool> isMeasured = const Value.absent(),
+                Value<int> attemptNumber = const Value.absent(),
                 Value<String> userAnswer = const Value.absent(),
                 Value<String> expected = const Value.absent(),
                 Value<int> createdAt = const Value.absent(),
@@ -4738,6 +4811,7 @@ class $$ActivityAttemptsTableTableManager
                 context: context,
                 isCorrect: isCorrect,
                 isMeasured: isMeasured,
+                attemptNumber: attemptNumber,
                 userAnswer: userAnswer,
                 expected: expected,
                 createdAt: createdAt,
@@ -4753,6 +4827,7 @@ class $$ActivityAttemptsTableTableManager
                 required String context,
                 required bool isCorrect,
                 Value<bool> isMeasured = const Value.absent(),
+                Value<int> attemptNumber = const Value.absent(),
                 Value<String> userAnswer = const Value.absent(),
                 Value<String> expected = const Value.absent(),
                 required int createdAt,
@@ -4766,6 +4841,7 @@ class $$ActivityAttemptsTableTableManager
                 context: context,
                 isCorrect: isCorrect,
                 isMeasured: isMeasured,
+                attemptNumber: attemptNumber,
                 userAnswer: userAnswer,
                 expected: expected,
                 createdAt: createdAt,

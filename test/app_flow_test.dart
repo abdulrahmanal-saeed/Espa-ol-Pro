@@ -126,6 +126,32 @@ void main() {
     await app.dispose(tester);
   });
 
+  testWidgets('initial A1 opens when the Pre-A1 sequence is completed', (
+    tester,
+  ) async {
+    final app = TestApp(pack);
+    final introductoryA1 = pack.orderedLessons.firstWhere(
+      (lesson) => lesson.levelId == 'a1',
+    );
+    final preA1 = pack.orderedLessons
+        .takeWhile((lesson) => lesson.levelId == 'pre_a1')
+        .toList();
+    for (final lesson in preA1.take(preA1.length - 1)) {
+      await completeViaRepo(app, lesson);
+    }
+    await app.pump(tester, location: '/lesson/${introductoryA1.id}');
+    final start = find.byKey(const ValueKey('start-lesson'));
+    expect(tester.widget<FilledButton>(start).onPressed, isNull);
+
+    await completeViaRepo(app, preA1.last);
+    await tester.pumpAndSettle();
+    await tester.tapKey('start-lesson');
+    final first = ExerciseBuilder(pack).buildLesson(introductoryA1).first;
+    await tester.answer(first);
+    expect(tester.takeException(), isNull);
+    await app.dispose(tester);
+  });
+
   testWidgets(
     'full lesson end-to-end: learn, answer, complete, schedule, unlock',
     (tester) async {
@@ -232,6 +258,17 @@ void main() {
       );
       expect(find.text('راجع ما أخطأت فيه'), findsOneWidget);
 
+      // Every answer was persisted; the two retries are marked as such.
+      final attempts = await app.db.select(app.db.activityAttempts).get();
+      expect(attempts.length, steps.whereType<Exercise>().length + 2);
+      final retries = attempts.where((a) => a.attemptNumber == 2).toList();
+      expect(retries.length, 2);
+      expect(retries.every((a) => a.isCorrect), isTrue);
+      expect(retries.map((a) => a.activityId).toSet(), {
+        firstChoice.id,
+        firstTyped.id,
+      });
+
       final errors = await app.db.select(app.db.errorRecords).get();
       expect(errors.length, 2);
       expect(errors.map((e) => e.incorrect), contains('zzz'));
@@ -286,18 +323,58 @@ void main() {
     // Rating is impossible before the answer is revealed.
     expect(find.byKey(const ValueKey('rate-good')), findsNothing);
 
-    var ratings = 0;
-    while (find.byKey(const ValueKey('review-reveal')).evaluate().isNotEmpty) {
-      await tester.tapKey('review-reveal');
-      for (final r in ['again', 'hard', 'good', 'easy']) {
-        expect(find.byKey(ValueKey('rate-$r')), findsOneWidget);
+    Future<int> ratePass() async {
+      var n = 0;
+      while (find
+          .byKey(const ValueKey('review-reveal'))
+          .evaluate()
+          .isNotEmpty) {
+        await tester.tapKey('review-reveal');
+        for (final r in ['again', 'hard', 'good', 'easy']) {
+          expect(find.byKey(ValueKey('rate-$r')), findsOneWidget);
+        }
+        await tester.tapKey('rate-good');
+        expect(++n, lessThan(40), reason: 'session must terminate');
       }
-      await tester.tapKey('rate-good');
-      ratings++;
-      expect(ratings, lessThan(40), reason: 'session must terminate');
+      return n;
     }
+
+    // First pass: every new card moves to its 10-minute learning step.
+    var ratings = await ratePass();
+    expect(ratings, lesson.items.length);
+
+    // None of them may be answered before it is due.
+    expect(find.byKey(const ValueKey('review-waiting')), findsOneWidget);
+    expect(find.text('البطاقة التالية بعد 10:00'), findsOneWidget);
+    expect(find.byKey(const ValueKey('review-reveal')), findsNothing);
+    expect(find.byKey(const ValueKey('rate-good')), findsNothing);
+    final nowMs = app.clock.now.millisecondsSinceEpoch;
+    final afterFirst = await app.db.select(app.db.reviewCards).get();
+    expect(
+      afterFirst
+          .where((c) => c.cardType == cardRecognition)
+          .every((c) => c.due == nowMs + 600000 && c.reps == 1),
+      isTrue,
+    );
+
+    // One second before the step is due: still locked.
+    app.clock.advance(const Duration(minutes: 9, seconds: 59));
+    await tester.pump(const Duration(seconds: 1));
+    await tester.pumpAndSettle();
+    expect(find.text('البطاقة التالية بعد 00:01'), findsOneWidget);
+    expect(find.byKey(const ValueKey('review-reveal')), findsNothing);
+    expect((await app.db.select(app.db.reviewLogs).get()).length, ratings);
+
+    // At the due instant the cards become available again.
+    app.clock.advance(const Duration(seconds: 1));
+    await tester.pump(const Duration(seconds: 1));
+    await tester.pumpAndSettle();
+    expect(find.byKey(const ValueKey('review-waiting')), findsNothing);
+    expect(find.byKey(const ValueKey('review-reveal')), findsOneWidget);
+    ratings += await ratePass();
+
     expect(find.text('انتهت مراجعة اليوم'), findsOneWidget);
-    // New cards pass two learning steps inside the session.
+    // New cards pass two learning steps, each at its own due time.
     expect(ratings, lesson.items.length * 2);
 
     final cards = await app.db.select(app.db.reviewCards).get();
@@ -313,7 +390,14 @@ void main() {
       ),
       isTrue,
     );
-    expect((await app.db.select(app.db.reviewLogs).get()).length, ratings);
+    final logs = await app.db.select(app.db.reviewLogs).get();
+    expect(logs.length, ratings);
+    // The second review of each card happened no earlier than its due time.
+    for (final c in recognition) {
+      final mine = logs.where((l) => l.cardId == c.id).toList();
+      expect(mine.length, 2);
+      expect(mine[1].reviewedAt, greaterThanOrEqualTo(mine[0].dueAfter));
+    }
     await tester.tapKey('review-done');
     await app.dispose(tester);
     // Leaving the screen logs the review as study time.
@@ -360,6 +444,143 @@ void main() {
     );
     await tester.tapKey('review-check');
     expect(find.byKey(const ValueKey('rate-good')), findsOneWidget);
+    await app.dispose(tester);
+  });
+
+  testWidgets('a waiting review session can be ended; cards stay scheduled', (
+    tester,
+  ) async {
+    final app = TestApp(pack);
+    final lesson = pack.orderedLessons.first;
+    await completeViaRepo(app, lesson);
+    await app.pump(tester, location: '/review');
+    while (find.byKey(const ValueKey('review-reveal')).evaluate().isNotEmpty) {
+      await tester.tapKey('review-reveal');
+      await tester.tapKey('rate-again');
+    }
+    // "Again" on a new card = 1-minute step: locked, with a countdown.
+    expect(find.text('البطاقة التالية بعد 01:00'), findsOneWidget);
+    await tester.tapKey('review-finish-early');
+    expect(find.text('انتهت مراجعة اليوم'), findsOneWidget);
+
+    // Nothing was lost: a minute later the same cards are due again.
+    final reviews = ReviewRepository(
+      app.db,
+      clock: app.clock.call,
+      enableFuzzing: false,
+    );
+    expect(await reviews.dueCount(), 0);
+    app.clock.advance(const Duration(minutes: 1));
+    expect(await reviews.dueCount(), lesson.items.length);
+    await app.dispose(tester);
+  });
+
+  testWidgets('answers are saved before the run moves on, even when leaving', (
+    tester,
+  ) async {
+    final app = TestApp(pack);
+    final lesson = pack.orderedLessons.first;
+    final steps = ExerciseBuilder(pack).buildLesson(lesson);
+    await app.pump(tester, location: '/lesson/${lesson.id}');
+    await tester.tapKey('start-lesson');
+
+    // Answer up to and including the third exercise, then leave at once.
+    var answered = 0;
+    for (final step in steps) {
+      await tester.answer(step);
+      if (step is Exercise && ++answered == 3) break;
+    }
+    await tester.tapSettled(find.byTooltip('خروج'));
+    await tester.tapSettled(find.text('خروج'));
+    expect(tester.takeException(), isNull);
+
+    final attempts = await app.db.select(app.db.activityAttempts).get();
+    expect(attempts.length, 3);
+    expect(attempts.every((a) => a.attemptNumber == 1), isTrue);
+    // The lesson is started, not completed, and nothing was scheduled.
+    final progress = await app.db.select(app.db.lessonProgress).get();
+    expect(progress.single.status, 'started');
+    expect(await app.db.select(app.db.reviewCards).get(), isEmpty);
+    await app.dispose(tester);
+  });
+
+  testWidgets('a failed save keeps the answer on both first try and retry', (
+    tester,
+  ) async {
+    final app = TestApp(pack);
+    final lesson = pack.orderedLessons.first;
+    final steps = ExerciseBuilder(pack).buildLesson(lesson);
+    final target = steps.whereType<ChoiceExercise>().first;
+    final wrong = (target.correctIndex + 1) % target.options.length;
+    final continued = find.byKey(const ValueKey('continue-button'));
+
+    Future<void> failNextSave() => app.db.customStatement('''
+      CREATE TEMP TRIGGER fail_attempt BEFORE INSERT ON activity_attempts
+      BEGIN SELECT RAISE(ABORT, 'test write failure'); END
+    ''');
+    Future<void> allowSave() =>
+        app.db.customStatement('DROP TRIGGER fail_attempt');
+    Future<void> expectFailure() async {
+      await tester.tapSettled(find.text('تحقّق'));
+      expect(find.text('تعذّر حفظ إجابتك. حاول مرة أخرى.'), findsOneWidget);
+      expect(find.text('إجابة صحيحة'), findsNothing);
+      expect(find.text('إجابة غير صحيحة'), findsNothing);
+      expect(continued, findsNothing);
+      expect(find.text('أكملت الدرس'), findsNothing);
+    }
+
+    await app.pump(tester, location: '/lesson/${lesson.id}');
+    await tester.tapKey('start-lesson');
+    for (final step in steps) {
+      if (step != target) {
+        await tester.answer(step);
+        continue;
+      }
+      await failNextSave();
+      final before = await app.db.select(app.db.activityAttempts).get();
+      await tester.tapKey('option-$wrong');
+      await expectFailure();
+      expect(await app.db.select(app.db.activityAttempts).get(), before);
+      await tester.tapSettled(find.byTooltip('خروج'));
+      expect(find.textContaining('ستفقد إجابتك الحالية'), findsOneWidget);
+      await tester.tapSettled(find.text('متابعة التعلّم'));
+      await allowSave();
+      await tester.tapKey('retry-answer-save');
+      expect(find.text('إجابة غير صحيحة'), findsOneWidget);
+      await tester.tapKey('continue-button');
+    }
+
+    await failNextSave();
+    await tester.tapKey('option-${target.correctIndex}');
+    await expectFailure();
+    final firstAttempts = await app.db.select(app.db.activityAttempts).get();
+    expect(firstAttempts.where((a) => a.attemptNumber == 2), isEmpty);
+    expect(
+      (await app.db.select(app.db.lessonProgress).get()).single.status,
+      'started',
+    );
+    await allowSave();
+    await tester.tapKey('retry-answer-save');
+    expect(find.text('إجابة صحيحة'), findsOneWidget);
+    await tester.tapKey('continue-button');
+
+    final attempts = await app.db.select(app.db.activityAttempts).get();
+    final targetAttempts = attempts.where((a) => a.activityId == target.id);
+    expect(targetAttempts.map((a) => a.attemptNumber), [1, 2]);
+    expect(targetAttempts.map((a) => a.userAnswer), [
+      target.options[wrong],
+      target.options[target.correctIndex],
+    ]);
+    expect(attempts.length, firstAttempts.length + 1);
+    final measured = steps
+        .whereType<Exercise>()
+        .where((e) => e.isMeasured)
+        .length;
+    expect(
+      (await app.db.select(app.db.lessonProgress).get()).single.bestScore,
+      closeTo((measured - 1) / measured, 1e-9),
+    );
+    expect(tester.takeException(), isNull);
     await app.dispose(tester);
   });
 

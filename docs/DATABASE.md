@@ -1,7 +1,7 @@
 # Database
 
 SQLite via Drift. File: `espanol_pro.sqlite` in the app documents directory.
-Schema version **2**. Source: `lib/core/db/database.dart`.
+Schema version **3**. Source: `lib/core/db/database.dart`.
 
 Only learner-generated data is stored. Curriculum entities (levels, units,
 lessons, vocabulary, grammar, sources, licences) live in the versioned content
@@ -24,6 +24,7 @@ erDiagram
         text activity_id  text lesson_id  text item_id
         text skill  text exercise_type  text context "lesson | practice"
         bool is_correct  bool is_measured "v2"
+        int attempt_number "v3: 1 first try, 2 prompted retry"
         text user_answer  text expected  int created_at
     }
     REVIEW_CARDS {
@@ -86,22 +87,30 @@ Rule: migrations are additive and never drop learner data.
 |---|---|
 | 1 | settings, lesson_progress, activity_attempts, review_cards, review_logs, study_sessions |
 | 2 | + `error_records` table · + `activity_attempts.is_measured` (default true) |
+| 3 | + `activity_attempts.attempt_number` (default 1) — separates first attempts from prompted retries |
 
-`test/persistence_test.dart` builds a real v1 database file from the verbatim
-v1 DDL, fills it, opens it with the current code and asserts that every row
-survives, the new column defaults correctly, the new table works and
-`user_version` becomes 2. Add a fixture + test for every future version.
+`test/persistence_test.dart` builds real v1 and v2 database files from the
+verbatim historical DDL, fills them, opens them with the current code and
+asserts that every row survives, new columns default correctly, new tables
+work and `user_version` becomes the latest. Add a fixture + test for every future version.
 
 ## Backup format
 
 ```jsonc
-{ "format": "espanol-pro-backup", "schema_version": 2,
+{ "format": "espanol-pro-backup", "schema_version": 3,
   "content_version": "1.0.0", "exported_at": "…Z",
   "tables": { "settings": [], "lesson_progress": [], "activity_attempts": [],
               "review_cards": [], "review_logs": [], "study_sessions": [],
               "error_records": [] } }
 ```
 
-Restore parses and validates the whole document first, then replaces all data
-in one transaction; newer-schema, foreign or damaged files are rejected with
-the database untouched (tested). Older backups (schema 1) restore.
+Restore is validate-then-replace. Before anything is deleted it requires:
+a known `schema_version` (1 … latest); **every table of that schema version
+present as a list** (a missing table is an error, never "empty"); every row
+parseable; unique primary and natural keys; every review log pointing at a
+card in the same file; ratings and card states in range. Only then are all
+tables replaced in one transaction. Foreign, newer, truncated, inconsistent
+or damaged files are rejected with the database byte-for-value unchanged
+(tested on row values, not counts). Backups from schema 1 and 2 restore, with
+documented defaults for columns added later. The UI shows the file's row
+counts and asks for confirmation before restoring.

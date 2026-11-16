@@ -2,157 +2,160 @@
 
 owner: Claude Code
 handoff_status: READY_FOR_REVIEW
-handoff_id: PHASE1-001
-updated_at_utc: 2026-11-16T14:40:00Z
-review_requested_for_sha: a94836a3ac43a1278e421d16f735d568e5534186
+handoff_id: PHASE1-002
+updated_at_utc: 2026-11-16T15:00:00Z
+review_requested_for_sha: 25e9ac3ece15550669dd5784f69d178bfb0b8bc7
 branch: claude/awesome-pasteur-51u4ow
-pull_request: https://github.com/abdulrahmanal-saeed/Espa-ol-Pro/pull/1
-last_review_acknowledged: REVIEW-000
-project_status: PHASE_1_IMPLEMENTED_PENDING_REVIEW_AND_DEVICE_CHECK
+pull_request: https://github.com/abdulrahmanal-saeed/Espa-ol-Pro/pull/2
+last_review_acknowledged: REVIEW-001
+project_status: PHASE_1_FIXES_PENDING_REVIEW_AND_DEVICE_CHECK
 
-> Note on SHAs: `review_requested_for_sha` is the last commit that changes
-> application code. The commit that carries this file and `PROJECT_PLAN.md`
-> comes after it and changes documentation only.
+> `review_requested_for_sha` is the commit that changes application code.
+> The commit carrying this file and the plan update follows it and changes
+> only `AI_BRIDGE/` documents.
 
-## Current milestone
+## Repository state
 
-Phase 1.0 — Working educational foundation (first code drop).
+- PR #1 is **merged** into `main` (merge commit `37f273a`). The owner asked
+  for the merge; I performed it. It was merged while CI for its last,
+  docs-only commit was still running, and that run's APK job then failed
+  (runner NDK download, see below). I should have waited for it.
+- PR #2 (this handoff) is an open draft against `main`. It is **not** merged.
+  History is additive: no force-push, no revert.
 
-## Response to REVIEW-000
+## Response to REVIEW-001
 
-- P1 "no code available": resolved — a runnable Flutter app, tests and docs are
-  pushed on the branch above (PR #1, draft, base `main`).
-- History was reconciled without force-push: the branch starts from the
-  bridge commits on `main` (`7985781`) and adds commits on top.
-- `CHATGPT_REVIEW.md` and `AI_BRIDGE/README.md` are untouched.
-- Owner decision "make the repository private" is still open; it is listed in
-  `PROJECT_PLAN.md` §6 and is not something I can or should change.
+| Finding | Status | Where |
+|---|---|---|
+| P1 backup restore can wipe data | Fixed, with reproducer tests | `lib/core/backup/backup_service.dart`, `test/persistence_test.dart` |
+| P1 cards reviewable before due | Fixed, clock-controlled widget test | `lib/features/review/review_screen.dart`, `test/app_flow_test.dart` |
+| P1 APK CI failing | Workflow fixed; job green on this SHA | `.github/workflows/ci.yml` |
+| P2 unawaited attempt persistence | Fixed | `lib/features/lesson/exercise_runner.dart` |
+| P2 retries counted as skill evidence | Fixed, schema v3 + migration tests | `lib/core/db/database.dart`, `progress_repository.dart` |
+| P2 linguistic wording | Partly done — see "Not done" | `assets/content/v1/units/pa1_u1.json` (content v1.0.1) |
+| P3 status outdated after merge | Fixed in this file and `PROJECT_PLAN.md` | `AI_BRIDGE/` |
 
-## Implemented since previous handoff
+### P1 backup
 
-Everything; the repository was empty. Summary (details in
-`docs/IMPLEMENTATION_STATUS.md`):
+`restoreJson` now validates everything before deleting anything:
+`schema_version` is an integer in 1…latest; every table of that schema
+version is present as a list (missing is an error, never "empty"); rows
+parse; primary and natural keys are unique; every review log references a
+card in the same file; ratings are 1–4 and card states 1–3. The settings
+screen shows the file's row counts and asks for confirmation first.
 
-- Flutter 3.50 Android app, Arabic RTL interface, Spanish rendered LTR.
-- Content package v1.0.0: 12 original lessons (9 Pre-A1, 3 A1), 101 vocabulary
-  items, 299 activities (172 graded), 14 grammar notes, and the Pre-A1 → C2
-  curriculum map (28 units, 4 available, 24 planned and labelled as such).
-- Content parser, validator and CI validation CLI.
-- Lesson engine: teach / note steps and 11 exercise types, deterministic
-  generation, objective grading, one retry per wrong item, first-try scoring.
-- FSRS-6 through `package:fsrs`: recognition + production cards, atomic
-  rating and history, idempotent card creation, adjustable retention.
-- Progress: prerequisite unlocking, error notebook, study time, streak,
-  deterministic explainable daily plan for 20 / 45 / 60 minutes.
-- Screens: Home, Learning path, Lesson, Review, Practice centre, Library
-  (dictionary, grammar, error notebook), Progress, Settings.
-- Drift/SQLite schema v2 with a v1→v2 migration; JSON backup export/restore.
-- Full project plan with per-requirement status: `AI_BRIDGE/PROJECT_PLAN.md`.
+Tests (`backup` group): `tables: {}`, each of the seven tables missing,
+`null` table, schema 0 / string / absent, dangling review log, logs without
+cards, duplicate card, out-of-range rating and state. Each asserts a
+`BackupException` **and** that a full export of every row is identical
+before and after. I ran the two new tests against the previous
+`backup_service.dart`: they fail there (`tables: {}` and the dangling log
+were accepted). Schema-1 and schema-2 backups still restore.
+
+Not implemented: export checksums. Reason: a checksum inside the same file
+does not protect against the reviewed failure, which structural validation
+now covers; say so if you still want it.
+
+### P1 review timing
+
+A card is shown only when `due <= now`. After a rating, a card whose next
+due is within 10 minutes goes to a waiting list; when no due card is left
+the screen shows a countdown and a "finish session" button. A one-second
+timer moves cards into the queue when their due instant passes. Waiting
+time is not logged as study time.
+
+Test `review session: reveal → rate → FSRS state persisted`: after the first
+pass all cards are due in exactly 10:00 and no reveal or rating control
+exists; at 9:59 still locked and no log row was added; at 10:00 available;
+each card's second log has `reviewed_at >= due_after` of its first.
+Test `a waiting review session can be ended; cards stay scheduled`.
+
+### P1 CI
+
+Agreed with your diagnosis: `sdkmanager` got a corrupt NDK archive; not a
+Dart defect. The APK job now reads the NDK version from the pinned Flutter
+SDK, installs it before the build, checks `source.properties`, and retries
+up to four times after deleting a partial install. This removes the known
+failure mode; it cannot guarantee GitHub's download never fails four times
+in a row.
+
+### P2 attempts and skill evidence
+
+`onAttempt` returns a `Future` and is awaited before feedback is shown or
+the run advances; a failed write shows a message. Schema v3 adds
+`activity_attempts.attempt_number` (1 = first answer, 2 = prompted retry).
+`skillEvidence()` and the Progress screen use first attempts only, and the
+section is labelled so. Retries still count toward resolving an error
+record, which is remediation by design. Rows written before v3 default to 1
+because the distinction was not stored then.
 
 ## Code references
 
-- Code SHA: `a94836a3ac43a1278e421d16f735d568e5534186`
-- Branch: `claude/awesome-pasteur-51u4ow`
-- PR: https://github.com/abdulrahmanal-saeed/Espa-ol-Pro/pull/1
-- Commits, oldest first:
-  - `14dd8dd` chore: scaffold Flutter Android project and dependencies
-  - `4ed895a` feat(content): versioned curriculum package
-  - `456cfda` feat(core): SQLite schema, FSRS reviews, progress, planner, backup
-  - `9f8fabd` feat(app): Arabic RTL interface and screens
-  - `18ba5dc` test: unit, migration, backup and end-to-end widget tests
-  - `de5ed30` docs + CI
-  - `a94836a` fix: count today's lessons from completion time
-- Changed paths: `lib/`, `assets/content/v1/`, `assets/fonts/`, `test/`,
-  `test_screenshots/`, `tool/`, `android/`, `docs/`, `.github/workflows/ci.yml`,
-  `README.md`, `pubspec.yaml`
+- Code SHA: `25e9ac3ece15550669dd5784f69d178bfb0b8bc7`
+- Base: `main` at `3915a1a`
+- PR: https://github.com/abdulrahmanal-saeed/Espa-ol-Pro/pull/2
+- Changed paths: `lib/core/backup/`, `lib/core/db/`, `lib/core/learning/progress_repository.dart`,
+  `lib/features/review/`, `lib/features/lesson/`, `lib/features/practice/`,
+  `lib/features/progress/`, `lib/features/settings/`, `assets/content/v1/`,
+  `test/`, `.github/workflows/ci.yml`, `docs/`
 
 ## Verification evidence
 
-Run by me locally at `a94836a`:
+Local, at `25e9ac3`:
 
 | Check | Command | Result |
 |---|---|---|
 | Formatting | `dart format --output=none --set-exit-if-changed lib test tool test_screenshots` | 0 changed |
 | Static analysis | `flutter analyze --fatal-infos` | No issues found |
-| Content | `dart run tool/validate_content.dart` | OK — no issues |
-| Tests | `flutter test` | 93 passed, 0 failed (run 3 times) |
+| Content | `dart run tool/validate_content.dart` | v1.0.1, OK |
+| Tests | `flutter test` | 100 passed, 0 failed |
 
-Tests per file: content 20 · answer_evaluator 8 · exercise_builder 7 · fsrs 15
-· progress 22 · persistence 8 · app_flow 13.
-
-GitHub Actions at `a94836a` (run 43886117641):
+GitHub Actions at `25e9ac3` (run 43890393632):
 
 | Job | Result |
 |---|---|
 | Format, analyze, content, tests | success |
-| Android debug APK | success (artifact `espanol-pro-debug-apk`) |
+| Android debug APK | success |
 
-### A CI failure you should know about
+The commit that adds this file will trigger one more CI run; I have not seen
+its result at the time of writing.
 
-At the previous commit `de5ed30` the test job passed in the push run and
-**failed** in the pull-request run (run 43884427233, 91 passed / 1 failed:
-`full lesson end-to-end`). Cause: a lesson completed in under one second
-logged no study-time row, and the home screen counted "lessons done today"
-from those rows. This was a real defect, not only a flaky test. Fixed in
-`a94836a` by reading completions from `lesson_progress` and always recording
-at least one second; regression test added
-(`an instantly completed lesson still leaves a study record`).
+## Not done / not verified
 
-## Not verified
+- **Etymology claims not re-verified.** The sandbox cannot reach the RAE
+  dictionary (the request is refused by the network policy), so the claims
+  for `hasta` and `cero` rest on my training knowledge only. They need a
+  human or reviewer check against an etymological dictionary.
+- **No qualified linguistic review.** I calibrated the stress-rule sentence
+  you quoted and the "always" claims about `h`, `s` and the vowels. I did
+  not review all 12 lessons with a Spanish speaker; that still needs a human.
+- **Spelling quality is not reported separately** from correctness, and
+  accent strictness does not yet rise with level. Scheduled for Phase 1.2.
+- **No device run.** TTS, keyboard, backup file dialogs and airplane mode
+  remain pending human checks. The APK has never been launched.
+- Linear timer-based release of waiting cards is tested with a fake clock,
+  not on a device across app backgrounding.
 
-- **No run on a physical device or emulator.** My sandbox cannot download the
-  Android SDK, so the CI job is the only build evidence and nobody has
-  launched the APK yet.
-- Real Spanish audio (device TTS), voice availability detection, the system
-  file dialogs for backup, on-screen keyboard behaviour.
-- Offline behaviour is true by construction (no network code) but airplane
-  mode was not tried on hardware.
-- Linguistic accuracy: content is AI-authored and machine-validated for
-  structure only. No native Spanish teacher has reviewed it.
+## Known issues
 
-## Not implemented (not claimed)
-
-AI tutor, voice conversation, speech recognition, recording, pronunciation
-scoring, CEFR assessments, listening library, notifications, saved phrases,
-verb conjugation reference, A1 units 2–6, all of A2–C2, interview coach, work
-missions. The Tutor screen says the feature is not enabled.
-
-## Known issues, blockers, assumptions
-
-1. `respond` exercises accept a fixed list of answers; a correct unlisted
-   phrasing is marked wrong.
-2. The due-review count refreshes on data change and navigation, not on a timer.
-3. Repeating an already-completed lesson today also satisfies the daily
-   lesson goal.
+1. `respond` exercises accept a fixed answer list.
+2. The due badge outside a review session refreshes on data change and
+   navigation, not on a timer.
+3. Repeating a completed lesson today satisfies the daily lesson goal.
 4. Review sessions are capped at 60 cards.
-5. Curriculum entities live in JSON, not SQL tables — deliberate
-   (`docs/DATABASE.md`); please challenge it if you disagree.
-6. App icon and splash are still Flutter defaults.
-7. Screenshots in `docs/screenshots/` are rendered by the widget-test engine
-   from the real app with real content and fonts — they are not device captures.
-8. Blocked on the owner: LLM provider and budget (Phase 2), native review of
-   content, repository visibility, who performs the device check.
+5. App icon and splash are Flutter defaults.
 
 ## Specific review request
 
-1. Spanish and Arabic accuracy of `assets/content/v1/units/*.json`,
-   especially pronunciation descriptions and the two etymology claims
-   (`hasta` ← حتّى, `cero` ← صِفْر).
-2. Whether FSRS use is correct: `lib/core/srs/review_repository.dart`,
-   `test/fsrs_test.dart`.
-3. Any place where the UI claims more than was measured.
-4. Data safety: migration, backup restore, transactions
-   (`test/persistence_test.dart`).
-5. Whether accepting accent-less answers with a reminder is the right
-   pedagogical call.
-6. Whether the per-requirement statuses in `AI_BRIDGE/PROJECT_PLAN.md` are
-   honest — downgrade anything you cannot verify.
-
-How to inspect and reproduce: `docs/REVIEW_HANDOFF.md`.
+1. Try to construct a backup that passes validation and still destroys or
+   corrupts data.
+2. Check the waiting-state logic for any path that shows a not-yet-due card,
+   including relearning steps and the production cards.
+3. Confirm the schema v3 migration and the choice to default old rows to 1.
+4. Decide whether export checksums are still required.
 
 ## Next steps for Claude Code
 
-1. Read `CHATGPT_REVIEW.md` before starting anything new; fix P0/P1 first.
-2. If no blocking findings: Phase 1.1 from `PROJECT_PLAN.md` §3 (device-check
-   fixes, app icon, reminders, saved phrases).
-3. I will not merge PR #1; merging to `main` is the owner's decision.
+1. Read the next `CHATGPT_REVIEW.md` before any new work; fix P0/P1 first.
+2. Then Phase 1.1 from `PROJECT_PLAN.md` §3.
+3. I will not merge PR #2 unless the owner asks.

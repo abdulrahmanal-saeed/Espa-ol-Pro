@@ -20,8 +20,10 @@
 - **Work from day one.** Professional vocabulary is tagged `work` and
   introduced from Pre-A1 (oficina, cliente, cita), growing into the
   "Spanish for Work" track.
-- **Etymology is never invented.** Only two Arabic-origin claims are made
-  (`hasta` ← حتّى, `cero` ← صِفْر), both as given by the RAE dictionary.
+- **Arabic etymologies.** The [RAE/ASALE entry for *hasta*](https://dle.rae.es/hasta)
+  traces it through Andalusi Arabic to classical Arabic حتّى, with Latin
+  influence. The [entry for *cero*](https://dle.rae.es/cero) traces it back
+  through Italian, Late Latin and Andalusi Arabic to classical Arabic صِفْر.
 
 ## Map
 
@@ -44,7 +46,7 @@ Pre-A1 is a preparatory stage, not a DELE level.
 whole road is visible in the app, clearly labelled "قيد الإعداد". They contain
 no lessons and are never counted as progress.
 
-## Shipped lessons (content v1.0.0)
+## Shipped lessons (content v1.0.2)
 
 | # | Lesson | New items | Focus |
 |---|---|---|---|
@@ -74,10 +76,19 @@ types; at least one production and one listening activity.
 
 ## Review status — read this
 
-All content is `author_reviewed`: written and checked by the AI implementer
-and machine-validated for structure. **It has not been reviewed by a native
-Spanish teacher.** The app states this in Settings. Promotion to
-`native_reviewed` requires a human review and is a Phase 3 gate.
+The Phase 1 author review covered all 12 lessons across the four available
+units. It checked prerequisite order, Arabic explanations and translations,
+Spanish examples, and how listening, dictation, written and situational
+prompts match their answers. The lesson and reference notes now qualify
+pronunciation, word stress, and register. The A1 client prompt now uses
+`usted` in both the displayed prompt and its audio text.
+
+The [Instituto Cervantes A1–A2 inventory](https://cvc.cervantes.es/ensenanza/biblioteca_ele/plan_curricular/niveles/05_funciones_inventario_a1-a2.htm)
+supports the sequence of greetings and introductions. The
+[RAE orthography reference](https://www.rae.es/diccionario-estudiante/docs/ortografia.pdf)
+describes the stress rules behind the simplified introductory explanations.
+The content remains `author_reviewed`. Review by a native Spanish teacher
+is pending.
 
 Accent: default voice es-MX (seseo); notes point out Castilian differences
 (c/z as θ) where they matter.

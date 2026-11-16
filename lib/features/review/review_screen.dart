@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:fsrs/fsrs.dart' as fsrs;
 import 'package:go_router/go_router.dart';
@@ -7,7 +9,6 @@ import '../../app/theme.dart';
 import '../../core/content/models.dart';
 import '../../core/db/database.dart';
 import '../../core/learning/answer_evaluator.dart';
-import '../../core/learning/progress_repository.dart';
 import '../../core/providers.dart';
 import '../../core/srs/review_repository.dart';
 import '../../core/widgets/common.dart';
@@ -29,34 +30,49 @@ class ReviewScreen extends ConsumerStatefulWidget {
 }
 
 class _ReviewScreenState extends ConsumerState<ReviewScreen> {
+  /// Cards that are due NOW and may be answered.
   final List<ReviewCard> _queue = [];
+
+  /// Cards rated in this session whose next short learning step is still in
+  /// the future. They are never shown early: they move to [_queue] only once
+  /// their FSRS due instant has passed.
+  final List<ReviewCard> _waiting = [];
+  Timer? _ticker;
   final Stopwatch _session = Stopwatch();
   final Stopwatch _card = Stopwatch();
   final _controller = TextEditingController();
+  late final AppLifecycleListener _lifecycle;
   bool _loading = true;
   String? _error;
   bool _revealed = false;
   AnswerResult? _typed;
   int _reviewed = 0;
   int _again = 0;
-  bool _logged = false;
+  int _savedSeconds = 0;
+  bool _foreground = true;
   bool _busy = false;
-
-  // Captured up front: `ref` must not be used while the widget is disposing.
-  late final ProgressRepository _progress = ref.read(
-    progressRepositoryProvider,
-  );
 
   @override
   void initState() {
     super.initState();
-    _progress;
+    final state = WidgetsBinding.instance.lifecycleState;
+    _foreground = state == null || state == AppLifecycleState.resumed;
+    _lifecycle = AppLifecycleListener(
+      onStateChange: (state) {
+        _foreground = state == AppLifecycleState.resumed;
+        if (_foreground) _promote();
+        _updateTimers();
+      },
+    );
     _load();
   }
 
   @override
   void dispose() {
-    _logSession();
+    _ticker?.cancel();
+    _lifecycle.dispose();
+    _session.stop();
+    _card.stop();
     _controller.dispose();
     super.dispose();
   }
@@ -72,10 +88,8 @@ class _ReviewScreenState extends ConsumerState<ReviewScreen> {
         _queue.addAll(due.where((c) => pack.item(c.itemId) != null));
         _loading = false;
       });
-      _session.start();
-      _card
-        ..reset()
-        ..start();
+      _updateTimers();
+      _ticker = Timer.periodic(const Duration(seconds: 1), (_) => _promote());
       _autoPlay();
     } catch (e) {
       if (mounted) {
@@ -87,21 +101,49 @@ class _ReviewScreenState extends ConsumerState<ReviewScreen> {
     }
   }
 
-  void _logSession() {
-    if (_logged || _reviewed == 0) return;
-    _logged = true;
-    _session.stop();
-    _progress.logStudy(kind: 'review', seconds: _session.elapsed.inSeconds);
+  static const _learnWindow = Duration(minutes: 10);
+
+  /// Moves cards whose due instant has arrived from [_waiting] to [_queue].
+  void _promote() {
+    if (!mounted || !_foreground || _waiting.isEmpty) return;
+    final nowMs = ref.read(clockProvider)().toUtc().millisecondsSinceEpoch;
+    final ready = _waiting.where((c) => c.due <= nowMs).toList()
+      ..sort((a, b) => a.due.compareTo(b.due));
+    final wasEmpty = _queue.isEmpty;
+    setState(() {
+      // Also refreshes the countdown while the learner is waiting.
+      _waiting.removeWhere((c) => c.due <= nowMs);
+      _queue.addAll(ready);
+    });
+    if (wasEmpty && _queue.isNotEmpty) {
+      _card.reset();
+      _updateTimers();
+      _autoPlay();
+    }
+  }
+
+  void _finishEarly() {
+    setState(_waiting.clear);
+  }
+
+  void _updateTimers() {
+    if (_foreground && !_busy && _queue.isNotEmpty) {
+      _session.start();
+      _card.start();
+    } else {
+      _session.stop();
+      _card.stop();
+    }
   }
 
   void _autoPlay() {
-    if (_queue.isEmpty) return;
+    if (!_foreground || _queue.isEmpty) return;
     final card = _queue.first;
     if (card.cardType != cardRecognition) return;
     if (!ref.read(settingsProvider).autoPlayAudio) return;
     final item = ref.read(contentProvider).item(card.itemId)!;
     WidgetsBinding.instance.addPostFrameCallback((_) {
-      if (mounted) {
+      if (mounted && _foreground) {
         SpeakButton.play(context, ref, item.es, announceFailure: false);
       }
     });
@@ -119,40 +161,40 @@ class _ReviewScreenState extends ConsumerState<ReviewScreen> {
   }
 
   Future<void> _rate(fsrs.Rating rating) async {
-    if (_busy) return;
+    if (_busy || !_foreground) return;
     _busy = true;
+    _updateTimers();
     final card = _queue.first;
+    final elapsedSeconds = _session.elapsed.inSeconds.clamp(0, 5400);
     try {
-      final repo = ref.read(reviewRepositoryProvider);
-      final updated = await repo.rate(
+      final progress = ref.read(progressRepositoryProvider);
+      final updated = await progress.rateReview(
         card.id,
         rating,
         durationMs: _card.elapsedMilliseconds,
+        activeSeconds: elapsedSeconds - _savedSeconds,
       );
       if (!mounted) return;
+      _savedSeconds = elapsedSeconds;
       final now = ref.read(clockProvider)().toUtc();
-      final dueSoon = DateTime.fromMillisecondsSinceEpoch(
-        updated.due,
-        isUtc: true,
-      ).isBefore(now.add(const Duration(minutes: 10, seconds: 1)));
+      final due = DateTime.fromMillisecondsSinceEpoch(updated.due, isUtc: true);
       setState(() {
         _queue.removeAt(0);
-        // Short learning steps are finished inside the same session.
-        if (dueSoon) _queue.add(updated);
+        if (!due.isAfter(now)) {
+          _queue.add(updated);
+        } else if (due.difference(now) <= _learnWindow) {
+          // A short learning step: keep it for this session, but locked
+          // until it is actually due.
+          _waiting.add(updated);
+        }
         _reviewed++;
         if (rating == fsrs.Rating.again) _again++;
         _revealed = false;
         _typed = null;
         _controller.clear();
       });
-      _card
-        ..reset()
-        ..start();
-      if (_queue.isEmpty) {
-        _logSession();
-      } else {
-        _autoPlay();
-      }
+      _card.reset();
+      _autoPlay();
     } catch (e) {
       if (mounted) {
         ScaffoldMessenger.of(context)
@@ -160,6 +202,7 @@ class _ReviewScreenState extends ConsumerState<ReviewScreen> {
       }
     } finally {
       _busy = false;
+      if (mounted) _updateTimers();
     }
   }
 
@@ -175,6 +218,8 @@ class _ReviewScreenState extends ConsumerState<ReviewScreen> {
         title: 'تعذّر تحميل المراجعات',
         message: _error!,
       );
+    } else if (_queue.isEmpty && _waiting.isNotEmpty) {
+      body = _waitingView(context);
     } else if (_queue.isEmpty) {
       body = _reviewed == 0
           ? EmptyState(
@@ -205,12 +250,12 @@ class _ReviewScreenState extends ConsumerState<ReviewScreen> {
       appBar: AppBar(
         title: const Text('المراجعة'),
         actions: [
-          if (_queue.isNotEmpty)
+          if (_queue.isNotEmpty || _waiting.isNotEmpty)
             Padding(
               padding: const EdgeInsetsDirectional.only(end: 16),
               child: Center(
                 child: Text(
-                  'المتبقي: ${_queue.length}',
+                  'المتبقي: ${_queue.length + _waiting.length}',
                   style: t.textTheme.labelLarge,
                 ),
               ),
@@ -218,6 +263,27 @@ class _ReviewScreenState extends ConsumerState<ReviewScreen> {
         ],
       ),
       body: body,
+    );
+  }
+
+  Widget _waitingView(BuildContext context) {
+    final nowMs = ref.read(clockProvider)().toUtc().millisecondsSinceEpoch;
+    final next = _waiting.map((c) => c.due).reduce((a, b) => a < b ? a : b);
+    final seconds = ((next - nowMs) / 1000).ceil().clamp(0, 36000);
+    final mm = (seconds ~/ 60).toString().padLeft(2, '0');
+    final ss = (seconds % 60).toString().padLeft(2, '0');
+    return EmptyState(
+      key: const ValueKey('review-waiting'),
+      icon: Icons.hourglass_bottom_rounded,
+      title: 'البطاقة التالية بعد $mm:$ss',
+      message:
+          '${_waiting.length} بطاقة في خطوة تعلّم قصيرة. لا تُعرض قبل موعدها حتى يبقى التباعد الذي تحسبه FSRS صحيحاً.\n'
+          'يمكنك الانتظار، أو إنهاء الجلسة وستجدها مستحقة عند عودتك.',
+      action: OutlinedButton(
+        key: const ValueKey('review-finish-early'),
+        onPressed: _finishEarly,
+        child: const Text('أنهِ الجلسة الآن'),
+      ),
     );
   }
 

@@ -38,7 +38,12 @@ class ExerciseRunner extends StatefulWidget {
   });
 
   final List<LessonStep> steps;
-  final void Function(Exercise ex, Submission s) onAttempt;
+
+  /// Persists one answer. Awaited before the run advances, so no attempt
+  /// can be lost by finishing or leaving quickly. [attemptNumber] is 1 for
+  /// the first answer and 2 for the prompted retry.
+  final Future<void> Function(Exercise ex, Submission s, int attemptNumber)
+  onAttempt;
   final void Function(RunResult result) onFinished;
   final VoidCallback onExit;
 
@@ -53,6 +58,8 @@ class _ExerciseRunnerState extends State<ExerciseRunner> {
   final Stopwatch _watch = Stopwatch()..start();
   int _index = 0;
   Submission? _feedback;
+  ({Exercise exercise, Submission submission, int number})? _pending;
+  bool _saving = false;
 
   LessonStep get _step => _queue[_index];
 
@@ -79,8 +86,30 @@ class _ExerciseRunnerState extends State<ExerciseRunner> {
     });
   }
 
-  void _submitted(Exercise ex, Submission s) {
-    widget.onAttempt(ex, s);
+  void _submitted(Exercise ex, Submission submission) {
+    if (_pending != null || _feedback != null) return;
+    _pending = (
+      exercise: ex,
+      submission: submission,
+      number: _firstTry.containsKey(ex.id) ? 2 : 1,
+    );
+    _savePending();
+  }
+
+  Future<void> _savePending() async {
+    final pending = _pending;
+    if (_saving || pending == null) return;
+    setState(() => _saving = true);
+    final (exercise: ex, submission: s, number: attemptNumber) = pending;
+    try {
+      await widget.onAttempt(ex, s, attemptNumber);
+    } catch (_) {
+      if (mounted) setState(() => _saving = false);
+      return;
+    }
+    if (!mounted) return;
+    _saving = false;
+    _pending = null;
     if (!ex.isMeasured) {
       _next();
       return;
@@ -91,12 +120,15 @@ class _ExerciseRunnerState extends State<ExerciseRunner> {
   }
 
   Future<void> _confirmExit() async {
+    if (_saving) return;
     final leave = await showDialog<bool>(
       context: context,
       builder: (ctx) => AlertDialog(
         title: const Text('الخروج الآن؟'),
-        content: const Text(
-          'إجاباتك حتى الآن محفوظة في سجلّ المحاولات، لكن هذه الجلسة لن تُحتسب مكتملة.',
+        content: Text(
+          _pending == null
+              ? 'إجاباتك حتى الآن محفوظة في سجلّ المحاولات، لكن هذه الجلسة لن تُحتسب مكتملة.'
+              : 'ستفقد إجابتك الحالية إذا خرجت الآن. تبقى الإجابات السابقة المحفوظة في سجلّ المحاولات.',
         ),
         actions: [
           TextButton(
@@ -110,7 +142,7 @@ class _ExerciseRunnerState extends State<ExerciseRunner> {
         ],
       ),
     );
-    if (leave == true) widget.onExit();
+    if (mounted && leave == true) widget.onExit();
   }
 
   @override
@@ -124,6 +156,7 @@ class _ExerciseRunnerState extends State<ExerciseRunner> {
       ChoiceExercise e => ChoiceView(
         e,
         key: key,
+        showResult: _feedback != null,
         onSubmit: (s) => _submitted(e, s),
       ),
       TypeExercise e => TypeView(
@@ -162,7 +195,7 @@ class _ExerciseRunnerState extends State<ExerciseRunner> {
               child: Row(
                 children: [
                   IconButton(
-                    onPressed: _confirmExit,
+                    onPressed: _saving ? null : _confirmExit,
                     icon: const Icon(Icons.close_rounded),
                     tooltip: 'خروج',
                   ),
@@ -185,7 +218,9 @@ class _ExerciseRunnerState extends State<ExerciseRunner> {
           Expanded(
             child: Stack(
               children: [
-                Positioned.fill(child: view),
+                Positioned.fill(
+                  child: IgnorePointer(ignoring: _pending != null, child: view),
+                ),
                 if (_feedback != null && step is Exercise)
                   Positioned(
                     left: 0,
@@ -200,6 +235,30 @@ class _ExerciseRunnerState extends State<ExerciseRunner> {
               ],
             ),
           ),
+          if (_pending != null)
+            SafeArea(
+              top: false,
+              minimum: const EdgeInsets.all(16),
+              child: Semantics(
+                liveRegion: true,
+                child: _saving
+                    ? const LinearProgressIndicator(
+                        semanticsLabel: 'جارٍ حفظ إجابتك',
+                      )
+                    : Column(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          const Text('تعذّر حفظ إجابتك. حاول مرة أخرى.'),
+                          const SizedBox(height: 8),
+                          FilledButton(
+                            key: const ValueKey('retry-answer-save'),
+                            onPressed: _savePending,
+                            child: const Text('إعادة محاولة الحفظ'),
+                          ),
+                        ],
+                      ),
+              ),
+            ),
         ],
       ),
     );

@@ -254,13 +254,14 @@ class _PracticeRunScreenState extends ConsumerState<PracticeRunScreen> {
       body: ExerciseRunner(
         steps: exercises,
         onExit: _leave,
-        onAttempt: (ex, s) => ref
+        onAttempt: (ex, s, attemptNumber) => ref
             .read(progressRepositoryProvider)
             .recordAttempt(
               ex,
               isCorrect: s.correct,
               userAnswer: s.answer,
               context: 'practice',
+              attemptNumber: attemptNumber,
             ),
         onFinished: (r) async {
           await ref

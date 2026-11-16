@@ -206,6 +206,35 @@ void main() {
       expect(ev.accuracy, 0.5);
     });
 
+    test('prompted retries never count as skill evidence', () async {
+      final ex = exercises.firstWhere((e) => e.skill == 'vocabulary');
+      // First try wrong, then the coached retry right.
+      await repo.recordAttempt(
+        ex,
+        isCorrect: false,
+        userAnswer: 'x',
+        context: 'lesson',
+      );
+      await repo.recordAttempt(
+        ex,
+        isCorrect: true,
+        userAnswer: ex.expected,
+        context: 'lesson',
+        attemptNumber: 2,
+      );
+      final ev = (await repo.skillEvidence()).firstWhere(
+        (e) => e.skill == 'vocabulary',
+      );
+      expect(ev.attempts, 1);
+      expect(ev.correct, 0);
+      expect(ev.accuracy, 0);
+      // Both rows are kept; only the evidence figure excludes the retry.
+      final rows = await db.select(db.activityAttempts).get();
+      expect(rows.map((r) => r.attemptNumber), [1, 2]);
+      // The retry still counts toward resolving the error.
+      expect((await db.select(db.errorRecords).get()).single.correctSince, 1);
+    });
+
     test('error categories follow what the exercise objectively tested', () {
       for (final ex in exercises.where((e) => e.isMeasured)) {
         expect(const {

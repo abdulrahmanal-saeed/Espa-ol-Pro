@@ -49,6 +49,18 @@ CREATE TABLE study_sessions (
 PRAGMA user_version = 1;
 ''';
 
+/// The exact statements migration 1 → 2 executed, to build a real v2 file.
+const _upgradeV1toV2 = '''
+CREATE TABLE error_records (
+  id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT, signature TEXT NOT NULL UNIQUE,
+  incorrect TEXT NOT NULL, correct TEXT NOT NULL, category TEXT NOT NULL,
+  prompt_ar TEXT NOT NULL DEFAULT '', lesson_id TEXT, item_id TEXT,
+  count INTEGER NOT NULL DEFAULT 1, correct_since INTEGER NOT NULL DEFAULT 0,
+  first_seen INTEGER NOT NULL, last_seen INTEGER NOT NULL);
+ALTER TABLE activity_attempts ADD COLUMN is_measured INTEGER NOT NULL DEFAULT 1 CHECK (is_measured IN (0, 1));
+PRAGMA user_version = 2;
+''';
+
 void main() {
   late ContentPack pack;
   late Directory tmp;
@@ -58,69 +70,109 @@ void main() {
 
   AppDatabase open(File f) => AppDatabase(NativeDatabase(f));
 
-  group('schema migration v1 → v2', () {
-    test('keeps every learner row and adds the new structures', () async {
-      final file = File('${tmp.path}/v1.sqlite');
-      final v1 = raw.sqlite3.open(file.path);
-      v1.execute(_schemaV1);
-      v1.execute(
-        "INSERT INTO settings VALUES ('dailyMinutes', '45');"
-        "INSERT INTO lesson_progress (lesson_id, status, best_score, last_score, completions, started_at, first_completed_at, last_completed_at, content_version)"
-        " VALUES ('pa1_u1_l1', 'completed', 0.9, 0.9, 1, 1000, 2000, 2000, '1.0.0');"
-        "INSERT INTO activity_attempts (activity_id, lesson_id, item_id, skill, exercise_type, context, is_correct, user_answer, expected, created_at)"
-        " VALUES ('pa1_u1_l1#4', 'pa1_u1_l1', 'casa', 'vocabulary', 'mcq_meaning', 'lesson', 1, 'بيت', 'بيت', 1500);"
-        "INSERT INTO review_cards (item_id, card_type, state, step, stability, difficulty, due, last_review, reps, lapses, source_lesson_id, created_at)"
-        " VALUES ('casa', 'recognition', 2, NULL, 8.5, 5.1, 900000, 100000, 3, 1, 'pa1_u1_l1', 2000);"
-        "INSERT INTO review_logs (card_id, rating, state_before, reviewed_at, due_after) VALUES (1, 3, 1, 100000, 900000);"
-        "INSERT INTO study_sessions (day, kind, ref_id, started_at, seconds) VALUES ('2026-03-01', 'lesson', 'pa1_u1_l1', 1000, 540);",
-      );
-      v1.close();
+  group('schema migrations', () {
+    test(
+      'v1 → latest keeps every learner row and adds the new structures',
+      () async {
+        final file = File('${tmp.path}/v1.sqlite');
+        final v1 = raw.sqlite3.open(file.path);
+        v1.execute(_schemaV1);
+        v1.execute(
+          "INSERT INTO settings VALUES ('dailyMinutes', '45');"
+          "INSERT INTO lesson_progress (lesson_id, status, best_score, last_score, completions, started_at, first_completed_at, last_completed_at, content_version)"
+          " VALUES ('pa1_u1_l1', 'completed', 0.9, 0.9, 1, 1000, 2000, 2000, '1.0.0');"
+          "INSERT INTO activity_attempts (activity_id, lesson_id, item_id, skill, exercise_type, context, is_correct, user_answer, expected, created_at)"
+          " VALUES ('pa1_u1_l1#4', 'pa1_u1_l1', 'casa', 'vocabulary', 'mcq_meaning', 'lesson', 1, 'بيت', 'بيت', 1500);"
+          "INSERT INTO review_cards (item_id, card_type, state, step, stability, difficulty, due, last_review, reps, lapses, source_lesson_id, created_at)"
+          " VALUES ('casa', 'recognition', 2, NULL, 8.5, 5.1, 900000, 100000, 3, 1, 'pa1_u1_l1', 2000);"
+          "INSERT INTO review_logs (card_id, rating, state_before, reviewed_at, due_after) VALUES (1, 3, 1, 100000, 900000);"
+          "INSERT INTO study_sessions (day, kind, ref_id, started_at, seconds) VALUES ('2026-03-01', 'lesson', 'pa1_u1_l1', 1000, 540);",
+        );
+        v1.close();
 
-      final db = open(file);
-      // Old rows survive untouched.
-      expect((await SettingsRepository(db).load()).dailyMinutes, 45);
-      final progress = (await db.select(db.lessonProgress).get()).single;
-      expect(progress.status, 'completed');
-      expect(progress.bestScore, 0.9);
-      final card = (await db.select(db.reviewCards).get()).single;
-      expect(card.stability, 8.5);
-      expect(card.reps, 3);
-      expect(card.lapses, 1);
-      expect((await db.select(db.reviewLogs).get()).single.rating, 3);
-      expect((await db.select(db.studySessions).get()).single.seconds, 540);
-      // New column gets a safe default; new table exists and is usable.
-      expect(
-        (await db.select(db.activityAttempts).get()).single.isMeasured,
-        isTrue,
-      );
-      expect(await db.select(db.errorRecords).get(), isEmpty);
+        final db = open(file);
+        // Old rows survive untouched.
+        expect((await SettingsRepository(db).load()).dailyMinutes, 45);
+        final progress = (await db.select(db.lessonProgress).get()).single;
+        expect(progress.status, 'completed');
+        expect(progress.bestScore, 0.9);
+        final card = (await db.select(db.reviewCards).get()).single;
+        expect(card.stability, 8.5);
+        expect(card.reps, 3);
+        expect(card.lapses, 1);
+        expect((await db.select(db.reviewLogs).get()).single.rating, 3);
+        expect((await db.select(db.studySessions).get()).single.seconds, 540);
+        // New column gets a safe default; new table exists and is usable.
+        final oldAttempt = (await db.select(db.activityAttempts).get()).single;
+        expect(oldAttempt.isMeasured, isTrue);
+        expect(oldAttempt.attemptNumber, 1);
+        expect(oldAttempt.userAnswer, 'بيت');
+        expect(await db.select(db.errorRecords).get(), isEmpty);
 
-      // The migrated database is fully functional.
-      final clock = FakeClock();
-      final reviews = ReviewRepository(
-        db,
-        clock: clock.call,
-        enableFuzzing: false,
-      );
-      final repo = ProgressRepository(db, reviews, clock: clock.call);
-      final ex = ExerciseBuilder(pack)
-          .buildLesson(pack.orderedLessons.first)
-          .whereType<TypeExercise>()
-          .first;
-      await repo.recordAttempt(
-        ex,
-        isCorrect: false,
-        userAnswer: 'x',
-        context: 'lesson',
-      );
-      expect((await db.select(db.errorRecords).get()).length, 1);
-      await reviews.rate(card.id, fsrs.Rating.good);
-      await db.close();
+        // The migrated database is fully functional.
+        final clock = FakeClock();
+        final reviews = ReviewRepository(
+          db,
+          clock: clock.call,
+          enableFuzzing: false,
+        );
+        final repo = ProgressRepository(db, reviews, clock: clock.call);
+        final ex = ExerciseBuilder(pack)
+            .buildLesson(pack.orderedLessons.first)
+            .whereType<TypeExercise>()
+            .first;
+        await repo.recordAttempt(
+          ex,
+          isCorrect: false,
+          userAnswer: 'x',
+          context: 'lesson',
+        );
+        expect((await db.select(db.errorRecords).get()).length, 1);
+        await reviews.rate(card.id, fsrs.Rating.good);
+        await db.close();
 
-      final check = raw.sqlite3.open(file.path);
-      expect(check.select('PRAGMA user_version').single.values.single, 2);
-      check.close();
-    });
+        final check = raw.sqlite3.open(file.path);
+        expect(
+          check.select('PRAGMA user_version').single.values.single,
+          AppDatabase.latestSchemaVersion,
+        );
+        check.close();
+      },
+    );
+
+    test(
+      'v2 → v3 keeps attempts and error records, defaults attempt_number',
+      () async {
+        final file = File('${tmp.path}/v2.sqlite');
+        final v2 = raw.sqlite3.open(file.path);
+        v2.execute(_schemaV1);
+        v2.execute(_upgradeV1toV2);
+        v2.execute(
+          "INSERT INTO activity_attempts (activity_id, lesson_id, item_id, skill, exercise_type, context, is_correct, is_measured, user_answer, expected, created_at)"
+          " VALUES ('pa1_u1_l1#17', 'pa1_u1_l1', 'casa', 'writing', 'type_es', 'lesson', 0, 1, 'caza', 'casa', 1500),"
+          " ('pa1_u1_l1#20', 'pa1_u1_l1', NULL, 'speaking', 'speak', 'lesson', 1, 0, 'self-practised', 'Mi casa es tu casa.', 1600);"
+          "INSERT INTO error_records (signature, incorrect, correct, category, prompt_ar, lesson_id, item_id, count, correct_since, first_seen, last_seen)"
+          " VALUES ('type_es|casa', 'caza', 'casa', 'spelling', 'بيت', 'pa1_u1_l1', 'casa', 3, 1, 1500, 1900);",
+        );
+        v2.close();
+
+        final db = open(file);
+        final attempts = await db.select(db.activityAttempts).get();
+        expect(attempts.length, 2);
+        expect(attempts.every((a) => a.attemptNumber == 1), isTrue);
+        expect(attempts[0].userAnswer, 'caza');
+        expect(attempts[0].isMeasured, isTrue);
+        expect(attempts[1].isMeasured, isFalse);
+        final error = (await db.select(db.errorRecords).get()).single;
+        expect(error.count, 3);
+        expect(error.correctSince, 1);
+        await db.close();
+
+        final check = raw.sqlite3.open(file.path);
+        expect(check.select('PRAGMA user_version').single.values.single, 3);
+        check.close();
+      },
+    );
 
     test('a fresh install creates the latest schema directly', () async {
       final file = File('${tmp.path}/fresh.sqlite');
@@ -181,6 +233,53 @@ void main() {
     expect((await db.select(db.reviewLogs).get()).length, 1);
     expect((await db.select(db.studySessions).get()).single.seconds, 420);
     expect((await SettingsRepository(db).load()).dailyMinutes, 60);
+    await db.close();
+  });
+
+  test('review time commits with a rating and survives interruption', () async {
+    final file = File('${tmp.path}/review.sqlite');
+    final clock = FakeClock();
+    var db = open(file);
+    final reviews = ReviewRepository(
+      db,
+      clock: clock.call,
+      enableFuzzing: false,
+    );
+    final repo = ProgressRepository(db, reviews, clock: clock.call);
+    await reviews.ensureCardsForLesson(pack.orderedLessons.first);
+    final card = (await reviews.dueCards()).first;
+    await db.customStatement('''
+      CREATE TEMP TRIGGER fail_study BEFORE INSERT ON study_sessions
+      BEGIN SELECT RAISE(ABORT, 'test write failure'); END
+    ''');
+    await expectLater(
+      repo.rateReview(
+        card.id,
+        fsrs.Rating.good,
+        durationMs: 6800,
+        activeSeconds: 6,
+      ),
+      throwsA(isA<raw.SqliteException>()),
+    );
+    expect(await db.select(db.reviewLogs).get(), isEmpty);
+    expect((await reviews.dueCards()).first, card);
+    await db.customStatement('DROP TRIGGER fail_study');
+    final updated = await repo.rateReview(
+      card.id,
+      fsrs.Rating.good,
+      durationMs: 6800,
+      activeSeconds: 6,
+    );
+    // Close without any end-of-session write.
+    await db.close();
+
+    db = open(file);
+    final log = (await db.select(db.reviewLogs).get()).single;
+    expect(log.cardId, card.id);
+    expect(log.dueAfter, updated.due);
+    final study = (await db.select(db.studySessions).get()).single;
+    expect(study.kind, 'review');
+    expect(study.seconds, 6);
     await db.close();
   });
 
@@ -274,6 +373,113 @@ void main() {
       await target.close();
     });
 
+    /// Every row of every table, as values (not just counts).
+    Future<String> snapshot(AppDatabase db) async => jsonEncode(
+      (jsonDecode(
+        await BackupService(db)
+            .exportJson(now: DateTime.utc(2000), contentVersion: 'x'),
+      ) as Map)['tables'],
+    );
+
+    test(
+      'a backup with missing tables is rejected and wipes nothing',
+      () async {
+        final db = await seeded();
+        final before = await snapshot(db);
+        expect(jsonDecode(before)['review_cards'], isNotEmpty);
+        final service = BackupService(db);
+        final doc = jsonDecode(
+          await service.exportJson(
+            now: DateTime.utc(2026),
+            contentVersion: pack.version,
+          ),
+        ) as Map<String, dynamic>;
+
+        Future<void> rejects(Map<String, dynamic> broken, String why) async {
+          await expectLater(
+            service.restoreJson(jsonEncode(broken)),
+            throwsA(isA<BackupException>()),
+            reason: why,
+          );
+          expect(await snapshot(db), before, reason: '$why changed the data');
+        }
+
+        Map<String, dynamic> without(String table) => {
+          ...doc,
+          'tables': {...(doc['tables'] as Map<String, dynamic>)}..remove(table),
+        };
+
+        await rejects({...doc, 'tables': <String, dynamic>{}}, 'tables: {}');
+        for (final table in [
+          'settings',
+          'lesson_progress',
+          'activity_attempts',
+          'review_cards',
+          'review_logs',
+          'study_sessions',
+          'error_records',
+        ]) {
+          await rejects(without(table), 'missing $table');
+        }
+        await rejects({
+          ...doc,
+          'tables': {
+            ...(doc['tables'] as Map<String, dynamic>),
+            'review_cards': null,
+          },
+        }, 'null review_cards');
+        await rejects({...doc, 'schema_version': 0}, 'schema 0');
+        await rejects({...doc, 'schema_version': '2'}, 'schema as string');
+        await rejects({...doc}..remove('schema_version'), 'no schema');
+        await db.close();
+      },
+    );
+
+    test('an inconsistent backup is rejected and wipes nothing', () async {
+      final db = await seeded();
+      final before = await snapshot(db);
+      final service = BackupService(db);
+      Future<Map<String, dynamic>> fresh() async => jsonDecode(
+        await service.exportJson(
+          now: DateTime.utc(2026),
+          contentVersion: pack.version,
+        ),
+      ) as Map<String, dynamic>;
+      Future<void> rejects(Map<String, dynamic> broken, String why) async {
+        await expectLater(
+          service.restoreJson(jsonEncode(broken)),
+          throwsA(isA<BackupException>()),
+          reason: why,
+        );
+        expect(await snapshot(db), before, reason: '$why changed the data');
+      }
+
+      // Review history pointing at a card that is not in the backup.
+      var doc = await fresh();
+      ((doc['tables'] as Map)['review_logs'] as List).first['cardId'] = 987654;
+      await rejects(doc, 'dangling review log');
+
+      // History without its cards.
+      doc = await fresh();
+      (doc['tables'] as Map)['review_cards'] = <dynamic>[];
+      await rejects(doc, 'logs without cards');
+
+      // Duplicate primary keys.
+      doc = await fresh();
+      final cards = (doc['tables'] as Map)['review_cards'] as List;
+      cards.add(Map<String, dynamic>.from(cards.first as Map));
+      await rejects(doc, 'duplicate card');
+
+      // Out-of-range values.
+      doc = await fresh();
+      ((doc['tables'] as Map)['review_logs'] as List).first['rating'] = 9;
+      await rejects(doc, 'rating out of range');
+      doc = await fresh();
+      ((doc['tables'] as Map)['review_cards'] as List).first['state'] = 0;
+      await rejects(doc, 'state out of range');
+      await db.close();
+    });
+
     test(
       'invalid or damaged files are rejected and leave data untouched',
       () async {
@@ -318,18 +524,106 @@ void main() {
       doc['schema_version'] = 1;
       final tables = doc['tables'] as Map<String, dynamic>;
       for (final row in tables['activity_attempts'] as List) {
-        (row as Map).remove('isMeasured');
+        (row as Map)
+          ..remove('isMeasured')
+          ..remove('attemptNumber');
       }
       tables.remove('error_records');
       final target = memoryDb();
       await BackupService(target).restoreJson(jsonEncode(doc));
-      expect(
-        (await target.select(target.activityAttempts).get()).single.isMeasured,
-        isTrue,
-      );
+      final restored =
+          (await target.select(target.activityAttempts).get()).single;
+      expect(restored.isMeasured, isTrue);
+      expect(restored.attemptNumber, 1);
+      expect((await target.select(target.reviewCards).get()), isNotEmpty);
       await db.close();
       await target.close();
     });
+
+    test(
+      'schema-v2 restores measured flags and defaults attempt numbers',
+      () async {
+        final db = await seeded();
+        final doc = jsonDecode(
+          await BackupService(
+            db,
+          ).exportJson(now: DateTime.utc(2026), contentVersion: pack.version),
+        ) as Map<String, dynamic>;
+        doc['schema_version'] = 2;
+        final row = (doc['tables']['activity_attempts'] as List).single as Map;
+        row
+          ..remove('attemptNumber')
+          ..['isMeasured'] = false;
+        final target = memoryDb();
+        await BackupService(target).restoreJson(jsonEncode(doc));
+        final attempt =
+            (await target.select(target.activityAttempts).get()).single;
+        expect(attempt.isMeasured, isFalse);
+        expect(attempt.attemptNumber, 1);
+        expect(await target.select(target.errorRecords).get(), isNotEmpty);
+        await db.close();
+        await target.close();
+      },
+    );
+
+    test('invalid schema-defined fields preserve all current rows', () async {
+      final db = await seeded();
+      final service = BackupService(db);
+      final before = await snapshot(db);
+      final backup = await service.exportJson(
+        now: DateTime.utc(2026),
+        contentVersion: pack.version,
+      );
+      final cases = <(int, String, String, Object?)>[
+        (2, 'activity_attempts', 'isMeasured', null),
+        (3, 'activity_attempts', 'isMeasured', null),
+        (3, 'activity_attempts', 'attemptNumber', null),
+        (3, 'activity_attempts', 'attemptNumber', -1),
+        (3, 'activity_attempts', 'attemptNumber', 3),
+        (3, 'lesson_progress', 'status', 'unknown'),
+        (3, 'lesson_progress', 'bestScore', 1.5),
+        (3, 'lesson_progress', 'lastScore', -0.1),
+        (3, 'review_cards', 'cardType', 'unknown'),
+        (3, 'review_cards', 'due', -1),
+        (3, 'review_logs', 'dueAfter', 8640000000000001),
+      ];
+      for (final (version, table, field, value) in cases) {
+        final doc = jsonDecode(backup) as Map<String, dynamic>;
+        doc['schema_version'] = version;
+        final row = (doc['tables'][table] as List).first as Map;
+        if (value == null) {
+          row.remove(field);
+        } else {
+          row[field] = value;
+        }
+        final reason = 'schema $version, $table.$field = $value';
+        await expectLater(
+          service.restoreJson(jsonEncode(doc)),
+          throwsA(isA<BackupException>()),
+          reason: reason,
+        );
+        expect(await snapshot(db), before, reason: reason);
+      }
+      await db.close();
+    });
+
+    test(
+      'summarize reports row counts without touching the database',
+      () async {
+        final db = await seeded();
+        final json = await BackupService(db)
+            .exportJson(now: DateTime.utc(2026), contentVersion: pack.version);
+        final summary = BackupService.summarize(json);
+        expect(summary['lesson_progress'], 1);
+        expect(
+          summary['review_cards'],
+          pack.orderedLessons.first.items.length * 2,
+        );
+        expect(summary['review_logs'], 1);
+        expect(BackupService.summarize('garbage'), isEmpty);
+        await db.close();
+      },
+    );
 
     test('reset clears progress but keeps settings', () async {
       final db = await seeded();
