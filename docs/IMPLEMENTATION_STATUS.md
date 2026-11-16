@@ -1,11 +1,10 @@
 # Implementation status
 
-Four states are kept strictly apart: **implemented and tested**, **implemented
-but not verified**, **not implemented**, **blocked**. Exact commit references
-for the current handoff are in [`AI_BRIDGE/CLAUDE_STATUS.md`](../AI_BRIDGE/CLAUDE_STATUS.md).
-
-Milestone: **Phase 1 — Working educational foundation**, including the fixes
-requested in REVIEW-001.
+**Phase 1 — Working educational foundation**, pending acceptance. The fixes
+for REVIEW-002 are in code commit `65324da6e0e2b6d110ca8b550ce4e761096241ec`
+on [draft PR #2](https://github.com/abdulrahmanal-saeed/Espa-ol-Pro/pull/2).
+The PR tracks the latest head and checks. See [the review handoff](REVIEW_HANDOFF.md)
+for Android verification and the remaining acceptance checks.
 
 ## Implemented and covered by automated tests
 
@@ -18,11 +17,12 @@ requested in REVIEW-001.
 | Lesson engine: teach/note steps + 11 exercise types, deterministic generation | `exercise_builder_test`, `app_flow_test` (full lesson driven through the UI) |
 | Answer grading: correct / correct-with-accent-reminder / incorrect; ñ distinct | `answer_evaluator_test`, `app_flow_test` |
 | Wrong answers: detected, explained, retried once, excluded from first-try score | `app_flow_test` |
-| Lesson completion, best score, prerequisite unlocking | `progress_test`, `app_flow_test` |
+| Lesson completion, best score, prerequisite unlocking and entry into A1 | `progress_test`, `app_flow_test` |
 | FSRS-6 scheduling: learning steps, graduation, lapses, growth, retention setting, idempotent cards, atomic history, UTC instants | `fsrs_test` |
 | Review UI: reveal-before-rate, four ratings with intervals, production cards with forced *Again* on a wrong answer | `app_flow_test` |
 | Learning steps are never answerable before their due instant (waiting state with countdown) | `app_flow_test` (clock-controlled) |
 | Every answer is persisted before the run advances; retries stored as attempt 2 and excluded from skill evidence | `app_flow_test`, `progress_test` |
+| Failed writes keep the answer available for retry without grading it, scoring it, or advancing | `app_flow_test`, with SQLite failures on the first answer and the prompted retry |
 | Practice: listening, writing, pronunciation (self-assessed), error-focused | `exercise_builder_test`, `app_flow_test` (writing run) |
 | Error notebook: one record per target, count, reopen, resolved after two correct answers | `progress_test`, `app_flow_test` |
 | Daily plan for 20/45/60 min, deterministic, with reasons | `progress_test`, `app_flow_test` |
@@ -31,27 +31,29 @@ requested in REVIEW-001.
 | Settings persisted in SQLite, tolerant of corrupt values | `progress_test`, `app_flow_test` |
 | SQLite schema v3, migrations v1→v3 and v2→v3 on real files | `persistence_test` |
 | Progress survives closing and reopening the database | `persistence_test` |
-| Backup export / restore / reset; truncated, inconsistent or damaged backups rejected with data unchanged | `persistence_test` |
+| Backup export / restore / reset; v1–v3 restore compatibility and rejection of malformed fields with every existing row preserved | `persistence_test` |
+| Review ratings, FSRS state, and active study time commit together and survive reopening SQLite | `persistence_test`, including failure during the study-time write |
 
-Test run for this drop: **100 tests, all passing** (`flutter test`), analyzer
-clean with `--fatal-infos`, formatter clean, content validator clean.
+Local Windows verification used Flutter 3.50.0. All 105 tests passed,
+including the A1 unlock regression. Analysis passed with `--fatal-infos`,
+formatting and content v1.0.2 passed validation, and Drift regeneration
+produced an identical checked-in file. The database and backup schema
+remain at v3.
 
-## Implemented but NOT verified on a device
+## Android build and runtime
 
-These exist in code but could not be exercised in the build environment
-(no Android SDK or device available there):
-
-- **Android build.** Not built locally. Verified only by the CI job
-  `Android debug APK` — check its result for the referenced commit. The job
-  failed on two docs-only commits because the runner's NDK download was
-  corrupt; the workflow now installs and verifies the NDK with retries.
-- **Spanish audio (device TTS).** The call path is tested with a fake; real
-  voice output, voice availability detection and the accent/speed settings
-  need a phone.
-- **Backup file dialogs** (`file_picker` save/open). Serialisation is tested;
-  the system dialogs are not.
-- **On-screen keyboard behaviour**, the accent-key row, back-gesture handling.
-- **App icon / splash** are still the Flutter defaults.
+- The [code commit's CI run](https://github.com/abdulrahmanal-saeed/Espa-ol-Pro/actions/runs/43900871431)
+  passed verification and produced the debug APK. A Windows Gradle build
+  could not resolve the Gradle repository.
+- The CI artifact's checksum matched GitHub and the APK installed on an API
+  36 Google Play emulator. Android system and System UI stopped responding
+  during launch and relaunch. A clean AOSP emulator remained offline during
+  the attempt.
+- On a Samsung Galaxy A15 running Android 16, the APK opened and the learner
+  completed the first lesson. The on-device database contained 11 correct
+  graded attempts and 14 FSRS cards. See [device evidence](REVIEW_HANDOFF.md#4-android-device-checks)
+  for the outstanding checks.
+- The app icon and splash use the Flutter defaults.
 
 ## Not implemented (and not claimed)
 
@@ -85,16 +87,18 @@ These exist in code but could not be exercised in the build environment
    with stricter accent requirements at higher levels.
 8. Attempts recorded before schema v3 all count as first attempts, because
    the distinction was not stored then.
+9. Review study time is checkpointed with completed ratings. Time spent on
+   the last unrated card is lost if the learner exits or the app terminates.
 
 ## Blocked
 
 | Item | Blocked on |
 |---|---|
-| Local Android build / emulator run | Build sandbox cannot reach the Android SDK host; CI covers the build |
+| Remaining physical Android checks | Device checklist in `REVIEW_HANDOFF.md` |
 | Phase 2 AI features | Owner decision: provider, backend, budget |
 | `native_reviewed` content | A human Spanish teacher |
 
 ## Next recommended milestone
 
-Phase 1.x hardening: device verification pass, reminders, listening library,
-unit checkpoints, remaining A1 units — see `ROADMAP.md`.
+Finish device verification and obtain independent sign-off. The next
+curriculum and practice milestones are listed in [the roadmap](ROADMAP.md).

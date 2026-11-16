@@ -126,6 +126,32 @@ void main() {
     await app.dispose(tester);
   });
 
+  testWidgets('initial A1 opens when the Pre-A1 sequence is completed', (
+    tester,
+  ) async {
+    final app = TestApp(pack);
+    final introductoryA1 = pack.orderedLessons.firstWhere(
+      (lesson) => lesson.levelId == 'a1',
+    );
+    final preA1 = pack.orderedLessons
+        .takeWhile((lesson) => lesson.levelId == 'pre_a1')
+        .toList();
+    for (final lesson in preA1.take(preA1.length - 1)) {
+      await completeViaRepo(app, lesson);
+    }
+    await app.pump(tester, location: '/lesson/${introductoryA1.id}');
+    final start = find.byKey(const ValueKey('start-lesson'));
+    expect(tester.widget<FilledButton>(start).onPressed, isNull);
+
+    await completeViaRepo(app, preA1.last);
+    await tester.pumpAndSettle();
+    await tester.tapKey('start-lesson');
+    final first = ExerciseBuilder(pack).buildLesson(introductoryA1).first;
+    await tester.answer(first);
+    expect(tester.takeException(), isNull);
+    await app.dispose(tester);
+  });
+
   testWidgets(
     'full lesson end-to-end: learn, answer, complete, schedule, unlock',
     (tester) async {
