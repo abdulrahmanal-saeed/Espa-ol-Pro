@@ -1,0 +1,151 @@
+// Renders real app screens to PNG for the review handoff.
+//
+//   flutter test test_screenshots --update-goldens
+//
+// Not part of the default `flutter test` run: pixel output differs slightly
+// between machines, so these are evidence, not regression gates.
+import 'package:espanol_pro/core/content/models.dart';
+import 'package:espanol_pro/core/learning/exercises.dart';
+import 'package:espanol_pro/core/learning/progress_repository.dart';
+import 'package:espanol_pro/core/settings.dart';
+import 'package:espanol_pro/core/srs/review_repository.dart';
+import 'package:flutter_test/flutter_test.dart';
+import 'package:fsrs/fsrs.dart' as fsrs;
+import 'package:material_ui/material_ui.dart';
+
+import '../test/support.dart';
+import '../test/widget_support.dart';
+
+void main() {
+  late ContentPack pack;
+  setUpAll(() async {
+    pack = await loadRealContent();
+    await loadAppFonts();
+  });
+
+  Future<void> shot(WidgetTester tester, String name) => expectLater(
+    find.byType(MaterialApp),
+    matchesGoldenFile('../docs/screenshots/$name.png'),
+  );
+
+  /// A learner three days in: 4 lessons done, some reviews, two mistakes.
+  Future<TestApp> seeded() async {
+    final app = TestApp(pack);
+    final reviews = ReviewRepository(
+      app.db,
+      clock: app.clock.call,
+      enableFuzzing: false,
+    );
+    final repo = ProgressRepository(app.db, reviews, clock: app.clock.call);
+    final builder = ExerciseBuilder(pack);
+    app.clock.now = DateTime.utc(2026, 3, 7, 9);
+    for (var i = 0; i < 4; i++) {
+      final lesson = pack.orderedLessons[i];
+      final exercises = builder.buildLesson(lesson).whereType<Exercise>();
+      var n = 0;
+      for (final ex in exercises) {
+        await repo.recordAttempt(
+          ex,
+          isCorrect: n++ % 6 != 5,
+          userAnswer: n % 6 == 0 ? 'ola' : ex.expected,
+          context: 'lesson',
+          lessonId: lesson.id,
+        );
+      }
+      await repo.completeLesson(
+        lesson,
+        score: 0.84 + i * 0.04,
+        seconds: 600 + i * 90,
+        contentVersion: pack.version,
+      );
+      for (final c in (await reviews.dueCards()).take(9)) {
+        await reviews.rate(c.id, fsrs.Rating.good);
+      }
+      await repo.logStudy(kind: 'review', seconds: 240);
+      if (i != 2) app.clock.advance(const Duration(days: 1));
+    }
+    return app;
+  }
+
+  testWidgets('screens', (tester) async {
+    var app = TestApp(pack);
+    await app.pump(tester);
+    await shot(tester, '01_home_new_learner');
+    await app.dispose(tester);
+
+    app = await seeded();
+    await app.pump(tester);
+    await shot(tester, '02_home_in_progress');
+    await tester.tapSettled(find.text('المسار'));
+    await shot(tester, '03_learning_path');
+    await tester.tapSettled(find.text('التدريب'));
+    await shot(tester, '04_practice_center');
+    await tester.tapSettled(find.text('المكتبة'));
+    await shot(tester, '05_library_dictionary');
+    await tester.tapSettled(find.text('دفتر الأخطاء'));
+    await shot(tester, '06_error_notebook');
+    await tester.tapSettled(find.text('التقدّم'));
+    await shot(tester, '07_progress');
+    await app.dispose(tester);
+
+    // Lesson: intro, teach card, exercises, feedback.
+    app = await seeded();
+    final lesson = pack.orderedLessons[4];
+    final steps = ExerciseBuilder(pack).buildLesson(lesson);
+    await app.pump(tester, location: '/lesson/${lesson.id}');
+    await shot(tester, '08_lesson_intro');
+    await tester.tapKey('start-lesson');
+    await shot(tester, '09_lesson_teach_card');
+    var i = 0;
+    Future<void> advanceTo(bool Function(LessonStep) test) async {
+      while (!test(steps[i])) {
+        await tester.answer(steps[i++]);
+      }
+    }
+
+    await advanceTo((s) => s is ChoiceExercise && s.audioEs == null);
+    await shot(tester, '10_exercise_choice');
+    final choice = steps[i] as ChoiceExercise;
+    await tester.tapKey(
+      'option-${(choice.correctIndex + 1) % choice.options.length}',
+    );
+    await tester.tapSettled(find.text('تحقّق'));
+    await shot(tester, '11_feedback_incorrect');
+    await tester.tapKey('continue-button');
+    i++;
+    await advanceTo((s) => s is NoteStep);
+    await shot(tester, '12_grammar_note');
+    await advanceTo((s) => s is MatchExercise);
+    await shot(tester, '13_exercise_match');
+    await advanceTo((s) => s is OrderExercise);
+    await shot(tester, '14_exercise_order');
+    await advanceTo((s) => s is TypeExercise);
+    await tester.enterText(
+      find.byKey(const ValueKey('answer-field')),
+      (steps[i] as TypeExercise).accepted.first,
+    );
+    await tester.pumpAndSettle();
+    await tester.tapSettled(find.text('تحقّق'));
+    await shot(tester, '15_feedback_correct');
+    await tester.tapKey('continue-button');
+    i++;
+    await app.dispose(tester);
+
+    // Review card with FSRS intervals; dark theme.
+    app = await seeded();
+    await app.pump(
+      tester,
+      location: '/review',
+      settings: const AppSettings(themeMode: 'dark'),
+    );
+    final reveal = find.byKey(const ValueKey('review-reveal'));
+    if (reveal.evaluate().isNotEmpty) await tester.tapKey('review-reveal');
+    await shot(tester, '16_review_dark');
+    await app.dispose(tester);
+
+    app = await seeded();
+    await app.pump(tester, location: '/settings');
+    await shot(tester, '17_settings');
+    await app.dispose(tester);
+  });
+}

@@ -1,0 +1,1008 @@
+{
+ "unit": "pa1_u3",
+ "grammar": [
+  {
+   "id": "g_numbers",
+   "title_ar": "الأرقام من 0 إلى 20",
+   "body_ar": "0 cero · 1 uno · 2 dos · 3 tres · 4 cuatro · 5 cinco · 6 seis · 7 siete · 8 ocho · 9 nueve · 10 diez\n11 once · 12 doce · 13 trece · 14 catorce · 15 quince\n16 dieciséis · 17 diecisiete · 18 dieciocho · 19 diecinueve · 20 veinte\n\nمن 16 إلى 19 النمط ثابت: dieci + الرقم (أي «عشرة و…»). وكلمة dieciséis وحدها تحمل علامة نبر.\n\nرقم الهاتف يُقرأ عادةً رقماً رقماً أو أزواجاً.",
+   "examples": [
+    {
+     "es": "Mi número es cinco, cero, uno.",
+     "ar": "رقمي هو ٥ ٠ ١."
+    }
+   ]
+  },
+  {
+   "id": "g_ser",
+   "title_ar": "الفعل ser (يكون) في المفرد",
+   "body_ar": "yo soy — أنا\ntú eres — أنتَ / أنتِ\nél / ella / usted es — هو / هي / حضرتك\n\n• العربية تقول «أنا عمر» بلا فعل، أما الإسبانية فلا بد فيها من الفعل: Soy Omar.\n• الضمير يُحذف غالباً لأن الفعل يدل عليه: «Soy Omar» أشيع من «Yo soy Omar».\n• نستعمل ser للهوية والاسم والجنسية والأصل والمهنة.",
+   "examples": [
+    {
+     "es": "Soy Omar.",
+     "ar": "أنا عمر."
+    },
+    {
+     "es": "¿Eres de México?",
+     "ar": "هل أنت من المكسيك؟"
+    },
+    {
+     "es": "Ella es Laura.",
+     "ar": "هي لاورا."
+    }
+   ]
+  },
+  {
+   "id": "g_negation",
+   "title_ar": "النفي بـ no",
+   "body_ar": "للنفي نضع no قبل الفعل مباشرة — ولا شيء غير ذلك:\nSoy de España. ← No soy de España.\n\nوفي الإجابة بالنفي تتكرر no: مرة بمعنى «لا» ومرة لنفي الفعل:\n¿Eres de México? — No, no soy de México.",
+   "examples": [
+    {
+     "es": "No soy de España.",
+     "ar": "لست من إسبانيا."
+    },
+    {
+     "es": "No, no soy Laura.",
+     "ar": "لا، لست لاورا."
+    }
+   ]
+  }
+ ],
+ "lessons": [
+  {
+   "id": "pa1_u3_l1",
+   "title_ar": "الأرقام من 0 إلى 10",
+   "title_es": "Los números del 0 al 10",
+   "objectives_ar": [
+    "العدّ من 0 إلى 10",
+    "فهم الأرقام عند سماعها",
+    "كتابة الأرقام بالحروف"
+   ],
+   "prerequisites": [
+    "pa1_u2_l3"
+   ],
+   "minutes": 14,
+   "work_relevance_ar": "الأرقام أساس الأسعار والكميات والمواعيد.",
+   "source": "original-v1",
+   "grammar": [
+    "g_numbers"
+   ],
+   "items": [
+    {
+     "id": "cero",
+     "es": "cero",
+     "ar": "صفر (0)",
+     "en": "zero",
+     "pos": "عدد",
+     "examples": [
+      {
+       "es": "Cero problemas.",
+       "ar": "لا مشاكل إطلاقاً."
+      }
+     ],
+     "connections": [
+      {
+       "type": "arabic_origin",
+       "ar": "أصلها «صِفْر» العربية: انتقلت إلى اللاتينية ثم الإيطالية (zero) ومنها إلى الإسبانية، بحسب معجم الأكاديمية الملكية الإسبانية."
+      }
+     ]
+    },
+    {
+     "id": "dos",
+     "es": "dos",
+     "ar": "اثنان (2)",
+     "en": "two",
+     "pos": "عدد",
+     "examples": [
+      {
+       "es": "Dos cafés, por favor.",
+       "ar": "قهوتان، من فضلك."
+      }
+     ]
+    },
+    {
+     "id": "tres",
+     "es": "tres",
+     "ar": "ثلاثة (3)",
+     "en": "three",
+     "pos": "عدد",
+     "examples": [
+      {
+       "es": "Tres clientes.",
+       "ar": "ثلاثة عملاء."
+      }
+     ]
+    },
+    {
+     "id": "cuatro",
+     "es": "cuatro",
+     "ar": "أربعة (4)",
+     "en": "four",
+     "pos": "عدد",
+     "examples": [
+      {
+       "es": "Cuatro hoteles.",
+       "ar": "أربعة فنادق."
+      }
+     ]
+    },
+    {
+     "id": "cinco",
+     "es": "cinco",
+     "ar": "خمسة (5)",
+     "en": "five",
+     "pos": "عدد",
+     "examples": [
+      {
+       "es": "Cinco minutos, por favor.",
+       "ar": "خمس دقائق، من فضلك."
+      }
+     ]
+    },
+    {
+     "id": "seis",
+     "es": "seis",
+     "ar": "ستة (6)",
+     "en": "six",
+     "pos": "عدد",
+     "examples": [
+      {
+       "es": "Seis oficinas.",
+       "ar": "ستة مكاتب."
+      }
+     ]
+    },
+    {
+     "id": "siete",
+     "es": "siete",
+     "ar": "سبعة (7)",
+     "en": "seven",
+     "pos": "عدد",
+     "examples": [
+      {
+       "es": "Siete días.",
+       "ar": "سبعة أيام."
+      }
+     ]
+    },
+    {
+     "id": "ocho",
+     "es": "ocho",
+     "ar": "ثمانية (8)",
+     "en": "eight",
+     "pos": "عدد",
+     "examples": [
+      {
+       "es": "Ocho amigos.",
+       "ar": "ثمانية أصدقاء."
+      }
+     ],
+     "note_ar": "ch تُنطق «تش»: «أوتشو»."
+    },
+    {
+     "id": "nueve",
+     "es": "nueve",
+     "ar": "تسعة (9)",
+     "en": "nine",
+     "pos": "عدد",
+     "examples": [
+      {
+       "es": "Nueve mesas.",
+       "ar": "تسع طاولات."
+      }
+     ],
+     "note_ar": "v تُنطق باءً خفيفة في الإسبانية: «نْوِبِه»."
+    },
+    {
+     "id": "diez",
+     "es": "diez",
+     "ar": "عشرة (10)",
+     "en": "ten",
+     "pos": "عدد",
+     "examples": [
+      {
+       "es": "Diez clientes.",
+       "ar": "عشرة عملاء."
+      }
+     ]
+    }
+   ],
+   "activities": [
+    {
+     "type": "teach",
+     "item": "cero"
+    },
+    {
+     "type": "teach",
+     "item": "dos"
+    },
+    {
+     "type": "teach",
+     "item": "tres"
+    },
+    {
+     "type": "listen_pick_es",
+     "item": "dos"
+    },
+    {
+     "type": "mcq_meaning",
+     "item": "tres"
+    },
+    {
+     "type": "teach",
+     "item": "cuatro"
+    },
+    {
+     "type": "teach",
+     "item": "cinco"
+    },
+    {
+     "type": "listen_choose",
+     "item": "cinco"
+    },
+    {
+     "type": "mcq_reverse",
+     "item": "cuatro"
+    },
+    {
+     "type": "match",
+     "items": [
+      "cero",
+      "dos",
+      "tres",
+      "cuatro"
+     ]
+    },
+    {
+     "type": "teach",
+     "item": "seis"
+    },
+    {
+     "type": "teach",
+     "item": "siete"
+    },
+    {
+     "type": "teach",
+     "item": "ocho"
+    },
+    {
+     "type": "listen_pick_es",
+     "item": "siete"
+    },
+    {
+     "type": "teach",
+     "item": "nueve"
+    },
+    {
+     "type": "teach",
+     "item": "diez"
+    },
+    {
+     "type": "mcq_meaning",
+     "item": "ocho"
+    },
+    {
+     "type": "match",
+     "items": [
+      "seis",
+      "siete",
+      "nueve",
+      "diez"
+     ]
+    },
+    {
+     "type": "type_es",
+     "item": "cinco"
+    },
+    {
+     "type": "type_es",
+     "item": "diez"
+    },
+    {
+     "type": "dictation",
+     "item": "tres"
+    },
+    {
+     "type": "dictation",
+     "item": "ocho"
+    },
+    {
+     "type": "choice",
+     "prompt_ar": "استمع: ما الأرقام التي سمعتها؟",
+     "choices": [
+      "6 – 7 – 8",
+      "6 – 7 – 5",
+      "2 – 7 – 8"
+     ],
+     "answer": 0,
+     "skill": "listening",
+     "choices_es": false,
+     "audio_es": "seis, siete, ocho"
+    },
+    {
+     "type": "choice",
+     "prompt_ar": "ما الرقم التالي؟  uno, dos, tres, …",
+     "choices": [
+      "cuatro",
+      "cinco",
+      "seis"
+     ],
+     "answer": 0,
+     "skill": "vocabulary",
+     "choices_es": true
+    },
+    {
+     "type": "type_es",
+     "item": "nueve"
+    },
+    {
+     "type": "speak",
+     "es": "cero, uno, dos, tres, cuatro, cinco",
+     "ar": "٠، ١، ٢، ٣، ٤، ٥"
+    }
+   ]
+  },
+  {
+   "id": "pa1_u3_l2",
+   "title_ar": "الأرقام 11–20 ورقم الهاتف",
+   "title_es": "Los números del 11 al 20 y el teléfono",
+   "objectives_ar": [
+    "العدّ من 11 إلى 20",
+    "السؤال عن رقم الهاتف",
+    "إملاء رقم هاتفك رقماً رقماً"
+   ],
+   "prerequisites": [
+    "pa1_u3_l1"
+   ],
+   "minutes": 15,
+   "work_relevance_ar": "تبادل أرقام الهاتف خطوة أساسية بعد أي لقاء عمل.",
+   "source": "original-v1",
+   "grammar": [
+    "g_numbers"
+   ],
+   "items": [
+    {
+     "id": "once",
+     "es": "once",
+     "ar": "أحد عشر (11)",
+     "en": "eleven",
+     "pos": "عدد",
+     "examples": [
+      {
+       "es": "Tengo once clientes.",
+       "ar": "عندي أحد عشر عميلاً."
+      }
+     ],
+     "connections": [
+      {
+       "type": "false_friend",
+       "ar": "لا تخلطها بـ once الإنجليزية (مرة واحدة). في الإسبانية تُنطق «أونسِه» وتعني 11."
+      }
+     ]
+    },
+    {
+     "id": "doce",
+     "es": "doce",
+     "ar": "اثنا عشر (12)",
+     "en": "twelve",
+     "pos": "عدد",
+     "examples": [
+      {
+       "es": "Doce meses.",
+       "ar": "اثنا عشر شهراً."
+      }
+     ]
+    },
+    {
+     "id": "trece",
+     "es": "trece",
+     "ar": "ثلاثة عشر (13)",
+     "en": "thirteen",
+     "pos": "عدد",
+     "examples": [
+      {
+       "es": "Trece días.",
+       "ar": "ثلاثة عشر يوماً."
+      }
+     ]
+    },
+    {
+     "id": "catorce",
+     "es": "catorce",
+     "ar": "أربعة عشر (14)",
+     "en": "fourteen",
+     "pos": "عدد",
+     "examples": [
+      {
+       "es": "Catorce días.",
+       "ar": "أربعة عشر يوماً."
+      }
+     ]
+    },
+    {
+     "id": "quince",
+     "es": "quince",
+     "ar": "خمسة عشر (15)",
+     "en": "fifteen",
+     "pos": "عدد",
+     "examples": [
+      {
+       "es": "Quince minutos.",
+       "ar": "خمس عشرة دقيقة."
+      }
+     ]
+    },
+    {
+     "id": "dieciseis",
+     "es": "dieciséis",
+     "ar": "ستة عشر (16)",
+     "en": "sixteen",
+     "pos": "عدد",
+     "examples": [
+      {
+       "es": "Dieciséis clientes.",
+       "ar": "ستة عشر عميلاً."
+      }
+     ],
+     "note_ar": "dieci + seis. وبالنمط نفسه: diecisiete (17)، dieciocho (18)، diecinueve (19)."
+    },
+    {
+     "id": "veinte",
+     "es": "veinte",
+     "ar": "عشرون (20)",
+     "en": "twenty",
+     "pos": "عدد",
+     "examples": [
+      {
+       "es": "Veinte minutos.",
+       "ar": "عشرون دقيقة."
+      }
+     ]
+    },
+    {
+     "id": "numero",
+     "es": "número",
+     "ar": "رقم",
+     "en": "number",
+     "pos": "اسم مذكر",
+     "examples": [
+      {
+       "es": "El número diez.",
+       "ar": "الرقم عشرة."
+      }
+     ],
+     "connections": [
+      {
+       "type": "cognate",
+       "ar": "قريبة من number الإنجليزية ومن numeral."
+      }
+     ]
+    },
+    {
+     "id": "cual_es_tu_numero",
+     "es": "¿Cuál es tu número de teléfono?",
+     "ar": "ما رقم هاتفك؟",
+     "en": "What's your phone number?",
+     "pos": "سؤال",
+     "examples": [
+      {
+       "es": "Perdón, ¿cuál es tu número de teléfono?",
+       "ar": "المعذرة، ما رقم هاتفك؟"
+      }
+     ],
+     "note_ar": "بالصيغة الرسمية: ¿Cuál es su número de teléfono?",
+     "work": true
+    },
+    {
+     "id": "mi_numero_es",
+     "es": "mi número es…",
+     "ar": "رقمي هو…",
+     "en": "my number is…",
+     "pos": "تعبير",
+     "examples": [
+      {
+       "es": "Mi número es cinco, cinco, uno, dos, tres.",
+       "ar": "رقمي هو ٥ ٥ ١ ٢ ٣."
+      }
+     ],
+     "work": true
+    }
+   ],
+   "activities": [
+    {
+     "type": "teach",
+     "item": "once"
+    },
+    {
+     "type": "teach",
+     "item": "doce"
+    },
+    {
+     "type": "teach",
+     "item": "trece"
+    },
+    {
+     "type": "listen_pick_es",
+     "item": "once"
+    },
+    {
+     "type": "mcq_meaning",
+     "item": "doce"
+    },
+    {
+     "type": "teach",
+     "item": "catorce"
+    },
+    {
+     "type": "teach",
+     "item": "quince"
+    },
+    {
+     "type": "listen_choose",
+     "item": "quince"
+    },
+    {
+     "type": "mcq_reverse",
+     "item": "trece"
+    },
+    {
+     "type": "note",
+     "title_ar": "من 16 إلى 19",
+     "body_ar": "النمط ثابت: dieci + الرقم.\n16 dieciséis\n17 diecisiete\n18 dieciocho\n19 diecinueve\n\nكأنك تقول «عشرة وستة». و dieciséis وحدها تحمل علامة نبر.",
+     "examples": [
+      {
+       "es": "dieciocho",
+       "ar": "ثمانية عشر (18)"
+      }
+     ]
+    },
+    {
+     "type": "teach",
+     "item": "dieciseis"
+    },
+    {
+     "type": "teach",
+     "item": "veinte"
+    },
+    {
+     "type": "choice",
+     "prompt_ar": "كيف نكتب الرقم 18؟",
+     "choices": [
+      "dieciocho",
+      "diezocho",
+      "ochodiez"
+     ],
+     "answer": 0,
+     "skill": "vocabulary",
+     "choices_es": true,
+     "explain_ar": "dieci + ocho = dieciocho."
+    },
+    {
+     "type": "match",
+     "items": [
+      "once",
+      "catorce",
+      "quince",
+      "veinte"
+     ]
+    },
+    {
+     "type": "type_es",
+     "item": "doce"
+    },
+    {
+     "type": "dictation",
+     "item": "veinte"
+    },
+    {
+     "type": "listen_pick_es",
+     "item": "dieciseis"
+    },
+    {
+     "type": "teach",
+     "item": "numero"
+    },
+    {
+     "type": "teach",
+     "item": "cual_es_tu_numero"
+    },
+    {
+     "type": "teach",
+     "item": "mi_numero_es"
+    },
+    {
+     "type": "mcq_meaning",
+     "item": "cual_es_tu_numero"
+    },
+    {
+     "type": "mcq_reverse",
+     "item": "numero"
+    },
+    {
+     "type": "order",
+     "es": "¿Cuál es tu número de teléfono?",
+     "ar": "ما رقم هاتفك؟"
+    },
+    {
+     "type": "choice",
+     "prompt_ar": "استمع: ما رقم الهاتف؟",
+     "choices": [
+      "5 5 2 0 9",
+      "5 5 2 0 6",
+      "5 5 3 0 9"
+     ],
+     "answer": 0,
+     "skill": "listening",
+     "choices_es": false,
+     "audio_es": "Mi número es cinco, cinco, dos, cero, nueve."
+    },
+    {
+     "type": "fill",
+     "es": "Mi ___ es cinco, cero, uno.",
+     "answer": "número",
+     "ar": "رقمي هو ٥ ٠ ١."
+    },
+    {
+     "type": "listen_choose",
+     "item": "mi_numero_es"
+    },
+    {
+     "type": "respond",
+     "prompt_ar": "زميل يسألك: «¿Cuál es tu número de teléfono?». أجب بأن رقمك 5 0 1 (اكتب الأرقام بالحروف).",
+     "accepted": [
+      "Mi número es cinco, cero, uno",
+      "Mi número es el cinco, cero, uno",
+      "Es cinco, cero, uno",
+      "Es el cinco, cero, uno",
+      "Cinco, cero, uno",
+      "Mi número de teléfono es cinco, cero, uno",
+      "Mi número de teléfono es el cinco, cero, uno"
+     ],
+     "audio_es": "¿Cuál es tu número de teléfono?"
+    },
+    {
+     "type": "speak",
+     "es": "Mi número es cinco, cero, uno.",
+     "ar": "رقمي هو ٥ ٠ ١."
+    }
+   ]
+  },
+  {
+   "id": "pa1_u3_l3",
+   "title_ar": "جملتك الأولى: من أنا ومن أين أنا؟",
+   "title_es": "Mi primera frase: soy… / soy de…",
+   "objectives_ar": [
+    "تصريف الفعل ser مع yo و tú و usted",
+    "قول من أنت ومن أين أنت",
+    "السؤال عن بلد شخص آخر",
+    "نفي جملة بسيطة"
+   ],
+   "prerequisites": [
+    "pa1_u3_l2"
+   ],
+   "minutes": 15,
+   "work_relevance_ar": "«من أين حضرتك؟» من أول أسئلة التعارف مع أي عميل.",
+   "source": "original-v1",
+   "grammar": [
+    "g_ser",
+    "g_negation"
+   ],
+   "items": [
+    {
+     "id": "yo",
+     "es": "yo",
+     "ar": "أنا",
+     "en": "I",
+     "pos": "ضمير",
+     "examples": [
+      {
+       "es": "Yo soy Omar.",
+       "ar": "أنا عمر."
+      }
+     ]
+    },
+    {
+     "id": "soy",
+     "es": "soy",
+     "ar": "أنا (أكون)",
+     "en": "I am",
+     "pos": "فعل (ser)",
+     "examples": [
+      {
+       "es": "Soy Omar.",
+       "ar": "أنا عمر."
+      }
+     ],
+     "connections": [
+      {
+       "type": "grammar",
+       "ar": "العربية تقول «أنا عمر» بلا فعل، أما الإسبانية فلا بد فيها من soy."
+      }
+     ]
+    },
+    {
+     "id": "tu_pron",
+     "es": "tú",
+     "ar": "أنتَ / أنتِ",
+     "en": "you (informal)",
+     "pos": "ضمير",
+     "examples": [
+      {
+       "es": "Tú eres mi amigo.",
+       "ar": "أنت صديقي."
+      }
+     ],
+     "note_ar": "tú بعلامة النبر = أنت. أما tu بدونها فتعني «…ـك» للملكية: tu casa (بيتك)."
+    },
+    {
+     "id": "eres",
+     "es": "eres",
+     "ar": "أنتَ (تكون)",
+     "en": "you are (informal)",
+     "pos": "فعل (ser)",
+     "examples": [
+      {
+       "es": "Eres mi amigo.",
+       "ar": "أنت صديقي."
+      }
+     ]
+    },
+    {
+     "id": "usted",
+     "es": "usted",
+     "ar": "حضرتك",
+     "en": "you (formal)",
+     "pos": "ضمير",
+     "examples": [
+      {
+       "es": "Usted es el cliente.",
+       "ar": "حضرتك العميل."
+      }
+     ],
+     "note_ar": "تُختصر كتابةً: Ud.",
+     "work": true
+    },
+    {
+     "id": "es",
+     "es": "es",
+     "ar": "هو / هي / حضرتك (يكون)",
+     "en": "he/she is, you are (formal)",
+     "pos": "فعل (ser)",
+     "examples": [
+      {
+       "es": "Ella es Laura.",
+       "ar": "هي لاورا."
+      }
+     ]
+    },
+    {
+     "id": "soy_de",
+     "es": "soy de…",
+     "ar": "أنا من…",
+     "en": "I am from…",
+     "pos": "تعبير",
+     "examples": [
+      {
+       "es": "Soy de Egipto.",
+       "ar": "أنا من مصر."
+      }
+     ]
+    },
+    {
+     "id": "de_donde_eres",
+     "es": "¿De dónde eres?",
+     "ar": "من أين أنت؟ (غير رسمي)",
+     "en": "Where are you from? (informal)",
+     "pos": "سؤال",
+     "examples": [
+      {
+       "es": "¿De dónde eres? — Soy de Marruecos.",
+       "ar": "من أين أنت؟ — أنا من المغرب."
+      }
+     ]
+    },
+    {
+     "id": "de_donde_es_usted",
+     "es": "¿De dónde es usted?",
+     "ar": "من أين حضرتك؟ (رسمي)",
+     "en": "Where are you from? (formal)",
+     "pos": "سؤال",
+     "examples": [
+      {
+       "es": "Señor Hassan, ¿de dónde es usted?",
+       "ar": "يا سيد حسن، من أين حضرتك؟"
+      }
+     ],
+     "work": true
+    }
+   ],
+   "activities": [
+    {
+     "type": "note",
+     "title_ar": "الفعل ser: يكون",
+     "body_ar": "yo soy — أنا\ntú eres — أنت\nusted es — حضرتك (وكذلك él هو، ella هي)\n\nالعربية تقول «أنا عمر» بلا فعل، أما الإسبانية فلا بد فيها من الفعل: Soy Omar.\nوالضمير يُحذف غالباً لأن الفعل يدل عليه.",
+     "examples": [
+      {
+       "es": "Soy Omar.",
+       "ar": "أنا عمر."
+      },
+      {
+       "es": "Eres mi amigo.",
+       "ar": "أنت صديقي."
+      }
+     ]
+    },
+    {
+     "type": "teach",
+     "item": "yo"
+    },
+    {
+     "type": "teach",
+     "item": "soy"
+    },
+    {
+     "type": "teach",
+     "item": "tu_pron"
+    },
+    {
+     "type": "teach",
+     "item": "eres"
+    },
+    {
+     "type": "mcq_meaning",
+     "item": "soy"
+    },
+    {
+     "type": "listen_choose",
+     "item": "eres"
+    },
+    {
+     "type": "fill",
+     "es": "Yo ___ Omar.",
+     "answer": "soy",
+     "ar": "أنا عمر.",
+     "options": [
+      "soy",
+      "eres",
+      "es"
+     ],
+     "explain_ar": "مع yo نقول soy."
+    },
+    {
+     "type": "teach",
+     "item": "usted"
+    },
+    {
+     "type": "teach",
+     "item": "es"
+    },
+    {
+     "type": "mcq_meaning",
+     "item": "es"
+    },
+    {
+     "type": "fill",
+     "es": "Usted ___ el cliente.",
+     "answer": "es",
+     "ar": "حضرتك العميل.",
+     "options": [
+      "soy",
+      "eres",
+      "es"
+     ],
+     "explain_ar": "usted تأخذ تصريف الغائب: es."
+    },
+    {
+     "type": "fill",
+     "es": "Tú ___ mi amigo.",
+     "answer": "eres",
+     "ar": "أنت صديقي.",
+     "options": [
+      "soy",
+      "eres",
+      "es"
+     ],
+     "explain_ar": "مع tú نقول eres."
+    },
+    {
+     "type": "match",
+     "items": [
+      "yo",
+      "tu_pron",
+      "usted",
+      "ella"
+     ]
+    },
+    {
+     "type": "teach",
+     "item": "soy_de"
+    },
+    {
+     "type": "teach",
+     "item": "de_donde_eres"
+    },
+    {
+     "type": "teach",
+     "item": "de_donde_es_usted"
+    },
+    {
+     "type": "mcq_meaning",
+     "item": "de_donde_eres"
+    },
+    {
+     "type": "listen_choose",
+     "item": "de_donde_es_usted"
+    },
+    {
+     "type": "mcq_reverse",
+     "item": "soy_de"
+    },
+    {
+     "type": "note",
+     "title_ar": "النفي وأسماء البلدان",
+     "body_ar": "للنفي ضع no قبل الفعل: No soy de España.\n\nبلدان تفيدك:\nEgipto مصر · Arabia Saudita السعودية · Emiratos Árabes Unidos الإمارات · Marruecos المغرب · Jordania الأردن · España إسبانيا · México المكسيك.",
+     "examples": [
+      {
+       "es": "No soy de España.",
+       "ar": "لست من إسبانيا."
+      },
+      {
+       "es": "Soy de Egipto.",
+       "ar": "أنا من مصر."
+      }
+     ]
+    },
+    {
+     "type": "order",
+     "es": "Soy de Egipto.",
+     "ar": "أنا من مصر.",
+     "distractors": [
+      "eres"
+     ]
+    },
+    {
+     "type": "order",
+     "es": "No soy de España.",
+     "ar": "لست من إسبانيا."
+    },
+    {
+     "type": "choice",
+     "prompt_ar": "من أين السيدة بيريز؟",
+     "choices": [
+      "من المكسيك",
+      "من مصر",
+      "من إسبانيا"
+     ],
+     "answer": 0,
+     "skill": "reading",
+     "choices_es": false,
+     "stimulus_es": "— ¿De dónde es usted, señora Pérez?\n— Soy de México. ¿Y usted?\n— Soy de Egipto."
+    },
+    {
+     "type": "fill",
+     "es": "___ de Egipto.",
+     "answer": "Soy",
+     "ar": "أنا من مصر."
+    },
+    {
+     "type": "dictation",
+     "item": "de_donde_eres"
+    },
+    {
+     "type": "respond",
+     "prompt_ar": "عميل يسألك: «¿De dónde es usted?». أجب بأنك من مصر (Egipto).",
+     "accepted": [
+      "Soy de Egipto",
+      "Yo soy de Egipto",
+      "De Egipto"
+     ],
+     "audio_es": "¿De dónde es usted?"
+    },
+    {
+     "type": "speak",
+     "es": "Soy Omar. Soy de Egipto.",
+     "ar": "أنا عمر. أنا من مصر."
+    }
+   ]
+  }
+ ]
+}
