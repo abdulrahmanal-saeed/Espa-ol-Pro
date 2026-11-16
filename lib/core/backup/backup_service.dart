@@ -28,7 +28,9 @@ class BackupService {
     'study_sessions',
   ];
 
-  /// What a backup document contains, for the confirmation dialog.
+  /// What a backup document contains, for the confirmation dialog. A table
+  /// absent from the file (e.g. `saved_phrases` in a pre-v4 backup) is
+  /// absent from the result, not reported as 0.
   static Map<String, int> summarize(String json) {
     try {
       final tables = (jsonDecode(json) as Map)['tables'] as Map;

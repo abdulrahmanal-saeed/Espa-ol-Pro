@@ -1,16 +1,17 @@
 import 'package:espanol_pro/core/content/models.dart';
 import 'package:espanol_pro/core/learning/exercises.dart';
 import 'package:espanol_pro/core/learning/progress_repository.dart';
+import 'package:espanol_pro/core/providers.dart';
+import 'package:espanol_pro/core/reminders/reminder_service.dart';
 import 'package:espanol_pro/core/settings.dart';
 import 'package:espanol_pro/core/srs/review_repository.dart';
 import 'package:espanol_pro/core/widgets/common.dart';
-import 'package:espanol_pro/core/providers.dart';
-import 'package:espanol_pro/core/reminders/reminder_service.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:timezone/data/latest_all.dart' as tzdata;
 import 'package:fsrs/fsrs.dart' as fsrs;
+import 'package:go_router/go_router.dart';
 import 'package:material_ui/material_ui.dart';
+import 'package:timezone/data/latest_all.dart' as tzdata;
 
 import 'support.dart';
 import 'widget_support.dart';
@@ -820,6 +821,30 @@ void main() {
       await app.dispose(tester);
     },
   );
+
+  testWidgets('leaving the review screen at once still stores the time', (
+    tester,
+  ) async {
+    final app = TestApp(pack);
+    await completeViaRepo(app, pack.orderedLessons.first);
+    await app.pump(tester, location: '/review');
+    await tester.runAsync(
+      () => Future<void>.delayed(const Duration(milliseconds: 1200)),
+    );
+    // Leave without rating: route change disposes the review screen.
+    GoRouter.of(tester.element(find.byType(Scaffold).first)).go('/home');
+    await tester.pumpAndSettle();
+    await tester.runAsync(
+      () => Future<void>.delayed(const Duration(milliseconds: 50)),
+    );
+    final review = (await app.db.select(app.db.studySessions).get())
+        .where((r) => r.kind == 'review')
+        .toList();
+    expect(review.length, 1);
+    expect(review.single.seconds, greaterThanOrEqualTo(1));
+    expect(await app.db.select(app.db.reviewLogs).get(), isEmpty);
+    await app.dispose(tester);
+  });
 
   testWidgets('empty review queue shows a helpful empty state', (tester) async {
     final app = TestApp(pack);

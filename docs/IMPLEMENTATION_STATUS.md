@@ -40,7 +40,7 @@ content. Phase 1.1 work is in progress on later PRs.
 | **Phase 1.1:** saved phrases («عباراتي»): save from vocabulary, examples, lesson notes and the grammar reference; search, audio, note, remove with undo; one record per sentence | `saved_phrases_test`, `app_flow_test` |
 | **Phase 1.1:** schema v4 (`saved_phrases`), migration v3→v4 on a real file; backups include and validate it; pre-v4 restores and progress resets keep saved phrases | `persistence_test` |
 | **Phase 1.1:** live due-review counter on Home and Practice: one timer to the next due instant, no polling, recomputed on resume | `due_counter_test`, `app_flow_test` (clock-controlled, no DB write) |
-| **Phase 1.1:** time on an opened but unrated review card is stored when the app is backgrounded or the screen closes, without double counting (REVIEW-004 P2) | `app_flow_test` |
+| **Phase 1.1:** time on an opened but unrated review card is stored when the app is backgrounded or the screen closes. All review study-time writes go through one serialised checkpoint, which advances only after a successful write and retries failed seconds; a flush during an in-flight rating cannot double count (REVIEW-004 P2, REVIEW-005 P2) | `study_time_checkpoint_test` (failure, retry, both race orders), `app_flow_test` (background, immediate exit) |
 | **Phase 1.1 (part B):** optional daily local reminder at a chosen time; inexact alarm (no exact-alarm permission); one fixed id, never duplicated; re-synced on launch, resume and settings change, so time-zone changes and reboots keep it right; Settings explains when Android blocks notifications; a tap opens Home through a route allow-list | `reminders_test` (incl. daylight-saving and time-zone changes), `app_flow_test`; not yet seen on a device |
 | **Phase 1.1:** app identity: adaptive icon with themed (monochrome) layer, density PNGs, Android 12+ and legacy splash, matching in-app loading screen | `branding_test` (resources and colours); not yet seen on a device |
 
@@ -104,7 +104,11 @@ remain at v3.
 7. Spelling quality is not yet reported separately: an answer accepted with
    an accent reminder is stored as correct. Planned for Phase 1.2 together
    with stricter accent requirements at higher levels.
-8. Attempts recorded before schema v3 all count as first attempts, because
+8. A final flush started while the review screen is being closed is not
+   awaited (dispose cannot wait). It is normally preceded by the lifecycle
+   flush when the app leaves the foreground, which is the reliable path
+   before Android kills a process.
+9. Attempts recorded before schema v3 all count as first attempts, because
    the distinction was not stored then.
 9. Review study time is checkpointed with completed ratings. Time spent on
    the last unrated card is lost if the learner exits or the app terminates.
