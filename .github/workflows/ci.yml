@@ -83,23 +83,6 @@ jobs:
           done
           echo "NDK $NDK could not be installed after 4 attempts"
           exit 1
-      # compileSdk 37 (see android/app/build.gradle.kts). Installed up front
-      # with the same verify-and-retry as the NDK, rather than left to Gradle.
-      - name: Install Android platform 37 (verified, with retry)
-        run: |
-          SDKMANAGER="$ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager"
-          for attempt in 1 2 3 4; do
-            if "$SDKMANAGER" --install "platforms;android-37" \
-               && test -f "$ANDROID_HOME/platforms/android-37/android.jar"; then
-              echo "Platform 37 installed on attempt $attempt"
-              exit 0
-            fi
-            echo "Platform install attempt $attempt failed; removing partial install"
-            rm -rf "$ANDROID_HOME/platforms/android-37"
-            sleep 20
-          done
-          echo "Android platform 37 could not be installed after 4 attempts"
-          exit 1
       - run: flutter build apk --debug
       - uses: actions/upload-artifact@v4
         with:

@@ -6,10 +6,7 @@ plugins {
 
 android {
     namespace = "com.espanolpro.espanol_pro"
-    // flutter_local_notifications 23 depends on androidx.core 1.19, which
-    // must be compiled against API 37. This only changes which APIs the build
-    // can see; targetSdk (runtime behaviour) stays on Flutter's default.
-    compileSdk = maxOf(flutter.compileSdkVersion, 37)
+    compileSdk = flutter.compileSdkVersion
     ndkVersion = flutter.ndkVersion
 
     compileOptions {
