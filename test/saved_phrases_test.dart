@@ -53,6 +53,27 @@ void main() {
     expect(p.sourceKind, 'example');
   });
 
+  test(
+    'the same text from two lessons keeps the first source and note',
+    () async {
+      await repo.save(draft('Hasta mañana.', lesson: 'pa1_u2_l1'));
+      final first = (await repo.all()).single;
+      await repo.updateNote(first.id, 'وداع الزميل');
+      clock.advance(const Duration(days: 30));
+      expect(
+        await repo.save(
+          draft('Hasta mañana.', lesson: 'a1_u1_l3', kind: 'vocab'),
+        ),
+        isFalse,
+      );
+      final kept = (await repo.all()).single;
+      expect(kept.sourceLessonId, 'pa1_u2_l1');
+      expect(kept.sourceKind, 'example');
+      expect(kept.note, 'وداع الزميل');
+      expect(kept.savedAt, first.savedAt);
+    },
+  );
+
   test('accents and ñ make a different phrase', () {
     expect(
       SavedPhrasesRepository.keyFor('¿Qué es?'),

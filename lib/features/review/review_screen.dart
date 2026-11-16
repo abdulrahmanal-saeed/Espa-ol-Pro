@@ -10,6 +10,7 @@ import '../../core/content/models.dart';
 import '../../core/db/database.dart';
 import '../../core/learning/answer_evaluator.dart';
 import '../../core/learning/progress_repository.dart';
+import '../../core/learning/study_time_checkpoint.dart';
 import '../../core/providers.dart';
 import '../../core/srs/review_repository.dart';
 import '../../core/widgets/common.dart';
@@ -49,7 +50,6 @@ class _ReviewScreenState extends ConsumerState<ReviewScreen> {
   AnswerResult? _typed;
   int _reviewed = 0;
   int _again = 0;
-  int _savedSeconds = 0;
   bool _foreground = true;
   bool _busy = false;
 
@@ -57,6 +57,14 @@ class _ReviewScreenState extends ConsumerState<ReviewScreen> {
   late final ProgressRepository _progress = ref.read(
     progressRepositoryProvider,
   );
+
+  /// The only path by which this screen stores study time.
+  late final StudyTimeCheckpoint _time = StudyTimeCheckpoint(
+    writeTime: (seconds) =>
+        _progress.logStudy(kind: 'review', seconds: seconds),
+  );
+
+  int _elapsed() => _session.elapsed.inSeconds.clamp(0, 5400);
 
   @override
   void initState() {
@@ -134,19 +142,14 @@ class _ReviewScreenState extends ConsumerState<ReviewScreen> {
   }
 
   /// Stores study time not yet covered by a rating (the learner looked at a
-  /// card but left without rating it). Advances [_savedSeconds] first, so a
-  /// later rating never counts the same seconds twice.
+  /// card but left without rating it). Serialised with ratings by
+  /// [StudyTimeCheckpoint]; on failure the seconds stay pending and the next
+  /// flush or rating retries them.
   void _flushUnrated() {
-    final elapsed = _session.elapsed.inSeconds.clamp(0, 5400);
-    final pending = elapsed - _savedSeconds;
-    if (pending <= 0) return;
-    _savedSeconds = elapsed;
-    // Not awaited: this runs from lifecycle callbacks and dispose, which
-    // cannot wait. A failure here loses only these seconds, never a review.
     unawaited(
-      _progress
-          .logStudy(kind: 'review', seconds: pending)
-          .catchError((Object _) {}),
+      _time.flush(_elapsed).catchError((Object _) {
+        // Kept pending in the checkpoint; retried on the next write.
+      }),
     );
   }
 
@@ -193,17 +196,19 @@ class _ReviewScreenState extends ConsumerState<ReviewScreen> {
     _busy = true;
     _updateTimers();
     final card = _queue.first;
-    final elapsedSeconds = _session.elapsed.inSeconds.clamp(0, 5400);
     try {
       final progress = ref.read(progressRepositoryProvider);
-      final updated = await progress.rateReview(
-        card.id,
-        rating,
-        durationMs: _card.elapsedMilliseconds,
-        activeSeconds: elapsedSeconds - _savedSeconds,
+      final durationMs = _card.elapsedMilliseconds;
+      final updated = await _time.commitWithRating(
+        _elapsed,
+        (activeSeconds) => progress.rateReview(
+          card.id,
+          rating,
+          durationMs: durationMs,
+          activeSeconds: activeSeconds,
+        ),
       );
       if (!mounted) return;
-      _savedSeconds = elapsedSeconds;
       final now = ref.read(clockProvider)().toUtc();
       final due = DateTime.fromMillisecondsSinceEpoch(updated.due, isUtc: true);
       setState(() {

@@ -784,6 +784,12 @@ void main() {
         ) as Map<String, dynamic>;
         doc['schema_version'] = 3;
         (doc['tables'] as Map).remove('saved_phrases');
+        // The restore preview must not report "0 saved phrases" for a file
+        // that simply predates them.
+        expect(
+          BackupService.summarize(jsonEncode(doc)).containsKey('saved_phrases'),
+          isFalse,
+        );
         final phrasesBefore = (await device.select(device.savedPhrases).get())
             .map((r) => r.toJson())
             .toList();

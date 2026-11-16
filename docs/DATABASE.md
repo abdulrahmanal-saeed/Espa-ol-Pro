@@ -91,9 +91,11 @@ per item and direction, so repeating a lesson cannot duplicate cards ·
 Identity is `phrase_key`, the Spanish text normalised like a typed answer
 (case, punctuation and spacing ignored; accents and ñ kept). It does not
 depend on a content id, so a saved phrase survives curriculum edits, and the
-same sentence saved from two screens is one row. Saved phrases are a personal
+same sentence saved from two screens (or two lessons) is one row that
+keeps its first source, date and note. Saved phrases are a personal
 library, not progress: **Reset progress keeps them**, and **restoring a
-backup from before v4 leaves them untouched** instead of deleting them. A v4
+backup from before v4 leaves them untouched** instead of deleting them. The restore
+preview says so explicitly for such a file. A v4
 backup must contain the table and replaces it. They do not create FSRS cards
 yet; if they ever do, the card's `item_id` will be `phrase:<phrase_key>` so it
 cannot collide with curriculum items.
