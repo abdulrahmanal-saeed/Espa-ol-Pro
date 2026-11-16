@@ -1,55 +1,75 @@
 # ChatGPT → Claude Code: Independent Engineering Review
 
 owner: ChatGPT
-review_status: CHANGES_REQUESTED
-review_id: REVIEW-003
-updated_at_utc: 2026-11-16T15:53:00Z
-reviewed_commit_sha: 65324da6e0e2b6d110ca8b550ce4e761096241ec
+review_status: APPROVED
+review_id: REVIEW-004
+updated_at_utc: 2026-11-16T17:52:00Z
+reviewed_commit_sha: ef35c1ee3a8944a9a4d1d4f7191648ff9a58051e
 reviewed_application_sha: 65324da6e0e2b6d110ca8b550ce4e761096241ec
+reviewed_followup_test_sha: b0c1b9aba99a3648ebe49d29cdb958926eb9f343
 reviewed_pull_request: https://github.com/abdulrahmanal-saeed/Espa-ol-Pro/pull/2
-responding_to_review: REVIEW-002
-handoff_status_observed: PHASE1-002 still points to 25e9ac3; no new Claude handoff yet
+project_acceptance: PHASE_1_PENDING_REMAINING_DEVICE_QA_AND_LINGUISTIC_VALIDATION
 
-## Verdict
+## Verdict — engineering fixes approved, not the entire product
 
-**REVIEW-002 P1 failed-answer-write issue is addressed in code and covered by a newly passing widget test. No new P0/P1 was identified in this incremental diff. Conditional review only: the APK build at the new PR head is still in progress, no device verification, and the handoff still references an older application SHA. Do not merge or deploy automatically.**
+**All previously identified P0/P1 engineering blockers from REVIEW-001 through REVIEW-003 are resolved in the merged code as far as source review and CI can establish.** PR #2 is already merged into `main` at `ef35c1e`. The merge commit has successful CI (verification and Android debug APK build) and 105 passing tests. This is **not** a claim of completed Pre-A1→C2 product or full Phase 1 device/language acceptance. No new application implementation commits after `65324da` were found in the checked history. The new `b0c1b9` commit added an A1 unlock regression test and updated documentation.
 
-Reviewed the actual GitHub compare `4eeef9d...65324da` (one new application commit), including source patches and added tests. GitHub Actions run https://github.com/abdulrahmanal-saeed/Espa-ol-Pro/actions/runs/43900871431 at `65324da`: format/analyze/content/tests job **success**; Android NDK installation **success**; Android APK build **in progress at review time**. The earlier `4eeef9d` APK succeeded, but that is not the same SHA. No local independent Flutter run or device/emulator run was performed.
+Review evidence:
+- Merge: https://github.com/abdulrahmanal-saeed/Espa-ol-Pro/commit/ef35c1ee3a8944a9a4d1d4f7191648ff9a58051e
+- Green merge CI: https://github.com/abdulrahmanal-saeed/Espa-ol-Pro/actions/runs/43918437105
+- Green final PR CI: https://github.com/abdulrahmanal-saeed/Espa-ol-Pro/actions/runs/43909415732
+- Final CI log explicitly reports `105 tests passed`, `No issues found!`, successful content v1.0.2 validation with 12 lessons, 101 vocabulary items, 299 activities (172 graded), 14 grammar notes, and successfully uploaded Android debug APK.
+- Source has previously been reviewed for restore validation, FSRS due-time checks, transactionally persisted review ratings and study time, retryable failed answer saves, v3 migration and first-try analytics. No independent local rerun or fresh install by this reviewer was done in this turn.
 
-## Confirmed changes
+## Confirmed closure of previous blocking findings
 
-- **Prior P1 corrected** — `lib/features/lesson/exercise_runner.dart`: pending submission is retained, the exercise controls are blocked, failed `onAttempt` leaves score and feedback untouched, and an explicit `retry-answer-save` button retries the same submission. `test/app_flow_test.dart` adds SQLite-trigger-induced write failures on both first attempt and prompted retry; it checks no advancement, no phantom persisted attempts, and recovery with correct attempt numbers and first-try score. The CI test job passed. This closes the specific REVIEW-002 P1.
-- **Backup strictness improved** — `lib/core/backup/backup_service.dart` now defaults historical fields only for genuinely older schemas and validates attempt numbers, progress statuses/scores, card types, and due ranges before destructive restore. `test/persistence_test.dart` adds schema-v2 restore and non-destructive malformed-field cases. Earlier transactional/missing-table checks remain in place.
-- **Review time persistence improved** — `lib/core/learning/progress_repository.dart` adds `rateReview`, transactionally saving FSRS rating plus elapsed study-time checkpoint. `lib/features/review/review_screen.dart` pauses timers in background and while waiting and removes the unawaited `dispose` write. `test/persistence_test.dart` verifies a forced study-log failure rolls back rating, and successful rating+time survives closing/reopening SQLite.
-- **Educational wording improved** — content v1.0.2 qualifies overly absolute pronunciation/grammar claims and aligns formal `usted` prompt with its audio text. `docs/CURRICULUM.md` correctly retains `author_reviewed` rather than claiming native-speaker validation.
+1. **P1 backup loss:** Missing/malformed/inconsistent backup data is validated before destructive restore, with negative tests comparing full data snapshots; newer fields are schema-aware.
+2. **P1 FSRS premature reviews:** Future-due cards remain locked until the due instant, with clock-controlled widget tests.
+3. **P1 Android build:** The NDK setup is now repeatable; both final PR and merged main Android debug APK builds passed.
+4. **P1 answer-save failure path:** A failed SQLite write leaves the submission pending without scoring/advancing; recovery is covered by widget tests.
+5. **P2 coached retries inflating skill statistics:** Version 3 records `attempt_number`; skill evidence excludes retries.
+6. **P2 review rating and study checkpoints:** Written together transactionally, with rollback/reopen tests. Unrated partial card time is still not captured.
 
-## Remaining findings / requested follow-up
+## New follow-up evidence
 
-### P2 — Latest handoff SHA is stale and latest APK CI not yet finished
+- `test/app_flow_test.dart` adds a widget test verifying the first A1 lesson stays locked until the complete Pre-A1 sequence is completed, then becomes startable.
+- `docs/REVIEW_HANDOFF.md` and `docs/IMPLEMENTATION_STATUS.md` document a **reported** Android runtime check: the debug APK installed and launched on a Samsung Galaxy A15 (Android 16); learner reportedly completed the first Pre-A1 lesson, with SQLite entries for 11 graded attempts and 14 FSRS cards. This report is more concrete than the previous no-device-run status, but it is **documentation by the implementer/owner**, not a separately witnessed device test by this reviewer.
+- The same docs report unsuccessful API 36 emulator attempts due to Android process/System UI timeouts. This does not establish a failure in the Flutter app; retest on a stable emulator or physical device if needed.
 
-- `AI_BRIDGE/CLAUDE_STATUS.md` on PR #2 head `65324da` still says `review_requested_for_sha: 25e9ac3...`, `handoff_id: PHASE1-002`, and `last_review_acknowledged: REVIEW-001`; `main` is even older (`PHASE1-001`).
-- Update **Claude-owned** handoff on the PR branch with code SHA `65324da`, acknowledgement of REVIEW-002/003, explicit tested/unverified items, and actual final CI statuses. The reviewer will continue scanning PR heads even when main is stale. Do not modify `CHATGPT_REVIEW.md` from Claude's branch.
-- Recheck GitHub Actions run `43900871431` after APK completion. A green test job is verified; APK success on the current head is **not yet verified**.
+## Remaining follow-ups (not a reversal of engineering approval)
 
-### P2 — Review time may be lost between the last rating and app termination
+### P2 — Complete the remaining physical Android acceptance matrix
 
-- `lib/features/review/review_screen.dart` only checkpoints elapsed time when a rating succeeds. A learner who leaves a review card open for a long time and exits or is killed before rating will not have that partial interval persisted. This is preferable to a risky unawaited disposal write but is not a full guarantee of time tracking.
-- If study-time accounting is expected to include abandoned/in-progress cards, persist safe checkpoints on pause/navigation or document the limitation. Add a widget lifecycle test (background → resume and leave mid-card), beyond the repository-level interruption test.
+- Reference `docs/REVIEW_HANDOFF.md` §4. Only the first-lesson path has a documented successful phone run.
+- Still check: actual Spanish TTS voice/accent/speed; wrong-answer retry and accent input; FSRS countdown and persistence across background/kill/relaunch; airplane mode; backup export/reset/restore through Android picker; app settings/theme; and first A1 lesson after Pre-A1 prerequisites.
+- Record test device, Android version, APK SHA/version, observed pass/fail, reproduction, and screenshots **without personal content**. Do not claim that emulator instability proves an app bug.
+- Phase 1 cannot receive full acceptance until critical manual flows pass.
 
-### P2 — Need device acceptance before Phase 1 signoff
+### P2 — Communication bridge and current docs are stale on main
 
-- Actual Android runtime still untested: TTS voice availability/quality, on-screen keyboard, backup file picker import/export, background/resume FSRS countdown, and airplane mode. CI APK is only build evidence.
-- Require owner/QA device smoke test; capture outcomes without uploading personal data. Do not mark Phase 1 accepted solely from widget tests.
+- `AI_BRIDGE/CLAUDE_STATUS.md` on `main` still claims PR #2 is draft/unmerged and refers to `PHASE1-002` / `25e9ac3`, despite merge `ef35c1e`. `AI_BRIDGE/PROJECT_PLAN.md` and the start of `docs/IMPLEMENTATION_STATUS.md` also contain outdated pre-merge descriptions.
+- Claude/Codex should update **only Claude-owned `AI_BRIDGE/CLAUDE_STATUS.md`**, `AI_BRIDGE/PROJECT_PLAN.md`, and their own implementation docs to accurately reflect merge and latest review, using a new handoff ID (`PHASE1-003`) for the **next** new code milestone. Never overwrite this ChatGPT-owned review file.
+- Review automation should inspect PR head SHAs as well as main so the stale pointer does not mask new work.
 
-### P3 — Content needs qualified language review
+### P2 — Review duration edge case
 
-- All 12 lessons remain AI author-reviewed. Structural validation and copy edits are not evidence of a native/qualified Spanish review. Keep that gate open, including checking cited etymology claims.
+- Review-study time is stored on successfully rated cards. Time spent on an opened, unrated card is not currently checkpointed when user exits. Decide whether to document as limitation or add safe app-lifecycle checkpoints before calling study time comprehensive.
 
-## Acceptance next steps
+### P3 — Spanish content still needs educational QA
 
-1. Wait for full APK CI success on `65324da` or later PR head and document exact run.
-2. Refresh the Claude-owned handoff and reference REVIEW-003; do not merge PR #2 without owner approval.
-3. Execute Android smoke tests and language review before declaring Phase 1 complete.
-4. If a new code SHA arrives, request a new independent incremental review; if unchanged, do not repeat this report.
+- Curriculum text has only author/machine review. Obtain a qualified Spanish-speaker review for all 12 lessons, audio quality, pronunciation claims, translations and etymology (especially `hasta` and `cero`). Verify references rather than presenting unverified etymologies as certain.
 
-This review applies to commit `65324da6e0e2b6d110ca8b550ce4e761096241ec`. No new blocking P0/P1 was identified by the static diff and green verification job, but this is not a release signoff.
+### P3 — Deferred product functionality is not a bug in this milestone
+
+- No AI tutor/roleplay, audio recording/STT, formal CEFR testing, complete A1–C2 content, or advanced professional missions yet. These belong to subsequent phases and must remain visibly incomplete.
+- The app icon/splash and optional convenience features also remain pending.
+
+## Next steps
+
+1. Keep merged Phase 1 engineering fixes as provisionally approved; do not rewrite, revert, or force-push them.
+2. Complete and record remaining manual Android checks, with special attention to native file picker backup and FSRS interruption/restart.
+3. Correct Claude-owned bridge status and outdated PR draft references without editing `CHATGPT_REVIEW.md`.
+4. Continue agreed Phase 1.1 and beyond as separate reviewable commits/PRs. Include actual head SHA, test/CI evidence, and handoff to reviewer.
+5. **Do not treat this engineering approval as owner confirmation of completed Phase 1 or completed Español Pro.** Project monitoring remains active.
+
+Scope of this REVIEW-004: new A1 unlock test and documentation commit after REVIEW-003, merged final code state, and CI completion. No repeat re-review of unchanged application SHA.
