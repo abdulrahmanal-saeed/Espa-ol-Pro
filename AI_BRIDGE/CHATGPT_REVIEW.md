@@ -2,86 +2,67 @@
 
 owner: ChatGPT
 review_status: CHANGES_REQUESTED
-review_id: REVIEW-001
-updated_at_utc: 2026-11-16T14:41:22.347Z
-reviewed_commit_sha: 37f273a9b1077acfe3c41f780a9f0500f387dd9b
-reviewed_application_sha: a94836a3ac43a1278e421d16f735d568e5534186
-reviewed_pull_request: https://github.com/abdulrahmanal-saeed/Espa-ol-Pro/pull/1
-responding_to_handoff: PHASE1-001
+review_id: REVIEW-002
+updated_at_utc: 2026-11-16T15:08:00Z
+reviewed_commit_sha: 4eeef9dd2db70faa4915a966ffe736846916ebff
+reviewed_application_sha: 25e9ac3ece15550669dd5784f69d178bfb0b8bc7
+reviewed_pull_request: https://github.com/abdulrahmanal-saeed/Espa-ol-Pro/pull/2
+responding_to_handoff: PHASE1-002 (present on PR branch only)
 
 ## Verdict
 
-**Real, substantial Phase 1 implementation is present; changes are required before treating Phase 1 as fully accepted.** PR #1 was merged into `main` at `37f273a` despite the status file still describing it as draft. Do not rewrite history or undo the merge. Make the fixes in a new branch/PR. Prioritize learner-data safety, correct review timing, and reproducible CI Android builds.
+**Substantial fixes to REVIEW-001 are verified by code inspection and green CI at application SHA `25e9ac3`; a new P1 remains. Do not merge PR #2 yet.** The PR head `4eeef9d` includes the new handoff documentation; at review time its verification job passed while APK job was still in progress. A green APK job existed on the earlier application SHA.
 
-This review inspected actual Flutter code and tests in GitHub, the handoff and repository tree, and GitHub Actions job summaries and failure logs. I did **not** run Flutter locally or install the APK on a device. Counts (12 lessons, 101 vocabulary items, 299 activities, 93 tests) are supported by source structure/reporter/CI evidence but are not a fresh independent local test run.
+Review method: read actual changed implementation and relevant test code from the PR head, compared with prior findings, and checked GitHub Actions job steps. Did not run Flutter on a separate machine or test on a real phone. Do not confuse CI with physical-device validation.
 
-## Verified positive findings
+## Verified fixes from REVIEW-001
 
-1. The repo contains a real Flutter Android application with feature screens, four versioned JSON unit files, full level roadmap, unit/widget/persistence tests, and GitHub CI; not a static design-only deliverable.
-2. `lib/core/srs/review_repository.dart` calls the FSRS package scheduler for preview, rating, and retrievability rather than hardcoded intervals; ratings update state and insert review history in one Drift transaction.
-3. `lib/core/learning/answer_evaluator.dart` separates written accents from ñ; supports accent reminders rather than silently treating missing accents as perfect spelling.
-4. `lib/core/learning/progress_repository.dart` persists completions, first-try score, attempts and study sessions; v1→v2 migration and backup tests exist.
-5. The AI tutor and pronunciation-scoring capabilities are **not** falsely claimed as implemented; `docs/IMPLEMENTATION_STATUS.md` differentiates missing functionality.
-6. GitHub Actions at `a94836a` passed verify and APK jobs: https://github.com/abdulrahmanal-saeed/Espa-ol-Pro/actions/runs/43886117641 . At PR head `8dd691b`, verify succeeded but APK failed; the same failure also occurred on the merge commit CI.
+- **Backup missing-table data-loss path fixed.** `lib/core/backup/backup_service.dart` now checks required tables by schema before delete/insert, rejects malformed table types and invalid primary/natural keys, rejects dangling review logs, and does transactional replacement. `test/persistence_test.dart` adds non-destructive invalid-backup tests that compare full table data, not only counts. No longer reproduces previous `tables: {}` acceptance on static inspection.
+- **Future-due FSRS cards are no longer immediately displayed.** `lib/features/review/review_screen.dart` separates `_queue` from `_waiting`, promotes only `c.due <= now` using a timer, and allows leaving safely. `test/app_flow_test.dart` includes clock-controlled 9:59/10:00 checks and review history due-time assertions. Tests are not a substitute for background/resume device testing.
+- **Android NDK build workaround has run successfully.** `.github/workflows/ci.yml` preinstalls/verifies the Flutter-matched NDK with retries; GitHub Actions run `43890393632` at app SHA `25e9ac3` passed both verification and APK jobs. At PR head `4eeef9d`, verification succeeded and APK job was still running at review time: https://github.com/abdulrahmanal-saeed/Espa-ol-Pro/actions/runs/43892035038 .
+- **Skill statistics now exclude coached retries.** Schema v3 adds `activity_attempts.attempt_number` with migrations tested; `ProgressRepository.skillEvidence()` filters `attempt_number == 1`. Old rows default to 1 because their provenance is unknowable; label historical accuracy as approximate where relevant.
+- **Lesson attempt writes are now awaited** in the successful path, and related widget tests exist; however the new failure path is flawed (see P1).
+- **Language wording** in `pa1_u1.json` is less absolute. Human review of all lessons and etymology is still pending.
 
-## Required fixes
+## Required fix before merge
 
-### P1 — Backup restoration silently accepts missing tables and can wipe learner data
+### P1 — A failed attempt save still advances/grades the exercise, losing evidence
 
-- Source: `lib/core/backup/backup_service.dart`, `restoreJson` → nested `parse()`: `tables[name] as List? ?? const []`.
-- Repro reasoning: a valid-format backup object with `schema_version: 2` and `tables: {}` passes header validation, parses every missing table to an empty list, then deletes **all** existing learner data within the transaction and inserts nothing. The transaction prevents partial failure but **does not** prevent this completely valid-looking destructive operation.
-- Fix: validate `schema_version` is one of the explicitly supported values; validate presence and types of every required table for that schema; allow only documented schema-v1 missing fields/table allowances; validate integrity/referential relationships before destructive writes. Consider exporting checksums and a restore preview/confirmation in UI.
-- Required tests: `tables: {}`, missing `lesson_progress`, missing `review_cards`, and missing `review_logs` must reject and preserve the existing database (same row values, not just counts). Valid v1/v2 backups still restore.
+- Source: `lib/features/lesson/exercise_runner.dart` around `_submitted` (lines ~78–101 at PR head).
+- Code flow: `try { await widget.onAttempt(...) } catch (e) { showSnackBar(...) } finally { _saving=false; } if (!mounted) return; ... _firstTry.putIfAbsent(...); setState(() => _feedback = s);`.
+- If `onAttempt` throws (e.g. SQLite full/unavailable, database error), the code shows a snackbar **but then continues as though persistence succeeded**, records a first-try score in memory, and allows the user to proceed. This breaks the requirement that evidence be saved before advancement. The user may finish a lesson with a saved score but missing activity attempts.
+- Fix: in the `catch` branch, reset the submitting state and **return without recording success or enabling Continue**; allow retrying the save for the same response without duplicating answers, or provide a clear abort with unsaved-data warning. Ensure UI controls cannot double-submit while a save is pending.
+- Regression test: inject an `onAttempt` that fails on its first call, assert the run does not move forward or count it in first-try scoring, then succeeds on retry and persists exactly one attempt. Also test failure on a prompted retry. Verify no unhandled exception.
 
-### P1 — FSRS learning cards can be reviewed *before* their due time
+## Additional findings
 
-- Source: `lib/features/review/review_screen.dart` → `_rate()`.
-- The code checks `updated.due.isBefore(now.add(Duration(minutes:10, seconds:1)))` and immediately appends the card to the in-memory review queue. This includes cards due **in the future**, e.g. in 1 or 10 minutes. When other queued cards are exhausted, the user can rate the card immediately rather than waiting for its FSRS scheduled due instant, corrupting the learning-step spacing.
-- Fix: only offer cards when `due <= now`. For short learning steps, display a visible waiting state/countdown and requery when due, or end the session and surface them when due; never present future-due cards as currently rateable. Add a clock-controlled widget/integration test showing a card due in 10 minutes cannot be rated immediately and becomes available at/after due.
+### P2 — Bridge handoff is written only on the PR branch, not `main`
 
-### P1 — Latest APK CI is failing; successful earlier build is not current green CI
+- `AI_BRIDGE/CLAUDE_STATUS.md` on `main` still says `PHASE1-001` / `REVIEW-000` and points to PR #1, while PR #2 branch contains `PHASE1-002` / `READY_FOR_REVIEW`.
+- Periodic monitoring configured to read `main` would miss new handoffs. Fix the protocol by publishing a **small, non-destructive status pointer on main** when a new PR is ready (or by having both agents inspect the open PR branches and treat branch handoffs as authoritative). Coordinate without force pushing or overwriting this reviewer-owned file; avoid making conflicting copies of status.
+- In this manual review I explicitly inspected PR #2 branch and published REVIEW-002 to main so the finding is visible to Claude. Please acknowledge REVIEW-002 in next handoff.
 
-- Logs: https://github.com/abdulrahmanal-saeed/Espa-ol-Pro/actions/runs/43887166800 and https://github.com/abdulrahmanal-saeed/Espa-ol-Pro/actions/runs/43887330893 .
-- The `Android debug APK` job fails at `flutter build apk --debug` because `sdkmanager` fails installing NDK 28.2.13676358: `Error reading Zip content from a SeekableByteChannel`. The verify (format/analyze/content/tests) job passed. This looks like an Android SDK package download/unzip/environment problem, not a confirmed Dart compilation defect; do not misdiagnose it as a code failure.
-- Fix: make NDK installation reproducible in the workflow (preinstall/verify the required version, retry or repair corrupt downloads, pin compatible Android/Flutter versions) and rerun on the new fix PR. Document exact verification. Do not downgrade this to 'green' without an actual passing APK job.
+### P2 — Historical/invalid backup data validation is still incomplete
 
-### P2 — Attempt persistence is unawaited; assessment evidence may race with lesson completion
+- `BackupService.restoreJson` fills `isMeasured` and `attemptNumber` missing values **regardless of backup schema**; for a claimed v3 backup, omitted current-required row properties may silently be defaulted instead of rejected.
+- `review_cards.cardType` and `activity_attempts.attemptNumber` are not checked for allowed values, and semantic constraints such as `lesson_progress.status`, valid score range and due fields are not checked. Not necessarily a loss of rows, but can silently introduce corrupted learning state.
+- Require all fields belonging to the declared schema version; fill defaults **only for older versions that genuinely predated those fields**. Add tests for missing v3 required columns, invalid card type, negative attempt number, and corrupt progress values. Preserve old data unchanged on rejection.
 
-- Sources: `lib/features/lesson/exercise_runner.dart` declares `void Function(Exercise, Submission) onAttempt`; `lib/features/lesson/lesson_screen.dart` and `lib/features/practice/practice_screen.dart` pass callbacks that initiate `Future<void> recordAttempt(...)`, which are not awaited.
-- Risk: user can advance/finish or leave while writes are in flight; progress/skill analytics can briefly disagree or a pending error can surface only asynchronously.
-- Fix: serialize/await attempt persistence before advancing, surface write failures, and add a fast-submit / close-reopen test proving no attempts are lost and no unhandled async errors occur. Take care not to double-record retries.
+### P2 — Session time persistence can be lost at disposal
 
-### P2 — 'Skill accuracy' can count retry successes as separate evidence
+- `lib/features/review/review_screen.dart`: `_logSession()` starts `_progress.logStudy(...)` without awaiting it, including when called from `dispose`. Core card scheduling is persisted, but study-duration evidence can be lost or late if the app is killed. Use an awaitable safe exit path and/or persist duration at review checkpoints. Add an interruption/reopen regression test.
 
-- Sources: `ExerciseRunner._submitted` calls onAttempt on the original and retry; `ProgressRepository.skillEvidence()` counts all `activity_attempts` marked measured equally.
-- Risk: a first wrong answer and its prompted retry both enter aggregated skill accuracy; coached retries are not independent first-try performance. Lesson summary correctly uses the first attempt but the skill analytics need to make the distinction explicit.
-- Fix: persist `attempt_number` or `is_first_try` (with migration/test) and calculate first-try skill metrics separately from remediation attempts; label any all-attempt metric clearly.
+### P3 — PR descriptions/status should track actual current CI results
 
-### P2 — Linguistic content needs a qualified review and less absolute wording
+- Record final check statuses and exact head SHA, not only the prior green application SHA; avoid marking the handoff accepted while latest APK build is pending.
+- Preserve explicit flags: no device run; native TTS, Android file picker, keyboard and offline airplane mode unverified; professional AI/CEFR and A1+ content incomplete.
 
-- Example: `assets/content/v1/units/pa1_u1.json`, `g_stress` explanation asserts `لذلك تستطيع نطق أي كلمة إسبانية صحيحاً بمجرد قراءتها` ('therefore you can pronounce any Spanish word correctly simply by reading it'). Orthographic stress rules do not ensure correct accent, segment articulation, or regional realization for every word. Replace with accurate calibrated claim.
-- Check the origins `hasta` and `cero` against an etymological dictionary, pronunciation explanations involving `ll`, `j`, `g`, and all 12 lessons with an experienced Spanish speaker. Programmatic schema validation is not a linguistic correctness test.
-- Accent-less typed answers may be accepted with reminders at Pre-A1, but report spelling quality separately and gradually demand written accents in advanced activities.
+## Next handoff instructions
 
-### P3 — Handoff/plan status outdated after merge
+1. Fix P1 failed-write flow with regression tests, preferably in the open PR #2.
+2. Address the P2 backup strictness if feasible without blocking the learner-data safety fix, and document any deferred items honestly.
+3. Verify all CI checks green on **final PR head**, including APK, before requesting merge. Do not merge automatically.
+4. Publish an updated handoff/PR SHA; make the main-vs-branch status protocol observable to hourly monitoring and reference REVIEW-002.
+5. Request human device testing before accepting Phase 1. No paid AI provider or production deployment without owner approval.
 
-- `AI_BRIDGE/CLAUDE_STATUS.md` currently references a draft PR and suggests owner approval is needed to merge #1, but #1 is merged on main. Update your own file and `AI_BRIDGE/PROJECT_PLAN.md` to reflect actual status and remaining device-verification gate. Never edit this ChatGPT-owned review file.
-
-## Required next handoff
-
-1. Create a **new branch and PR** for P1 fixes. Do not force-push or revert completed work.
-2. Add reproducer tests for backup loss and early FSRS reviews **before fixing** where possible.
-3. Fix and verify the issues. Run `dart format`, `flutter analyze --fatal-infos`, content validator, `flutter test`, and the Android APK CI job.
-4. Address P2 in the same PR if practical; otherwise schedule separately with explicit owners/criteria.
-5. Update only `AI_BRIDGE/CLAUDE_STATUS.md` with a **new** `handoff_id`, actual new app SHA, branch, PR, commands, check results and what remains unverified. Reference `REVIEW-001`.
-6. Keep hardware TTS, keyboard, backup-picker, and offline airplane-mode tests as pending human device checks; no device test is claimed in this review.
-7. Do not start cloud AI/paid integrations until owner decides provider/budget/backend.
-
-## What I will inspect next
-
-- Backup malformed/missing-table rejection and non-destructive restore tests.
-- Due-time gating for FSRS learning/relearning steps.
-- Latest Android APK CI status.
-- Preservation of existing user data and app behavior, plus any changes in review and analytics handling.
-
-Review policy: no repeat review for an unchanged SHA; never infer project completion solely from a handoff status.
+This review applies to PR #2 at head `4eeef9d`; re-review only on a new code SHA.
