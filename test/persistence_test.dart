@@ -7,6 +7,7 @@ import 'package:espanol_pro/core/content/models.dart';
 import 'package:espanol_pro/core/db/database.dart';
 import 'package:espanol_pro/core/learning/exercises.dart';
 import 'package:espanol_pro/core/learning/progress_repository.dart';
+import 'package:espanol_pro/core/phrases/saved_phrases_repository.dart';
 import 'package:espanol_pro/core/settings.dart';
 import 'package:espanol_pro/core/srs/review_repository.dart';
 import 'package:flutter_test/flutter_test.dart';
@@ -141,7 +142,7 @@ void main() {
     );
 
     test(
-      'v2 → v3 keeps attempts and error records, defaults attempt_number',
+      'v2 → latest keeps attempts and error records, defaults attempt_number',
       () async {
         final file = File('${tmp.path}/v2.sqlite');
         final v2 = raw.sqlite3.open(file.path);
@@ -169,7 +170,61 @@ void main() {
         await db.close();
 
         final check = raw.sqlite3.open(file.path);
-        expect(check.select('PRAGMA user_version').single.values.single, 3);
+        expect(
+          check.select('PRAGMA user_version').single.values.single,
+          AppDatabase.latestSchemaVersion,
+        );
+        check.close();
+      },
+    );
+
+    test(
+      'v3 → latest adds saved phrases and keeps every existing row',
+      () async {
+        // Build a real v3 file with the current code's v3 tables, by creating
+        // the latest schema and removing what v4 added.
+        final file = File('${tmp.path}/v3.sqlite');
+        final fresh = open(file);
+        await fresh.select(fresh.settings).get();
+        await fresh.close();
+        final v3 = raw.sqlite3.open(file.path);
+        v3.execute('DROP TABLE saved_phrases; PRAGMA user_version = 3;');
+        v3.execute(
+          "INSERT INTO settings VALUES ('dailyMinutes', '60');"
+          "INSERT INTO lesson_progress (lesson_id, status, best_score, last_score, completions, started_at, first_completed_at, last_completed_at, content_version)"
+          " VALUES ('pa1_u1_l1', 'completed', 0.8, 0.8, 1, 1000, 2000, 2000, '1.0.2');"
+          "INSERT INTO activity_attempts (activity_id, lesson_id, item_id, skill, exercise_type, context, is_correct, is_measured, attempt_number, user_answer, expected, created_at)"
+          " VALUES ('pa1_u1_l1#17', 'pa1_u1_l1', 'casa', 'writing', 'type_es', 'lesson', 1, 1, 2, 'casa', 'casa', 1500);",
+        );
+        v3.close();
+
+        final db = open(file);
+        expect((await SettingsRepository(db).load()).dailyMinutes, 60);
+        expect(
+          (await db.select(db.lessonProgress).get()).single.bestScore,
+          0.8,
+        );
+        final attempt = (await db.select(db.activityAttempts).get()).single;
+        expect(attempt.attemptNumber, 2);
+        expect(await db.select(db.savedPhrases).get(), isEmpty);
+        final phrases = SavedPhrasesRepository(db, clock: FakeClock().call);
+        expect(
+          await phrases.save(
+            const PhraseDraft(
+              es: 'Buenos días.',
+              ar: 'صباح الخير.',
+              source: PhraseSource(kind: 'vocab', id: 'buenos_dias'),
+            ),
+          ),
+          isTrue,
+        );
+        await db.close();
+
+        final check = raw.sqlite3.open(file.path);
+        expect(
+          check.select('PRAGMA user_version').single.values.single,
+          AppDatabase.latestSchemaVersion,
+        );
         check.close();
       },
     );
@@ -313,6 +368,19 @@ void main() {
       );
       await reviews.rate((await reviews.dueCards()).first.id, fsrs.Rating.good);
       await SettingsRepository(db).save(const AppSettings(dailyMinutes: 45));
+      final phrases = SavedPhrasesRepository(db, clock: clock.call);
+      await phrases.save(
+        PhraseDraft(
+          es: 'Mi casa es tu casa.',
+          ar: 'بيتي بيتك.',
+          source: PhraseSource(
+            kind: 'example',
+            id: 'casa',
+            lessonId: lesson.id,
+          ),
+        ),
+      );
+      await phrases.updateNote((await phrases.all()).single.id, 'ترحيب بضيف');
       return db;
     }
 
@@ -324,6 +392,7 @@ void main() {
       'logs': (await db.select(db.reviewLogs).get()).length,
       'sessions': (await db.select(db.studySessions).get()).length,
       'errors': (await db.select(db.errorRecords).get()).length,
+      'phrases': (await db.select(db.savedPhrases).get()).length,
     };
 
     test('export → restore on a new device reproduces all data', () async {
@@ -625,13 +694,132 @@ void main() {
       },
     );
 
-    test('reset clears progress but keeps settings', () async {
+    test(
+      'saved phrases round-trip through a backup with their notes',
+      () async {
+        final source = await seeded();
+        final json = await BackupService(source).exportJson(
+          now: DateTime.utc(2026, 3, 10),
+          contentVersion: pack.version,
+        );
+        expect(BackupService.summarize(json)['saved_phrases'], 1);
+        final target = memoryDb();
+        await BackupService(target).restoreJson(json);
+        final a = (await source.select(source.savedPhrases).get()).single;
+        final b = (await target.select(target.savedPhrases).get()).single;
+        expect(b.toJson(), a.toJson());
+        await source.close();
+        await target.close();
+      },
+    );
+
+    test(
+      'a v4 backup without saved_phrases is rejected, data untouched',
+      () async {
+        final db = await seeded();
+        final before = await snapshot(db);
+        final doc = jsonDecode(
+          await BackupService(
+            db,
+          ).exportJson(now: DateTime.utc(2026), contentVersion: pack.version),
+        ) as Map<String, dynamic>;
+        (doc['tables'] as Map).remove('saved_phrases');
+        await expectLater(
+          BackupService(db).restoreJson(jsonEncode(doc)),
+          throwsA(isA<BackupException>()),
+        );
+        expect(await snapshot(db), before);
+        await db.close();
+      },
+    );
+
+    test('invalid saved phrases are rejected, data untouched', () async {
       final db = await seeded();
-      await BackupService(db).resetProgress();
-      final c = await counts(db);
-      expect(c['settings'], greaterThan(0));
-      expect((c..remove('settings')).values, everyElement(0));
+      final before = await snapshot(db);
+      Future<void> rejects(
+        void Function(Map<String, dynamic> row) corrupt,
+        String why, {
+        bool duplicate = false,
+      }) async {
+        final doc = jsonDecode(
+          await BackupService(
+            db,
+          ).exportJson(now: DateTime.utc(2026), contentVersion: pack.version),
+        ) as Map<String, dynamic>;
+        final rows = (doc['tables'] as Map)['saved_phrases'] as List;
+        final row = rows.first as Map<String, dynamic>;
+        if (duplicate) {
+          rows.add({...row, 'id': 999});
+        } else {
+          corrupt(row);
+        }
+        await expectLater(
+          BackupService(db).restoreJson(jsonEncode(doc)),
+          throwsA(isA<BackupException>()),
+          reason: why,
+        );
+        expect(await snapshot(db), before, reason: '$why changed the data');
+      }
+
+      await rejects((r) => r['es'] = '  ', 'empty Spanish');
+      await rejects(
+        (r) => r['phraseKey'] = 'otra cosa',
+        'key not matching text',
+      );
+      await rejects((r) => r['sourceKind'] = 'telepathy', 'unknown source');
+      await rejects((r) => r['savedAt'] = -1, 'negative date');
+      await rejects((_) {}, 'duplicate key', duplicate: true);
       await db.close();
     });
+
+    test(
+      'restoring a pre-v4 backup keeps the saved phrases already on the device',
+      () async {
+        final device = await seeded();
+        final old = await seeded();
+        final doc = jsonDecode(
+          await BackupService(
+            old,
+          ).exportJson(now: DateTime.utc(2026), contentVersion: pack.version),
+        ) as Map<String, dynamic>;
+        doc['schema_version'] = 3;
+        (doc['tables'] as Map).remove('saved_phrases');
+        final phrasesBefore = (await device.select(device.savedPhrases).get())
+            .map((r) => r.toJson())
+            .toList();
+        await BackupService(device).restoreJson(jsonEncode(doc));
+        expect(
+          (await device.select(device.savedPhrases).get()).map(
+            (r) => r.toJson(),
+          ),
+          phrasesBefore,
+        );
+        await device.close();
+        await old.close();
+      },
+    );
+
+    test(
+      'reset clears progress but keeps settings and saved phrases',
+      () async {
+        final db = await seeded();
+        await BackupService(db).resetProgress();
+        final c = await counts(db);
+        expect(c['settings'], greaterThan(0));
+        expect(c['phrases'], 1);
+        expect(
+          (await db.select(db.savedPhrases).get()).single.note,
+          'ترحيب بضيف',
+        );
+        expect(
+          (c
+                ..remove('settings')
+                ..remove('phrases'))
+              .values,
+          everyElement(0),
+        );
+        await db.close();
+      },
+    );
   });
 }

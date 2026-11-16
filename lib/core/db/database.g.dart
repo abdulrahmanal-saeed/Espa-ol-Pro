@@ -4039,6 +4039,599 @@ class ErrorRecordsCompanion extends UpdateCompanion<ErrorRecord> {
   }
 }
 
+class $SavedPhrasesTable extends SavedPhrases
+    with TableInfo<$SavedPhrasesTable, SavedPhrase> {
+  @override
+  final GeneratedDatabase attachedDatabase;
+  final String? _alias;
+  $SavedPhrasesTable(this.attachedDatabase, [this._alias]);
+  static const VerificationMeta _idMeta = const VerificationMeta('id');
+  @override
+  late final GeneratedColumn<int> id = GeneratedColumn<int>(
+    'id',
+    aliasedName,
+    false,
+    hasAutoIncrement: true,
+    type: DriftSqlType.int,
+    requiredDuringInsert: false,
+    defaultConstraints: GeneratedColumn.constraintIsAlways(
+      'PRIMARY KEY AUTOINCREMENT',
+    ),
+  );
+  static const VerificationMeta _phraseKeyMeta = const VerificationMeta(
+    'phraseKey',
+  );
+  @override
+  late final GeneratedColumn<String> phraseKey = GeneratedColumn<String>(
+    'phrase_key',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+    defaultConstraints: GeneratedColumn.constraintIsAlways('UNIQUE'),
+  );
+  static const VerificationMeta _esMeta = const VerificationMeta('es');
+  @override
+  late final GeneratedColumn<String> es = GeneratedColumn<String>(
+    'es',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _arMeta = const VerificationMeta('ar');
+  @override
+  late final GeneratedColumn<String> ar = GeneratedColumn<String>(
+    'ar',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _enMeta = const VerificationMeta('en');
+  @override
+  late final GeneratedColumn<String> en = GeneratedColumn<String>(
+    'en',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+    defaultValue: const Constant(''),
+  );
+  static const VerificationMeta _sourceKindMeta = const VerificationMeta(
+    'sourceKind',
+  );
+  @override
+  late final GeneratedColumn<String> sourceKind = GeneratedColumn<String>(
+    'source_kind',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _sourceIdMeta = const VerificationMeta(
+    'sourceId',
+  );
+  @override
+  late final GeneratedColumn<String> sourceId = GeneratedColumn<String>(
+    'source_id',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _sourceLessonIdMeta = const VerificationMeta(
+    'sourceLessonId',
+  );
+  @override
+  late final GeneratedColumn<String> sourceLessonId = GeneratedColumn<String>(
+    'source_lesson_id',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _noteMeta = const VerificationMeta('note');
+  @override
+  late final GeneratedColumn<String> note = GeneratedColumn<String>(
+    'note',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+    defaultValue: const Constant(''),
+  );
+  static const VerificationMeta _savedAtMeta = const VerificationMeta(
+    'savedAt',
+  );
+  @override
+  late final GeneratedColumn<int> savedAt = GeneratedColumn<int>(
+    'saved_at',
+    aliasedName,
+    false,
+    type: DriftSqlType.int,
+    requiredDuringInsert: true,
+  );
+  @override
+  List<GeneratedColumn> get $columns => [
+    id,
+    phraseKey,
+    es,
+    ar,
+    en,
+    sourceKind,
+    sourceId,
+    sourceLessonId,
+    note,
+    savedAt,
+  ];
+  @override
+  String get aliasedName => _alias ?? actualTableName;
+  @override
+  String get actualTableName => $name;
+  static const String $name = 'saved_phrases';
+  @override
+  VerificationContext validateIntegrity(
+    Insertable<SavedPhrase> instance, {
+    bool isInserting = false,
+  }) {
+    final context = VerificationContext();
+    final data = instance.toColumns(true);
+    if (data.containsKey('id')) {
+      context.handle(_idMeta, id.isAcceptableOrUnknown(data['id']!, _idMeta));
+    }
+    if (data.containsKey('phrase_key')) {
+      context.handle(
+        _phraseKeyMeta,
+        phraseKey.isAcceptableOrUnknown(data['phrase_key']!, _phraseKeyMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_phraseKeyMeta);
+    }
+    if (data.containsKey('es')) {
+      context.handle(_esMeta, es.isAcceptableOrUnknown(data['es']!, _esMeta));
+    } else if (isInserting) {
+      context.missing(_esMeta);
+    }
+    if (data.containsKey('ar')) {
+      context.handle(_arMeta, ar.isAcceptableOrUnknown(data['ar']!, _arMeta));
+    } else if (isInserting) {
+      context.missing(_arMeta);
+    }
+    if (data.containsKey('en')) {
+      context.handle(_enMeta, en.isAcceptableOrUnknown(data['en']!, _enMeta));
+    }
+    if (data.containsKey('source_kind')) {
+      context.handle(
+        _sourceKindMeta,
+        sourceKind.isAcceptableOrUnknown(data['source_kind']!, _sourceKindMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_sourceKindMeta);
+    }
+    if (data.containsKey('source_id')) {
+      context.handle(
+        _sourceIdMeta,
+        sourceId.isAcceptableOrUnknown(data['source_id']!, _sourceIdMeta),
+      );
+    }
+    if (data.containsKey('source_lesson_id')) {
+      context.handle(
+        _sourceLessonIdMeta,
+        sourceLessonId.isAcceptableOrUnknown(
+          data['source_lesson_id']!,
+          _sourceLessonIdMeta,
+        ),
+      );
+    }
+    if (data.containsKey('note')) {
+      context.handle(
+        _noteMeta,
+        note.isAcceptableOrUnknown(data['note']!, _noteMeta),
+      );
+    }
+    if (data.containsKey('saved_at')) {
+      context.handle(
+        _savedAtMeta,
+        savedAt.isAcceptableOrUnknown(data['saved_at']!, _savedAtMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_savedAtMeta);
+    }
+    return context;
+  }
+
+  @override
+  Set<GeneratedColumn> get $primaryKey => {id};
+  @override
+  SavedPhrase map(Map<String, dynamic> data, {String? tablePrefix}) {
+    final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
+    return SavedPhrase(
+      id: attachedDatabase.typeMapping.read(
+        DriftSqlType.int,
+        data['${effectivePrefix}id'],
+      )!,
+      phraseKey: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}phrase_key'],
+      )!,
+      es: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}es'],
+      )!,
+      ar: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}ar'],
+      )!,
+      en: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}en'],
+      )!,
+      sourceKind: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}source_kind'],
+      )!,
+      sourceId: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}source_id'],
+      ),
+      sourceLessonId: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}source_lesson_id'],
+      ),
+      note: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}note'],
+      )!,
+      savedAt: attachedDatabase.typeMapping.read(
+        DriftSqlType.int,
+        data['${effectivePrefix}saved_at'],
+      )!,
+    );
+  }
+
+  @override
+  $SavedPhrasesTable createAlias(String alias) {
+    return $SavedPhrasesTable(attachedDatabase, alias);
+  }
+}
+
+class SavedPhrase extends DataClass implements Insertable<SavedPhrase> {
+  final int id;
+  final String phraseKey;
+  final String es;
+  final String ar;
+  final String en;
+
+  /// vocab | example | grammar | lesson_note
+  final String sourceKind;
+
+  /// Content id of the item / grammar note the phrase came from, if any.
+  final String? sourceId;
+  final String? sourceLessonId;
+  final String note;
+  final int savedAt;
+  const SavedPhrase({
+    required this.id,
+    required this.phraseKey,
+    required this.es,
+    required this.ar,
+    required this.en,
+    required this.sourceKind,
+    this.sourceId,
+    this.sourceLessonId,
+    required this.note,
+    required this.savedAt,
+  });
+  @override
+  Map<String, Expression> toColumns(bool nullToAbsent) {
+    final map = <String, Expression>{};
+    map['id'] = Variable<int>(id);
+    map['phrase_key'] = Variable<String>(phraseKey);
+    map['es'] = Variable<String>(es);
+    map['ar'] = Variable<String>(ar);
+    map['en'] = Variable<String>(en);
+    map['source_kind'] = Variable<String>(sourceKind);
+    if (!nullToAbsent || sourceId != null) {
+      map['source_id'] = Variable<String>(sourceId);
+    }
+    if (!nullToAbsent || sourceLessonId != null) {
+      map['source_lesson_id'] = Variable<String>(sourceLessonId);
+    }
+    map['note'] = Variable<String>(note);
+    map['saved_at'] = Variable<int>(savedAt);
+    return map;
+  }
+
+  SavedPhrasesCompanion toCompanion(bool nullToAbsent) {
+    return SavedPhrasesCompanion(
+      id: Value(id),
+      phraseKey: Value(phraseKey),
+      es: Value(es),
+      ar: Value(ar),
+      en: Value(en),
+      sourceKind: Value(sourceKind),
+      sourceId: sourceId == null && nullToAbsent
+          ? const Value.absent()
+          : Value(sourceId),
+      sourceLessonId: sourceLessonId == null && nullToAbsent
+          ? const Value.absent()
+          : Value(sourceLessonId),
+      note: Value(note),
+      savedAt: Value(savedAt),
+    );
+  }
+
+  factory SavedPhrase.fromJson(
+    Map<String, dynamic> json, {
+    ValueSerializer? serializer,
+  }) {
+    serializer ??= driftRuntimeOptions.defaultSerializer;
+    return SavedPhrase(
+      id: serializer.fromJson<int>(json['id']),
+      phraseKey: serializer.fromJson<String>(json['phraseKey']),
+      es: serializer.fromJson<String>(json['es']),
+      ar: serializer.fromJson<String>(json['ar']),
+      en: serializer.fromJson<String>(json['en']),
+      sourceKind: serializer.fromJson<String>(json['sourceKind']),
+      sourceId: serializer.fromJson<String?>(json['sourceId']),
+      sourceLessonId: serializer.fromJson<String?>(json['sourceLessonId']),
+      note: serializer.fromJson<String>(json['note']),
+      savedAt: serializer.fromJson<int>(json['savedAt']),
+    );
+  }
+  @override
+  Map<String, dynamic> toJson({ValueSerializer? serializer}) {
+    serializer ??= driftRuntimeOptions.defaultSerializer;
+    return <String, dynamic>{
+      'id': serializer.toJson<int>(id),
+      'phraseKey': serializer.toJson<String>(phraseKey),
+      'es': serializer.toJson<String>(es),
+      'ar': serializer.toJson<String>(ar),
+      'en': serializer.toJson<String>(en),
+      'sourceKind': serializer.toJson<String>(sourceKind),
+      'sourceId': serializer.toJson<String?>(sourceId),
+      'sourceLessonId': serializer.toJson<String?>(sourceLessonId),
+      'note': serializer.toJson<String>(note),
+      'savedAt': serializer.toJson<int>(savedAt),
+    };
+  }
+
+  SavedPhrase copyWith({
+    int? id,
+    String? phraseKey,
+    String? es,
+    String? ar,
+    String? en,
+    String? sourceKind,
+    Value<String?> sourceId = const Value.absent(),
+    Value<String?> sourceLessonId = const Value.absent(),
+    String? note,
+    int? savedAt,
+  }) => SavedPhrase(
+    id: id ?? this.id,
+    phraseKey: phraseKey ?? this.phraseKey,
+    es: es ?? this.es,
+    ar: ar ?? this.ar,
+    en: en ?? this.en,
+    sourceKind: sourceKind ?? this.sourceKind,
+    sourceId: sourceId.present ? sourceId.value : this.sourceId,
+    sourceLessonId: sourceLessonId.present
+        ? sourceLessonId.value
+        : this.sourceLessonId,
+    note: note ?? this.note,
+    savedAt: savedAt ?? this.savedAt,
+  );
+  SavedPhrase copyWithCompanion(SavedPhrasesCompanion data) {
+    return SavedPhrase(
+      id: data.id.present ? data.id.value : this.id,
+      phraseKey: data.phraseKey.present ? data.phraseKey.value : this.phraseKey,
+      es: data.es.present ? data.es.value : this.es,
+      ar: data.ar.present ? data.ar.value : this.ar,
+      en: data.en.present ? data.en.value : this.en,
+      sourceKind: data.sourceKind.present
+          ? data.sourceKind.value
+          : this.sourceKind,
+      sourceId: data.sourceId.present ? data.sourceId.value : this.sourceId,
+      sourceLessonId: data.sourceLessonId.present
+          ? data.sourceLessonId.value
+          : this.sourceLessonId,
+      note: data.note.present ? data.note.value : this.note,
+      savedAt: data.savedAt.present ? data.savedAt.value : this.savedAt,
+    );
+  }
+
+  @override
+  String toString() {
+    return (StringBuffer('SavedPhrase(')
+          ..write('id: $id, ')
+          ..write('phraseKey: $phraseKey, ')
+          ..write('es: $es, ')
+          ..write('ar: $ar, ')
+          ..write('en: $en, ')
+          ..write('sourceKind: $sourceKind, ')
+          ..write('sourceId: $sourceId, ')
+          ..write('sourceLessonId: $sourceLessonId, ')
+          ..write('note: $note, ')
+          ..write('savedAt: $savedAt')
+          ..write(')'))
+        .toString();
+  }
+
+  @override
+  int get hashCode => Object.hash(
+    id,
+    phraseKey,
+    es,
+    ar,
+    en,
+    sourceKind,
+    sourceId,
+    sourceLessonId,
+    note,
+    savedAt,
+  );
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      (other is SavedPhrase &&
+          other.id == this.id &&
+          other.phraseKey == this.phraseKey &&
+          other.es == this.es &&
+          other.ar == this.ar &&
+          other.en == this.en &&
+          other.sourceKind == this.sourceKind &&
+          other.sourceId == this.sourceId &&
+          other.sourceLessonId == this.sourceLessonId &&
+          other.note == this.note &&
+          other.savedAt == this.savedAt);
+}
+
+class SavedPhrasesCompanion extends UpdateCompanion<SavedPhrase> {
+  final Value<int> id;
+  final Value<String> phraseKey;
+  final Value<String> es;
+  final Value<String> ar;
+  final Value<String> en;
+  final Value<String> sourceKind;
+  final Value<String?> sourceId;
+  final Value<String?> sourceLessonId;
+  final Value<String> note;
+  final Value<int> savedAt;
+  const SavedPhrasesCompanion({
+    this.id = const Value.absent(),
+    this.phraseKey = const Value.absent(),
+    this.es = const Value.absent(),
+    this.ar = const Value.absent(),
+    this.en = const Value.absent(),
+    this.sourceKind = const Value.absent(),
+    this.sourceId = const Value.absent(),
+    this.sourceLessonId = const Value.absent(),
+    this.note = const Value.absent(),
+    this.savedAt = const Value.absent(),
+  });
+  SavedPhrasesCompanion.insert({
+    this.id = const Value.absent(),
+    required String phraseKey,
+    required String es,
+    required String ar,
+    this.en = const Value.absent(),
+    required String sourceKind,
+    this.sourceId = const Value.absent(),
+    this.sourceLessonId = const Value.absent(),
+    this.note = const Value.absent(),
+    required int savedAt,
+  }) : phraseKey = Value(phraseKey),
+       es = Value(es),
+       ar = Value(ar),
+       sourceKind = Value(sourceKind),
+       savedAt = Value(savedAt);
+  static Insertable<SavedPhrase> custom({
+    Expression<int>? id,
+    Expression<String>? phraseKey,
+    Expression<String>? es,
+    Expression<String>? ar,
+    Expression<String>? en,
+    Expression<String>? sourceKind,
+    Expression<String>? sourceId,
+    Expression<String>? sourceLessonId,
+    Expression<String>? note,
+    Expression<int>? savedAt,
+  }) {
+    return RawValuesInsertable({
+      if (id != null) 'id': id,
+      if (phraseKey != null) 'phrase_key': phraseKey,
+      if (es != null) 'es': es,
+      if (ar != null) 'ar': ar,
+      if (en != null) 'en': en,
+      if (sourceKind != null) 'source_kind': sourceKind,
+      if (sourceId != null) 'source_id': sourceId,
+      if (sourceLessonId != null) 'source_lesson_id': sourceLessonId,
+      if (note != null) 'note': note,
+      if (savedAt != null) 'saved_at': savedAt,
+    });
+  }
+
+  SavedPhrasesCompanion copyWith({
+    Value<int>? id,
+    Value<String>? phraseKey,
+    Value<String>? es,
+    Value<String>? ar,
+    Value<String>? en,
+    Value<String>? sourceKind,
+    Value<String?>? sourceId,
+    Value<String?>? sourceLessonId,
+    Value<String>? note,
+    Value<int>? savedAt,
+  }) {
+    return SavedPhrasesCompanion(
+      id: id ?? this.id,
+      phraseKey: phraseKey ?? this.phraseKey,
+      es: es ?? this.es,
+      ar: ar ?? this.ar,
+      en: en ?? this.en,
+      sourceKind: sourceKind ?? this.sourceKind,
+      sourceId: sourceId ?? this.sourceId,
+      sourceLessonId: sourceLessonId ?? this.sourceLessonId,
+      note: note ?? this.note,
+      savedAt: savedAt ?? this.savedAt,
+    );
+  }
+
+  @override
+  Map<String, Expression> toColumns(bool nullToAbsent) {
+    final map = <String, Expression>{};
+    if (id.present) {
+      map['id'] = Variable<int>(id.value);
+    }
+    if (phraseKey.present) {
+      map['phrase_key'] = Variable<String>(phraseKey.value);
+    }
+    if (es.present) {
+      map['es'] = Variable<String>(es.value);
+    }
+    if (ar.present) {
+      map['ar'] = Variable<String>(ar.value);
+    }
+    if (en.present) {
+      map['en'] = Variable<String>(en.value);
+    }
+    if (sourceKind.present) {
+      map['source_kind'] = Variable<String>(sourceKind.value);
+    }
+    if (sourceId.present) {
+      map['source_id'] = Variable<String>(sourceId.value);
+    }
+    if (sourceLessonId.present) {
+      map['source_lesson_id'] = Variable<String>(sourceLessonId.value);
+    }
+    if (note.present) {
+      map['note'] = Variable<String>(note.value);
+    }
+    if (savedAt.present) {
+      map['saved_at'] = Variable<int>(savedAt.value);
+    }
+    return map;
+  }
+
+  @override
+  String toString() {
+    return (StringBuffer('SavedPhrasesCompanion(')
+          ..write('id: $id, ')
+          ..write('phraseKey: $phraseKey, ')
+          ..write('es: $es, ')
+          ..write('ar: $ar, ')
+          ..write('en: $en, ')
+          ..write('sourceKind: $sourceKind, ')
+          ..write('sourceId: $sourceId, ')
+          ..write('sourceLessonId: $sourceLessonId, ')
+          ..write('note: $note, ')
+          ..write('savedAt: $savedAt')
+          ..write(')'))
+        .toString();
+  }
+}
+
 abstract class _$AppDatabase extends GeneratedDatabase {
   _$AppDatabase(QueryExecutor e) : super(e);
   $AppDatabaseManager get managers => $AppDatabaseManager(this);
@@ -4051,6 +4644,7 @@ abstract class _$AppDatabase extends GeneratedDatabase {
   late final $ReviewLogsTable reviewLogs = $ReviewLogsTable(this);
   late final $StudySessionsTable studySessions = $StudySessionsTable(this);
   late final $ErrorRecordsTable errorRecords = $ErrorRecordsTable(this);
+  late final $SavedPhrasesTable savedPhrases = $SavedPhrasesTable(this);
   @override
   Iterable<TableInfo<Table, Object?>> get allTables =>
       allSchemaEntities.whereType<TableInfo<Table, Object?>>();
@@ -4063,6 +4657,7 @@ abstract class _$AppDatabase extends GeneratedDatabase {
     reviewLogs,
     studySessions,
     errorRecords,
+    savedPhrases,
   ];
   @override
   StreamQueryUpdateRules get streamUpdateRules => const StreamQueryUpdateRules([
@@ -6308,6 +6903,308 @@ typedef $$ErrorRecordsTableProcessedTableManager =
       ErrorRecord,
       PrefetchHooks Function()
     >;
+typedef $$SavedPhrasesTableCreateCompanionBuilder =
+    SavedPhrasesCompanion Function({
+      Value<int> id,
+      required String phraseKey,
+      required String es,
+      required String ar,
+      Value<String> en,
+      required String sourceKind,
+      Value<String?> sourceId,
+      Value<String?> sourceLessonId,
+      Value<String> note,
+      required int savedAt,
+    });
+typedef $$SavedPhrasesTableUpdateCompanionBuilder =
+    SavedPhrasesCompanion Function({
+      Value<int> id,
+      Value<String> phraseKey,
+      Value<String> es,
+      Value<String> ar,
+      Value<String> en,
+      Value<String> sourceKind,
+      Value<String?> sourceId,
+      Value<String?> sourceLessonId,
+      Value<String> note,
+      Value<int> savedAt,
+    });
+
+class $$SavedPhrasesTableFilterComposer
+    extends Composer<_$AppDatabase, $SavedPhrasesTable> {
+  $$SavedPhrasesTableFilterComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  ColumnFilters<int> get id => $composableBuilder(
+    column: $table.id,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get phraseKey => $composableBuilder(
+    column: $table.phraseKey,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get es => $composableBuilder(
+    column: $table.es,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get ar => $composableBuilder(
+    column: $table.ar,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get en => $composableBuilder(
+    column: $table.en,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get sourceKind => $composableBuilder(
+    column: $table.sourceKind,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get sourceId => $composableBuilder(
+    column: $table.sourceId,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get sourceLessonId => $composableBuilder(
+    column: $table.sourceLessonId,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get note => $composableBuilder(
+    column: $table.note,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<int> get savedAt => $composableBuilder(
+    column: $table.savedAt,
+    builder: (column) => ColumnFilters(column),
+  );
+}
+
+class $$SavedPhrasesTableOrderingComposer
+    extends Composer<_$AppDatabase, $SavedPhrasesTable> {
+  $$SavedPhrasesTableOrderingComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  ColumnOrderings<int> get id => $composableBuilder(
+    column: $table.id,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get phraseKey => $composableBuilder(
+    column: $table.phraseKey,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get es => $composableBuilder(
+    column: $table.es,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get ar => $composableBuilder(
+    column: $table.ar,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get en => $composableBuilder(
+    column: $table.en,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get sourceKind => $composableBuilder(
+    column: $table.sourceKind,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get sourceId => $composableBuilder(
+    column: $table.sourceId,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get sourceLessonId => $composableBuilder(
+    column: $table.sourceLessonId,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get note => $composableBuilder(
+    column: $table.note,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<int> get savedAt => $composableBuilder(
+    column: $table.savedAt,
+    builder: (column) => ColumnOrderings(column),
+  );
+}
+
+class $$SavedPhrasesTableAnnotationComposer
+    extends Composer<_$AppDatabase, $SavedPhrasesTable> {
+  $$SavedPhrasesTableAnnotationComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  GeneratedColumn<int> get id =>
+      $composableBuilder(column: $table.id, builder: (column) => column);
+
+  GeneratedColumn<String> get phraseKey =>
+      $composableBuilder(column: $table.phraseKey, builder: (column) => column);
+
+  GeneratedColumn<String> get es =>
+      $composableBuilder(column: $table.es, builder: (column) => column);
+
+  GeneratedColumn<String> get ar =>
+      $composableBuilder(column: $table.ar, builder: (column) => column);
+
+  GeneratedColumn<String> get en =>
+      $composableBuilder(column: $table.en, builder: (column) => column);
+
+  GeneratedColumn<String> get sourceKind => $composableBuilder(
+    column: $table.sourceKind,
+    builder: (column) => column,
+  );
+
+  GeneratedColumn<String> get sourceId =>
+      $composableBuilder(column: $table.sourceId, builder: (column) => column);
+
+  GeneratedColumn<String> get sourceLessonId => $composableBuilder(
+    column: $table.sourceLessonId,
+    builder: (column) => column,
+  );
+
+  GeneratedColumn<String> get note =>
+      $composableBuilder(column: $table.note, builder: (column) => column);
+
+  GeneratedColumn<int> get savedAt =>
+      $composableBuilder(column: $table.savedAt, builder: (column) => column);
+}
+
+class $$SavedPhrasesTableTableManager
+    extends
+        RootTableManager<
+          _$AppDatabase,
+          $SavedPhrasesTable,
+          SavedPhrase,
+          $$SavedPhrasesTableFilterComposer,
+          $$SavedPhrasesTableOrderingComposer,
+          $$SavedPhrasesTableAnnotationComposer,
+          $$SavedPhrasesTableCreateCompanionBuilder,
+          $$SavedPhrasesTableUpdateCompanionBuilder,
+          (
+            SavedPhrase,
+            BaseReferences<_$AppDatabase, $SavedPhrasesTable, SavedPhrase>,
+          ),
+          SavedPhrase,
+          PrefetchHooks Function()
+        > {
+  $$SavedPhrasesTableTableManager(_$AppDatabase db, $SavedPhrasesTable table)
+    : super(
+        TableManagerState(
+          db: db,
+          table: table,
+          createFilteringComposer: () =>
+              $$SavedPhrasesTableFilterComposer($db: db, $table: table),
+          createOrderingComposer: () =>
+              $$SavedPhrasesTableOrderingComposer($db: db, $table: table),
+          createComputedFieldComposer: () =>
+              $$SavedPhrasesTableAnnotationComposer($db: db, $table: table),
+          updateCompanionCallback:
+              ({
+                Value<int> id = const Value.absent(),
+                Value<String> phraseKey = const Value.absent(),
+                Value<String> es = const Value.absent(),
+                Value<String> ar = const Value.absent(),
+                Value<String> en = const Value.absent(),
+                Value<String> sourceKind = const Value.absent(),
+                Value<String?> sourceId = const Value.absent(),
+                Value<String?> sourceLessonId = const Value.absent(),
+                Value<String> note = const Value.absent(),
+                Value<int> savedAt = const Value.absent(),
+              }) => SavedPhrasesCompanion(
+                id: id,
+                phraseKey: phraseKey,
+                es: es,
+                ar: ar,
+                en: en,
+                sourceKind: sourceKind,
+                sourceId: sourceId,
+                sourceLessonId: sourceLessonId,
+                note: note,
+                savedAt: savedAt,
+              ),
+          createCompanionCallback:
+              ({
+                Value<int> id = const Value.absent(),
+                required String phraseKey,
+                required String es,
+                required String ar,
+                Value<String> en = const Value.absent(),
+                required String sourceKind,
+                Value<String?> sourceId = const Value.absent(),
+                Value<String?> sourceLessonId = const Value.absent(),
+                Value<String> note = const Value.absent(),
+                required int savedAt,
+              }) => SavedPhrasesCompanion.insert(
+                id: id,
+                phraseKey: phraseKey,
+                es: es,
+                ar: ar,
+                en: en,
+                sourceKind: sourceKind,
+                sourceId: sourceId,
+                sourceLessonId: sourceLessonId,
+                note: note,
+                savedAt: savedAt,
+              ),
+          withReferenceMapper: (p0) => p0
+              .map(
+                (e) => (
+                  e.readTable<$SavedPhrasesTable, SavedPhrase>(table),
+                  BaseReferences<
+                    _$AppDatabase,
+                    $SavedPhrasesTable,
+                    SavedPhrase
+                  >(db, table, e),
+                ),
+              )
+              .toList(),
+          prefetchHooksCallback: null,
+        ),
+      );
+}
+
+typedef $$SavedPhrasesTableProcessedTableManager =
+    ProcessedTableManager<
+      _$AppDatabase,
+      $SavedPhrasesTable,
+      SavedPhrase,
+      $$SavedPhrasesTableFilterComposer,
+      $$SavedPhrasesTableOrderingComposer,
+      $$SavedPhrasesTableAnnotationComposer,
+      $$SavedPhrasesTableCreateCompanionBuilder,
+      $$SavedPhrasesTableUpdateCompanionBuilder,
+      (
+        SavedPhrase,
+        BaseReferences<_$AppDatabase, $SavedPhrasesTable, SavedPhrase>,
+      ),
+      SavedPhrase,
+      PrefetchHooks Function()
+    >;
 
 class $AppDatabaseManager {
   final _$AppDatabase _db;
@@ -6326,4 +7223,6 @@ class $AppDatabaseManager {
       $$StudySessionsTableTableManager(_db, _db.studySessions);
   $$ErrorRecordsTableTableManager get errorRecords =>
       $$ErrorRecordsTableTableManager(_db, _db.errorRecords);
+  $$SavedPhrasesTableTableManager get savedPhrases =>
+      $$SavedPhrasesTableTableManager(_db, _db.savedPhrases);
 }

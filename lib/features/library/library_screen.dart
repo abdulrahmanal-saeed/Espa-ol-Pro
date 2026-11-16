@@ -9,7 +9,9 @@ import '../../core/learning/progress_repository.dart';
 import '../../core/providers.dart';
 import '../../core/srs/review_repository.dart';
 import '../../core/widgets/common.dart';
+import '../../core/phrases/saved_phrases_repository.dart';
 import '../lesson/exercise_widgets.dart';
+import '../phrases/saved_phrases_view.dart';
 import '../practice/practice_screen.dart';
 import 'vocab_sheet.dart';
 
@@ -28,20 +30,28 @@ class LibraryScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => DefaultTabController(
-    length: 3,
+    length: 4,
     child: Scaffold(
       appBar: AppBar(
         title: const Text('المكتبة'),
         bottom: const TabBar(
+          isScrollable: true,
+          tabAlignment: TabAlignment.start,
           tabs: [
             Tab(text: 'قاموسي'),
+            Tab(text: 'عباراتي'),
             Tab(text: 'القواعد'),
             Tab(text: 'دفتر الأخطاء'),
           ],
         ),
       ),
       body: const TabBarView(
-        children: [_Dictionary(), _Grammar(), _ErrorNotebook()],
+        children: [
+          _Dictionary(),
+          SavedPhrasesView(),
+          _Grammar(),
+          _ErrorNotebook(),
+        ],
       ),
     ),
   );
@@ -211,7 +221,11 @@ class _Grammar extends ConsumerWidget {
                         style: t.textTheme.bodyLarge!.copyWith(height: 1.8),
                       ),
                       const SizedBox(height: 12),
-                      for (final e in g.examples) ExampleTile(e),
+                      for (final e in g.examples)
+                        ExampleTile(
+                          e,
+                          source: PhraseSource(kind: 'grammar', id: g.id),
+                        ),
                     ],
                   ),
                 ),

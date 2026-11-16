@@ -310,6 +310,7 @@ class SettingsScreen extends ConsumerWidget {
     'review_logs': 'مراجعات مسجّلة',
     'activity_attempts': 'إجابات',
     'error_records': 'أخطاء في الدفتر',
+    'saved_phrases': 'عبارات محفوظة',
   };
 
   Future<void> _import(BuildContext context, WidgetRef ref) async {
@@ -358,7 +359,7 @@ class SettingsScreen extends ConsumerWidget {
     final confirmed = await _confirm(
       context,
       title: 'حذف كل التقدّم؟',
-      body: 'سيُحذف نهائياً: الدروس المكتملة، بطاقات المراجعة وسجلّها، وقت الدراسة، ودفتر الأخطاء. لا يمكن التراجع إلا من نسخة احتياطية.',
+      body: 'سيُحذف نهائياً: الدروس المكتملة، بطاقات المراجعة وسجلّها، وقت الدراسة، ودفتر الأخطاء. تبقى الإعدادات و«عباراتي». لا يمكن التراجع إلا من نسخة احتياطية.',
       action: 'احذف',
       destructive: true,
     );

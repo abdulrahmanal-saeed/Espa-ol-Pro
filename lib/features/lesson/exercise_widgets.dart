@@ -5,8 +5,10 @@ import '../../app/theme.dart';
 import '../../core/content/models.dart';
 import '../../core/learning/answer_evaluator.dart';
 import '../../core/learning/exercises.dart';
+import '../../core/phrases/saved_phrases_repository.dart';
 import '../../core/providers.dart';
 import '../../core/widgets/common.dart';
+import '../phrases/save_phrase_button.dart';
 
 /// Outcome of one answered exercise.
 class Submission {
@@ -149,6 +151,19 @@ class VocabDetail extends ConsumerWidget {
                     SpeakButton(item.es, filled: true, size: 28),
                     const SizedBox(width: 12),
                     SpeakButton(item.es, slow: true, filled: true, size: 20),
+                    const SizedBox(width: 12),
+                    SavePhraseButton(
+                      PhraseDraft(
+                        es: item.es,
+                        ar: item.ar,
+                        en: item.en,
+                        source: PhraseSource(
+                          kind: 'vocab',
+                          id: item.id,
+                          lessonId: item.lessonId,
+                        ),
+                      ),
+                    ),
                   ],
                 ),
                 const SizedBox(height: 14),
@@ -173,7 +188,15 @@ class VocabDetail extends ConsumerWidget {
           ),
         ),
         const SizedBox(height: 12),
-        for (final e in item.examples) ExampleTile(e),
+        for (final e in item.examples)
+          ExampleTile(
+            e,
+            source: PhraseSource(
+              kind: 'example',
+              id: item.id,
+              lessonId: item.lessonId,
+            ),
+          ),
         if (item.noteAr.isNotEmpty)
           _InfoTile(
             icon: Icons.sticky_note_2_outlined,
@@ -193,8 +216,11 @@ class VocabDetail extends ConsumerWidget {
 }
 
 class ExampleTile extends StatelessWidget {
-  const ExampleTile(this.example, {super.key});
+  const ExampleTile(this.example, {super.key, this.source});
   final Example example;
+
+  /// When given, the tile offers to save the sentence to «عباراتي».
+  final PhraseSource? source;
 
   @override
   Widget build(BuildContext context) {
@@ -221,6 +247,10 @@ class ExampleTile extends StatelessWidget {
               ),
             ),
             SpeakButton(example.es),
+            if (source != null)
+              SavePhraseButton(
+                PhraseDraft(es: example.es, ar: example.ar, source: source!),
+              ),
           ],
         ),
       ),
@@ -350,7 +380,17 @@ class NoteView extends StatelessWidget {
             style: t.textTheme.bodyLarge!.copyWith(height: 1.8),
           ),
           const SizedBox(height: 16),
-          for (final e in step.examples) ExampleTile(e),
+          for (final e in step.examples)
+            ExampleTile(
+              e,
+              source: PhraseSource(
+                kind: 'lesson_note',
+                id: step.id,
+                lessonId: step.id.contains('#')
+                    ? step.id.substring(0, step.id.indexOf('#'))
+                    : null,
+              ),
+            ),
         ],
       ),
       action: FilledButton(onPressed: onNext, child: const Text('فهمت')),
