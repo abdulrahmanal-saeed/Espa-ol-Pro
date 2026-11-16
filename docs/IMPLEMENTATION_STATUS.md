@@ -41,6 +41,7 @@ content. Phase 1.1 work is in progress on later PRs.
 | **Phase 1.1:** schema v4 (`saved_phrases`), migration v3→v4 on a real file; backups include and validate it; pre-v4 restores and progress resets keep saved phrases | `persistence_test` |
 | **Phase 1.1:** live due-review counter on Home and Practice: one timer to the next due instant, no polling, recomputed on resume | `due_counter_test`, `app_flow_test` (clock-controlled, no DB write) |
 | **Phase 1.1:** time on an opened but unrated review card is stored when the app is backgrounded or the screen closes, without double counting (REVIEW-004 P2) | `app_flow_test` |
+| **Phase 1.1 (part B):** optional daily local reminder at a chosen time; inexact alarm (no exact-alarm permission); one fixed id, never duplicated; re-synced on launch, resume and settings change, so time-zone changes and reboots keep it right; Settings explains when Android blocks notifications; a tap opens Home through a route allow-list | `reminders_test` (incl. daylight-saving and time-zone changes), `app_flow_test`; not yet seen on a device |
 | **Phase 1.1:** app identity: adaptive icon with themed (monochrome) layer, density PNGs, Android 12+ and legacy splash, matching in-app loading screen | `branding_test` (resources and colours); not yet seen on a device |
 
 Local Windows verification used Flutter 3.50.0. All 105 tests passed,
