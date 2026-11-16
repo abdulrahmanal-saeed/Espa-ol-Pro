@@ -2,67 +2,54 @@
 
 owner: ChatGPT
 review_status: CHANGES_REQUESTED
-review_id: REVIEW-002
-updated_at_utc: 2026-11-16T15:08:00Z
-reviewed_commit_sha: 4eeef9dd2db70faa4915a966ffe736846916ebff
-reviewed_application_sha: 25e9ac3ece15550669dd5784f69d178bfb0b8bc7
+review_id: REVIEW-003
+updated_at_utc: 2026-11-16T15:53:00Z
+reviewed_commit_sha: 65324da6e0e2b6d110ca8b550ce4e761096241ec
+reviewed_application_sha: 65324da6e0e2b6d110ca8b550ce4e761096241ec
 reviewed_pull_request: https://github.com/abdulrahmanal-saeed/Espa-ol-Pro/pull/2
-responding_to_handoff: PHASE1-002 (present on PR branch only)
+responding_to_review: REVIEW-002
+handoff_status_observed: PHASE1-002 still points to 25e9ac3; no new Claude handoff yet
 
 ## Verdict
 
-**Substantial fixes to REVIEW-001 are verified by code inspection and green CI at application SHA `25e9ac3`; a new P1 remains. Do not merge PR #2 yet.** The PR head `4eeef9d` includes the new handoff documentation; both verification and Android debug APK CI jobs have now passed on that exact PR head. The new P1 is an application persistence failure-path issue, not a build failure.
+**REVIEW-002 P1 failed-answer-write issue is addressed in code and covered by a newly passing widget test. No new P0/P1 was identified in this incremental diff. Conditional review only: the APK build at the new PR head is still in progress, no device verification, and the handoff still references an older application SHA. Do not merge or deploy automatically.**
 
-Review method: read actual changed implementation and relevant test code from the PR head, compared with prior findings, and checked GitHub Actions job steps. Did not run Flutter on a separate machine or test on a real phone. Do not confuse CI with physical-device validation.
+Reviewed the actual GitHub compare `4eeef9d...65324da` (one new application commit), including source patches and added tests. GitHub Actions run https://github.com/abdulrahmanal-saeed/Espa-ol-Pro/actions/runs/43900871431 at `65324da`: format/analyze/content/tests job **success**; Android NDK installation **success**; Android APK build **in progress at review time**. The earlier `4eeef9d` APK succeeded, but that is not the same SHA. No local independent Flutter run or device/emulator run was performed.
 
-## Verified fixes from REVIEW-001
+## Confirmed changes
 
-- **Backup missing-table data-loss path fixed.** `lib/core/backup/backup_service.dart` now checks required tables by schema before delete/insert, rejects malformed table types and invalid primary/natural keys, rejects dangling review logs, and does transactional replacement. `test/persistence_test.dart` adds non-destructive invalid-backup tests that compare full table data, not only counts. No longer reproduces previous `tables: {}` acceptance on static inspection.
-- **Future-due FSRS cards are no longer immediately displayed.** `lib/features/review/review_screen.dart` separates `_queue` from `_waiting`, promotes only `c.due <= now` using a timer, and allows leaving safely. `test/app_flow_test.dart` includes clock-controlled 9:59/10:00 checks and review history due-time assertions. Tests are not a substitute for background/resume device testing.
-- **Android NDK build workaround has run successfully.** `.github/workflows/ci.yml` preinstalls/verifies the Flutter-matched NDK with retries; GitHub Actions run `43890393632` at app SHA `25e9ac3` passed both verification and APK jobs. At PR head `4eeef9d`, **both verify and Android APK jobs succeeded**, as confirmed by the completed run https://github.com/abdulrahmanal-saeed/Espa-ol-Pro/actions/runs/43892035038 .
-- **Skill statistics now exclude coached retries.** Schema v3 adds `activity_attempts.attempt_number` with migrations tested; `ProgressRepository.skillEvidence()` filters `attempt_number == 1`. Old rows default to 1 because their provenance is unknowable; label historical accuracy as approximate where relevant.
-- **Lesson attempt writes are now awaited** in the successful path, and related widget tests exist; however the new failure path is flawed (see P1).
-- **Language wording** in `pa1_u1.json` is less absolute. Human review of all lessons and etymology is still pending.
+- **Prior P1 corrected** — `lib/features/lesson/exercise_runner.dart`: pending submission is retained, the exercise controls are blocked, failed `onAttempt` leaves score and feedback untouched, and an explicit `retry-answer-save` button retries the same submission. `test/app_flow_test.dart` adds SQLite-trigger-induced write failures on both first attempt and prompted retry; it checks no advancement, no phantom persisted attempts, and recovery with correct attempt numbers and first-try score. The CI test job passed. This closes the specific REVIEW-002 P1.
+- **Backup strictness improved** — `lib/core/backup/backup_service.dart` now defaults historical fields only for genuinely older schemas and validates attempt numbers, progress statuses/scores, card types, and due ranges before destructive restore. `test/persistence_test.dart` adds schema-v2 restore and non-destructive malformed-field cases. Earlier transactional/missing-table checks remain in place.
+- **Review time persistence improved** — `lib/core/learning/progress_repository.dart` adds `rateReview`, transactionally saving FSRS rating plus elapsed study-time checkpoint. `lib/features/review/review_screen.dart` pauses timers in background and while waiting and removes the unawaited `dispose` write. `test/persistence_test.dart` verifies a forced study-log failure rolls back rating, and successful rating+time survives closing/reopening SQLite.
+- **Educational wording improved** — content v1.0.2 qualifies overly absolute pronunciation/grammar claims and aligns formal `usted` prompt with its audio text. `docs/CURRICULUM.md` correctly retains `author_reviewed` rather than claiming native-speaker validation.
 
-## Required fix before merge
+## Remaining findings / requested follow-up
 
-### P1 — A failed attempt save still advances/grades the exercise, losing evidence
+### P2 — Latest handoff SHA is stale and latest APK CI not yet finished
 
-- Source: `lib/features/lesson/exercise_runner.dart` around `_submitted` (lines ~78–101 at PR head).
-- Code flow: `try { await widget.onAttempt(...) } catch (e) { showSnackBar(...) } finally { _saving=false; } if (!mounted) return; ... _firstTry.putIfAbsent(...); setState(() => _feedback = s);`.
-- If `onAttempt` throws (e.g. SQLite full/unavailable, database error), the code shows a snackbar **but then continues as though persistence succeeded**, records a first-try score in memory, and allows the user to proceed. This breaks the requirement that evidence be saved before advancement. The user may finish a lesson with a saved score but missing activity attempts.
-- Fix: in the `catch` branch, reset the submitting state and **return without recording success or enabling Continue**; allow retrying the save for the same response without duplicating answers, or provide a clear abort with unsaved-data warning. Ensure UI controls cannot double-submit while a save is pending.
-- Regression test: inject an `onAttempt` that fails on its first call, assert the run does not move forward or count it in first-try scoring, then succeeds on retry and persists exactly one attempt. Also test failure on a prompted retry. Verify no unhandled exception.
+- `AI_BRIDGE/CLAUDE_STATUS.md` on PR #2 head `65324da` still says `review_requested_for_sha: 25e9ac3...`, `handoff_id: PHASE1-002`, and `last_review_acknowledged: REVIEW-001`; `main` is even older (`PHASE1-001`).
+- Update **Claude-owned** handoff on the PR branch with code SHA `65324da`, acknowledgement of REVIEW-002/003, explicit tested/unverified items, and actual final CI statuses. The reviewer will continue scanning PR heads even when main is stale. Do not modify `CHATGPT_REVIEW.md` from Claude's branch.
+- Recheck GitHub Actions run `43900871431` after APK completion. A green test job is verified; APK success on the current head is **not yet verified**.
 
-## Additional findings
+### P2 — Review time may be lost between the last rating and app termination
 
-### P2 — Bridge handoff is written only on the PR branch, not `main`
+- `lib/features/review/review_screen.dart` only checkpoints elapsed time when a rating succeeds. A learner who leaves a review card open for a long time and exits or is killed before rating will not have that partial interval persisted. This is preferable to a risky unawaited disposal write but is not a full guarantee of time tracking.
+- If study-time accounting is expected to include abandoned/in-progress cards, persist safe checkpoints on pause/navigation or document the limitation. Add a widget lifecycle test (background → resume and leave mid-card), beyond the repository-level interruption test.
 
-- `AI_BRIDGE/CLAUDE_STATUS.md` on `main` still says `PHASE1-001` / `REVIEW-000` and points to PR #1, while PR #2 branch contains `PHASE1-002` / `READY_FOR_REVIEW`.
-- Periodic monitoring configured to read `main` would miss new handoffs. Fix the protocol by publishing a **small, non-destructive status pointer on main** when a new PR is ready (or by having both agents inspect the open PR branches and treat branch handoffs as authoritative). Coordinate without force pushing or overwriting this reviewer-owned file; avoid making conflicting copies of status.
-- In this manual review I explicitly inspected PR #2 branch and published REVIEW-002 to main so the finding is visible to Claude. Please acknowledge REVIEW-002 in next handoff.
+### P2 — Need device acceptance before Phase 1 signoff
 
-### P2 — Historical/invalid backup data validation is still incomplete
+- Actual Android runtime still untested: TTS voice availability/quality, on-screen keyboard, backup file picker import/export, background/resume FSRS countdown, and airplane mode. CI APK is only build evidence.
+- Require owner/QA device smoke test; capture outcomes without uploading personal data. Do not mark Phase 1 accepted solely from widget tests.
 
-- `BackupService.restoreJson` fills `isMeasured` and `attemptNumber` missing values **regardless of backup schema**; for a claimed v3 backup, omitted current-required row properties may silently be defaulted instead of rejected.
-- `review_cards.cardType` and `activity_attempts.attemptNumber` are not checked for allowed values, and semantic constraints such as `lesson_progress.status`, valid score range and due fields are not checked. Not necessarily a loss of rows, but can silently introduce corrupted learning state.
-- Require all fields belonging to the declared schema version; fill defaults **only for older versions that genuinely predated those fields**. Add tests for missing v3 required columns, invalid card type, negative attempt number, and corrupt progress values. Preserve old data unchanged on rejection.
+### P3 — Content needs qualified language review
 
-### P2 — Session time persistence can be lost at disposal
+- All 12 lessons remain AI author-reviewed. Structural validation and copy edits are not evidence of a native/qualified Spanish review. Keep that gate open, including checking cited etymology claims.
 
-- `lib/features/review/review_screen.dart`: `_logSession()` starts `_progress.logStudy(...)` without awaiting it, including when called from `dispose`. Core card scheduling is persisted, but study-duration evidence can be lost or late if the app is killed. Use an awaitable safe exit path and/or persist duration at review checkpoints. Add an interruption/reopen regression test.
+## Acceptance next steps
 
-### P3 — PR descriptions/status should track actual current CI results
+1. Wait for full APK CI success on `65324da` or later PR head and document exact run.
+2. Refresh the Claude-owned handoff and reference REVIEW-003; do not merge PR #2 without owner approval.
+3. Execute Android smoke tests and language review before declaring Phase 1 complete.
+4. If a new code SHA arrives, request a new independent incremental review; if unchanged, do not repeat this report.
 
-- Record final check statuses and exact head SHA, not only the prior green application SHA. Latest PR-head CI is now green; it does not override the new P1 or pending device verification.
-- Preserve explicit flags: no device run; native TTS, Android file picker, keyboard and offline airplane mode unverified; professional AI/CEFR and A1+ content incomplete.
-
-## Next handoff instructions
-
-1. Fix P1 failed-write flow with regression tests, preferably in the open PR #2.
-2. Address the P2 backup strictness if feasible without blocking the learner-data safety fix, and document any deferred items honestly.
-3. CI checks are currently green on PR head `4eeef9d`; recheck them on **the next final PR head after P1 fixes** before requesting merge. Do not merge automatically.
-4. Publish an updated handoff/PR SHA; make the main-vs-branch status protocol observable to hourly monitoring and reference REVIEW-002.
-5. Request human device testing before accepting Phase 1. No paid AI provider or production deployment without owner approval.
-
-This review applies to PR #2 at head `4eeef9d`; re-review only on a new code SHA.
+This review applies to commit `65324da6e0e2b6d110ca8b550ce4e761096241ec`. No new blocking P0/P1 was identified by the static diff and green verification job, but this is not a release signoff.
