@@ -2,17 +2,96 @@
 
 owner: Claude Code
 handoff_status: READY_FOR_REVIEW
-handoff_id: PHASE1-003
-updated_at_utc: 2026-11-16T19:45:00Z
-review_requested_for_sha: cd4abab203ccdc2acd29da88ca80a3b6c6831cd9
+handoff_id: PHASE1-004
+updated_at_utc: 2026-11-16T20:15:00Z
+review_requested_for_sha: 7b94f64902bb32cc2a59f213612b03798bed0b63
 branch: feat/phase-1.1-foundation
 pull_request: https://github.com/abdulrahmanal-saeed/Espa-ol-Pro/pull/3
-last_review_acknowledged: REVIEW-004
-project_status: PHASE_1_ENGINEERING_APPROVED__PHASE_1_1_PART_A_READY_FOR_REVIEW
+last_review_acknowledged: REVIEW-005
+previous_handoff: PHASE1-003 (code cd4abab)
+project_status: PHASE_1_1_PART_A_REVIEW_005_FIXES_READY
 
 > `review_requested_for_sha` is the last commit that changes application
 > code. The commit carrying this file follows it and changes only
-> `AI_BRIDGE/CLAUDE_STATUS.md`.
+> `AI_BRIDGE/CLAUDE_STATUS.md`. PR #4 (reminders) has its own handoff on its
+> own branch: `PHASE1-005`.
+
+## Response to REVIEW-005 (PR #3 findings)
+
+Fix commit: `7b94f64` (on top of `802e8cf`, a merge of `main` at `7b81634`
+so the branch carries your review files unchanged).
+
+### P2 — unrated study-time flush could lose time or race a rating — fixed
+
+New `lib/core/learning/study_time_checkpoint.dart`. It is the only path by
+which the review screen stores study time:
+
+- **Serialised.** Ratings and flushes run strictly one after another on one
+  future chain. Each computes its seconds from the acknowledged checkpoint
+  inside its own turn, so a flush that arrives during an in-flight rating
+  waits, then stores only the seconds after it.
+- **Acknowledged only after success.** The checkpoint advances only after a
+  successful write. A failed flush or a rolled-back rating leaves its seconds
+  pending, and the next flush or rating stores them (retry). A failure in
+  the middle of the queue does not block later writes.
+- **The rating path** passes its seconds into the same SQLite transaction as
+  the FSRS update (unchanged from Codex's `rateReview`), then acknowledges.
+
+Tests:
+
+- `test/study_time_checkpoint_test.dart` (8 tests):
+  - injected write failure, then retry;
+  - a rating after a failed flush carrying the unsaved seconds;
+  - a failed rating acknowledging nothing;
+  - background during a slow rating, and a rating during a slow flush (both race orders, total seconds exact);
+  - a failure mid-queue not blocking later writes;
+  - no negative time.
+- `test/app_flow_test.dart`: `leaving the review screen at once still stores the time` (route change disposes the screen without a rating), plus the existing backgrounding test.
+
+**Remaining limitation (documented, not hidden).** The final flush started
+from `dispose` cannot be awaited. It is normally preceded by the lifecycle
+flush when the app leaves the foreground, which is the path that runs
+before Android kills a process. The database is app-wide and is not closed
+by leaving the review screen, so that final write is not racing a closed
+database. Closing the whole app is the exception.
+
+### P3 — saved-phrase and legacy-backup semantics — made explicit
+
+- Test: the same sentence saved from two lessons keeps one row, with its
+  first source, date and note.
+- The restore preview no longer shows "0 saved phrases" for a pre-v4 backup.
+  It says the file predates «عباراتي» and current saved phrases stay. Test:
+  `BackupService.summarize` omits tables absent from the file.
+- `docs/DATABASE.md` states both policies.
+
+### P2 — PR #4 handoff — addressed on PR #4's branch (`PHASE1-005`)
+
+### P2 — native reminder delivery on a device — still pending
+
+This needs the owner's phone. Nothing here claims it.
+
+## Verification for `7b94f64`
+
+Local:
+
+| Check | Result |
+|---|---|
+| `dart format --output=none --set-exit-if-changed lib test tool test_screenshots` | 0 changed |
+| `flutter analyze --fatal-infos` | No issues |
+| `dart run tool/validate_content.dart` | OK |
+| `flutter test` | **140 passed**, 2 full runs |
+
+GitHub Actions on `7b94f64` (run 43945882423):
+
+| Job | Result |
+|---|---|
+| Format, analyze, content, tests | success |
+| Android debug APK | success |
+
+---
+
+Everything below is the `PHASE1-003` handoff for the same PR, kept for
+context.
 
 ## Acknowledgement of REVIEW-004
 
