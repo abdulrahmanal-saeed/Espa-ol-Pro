@@ -26,7 +26,7 @@ teacher dashboards, push marketing, streak-driven mechanics.
 | Audio | `flutter_tts` 4 | Device TTS: offline, free, no data leaves the phone | MIT |
 | Backup file I/O | `file_picker` 13 | System save/open dialogs, no storage permission | MIT |
 | Fonts | IBM Plex Sans Arabic, Inter (bundled) | Offline, consistent Arabic + Latin typography | OFL 1.1 |
-| Reminders | `flutter_local_notifications` 23, `timezone`, `flutter_timezone` | Local scheduled notifications with correct time-zone and reboot handling | BSD-3 / BSD-2 / Apache-2.0 |
+| Reminders | `flutter_local_notifications` 22.3, `timezone`, `flutter_timezone` | Local scheduled notifications with correct time-zone and reboot handling | BSD-3 / BSD-2 / Apache-2.0 |
 
 Rejected for Phase 1: **Supabase / any backend** (nothing needs it yet),
 **shared_preferences** (settings live in SQLite so one backup covers
