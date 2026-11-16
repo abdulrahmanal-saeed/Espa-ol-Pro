@@ -194,6 +194,135 @@ void main() {
     });
   });
 
+  group('concurrent sync', () {
+    const off = AppSettings();
+    const id = ReminderService.notificationId;
+
+    test(
+      'disabling during a delayed schedule leaves no pending alarm',
+      () async {
+        final gate = platform.scheduleGate = ReminderGate();
+        final enabling = service.sync(on);
+        await gate.entered;
+
+        final disabling = service.sync(off);
+        await pumpEventQueue();
+        gate.release();
+        await enabling;
+
+        expect(await disabling, ReminderState.off);
+        expect(platform.pending, isEmpty);
+        expect(platform.calls.last, 'cancel $id');
+      },
+    );
+
+    test(
+      '20:00 replaces 19:00 even when the first schedule is delayed',
+      () async {
+        final gate = platform.scheduleGate = ReminderGate();
+        final earlier = service.sync(on);
+        await gate.entered;
+
+        final later = service.sync(on.copyWith(reminderMinuteOfDay: 20 * 60));
+        await pumpEventQueue();
+        gate.release();
+        await earlier;
+
+        expect(await later, ReminderState.scheduled);
+        expect(platform.pending.keys, [id]);
+        expect(platform.pending[id]!.hour, 20);
+        expect(platform.calls, [
+          'cancel $id',
+          startsWith('schedule $id'),
+          'cancel $id',
+          startsWith('schedule $id'),
+        ]);
+      },
+    );
+
+    test('rapid on-off-on keeps one schedule at the same time', () async {
+      final gate = platform.scheduleGate = ReminderGate();
+      final enabling = service.sync(on);
+      await gate.entered;
+
+      final disabling = service.sync(off);
+      final enablingAgain = service.sync(on);
+      gate.release();
+      await Future.wait([enabling, disabling, enablingAgain]);
+
+      expect(await enablingAgain, ReminderState.scheduled);
+      expect(platform.pending.keys, [id]);
+      expect(platform.pending[id]!.hour, 19);
+      expect(platform.schedules, 1);
+    });
+
+    test('re-enabling waits for an in-flight cancellation', () async {
+      await service.sync(on);
+      final gate = platform.cancelGate = ReminderGate();
+      final disabling = service.sync(off);
+      await gate.entered;
+
+      final enabling = service.sync(on.copyWith(reminderMinuteOfDay: 20 * 60));
+      await pumpEventQueue();
+      gate.release();
+      await disabling;
+
+      expect(await enabling, ReminderState.scheduled);
+      expect(platform.pending.keys, [id]);
+      expect(platform.pending[id]!.hour, 20);
+    });
+
+    test('a failed platform call does not prevent the queued retry', () async {
+      final gate = platform.scheduleGate = ReminderGate();
+      final first = service.sync(on);
+      await gate.entered;
+
+      final retry = service.sync(on);
+      await pumpEventQueue();
+      gate.fail();
+
+      expect(await first, ReminderState.failed);
+      expect(await retry, ReminderState.scheduled);
+      expect(await service.sync(on), ReminderState.scheduled);
+      expect(platform.pending.keys, [id]);
+      expect(platform.schedules, 1);
+    });
+
+    test(
+      'disable clears an alarm when scheduling failed after writing it',
+      () async {
+        await service.sync(off);
+        final gate = platform.scheduleGate = ReminderGate();
+        platform.throwAfterSchedule = true;
+        final enabling = service.sync(on);
+        await gate.entered;
+
+        final disabling = service.sync(off);
+        gate.release();
+
+        expect(await enabling, ReminderState.failed);
+        expect(await disabling, ReminderState.off);
+        expect(platform.pending, isEmpty);
+      },
+    );
+
+    test('the latest permission is rechecked without rescheduling', () async {
+      await service.sync(on);
+      final gate = platform.permissionCheckGate = ReminderGate();
+      final before = service.sync(on);
+      await gate.entered;
+
+      platform.enabled = false;
+      final after = service.sync(on);
+      gate.release();
+
+      expect(await before, ReminderState.scheduled);
+      expect(await after, ReminderState.blockedBySystem);
+      expect(platform.pending.keys, [id]);
+      expect(platform.schedules, 1);
+    });
+  });
+
   group('settings', () {
     test('reminder settings persist through the database', () async {
       final db = memoryDb();

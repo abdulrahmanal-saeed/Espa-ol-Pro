@@ -1,5 +1,23 @@
+import 'dart:async';
+
 import 'package:espanol_pro/core/reminders/reminder_service.dart';
 import 'package:timezone/timezone.dart' as tz;
+
+/// Stops a fake platform call immediately before it returns or mutates its
+/// alarm state. Each gate belongs to the next call of that operation.
+class ReminderGate {
+  final _entered = Completer<void>();
+  final _resume = Completer<void>();
+
+  Future<void> get entered => _entered.future;
+  void release() => _resume.complete();
+  void fail() => _resume.completeError(StateError('platform call failed'));
+
+  Future<void> pause() {
+    _entered.complete();
+    return _resume.future;
+  }
+}
 
 /// Records every call so tests can assert exactly what would reach Android.
 class FakeReminderPlatform implements ReminderPlatform {
@@ -9,6 +27,10 @@ class FakeReminderPlatform implements ReminderPlatform {
   bool enabled;
   bool grantOnRequest = true;
   bool throwOnSchedule = false;
+  bool throwAfterSchedule = false;
+  ReminderGate? scheduleGate;
+  ReminderGate? cancelGate;
+  ReminderGate? permissionCheckGate;
   String? launch;
   void Function(String? payload)? onTap;
 
@@ -25,7 +47,13 @@ class FakeReminderPlatform implements ReminderPlatform {
   Future<String?> launchPayload() async => launch;
 
   @override
-  Future<bool> notificationsEnabled() async => enabled;
+  Future<bool> notificationsEnabled() async {
+    final allowed = enabled;
+    final gate = permissionCheckGate;
+    permissionCheckGate = null;
+    if (gate != null) await gate.pause();
+    return allowed;
+  }
 
   @override
   Future<bool> requestPermission() async {
@@ -46,12 +74,19 @@ class FakeReminderPlatform implements ReminderPlatform {
     required String payload,
   }) async {
     if (throwOnSchedule) throw StateError('alarm service unavailable');
+    final gate = scheduleGate;
+    scheduleGate = null;
+    if (gate != null) await gate.pause();
     calls.add('schedule $id ${first.location.name} $first');
     pending[id] = first;
+    if (throwAfterSchedule) throw StateError('alarm service response lost');
   }
 
   @override
   Future<void> cancel(int id) async {
+    final gate = cancelGate;
+    cancelGate = null;
+    if (gate != null) await gate.pause();
     calls.add('cancel $id');
     pending.remove(id);
   }

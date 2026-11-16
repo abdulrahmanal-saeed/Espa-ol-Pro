@@ -486,7 +486,10 @@ class _ReminderSection extends ConsumerWidget {
                           .read(reminderPlatformProvider)
                           .requestPermission();
                     }
-                    update(s.copyWith(reminderEnabled: v));
+                    if (!context.mounted) return;
+                    update(
+                      ref.read(settingsProvider).copyWith(reminderEnabled: v),
+                    );
                   },
                 ),
                 ListTile(
@@ -510,11 +513,14 @@ class _ReminderSection extends ConsumerWidget {
                       ),
                       helpText: 'اختر وقت التذكير',
                     );
-                    if (picked != null) {
+                    if (picked != null && context.mounted) {
                       update(
-                        s.copyWith(
-                          reminderMinuteOfDay: picked.hour * 60 + picked.minute,
-                        ),
+                        ref
+                            .read(settingsProvider)
+                            .copyWith(
+                              reminderMinuteOfDay:
+                                  picked.hour * 60 + picked.minute,
+                            ),
                       );
                     }
                   },

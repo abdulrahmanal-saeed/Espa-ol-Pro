@@ -13,6 +13,7 @@ import 'package:go_router/go_router.dart';
 import 'package:material_ui/material_ui.dart';
 import 'package:timezone/data/latest_all.dart' as tzdata;
 
+import 'fake_reminders.dart';
 import 'support.dart';
 import 'widget_support.dart';
 
@@ -797,6 +798,72 @@ void main() {
       find.byKey(const ValueKey('reminder-ok'), skipOffstage: false),
       findsOneWidget,
     );
+    expect(app.reminders.schedules, 1);
+    await app.dispose(tester);
+  });
+
+  testWidgets('resume during a settings change respects the saved disable', (
+    tester,
+  ) async {
+    final app = TestApp(pack);
+    await app.pump(tester, location: '/settings');
+    final gate = app.reminders.scheduleGate = ReminderGate();
+    await tester.tapKey('reminder-switch');
+    await gate.entered;
+    expect((await SettingsRepository(app.db).load()).reminderEnabled, isTrue);
+
+    tester.binding.handleAppLifecycleStateChanged(AppLifecycleState.inactive);
+    tester.binding.handleAppLifecycleStateChanged(AppLifecycleState.resumed);
+    await tester.tapKey('reminder-switch');
+    expect((await SettingsRepository(app.db).load()).reminderEnabled, isFalse);
+
+    gate.release();
+    await tester.pumpAndSettle();
+    final container = ProviderScope.containerOf(
+      tester.element(find.byType(Scaffold).first),
+    );
+    expect(container.read(reminderStateProvider), ReminderState.off);
+    expect(app.reminders.pending, isEmpty);
+    expect(app.reminders.schedules, 1);
+    expect(find.byKey(const ValueKey('reminder-ok')), findsNothing);
+    await app.dispose(tester);
+  });
+
+  testWidgets('a stale permission check does not update the settings UI', (
+    tester,
+  ) async {
+    final app = TestApp(pack);
+    await app.pump(tester, location: '/settings');
+    await tester.tapKey('reminder-switch');
+
+    void resume() {
+      tester.binding.handleAppLifecycleStateChanged(AppLifecycleState.inactive);
+      tester.binding.handleAppLifecycleStateChanged(AppLifecycleState.resumed);
+    }
+
+    app.reminders.enabled = false;
+    final oldPermission = app.reminders.permissionCheckGate = ReminderGate();
+    resume();
+    await tester.pump();
+    await oldPermission.entered;
+
+    app.reminders.enabled = true;
+    final latestPermission = app.reminders.permissionCheckGate = ReminderGate();
+    resume();
+    await tester.pump();
+    oldPermission.release();
+    await tester.pumpAndSettle();
+    await latestPermission.entered;
+    expect(find.byKey(const ValueKey('reminder-notice')), findsNothing);
+
+    latestPermission.release();
+    await tester.pumpAndSettle();
+    expect(find.byKey(const ValueKey('reminder-ok')), findsOneWidget);
+    app.reminders.enabled = false;
+    resume();
+    await tester.pumpAndSettle();
+    expect(find.byKey(const ValueKey('reminder-notice')), findsOneWidget);
+    expect(app.reminders.pending.keys, [ReminderService.notificationId]);
     expect(app.reminders.schedules, 1);
     await app.dispose(tester);
   });

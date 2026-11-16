@@ -46,7 +46,7 @@ enum ReminderState {
   /// will be shown until the learner allows them in system settings.
   blockedBySystem,
 
-  /// The platform failed (e.g. plugin error). Reminders are not active.
+  /// The platform did not confirm the schedule or permission state.
   failed,
 }
 
@@ -86,9 +86,9 @@ tz.TZDateTime nextReminderTime(tz.TZDateTime now, int hour, int minute) {
 /// Keeps exactly one daily reminder in line with the settings.
 ///
 /// One fixed notification id, cancelled before every schedule, makes
-/// duplicates impossible. [sync] is cheap to call often (launch, resume,
-/// settings change): it reschedules only when the time zone or the chosen
-/// time actually changed.
+/// duplicates impossible. [sync] reconciles serially. An operation already
+/// running finishes before the latest settings are applied, and superseded
+/// requests waiting for their turn skip platform work.
 class ReminderService {
   ReminderService(this.platform, {required this.clock});
 
@@ -100,25 +100,38 @@ class ReminderService {
   static const body =
       'خطة اليوم جاهزة: مراجعاتك المستحقة ودرسك التالي في انتظارك.';
 
-  /// What is currently scheduled, as `zone|minuteOfDay`, or null if nothing.
+  /// The last confirmed schedule, as `zone|minuteOfDay`.
+  /// Null means the schedule is empty or unknown.
   String? _scheduled;
+  bool _knownEmpty = false;
+  int _latestRequest = 0;
+  Future<ReminderState> _tail = Future.value(ReminderState.off);
 
-  Future<ReminderState> sync(AppSettings settings) async {
+  Future<ReminderState> sync(AppSettings settings) {
+    final request = ++_latestRequest;
+    final next = _tail.then<ReminderState>((previous) {
+      if (request != _latestRequest) return previous;
+      return _reconcile(settings);
+    });
+    _tail = next;
+    return next;
+  }
+
+  Future<ReminderState> _reconcile(AppSettings settings) async {
     try {
       if (!settings.reminderEnabled) {
-        if (_scheduled != null || !_cancelledOnce) {
-          await platform.cancel(notificationId);
-          _cancelledOnce = true;
-        }
-        _scheduled = null;
+        if (!_knownEmpty) await _cancel();
         return ReminderState.off;
       }
       final zoneName = await platform.deviceTimeZone();
       final location = _location(zoneName);
       final signature = '${location.name}|${settings.reminderMinuteOfDay}';
       if (signature != _scheduled) {
+        await _cancel();
         final now = tz.TZDateTime.from(clock(), location);
-        await platform.cancel(notificationId);
+        // A platform call can apply the schedule and still report failure.
+        // Treat the alarm as unknown until the operation confirms its result.
+        _knownEmpty = false;
         await platform.scheduleDaily(
           id: notificationId,
           first: nextReminderTime(
@@ -136,12 +149,16 @@ class ReminderService {
           ? ReminderState.scheduled
           : ReminderState.blockedBySystem;
     } catch (_) {
-      _scheduled = null;
       return ReminderState.failed;
     }
   }
 
-  bool _cancelledOnce = false;
+  Future<void> _cancel() async {
+    _scheduled = null;
+    _knownEmpty = false;
+    await platform.cancel(notificationId);
+    _knownEmpty = true;
+  }
 
   /// Unknown zone names fall back to UTC rather than failing the schedule.
   static tz.Location _location(String name) {
