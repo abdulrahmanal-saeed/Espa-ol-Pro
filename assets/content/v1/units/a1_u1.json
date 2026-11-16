@@ -1,0 +1,1092 @@
+{
+ "unit": "a1_u1",
+ "grammar": [
+  {
+   "id": "g_nationality",
+   "title_ar": "الجنسيات: التذكير والتأنيث",
+   "body_ar": "• المنتهية بـ o تصير a للمؤنث: egipcio ← egipcia، mexicano ← mexicana.\n• المنتهية بحرف ساكن يُضاف لها a: español ← española، inglés ← inglesa.\n• المنتهية بـ e أو í لا تتغيّر: árabe، saudí، emiratí، marroquí.\n\nجنسيات عربية أخرى: sirio/siria (سوري)، jordano/jordana (أردني)، libanés/libanesa (لبناني).\n\nالمطابقة في الجنس مألوفة لك من العربية (مصري/مصرية).\nتنبيه: الجنسيات واللغات تُكتب بحرف صغير في الإسبانية: árabe، inglés، español.",
+   "examples": [
+    {
+     "es": "Soy egipcio.",
+     "ar": "أنا مصري."
+    },
+    {
+     "es": "Laura es mexicana.",
+     "ar": "لاورا مكسيكية."
+    },
+    {
+     "es": "Soy saudí.",
+     "ar": "أنا سعودي / سعودية."
+    }
+   ]
+  },
+  {
+   "id": "g_ar_verbs",
+   "title_ar": "أفعال -ar في المضارع (المفرد)",
+   "body_ar": "أغلب الأفعال الإسبانية تنتهي بـ ‎-ar. نحذف ‎-ar ونضيف:\nyo ‎-o · tú ‎-as · él/ella/usted ‎-a\n\nhablar (يتكلم): hablo، hablas، habla\ntrabajar (يعمل): trabajo، trabajas، trabaja\n\nالنهاية وحدها تدل على الفاعل، فلا حاجة للضمير: «Trabajo en ventas» تكفي.",
+   "examples": [
+    {
+     "es": "Hablo árabe.",
+     "ar": "أتكلم العربية."
+    },
+    {
+     "es": "¿Trabajas aquí?",
+     "ar": "هل تعمل هنا؟"
+    },
+    {
+     "es": "Laura trabaja en un hotel.",
+     "ar": "لاورا تعمل في فندق."
+    }
+   ]
+  },
+  {
+   "id": "g_professions",
+   "title_ar": "المهنة بلا أداة نكرة",
+   "body_ar": "عند ذكر المهنة بعد ser لا نضع un / una:\nSoy gerente. (وليس: Soy un gerente)\nLaura es vendedora.\n\nهذا يطابق العربية «أنا مدير» ويخالف الإنجليزية «I am a manager».\n\nكثير من المهن لها صيغة مؤنثة: vendedor ← vendedora. وبعضها لا يتغيّر: el gerente / la gerente.",
+   "examples": [
+    {
+     "es": "Soy gerente de ventas.",
+     "ar": "أنا مدير مبيعات."
+    },
+    {
+     "es": "Ella es vendedora.",
+     "ar": "هي بائعة."
+    }
+   ]
+  },
+  {
+   "id": "g_formal_intro",
+   "title_ar": "التعارف الرسمي في العمل",
+   "body_ar": "• لتقديم شخص: Le presento a + الاسم. (الضمير le هو صيغة الاحترام «لحضرتك».)\n• الرد: Es un placer. / Mucho gusto. / Encantado(a).\n• رد الرد: El placer es mío. / Igualmente.\n• لعرض المساعدة: ¿En qué puedo ayudarle?\n• عند مناولة شيء: Aquí tiene.\n\nتنبيه: «يقدّم شخصاً» هي presentar، وليست introducir التي تعني «يُدخل».",
+   "examples": [
+    {
+     "es": "Le presento a Laura Pérez.",
+     "ar": "أقدّم لحضرتك لاورا بيريز."
+    },
+    {
+     "es": "Aquí tiene mi tarjeta.",
+     "ar": "تفضّل بطاقتي."
+    }
+   ]
+  }
+ ],
+ "lessons": [
+  {
+   "id": "a1_u1_l1",
+   "title_ar": "الجنسية واللغات",
+   "title_es": "Nacionalidad e idiomas",
+   "objectives_ar": [
+    "ذكر جنسيتك بصيغة المذكر أو المؤنث",
+    "قول أي اللغات تتكلم وبأي قدر",
+    "سؤال شخص هل يتكلم لغة معينة",
+    "تصريف hablar في المفرد"
+   ],
+   "prerequisites": [
+    "pa1_u3_l3"
+   ],
+   "minutes": 15,
+   "work_relevance_ar": "ذكر لغاتك من أول ما يُسأل عنه في المقابلات واللقاءات.",
+   "source": "original-v1",
+   "grammar": [
+    "g_nationality",
+    "g_ar_verbs"
+   ],
+   "items": [
+    {
+     "id": "egipcio",
+     "es": "egipcio",
+     "ar": "مصري",
+     "en": "Egyptian",
+     "pos": "صفة",
+     "examples": [
+      {
+       "es": "Soy egipcio.",
+       "ar": "أنا مصري."
+      }
+     ],
+     "note_ar": "للمؤنث: egipcia.",
+     "alt": [
+      "egipcia"
+     ],
+     "connections": [
+      {
+       "type": "grammar",
+       "ar": "الصفة تتبع جنس صاحبها (egipcio / egipcia) كما في العربية (مصري / مصرية)."
+      }
+     ]
+    },
+    {
+     "id": "arabe",
+     "es": "árabe",
+     "ar": "عربي / اللغة العربية",
+     "en": "Arab / Arabic",
+     "pos": "صفة / اسم",
+     "examples": [
+      {
+       "es": "Hablo árabe.",
+       "ar": "أتكلم العربية."
+      }
+     ],
+     "note_ar": "لا تتغيّر بين المذكر والمؤنث.",
+     "connections": [
+      {
+       "type": "usage",
+       "ar": "الجنسيات واللغات تُكتب بحرف صغير في الإسبانية، بخلاف الإنجليزية: árabe لا Árabe."
+      }
+     ]
+    },
+    {
+     "id": "ingles",
+     "es": "inglés",
+     "ar": "الإنجليزية / إنجليزي",
+     "en": "English",
+     "pos": "اسم / صفة",
+     "examples": [
+      {
+       "es": "¿Hablas inglés?",
+       "ar": "هل تتكلم الإنجليزية؟"
+      }
+     ]
+    },
+    {
+     "id": "hablo",
+     "es": "hablo",
+     "ar": "أتكلم",
+     "en": "I speak",
+     "pos": "فعل (hablar)",
+     "examples": [
+      {
+       "es": "Hablo árabe e inglés.",
+       "ar": "أتكلم العربية والإنجليزية."
+      }
+     ],
+     "note_ar": "لاحظ: حرف العطف y يصير e قبل كلمة تبدأ بصوت i، مثل inglés."
+    },
+    {
+     "id": "un_poco",
+     "es": "un poco",
+     "ar": "قليلاً",
+     "en": "a little",
+     "pos": "ظرف",
+     "examples": [
+      {
+       "es": "Hablo un poco de español.",
+       "ar": "أتكلم قليلاً من الإسبانية."
+      }
+     ]
+    },
+    {
+     "id": "hablas",
+     "es": "hablas",
+     "ar": "تتكلم (أنت)",
+     "en": "you speak (informal)",
+     "pos": "فعل (hablar)",
+     "examples": [
+      {
+       "es": "Hablas muy bien.",
+       "ar": "أنت تتكلم جيداً جداً."
+      }
+     ]
+    },
+    {
+     "id": "habla",
+     "es": "habla",
+     "ar": "يتكلم / تتكلم / حضرتك تتكلم",
+     "en": "he/she speaks, you speak (formal)",
+     "pos": "فعل (hablar)",
+     "examples": [
+      {
+       "es": "Laura habla español.",
+       "ar": "لاورا تتكلم الإسبانية."
+      }
+     ]
+    },
+    {
+     "id": "hablas_espanol",
+     "es": "¿Hablas español?",
+     "ar": "هل تتكلم الإسبانية؟",
+     "en": "Do you speak Spanish?",
+     "pos": "سؤال",
+     "examples": [
+      {
+       "es": "Perdón, ¿hablas español?",
+       "ar": "المعذرة، هل تتكلم الإسبانية؟"
+      }
+     ],
+     "note_ar": "السؤال والخبر بالكلمات نفسها؛ الفرق في النغمة وعلامتي الاستفهام. بالصيغة الرسمية: ¿Habla usted español?"
+    },
+    {
+     "id": "tambien",
+     "es": "también",
+     "ar": "أيضاً",
+     "en": "also / too",
+     "pos": "ظرف",
+     "examples": [
+      {
+       "es": "Yo también hablo inglés.",
+       "ar": "أنا أيضاً أتكلم الإنجليزية."
+      }
+     ]
+    }
+   ],
+   "activities": [
+    {
+     "type": "teach",
+     "item": "egipcio"
+    },
+    {
+     "type": "note",
+     "title_ar": "مذكر ومؤنث",
+     "body_ar": "الصفات المنتهية بـ o تصير a للمؤنث:\negipcio ← egipcia · mexicano ← mexicana.\n\nوبعضها لا يتغيّر: árabe، saudí (سعودي)، emiratí (إماراتي)، marroquí (مغربي).\n\nالأمر مألوف لك من العربية: مصري / مصرية.",
+     "examples": [
+      {
+       "es": "Soy egipcia.",
+       "ar": "أنا مصرية."
+      }
+     ]
+    },
+    {
+     "type": "choice",
+     "prompt_ar": "منى من مصر. ماذا تقول عن نفسها؟",
+     "choices": [
+      "Soy egipcia.",
+      "Soy egipcio."
+     ],
+     "answer": 0,
+     "skill": "grammar",
+     "choices_es": true,
+     "explain_ar": "المتكلمة امرأة، فالصفة مؤنثة: egipcia."
+    },
+    {
+     "type": "teach",
+     "item": "arabe"
+    },
+    {
+     "type": "teach",
+     "item": "ingles"
+    },
+    {
+     "type": "mcq_meaning",
+     "item": "arabe"
+    },
+    {
+     "type": "listen_pick_es",
+     "item": "ingles"
+    },
+    {
+     "type": "teach",
+     "item": "hablo"
+    },
+    {
+     "type": "type_es",
+     "item": "hablo"
+    },
+    {
+     "type": "order",
+     "es": "Hablo inglés y árabe.",
+     "ar": "أتكلم الإنجليزية والعربية."
+    },
+    {
+     "type": "teach",
+     "item": "un_poco"
+    },
+    {
+     "type": "mcq_meaning",
+     "item": "un_poco"
+    },
+    {
+     "type": "teach",
+     "item": "hablas"
+    },
+    {
+     "type": "teach",
+     "item": "habla"
+    },
+    {
+     "type": "note",
+     "title_ar": "تصريف hablar",
+     "body_ar": "نحذف ‎-ar ونضيف النهاية:\nyo hablo — أتكلم\ntú hablas — تتكلم\nél / ella / usted habla — يتكلم / تتكلم / حضرتك تتكلم\n\nالنهاية تدل على الفاعل، فلا حاجة لذكر الضمير.",
+     "examples": [
+      {
+       "es": "Hablo árabe.",
+       "ar": "أتكلم العربية."
+      },
+      {
+       "es": "Laura habla español.",
+       "ar": "لاورا تتكلم الإسبانية."
+      }
+     ]
+    },
+    {
+     "type": "fill",
+     "es": "Yo ___ árabe.",
+     "answer": "hablo",
+     "ar": "أنا أتكلم العربية.",
+     "options": [
+      "hablo",
+      "hablas",
+      "habla"
+     ],
+     "explain_ar": "مع yo النهاية ‎-o."
+    },
+    {
+     "type": "fill",
+     "es": "Laura ___ español.",
+     "answer": "habla",
+     "ar": "لاورا تتكلم الإسبانية.",
+     "options": [
+      "hablo",
+      "hablas",
+      "habla"
+     ],
+     "explain_ar": "مع ella النهاية ‎-a."
+    },
+    {
+     "type": "fill",
+     "es": "¿Tú ___ inglés?",
+     "answer": "hablas",
+     "ar": "هل تتكلم الإنجليزية؟",
+     "options": [
+      "hablo",
+      "hablas",
+      "habla"
+     ],
+     "explain_ar": "مع tú النهاية ‎-as."
+    },
+    {
+     "type": "listen_pick_es",
+     "item": "hablas"
+    },
+    {
+     "type": "listen_choose",
+     "item": "habla"
+    },
+    {
+     "type": "teach",
+     "item": "hablas_espanol"
+    },
+    {
+     "type": "teach",
+     "item": "tambien"
+    },
+    {
+     "type": "listen_choose",
+     "item": "hablas_espanol"
+    },
+    {
+     "type": "mcq_reverse",
+     "item": "tambien"
+    },
+    {
+     "type": "match",
+     "items": [
+      "egipcio",
+      "arabe",
+      "ingles",
+      "tambien"
+     ]
+    },
+    {
+     "type": "dictation",
+     "es": "Hablo un poco de español.",
+     "ar": "أتكلم قليلاً من الإسبانية."
+    },
+    {
+     "type": "choice",
+     "prompt_ar": "كم لغة يتكلم كريم؟",
+     "choices": [
+      "ثلاث لغات",
+      "لغتان",
+      "لغة واحدة"
+     ],
+     "answer": 0,
+     "skill": "reading",
+     "choices_es": false,
+     "stimulus_es": "Me llamo Karim. Soy egipcio. Hablo árabe y un poco de español. También hablo inglés."
+    },
+    {
+     "type": "respond",
+     "prompt_ar": "عميل يسألك: «¿Hablas español?». أجب: نعم، قليلاً.",
+     "accepted": [
+      "Sí, un poco",
+      "Un poco",
+      "Sí, hablo un poco",
+      "Sí, hablo un poco de español",
+      "Hablo un poco de español",
+      "Sí, un poco de español",
+      "Hablo un poco"
+     ],
+     "audio_es": "¿Hablas español?"
+    },
+    {
+     "type": "speak",
+     "es": "Soy egipcio. Hablo árabe, inglés y un poco de español.",
+     "ar": "أنا مصري. أتكلم العربية والإنجليزية وقليلاً من الإسبانية."
+    }
+   ]
+  },
+  {
+   "id": "a1_u1_l2",
+   "title_ar": "ماذا تعمل؟",
+   "title_es": "¿A qué te dedicas?",
+   "objectives_ar": [
+    "السؤال عن المهنة بصيغة غير رسمية ورسمية",
+    "ذكر مهنتك ومجال عملك",
+    "تصريف trabajar في المفرد",
+    "ذكر المهنة دون أداة نكرة"
+   ],
+   "prerequisites": [
+    "a1_u1_l1"
+   ],
+   "minutes": 15,
+   "work_relevance_ar": "تعريفك المهني في جملتين: المهنة ومجال العمل.",
+   "source": "original-v1",
+   "grammar": [
+    "g_ar_verbs",
+    "g_professions"
+   ],
+   "items": [
+    {
+     "id": "a_que_te_dedicas",
+     "es": "¿A qué te dedicas?",
+     "ar": "ماذا تعمل؟ (غير رسمي)",
+     "en": "What do you do for a living? (informal)",
+     "pos": "سؤال",
+     "examples": [
+      {
+       "es": "¿A qué te dedicas? — Soy vendedor.",
+       "ar": "ماذا تعمل؟ — أنا بائع."
+      }
+     ],
+     "note_ar": "حرفياً: «لأيّ شيء تكرّس نفسك؟».",
+     "work": true
+    },
+    {
+     "id": "trabajo_en",
+     "es": "trabajo en…",
+     "ar": "أعمل في…",
+     "en": "I work in…",
+     "pos": "تعبير",
+     "examples": [
+      {
+       "es": "Trabajo en ventas.",
+       "ar": "أعمل في المبيعات."
+      }
+     ],
+     "work": true
+    },
+    {
+     "id": "ventas",
+     "es": "ventas",
+     "ar": "المبيعات",
+     "en": "sales",
+     "pos": "اسم مؤنث (جمع)",
+     "examples": [
+      {
+       "es": "Las ventas son importantes.",
+       "ar": "المبيعات مهمة."
+      }
+     ],
+     "note_ar": "المفرد: la venta (عملية البيع).",
+     "work": true
+    },
+    {
+     "id": "empresa",
+     "es": "la empresa",
+     "ar": "الشركة",
+     "en": "company",
+     "pos": "اسم مؤنث",
+     "examples": [
+      {
+       "es": "La empresa es grande.",
+       "ar": "الشركة كبيرة."
+      }
+     ],
+     "work": true
+    },
+    {
+     "id": "tecnologia",
+     "es": "la tecnología",
+     "ar": "التقنية / التكنولوجيا",
+     "en": "technology",
+     "pos": "اسم مؤنث",
+     "examples": [
+      {
+       "es": "Trabajo en una empresa de tecnología.",
+       "ar": "أعمل في شركة تقنية."
+      }
+     ],
+     "work": true,
+     "connections": [
+      {
+       "type": "cognate",
+       "ar": "مثل technology. الكلمات الإنجليزية المنتهية بـ ‎-logy تنتهي غالباً بـ ‎-logía في الإسبانية."
+      }
+     ]
+    },
+    {
+     "id": "gerente",
+     "es": "gerente",
+     "ar": "مدير",
+     "en": "manager",
+     "pos": "اسم",
+     "examples": [
+      {
+       "es": "Soy gerente de ventas.",
+       "ar": "أنا مدير مبيعات."
+      }
+     ],
+     "note_ar": "لا تتغيّر: el gerente / la gerente. تذكّر: g قبل e تُنطق خاءً «خِرِنتِه».",
+     "work": true
+    },
+    {
+     "id": "vendedor",
+     "es": "vendedor",
+     "ar": "بائع / مندوب مبيعات",
+     "en": "salesperson",
+     "pos": "اسم مذكر",
+     "examples": [
+      {
+       "es": "Laura es vendedora.",
+       "ar": "لاورا بائعة."
+      }
+     ],
+     "note_ar": "للمؤنث: vendedora.",
+     "work": true,
+     "alt": [
+      "vendedora"
+     ]
+    },
+    {
+     "id": "a_que_se_dedica",
+     "es": "¿A qué se dedica usted?",
+     "ar": "ماذا تعمل حضرتك؟ (رسمي)",
+     "en": "What do you do for a living? (formal)",
+     "pos": "سؤال",
+     "examples": [
+      {
+       "es": "Señor Hassan, ¿a qué se dedica usted?",
+       "ar": "يا سيد حسن، ماذا تعمل حضرتك؟"
+      }
+     ],
+     "work": true
+    }
+   ],
+   "activities": [
+    {
+     "type": "teach",
+     "item": "a_que_te_dedicas"
+    },
+    {
+     "type": "teach",
+     "item": "trabajo_en"
+    },
+    {
+     "type": "teach",
+     "item": "ventas"
+    },
+    {
+     "type": "mcq_meaning",
+     "item": "a_que_te_dedicas"
+    },
+    {
+     "type": "order",
+     "es": "Trabajo en ventas.",
+     "ar": "أعمل في المبيعات.",
+     "distractors": [
+      "soy"
+     ]
+    },
+    {
+     "type": "teach",
+     "item": "empresa"
+    },
+    {
+     "type": "teach",
+     "item": "tecnologia"
+    },
+    {
+     "type": "listen_choose",
+     "item": "empresa"
+    },
+    {
+     "type": "listen_pick_es",
+     "item": "tecnologia"
+    },
+    {
+     "type": "order",
+     "es": "Trabajo en una empresa de tecnología.",
+     "ar": "أعمل في شركة تقنية."
+    },
+    {
+     "type": "teach",
+     "item": "gerente"
+    },
+    {
+     "type": "teach",
+     "item": "vendedor"
+    },
+    {
+     "type": "note",
+     "title_ar": "المهنة بلا un / una",
+     "body_ar": "بعد ser نذكر المهنة مباشرة:\nSoy gerente. — أنا مدير.\nLaura es vendedora. — لاورا بائعة.\n\nكما في العربية «أنا مدير»، وبخلاف الإنجليزية «I am a manager».",
+     "examples": [
+      {
+       "es": "Soy gerente de ventas.",
+       "ar": "أنا مدير مبيعات."
+      }
+     ]
+    },
+    {
+     "type": "choice",
+     "prompt_ar": "أي جملة هي الطبيعية لقول «أنا مدير»؟",
+     "choices": [
+      "Soy gerente.",
+      "Soy un gerente.",
+      "Yo gerente."
+     ],
+     "answer": 0,
+     "skill": "grammar",
+     "choices_es": true,
+     "explain_ar": "مع المهن لا نستعمل أداة النكرة، ولا بد من الفعل soy."
+    },
+    {
+     "type": "note",
+     "title_ar": "تصريف trabajar",
+     "body_ar": "مثل hablar تماماً:\nyo trabajo — أعمل\ntú trabajas — تعمل\nél / ella / usted trabaja — يعمل / تعمل / حضرتك تعمل",
+     "examples": [
+      {
+       "es": "¿Trabajas aquí?",
+       "ar": "هل تعمل هنا؟"
+      }
+     ]
+    },
+    {
+     "type": "fill",
+     "es": "Laura ___ en una empresa.",
+     "answer": "trabaja",
+     "ar": "لاورا تعمل في شركة.",
+     "options": [
+      "trabajo",
+      "trabajas",
+      "trabaja"
+     ],
+     "explain_ar": "مع ella النهاية ‎-a."
+    },
+    {
+     "type": "fill",
+     "es": "¿Tú ___ en ventas?",
+     "answer": "trabajas",
+     "ar": "هل تعمل في المبيعات؟",
+     "options": [
+      "trabajo",
+      "trabajas",
+      "trabaja"
+     ],
+     "explain_ar": "مع tú النهاية ‎-as."
+    },
+    {
+     "type": "teach",
+     "item": "a_que_se_dedica"
+    },
+    {
+     "type": "listen_choose",
+     "item": "a_que_se_dedica"
+    },
+    {
+     "type": "match",
+     "items": [
+      "ventas",
+      "empresa",
+      "gerente",
+      "vendedor"
+     ]
+    },
+    {
+     "type": "type_es",
+     "item": "gerente"
+    },
+    {
+     "type": "mcq_reverse",
+     "item": "trabajo_en"
+    },
+    {
+     "type": "dictation",
+     "es": "Soy gerente de ventas.",
+     "ar": "أنا مدير مبيعات."
+    },
+    {
+     "type": "choice",
+     "prompt_ar": "أين تعمل السيدة؟",
+     "choices": [
+      "في فندق",
+      "في شركة تقنية",
+      "في مكتب مبيعات"
+     ],
+     "answer": 0,
+     "skill": "reading",
+     "choices_es": false,
+     "stimulus_es": "— ¿A qué se dedica usted, señor Hassan?\n— Soy gerente de ventas. Trabajo en una empresa de tecnología. ¿Y usted?\n— Soy vendedora. Trabajo en un hotel."
+    },
+    {
+     "type": "respond",
+     "prompt_ar": "في لقاء عمل يسألك أحدهم: «¿A qué se dedica usted?». أجب بأنك تعمل في المبيعات.",
+     "accepted": [
+      "Trabajo en ventas",
+      "Yo trabajo en ventas",
+      "Soy vendedor",
+      "Soy vendedora",
+      "Me dedico a las ventas"
+     ],
+     "audio_es": "¿A qué se dedica usted?"
+    },
+    {
+     "type": "speak",
+     "es": "Soy gerente de ventas. Trabajo en una empresa de tecnología.",
+     "ar": "أنا مدير مبيعات. أعمل في شركة تقنية."
+    }
+   ]
+  },
+  {
+   "id": "a1_u1_l3",
+   "title_ar": "أول تعارف مهني",
+   "title_es": "Primer contacto profesional",
+   "objectives_ar": [
+    "الترحيب بزائر أو عميل",
+    "تقديم شخص لآخر بصيغة رسمية",
+    "الرد بلباقة عند التعارف",
+    "عرض المساعدة وتقديم بطاقة العمل"
+   ],
+   "prerequisites": [
+    "a1_u1_l2"
+   ],
+   "minutes": 16,
+   "work_relevance_ar": "محاكاة مصغّرة لاستقبال عميل وتقديم زميل.",
+   "source": "original-v1",
+   "grammar": [
+    "g_formal_intro"
+   ],
+   "items": [
+    {
+     "id": "bienvenido",
+     "es": "bienvenido",
+     "ar": "أهلاً وسهلاً",
+     "en": "welcome",
+     "pos": "صفة",
+     "examples": [
+      {
+       "es": "Bienvenido a la empresa.",
+       "ar": "أهلاً بك في الشركة."
+      }
+     ],
+     "note_ar": "تتبع المخاطَب: bienvenido لرجل، bienvenida لامرأة، bienvenidos لجماعة.",
+     "work": true,
+     "alt": [
+      "bienvenida",
+      "bienvenidos",
+      "bienvenidas"
+     ]
+    },
+    {
+     "id": "le_presento_a",
+     "es": "le presento a…",
+     "ar": "أقدّم لحضرتك…",
+     "en": "let me introduce you to…",
+     "pos": "تعبير",
+     "examples": [
+      {
+       "es": "Le presento a Laura Pérez, gerente de ventas.",
+       "ar": "أقدّم لحضرتك لاورا بيريز، مديرة المبيعات."
+      }
+     ],
+     "work": true,
+     "connections": [
+      {
+       "type": "false_friend",
+       "ar": "«يقدّم شخصاً» هي presentar. أما introducir فتعني «يُدخل شيئاً»، وليست introduce الإنجليزية."
+      }
+     ]
+    },
+    {
+     "id": "es_un_placer",
+     "es": "es un placer",
+     "ar": "تشرّفت / يسعدني ذلك",
+     "en": "it's a pleasure",
+     "pos": "تعبير",
+     "examples": [
+      {
+       "es": "Es un placer, señora Pérez.",
+       "ar": "تشرّفت يا سيدة بيريز."
+      }
+     ],
+     "work": true,
+     "syn": "meet",
+     "connections": [
+      {
+       "type": "cognate",
+       "ar": "placer قريبة من pleasure الإنجليزية."
+      }
+     ]
+    },
+    {
+     "id": "el_placer_es_mio",
+     "es": "el placer es mío",
+     "ar": "الشرف لي",
+     "en": "the pleasure is mine",
+     "pos": "تعبير",
+     "examples": [
+      {
+       "es": "— Es un placer. — El placer es mío.",
+       "ar": "— تشرّفت. — الشرف لي."
+      }
+     ],
+     "work": true,
+     "syn": "meet_reply"
+    },
+    {
+     "id": "en_que_puedo_ayudarle",
+     "es": "¿En qué puedo ayudarle?",
+     "ar": "كيف يمكنني مساعدة حضرتك؟",
+     "en": "How can I help you?",
+     "pos": "سؤال",
+     "examples": [
+      {
+       "es": "Buenos días. ¿En qué puedo ayudarle?",
+       "ar": "صباح الخير. كيف يمكنني مساعدة حضرتك؟"
+      }
+     ],
+     "note_ar": "اللاحقة le = «حضرتك» (صيغة الاحترام).",
+     "work": true
+    },
+    {
+     "id": "reunion",
+     "es": "la reunión",
+     "ar": "الاجتماع",
+     "en": "meeting",
+     "pos": "اسم مؤنث",
+     "examples": [
+      {
+       "es": "La reunión es mañana.",
+       "ar": "الاجتماع غداً."
+      }
+     ],
+     "work": true,
+     "connections": [
+      {
+       "type": "false_friend",
+       "ar": "reunion الإنجليزية تعني لمّ الشمل، أما reunión الإسبانية فهي اجتماع العمل المعتاد."
+      }
+     ]
+    },
+    {
+     "id": "companero",
+     "es": "el compañero",
+     "ar": "الزميل",
+     "en": "colleague",
+     "pos": "اسم مذكر",
+     "examples": [
+      {
+       "es": "Omar es mi compañero de trabajo.",
+       "ar": "عمر زميلي في العمل."
+      }
+     ],
+     "note_ar": "للمؤنث: la compañera.",
+     "work": true,
+     "alt": [
+      "la compañera",
+      "compañero",
+      "compañera"
+     ]
+    },
+    {
+     "id": "tarjeta",
+     "es": "la tarjeta",
+     "ar": "البطاقة (بطاقة العمل)",
+     "en": "card (business card)",
+     "pos": "اسم مؤنث",
+     "examples": [
+      {
+       "es": "Aquí tiene mi tarjeta.",
+       "ar": "تفضّل بطاقتي."
+      }
+     ],
+     "note_ar": "بطاقة العمل تحديداً: tarjeta de visita أو tarjeta de presentación.",
+     "work": true
+    },
+    {
+     "id": "aqui_tiene",
+     "es": "aquí tiene",
+     "ar": "تفضّل (عند مناولة شيء)",
+     "en": "here you are (formal)",
+     "pos": "تعبير",
+     "examples": [
+      {
+       "es": "Aquí tiene, señor.",
+       "ar": "تفضّل يا سيدي."
+      }
+     ],
+     "work": true
+    }
+   ],
+   "activities": [
+    {
+     "type": "teach",
+     "item": "bienvenido"
+    },
+    {
+     "type": "mcq_meaning",
+     "item": "bienvenido"
+    },
+    {
+     "type": "teach",
+     "item": "le_presento_a"
+    },
+    {
+     "type": "teach",
+     "item": "es_un_placer"
+    },
+    {
+     "type": "teach",
+     "item": "el_placer_es_mio"
+    },
+    {
+     "type": "listen_choose",
+     "item": "es_un_placer"
+    },
+    {
+     "type": "order",
+     "es": "Le presento a Laura Pérez.",
+     "ar": "أقدّم لحضرتك لاورا بيريز."
+    },
+    {
+     "type": "choice",
+     "prompt_ar": "يقول لك العميل: «Es un placer». ما الرد الأنسب؟",
+     "choices": [
+      "El placer es mío.",
+      "De nada.",
+      "Adiós."
+     ],
+     "answer": 0,
+     "skill": "reading",
+     "choices_es": true,
+     "explain_ar": "الرد المهذب: «الشرف لي»."
+    },
+    {
+     "type": "teach",
+     "item": "en_que_puedo_ayudarle"
+    },
+    {
+     "type": "mcq_meaning",
+     "item": "en_que_puedo_ayudarle"
+    },
+    {
+     "type": "listen_choose",
+     "item": "en_que_puedo_ayudarle"
+    },
+    {
+     "type": "teach",
+     "item": "reunion"
+    },
+    {
+     "type": "teach",
+     "item": "companero"
+    },
+    {
+     "type": "teach",
+     "item": "tarjeta"
+    },
+    {
+     "type": "teach",
+     "item": "aqui_tiene"
+    },
+    {
+     "type": "mcq_meaning",
+     "item": "reunion"
+    },
+    {
+     "type": "listen_choose",
+     "item": "aqui_tiene"
+    },
+    {
+     "type": "match",
+     "items": [
+      "reunion",
+      "companero",
+      "tarjeta",
+      "bienvenido"
+     ]
+    },
+    {
+     "type": "fill",
+     "es": "Aquí ___ mi tarjeta.",
+     "answer": "tiene",
+     "ar": "تفضّل بطاقتي."
+    },
+    {
+     "type": "order",
+     "es": "La reunión es mañana.",
+     "ar": "الاجتماع غداً."
+    },
+    {
+     "type": "type_es",
+     "item": "es_un_placer"
+    },
+    {
+     "type": "mcq_reverse",
+     "item": "le_presento_a"
+    },
+    {
+     "type": "mcq_reverse",
+     "item": "el_placer_es_mio"
+    },
+    {
+     "type": "dictation",
+     "es": "Bienvenido a la empresa.",
+     "ar": "أهلاً بك في الشركة."
+    },
+    {
+     "type": "choice",
+     "prompt_ar": "ما وظيفة لاورا بيريز؟",
+     "choices": [
+      "مديرة المبيعات",
+      "بائعة",
+      "عميلة"
+     ],
+     "answer": 0,
+     "skill": "reading",
+     "choices_es": false,
+     "stimulus_es": "— Buenos días, señor Hassan. Bienvenido.\n— Buenos días. Gracias.\n— Le presento a Laura Pérez, gerente de ventas.\n— Es un placer, señora Pérez. Aquí tiene mi tarjeta.\n— El placer es mío. La reunión es aquí, por favor."
+    },
+    {
+     "type": "choice",
+     "prompt_ar": "ماذا يعطي السيد حسن للسيدة بيريز؟",
+     "choices": [
+      "بطاقته",
+      "هاتفه",
+      "رقم مكتبه"
+     ],
+     "answer": 0,
+     "skill": "reading",
+     "choices_es": false,
+     "stimulus_es": "— Le presento a Laura Pérez, gerente de ventas.\n— Es un placer, señora Pérez. Aquí tiene mi tarjeta."
+    },
+    {
+     "type": "respond",
+     "prompt_ar": "تستقبل عميلاً في مكتبك صباحاً. حيِّه ثم اسأله كيف يمكنك مساعدته.",
+     "accepted": [
+      "Buenos días. ¿En qué puedo ayudarle?",
+      "Buenos días, señor. ¿En qué puedo ayudarle?",
+      "Buenos días, señora. ¿En qué puedo ayudarle?",
+      "Buenos días. Bienvenido. ¿En qué puedo ayudarle?",
+      "Hola, buenos días. ¿En qué puedo ayudarle?"
+     ]
+    },
+    {
+     "type": "speak",
+     "es": "Bienvenido. ¿En qué puedo ayudarle?",
+     "ar": "أهلاً وسهلاً. كيف يمكنني مساعدة حضرتك؟"
+    }
+   ]
+  }
+ ]
+}

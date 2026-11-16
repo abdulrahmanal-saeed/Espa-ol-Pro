@@ -1,0 +1,916 @@
+{
+ "unit": "pa1_u2",
+ "grammar": [
+  {
+   "id": "g_greetings_time",
+   "title_ar": "التحيات حسب الوقت",
+   "body_ar": "• Buenos días: من الصباح حتى وقت الغداء تقريباً.\n• Buenas tardes: من بعد الظهر حتى حلول المساء.\n• Buenas noches: ليلاً — للتحية عند الوصول وللوداع قبل النوم.\n\nلماذا buenos ثم buenas؟ لأن día اسم مذكر، و tarde و noche اسمان مؤنثان، والصفة تتبع الاسم في التذكير والتأنيث كما في العربية.\n\nHola تصلح في أي وقت، ويمكن جمعها: «Hola, buenos días».",
+   "examples": [
+    {
+     "es": "Buenos días, señor.",
+     "ar": "صباح الخير يا سيدي."
+    },
+    {
+     "es": "Hola, buenas tardes.",
+     "ar": "مرحباً، مساء الخير."
+    }
+   ]
+  },
+  {
+   "id": "g_tu_usted",
+   "title_ar": "tú أم usted؟",
+   "body_ar": "• tú (أنتَ/أنتِ): للأصدقاء والعائلة والزملاء المقرّبين.\n• usted (حضرتك): للعملاء والمدراء وكبار السن ومن لا تعرفهم. وهي الخيار الآمن في العمل.\n\nusted تأخذ تصريف الغائب (مثل هو/هي):\n¿Cómo estás? (tú) ← ¿Cómo está usted?\n¿Cómo te llamas? (tú) ← ¿Cómo se llama usted?\n\nالفكرة قريبة من الفرق بين «أنتَ» و«حضرتك» في العربية.",
+   "examples": [
+    {
+     "es": "¿Cómo estás?",
+     "ar": "كيف حالك؟"
+    },
+    {
+     "es": "¿Cómo está usted?",
+     "ar": "كيف حال حضرتك؟"
+    }
+   ]
+  },
+  {
+   "id": "g_question_marks",
+   "title_ar": "علامات الاستفهام والتعجب",
+   "body_ar": "كل سؤال في الإسبانية يبدأ بعلامة مقلوبة ¿ وينتهي بـ ? ، وكل تعجب يبدأ بـ ¡ وينتهي بـ ! .\n\nالسبب: ترتيب الكلمات في السؤال قد يطابق الجملة الخبرية، فالعلامة الافتتاحية تخبر القارئ من البداية أن ما يقرؤه سؤال.\n\nوأدوات الاستفهام تحمل علامة نبر دائماً: qué، cómo، dónde، cuál.",
+   "examples": [
+    {
+     "es": "¿Cómo te llamas?",
+     "ar": "ما اسمك؟"
+    },
+    {
+     "es": "¡Hola!",
+     "ar": "مرحباً!"
+    }
+   ]
+  },
+  {
+   "id": "g_gender_speaker",
+   "title_ar": "encantado أم encantada؟",
+   "body_ar": "بعض العبارات تتغيّر حسب جنس المتكلّم نفسه:\n• الرجل يقول: Encantado.\n• المرأة تقول: Encantada.\n\nأما Mucho gusto و Igualmente فلا تتغيّران.\n\nالقاعدة العامة: الصفات المنتهية بـ o تصير a للمؤنث — تماماً كإضافة التاء المربوطة في العربية.",
+   "examples": [
+    {
+     "es": "Encantado, señora Pérez.",
+     "ar": "تشرفت يا سيدة بيريز. (المتكلم رجل)"
+    }
+   ]
+  }
+ ],
+ "lessons": [
+  {
+   "id": "pa1_u2_l1",
+   "title_ar": "التحيات والوداع",
+   "title_es": "Saludos y despedidas",
+   "objectives_ar": [
+    "إلقاء التحية المناسبة لكل وقت من اليوم",
+    "توديع شخص بثلاث طرق مختلفة",
+    "فهم التحيات عند سماعها"
+   ],
+   "prerequisites": [
+    "pa1_u1_l3"
+   ],
+   "minutes": 12,
+   "work_relevance_ar": "التحية الصحيحة أول انطباع في أي لقاء عمل.",
+   "source": "original-v1",
+   "grammar": [
+    "g_greetings_time"
+   ],
+   "items": [
+    {
+     "id": "hola",
+     "es": "hola",
+     "ar": "مرحباً",
+     "en": "hello",
+     "pos": "تعبير",
+     "examples": [
+      {
+       "es": "Hola, María.",
+       "ar": "مرحباً يا ماريا."
+      }
+     ],
+     "connections": [
+      {
+       "type": "pronunciation",
+       "ar": "h صامتة: تُنطق «أولا»."
+      }
+     ]
+    },
+    {
+     "id": "buenos_dias",
+     "es": "buenos días",
+     "ar": "صباح الخير",
+     "en": "good morning",
+     "pos": "تعبير",
+     "examples": [
+      {
+       "es": "Buenos días, señor.",
+       "ar": "صباح الخير يا سيدي."
+      }
+     ],
+     "note_ar": "حرفياً «أيام طيبة». تُقال حتى وقت الغداء تقريباً."
+    },
+    {
+     "id": "buenas_tardes",
+     "es": "buenas tardes",
+     "ar": "مساء الخير (بعد الظهر)",
+     "en": "good afternoon",
+     "pos": "تعبير",
+     "examples": [
+      {
+       "es": "Buenas tardes, señora.",
+       "ar": "مساء الخير يا سيدتي."
+      }
+     ],
+     "note_ar": "من بعد الظهر حتى حلول المساء."
+    },
+    {
+     "id": "buenas_noches",
+     "es": "buenas noches",
+     "ar": "مساء الخير / تصبح على خير (ليلاً)",
+     "en": "good evening / good night",
+     "pos": "تعبير",
+     "examples": [
+      {
+       "es": "Buenas noches, amigo.",
+       "ar": "تصبح على خير يا صديقي."
+      }
+     ],
+     "note_ar": "تُستعمل ليلاً للتحية وللوداع معاً."
+    },
+    {
+     "id": "adios",
+     "es": "adiós",
+     "ar": "وداعاً",
+     "en": "goodbye",
+     "pos": "تعبير",
+     "examples": [
+      {
+       "es": "Adiós, hasta mañana.",
+       "ar": "وداعاً، إلى الغد."
+      }
+     ]
+    },
+    {
+     "id": "hasta_luego",
+     "es": "hasta luego",
+     "ar": "إلى اللقاء / أراك لاحقاً",
+     "en": "see you later",
+     "pos": "تعبير",
+     "examples": [
+      {
+       "es": "Hasta luego, Omar.",
+       "ar": "إلى اللقاء يا عمر."
+      }
+     ],
+     "connections": [
+      {
+       "type": "arabic_origin",
+       "ar": "كلمة hasta (حتى / إلى) أصلها «حتّى» العربية عبر عربية الأندلس، بحسب معجم الأكاديمية الملكية الإسبانية."
+      }
+     ]
+    },
+    {
+     "id": "hasta_manana",
+     "es": "hasta mañana",
+     "ar": "إلى الغد",
+     "en": "see you tomorrow",
+     "pos": "تعبير",
+     "examples": [
+      {
+       "es": "Hasta mañana, Laura.",
+       "ar": "إلى الغد يا لاورا."
+      }
+     ],
+     "work": true
+    }
+   ],
+   "activities": [
+    {
+     "type": "teach",
+     "item": "hola"
+    },
+    {
+     "type": "teach",
+     "item": "buenos_dias"
+    },
+    {
+     "type": "mcq_meaning",
+     "item": "buenos_dias"
+    },
+    {
+     "type": "teach",
+     "item": "buenas_tardes"
+    },
+    {
+     "type": "teach",
+     "item": "buenas_noches"
+    },
+    {
+     "type": "listen_choose",
+     "item": "buenas_noches"
+    },
+    {
+     "type": "choice",
+     "prompt_ar": "الساعة الثالثة عصراً وتدخل مكتب عميل. ماذا تقول؟",
+     "choices": [
+      "Buenas tardes.",
+      "Buenas noches.",
+      "Buenos días."
+     ],
+     "answer": 0,
+     "skill": "vocabulary",
+     "choices_es": true,
+     "explain_ar": "بعد الظهر نقول buenas tardes."
+    },
+    {
+     "type": "note",
+     "title_ar": "buenos أم buenas؟",
+     "body_ar": "día اسم مذكر ← buenos días.\ntarde و noche اسمان مؤنثان ← buenas tardes، buenas noches.\n\nالصفة تتبع الاسم في التذكير والتأنيث، كما في العربية.",
+     "examples": [
+      {
+       "es": "Buenos días.",
+       "ar": "صباح الخير."
+      },
+      {
+       "es": "Buenas noches.",
+       "ar": "تصبح على خير."
+      }
+     ]
+    },
+    {
+     "type": "fill",
+     "es": "___ días.",
+     "answer": "Buenos",
+     "ar": "صباح الخير.",
+     "options": [
+      "Buenos",
+      "Buenas"
+     ],
+     "explain_ar": "días مذكر، فالصفة buenos."
+    },
+    {
+     "type": "teach",
+     "item": "adios"
+    },
+    {
+     "type": "teach",
+     "item": "hasta_luego"
+    },
+    {
+     "type": "teach",
+     "item": "hasta_manana"
+    },
+    {
+     "type": "mcq_meaning",
+     "item": "hasta_luego"
+    },
+    {
+     "type": "listen_pick_es",
+     "item": "adios"
+    },
+    {
+     "type": "match",
+     "items": [
+      "hola",
+      "adios",
+      "buenas_tardes",
+      "hasta_manana"
+     ]
+    },
+    {
+     "type": "type_es",
+     "item": "hola"
+    },
+    {
+     "type": "type_es",
+     "item": "buenos_dias"
+    },
+    {
+     "type": "dictation",
+     "item": "hasta_manana"
+    },
+    {
+     "type": "order",
+     "es": "Hola, buenas tardes.",
+     "ar": "مرحباً، مساء الخير.",
+     "distractors": [
+      "días"
+     ]
+    },
+    {
+     "type": "respond",
+     "prompt_ar": "زميلك يغادر المكتب ويقول لك: «Hasta mañana». ودِّعه بعبارة وداع مناسبة.",
+     "accepted": [
+      "Hasta mañana",
+      "Adiós",
+      "Hasta luego",
+      "Adiós, hasta mañana",
+      "Hasta mañana, adiós",
+      "Adiós, hasta luego"
+     ],
+     "audio_es": "Hasta mañana."
+    },
+    {
+     "type": "speak",
+     "item": "buenas_tardes"
+    }
+   ]
+  },
+  {
+   "id": "pa1_u2_l2",
+   "title_ar": "كيف حالك؟ وعبارات اللباقة",
+   "title_es": "¿Cómo estás? Cortesía básica",
+   "objectives_ar": [
+    "السؤال عن الحال بصيغة غير رسمية ورسمية",
+    "الرد على السؤال عن الحال",
+    "استعمال من فضلك، عفواً، المعذرة"
+   ],
+   "prerequisites": [
+    "pa1_u2_l1"
+   ],
+   "minutes": 14,
+   "work_relevance_ar": "التمييز بين tú و usted أساس اللباقة المهنية.",
+   "source": "original-v1",
+   "grammar": [
+    "g_tu_usted",
+    "g_question_marks"
+   ],
+   "items": [
+    {
+     "id": "como_estas",
+     "es": "¿Cómo estás?",
+     "ar": "كيف حالك؟ (غير رسمي)",
+     "en": "How are you? (informal)",
+     "pos": "سؤال",
+     "examples": [
+      {
+       "es": "Hola, Laura. ¿Cómo estás?",
+       "ar": "مرحباً يا لاورا. كيف حالك؟"
+      }
+     ]
+    },
+    {
+     "id": "bien",
+     "es": "bien",
+     "ar": "بخير / جيداً",
+     "en": "well / fine",
+     "pos": "ظرف",
+     "examples": [
+      {
+       "es": "Bien, gracias.",
+       "ar": "بخير، شكراً."
+      }
+     ]
+    },
+    {
+     "id": "muy_bien",
+     "es": "muy bien",
+     "ar": "بخير جداً / جيد جداً",
+     "en": "very well",
+     "pos": "ظرف",
+     "examples": [
+      {
+       "es": "Muy bien, gracias.",
+       "ar": "بخير جداً، شكراً."
+      }
+     ],
+     "note_ar": "muy = جداً، وتأتي قبل الصفة أو الظرف."
+    },
+    {
+     "id": "y_tu",
+     "es": "¿Y tú?",
+     "ar": "وأنت؟",
+     "en": "And you? (informal)",
+     "pos": "سؤال",
+     "examples": [
+      {
+       "es": "Bien, gracias. ¿Y tú?",
+       "ar": "بخير، شكراً. وأنت؟"
+      }
+     ]
+    },
+    {
+     "id": "como_esta_usted",
+     "es": "¿Cómo está usted?",
+     "ar": "كيف حال حضرتك؟ (رسمي)",
+     "en": "How are you? (formal)",
+     "pos": "سؤال",
+     "examples": [
+      {
+       "es": "Buenos días, señor García. ¿Cómo está usted?",
+       "ar": "صباح الخير يا سيد غارسيا. كيف حال حضرتك؟"
+      }
+     ],
+     "work": true,
+     "connections": [
+      {
+       "type": "grammar",
+       "ar": "usted تشبه «حضرتك» في العربية: صيغة احترام تأخذ تصريف الغائب."
+      }
+     ]
+    },
+    {
+     "id": "por_favor",
+     "es": "por favor",
+     "ar": "من فضلك",
+     "en": "please",
+     "pos": "تعبير",
+     "examples": [
+      {
+       "es": "Un café, por favor.",
+       "ar": "قهوة، من فضلك."
+      }
+     ],
+     "work": true
+    },
+    {
+     "id": "de_nada",
+     "es": "de nada",
+     "ar": "عفواً (رداً على الشكر)",
+     "en": "you're welcome",
+     "pos": "تعبير",
+     "examples": [
+      {
+       "es": "— Gracias. — De nada.",
+       "ar": "— شكراً. — عفواً."
+      }
+     ]
+    },
+    {
+     "id": "perdon",
+     "es": "perdón",
+     "ar": "المعذرة / آسف",
+     "en": "sorry / excuse me",
+     "pos": "تعبير",
+     "examples": [
+      {
+       "es": "Perdón, ¿cómo te llamas?",
+       "ar": "المعذرة، ما اسمك؟"
+      }
+     ],
+     "connections": [
+      {
+       "type": "cognate",
+       "ar": "قريبة من pardon الإنجليزية."
+      }
+     ]
+    }
+   ],
+   "activities": [
+    {
+     "type": "teach",
+     "item": "como_estas"
+    },
+    {
+     "type": "teach",
+     "item": "bien"
+    },
+    {
+     "type": "teach",
+     "item": "muy_bien"
+    },
+    {
+     "type": "mcq_meaning",
+     "item": "como_estas"
+    },
+    {
+     "type": "listen_choose",
+     "item": "muy_bien"
+    },
+    {
+     "type": "teach",
+     "item": "y_tu"
+    },
+    {
+     "type": "choice",
+     "prompt_ar": "كيف حال المتحدث الثاني؟",
+     "choices": [
+      "بخير جداً",
+      "ليس بخير",
+      "لم يُجب"
+     ],
+     "answer": 0,
+     "skill": "reading",
+     "choices_es": false,
+     "stimulus_es": "— Hola, ¿cómo estás?\n— Muy bien, gracias. ¿Y tú?"
+    },
+    {
+     "type": "note",
+     "title_ar": "tú أم usted؟",
+     "body_ar": "• tú: للأصدقاء والزملاء المقرّبين ← ¿Cómo estás?\n• usted: للعملاء والمدراء ومن لا تعرفهم ← ¿Cómo está usted?\n\nفي العمل، ابدأ دائماً بـ usted حتى يُطلب منك غير ذلك.",
+     "examples": [
+      {
+       "es": "¿Cómo estás?",
+       "ar": "كيف حالك؟"
+      },
+      {
+       "es": "¿Cómo está usted?",
+       "ar": "كيف حال حضرتك؟"
+      }
+     ]
+    },
+    {
+     "type": "teach",
+     "item": "como_esta_usted"
+    },
+    {
+     "type": "listen_choose",
+     "item": "como_esta_usted"
+    },
+    {
+     "type": "choice",
+     "prompt_ar": "تحيّي عميلاً جديداً لأول مرة. أي صيغة أنسب؟",
+     "choices": [
+      "¿Cómo está usted?",
+      "¿Cómo estás?"
+     ],
+     "answer": 0,
+     "skill": "grammar",
+     "choices_es": true,
+     "explain_ar": "مع العملاء نستعمل صيغة الاحترام usted."
+    },
+    {
+     "type": "fill",
+     "es": "¿Cómo ___ usted?",
+     "answer": "está",
+     "ar": "كيف حال حضرتك؟",
+     "options": [
+      "está",
+      "estás"
+     ],
+     "explain_ar": "usted تأخذ تصريف الغائب: está."
+    },
+    {
+     "type": "teach",
+     "item": "por_favor"
+    },
+    {
+     "type": "teach",
+     "item": "de_nada"
+    },
+    {
+     "type": "teach",
+     "item": "perdon"
+    },
+    {
+     "type": "mcq_meaning",
+     "item": "de_nada"
+    },
+    {
+     "type": "listen_pick_es",
+     "item": "por_favor"
+    },
+    {
+     "type": "match",
+     "items": [
+      "bien",
+      "por_favor",
+      "de_nada",
+      "perdon"
+     ]
+    },
+    {
+     "type": "order",
+     "es": "Muy bien, gracias. ¿Y tú?",
+     "ar": "بخير جداً، شكراً. وأنت؟"
+    },
+    {
+     "type": "type_es",
+     "item": "por_favor"
+    },
+    {
+     "type": "dictation",
+     "item": "como_estas"
+    },
+    {
+     "type": "mcq_reverse",
+     "item": "y_tu"
+    },
+    {
+     "type": "mcq_reverse",
+     "item": "perdon"
+    },
+    {
+     "type": "respond",
+     "prompt_ar": "زميلك يسألك: «¿Cómo estás?». أجب بأنك بخير واشكره.",
+     "accepted": [
+      "Bien, gracias",
+      "Muy bien, gracias",
+      "Estoy bien, gracias",
+      "Estoy muy bien, gracias",
+      "Bien, gracias. ¿Y tú?",
+      "Muy bien, gracias. ¿Y tú?"
+     ],
+     "audio_es": "¿Cómo estás?"
+    },
+    {
+     "type": "speak",
+     "item": "como_esta_usted"
+    }
+   ]
+  },
+  {
+   "id": "pa1_u2_l3",
+   "title_ar": "ما اسمك؟ التعارف",
+   "title_es": "¿Cómo te llamas? Presentaciones",
+   "objectives_ar": [
+    "السؤال عن الاسم بصيغة غير رسمية ورسمية",
+    "التعريف باسمك",
+    "الرد بعبارات التعارف المهذبة"
+   ],
+   "prerequisites": [
+    "pa1_u2_l2"
+   ],
+   "minutes": 14,
+   "work_relevance_ar": "هذا بالضبط ما تقوله في أول لقاء مع عميل.",
+   "source": "original-v1",
+   "grammar": [
+    "g_tu_usted",
+    "g_gender_speaker"
+   ],
+   "items": [
+    {
+     "id": "como_te_llamas",
+     "es": "¿Cómo te llamas?",
+     "ar": "ما اسمك؟ (غير رسمي)",
+     "en": "What's your name? (informal)",
+     "pos": "سؤال",
+     "examples": [
+      {
+       "es": "Hola, ¿cómo te llamas?",
+       "ar": "مرحباً، ما اسمك؟"
+      }
+     ]
+    },
+    {
+     "id": "me_llamo",
+     "es": "me llamo…",
+     "ar": "اسمي…",
+     "en": "my name is…",
+     "pos": "تعبير",
+     "examples": [
+      {
+       "es": "Me llamo Omar.",
+       "ar": "اسمي عمر."
+      }
+     ],
+     "note_ar": "حرفياً: «أُسمّي نفسي». ولا تقل «Mi nombre llamo»."
+    },
+    {
+     "id": "mucho_gusto",
+     "es": "mucho gusto",
+     "ar": "تشرّفنا",
+     "en": "nice to meet you",
+     "pos": "تعبير",
+     "examples": [
+      {
+       "es": "Me llamo Omar. Mucho gusto.",
+       "ar": "اسمي عمر. تشرّفنا."
+      }
+     ],
+     "work": true,
+     "syn": "meet"
+    },
+    {
+     "id": "igualmente",
+     "es": "igualmente",
+     "ar": "وأنا كذلك (رداً على التعارف)",
+     "en": "likewise",
+     "pos": "ظرف",
+     "examples": [
+      {
+       "es": "— Mucho gusto. — Igualmente.",
+       "ar": "— تشرّفنا. — وأنا كذلك."
+      }
+     ],
+     "syn": "meet_reply"
+    },
+    {
+     "id": "encantado",
+     "es": "encantado",
+     "ar": "تشرّفت بمعرفتك",
+     "en": "pleased to meet you",
+     "pos": "صفة",
+     "examples": [
+      {
+       "es": "Encantado, señora Pérez.",
+       "ar": "تشرّفت يا سيدة بيريز."
+      }
+     ],
+     "note_ar": "الرجل يقول encantado، والمرأة تقول encantada.",
+     "alt": [
+      "encantada"
+     ],
+     "syn": "meet"
+    },
+    {
+     "id": "senor",
+     "es": "señor",
+     "ar": "سيد",
+     "en": "Mr. / sir",
+     "pos": "اسم مذكر",
+     "examples": [
+      {
+       "es": "Buenos días, señor García.",
+       "ar": "صباح الخير يا سيد غارسيا."
+      }
+     ],
+     "note_ar": "الاختصار: Sr.",
+     "work": true
+    },
+    {
+     "id": "senora",
+     "es": "señora",
+     "ar": "سيدة",
+     "en": "Mrs. / madam",
+     "pos": "اسم مؤنث",
+     "examples": [
+      {
+       "es": "Buenas tardes, señora Pérez.",
+       "ar": "مساء الخير يا سيدة بيريز."
+      }
+     ],
+     "note_ar": "الاختصار: Sra.",
+     "work": true
+    },
+    {
+     "id": "como_se_llama_usted",
+     "es": "¿Cómo se llama usted?",
+     "ar": "ما اسم حضرتك؟ (رسمي)",
+     "en": "What's your name? (formal)",
+     "pos": "سؤال",
+     "examples": [
+      {
+       "es": "Perdón, ¿cómo se llama usted?",
+       "ar": "المعذرة، ما اسم حضرتك؟"
+      }
+     ],
+     "work": true
+    },
+    {
+     "id": "y_usted",
+     "es": "¿Y usted?",
+     "ar": "وحضرتك؟",
+     "en": "And you? (formal)",
+     "pos": "سؤال",
+     "examples": [
+      {
+       "es": "Me llamo Laura. ¿Y usted?",
+       "ar": "اسمي لاورا. وحضرتك؟"
+      }
+     ],
+     "work": true
+    }
+   ],
+   "activities": [
+    {
+     "type": "teach",
+     "item": "como_te_llamas"
+    },
+    {
+     "type": "teach",
+     "item": "me_llamo"
+    },
+    {
+     "type": "mcq_meaning",
+     "item": "me_llamo"
+    },
+    {
+     "type": "listen_choose",
+     "item": "como_te_llamas"
+    },
+    {
+     "type": "order",
+     "es": "Me llamo Omar. ¿Y tú?",
+     "ar": "اسمي عمر. وأنت؟"
+    },
+    {
+     "type": "teach",
+     "item": "mucho_gusto"
+    },
+    {
+     "type": "teach",
+     "item": "igualmente"
+    },
+    {
+     "type": "teach",
+     "item": "encantado"
+    },
+    {
+     "type": "note",
+     "title_ar": "encantado أم encantada؟",
+     "body_ar": "الرجل يقول: Encantado.\nالمرأة تقول: Encantada.\n\nأما Mucho gusto و Igualmente فلا تتغيّران أبداً.",
+     "examples": [
+      {
+       "es": "Encantada.",
+       "ar": "تشرّفت. (المتكلمة امرأة)"
+      }
+     ]
+    },
+    {
+     "type": "choice",
+     "prompt_ar": "سارة تتعرّف على زميل جديد. ماذا تقول؟",
+     "choices": [
+      "Encantada.",
+      "Encantado."
+     ],
+     "answer": 0,
+     "skill": "grammar",
+     "choices_es": true,
+     "explain_ar": "المتكلمة امرأة، فتقول encantada."
+    },
+    {
+     "type": "mcq_meaning",
+     "item": "mucho_gusto"
+    },
+    {
+     "type": "listen_pick_es",
+     "item": "igualmente"
+    },
+    {
+     "type": "teach",
+     "item": "senor"
+    },
+    {
+     "type": "teach",
+     "item": "senora"
+    },
+    {
+     "type": "teach",
+     "item": "como_se_llama_usted"
+    },
+    {
+     "type": "teach",
+     "item": "y_usted"
+    },
+    {
+     "type": "choice",
+     "prompt_ar": "ما اسم الرجل في الحوار؟",
+     "choices": [
+      "Omar Hassan",
+      "Laura Pérez",
+      "Señor Pérez"
+     ],
+     "answer": 0,
+     "skill": "reading",
+     "choices_es": true,
+     "stimulus_es": "— Buenos días. Me llamo Laura Pérez. ¿Y usted?\n— Me llamo Omar Hassan. Mucho gusto.\n— Igualmente, señor Hassan."
+    },
+    {
+     "type": "match",
+     "items": [
+      "senor",
+      "senora",
+      "mucho_gusto",
+      "encantado"
+     ]
+    },
+    {
+     "type": "fill",
+     "es": "Me ___ Omar.",
+     "answer": "llamo",
+     "ar": "اسمي عمر."
+    },
+    {
+     "type": "type_es",
+     "item": "mucho_gusto"
+    },
+    {
+     "type": "dictation",
+     "es": "Me llamo Laura.",
+     "ar": "اسمي لاورا."
+    },
+    {
+     "type": "mcq_reverse",
+     "item": "como_se_llama_usted"
+    },
+    {
+     "type": "listen_choose",
+     "item": "y_usted"
+    },
+    {
+     "type": "respond",
+     "prompt_ar": "عميلة تقول لك: «Buenas tardes. Me llamo Laura Pérez. ¿Y usted?». عرّف باسمك (استعمل الاسم Omar).",
+     "accepted": [
+      "Me llamo Omar",
+      "Me llamo Omar. Mucho gusto",
+      "Soy Omar",
+      "Soy Omar. Mucho gusto",
+      "Me llamo Omar. Encantado",
+      "Buenas tardes. Me llamo Omar",
+      "Buenas tardes. Me llamo Omar. Mucho gusto",
+      "Mucho gusto. Me llamo Omar"
+     ],
+     "audio_es": "Buenas tardes. Me llamo Laura Pérez. ¿Y usted?"
+    },
+    {
+     "type": "speak",
+     "es": "Me llamo Omar. Mucho gusto.",
+     "ar": "اسمي عمر. تشرّفنا."
+    }
+   ]
+  }
+ ]
+}

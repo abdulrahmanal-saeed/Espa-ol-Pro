@@ -1,0 +1,841 @@
+{
+ "unit": "pa1_u1",
+ "grammar": [
+  {
+   "id": "g_vowels",
+   "title_ar": "الحروف المتحركة الخمسة",
+   "body_ar": "في الإسبانية خمسة أصوات متحركة فقط، وكل حرف يُنطق دائماً بالطريقة نفسها مهما كان موقعه:\n• a = ألف مفتوحة «آ»\n• e = إمالة قصيرة، كما تُنطق «بيت» في العامية\n• i = ياء مدّ «إي»\n• o = كما تُنطق «يوم» في العامية\n• u = واو مدّ «أو»\n\nانتبه: العربية الفصحى لا تفرّق بين e و i ولا بين o و u، أما الإسبانية فتفرّق والمعنى يتغيّر: mesa (طاولة) ≠ misa (قُدّاس).",
+   "examples": [
+    {
+     "es": "mesa / misa",
+     "ar": "طاولة / قُدّاس"
+    },
+    {
+     "es": "casa",
+     "ar": "بيت"
+    }
+   ]
+  },
+  {
+   "id": "g_letters",
+   "title_ar": "حروف تُنطق بشكل مختلف",
+   "body_ar": "• h صامتة دائماً: hotel تُنطق «أوتيل».\n• ñ = «نْيَ»: español.\n• ll = تُنطق غالباً مثل الياء: ella «إيّا».\n• j = قريبة جداً من الخاء: trabajo «ترَباخو».\n• g قبل e أو i = خاء أيضاً: gente «خِنتِه». وفي غير ذلك مثل الجيم المصرية: gracias.\n• c قبل e أو i = سين في أمريكا اللاتينية وثاء في معظم إسبانيا: cita. وحرف z مثلها دائماً: feliz.\n• c في غير ذلك = كاف: casa, cliente.\n• qu قبل e و i = كاف، والـ u لا تُنطق: qué «كِه»، aquí «أكي».\n• r المفردة راء خفيفة بضربة واحدة: pero. أما rr وأي r في أول الكلمة فراء مكرّرة مشدّدة: perro.",
+   "examples": [
+    {
+     "es": "hotel",
+     "ar": "فندق"
+    },
+    {
+     "es": "gente",
+     "ar": "ناس"
+    },
+    {
+     "es": "pero / perro",
+     "ar": "لكن / كلب"
+    }
+   ]
+  },
+  {
+   "id": "g_stress",
+   "title_ar": "النبر وعلامة النبر (´)",
+   "body_ar": "١) الكلمة المنتهية بحرف متحرك أو n أو s: النبر على المقطع قبل الأخير — CA-sa، tra-BA-jo، GRA-cias.\n٢) الكلمة المنتهية بأي حرف ساكن آخر: النبر على المقطع الأخير — ho-TEL، es-pa-ÑOL، fe-LIZ.\n٣) كل كلمة تخالف القاعدتين تُكتب عليها علامة النبر (´) فوق الحرف المتحرك المنبور — te-LÉ-fo-no، a-QUÍ، a-DIÓS.\n\nلذلك تستطيع نطق أي كلمة إسبانية صحيحاً بمجرد قراءتها.",
+   "examples": [
+    {
+     "es": "teléfono",
+     "ar": "هاتف"
+    },
+    {
+     "es": "aquí",
+     "ar": "هنا"
+    }
+   ]
+  }
+ ],
+ "lessons": [
+  {
+   "id": "pa1_u1_l1",
+   "title_ar": "الحروف المتحركة الخمسة",
+   "title_es": "Las cinco vocales",
+   "objectives_ar": [
+    "نطق الحروف المتحركة الخمسة a e i o u نطقاً ثابتاً وواضحاً",
+    "قراءة كلمات قصيرة ونطقها دون مساعدة",
+    "تمييز الفرق السمعي بين e و i"
+   ],
+   "prerequisites": [],
+   "minutes": 10,
+   "work_relevance_ar": "كلمة oficina من أول كلمات بيئة العمل.",
+   "source": "original-v1",
+   "grammar": [
+    "g_vowels"
+   ],
+   "items": [
+    {
+     "id": "casa",
+     "es": "casa",
+     "ar": "بيت",
+     "en": "house",
+     "pos": "اسم مؤنث",
+     "examples": [
+      {
+       "es": "Mi casa es tu casa.",
+       "ar": "بيتي بيتك."
+      }
+     ],
+     "note_ar": "تُنطق «كاسا». حرف s في الإسبانية سين دائماً، لا يُنطق زاياً."
+    },
+    {
+     "id": "mesa",
+     "es": "mesa",
+     "ar": "طاولة",
+     "en": "table",
+     "pos": "اسم مؤنث",
+     "examples": [
+      {
+       "es": "La mesa es grande.",
+       "ar": "الطاولة كبيرة."
+      }
+     ],
+     "connections": [
+      {
+       "type": "pronunciation",
+       "ar": "حرف e ليس ياءً: mesa «مِسا» تعني طاولة، أما misa «ميسا» فتعني قُدّاس."
+      }
+     ]
+    },
+    {
+     "id": "si",
+     "es": "sí",
+     "ar": "نعم",
+     "en": "yes",
+     "pos": "ظرف",
+     "examples": [
+      {
+       "es": "Sí, gracias.",
+       "ar": "نعم، شكراً."
+      }
+     ],
+     "note_ar": "تُكتب بعلامة النبر: sí = نعم. أما si بدونها فتعني «إذا»."
+    },
+    {
+     "id": "no",
+     "es": "no",
+     "ar": "لا",
+     "en": "no",
+     "pos": "ظرف",
+     "examples": [
+      {
+       "es": "No, gracias.",
+       "ar": "لا، شكراً."
+      }
+     ],
+     "connections": [
+      {
+       "type": "cognate",
+       "ar": "مثل no في الإنجليزية، لكن حرف o قصير وثابت ولا ينتهي بصوت «و»."
+      }
+     ]
+    },
+    {
+     "id": "uno",
+     "es": "uno",
+     "ar": "واحد (1)",
+     "en": "one",
+     "pos": "عدد",
+     "examples": [
+      {
+       "es": "Uno, por favor.",
+       "ar": "واحد، من فضلك."
+      }
+     ]
+    },
+    {
+     "id": "amigo",
+     "es": "amigo",
+     "ar": "صديق",
+     "en": "friend",
+     "pos": "اسم مذكر",
+     "examples": [
+      {
+       "es": "Hola, amigo.",
+       "ar": "مرحباً يا صديقي."
+      }
+     ],
+     "note_ar": "للمؤنث: amiga (صديقة).",
+     "alt": [
+      "amiga"
+     ]
+    },
+    {
+     "id": "oficina",
+     "es": "oficina",
+     "ar": "مكتب (مكان العمل)",
+     "en": "office",
+     "pos": "اسم مؤنث",
+     "examples": [
+      {
+       "es": "Mi oficina es grande.",
+       "ar": "مكتبي كبير."
+      }
+     ],
+     "tags": [
+      "work"
+     ],
+     "work": true,
+     "connections": [
+      {
+       "type": "cognate",
+       "ar": "قريبة من office الإنجليزية."
+      }
+     ]
+    }
+   ],
+   "activities": [
+    {
+     "type": "note",
+     "title_ar": "خمسة أصوات فقط",
+     "body_ar": "في الإسبانية خمسة أصوات متحركة، وكل حرف يُنطق دائماً بالطريقة نفسها:\n• a = «آ»\n• e = إمالة قصيرة كما في «بيت» بالعامية\n• i = «إي»\n• o = كما في «يوم» بالعامية\n• u = «أو»\n\nانتبه كعربي: الفصحى لا تفرّق بين e و i ولا بين o و u، لكن الإسبانية تفرّق والمعنى يتغيّر.",
+     "examples": [
+      {
+       "es": "mesa",
+       "ar": "طاولة"
+      },
+      {
+       "es": "misa",
+       "ar": "قُدّاس"
+      }
+     ]
+    },
+    {
+     "type": "teach",
+     "item": "casa"
+    },
+    {
+     "type": "teach",
+     "item": "mesa"
+    },
+    {
+     "type": "mcq_meaning",
+     "item": "casa"
+    },
+    {
+     "type": "listen_pick_es",
+     "item": "mesa"
+    },
+    {
+     "type": "choice",
+     "prompt_ar": "استمع جيداً: أي كلمة سمعت؟",
+     "choices": [
+      "mesa",
+      "misa",
+      "musa"
+     ],
+     "answer": 0,
+     "skill": "listening",
+     "choices_es": true,
+     "audio_es": "mesa",
+     "explain_ar": "mesa بحرف e (إمالة)، وليست misa بحرف i."
+    },
+    {
+     "type": "teach",
+     "item": "si"
+    },
+    {
+     "type": "teach",
+     "item": "no"
+    },
+    {
+     "type": "listen_choose",
+     "item": "si"
+    },
+    {
+     "type": "dictation",
+     "item": "no"
+    },
+    {
+     "type": "teach",
+     "item": "uno"
+    },
+    {
+     "type": "teach",
+     "item": "amigo"
+    },
+    {
+     "type": "teach",
+     "item": "oficina"
+    },
+    {
+     "type": "mcq_meaning",
+     "item": "oficina"
+    },
+    {
+     "type": "listen_choose",
+     "item": "amigo"
+    },
+    {
+     "type": "match",
+     "items": [
+      "casa",
+      "mesa",
+      "amigo",
+      "oficina"
+     ]
+    },
+    {
+     "type": "type_es",
+     "item": "casa"
+    },
+    {
+     "type": "mcq_reverse",
+     "item": "uno"
+    },
+    {
+     "type": "type_es",
+     "item": "amigo"
+    },
+    {
+     "type": "speak",
+     "es": "Mi casa es tu casa.",
+     "ar": "بيتي بيتك."
+    }
+   ]
+  },
+  {
+   "id": "pa1_u1_l2",
+   "title_ar": "حروف تختلف عن الإنجليزية",
+   "title_es": "Letras especiales: h, ñ, ll, j, g",
+   "objectives_ar": [
+    "نطق h الصامتة و ñ و ll",
+    "نطق j و g قبل e/i مثل الخاء",
+    "قراءة كلمات شائعة تحتوي هذه الحروف"
+   ],
+   "prerequisites": [
+    "pa1_u1_l1"
+   ],
+   "minutes": 12,
+   "work_relevance_ar": "",
+   "source": "original-v1",
+   "grammar": [
+    "g_letters"
+   ],
+   "items": [
+    {
+     "id": "hotel",
+     "es": "hotel",
+     "ar": "فندق",
+     "en": "hotel",
+     "pos": "اسم مذكر",
+     "examples": [
+      {
+       "es": "El hotel es grande.",
+       "ar": "الفندق كبير."
+      }
+     ],
+     "connections": [
+      {
+       "type": "cognate",
+       "ar": "الكلمة نفسها في الإنجليزية، لكن h لا تُنطق والنبر على آخر مقطع: «أوتيل»."
+      }
+     ]
+    },
+    {
+     "id": "espanol",
+     "es": "español",
+     "ar": "الإسبانية / إسباني",
+     "en": "Spanish",
+     "pos": "اسم / صفة",
+     "examples": [
+      {
+       "es": "Hablo español.",
+       "ar": "أتكلم الإسبانية."
+      }
+     ],
+     "note_ar": "ñ حرف مستقل يُنطق «نْيَ»."
+    },
+    {
+     "id": "manana",
+     "es": "mañana",
+     "ar": "غداً / الصباح",
+     "en": "tomorrow / morning",
+     "pos": "ظرف / اسم مؤنث",
+     "examples": [
+      {
+       "es": "Mañana trabajo.",
+       "ar": "غداً أعمل."
+      }
+     ],
+     "note_ar": "mañana = غداً. la mañana = الصباح."
+    },
+    {
+     "id": "ella",
+     "es": "ella",
+     "ar": "هي",
+     "en": "she",
+     "pos": "ضمير",
+     "examples": [
+      {
+       "es": "Ella es mi amiga.",
+       "ar": "هي صديقتي."
+      }
+     ],
+     "note_ar": "ll تُنطق غالباً مثل الياء: «إيّا»."
+    },
+    {
+     "id": "el_trabajo",
+     "es": "el trabajo",
+     "ar": "العمل",
+     "en": "work / job",
+     "pos": "اسم مذكر",
+     "examples": [
+      {
+       "es": "Tengo mucho trabajo.",
+       "ar": "عندي عمل كثير."
+      }
+     ],
+     "tags": [
+      "work"
+     ],
+     "work": true,
+     "connections": [
+      {
+       "type": "pronunciation",
+       "ar": "حرف j قريب جداً من الخاء العربية — ميزة لك: هذا الصوت غير موجود في الإنجليزية."
+      }
+     ]
+    },
+    {
+     "id": "gente",
+     "es": "gente",
+     "ar": "ناس",
+     "en": "people",
+     "pos": "اسم مؤنث",
+     "examples": [
+      {
+       "es": "Mucha gente habla español.",
+       "ar": "كثير من الناس يتكلمون الإسبانية."
+      }
+     ],
+     "note_ar": "g قبل e أو i تُنطق خاءً: «خِنتِه»."
+    },
+    {
+     "id": "gracias",
+     "es": "gracias",
+     "ar": "شكراً",
+     "en": "thank you",
+     "pos": "تعبير",
+     "examples": [
+      {
+       "es": "Muchas gracias.",
+       "ar": "شكراً جزيلاً."
+      }
+     ],
+     "note_ar": "هنا g مثل الجيم المصرية لأن بعدها r."
+    }
+   ],
+   "activities": [
+    {
+     "type": "note",
+     "title_ar": "حروف لها نطق خاص",
+     "body_ar": "• h صامتة دائماً: hotel = «أوتيل».\n• ñ = «نْيَ»: español.\n• ll = مثل الياء غالباً: ella = «إيّا».\n• j = قريبة من الخاء: trabajo = «ترَباخو».\n• g قبل e أو i = خاء أيضاً: gente = «خِنتِه». وفي غير ذلك مثل الجيم المصرية: gracias.",
+     "examples": [
+      {
+       "es": "hotel",
+       "ar": "فندق"
+      },
+      {
+       "es": "gente",
+       "ar": "ناس"
+      }
+     ]
+    },
+    {
+     "type": "teach",
+     "item": "hotel"
+    },
+    {
+     "type": "listen_pick_es",
+     "item": "hotel"
+    },
+    {
+     "type": "choice",
+     "prompt_ar": "أي حرف لا يُنطق في كلمة hotel؟",
+     "choices": [
+      "h",
+      "t",
+      "l"
+     ],
+     "answer": 0,
+     "skill": "reading",
+     "choices_es": true,
+     "explain_ar": "حرف h صامت دائماً في الإسبانية."
+    },
+    {
+     "type": "teach",
+     "item": "espanol"
+    },
+    {
+     "type": "teach",
+     "item": "manana"
+    },
+    {
+     "type": "mcq_meaning",
+     "item": "manana"
+    },
+    {
+     "type": "teach",
+     "item": "ella"
+    },
+    {
+     "type": "teach",
+     "item": "el_trabajo"
+    },
+    {
+     "type": "listen_choose",
+     "item": "el_trabajo"
+    },
+    {
+     "type": "teach",
+     "item": "gente"
+    },
+    {
+     "type": "teach",
+     "item": "gracias"
+    },
+    {
+     "type": "mcq_meaning",
+     "item": "gracias"
+    },
+    {
+     "type": "listen_pick_es",
+     "item": "gente"
+    },
+    {
+     "type": "match",
+     "items": [
+      "hotel",
+      "espanol",
+      "ella",
+      "gente"
+     ]
+    },
+    {
+     "type": "type_es",
+     "item": "gracias"
+    },
+    {
+     "type": "dictation",
+     "item": "espanol"
+    },
+    {
+     "type": "mcq_reverse",
+     "item": "ella"
+    },
+    {
+     "type": "type_es",
+     "item": "manana"
+    },
+    {
+     "type": "speak",
+     "item": "gracias"
+    }
+   ]
+  },
+  {
+   "id": "pa1_u1_l3",
+   "title_ar": "c و z و qu و r — وأين يقع النبر؟",
+   "title_es": "c, z, qu, r y el acento",
+   "objectives_ar": [
+    "نطق c و z و qu نطقاً صحيحاً",
+    "التفريق بين r الخفيفة و rr المشدّدة",
+    "معرفة موضع النبر من شكل الكلمة ومن علامة النبر"
+   ],
+   "prerequisites": [
+    "pa1_u1_l2"
+   ],
+   "minutes": 14,
+   "work_relevance_ar": "cliente و cita من أكثر كلمات العمل استعمالاً.",
+   "source": "original-v1",
+   "grammar": [
+    "g_letters",
+    "g_stress"
+   ],
+   "items": [
+    {
+     "id": "cliente",
+     "es": "cliente",
+     "ar": "عميل / زبون",
+     "en": "client / customer",
+     "pos": "اسم",
+     "examples": [
+      {
+       "es": "El cliente es importante.",
+       "ar": "العميل مهم."
+      }
+     ],
+     "tags": [
+      "work"
+     ],
+     "work": true,
+     "connections": [
+      {
+       "type": "cognate",
+       "ar": "مثل client الإنجليزية. الكلمة تصلح للمذكر والمؤنث: el cliente / la cliente."
+      }
+     ]
+    },
+    {
+     "id": "cita",
+     "es": "cita",
+     "ar": "موعد",
+     "en": "appointment",
+     "pos": "اسم مؤنث",
+     "examples": [
+      {
+       "es": "Tengo una cita mañana.",
+       "ar": "عندي موعد غداً."
+      }
+     ],
+     "work": true,
+     "connections": [
+      {
+       "type": "pronunciation",
+       "ar": "c قبل i: سين في أمريكا اللاتينية «سيتا»، وثاء في معظم إسبانيا «ثيتا» — وصوت الثاء سهل عليك كعربي."
+      }
+     ]
+    },
+    {
+     "id": "feliz",
+     "es": "feliz",
+     "ar": "سعيد",
+     "en": "happy",
+     "pos": "صفة",
+     "examples": [
+      {
+       "es": "Estoy feliz.",
+       "ar": "أنا سعيد."
+      }
+     ],
+     "note_ar": "z تُنطق سيناً (أمريكا اللاتينية) أو ثاءً (إسبانيا)، ولا تُنطق زاياً أبداً."
+    },
+    {
+     "id": "que",
+     "es": "qué",
+     "ar": "ماذا؟ / ما؟",
+     "en": "what",
+     "pos": "أداة استفهام",
+     "examples": [
+      {
+       "es": "¿Qué es?",
+       "ar": "ما هذا؟"
+      }
+     ],
+     "note_ar": "تُنطق «كِه»: حرف u بعد q لا يُنطق."
+    },
+    {
+     "id": "aqui",
+     "es": "aquí",
+     "ar": "هنا",
+     "en": "here",
+     "pos": "ظرف",
+     "examples": [
+      {
+       "es": "Trabajo aquí.",
+       "ar": "أعمل هنا."
+      }
+     ]
+    },
+    {
+     "id": "pero",
+     "es": "pero",
+     "ar": "لكن",
+     "en": "but",
+     "pos": "حرف عطف",
+     "examples": [
+      {
+       "es": "Hablo español, pero poco.",
+       "ar": "أتكلم الإسبانية، لكن قليلاً."
+      }
+     ],
+     "connections": [
+      {
+       "type": "pronunciation",
+       "ar": "r المفردة هنا مثل الراء العربية الخفيفة تماماً."
+      }
+     ]
+    },
+    {
+     "id": "perro",
+     "es": "perro",
+     "ar": "كلب",
+     "en": "dog",
+     "pos": "اسم مذكر",
+     "examples": [
+      {
+       "es": "El perro es grande.",
+       "ar": "الكلب كبير."
+      }
+     ],
+     "note_ar": "rr راء مكرّرة مشدّدة. الفرق بين pero و perro يغيّر المعنى."
+    },
+    {
+     "id": "telefono",
+     "es": "teléfono",
+     "ar": "هاتف",
+     "en": "telephone",
+     "pos": "اسم مذكر",
+     "examples": [
+      {
+       "es": "Mi teléfono es nuevo.",
+       "ar": "هاتفي جديد."
+      }
+     ],
+     "connections": [
+      {
+       "type": "cognate",
+       "ar": "مثل telephone، لكن النبر على المقطع الثاني te-LÉ-fo-no كما تدل علامة النبر."
+      }
+     ]
+    }
+   ],
+   "activities": [
+    {
+     "type": "note",
+     "title_ar": "c و z و qu",
+     "body_ar": "• c قبل e أو i = سين (أمريكا اللاتينية) أو ثاء (معظم إسبانيا): cita.\n• z مثلها دائماً: feliz.\n• c في غير ذلك = كاف: casa, cliente.\n• qu قبل e و i = كاف، والـ u صامتة: qué = «كِه»، aquí = «أكي».",
+     "examples": [
+      {
+       "es": "cita",
+       "ar": "موعد"
+      },
+      {
+       "es": "qué",
+       "ar": "ماذا؟"
+      }
+     ]
+    },
+    {
+     "type": "teach",
+     "item": "cliente"
+    },
+    {
+     "type": "teach",
+     "item": "cita"
+    },
+    {
+     "type": "mcq_meaning",
+     "item": "cita"
+    },
+    {
+     "type": "teach",
+     "item": "feliz"
+    },
+    {
+     "type": "listen_choose",
+     "item": "feliz"
+    },
+    {
+     "type": "teach",
+     "item": "que"
+    },
+    {
+     "type": "teach",
+     "item": "aqui"
+    },
+    {
+     "type": "listen_pick_es",
+     "item": "aqui"
+    },
+    {
+     "type": "mcq_meaning",
+     "item": "cliente"
+    },
+    {
+     "type": "note",
+     "title_ar": "الراء والنبر",
+     "body_ar": "• r المفردة = راء خفيفة بضربة واحدة: pero.\n• rr (وكل r في أول الكلمة) = راء مكرّرة مشدّدة: perro.\n\nالنبر:\n١) كلمة تنتهي بحرف متحرك أو n أو s ← النبر قبل الأخير: CA-sa، tra-BA-jo.\n٢) كلمة تنتهي بساكن آخر ← النبر على الأخير: ho-TEL، es-pa-ÑOL، fe-LIZ.\n٣) أي استثناء تُكتب عليه العلامة (´): te-LÉ-fo-no، a-QUÍ.",
+     "examples": [
+      {
+       "es": "pero",
+       "ar": "لكن"
+      },
+      {
+       "es": "perro",
+       "ar": "كلب"
+      }
+     ]
+    },
+    {
+     "type": "teach",
+     "item": "pero"
+    },
+    {
+     "type": "teach",
+     "item": "perro"
+    },
+    {
+     "type": "choice",
+     "prompt_ar": "استمع: أي كلمة سمعت؟",
+     "choices": [
+      "perro",
+      "pero"
+     ],
+     "answer": 0,
+     "skill": "listening",
+     "choices_es": true,
+     "audio_es": "perro",
+     "explain_ar": "سمعت الراء المشدّدة المكرّرة: perro (كلب)."
+    },
+    {
+     "type": "teach",
+     "item": "telefono"
+    },
+    {
+     "type": "choice",
+     "prompt_ar": "أين يقع النبر في كلمة español؟",
+     "choices": [
+      "es-pa-ÑOL",
+      "es-PA-ñol",
+      "ES-pa-ñol"
+     ],
+     "answer": 0,
+     "skill": "reading",
+     "choices_es": true,
+     "explain_ar": "تنتهي بحرف ساكن (l) غير n و s، فالنبر على المقطع الأخير."
+    },
+    {
+     "type": "type_es",
+     "item": "telefono"
+    },
+    {
+     "type": "dictation",
+     "item": "aqui"
+    },
+    {
+     "type": "match",
+     "items": [
+      "cita",
+      "feliz",
+      "pero",
+      "perro"
+     ]
+    },
+    {
+     "type": "mcq_reverse",
+     "item": "que"
+    },
+    {
+     "type": "type_es",
+     "item": "cliente"
+    },
+    {
+     "type": "order",
+     "es": "El cliente es feliz.",
+     "ar": "العميل سعيد."
+    },
+    {
+     "type": "speak",
+     "item": "perro"
+    }
+   ]
+  }
+ ]
+}
