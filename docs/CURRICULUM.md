@@ -35,7 +35,9 @@ Pre-A1 is a preparatory stage, not a DELE level.
 | | Greetings and introductions (3 lessons) | ✅ available |
 | | Numbers and the first sentence (3 lessons) | ✅ available |
 | **A1** | Introducing yourself and your work (3 lessons) | ✅ available |
-| | Family and people · Daily routine and time · Food and shopping · City and basic travel · At the workplace | planned |
+| | Family and people (4 lessons) | ✅ available (content 1.2.0) |
+| | Daily routine and time (4 lessons) | ✅ available (content 1.2.0) |
+| | Food and shopping · City and basic travel · At the workplace | planned |
 | **A2** | Services · The past · Plans and future · Preferences and comparison · Simple work conversations | planned |
 | **B1** | Opinion and reasoning · Narration · Solving client problems · Professional correspondence | planned |
 | **B2** | Meetings · Presentations · Job interviews · Discovery and negotiation · Explaining technical services | planned |
@@ -62,6 +64,14 @@ no lessons and are never counted as progress.
 | 10 | Nationality and languages | 9 | gender agreement; hablar |
 | 11 | What do you do? | 8 | trabajar; profession w/o article |
 | 12 | First professional contact | 9 | le presento a…; ¿En qué puedo ayudarle? |
+| 13 | My family | 9 | tener (tengo/tienes/tiene); los padres = parents |
+| 14 | Age and possessives | 8 | ¿Cuántos años tienes?; mi/mis, su/sus; casado |
+| 15 | What is he/she like? | 8 | adjective agreement; simpático (false friend) |
+| 16 | My work team | 8 | este/esta es…; experience and reliability |
+| 17 | What time is it? | 8 | es la una / son las…; y media, menos cuarto; a las… |
+| 18 | Days of the week | 9 | el lunes vs los lunes; hoy |
+| 19 | My normal day | 8 | yo forms -ar/-er; como ≠ ¿cómo?; por la mañana |
+| 20 | Making an appointment | 8 | ¿Le va bien…?; de acuerdo; lo siento; ocupado/libre |
 
 Totals: 101 items, 299 activities (172 graded), 14 grammar notes.
 
@@ -103,5 +113,12 @@ Accent: default voice es-MX (seseo); notes point out Castilian differences
 | `dlg_pa1_origen` | Pre-A1 | lesson 9 | Informal introductions at a language course (tú) |
 | `dlg_a1_idiomas` | A1 | lessons 10–11 | Languages and jobs at a trade fair |
 | `dlg_a1_recepcion` | A1 | lessons 11–12 | A client arrives at reception and is introduced |
+| `dlg_a1_familia` | A1 | lessons 13–14 | Colleagues talk about children and siblings |
+| `dlg_a1_equipo` | A1 | lessons 15–16 | Presenting the team to a visiting client |
+| `dlg_a1_rutina` | A1 | lessons 17–19 | New colleagues compare their working hours |
+| `dlg_a1_cita` | A1 | lessons 18, 20 | Rescheduling a client meeting by phone |
+
+Checkpoints `chk_a1_u2` and `chk_a1_u3` (10 questions, 3 can-dos each) close
+the new units; each plays one dialogue sentence.
 
 All are original and `author_reviewed`; see [LINGUISTIC_QA.md](LINGUISTIC_QA.md).

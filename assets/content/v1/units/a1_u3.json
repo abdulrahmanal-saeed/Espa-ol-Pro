@@ -1,0 +1,1298 @@
+{
+ "unit": "a1_u3",
+ "grammar": [
+  {
+   "id": "g_time",
+   "title_ar": "الساعة: es la una / son las…",
+   "body_ar": "نسأل: ¿Qué hora es? (كم الساعة؟)\nللواحدة: Es la una. ولباقي الساعات: Son las dos، Son las tres…\n\nالدقائق: y cuarto (والربع)، y media (والنصف)، menos cuarto (إلا ربعاً)، y diez (وعشر دقائق).\nSon las ocho y media — الثامنة والنصف. Son las nueve menos cuarto — التاسعة إلا ربعاً.\n\nلموعد: ¿A qué hora…? — A las diez. (في العاشرة)",
+   "examples": [
+    {
+     "es": "Es la una y media.",
+     "ar": "الساعة الواحدة والنصف."
+    },
+    {
+     "es": "Son las tres en punto.",
+     "ar": "الساعة الثالثة تماماً."
+    },
+    {
+     "es": "La reunión es a las diez.",
+     "ar": "الاجتماع في العاشرة."
+    }
+   ]
+  },
+  {
+   "id": "g_days",
+   "title_ar": "أيام الأسبوع",
+   "body_ar": "lunes، martes، miércoles، jueves، viernes، sábado، domingo.\nتُكتب بحرف صغير. ونقول «يوم الاثنين» بأداة التعريف بلا حرف جر: el lunes.\nوللتكرار نجمع الأداة: los lunes (كل اثنين).\n\nانتبه: الأسبوع في إسبانيا وأمريكا اللاتينية يبدأ عملياً بالاثنين، وعطلته غالباً السبت والأحد.",
+   "examples": [
+    {
+     "es": "La reunión es el martes.",
+     "ar": "الاجتماع يوم الثلاثاء."
+    },
+    {
+     "es": "Los viernes trabajo en casa.",
+     "ar": "أعمل من البيت أيام الجمعة."
+    }
+   ]
+  },
+  {
+   "id": "g_present_regular",
+   "title_ar": "المضارع المنتظم مع yo",
+   "body_ar": "مع yo تنتهي كل الأفعال المنتظمة بـ ‎-o:\ndesayunar ← desayuno · llegar ← llego · comer ← como · cenar ← ceno · terminar ← termino\n\nوفعل levantarse انعكاسي: me levanto (أستيقظ وأنهض).\nانتبه: como (آكل) بلا علامة، و¿cómo? (كيف؟) بعلامة.",
+   "examples": [
+    {
+     "es": "Desayuno a las siete.",
+     "ar": "أفطر في السابعة."
+    },
+    {
+     "es": "Como con mis compañeros.",
+     "ar": "آكل مع زملائي."
+    }
+   ]
+  },
+  {
+   "id": "g_appointments",
+   "title_ar": "تحديد موعد بأدب",
+   "body_ar": "للاقتراح الرسمي: ¿Le va bien el lunes a las diez? (هل يناسب حضرتك الاثنين في العاشرة؟)\nوبين الزملاء: ¿Te va bien…?\n\nللقبول: Sí, perfecto. / De acuerdo. / Vale (في إسبانيا).\nللاعتذار: Lo siento, el lunes estoy ocupado.",
+   "examples": [
+    {
+     "es": "¿Le va bien el jueves?",
+     "ar": "هل يناسب حضرتك الخميس؟"
+    },
+    {
+     "es": "De acuerdo, nos vemos el jueves.",
+     "ar": "اتفقنا، نلتقي الخميس."
+    }
+   ]
+  }
+ ],
+ "lessons": [
+  {
+   "id": "a1_u3_l1",
+   "title_ar": "كم الساعة؟",
+   "title_es": "¿Qué hora es?",
+   "objectives_ar": [
+    "السؤال عن الساعة والإجابة",
+    "استعمال y cuarto / y media / menos cuarto",
+    "قول موعد شيء: a las…"
+   ],
+   "prerequisites": [
+    "a1_u2_l4"
+   ],
+   "minutes": 15,
+   "work_relevance_ar": "المواعيد والاجتماعات تبدأ بتحديد الساعة بدقّة.",
+   "source": "original-v1",
+   "grammar": [
+    "g_time"
+   ],
+   "items": [
+    {
+     "id": "que_hora_es",
+     "es": "¿Qué hora es?",
+     "ar": "كم الساعة؟",
+     "en": "What time is it?",
+     "pos": "سؤال",
+     "examples": [
+      {
+       "es": "Perdón, ¿qué hora es?",
+       "ar": "عفواً، كم الساعة؟"
+      }
+     ]
+    },
+    {
+     "id": "es_la_una",
+     "es": "es la una",
+     "ar": "الساعة الواحدة",
+     "en": "it's one o'clock",
+     "pos": "تعبير",
+     "examples": [
+      {
+       "es": "Es la una y diez.",
+       "ar": "الساعة الواحدة وعشر دقائق."
+      }
+     ],
+     "connections": [
+      {
+       "type": "grammar",
+       "ar": "الواحدة وحدها مفردة (es la)، وباقي الساعات جمع (son las)."
+      }
+     ]
+    },
+    {
+     "id": "son_las",
+     "es": "son las…",
+     "ar": "الساعة… (من 2 فما فوق)",
+     "en": "it's … o'clock",
+     "pos": "تعبير",
+     "examples": [
+      {
+       "es": "Son las cuatro.",
+       "ar": "الساعة الرابعة."
+      }
+     ]
+    },
+    {
+     "id": "y_media",
+     "es": "y media",
+     "ar": "والنصف",
+     "en": "half past",
+     "pos": "تعبير",
+     "examples": [
+      {
+       "es": "Son las ocho y media.",
+       "ar": "الساعة الثامنة والنصف."
+      }
+     ]
+    },
+    {
+     "id": "y_cuarto",
+     "es": "y cuarto",
+     "ar": "والربع",
+     "en": "quarter past",
+     "pos": "تعبير",
+     "examples": [
+      {
+       "es": "Son las dos y cuarto.",
+       "ar": "الساعة الثانية والربع."
+      }
+     ]
+    },
+    {
+     "id": "menos_cuarto",
+     "es": "menos cuarto",
+     "ar": "إلا ربعاً",
+     "en": "quarter to",
+     "pos": "تعبير",
+     "examples": [
+      {
+       "es": "Son las once menos cuarto.",
+       "ar": "الساعة الحادية عشرة إلا ربعاً."
+      }
+     ]
+    },
+    {
+     "id": "a_que_hora",
+     "es": "¿A qué hora…?",
+     "ar": "في أي ساعة…؟",
+     "en": "At what time…?",
+     "pos": "سؤال",
+     "examples": [
+      {
+       "es": "¿A qué hora es la reunión? — A las nueve.",
+       "ar": "في أي ساعة الاجتماع؟ — في التاسعة."
+      }
+     ],
+     "work": true
+    },
+    {
+     "id": "en_punto",
+     "es": "en punto",
+     "ar": "تماماً (في الساعة بالضبط)",
+     "en": "o'clock sharp",
+     "pos": "تعبير",
+     "examples": [
+      {
+       "es": "La reunión es a las diez en punto.",
+       "ar": "الاجتماع في العاشرة تماماً."
+      }
+     ],
+     "work": true
+    }
+   ],
+   "activities": [
+    {
+     "type": "teach",
+     "item": "que_hora_es"
+    },
+    {
+     "type": "teach",
+     "item": "es_la_una"
+    },
+    {
+     "type": "teach",
+     "item": "son_las"
+    },
+    {
+     "type": "mcq_meaning",
+     "item": "que_hora_es"
+    },
+    {
+     "type": "note",
+     "title_ar": "es la una · son las dos",
+     "body_ar": "الواحدة مفردة: Es la una.\nمن الثانية فصاعداً جمع: Son las dos، Son las siete.\n\nالأرقام تعرفها من قبل: dos، tres… doce.",
+     "examples": [
+      {
+       "es": "Son las doce.",
+       "ar": "الساعة الثانية عشرة."
+      }
+     ]
+    },
+    {
+     "type": "choice",
+     "prompt_ar": "الساعة 3:00. ماذا تقول؟",
+     "choices": [
+      "Son las tres.",
+      "Es la tres.",
+      "Son tres."
+     ],
+     "answer": 0,
+     "skill": "grammar",
+     "choices_es": true,
+     "explain_ar": "من الثانية فصاعداً: son las…"
+    },
+    {
+     "type": "listen_pick_es",
+     "item": "es_la_una"
+    },
+    {
+     "type": "mcq_reverse",
+     "item": "son_las"
+    },
+    {
+     "type": "teach",
+     "item": "y_media"
+    },
+    {
+     "type": "teach",
+     "item": "y_cuarto"
+    },
+    {
+     "type": "teach",
+     "item": "menos_cuarto"
+    },
+    {
+     "type": "listen_choose",
+     "item": "y_media"
+    },
+    {
+     "type": "mcq_meaning",
+     "item": "menos_cuarto"
+    },
+    {
+     "type": "choice",
+     "prompt_ar": "الساعة 7:45. أي جملة صحيحة؟",
+     "choices": [
+      "Son las ocho menos cuarto.",
+      "Son las siete menos cuarto.",
+      "Son las ocho y cuarto."
+     ],
+     "answer": 0,
+     "skill": "grammar",
+     "choices_es": true,
+     "explain_ar": "7:45 = الثامنة إلا ربعاً."
+    },
+    {
+     "type": "teach",
+     "item": "a_que_hora"
+    },
+    {
+     "type": "teach",
+     "item": "en_punto"
+    },
+    {
+     "type": "mcq_meaning",
+     "item": "a_que_hora"
+    },
+    {
+     "type": "listen_choose",
+     "item": "en_punto"
+    },
+    {
+     "type": "fill",
+     "es": "La reunión es ___ las diez.",
+     "answer": "a",
+     "ar": "الاجتماع في العاشرة.",
+     "options": [
+      "a",
+      "en",
+      "de"
+     ],
+     "explain_ar": "لموعد بالساعة: a las…"
+    },
+    {
+     "type": "match",
+     "items": [
+      "y_media",
+      "y_cuarto",
+      "menos_cuarto",
+      "en_punto"
+     ]
+    },
+    {
+     "type": "type_es",
+     "item": "y_media"
+    },
+    {
+     "type": "type_es",
+     "item": "y_cuarto"
+    },
+    {
+     "type": "order",
+     "es": "¿A qué hora es la reunión?",
+     "ar": "في أي ساعة الاجتماع؟"
+    },
+    {
+     "type": "dictation",
+     "es": "Son las nueve y cuarto.",
+     "ar": "الساعة التاسعة والربع."
+    },
+    {
+     "type": "choice",
+     "prompt_ar": "في أي ساعة الاجتماع مع العميل؟",
+     "choices": [
+      "11:30",
+      "10:30",
+      "11:15"
+     ],
+     "answer": 0,
+     "skill": "reading",
+     "choices_es": false,
+     "stimulus_es": "— ¿A qué hora es la reunión con el cliente?\n— A las once y media.\n— ¿Y qué hora es ahora?\n— Son las diez en punto."
+    },
+    {
+     "type": "respond",
+     "prompt_ar": "زميل يسألك: «¿Qué hora es?». الساعة الثانية والنصف.",
+     "accepted": [
+      "Son las dos y media",
+      "Las dos y media"
+     ],
+     "audio_es": "¿Qué hora es?"
+    },
+    {
+     "type": "speak",
+     "es": "Son las ocho y media. La reunión es a las nueve en punto.",
+     "ar": "الساعة الثامنة والنصف. الاجتماع في التاسعة تماماً."
+    }
+   ]
+  },
+  {
+   "id": "a1_u3_l2",
+   "title_ar": "أيام الأسبوع",
+   "title_es": "Los días de la semana",
+   "objectives_ar": [
+    "تسمية أيام الأسبوع",
+    "قول متى يحدث شيء: el lunes / los lunes",
+    "استعمال hoy"
+   ],
+   "prerequisites": [
+    "a1_u3_l1"
+   ],
+   "minutes": 15,
+   "work_relevance_ar": "الأيام أساس كل جدول عمل وموعد.",
+   "source": "original-v1",
+   "grammar": [
+    "g_days"
+   ],
+   "items": [
+    {
+     "id": "lunes",
+     "es": "lunes",
+     "ar": "الاثنين",
+     "en": "Monday",
+     "pos": "اسم",
+     "examples": [
+      {
+       "es": "El lunes tengo una reunión.",
+       "ar": "عندي اجتماع يوم الاثنين."
+      }
+     ],
+     "connections": [
+      {
+       "type": "usage",
+       "ar": "أصلها من Luna (القمر)، كما Monday من Moon."
+      }
+     ]
+    },
+    {
+     "id": "martes",
+     "es": "martes",
+     "ar": "الثلاثاء",
+     "en": "Tuesday",
+     "pos": "اسم",
+     "examples": [
+      {
+       "es": "La cita es el martes.",
+       "ar": "الموعد يوم الثلاثاء."
+      }
+     ]
+    },
+    {
+     "id": "miercoles",
+     "es": "miércoles",
+     "ar": "الأربعاء",
+     "en": "Wednesday",
+     "pos": "اسم",
+     "examples": [
+      {
+       "es": "Los miércoles trabajo en casa.",
+       "ar": "أعمل من البيت أيام الأربعاء."
+      }
+     ]
+    },
+    {
+     "id": "jueves",
+     "es": "jueves",
+     "ar": "الخميس",
+     "en": "Thursday",
+     "pos": "اسم",
+     "examples": [
+      {
+       "es": "¿Trabajas el jueves?",
+       "ar": "هل تعمل يوم الخميس؟"
+      }
+     ]
+    },
+    {
+     "id": "viernes",
+     "es": "viernes",
+     "ar": "الجمعة",
+     "en": "Friday",
+     "pos": "اسم",
+     "examples": [
+      {
+       "es": "El viernes ceno con mi familia.",
+       "ar": "يوم الجمعة أتعشّى مع عائلتي."
+      }
+     ]
+    },
+    {
+     "id": "sabado",
+     "es": "sábado",
+     "ar": "السبت",
+     "en": "Saturday",
+     "pos": "اسم",
+     "examples": [
+      {
+       "es": "El sábado no trabajo.",
+       "ar": "يوم السبت لا أعمل."
+      }
+     ],
+     "connections": [
+      {
+       "type": "arabic_origin",
+       "ar": "من الأصل السامي نفسه لكلمة «السبت»."
+      }
+     ]
+    },
+    {
+     "id": "domingo",
+     "es": "domingo",
+     "ar": "الأحد",
+     "en": "Sunday",
+     "pos": "اسم",
+     "examples": [
+      {
+       "es": "El domingo es mi día libre.",
+       "ar": "الأحد يوم إجازتي."
+      }
+     ]
+    },
+    {
+     "id": "semana",
+     "es": "la semana",
+     "ar": "الأسبوع",
+     "en": "week",
+     "pos": "اسم",
+     "examples": [
+      {
+       "es": "Trabajo cinco días a la semana.",
+       "ar": "أعمل خمسة أيام في الأسبوع."
+      }
+     ]
+    },
+    {
+     "id": "hoy",
+     "es": "hoy",
+     "ar": "اليوم",
+     "en": "today",
+     "pos": "ظرف",
+     "examples": [
+      {
+       "es": "Hoy es lunes.",
+       "ar": "اليوم الاثنين."
+      }
+     ]
+    }
+   ],
+   "activities": [
+    {
+     "type": "teach",
+     "item": "lunes"
+    },
+    {
+     "type": "teach",
+     "item": "martes"
+    },
+    {
+     "type": "teach",
+     "item": "miercoles"
+    },
+    {
+     "type": "listen_pick_es",
+     "item": "lunes"
+    },
+    {
+     "type": "mcq_meaning",
+     "item": "miercoles"
+    },
+    {
+     "type": "teach",
+     "item": "jueves"
+    },
+    {
+     "type": "teach",
+     "item": "viernes"
+    },
+    {
+     "type": "listen_choose",
+     "item": "jueves"
+    },
+    {
+     "type": "mcq_reverse",
+     "item": "viernes"
+    },
+    {
+     "type": "teach",
+     "item": "sabado"
+    },
+    {
+     "type": "teach",
+     "item": "domingo"
+    },
+    {
+     "type": "mcq_meaning",
+     "item": "sabado"
+    },
+    {
+     "type": "listen_choose",
+     "item": "domingo"
+    },
+    {
+     "type": "note",
+     "title_ar": "el lunes · los lunes",
+     "body_ar": "مرة واحدة: el lunes (يوم الاثنين هذا).\nكل أسبوع: los lunes (أيام الاثنين).\nلا نستعمل حرف جر قبل اليوم: «في الاثنين» = el lunes.\n\nوالأيام تُكتب بحرف صغير.",
+     "examples": [
+      {
+       "es": "Los sábados no trabajo.",
+       "ar": "لا أعمل أيام السبت."
+      }
+     ]
+    },
+    {
+     "type": "choice",
+     "prompt_ar": "كيف تقول «لا أعمل أيام الأحد» (كل أحد)؟",
+     "choices": [
+      "Los domingos no trabajo.",
+      "En domingo no trabajo.",
+      "El domingos no trabajo."
+     ],
+     "answer": 0,
+     "skill": "grammar",
+     "choices_es": true,
+     "explain_ar": "للتكرار: los + اليوم، بلا حرف جر."
+    },
+    {
+     "type": "teach",
+     "item": "semana"
+    },
+    {
+     "type": "teach",
+     "item": "hoy"
+    },
+    {
+     "type": "mcq_meaning",
+     "item": "semana"
+    },
+    {
+     "type": "listen_pick_es",
+     "item": "hoy"
+    },
+    {
+     "type": "fill",
+     "es": "___ martes tengo una reunión a las diez.",
+     "answer": "El",
+     "ar": "يوم الثلاثاء عندي اجتماع في العاشرة.",
+     "options": [
+      "El",
+      "En",
+      "A"
+     ],
+     "explain_ar": "اليوم بأداة التعريف بلا حرف جر: el martes."
+    },
+    {
+     "type": "match",
+     "items": [
+      "lunes",
+      "miercoles",
+      "viernes",
+      "domingo"
+     ]
+    },
+    {
+     "type": "type_es",
+     "item": "hoy"
+    },
+    {
+     "type": "type_es",
+     "item": "jueves"
+    },
+    {
+     "type": "mcq_reverse",
+     "item": "martes"
+    },
+    {
+     "type": "order",
+     "es": "Hoy es viernes y no tengo reuniones.",
+     "ar": "اليوم الجمعة وليس عندي اجتماعات."
+    },
+    {
+     "type": "dictation",
+     "es": "Trabajo de lunes a viernes.",
+     "ar": "أعمل من الاثنين إلى الجمعة."
+    },
+    {
+     "type": "choice",
+     "prompt_ar": "أي يوم تعمل آنا من البيت؟",
+     "choices": [
+      "الأربعاء",
+      "الاثنين",
+      "الجمعة"
+     ],
+     "answer": 0,
+     "skill": "reading",
+     "choices_es": false,
+     "stimulus_es": "— Ana, ¿trabajas en la oficina todos los días?\n— Trabajo en la oficina de lunes a viernes, pero los miércoles trabajo en casa."
+    },
+    {
+     "type": "respond",
+     "prompt_ar": "زميل يسألك: «¿Qué día es hoy?». اليوم الخميس.",
+     "accepted": [
+      "Hoy es jueves",
+      "Es jueves",
+      "Jueves"
+     ],
+     "audio_es": "¿Qué día es hoy?"
+    },
+    {
+     "type": "speak",
+     "es": "Trabajo de lunes a viernes. El sábado y el domingo estoy con mi familia.",
+     "ar": "أعمل من الاثنين إلى الجمعة. السبت والأحد أكون مع عائلتي."
+    }
+   ]
+  },
+  {
+   "id": "a1_u3_l3",
+   "title_ar": "يومي العادي",
+   "title_es": "Mi día normal",
+   "objectives_ar": [
+    "وصف يوم عمل عادي بأفعال المضارع مع yo",
+    "ربط الأفعال بالساعة",
+    "التمييز بين como (آكل) و¿cómo?"
+   ],
+   "prerequisites": [
+    "a1_u3_l2"
+   ],
+   "minutes": 15,
+   "work_relevance_ar": "وصف روتينك سؤال متكرر في التعارف والمقابلات.",
+   "source": "original-v1",
+   "grammar": [
+    "g_present_regular",
+    "g_time"
+   ],
+   "items": [
+    {
+     "id": "me_levanto",
+     "es": "me levanto",
+     "ar": "أستيقظ وأنهض",
+     "en": "I get up",
+     "pos": "فعل",
+     "examples": [
+      {
+       "es": "Me levanto a las seis y media.",
+       "ar": "أستيقظ في السادسة والنصف."
+      }
+     ],
+     "connections": [
+      {
+       "type": "grammar",
+       "ar": "فعل انعكاسي (levantarse): me تعني «نفسي». ستأتي هذه الأفعال لاحقاً."
+      }
+     ]
+    },
+    {
+     "id": "desayuno",
+     "es": "desayuno",
+     "ar": "أفطر (وجبة الصباح)",
+     "en": "I have breakfast",
+     "pos": "فعل",
+     "examples": [
+      {
+       "es": "Desayuno café y pan.",
+       "ar": "أفطر قهوة وخبزاً."
+      }
+     ],
+     "note_ar": "وهي أيضاً اسم: el desayuno (الفطور)."
+    },
+    {
+     "id": "llego",
+     "es": "llego",
+     "ar": "أصل",
+     "en": "I arrive",
+     "pos": "فعل",
+     "examples": [
+      {
+       "es": "Llego a la oficina a las ocho.",
+       "ar": "أصل إلى المكتب في الثامنة."
+      }
+     ]
+    },
+    {
+     "id": "como_v",
+     "es": "como",
+     "ar": "آكل / أتناول الغداء",
+     "en": "I eat / have lunch",
+     "pos": "فعل",
+     "examples": [
+      {
+       "es": "Como a las dos.",
+       "ar": "أتغدّى في الثانية."
+      }
+     ],
+     "connections": [
+      {
+       "type": "grammar",
+       "ar": "como (آكل) بلا علامة، و¿cómo? (كيف) بعلامة في السؤال."
+      }
+     ]
+    },
+    {
+     "id": "termino",
+     "es": "termino",
+     "ar": "أنهي",
+     "en": "I finish",
+     "pos": "فعل",
+     "examples": [
+      {
+       "es": "Termino el trabajo a las cinco.",
+       "ar": "أنهي العمل في الخامسة."
+      }
+     ],
+     "work": true
+    },
+    {
+     "id": "ceno",
+     "es": "ceno",
+     "ar": "أتعشّى",
+     "en": "I have dinner",
+     "pos": "فعل",
+     "examples": [
+      {
+       "es": "Ceno con mi familia.",
+       "ar": "أتعشّى مع عائلتي."
+      }
+     ]
+    },
+    {
+     "id": "por_la_manana",
+     "es": "por la mañana",
+     "ar": "صباحاً",
+     "en": "in the morning",
+     "pos": "تعبير",
+     "examples": [
+      {
+       "es": "Por la mañana tengo reuniones.",
+       "ar": "صباحاً عندي اجتماعات."
+      }
+     ],
+     "connections": [
+      {
+       "type": "usage",
+       "ar": "قارن: mañana وحدها = غداً، وpor la mañana = في الصباح."
+      }
+     ]
+    },
+    {
+     "id": "por_la_tarde",
+     "es": "por la tarde",
+     "ar": "بعد الظهر / مساءً",
+     "en": "in the afternoon",
+     "pos": "تعبير",
+     "examples": [
+      {
+       "es": "Por la tarde llamo a los clientes.",
+       "ar": "بعد الظهر أتصل بالعملاء."
+      }
+     ]
+    }
+   ],
+   "activities": [
+    {
+     "type": "teach",
+     "item": "me_levanto"
+    },
+    {
+     "type": "teach",
+     "item": "desayuno"
+    },
+    {
+     "type": "mcq_meaning",
+     "item": "me_levanto"
+    },
+    {
+     "type": "listen_pick_es",
+     "item": "desayuno"
+    },
+    {
+     "type": "teach",
+     "item": "llego"
+    },
+    {
+     "type": "teach",
+     "item": "como_v"
+    },
+    {
+     "type": "mcq_reverse",
+     "item": "llego"
+    },
+    {
+     "type": "note",
+     "title_ar": "como = آكل، ¿cómo? = كيف",
+     "body_ar": "الكلمة نفسها، والعلامة تغيّر المعنى:\nComo a las dos. — أتغدّى في الثانية.\n¿Cómo estás? — كيف حالك؟\n\nفي إسبانيا comer يعني غالباً «تناول الغداء».",
+     "examples": [
+      {
+       "es": "¿A qué hora comes? — Como a las dos.",
+       "ar": "متى تتغدّى؟ — في الثانية."
+      }
+     ]
+    },
+    {
+     "type": "listen_choose",
+     "item": "como_v"
+    },
+    {
+     "type": "teach",
+     "item": "termino"
+    },
+    {
+     "type": "teach",
+     "item": "ceno"
+    },
+    {
+     "type": "mcq_meaning",
+     "item": "termino"
+    },
+    {
+     "type": "listen_choose",
+     "item": "ceno"
+    },
+    {
+     "type": "teach",
+     "item": "por_la_manana"
+    },
+    {
+     "type": "teach",
+     "item": "por_la_tarde"
+    },
+    {
+     "type": "mcq_meaning",
+     "item": "por_la_manana"
+    },
+    {
+     "type": "listen_pick_es",
+     "item": "por_la_tarde"
+    },
+    {
+     "type": "fill",
+     "es": "Yo ___ a la oficina a las ocho.",
+     "answer": "llego",
+     "ar": "أصل إلى المكتب في الثامنة.",
+     "options": [
+      "llego",
+      "llega",
+      "llegas"
+     ],
+     "explain_ar": "مع yo النهاية ‎-o."
+    },
+    {
+     "type": "fill",
+     "es": "___ el trabajo a las cinco y media.",
+     "answer": "Termino",
+     "ar": "أنهي العمل في الخامسة والنصف.",
+     "options": [
+      "Termino",
+      "Termina",
+      "Terminas"
+     ],
+     "explain_ar": "الكلام عن نفسك: termino."
+    },
+    {
+     "type": "match",
+     "items": [
+      "desayuno",
+      "llego",
+      "termino",
+      "ceno"
+     ]
+    },
+    {
+     "type": "type_es",
+     "item": "ceno"
+    },
+    {
+     "type": "type_es",
+     "item": "desayuno"
+    },
+    {
+     "type": "order",
+     "es": "Me levanto a las siete por la mañana.",
+     "ar": "أستيقظ في السابعة صباحاً."
+    },
+    {
+     "type": "dictation",
+     "es": "Como con mis compañeros a las dos.",
+     "ar": "أتغدّى مع زملائي في الثانية."
+    },
+    {
+     "type": "choice",
+     "prompt_ar": "متى ينهي كريم عمله؟",
+     "choices": [
+      "في السادسة",
+      "في الثانية",
+      "في الثامنة"
+     ],
+     "answer": 0,
+     "skill": "reading",
+     "choices_es": false,
+     "stimulus_es": "Me llamo Karim. Me levanto a las seis y media. Llego a la oficina a las ocho. Como a las dos y termino el trabajo a las seis. Por la noche ceno con mi familia."
+    },
+    {
+     "type": "respond",
+     "prompt_ar": "زميل يسألك: «¿A qué hora llegas a la oficina?». قل إنك تصل في الثامنة والنصف.",
+     "accepted": [
+      "Llego a las ocho y media",
+      "A las ocho y media",
+      "Llego a la oficina a las ocho y media"
+     ],
+     "audio_es": "¿A qué hora llegas a la oficina?"
+    },
+    {
+     "type": "speak",
+     "es": "Me levanto a las siete. Desayuno, llego a la oficina a las ocho y termino a las cinco.",
+     "ar": "أستيقظ في السابعة. أفطر، وأصل إلى المكتب في الثامنة وأنهي في الخامسة."
+    }
+   ]
+  },
+  {
+   "id": "a1_u3_l4",
+   "title_ar": "تحديد موعد",
+   "title_es": "Concertar una cita",
+   "objectives_ar": [
+    "اقتراح يوم وساعة بأدب",
+    "قبول موعد أو الاعتذار عنه",
+    "إنهاء الاتفاق: nos vemos…"
+   ],
+   "prerequisites": [
+    "a1_u3_l3"
+   ],
+   "minutes": 15,
+   "work_relevance_ar": "تحديد اجتماع مع عميل أو زميل بالإسبانية مهارة عمل مباشرة.",
+   "source": "original-v1",
+   "grammar": [
+    "g_appointments",
+    "g_days",
+    "g_time"
+   ],
+   "items": [
+    {
+     "id": "le_va_bien",
+     "es": "¿Le va bien…?",
+     "ar": "هل يناسب حضرتك…؟",
+     "en": "Does … suit you? (formal)",
+     "pos": "سؤال",
+     "examples": [
+      {
+       "es": "¿Le va bien el lunes a las diez?",
+       "ar": "هل يناسب حضرتك الاثنين في العاشرة؟"
+      }
+     ],
+     "note_ar": "بين الزملاء: ¿Te va bien…?",
+     "work": true
+    },
+    {
+     "id": "de_acuerdo",
+     "es": "de acuerdo",
+     "ar": "اتفقنا / موافق",
+     "en": "agreed, OK",
+     "pos": "تعبير",
+     "examples": [
+      {
+       "es": "De acuerdo, el martes a las once.",
+       "ar": "اتفقنا، الثلاثاء في الحادية عشرة."
+      }
+     ],
+     "work": true
+    },
+    {
+     "id": "perfecto",
+     "es": "perfecto",
+     "ar": "ممتاز / تمام",
+     "en": "perfect",
+     "pos": "صفة",
+     "examples": [
+      {
+       "es": "Perfecto, nos vemos el jueves.",
+       "ar": "تمام، نلتقي الخميس."
+      }
+     ],
+     "connections": [
+      {
+       "type": "cognate",
+       "ar": "قريبة من الإنجليزية perfect."
+      }
+     ]
+    },
+    {
+     "id": "lo_siento",
+     "es": "lo siento",
+     "ar": "آسف",
+     "en": "I'm sorry",
+     "pos": "تعبير",
+     "examples": [
+      {
+       "es": "Lo siento, el lunes no puedo.",
+       "ar": "آسف، الاثنين لا أستطيع."
+      }
+     ],
+     "connections": [
+      {
+       "type": "usage",
+       "ar": "perdón للمقاطعة أو الخطأ الصغير؛ lo siento للاعتذار الحقيقي."
+      }
+     ]
+    },
+    {
+     "id": "ocupado",
+     "es": "ocupado",
+     "ar": "مشغول",
+     "en": "busy",
+     "pos": "صفة",
+     "examples": [
+      {
+       "es": "El martes estoy ocupado.",
+       "ar": "يوم الثلاثاء أنا مشغول."
+      }
+     ],
+     "note_ar": "للمؤنث: ocupada. تُقال مع estar.",
+     "alt": [
+      "ocupada"
+     ],
+     "work": true
+    },
+    {
+     "id": "libre",
+     "es": "libre",
+     "ar": "متفرّغ / حرّ",
+     "en": "free, available",
+     "pos": "صفة",
+     "examples": [
+      {
+       "es": "¿Estás libre el viernes?",
+       "ar": "هل أنت متفرّغ يوم الجمعة؟"
+      }
+     ],
+     "note_ar": "لا تتغيّر للمؤنث."
+    },
+    {
+     "id": "nos_vemos",
+     "es": "nos vemos",
+     "ar": "نلتقي / إلى اللقاء",
+     "en": "see you",
+     "pos": "تعبير",
+     "examples": [
+      {
+       "es": "Nos vemos el jueves a las diez.",
+       "ar": "نلتقي الخميس في العاشرة."
+      }
+     ]
+    },
+    {
+     "id": "la_agenda",
+     "es": "la agenda",
+     "ar": "جدول المواعيد",
+     "en": "schedule, diary",
+     "pos": "اسم",
+     "examples": [
+      {
+       "es": "Tengo la agenda muy llena esta semana.",
+       "ar": "جدولي مزدحم جداً هذا الأسبوع."
+      }
+     ],
+     "work": true,
+     "connections": [
+      {
+       "type": "false_friend",
+       "ar": "agenda بالإسبانية تعني المفكرة أو جدول المواعيد، لا «جدول أعمال الاجتماع» فقط."
+      }
+     ]
+    }
+   ],
+   "activities": [
+    {
+     "type": "teach",
+     "item": "le_va_bien"
+    },
+    {
+     "type": "teach",
+     "item": "de_acuerdo"
+    },
+    {
+     "type": "teach",
+     "item": "perfecto"
+    },
+    {
+     "type": "mcq_meaning",
+     "item": "le_va_bien"
+    },
+    {
+     "type": "listen_pick_es",
+     "item": "de_acuerdo"
+    },
+    {
+     "type": "note",
+     "title_ar": "اقتراح موعد بأدب",
+     "body_ar": "مع عميل: ¿Le va bien el lunes a las diez?\nمع زميل: ¿Te va bien el lunes?\n\nللموافقة: Sí, perfecto. / De acuerdo.\nللاعتذار: Lo siento, el lunes estoy ocupado. ¿Le va bien el martes?",
+     "examples": [
+      {
+       "es": "¿Le va bien el viernes a las nueve? — Sí, perfecto.",
+       "ar": "هل يناسب حضرتك الجمعة في التاسعة؟ — نعم، تمام."
+      }
+     ]
+    },
+    {
+     "type": "teach",
+     "item": "lo_siento"
+    },
+    {
+     "type": "teach",
+     "item": "ocupado"
+    },
+    {
+     "type": "teach",
+     "item": "libre"
+    },
+    {
+     "type": "mcq_reverse",
+     "item": "lo_siento"
+    },
+    {
+     "type": "listen_choose",
+     "item": "ocupado"
+    },
+    {
+     "type": "mcq_meaning",
+     "item": "libre"
+    },
+    {
+     "type": "choice",
+     "prompt_ar": "تقترح موعداً على عميل لا تعرفه جيداً. ماذا تقول؟",
+     "choices": [
+      "¿Le va bien el martes a las diez?",
+      "¿Te va bien el martes a las diez?",
+      "Martes diez, ¿vale?"
+     ],
+     "answer": 0,
+     "skill": "grammar",
+     "choices_es": true,
+     "explain_ar": "مع العميل نستعمل الصيغة الرسمية: le va bien."
+    },
+    {
+     "type": "teach",
+     "item": "nos_vemos"
+    },
+    {
+     "type": "teach",
+     "item": "la_agenda"
+    },
+    {
+     "type": "listen_choose",
+     "item": "nos_vemos"
+    },
+    {
+     "type": "mcq_meaning",
+     "item": "la_agenda"
+    },
+    {
+     "type": "fill",
+     "es": "Lo siento, el jueves estoy ___.",
+     "answer": "ocupada",
+     "ar": "آسفة، يوم الخميس أنا مشغولة.",
+     "options": [
+      "ocupado",
+      "ocupada",
+      "libre"
+     ],
+     "explain_ar": "المتكلمة امرأة: ocupada."
+    },
+    {
+     "type": "match",
+     "items": [
+      "de_acuerdo",
+      "ocupado",
+      "libre",
+      "nos_vemos"
+     ]
+    },
+    {
+     "type": "type_es",
+     "item": "perfecto"
+    },
+    {
+     "type": "type_es",
+     "item": "libre"
+    },
+    {
+     "type": "order",
+     "es": "De acuerdo, nos vemos el lunes a las diez.",
+     "ar": "اتفقنا، نلتقي الاثنين في العاشرة."
+    },
+    {
+     "type": "dictation",
+     "es": "¿Le va bien el miércoles a las once?",
+     "ar": "هل يناسب حضرتك الأربعاء في الحادية عشرة؟"
+    },
+    {
+     "type": "choice",
+     "prompt_ar": "متى يكون الاجتماع في النهاية؟",
+     "choices": [
+      "الخميس في العاشرة",
+      "الثلاثاء في العاشرة",
+      "الخميس في الحادية عشرة"
+     ],
+     "answer": 0,
+     "skill": "reading",
+     "choices_es": false,
+     "stimulus_es": "— Señora Pérez, ¿le va bien el martes a las diez?\n— Lo siento, el martes estoy ocupada. ¿Le va bien el jueves?\n— Sí, perfecto. El jueves a las diez.\n— De acuerdo. Nos vemos el jueves."
+    },
+    {
+     "type": "respond",
+     "prompt_ar": "عميل يقترح: «¿Le va bien el viernes a las nueve?». وافِق بأدب.",
+     "accepted": [
+      "Sí, perfecto",
+      "Perfecto",
+      "De acuerdo",
+      "Sí, de acuerdo",
+      "Sí, me va bien",
+      "Sí, perfecto, nos vemos el viernes",
+      "De acuerdo, nos vemos el viernes"
+     ],
+     "audio_es": "¿Le va bien el viernes a las nueve?"
+    },
+    {
+     "type": "speak",
+     "es": "Lo siento, el lunes estoy ocupado. ¿Le va bien el martes a las diez?",
+     "ar": "آسف، الاثنين أنا مشغول. هل يناسب حضرتك الثلاثاء في العاشرة؟"
+    }
+   ]
+  }
+ ]
+}

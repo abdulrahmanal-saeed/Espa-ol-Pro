@@ -300,6 +300,559 @@
     }
    ],
    "source": "original-v1"
+  },
+  {
+   "id": "dlg_a1_familia",
+   "level": "a1",
+   "unit": "a1_u2",
+   "lessons": [
+    "a1_u2_l1",
+    "a1_u2_l2"
+   ],
+   "title_es": "¿Tienes hijos?",
+   "title_ar": "هل عندك أولاد؟",
+   "scenario_ar": "استراحة القهوة في المكتب. سارة وعمر يتحدثان عن عائلتيهما.",
+   "objectives_ar": [
+    "فهم عدد الإخوة والأولاد",
+    "فهم العمر عند سماعه",
+    "فهم صفات الملكية mi / su"
+   ],
+   "speakers": [
+    {
+     "id": "sara",
+     "name": "Sara",
+     "role_ar": "زميلة في قسم المبيعات"
+    },
+    {
+     "id": "omar",
+     "name": "Omar",
+     "role_ar": "زميل جديد"
+    }
+   ],
+   "turns": [
+    {
+     "id": "dlg_a1_familia.t1",
+     "speaker": "sara",
+     "es": "Omar, ¿tienes hijos?",
+     "ar": "عمر، هل عندك أولاد؟",
+     "en": "Omar, do you have children?"
+    },
+    {
+     "id": "dlg_a1_familia.t2",
+     "speaker": "omar",
+     "es": "Sí, tengo dos hijos: un hijo y una hija.",
+     "ar": "نعم، عندي ولدان: ابن وابنة.",
+     "en": "Yes, I have two children: a son and a daughter."
+    },
+    {
+     "id": "dlg_a1_familia.t3",
+     "speaker": "sara",
+     "es": "¿Cuántos años tienen?",
+     "ar": "كم عمرهما؟",
+     "en": "How old are they?"
+    },
+    {
+     "id": "dlg_a1_familia.t4",
+     "speaker": "omar",
+     "es": "Mi hijo tiene diez años y mi hija tiene cinco.",
+     "ar": "ابني عمره عشر سنوات وابنتي خمس.",
+     "en": "My son is ten and my daughter is five."
+    },
+    {
+     "id": "dlg_a1_familia.t5",
+     "speaker": "sara",
+     "es": "Yo no tengo hijos, pero tengo tres hermanos.",
+     "ar": "أنا ليس عندي أولاد، لكن عندي ثلاثة إخوة.",
+     "en": "I don't have children, but I have three siblings."
+    }
+   ],
+   "items": [
+    "tengo",
+    "tienes",
+    "hijo",
+    "cuantos_anos",
+    "mi",
+    "anos",
+    "hermano",
+    "diez",
+    "cinco"
+   ],
+   "grammar": [
+    "g_tener",
+    "g_possessives"
+   ],
+   "questions": [
+    {
+     "type": "choice",
+     "prompt_ar": "كم ولداً عند عمر؟",
+     "choices": [
+      "اثنان",
+      "ثلاثة",
+      "واحد"
+     ],
+     "answer": 0,
+     "choices_es": false,
+     "turn": "dlg_a1_familia.t2",
+     "id": "dlg_a1_familia.q1",
+     "skill": "listening"
+    },
+    {
+     "type": "choice",
+     "prompt_ar": "كم عمر ابنة عمر؟",
+     "choices": [
+      "خمس سنوات",
+      "عشر سنوات",
+      "ثلاث سنوات"
+     ],
+     "answer": 0,
+     "choices_es": false,
+     "turn": "dlg_a1_familia.t4",
+     "id": "dlg_a1_familia.q2",
+     "skill": "listening"
+    },
+    {
+     "type": "choice",
+     "prompt_ar": "ماذا تقول سارة عن نفسها؟",
+     "choices": [
+      "ليس عندها أولاد وعندها ثلاثة إخوة",
+      "عندها ثلاثة أولاد",
+      "عندها أخ واحد"
+     ],
+     "answer": 0,
+     "choices_es": false,
+     "turn": "dlg_a1_familia.t5",
+     "id": "dlg_a1_familia.q3",
+     "skill": "listening"
+    },
+    {
+     "type": "speaker",
+     "turn": "dlg_a1_familia.t3",
+     "id": "dlg_a1_familia.q4",
+     "skill": "listening"
+    },
+    {
+     "type": "dictation",
+     "turn": "dlg_a1_familia.t2",
+     "id": "dlg_a1_familia.q5",
+     "skill": "listening"
+    }
+   ],
+   "source": "original-v1"
+  },
+  {
+   "id": "dlg_a1_equipo",
+   "level": "a1",
+   "unit": "a1_u2",
+   "lessons": [
+    "a1_u2_l3",
+    "a1_u2_l4"
+   ],
+   "title_es": "Mi equipo",
+   "title_ar": "فريقي",
+   "scenario_ar": "عمر يعرّف عميلةً زائرة بفريقه في المكتب.",
+   "objectives_ar": [
+    "فهم تقديم الأشخاص بـ este / esta",
+    "فهم صفات الزملاء",
+    "فهم من هو المدير"
+   ],
+   "speakers": [
+    {
+     "id": "omar",
+     "name": "Omar",
+     "role_ar": "مندوب مبيعات"
+    },
+    {
+     "id": "clienta",
+     "name": "Señora Ruiz",
+     "role_ar": "عميلة زائرة"
+    }
+   ],
+   "turns": [
+    {
+     "id": "dlg_a1_equipo.t1",
+     "speaker": "omar",
+     "es": "Señora Ruiz, este es mi equipo.",
+     "ar": "سيدة رويث، هذا فريقي.",
+     "en": "Mrs Ruiz, this is my team."
+    },
+    {
+     "id": "dlg_a1_equipo.t2",
+     "speaker": "clienta",
+     "es": "Mucho gusto. ¿Y su jefe?",
+     "ar": "تشرفنا. ومديرك؟",
+     "en": "Nice to meet you. And your boss?"
+    },
+    {
+     "id": "dlg_a1_equipo.t3",
+     "speaker": "omar",
+     "es": "Esta es Laura. Es la jefa.",
+     "ar": "هذه لاورا. هي المديرة.",
+     "en": "This is Laura. She is the boss."
+    },
+    {
+     "id": "dlg_a1_equipo.t4",
+     "speaker": "clienta",
+     "es": "¿Y cómo es Laura?",
+     "ar": "وكيف هي لاورا؟",
+     "en": "And what is Laura like?"
+    },
+    {
+     "id": "dlg_a1_equipo.t5",
+     "speaker": "omar",
+     "es": "Es muy simpática y tiene mucha experiencia.",
+     "ar": "لطيفة جداً ولديها خبرة كبيرة.",
+     "en": "She is very nice and has a lot of experience."
+    }
+   ],
+   "items": [
+    "este_es",
+    "esta_es",
+    "equipo",
+    "jefe",
+    "como_es",
+    "simpatico",
+    "mucho",
+    "experiencia",
+    "mucho_gusto"
+   ],
+   "grammar": [
+    "g_este_esta",
+    "g_adjectives"
+   ],
+   "questions": [
+    {
+     "type": "choice",
+     "prompt_ar": "من المديرة؟",
+     "choices": [
+      "لاورا",
+      "السيدة رويث",
+      "عمر"
+     ],
+     "answer": 0,
+     "choices_es": false,
+     "turn": "dlg_a1_equipo.t3",
+     "id": "dlg_a1_equipo.q1",
+     "skill": "listening"
+    },
+    {
+     "type": "choice",
+     "prompt_ar": "كيف يصف عمر لاورا؟",
+     "choices": [
+      "لطيفة ولديها خبرة كبيرة",
+      "جادّة وشابّة",
+      "طويلة وذكية"
+     ],
+     "answer": 0,
+     "choices_es": false,
+     "turn": "dlg_a1_equipo.t5",
+     "id": "dlg_a1_equipo.q2",
+     "skill": "listening"
+    },
+    {
+     "type": "choice",
+     "prompt_ar": "عمّن تسأل العميلة؟",
+     "choices": [
+      "عن المدير",
+      "عن عمر لاورا",
+      "عن المكتب"
+     ],
+     "answer": 0,
+     "choices_es": false,
+     "turn": "dlg_a1_equipo.t2",
+     "id": "dlg_a1_equipo.q3",
+     "skill": "listening"
+    },
+    {
+     "type": "speaker",
+     "turn": "dlg_a1_equipo.t4",
+     "id": "dlg_a1_equipo.q4",
+     "skill": "listening"
+    },
+    {
+     "type": "dictation",
+     "turn": "dlg_a1_equipo.t1",
+     "id": "dlg_a1_equipo.q5",
+     "skill": "listening"
+    }
+   ],
+   "source": "original-v1"
+  },
+  {
+   "id": "dlg_a1_rutina",
+   "level": "a1",
+   "unit": "a1_u3",
+   "lessons": [
+    "a1_u3_l1",
+    "a1_u3_l2",
+    "a1_u3_l3"
+   ],
+   "title_es": "Mi día",
+   "title_ar": "يومي",
+   "scenario_ar": "زميلان جديدان يتحدثان عن مواعيد يومهما في العمل.",
+   "objectives_ar": [
+    "فهم الساعات عند سماعها",
+    "فهم أفعال الروتين مع yo",
+    "فهم أيام العمل"
+   ],
+   "speakers": [
+    {
+     "id": "ana",
+     "name": "Ana",
+     "role_ar": "محاسبة"
+    },
+    {
+     "id": "karim",
+     "name": "Karim",
+     "role_ar": "مندوب مبيعات"
+    }
+   ],
+   "turns": [
+    {
+     "id": "dlg_a1_rutina.t1",
+     "speaker": "ana",
+     "es": "Karim, ¿a qué hora llegas a la oficina?",
+     "ar": "كريم، في أي ساعة تصل إلى المكتب؟",
+     "en": "Karim, what time do you get to the office?"
+    },
+    {
+     "id": "dlg_a1_rutina.t2",
+     "speaker": "karim",
+     "es": "Llego a las ocho y media.",
+     "ar": "أصل في الثامنة والنصف.",
+     "en": "I arrive at half past eight."
+    },
+    {
+     "id": "dlg_a1_rutina.t3",
+     "speaker": "ana",
+     "es": "Yo me levanto a las seis y llego a las ocho en punto.",
+     "ar": "أنا أستيقظ في السادسة وأصل في الثامنة تماماً.",
+     "en": "I get up at six and arrive at eight o'clock sharp."
+    },
+    {
+     "id": "dlg_a1_rutina.t4",
+     "speaker": "karim",
+     "es": "¿Y a qué hora terminas?",
+     "ar": "وفي أي ساعة تنهين؟",
+     "en": "And what time do you finish?"
+    },
+    {
+     "id": "dlg_a1_rutina.t5",
+     "speaker": "ana",
+     "es": "Termino a las cinco. Los viernes termino a las tres.",
+     "ar": "أنهي في الخامسة. وأيام الجمعة أنهي في الثالثة.",
+     "en": "I finish at five. On Fridays I finish at three."
+    }
+   ],
+   "items": [
+    "a_que_hora",
+    "llego",
+    "y_media",
+    "me_levanto",
+    "en_punto",
+    "termino",
+    "viernes",
+    "son_las"
+   ],
+   "grammar": [
+    "g_time",
+    "g_present_regular",
+    "g_days"
+   ],
+   "questions": [
+    {
+     "type": "choice",
+     "prompt_ar": "متى يصل كريم إلى المكتب؟",
+     "choices": [
+      "في الثامنة والنصف",
+      "في الثامنة تماماً",
+      "في السادسة"
+     ],
+     "answer": 0,
+     "choices_es": false,
+     "turn": "dlg_a1_rutina.t2",
+     "id": "dlg_a1_rutina.q1",
+     "skill": "listening"
+    },
+    {
+     "type": "choice",
+     "prompt_ar": "متى تستيقظ آنا؟",
+     "choices": [
+      "في السادسة",
+      "في الثامنة",
+      "في الخامسة"
+     ],
+     "answer": 0,
+     "choices_es": false,
+     "turn": "dlg_a1_rutina.t3",
+     "id": "dlg_a1_rutina.q2",
+     "skill": "listening"
+    },
+    {
+     "type": "choice",
+     "prompt_ar": "متى تنهي آنا عملها أيام الجمعة؟",
+     "choices": [
+      "في الثالثة",
+      "في الخامسة",
+      "في الثانية"
+     ],
+     "answer": 0,
+     "choices_es": false,
+     "turn": "dlg_a1_rutina.t5",
+     "id": "dlg_a1_rutina.q3",
+     "skill": "listening"
+    },
+    {
+     "type": "speaker",
+     "turn": "dlg_a1_rutina.t4",
+     "id": "dlg_a1_rutina.q4",
+     "skill": "listening"
+    },
+    {
+     "type": "dictation",
+     "turn": "dlg_a1_rutina.t2",
+     "id": "dlg_a1_rutina.q5",
+     "skill": "listening"
+    }
+   ],
+   "source": "original-v1"
+  },
+  {
+   "id": "dlg_a1_cita",
+   "level": "a1",
+   "unit": "a1_u3",
+   "lessons": [
+    "a1_u3_l2",
+    "a1_u3_l4"
+   ],
+   "title_es": "¿Le va bien el jueves?",
+   "title_ar": "هل يناسب حضرتك الخميس؟",
+   "scenario_ar": "مكالمة قصيرة: عمر يحدّد اجتماعاً مع السيد غارثيا، أحد العملاء.",
+   "objectives_ar": [
+    "فهم اقتراح يوم وساعة",
+    "فهم الاعتذار وتغيير الموعد",
+    "فهم الموعد النهائي المتفق عليه"
+   ],
+   "speakers": [
+    {
+     "id": "omar",
+     "name": "Omar",
+     "role_ar": "مندوب مبيعات"
+    },
+    {
+     "id": "garcia",
+     "name": "Sr. García",
+     "role_ar": "عميل"
+    }
+   ],
+   "turns": [
+    {
+     "id": "dlg_a1_cita.t1",
+     "speaker": "omar",
+     "es": "Señor García, ¿le va bien el martes a las diez?",
+     "ar": "سيد غارثيا، هل يناسب حضرتك الثلاثاء في العاشرة؟",
+     "en": "Mr García, does Tuesday at ten suit you?"
+    },
+    {
+     "id": "dlg_a1_cita.t2",
+     "speaker": "garcia",
+     "es": "Lo siento, el martes estoy ocupado.",
+     "ar": "آسف، الثلاثاء أنا مشغول.",
+     "en": "Sorry, on Tuesday I'm busy."
+    },
+    {
+     "id": "dlg_a1_cita.t3",
+     "speaker": "omar",
+     "es": "¿Y el jueves? ¿Está libre?",
+     "ar": "والخميس؟ هل حضرتك متفرّغ؟",
+     "en": "And Thursday? Are you free?"
+    },
+    {
+     "id": "dlg_a1_cita.t4",
+     "speaker": "garcia",
+     "es": "Sí, el jueves a las once, perfecto.",
+     "ar": "نعم، الخميس في الحادية عشرة، تمام.",
+     "en": "Yes, Thursday at eleven, perfect."
+    },
+    {
+     "id": "dlg_a1_cita.t5",
+     "speaker": "omar",
+     "es": "De acuerdo. Nos vemos el jueves.",
+     "ar": "اتفقنا. نلتقي الخميس.",
+     "en": "Agreed. See you on Thursday."
+    }
+   ],
+   "items": [
+    "le_va_bien",
+    "martes",
+    "lo_siento",
+    "ocupado",
+    "jueves",
+    "libre",
+    "perfecto",
+    "de_acuerdo",
+    "nos_vemos"
+   ],
+   "grammar": [
+    "g_appointments",
+    "g_days"
+   ],
+   "questions": [
+    {
+     "type": "choice",
+     "prompt_ar": "لماذا لا يناسب الثلاثاء السيد غارثيا؟",
+     "choices": [
+      "لأنه مشغول",
+      "لأنه مسافر",
+      "لأنه عطلة"
+     ],
+     "answer": 0,
+     "choices_es": false,
+     "turn": "dlg_a1_cita.t2",
+     "id": "dlg_a1_cita.q1",
+     "skill": "listening"
+    },
+    {
+     "type": "choice",
+     "prompt_ar": "متى الاجتماع في النهاية؟",
+     "choices": [
+      "الخميس في الحادية عشرة",
+      "الثلاثاء في العاشرة",
+      "الخميس في العاشرة"
+     ],
+     "answer": 0,
+     "choices_es": false,
+     "turn": "dlg_a1_cita.t4",
+     "id": "dlg_a1_cita.q2",
+     "skill": "listening"
+    },
+    {
+     "type": "choice",
+     "prompt_ar": "بماذا ينهي عمر المكالمة؟",
+     "choices": [
+      "نلتقي الخميس",
+      "آسف",
+      "تمام"
+     ],
+     "answer": 0,
+     "choices_es": false,
+     "turn": "dlg_a1_cita.t5",
+     "id": "dlg_a1_cita.q3",
+     "skill": "listening"
+    },
+    {
+     "type": "speaker",
+     "turn": "dlg_a1_cita.t3",
+     "id": "dlg_a1_cita.q4",
+     "skill": "listening"
+    },
+    {
+     "type": "dictation",
+     "turn": "dlg_a1_cita.t5",
+     "id": "dlg_a1_cita.q5",
+     "skill": "listening"
+    }
+   ],
+   "source": "original-v1"
   }
  ]
 }
