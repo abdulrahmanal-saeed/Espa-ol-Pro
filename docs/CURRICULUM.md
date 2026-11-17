@@ -37,7 +37,9 @@ Pre-A1 is a preparatory stage, not a DELE level.
 | **A1** | Introducing yourself and your work (3 lessons) | ✅ available |
 | | Family and people (4 lessons) | ✅ available (content 1.2.0) |
 | | Daily routine and time (4 lessons) | ✅ available (content 1.2.0) |
-| | Food and shopping · City and basic travel · At the workplace | planned |
+| | Food and shopping (4 lessons) | ✅ available (content 1.3.0) |
+| | City and basic travel (4 lessons) | ✅ available (content 1.3.0) |
+| | At the workplace | planned |
 | **A2** | Services · The past · Plans and future · Preferences and comparison · Simple work conversations | planned |
 | **B1** | Opinion and reasoning · Narration · Solving client problems · Professional correspondence | planned |
 | **B2** | Meetings · Presentations · Job interviews · Discovery and negotiation · Explaining technical services | planned |
@@ -72,6 +74,14 @@ no lessons and are never counted as progress.
 | 18 | Days of the week | 9 | el lunes vs los lunes; hoy |
 | 19 | My normal day | 8 | yo forms -ar/-er; como ≠ ¿cómo?; por la mañana |
 | 20 | Making an appointment | 8 | ¿Le va bien…?; de acuerdo; lo siento; ocupado/libre |
+| 21 | At the café | 9 | querer (quiero/quieres/quiere); el agua; té ≠ te; para mí |
+| 22 | At the restaurant | 8 | ordering a meal; ¿Y para beber?; la cuenta |
+| 23 | How much is it? | 9 | prices to 100; caro/barato; cash or card |
+| 24 | An order for the office | 8 | necesito; ¿Para cuántas personas?; la factura ≠ la cuenta |
+| 25 | Where is…? | 9 | estar for location (estoy/estás/está); cerca/lejos |
+| 26 | Directions | 7 | a la derecha/izquierda; todo recto; del/al |
+| 27 | Transport | 8 | ir (voy/vas/va); ir a + place, en + vehicle |
+| 28 | At the hotel | 8 | tengo una reserva a nombre de…; pasaporte, llave |
 
 Totals: 101 items, 299 activities (172 graded), 14 grammar notes.
 
@@ -118,6 +128,12 @@ Accent: default voice es-MX (seseo); notes point out Castilian differences
 | `dlg_a1_rutina` | A1 | lessons 17–19 | New colleagues compare their working hours |
 | `dlg_a1_cita` | A1 | lessons 18, 20 | Rescheduling a client meeting by phone |
 
+| `dlg_a1_cafeteria` | A1 | lessons 21–22 | Coffee with a client before a meeting |
+| `dlg_a1_pedido` | A1 | lessons 23–24 | Ordering catering with an invoice |
+| `dlg_a1_direccion` | A1 | lessons 25–26 | Asking the way to a client's office |
+| `dlg_a1_hotel` | A1 | lessons 27–28 | Business-trip hotel check-in |
+
+Checkpoints `chk_a1_u4` and `chk_a1_u5` close the food and travel units.
 Checkpoints `chk_a1_u2` and `chk_a1_u3` (10 questions, 3 can-dos each) close
 the new units; each plays one dialogue sentence.
 

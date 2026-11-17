@@ -853,6 +853,567 @@
     }
    ],
    "source": "original-v1"
+  },
+  {
+   "id": "dlg_a1_cafeteria",
+   "level": "a1",
+   "unit": "a1_u4",
+   "lessons": [
+    "a1_u4_l1",
+    "a1_u4_l2"
+   ],
+   "title_es": "Un café antes de la reunión",
+   "title_ar": "قهوة قبل الاجتماع",
+   "scenario_ar": "عمر يدعو العميلة السيدة رويث إلى المقهى قبل الاجتماع.",
+   "objectives_ar": [
+    "فهم ما يطلبه كل شخص",
+    "فهم ¿Algo más? والرد عليها",
+    "فهم طلب الحساب"
+   ],
+   "speakers": [
+    {
+     "id": "camarero",
+     "name": "Camarero",
+     "role_ar": "نادل"
+    },
+    {
+     "id": "ruiz",
+     "name": "Señora Ruiz",
+     "role_ar": "عميلة"
+    },
+    {
+     "id": "omar",
+     "name": "Omar",
+     "role_ar": "مندوب مبيعات"
+    }
+   ],
+   "turns": [
+    {
+     "id": "dlg_a1_cafeteria.t1",
+     "speaker": "camarero",
+     "es": "Buenos días. ¿Qué quieren?",
+     "ar": "صباح الخير. ماذا تريدون؟",
+     "en": "Good morning. What would you like?"
+    },
+    {
+     "id": "dlg_a1_cafeteria.t2",
+     "speaker": "ruiz",
+     "es": "Para mí, un café con leche, por favor.",
+     "ar": "لي قهوة بالحليب من فضلك.",
+     "en": "For me, a white coffee, please."
+    },
+    {
+     "id": "dlg_a1_cafeteria.t3",
+     "speaker": "omar",
+     "es": "Y para mí, un té.",
+     "ar": "ولي شاي.",
+     "en": "And for me, a tea."
+    },
+    {
+     "id": "dlg_a1_cafeteria.t4",
+     "speaker": "camarero",
+     "es": "¿Algo más?",
+     "ar": "شيء آخر؟",
+     "en": "Anything else?"
+    },
+    {
+     "id": "dlg_a1_cafeteria.t5",
+     "speaker": "omar",
+     "es": "Sí, agua, por favor. Y la cuenta.",
+     "ar": "نعم، ماء من فضلك. والحساب.",
+     "en": "Yes, water, please. And the bill."
+    }
+   ],
+   "items": [
+    "quiero",
+    "para_mi",
+    "cafe",
+    "leche",
+    "te_bebida",
+    "algo_mas",
+    "agua",
+    "cuenta",
+    "por_favor"
+   ],
+   "grammar": [
+    "g_querer",
+    "g_articles_food"
+   ],
+   "questions": [
+    {
+     "type": "choice",
+     "prompt_ar": "ماذا تطلب السيدة رويث؟",
+     "choices": [
+      "قهوة بالحليب",
+      "شاي",
+      "ماء"
+     ],
+     "answer": 0,
+     "choices_es": false,
+     "turn": "dlg_a1_cafeteria.t2",
+     "id": "dlg_a1_cafeteria.q1",
+     "skill": "listening"
+    },
+    {
+     "type": "choice",
+     "prompt_ar": "ماذا يطلب عمر أولاً؟",
+     "choices": [
+      "شاي",
+      "قهوة",
+      "حليب"
+     ],
+     "answer": 0,
+     "choices_es": false,
+     "turn": "dlg_a1_cafeteria.t3",
+     "id": "dlg_a1_cafeteria.q2",
+     "skill": "listening"
+    },
+    {
+     "type": "choice",
+     "prompt_ar": "ماذا يطلب عمر في النهاية أيضاً؟",
+     "choices": [
+      "ماء والحساب",
+      "قهوة أخرى",
+      "القائمة"
+     ],
+     "answer": 0,
+     "choices_es": false,
+     "turn": "dlg_a1_cafeteria.t5",
+     "id": "dlg_a1_cafeteria.q3",
+     "skill": "listening"
+    },
+    {
+     "type": "speaker",
+     "turn": "dlg_a1_cafeteria.t4",
+     "id": "dlg_a1_cafeteria.q4",
+     "skill": "listening"
+    },
+    {
+     "type": "dictation",
+     "turn": "dlg_a1_cafeteria.t2",
+     "id": "dlg_a1_cafeteria.q5",
+     "skill": "listening"
+    }
+   ],
+   "source": "original-v1"
+  },
+  {
+   "id": "dlg_a1_pedido",
+   "level": "a1",
+   "unit": "a1_u4",
+   "lessons": [
+    "a1_u4_l3",
+    "a1_u4_l4"
+   ],
+   "title_es": "Un pedido urgente",
+   "title_ar": "طلبية عاجلة",
+   "scenario_ar": "لاورا تطلب ضيافة لاجتماع من مورّد وتسأل عن السعر والفاتورة.",
+   "objectives_ar": [
+    "فهم الكمية وعدد الأشخاص",
+    "فهم السعر عند سماعه",
+    "فهم طلب الفاتورة باسم الشركة"
+   ],
+   "speakers": [
+    {
+     "id": "laura",
+     "name": "Laura",
+     "role_ar": "مديرة مبيعات"
+    },
+    {
+     "id": "proveedor",
+     "name": "Proveedor",
+     "role_ar": "مورّد"
+    }
+   ],
+   "turns": [
+    {
+     "id": "dlg_a1_pedido.t1",
+     "speaker": "laura",
+     "es": "Buenos días. Necesito café y agua para una reunión.",
+     "ar": "صباح الخير. أحتاج قهوة وماءً لاجتماع.",
+     "en": "Good morning. I need coffee and water for a meeting."
+    },
+    {
+     "id": "dlg_a1_pedido.t2",
+     "speaker": "proveedor",
+     "es": "¿Para cuántas personas?",
+     "ar": "لكم شخصاً؟",
+     "en": "For how many people?"
+    },
+    {
+     "id": "dlg_a1_pedido.t3",
+     "speaker": "laura",
+     "es": "Para doce personas. Es urgente.",
+     "ar": "لاثني عشر شخصاً. إنه عاجل.",
+     "en": "For twelve people. It's urgent."
+    },
+    {
+     "id": "dlg_a1_pedido.t4",
+     "speaker": "proveedor",
+     "es": "Son cincuenta euros. ¿Necesita factura?",
+     "ar": "المجموع خمسون يورو. هل تحتاجين فاتورة؟",
+     "en": "That's fifty euros. Do you need an invoice?"
+    },
+    {
+     "id": "dlg_a1_pedido.t5",
+     "speaker": "laura",
+     "es": "Sí, a nombre de la empresa, por favor.",
+     "ar": "نعم، باسم الشركة من فضلك.",
+     "en": "Yes, in the company's name, please."
+    }
+   ],
+   "items": [
+    "necesito",
+    "cuantas_personas",
+    "urgente",
+    "cincuenta",
+    "euros",
+    "factura",
+    "necesita",
+    "empresa",
+    "doce"
+   ],
+   "grammar": [
+    "g_necesitar",
+    "g_prices"
+   ],
+   "questions": [
+    {
+     "type": "choice",
+     "prompt_ar": "لكم شخصاً الطلبية؟",
+     "choices": [
+      "اثنا عشر",
+      "عشرة",
+      "عشرون"
+     ],
+     "answer": 0,
+     "choices_es": false,
+     "turn": "dlg_a1_pedido.t3",
+     "id": "dlg_a1_pedido.q1",
+     "skill": "listening"
+    },
+    {
+     "type": "choice",
+     "prompt_ar": "كم السعر؟",
+     "choices": [
+      "خمسون يورو",
+      "خمسة عشر يورو",
+      "مئة يورو"
+     ],
+     "answer": 0,
+     "choices_es": false,
+     "turn": "dlg_a1_pedido.t4",
+     "id": "dlg_a1_pedido.q2",
+     "skill": "listening"
+    },
+    {
+     "type": "choice",
+     "prompt_ar": "باسم مَن الفاتورة؟",
+     "choices": [
+      "باسم الشركة",
+      "باسم لاورا",
+      "بلا فاتورة"
+     ],
+     "answer": 0,
+     "choices_es": false,
+     "turn": "dlg_a1_pedido.t5",
+     "id": "dlg_a1_pedido.q3",
+     "skill": "listening"
+    },
+    {
+     "type": "speaker",
+     "turn": "dlg_a1_pedido.t2",
+     "id": "dlg_a1_pedido.q4",
+     "skill": "listening"
+    },
+    {
+     "type": "dictation",
+     "turn": "dlg_a1_pedido.t3",
+     "id": "dlg_a1_pedido.q5",
+     "skill": "listening"
+    }
+   ],
+   "source": "original-v1"
+  },
+  {
+   "id": "dlg_a1_direccion",
+   "level": "a1",
+   "unit": "a1_u5",
+   "lessons": [
+    "a1_u5_l1",
+    "a1_u5_l2"
+   ],
+   "title_es": "¿Dónde está la oficina?",
+   "title_ar": "أين المكتب؟",
+   "scenario_ar": "كريم وصل إلى مدينة جديدة ويسأل أحد المارّة عن مكتب العميل.",
+   "objectives_ar": [
+    "فهم الاتجاهات البسيطة",
+    "فهم القرب والبعد",
+    "فهم مكان شيء بالنسبة لآخر"
+   ],
+   "speakers": [
+    {
+     "id": "karim",
+     "name": "Karim",
+     "role_ar": "مندوب مبيعات"
+    },
+    {
+     "id": "senora",
+     "name": "Señora",
+     "role_ar": "من المارّة"
+    }
+   ],
+   "turns": [
+    {
+     "id": "dlg_a1_direccion.t1",
+     "speaker": "karim",
+     "es": "Perdone, ¿dónde está la calle Mayor?",
+     "ar": "عفواً، أين شارع مايور؟",
+     "en": "Excuse me, where is Calle Mayor?"
+    },
+    {
+     "id": "dlg_a1_direccion.t2",
+     "speaker": "senora",
+     "es": "Está cerca. Todo recto y a la derecha.",
+     "ar": "قريب. إلى الأمام ثم على اليمين.",
+     "en": "It's near. Straight ahead and to the right."
+    },
+    {
+     "id": "dlg_a1_direccion.t3",
+     "speaker": "karim",
+     "es": "¿Y la oficina de Tecnosur?",
+     "ar": "ومكتب تكنوسور؟",
+     "en": "And the Tecnosur office?"
+    },
+    {
+     "id": "dlg_a1_direccion.t4",
+     "speaker": "senora",
+     "es": "Está enfrente del banco, al lado de la estación.",
+     "ar": "مقابل البنك، بجانب المحطة.",
+     "en": "It's opposite the bank, next to the station."
+    },
+    {
+     "id": "dlg_a1_direccion.t5",
+     "speaker": "karim",
+     "es": "Muchas gracias.",
+     "ar": "شكراً جزيلاً.",
+     "en": "Thank you very much."
+    }
+   ],
+   "items": [
+    "perdone",
+    "donde_esta",
+    "calle",
+    "cerca",
+    "recto",
+    "derecha",
+    "enfrente_de",
+    "banco",
+    "al_lado_de",
+    "estacion",
+    "gracias"
+   ],
+   "grammar": [
+    "g_directions",
+    "g_estar_location"
+   ],
+   "questions": [
+    {
+     "type": "choice",
+     "prompt_ar": "هل الشارع قريب؟",
+     "choices": [
+      "نعم، قريب",
+      "لا، بعيد",
+      "لا تعرف السيدة"
+     ],
+     "answer": 0,
+     "choices_es": false,
+     "turn": "dlg_a1_direccion.t2",
+     "id": "dlg_a1_direccion.q1",
+     "skill": "listening"
+    },
+    {
+     "type": "choice",
+     "prompt_ar": "إلى أين يتّجه كريم؟",
+     "choices": [
+      "إلى الأمام ثم يميناً",
+      "إلى الأمام ثم يساراً",
+      "يعود إلى الخلف"
+     ],
+     "answer": 0,
+     "choices_es": false,
+     "turn": "dlg_a1_direccion.t2",
+     "id": "dlg_a1_direccion.q2",
+     "skill": "listening"
+    },
+    {
+     "type": "choice",
+     "prompt_ar": "أين مكتب تكنوسور؟",
+     "choices": [
+      "مقابل البنك بجانب المحطة",
+      "بجانب البنك مقابل المحطة",
+      "داخل المحطة"
+     ],
+     "answer": 0,
+     "choices_es": false,
+     "turn": "dlg_a1_direccion.t4",
+     "id": "dlg_a1_direccion.q3",
+     "skill": "listening"
+    },
+    {
+     "type": "speaker",
+     "turn": "dlg_a1_direccion.t3",
+     "id": "dlg_a1_direccion.q4",
+     "skill": "listening"
+    },
+    {
+     "type": "dictation",
+     "turn": "dlg_a1_direccion.t1",
+     "id": "dlg_a1_direccion.q5",
+     "skill": "listening"
+    }
+   ],
+   "source": "original-v1"
+  },
+  {
+   "id": "dlg_a1_hotel",
+   "level": "a1",
+   "unit": "a1_u5",
+   "lessons": [
+    "a1_u5_l3",
+    "a1_u5_l4"
+   ],
+   "title_es": "En la recepción del hotel",
+   "title_ar": "في استقبال الفندق",
+   "scenario_ar": "عمر يصل إلى الفندق في رحلة عمل ويسجّل الدخول.",
+   "objectives_ar": [
+    "فهم طلبات موظف الاستقبال",
+    "فهم رقم الغرفة وعدد الليالي",
+    "فهم موعد الفطور"
+   ],
+   "speakers": [
+    {
+     "id": "omar",
+     "name": "Omar",
+     "role_ar": "مندوب مبيعات"
+    },
+    {
+     "id": "recepcion",
+     "name": "Recepción",
+     "role_ar": "موظفة الاستقبال"
+    }
+   ],
+   "turns": [
+    {
+     "id": "dlg_a1_hotel.t1",
+     "speaker": "omar",
+     "es": "Buenas noches. Tengo una reserva a nombre de Omar Hassan.",
+     "ar": "مساء الخير. عندي حجز باسم عمر حسن.",
+     "en": "Good evening. I have a reservation under Omar Hassan."
+    },
+    {
+     "id": "dlg_a1_hotel.t2",
+     "speaker": "recepcion",
+     "es": "Sí, para dos noches. Su pasaporte, por favor.",
+     "ar": "نعم، لليلتين. جواز سفر حضرتك من فضلك.",
+     "en": "Yes, for two nights. Your passport, please."
+    },
+    {
+     "id": "dlg_a1_hotel.t3",
+     "speaker": "omar",
+     "es": "Aquí tiene. ¿A qué hora es el desayuno?",
+     "ar": "تفضّلي. متى الفطور؟",
+     "en": "Here you are. What time is breakfast?"
+    },
+    {
+     "id": "dlg_a1_hotel.t4",
+     "speaker": "recepcion",
+     "es": "A las siete. Aquí tiene la llave.",
+     "ar": "في السابعة. تفضّل المفتاح.",
+     "en": "At seven. Here's the key."
+    },
+    {
+     "id": "dlg_a1_hotel.t5",
+     "speaker": "omar",
+     "es": "Gracias. Mañana voy al aeropuerto en taxi.",
+     "ar": "شكراً. غداً أذهب إلى المطار بالتاكسي.",
+     "en": "Thanks. Tomorrow I go to the airport by taxi."
+    }
+   ],
+   "items": [
+    "reserva",
+    "a_nombre_de",
+    "noches",
+    "pasaporte",
+    "aqui_tiene",
+    "a_que_hora",
+    "el_desayuno",
+    "llave",
+    "voy",
+    "aeropuerto",
+    "taxi"
+   ],
+   "grammar": [
+    "g_hotel",
+    "g_ir"
+   ],
+   "questions": [
+    {
+     "type": "choice",
+     "prompt_ar": "كم ليلة الحجز؟",
+     "choices": [
+      "ليلتان",
+      "ثلاث ليالٍ",
+      "ليلة واحدة"
+     ],
+     "answer": 0,
+     "choices_es": false,
+     "turn": "dlg_a1_hotel.t2",
+     "id": "dlg_a1_hotel.q1",
+     "skill": "listening"
+    },
+    {
+     "type": "choice",
+     "prompt_ar": "متى الفطور؟",
+     "choices": [
+      "في السابعة",
+      "في الثامنة",
+      "في السادسة"
+     ],
+     "answer": 0,
+     "choices_es": false,
+     "turn": "dlg_a1_hotel.t4",
+     "id": "dlg_a1_hotel.q2",
+     "skill": "listening"
+    },
+    {
+     "type": "choice",
+     "prompt_ar": "كيف يذهب عمر إلى المطار غداً؟",
+     "choices": [
+      "بالتاكسي",
+      "بالمترو",
+      "بالقطار"
+     ],
+     "answer": 0,
+     "choices_es": false,
+     "turn": "dlg_a1_hotel.t5",
+     "id": "dlg_a1_hotel.q3",
+     "skill": "listening"
+    },
+    {
+     "type": "speaker",
+     "turn": "dlg_a1_hotel.t2",
+     "id": "dlg_a1_hotel.q4",
+     "skill": "listening"
+    },
+    {
+     "type": "dictation",
+     "turn": "dlg_a1_hotel.t4",
+     "id": "dlg_a1_hotel.q5",
+     "skill": "listening"
+    }
+   ],
+   "source": "original-v1"
   }
  ]
 }

@@ -1,0 +1,1249 @@
+{
+ "unit": "a1_u5",
+ "grammar": [
+  {
+   "id": "g_estar_location",
+   "title_ar": "estar للمكان",
+   "body_ar": "للسؤال عن مكان شيء أو شخص نستعمل estar، لا ser:\nyo estoy · tú estás · él/ella/usted está\n\n¿Dónde está el banco? — أين البنك؟\nEstoy en el hotel. — أنا في الفندق.\n\nقاعدة مختصرة: ser لما هو الشيء (الهوية والصفة)، وestar لمكانه وحاله الآن.\nانتبه: está (يوجد) بعلامة، وesta (هذه) بدونها.",
+   "examples": [
+    {
+     "es": "¿Dónde está la estación?",
+     "ar": "أين المحطة؟"
+    },
+    {
+     "es": "El banco está cerca.",
+     "ar": "البنك قريب."
+    },
+    {
+     "es": "Estoy en la oficina.",
+     "ar": "أنا في المكتب."
+    }
+   ]
+  },
+  {
+   "id": "g_directions",
+   "title_ar": "الاتجاهات",
+   "body_ar": "a la derecha — على اليمين · a la izquierda — على اليسار · todo recto — إلى الأمام مباشرة\nal lado de — بجانب · enfrente de — مقابل\n\nde + el تصير del: al lado del banco (بجانب البنك).\na + el تصير al: Voy al hotel.",
+   "examples": [
+    {
+     "es": "El hotel está a la derecha.",
+     "ar": "الفندق على اليمين."
+    },
+    {
+     "es": "La farmacia está al lado del banco.",
+     "ar": "الصيدلية بجانب البنك."
+    }
+   ]
+  },
+  {
+   "id": "g_ir",
+   "title_ar": "الفعل ir (يذهب)",
+   "body_ar": "ir فعل شاذّ تماماً:\nyo voy · tú vas · él/ella/usted va\n\nمع المكان: ir a + مكان → Voy a la oficina.\nمع وسيلة المواصلات: en → Voy en metro. (لكن: a pie = سيراً على القدمين)",
+   "examples": [
+    {
+     "es": "Voy al aeropuerto en taxi.",
+     "ar": "أذهب إلى المطار بالتاكسي."
+    },
+    {
+     "es": "¿Vas en metro o en autobús?",
+     "ar": "هل تذهب بالمترو أم بالحافلة؟"
+    }
+   ]
+  },
+  {
+   "id": "g_hotel",
+   "title_ar": "في الفندق: عبارات جاهزة",
+   "body_ar": "عند الوصول: Tengo una reserva a nombre de…\nموظف الاستقبال قد يطلب: Su pasaporte, por favor.\nأسئلة مفيدة: ¿A qué hora es el desayuno? / ¿Cuál es la contraseña del wifi?\n\nألفاظ الاستقبال رسمية عادةً: usted وsu.",
+   "examples": [
+    {
+     "es": "Tengo una reserva a nombre de Omar Hassan.",
+     "ar": "عندي حجز باسم عمر حسن."
+    },
+    {
+     "es": "Aquí tiene la llave.",
+     "ar": "تفضّل المفتاح."
+    }
+   ]
+  }
+ ],
+ "lessons": [
+  {
+   "id": "a1_u5_l1",
+   "title_ar": "أين…؟",
+   "title_es": "¿Dónde está…?",
+   "objectives_ar": [
+    "السؤال عن مكان شيء",
+    "استعمال estar للمكان",
+    "قول قريب / بعيد"
+   ],
+   "prerequisites": [
+    "a1_u4_l4"
+   ],
+   "minutes": 15,
+   "work_relevance_ar": "إيجاد مكتب العميل أو الفندق في مدينة جديدة.",
+   "source": "original-v1",
+   "grammar": [
+    "g_estar_location"
+   ],
+   "items": [
+    {
+     "id": "donde_esta",
+     "es": "¿Dónde está…?",
+     "ar": "أين…؟",
+     "en": "Where is…?",
+     "pos": "سؤال",
+     "examples": [
+      {
+       "es": "Perdone, ¿dónde está el banco?",
+       "ar": "عفواً، أين البنك؟"
+      }
+     ]
+    },
+    {
+     "id": "estoy",
+     "es": "estoy",
+     "ar": "أنا (موجود في) / أكون",
+     "en": "I am (location, state)",
+     "pos": "فعل",
+     "examples": [
+      {
+       "es": "Estoy en el hotel.",
+       "ar": "أنا في الفندق."
+      }
+     ],
+     "connections": [
+      {
+       "type": "grammar",
+       "ar": "estar للمكان والحال؛ ser للهوية والصفة. العربية لا تفرّق بينهما."
+      }
+     ]
+    },
+    {
+     "id": "estas",
+     "es": "estás",
+     "ar": "أنت (موجود في)",
+     "en": "you are (location)",
+     "pos": "فعل",
+     "examples": [
+      {
+       "es": "¿Dónde estás?",
+       "ar": "أين أنت؟"
+      }
+     ]
+    },
+    {
+     "id": "esta_v",
+     "es": "está",
+     "ar": "هو / هي / حضرتك (موجود في)",
+     "en": "he/she/it is, you (formal) are",
+     "pos": "فعل",
+     "examples": [
+      {
+       "es": "La oficina está en el centro.",
+       "ar": "المكتب في وسط المدينة."
+      }
+     ],
+     "connections": [
+      {
+       "type": "grammar",
+       "ar": "está بعلامة نبر (يوجد)، وesta بدونها (هذه)."
+      }
+     ]
+    },
+    {
+     "id": "banco",
+     "es": "el banco",
+     "ar": "البنك",
+     "en": "bank",
+     "pos": "اسم",
+     "examples": [
+      {
+       "es": "El banco está cerca.",
+       "ar": "البنك قريب."
+      }
+     ],
+     "note_ar": "ويعني أيضاً «المقعد» في الحديقة."
+    },
+    {
+     "id": "estacion",
+     "es": "la estación",
+     "ar": "المحطة",
+     "en": "station",
+     "pos": "اسم",
+     "examples": [
+      {
+       "es": "¿Dónde está la estación de tren?",
+       "ar": "أين محطة القطار؟"
+      }
+     ],
+     "connections": [
+      {
+       "type": "cognate",
+       "ar": "قريبة من الإنجليزية station."
+      }
+     ]
+    },
+    {
+     "id": "aeropuerto",
+     "es": "el aeropuerto",
+     "ar": "المطار",
+     "en": "airport",
+     "pos": "اسم",
+     "examples": [
+      {
+       "es": "El aeropuerto está lejos.",
+       "ar": "المطار بعيد."
+      }
+     ]
+    },
+    {
+     "id": "cerca",
+     "es": "cerca",
+     "ar": "قريب",
+     "en": "near",
+     "pos": "ظرف",
+     "examples": [
+      {
+       "es": "El hotel está cerca de la oficina.",
+       "ar": "الفندق قريب من المكتب."
+      }
+     ]
+    },
+    {
+     "id": "lejos",
+     "es": "lejos",
+     "ar": "بعيد",
+     "en": "far",
+     "pos": "ظرف",
+     "examples": [
+      {
+       "es": "¿Está lejos? — No, está cerca.",
+       "ar": "هل هو بعيد؟ — لا، قريب."
+      }
+     ]
+    }
+   ],
+   "activities": [
+    {
+     "type": "teach",
+     "item": "donde_esta"
+    },
+    {
+     "type": "mcq_meaning",
+     "item": "donde_esta"
+    },
+    {
+     "type": "teach",
+     "item": "estoy"
+    },
+    {
+     "type": "teach",
+     "item": "estas"
+    },
+    {
+     "type": "teach",
+     "item": "esta_v"
+    },
+    {
+     "type": "note",
+     "title_ar": "estar: estoy, estás, está",
+     "body_ar": "yo estoy — أنا موجود\ntú estás — أنت موجود\nél / ella / usted está — هو / هي / حضرتك موجود\n\nللمكان دائماً estar: Estoy en Madrid. (لا: Soy en Madrid.)",
+     "examples": [
+      {
+       "es": "¿Dónde está usted? — Estoy en el hotel.",
+       "ar": "أين حضرتك؟ — أنا في الفندق."
+      }
+     ]
+    },
+    {
+     "type": "fill",
+     "es": "Yo ___ en la oficina.",
+     "answer": "estoy",
+     "ar": "أنا في المكتب.",
+     "options": [
+      "estoy",
+      "soy",
+      "está"
+     ],
+     "explain_ar": "للمكان estar، ومع yo: estoy."
+    },
+    {
+     "type": "choice",
+     "prompt_ar": "أي جملة صحيحة لقول «الفندق في وسط المدينة»؟",
+     "choices": [
+      "El hotel está en el centro.",
+      "El hotel es en el centro.",
+      "El hotel esta en el centro."
+     ],
+     "answer": 0,
+     "skill": "grammar",
+     "choices_es": true,
+     "explain_ar": "للمكان estar، وتُكتب está بعلامة نبر."
+    },
+    {
+     "type": "listen_pick_es",
+     "item": "estoy"
+    },
+    {
+     "type": "listen_choose",
+     "item": "estas"
+    },
+    {
+     "type": "mcq_reverse",
+     "item": "esta_v"
+    },
+    {
+     "type": "teach",
+     "item": "banco"
+    },
+    {
+     "type": "teach",
+     "item": "estacion"
+    },
+    {
+     "type": "teach",
+     "item": "aeropuerto"
+    },
+    {
+     "type": "mcq_meaning",
+     "item": "banco"
+    },
+    {
+     "type": "listen_choose",
+     "item": "estacion"
+    },
+    {
+     "type": "listen_pick_es",
+     "item": "aeropuerto"
+    },
+    {
+     "type": "teach",
+     "item": "cerca"
+    },
+    {
+     "type": "teach",
+     "item": "lejos"
+    },
+    {
+     "type": "mcq_meaning",
+     "item": "cerca"
+    },
+    {
+     "type": "mcq_reverse",
+     "item": "lejos"
+    },
+    {
+     "type": "match",
+     "items": [
+      "banco",
+      "estacion",
+      "aeropuerto",
+      "lejos"
+     ]
+    },
+    {
+     "type": "type_es",
+     "item": "cerca"
+    },
+    {
+     "type": "type_es",
+     "item": "banco"
+    },
+    {
+     "type": "order",
+     "es": "¿Dónde está la estación de tren?",
+     "ar": "أين محطة القطار؟"
+    },
+    {
+     "type": "dictation",
+     "es": "El aeropuerto está lejos.",
+     "ar": "المطار بعيد."
+    },
+    {
+     "type": "choice",
+     "prompt_ar": "أين البنك؟",
+     "choices": [
+      "قريب من الفندق",
+      "بعيد عن الفندق",
+      "داخل المطار"
+     ],
+     "answer": 0,
+     "skill": "reading",
+     "choices_es": false,
+     "stimulus_es": "— Perdone, ¿dónde está el banco?\n— Está cerca, al lado del hotel.\n— ¿Y la estación?\n— La estación está un poco lejos."
+    },
+    {
+     "type": "respond",
+     "prompt_ar": "زميلك يتصل بك: «¿Dónde estás?». قل إنك في الفندق.",
+     "accepted": [
+      "Estoy en el hotel",
+      "En el hotel",
+      "Estoy en el hotel ahora"
+     ],
+     "audio_es": "¿Dónde estás?"
+    },
+    {
+     "type": "speak",
+     "es": "Perdone, ¿dónde está la estación? ¿Está lejos?",
+     "ar": "عفواً، أين المحطة؟ هل هي بعيدة؟"
+    }
+   ]
+  },
+  {
+   "id": "a1_u5_l2",
+   "title_ar": "الاتجاهات",
+   "title_es": "Las direcciones",
+   "objectives_ar": [
+    "فهم الاتجاهات البسيطة",
+    "وصف مكان بالنسبة لمكان آخر",
+    "سؤال المارّة بأدب"
+   ],
+   "prerequisites": [
+    "a1_u5_l1"
+   ],
+   "minutes": 15,
+   "work_relevance_ar": "الوصول إلى اجتماع في مبنى أو حيّ لا تعرفه.",
+   "source": "original-v1",
+   "grammar": [
+    "g_directions",
+    "g_estar_location"
+   ],
+   "items": [
+    {
+     "id": "perdone",
+     "es": "perdone",
+     "ar": "عفواً (لمخاطبة شخص رسمياً)",
+     "en": "excuse me (formal)",
+     "pos": "تعبير",
+     "examples": [
+      {
+       "es": "Perdone, ¿dónde está el metro?",
+       "ar": "عفواً، أين المترو؟"
+      }
+     ],
+     "connections": [
+      {
+       "type": "usage",
+       "ar": "perdone لجذب انتباه شخص لا تعرفه؛ perdón للاعتذار عن خطأ صغير."
+      }
+     ]
+    },
+    {
+     "id": "derecha",
+     "es": "a la derecha",
+     "ar": "على اليمين",
+     "en": "on the right",
+     "pos": "تعبير",
+     "examples": [
+      {
+       "es": "El banco está a la derecha.",
+       "ar": "البنك على اليمين."
+      }
+     ]
+    },
+    {
+     "id": "izquierda",
+     "es": "a la izquierda",
+     "ar": "على اليسار",
+     "en": "on the left",
+     "pos": "تعبير",
+     "examples": [
+      {
+       "es": "La estación está a la izquierda.",
+       "ar": "المحطة على اليسار."
+      }
+     ]
+    },
+    {
+     "id": "recto",
+     "es": "todo recto",
+     "ar": "إلى الأمام مباشرة",
+     "en": "straight ahead",
+     "pos": "تعبير",
+     "examples": [
+      {
+       "es": "Siga todo recto.",
+       "ar": "استمر إلى الأمام مباشرة."
+      }
+     ]
+    },
+    {
+     "id": "calle",
+     "es": "la calle",
+     "ar": "الشارع",
+     "en": "street",
+     "pos": "اسم",
+     "examples": [
+      {
+       "es": "La oficina está en la calle Mayor.",
+       "ar": "المكتب في شارع مايور."
+      }
+     ]
+    },
+    {
+     "id": "al_lado_de",
+     "es": "al lado de",
+     "ar": "بجانب",
+     "en": "next to",
+     "pos": "تعبير",
+     "examples": [
+      {
+       "es": "El hotel está al lado del banco.",
+       "ar": "الفندق بجانب البنك."
+      }
+     ]
+    },
+    {
+     "id": "enfrente_de",
+     "es": "enfrente de",
+     "ar": "مقابل",
+     "en": "opposite",
+     "pos": "تعبير",
+     "examples": [
+      {
+       "es": "La farmacia está enfrente de la estación.",
+       "ar": "الصيدلية مقابل المحطة."
+      }
+     ]
+    }
+   ],
+   "activities": [
+    {
+     "type": "teach",
+     "item": "perdone"
+    },
+    {
+     "type": "mcq_meaning",
+     "item": "perdone"
+    },
+    {
+     "type": "teach",
+     "item": "derecha"
+    },
+    {
+     "type": "teach",
+     "item": "izquierda"
+    },
+    {
+     "type": "teach",
+     "item": "recto"
+    },
+    {
+     "type": "listen_choose",
+     "item": "derecha"
+    },
+    {
+     "type": "mcq_meaning",
+     "item": "izquierda"
+    },
+    {
+     "type": "listen_pick_es",
+     "item": "recto"
+    },
+    {
+     "type": "choice",
+     "prompt_ar": "أي كلمة تعني «على اليسار»؟",
+     "choices": [
+      "a la izquierda",
+      "a la derecha",
+      "todo recto"
+     ],
+     "answer": 0,
+     "skill": "vocabulary",
+     "choices_es": true
+    },
+    {
+     "type": "teach",
+     "item": "calle"
+    },
+    {
+     "type": "teach",
+     "item": "al_lado_de"
+    },
+    {
+     "type": "teach",
+     "item": "enfrente_de"
+    },
+    {
+     "type": "mcq_meaning",
+     "item": "al_lado_de"
+    },
+    {
+     "type": "listen_choose",
+     "item": "enfrente_de"
+    },
+    {
+     "type": "mcq_reverse",
+     "item": "calle"
+    },
+    {
+     "type": "note",
+     "title_ar": "del · al",
+     "body_ar": "de + el = del: al lado del banco\na + el = al: Voy al banco.\n\nمع la لا يتغيّر شيء: al lado de la estación.",
+     "examples": [
+      {
+       "es": "El taxi está enfrente del hotel.",
+       "ar": "التاكسي مقابل الفندق."
+      }
+     ]
+    },
+    {
+     "type": "fill",
+     "es": "El café está al lado ___ banco.",
+     "answer": "del",
+     "ar": "المقهى بجانب البنك.",
+     "options": [
+      "del",
+      "de el",
+      "al"
+     ],
+     "explain_ar": "de + el تُدمج: del."
+    },
+    {
+     "type": "match",
+     "items": [
+      "derecha",
+      "izquierda",
+      "recto",
+      "calle"
+     ]
+    },
+    {
+     "type": "type_es",
+     "item": "calle"
+    },
+    {
+     "type": "type_es",
+     "item": "perdone"
+    },
+    {
+     "type": "order",
+     "es": "El hotel está a la derecha, al lado del banco.",
+     "ar": "الفندق على اليمين، بجانب البنك."
+    },
+    {
+     "type": "dictation",
+     "es": "La oficina está enfrente de la estación.",
+     "ar": "المكتب مقابل المحطة."
+    },
+    {
+     "type": "choice",
+     "prompt_ar": "أين المكتب؟",
+     "choices": [
+      "على اليسار، مقابل البنك",
+      "على اليمين، بجانب الفندق",
+      "بعيد جداً"
+     ],
+     "answer": 0,
+     "skill": "reading",
+     "choices_es": false,
+     "stimulus_es": "— Perdone, ¿dónde está la oficina de Tecnosur?\n— Todo recto y a la izquierda. Está enfrente del banco."
+    },
+    {
+     "type": "respond",
+     "prompt_ar": "سائح يسألك: «¿Dónde está el banco?». قل إنه على اليمين.",
+     "accepted": [
+      "Está a la derecha",
+      "A la derecha",
+      "El banco está a la derecha"
+     ],
+     "audio_es": "¿Dónde está el banco?"
+    },
+    {
+     "type": "speak",
+     "es": "Perdone, ¿dónde está la calle Mayor? ¿A la derecha o a la izquierda?",
+     "ar": "عفواً، أين شارع مايور؟ على اليمين أم على اليسار؟"
+    }
+   ]
+  },
+  {
+   "id": "a1_u5_l3",
+   "title_ar": "المواصلات",
+   "title_es": "El transporte",
+   "objectives_ar": [
+    "تسمية وسائل المواصلات",
+    "تصريف ir في المفرد",
+    "قول كيف تذهب إلى مكان"
+   ],
+   "prerequisites": [
+    "a1_u5_l2"
+   ],
+   "minutes": 15,
+   "work_relevance_ar": "التنقّل إلى المطار أو مكتب العميل في رحلة عمل.",
+   "source": "original-v1",
+   "grammar": [
+    "g_ir"
+   ],
+   "items": [
+    {
+     "id": "voy",
+     "es": "voy",
+     "ar": "أذهب",
+     "en": "I go",
+     "pos": "فعل",
+     "examples": [
+      {
+       "es": "Voy a la oficina en metro.",
+       "ar": "أذهب إلى المكتب بالمترو."
+      }
+     ],
+     "connections": [
+      {
+       "type": "grammar",
+       "ar": "ir شاذّ تماماً: voy، vas، va — احفظه كما هو."
+      }
+     ]
+    },
+    {
+     "id": "vas",
+     "es": "vas",
+     "ar": "تذهب (أنت)",
+     "en": "you go",
+     "pos": "فعل",
+     "examples": [
+      {
+       "es": "¿Cómo vas al trabajo?",
+       "ar": "كيف تذهب إلى العمل؟"
+      }
+     ]
+    },
+    {
+     "id": "va",
+     "es": "va",
+     "ar": "يذهب / تذهب حضرتك",
+     "en": "he/she goes, you (formal) go",
+     "pos": "فعل",
+     "examples": [
+      {
+       "es": "Laura va al aeropuerto.",
+       "ar": "لاورا تذهب إلى المطار."
+      }
+     ]
+    },
+    {
+     "id": "metro",
+     "es": "el metro",
+     "ar": "المترو",
+     "en": "metro, subway",
+     "pos": "اسم",
+     "examples": [
+      {
+       "es": "El metro es rápido.",
+       "ar": "المترو سريع."
+      }
+     ]
+    },
+    {
+     "id": "autobus",
+     "es": "el autobús",
+     "ar": "الحافلة",
+     "en": "bus",
+     "pos": "اسم",
+     "examples": [
+      {
+       "es": "Voy en autobús.",
+       "ar": "أذهب بالحافلة."
+      }
+     ]
+    },
+    {
+     "id": "taxi",
+     "es": "el taxi",
+     "ar": "التاكسي",
+     "en": "taxi",
+     "pos": "اسم",
+     "examples": [
+      {
+       "es": "Voy al aeropuerto en taxi.",
+       "ar": "أذهب إلى المطار بالتاكسي."
+      }
+     ]
+    },
+    {
+     "id": "tren",
+     "es": "el tren",
+     "ar": "القطار",
+     "en": "train",
+     "pos": "اسم",
+     "examples": [
+      {
+       "es": "El tren llega a las tres.",
+       "ar": "القطار يصل في الثالثة."
+      }
+     ]
+    },
+    {
+     "id": "billete",
+     "es": "el billete",
+     "ar": "التذكرة",
+     "en": "ticket",
+     "pos": "اسم",
+     "examples": [
+      {
+       "es": "Un billete para Madrid, por favor.",
+       "ar": "تذكرة إلى مدريد من فضلك."
+      }
+     ],
+     "note_ar": "في أمريكا اللاتينية: el boleto."
+    }
+   ],
+   "activities": [
+    {
+     "type": "teach",
+     "item": "voy"
+    },
+    {
+     "type": "teach",
+     "item": "vas"
+    },
+    {
+     "type": "teach",
+     "item": "va"
+    },
+    {
+     "type": "mcq_meaning",
+     "item": "voy"
+    },
+    {
+     "type": "listen_pick_es",
+     "item": "vas"
+    },
+    {
+     "type": "listen_choose",
+     "item": "va"
+    },
+    {
+     "type": "note",
+     "title_ar": "ir a + مكان · ir en + وسيلة",
+     "body_ar": "Voy a la oficina. — أذهب إلى المكتب.\nVoy en metro. — أذهب بالمترو.\nVoy a pie. — أذهب سيراً.\n\na + el = al: Voy al aeropuerto.",
+     "examples": [
+      {
+       "es": "¿Vas al trabajo en autobús?",
+       "ar": "هل تذهب إلى العمل بالحافلة؟"
+      }
+     ]
+    },
+    {
+     "type": "fill",
+     "es": "Mañana yo ___ a Madrid en tren.",
+     "answer": "voy",
+     "ar": "غداً أذهب إلى مدريد بالقطار.",
+     "options": [
+      "voy",
+      "va",
+      "vas"
+     ],
+     "explain_ar": "مع yo: voy."
+    },
+    {
+     "type": "teach",
+     "item": "metro"
+    },
+    {
+     "type": "teach",
+     "item": "autobus"
+    },
+    {
+     "type": "teach",
+     "item": "taxi"
+    },
+    {
+     "type": "teach",
+     "item": "tren"
+    },
+    {
+     "type": "teach",
+     "item": "billete"
+    },
+    {
+     "type": "mcq_meaning",
+     "item": "autobus"
+    },
+    {
+     "type": "listen_choose",
+     "item": "tren"
+    },
+    {
+     "type": "listen_pick_es",
+     "item": "metro"
+    },
+    {
+     "type": "mcq_reverse",
+     "item": "billete"
+    },
+    {
+     "type": "mcq_meaning",
+     "item": "taxi"
+    },
+    {
+     "type": "choice",
+     "prompt_ar": "أي جملة صحيحة لقول «أذهب إلى المطار بالتاكسي»؟",
+     "choices": [
+      "Voy al aeropuerto en taxi.",
+      "Voy a el aeropuerto en taxi.",
+      "Voy al aeropuerto con taxi."
+     ],
+     "answer": 0,
+     "skill": "grammar",
+     "choices_es": true,
+     "explain_ar": "a + el = al، والوسيلة بـ en."
+    },
+    {
+     "type": "match",
+     "items": [
+      "metro",
+      "autobus",
+      "tren",
+      "billete"
+     ]
+    },
+    {
+     "type": "type_es",
+     "item": "tren"
+    },
+    {
+     "type": "type_es",
+     "item": "voy"
+    },
+    {
+     "type": "order",
+     "es": "¿Cómo vas a la oficina?",
+     "ar": "كيف تذهب إلى المكتب؟"
+    },
+    {
+     "type": "dictation",
+     "es": "Voy al aeropuerto en taxi.",
+     "ar": "أذهب إلى المطار بالتاكسي."
+    },
+    {
+     "type": "choice",
+     "prompt_ar": "كيف يذهب كريم إلى العمل؟",
+     "choices": [
+      "بالمترو",
+      "بالحافلة",
+      "سيراً"
+     ],
+     "answer": 0,
+     "skill": "reading",
+     "choices_es": false,
+     "stimulus_es": "— Karim, ¿cómo vas al trabajo?\n— Voy en metro. Es rápido.\n— Yo voy en autobús."
+    },
+    {
+     "type": "respond",
+     "prompt_ar": "زميل يسألك: «¿Cómo vas al aeropuerto?». قل إنك تذهب بالتاكسي.",
+     "accepted": [
+      "Voy en taxi",
+      "En taxi",
+      "Voy al aeropuerto en taxi"
+     ],
+     "audio_es": "¿Cómo vas al aeropuerto?"
+    },
+    {
+     "type": "speak",
+     "es": "Voy a la oficina en metro. Mañana voy al aeropuerto en taxi.",
+     "ar": "أذهب إلى المكتب بالمترو. غداً أذهب إلى المطار بالتاكسي."
+    }
+   ]
+  },
+  {
+   "id": "a1_u5_l4",
+   "title_ar": "في الفندق",
+   "title_es": "En el hotel",
+   "objectives_ar": [
+    "تسجيل الدخول بحجز باسمك",
+    "السؤال عن الفطور والإنترنت",
+    "فهم طلبات موظف الاستقبال"
+   ],
+   "prerequisites": [
+    "a1_u5_l3"
+   ],
+   "minutes": 15,
+   "work_relevance_ar": "رحلة العمل تبدأ بتسجيل الدخول في الفندق.",
+   "source": "original-v1",
+   "grammar": [
+    "g_hotel",
+    "g_estar_location"
+   ],
+   "items": [
+    {
+     "id": "reserva",
+     "es": "tengo una reserva",
+     "ar": "عندي حجز",
+     "en": "I have a reservation",
+     "pos": "تعبير",
+     "examples": [
+      {
+       "es": "Buenas tardes, tengo una reserva.",
+       "ar": "مساء الخير، عندي حجز."
+      }
+     ],
+     "work": true
+    },
+    {
+     "id": "a_nombre_de",
+     "es": "a nombre de…",
+     "ar": "باسم…",
+     "en": "under the name of…",
+     "pos": "تعبير",
+     "examples": [
+      {
+       "es": "Una reserva a nombre de Omar Hassan.",
+       "ar": "حجز باسم عمر حسن."
+      }
+     ],
+     "work": true
+    },
+    {
+     "id": "habitacion",
+     "es": "la habitación",
+     "ar": "الغرفة",
+     "en": "room",
+     "pos": "اسم",
+     "examples": [
+      {
+       "es": "Su habitación es la doscientos cinco.",
+       "ar": "غرفة حضرتك رقم مئتين وخمسة."
+      }
+     ]
+    },
+    {
+     "id": "pasaporte",
+     "es": "el pasaporte",
+     "ar": "جواز السفر",
+     "en": "passport",
+     "pos": "اسم",
+     "examples": [
+      {
+       "es": "Su pasaporte, por favor.",
+       "ar": "جواز سفر حضرتك من فضلك."
+      }
+     ],
+     "connections": [
+      {
+       "type": "cognate",
+       "ar": "قريبة من الإنجليزية passport."
+      }
+     ]
+    },
+    {
+     "id": "llave",
+     "es": "la llave",
+     "ar": "المفتاح",
+     "en": "key",
+     "pos": "اسم",
+     "examples": [
+      {
+       "es": "Aquí tiene la llave.",
+       "ar": "تفضّل المفتاح."
+      }
+     ]
+    },
+    {
+     "id": "el_desayuno",
+     "es": "el desayuno",
+     "ar": "الفطور",
+     "en": "breakfast",
+     "pos": "اسم",
+     "examples": [
+      {
+       "es": "¿A qué hora es el desayuno?",
+       "ar": "متى الفطور؟"
+      }
+     ],
+     "connections": [
+      {
+       "type": "grammar",
+       "ar": "الاسم من الفعل نفسه: desayuno (أفطر) ← el desayuno (الفطور)."
+      }
+     ]
+    },
+    {
+     "id": "contrasena",
+     "es": "la contraseña",
+     "ar": "كلمة المرور",
+     "en": "password",
+     "pos": "اسم",
+     "examples": [
+      {
+       "es": "¿Cuál es la contraseña del wifi?",
+       "ar": "ما كلمة مرور الواي فاي؟"
+      }
+     ],
+     "work": true
+    },
+    {
+     "id": "noches",
+     "es": "noches",
+     "ar": "ليالٍ (في الحجز)",
+     "en": "nights",
+     "pos": "اسم",
+     "examples": [
+      {
+       "es": "Una habitación para tres noches.",
+       "ar": "غرفة لثلاث ليالٍ."
+      }
+     ],
+     "note_ar": "المفرد: noche. وتعرفها من buenas noches."
+    }
+   ],
+   "activities": [
+    {
+     "type": "teach",
+     "item": "reserva"
+    },
+    {
+     "type": "teach",
+     "item": "a_nombre_de"
+    },
+    {
+     "type": "mcq_meaning",
+     "item": "reserva"
+    },
+    {
+     "type": "listen_choose",
+     "item": "a_nombre_de"
+    },
+    {
+     "type": "teach",
+     "item": "habitacion"
+    },
+    {
+     "type": "teach",
+     "item": "pasaporte"
+    },
+    {
+     "type": "teach",
+     "item": "llave"
+    },
+    {
+     "type": "listen_pick_es",
+     "item": "habitacion"
+    },
+    {
+     "type": "mcq_meaning",
+     "item": "pasaporte"
+    },
+    {
+     "type": "mcq_reverse",
+     "item": "llave"
+    },
+    {
+     "type": "note",
+     "title_ar": "تسجيل الدخول",
+     "body_ar": "أنت: Buenas tardes. Tengo una reserva a nombre de…\nالموظف: Su pasaporte, por favor.\nالموظف: Aquí tiene la llave. Su habitación es la…\n\nكل الكلام بصيغة usted الرسمية.",
+     "examples": [
+      {
+       "es": "Tengo una reserva para dos noches.",
+       "ar": "عندي حجز لليلتين."
+      }
+     ]
+    },
+    {
+     "type": "teach",
+     "item": "el_desayuno"
+    },
+    {
+     "type": "teach",
+     "item": "contrasena"
+    },
+    {
+     "type": "teach",
+     "item": "noches"
+    },
+    {
+     "type": "listen_choose",
+     "item": "el_desayuno"
+    },
+    {
+     "type": "mcq_meaning",
+     "item": "contrasena"
+    },
+    {
+     "type": "listen_pick_es",
+     "item": "noches"
+    },
+    {
+     "type": "choice",
+     "prompt_ar": "تريد أن تعرف موعد الفطور. ماذا تسأل؟",
+     "choices": [
+      "¿A qué hora es el desayuno?",
+      "¿Dónde está el desayuno?",
+      "¿Cuánto es el desayuno?"
+     ],
+     "answer": 0,
+     "skill": "grammar",
+     "choices_es": true,
+     "explain_ar": "للموعد: ¿A qué hora…?"
+    },
+    {
+     "type": "fill",
+     "es": "Tengo una reserva ___ nombre de Laura Pérez.",
+     "answer": "a",
+     "ar": "عندي حجز باسم لاورا بيريث.",
+     "options": [
+      "a",
+      "en",
+      "de"
+     ],
+     "explain_ar": "التعبير الثابت: a nombre de."
+    },
+    {
+     "type": "match",
+     "items": [
+      "habitacion",
+      "pasaporte",
+      "llave",
+      "contrasena"
+     ]
+    },
+    {
+     "type": "type_es",
+     "item": "llave"
+    },
+    {
+     "type": "type_es",
+     "item": "pasaporte"
+    },
+    {
+     "type": "order",
+     "es": "Tengo una reserva para tres noches.",
+     "ar": "عندي حجز لثلاث ليالٍ."
+    },
+    {
+     "type": "dictation",
+     "es": "¿Cuál es la contraseña del wifi?",
+     "ar": "ما كلمة مرور الواي فاي؟"
+    },
+    {
+     "type": "choice",
+     "prompt_ar": "كم ليلة الحجز؟",
+     "choices": [
+      "ليلتان",
+      "ثلاث ليالٍ",
+      "ليلة واحدة"
+     ],
+     "answer": 0,
+     "skill": "reading",
+     "choices_es": false,
+     "stimulus_es": "— Buenas noches. Tengo una reserva a nombre de Karim Saleh.\n— Sí, una habitación para dos noches. Su pasaporte, por favor.\n— Aquí tiene.\n— Gracias. Su habitación es la ciento doce. El desayuno es a las siete."
+    },
+    {
+     "type": "respond",
+     "prompt_ar": "وصلت إلى الفندق. قل للموظف إن عندك حجزاً باسم عمر حسن.",
+     "accepted": [
+      "Tengo una reserva a nombre de Omar Hassan",
+      "Buenas tardes, tengo una reserva a nombre de Omar Hassan",
+      "Una reserva a nombre de Omar Hassan",
+      "Hola, tengo una reserva a nombre de Omar Hassan",
+      "Buenas noches, tengo una reserva a nombre de Omar Hassan"
+     ]
+    },
+    {
+     "type": "speak",
+     "es": "Buenas tardes. Tengo una reserva a nombre de Omar Hassan, para tres noches.",
+     "ar": "مساء الخير. عندي حجز باسم عمر حسن، لثلاث ليالٍ."
+    }
+   ]
+  }
+ ]
+}

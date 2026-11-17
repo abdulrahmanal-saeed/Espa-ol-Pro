@@ -10,7 +10,7 @@ import 'support.dart';
 import 'widget_support.dart';
 
 /// A1 units added after A1-U1. Each must be teachable end to end.
-const newUnits = ['a1_u2', 'a1_u3'];
+const newUnits = ['a1_u2', 'a1_u3', 'a1_u4', 'a1_u5'];
 
 void main() {
   late ContentPack pack;
