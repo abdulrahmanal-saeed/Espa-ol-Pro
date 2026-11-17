@@ -1,79 +1,155 @@
-# Codex → ChatGPT: Implementation Handoff
+# Implementer → ChatGPT: Implementation Handoff
 
-owner: Codex
-implementer: Codex
+owner: Claude Code
+implementer: Claude Code
 handoff_status: READY_FOR_REVIEW
-handoff_id: PHASE1-006
-updated_at_utc: 2026-11-16T22:10:26Z
-review_requested_for_sha: ce1155c195314cee40578747d53fce780078308a
-branch: feat/phase-1.1-reminders
-pull_request: https://github.com/abdulrahmanal-saeed/Espa-ol-Pro/pull/4
-base: feat/phase-1.1-foundation (PR #3)
-last_review_acknowledged: REVIEW-006
-project_status: PHASE_1_1_PART_B_REVIEW_AND_DEVICE_CHECK_PENDING
+handoff_id: PHASE1-007
+updated_at_utc: 2026-11-17T06:10:00Z
+review_requested_for_sha: cb1476a5f6549854e0c7e477c90b725efdff51a7
+branch: feat/phase-1.2a-listening
+pull_request: https://github.com/abdulrahmanal-saeed/Espa-ol-Pro/pull/5
+base: main at 8e4729f
+last_review_acknowledged: REVIEW-007
+project_status: PHASE_1_2A_LISTENING_READY_FOR_REVIEW__PHASE_1_1_DEVICE_ACCEPTANCE_PENDING_OWNER
 
-This handoff covers PR #4. The owner transferred implementation to Codex
-on 2026-11-17. The previous [PHASE1-005 handoff by Claude Code](https://github.com/abdulrahmanal-saeed/Espa-ol-Pro/blob/36f4d6dc450b19e900d339f16237da2fb768cf71/AI_BRIDGE/CLAUDE_STATUS.md)
-remains in Git history.
+> The owner's brief for this phase addressed the implementer as "Codex"; this
+> work was done by Claude Code, and commits carry its attribution. The
+> previous handoff, `PHASE1-006` by Codex for PR #4, is in Git history.
+> `review_requested_for_sha` is the last commit that changes application
+> code; the commit carrying this file changes only this file.
 
-## Response to REVIEW-006
+## Baseline acknowledged
 
-- `ReminderService` serializes schedule and cancel operations for ID 7001.
-  The running operation finishes and queued requests superseded by a
-  newer request skip platform work. The latest saved settings determine
-  the final OS alarm. A repeat sync with the same time and zone only
-  rechecks notification permission.
-- Settings saves run in request order. The scheduler reads the last
-  successful save after startup, resume or a Settings change. An older
-  platform result cannot replace the latest `ReminderStateNotifier`
-  result. Time and permission dialogs apply their edits to current settings.
-- A failed platform mutation leaves the alarm state unknown. A later disable
-  cancels the ID even if a failed scheduling call had already written it.
-  A failed permission check leaves the confirmed schedule cached.
-- The Android adapter, alarm ID, inexact scheduling, timezone/DST rules,
-  boot receiver, and offline behavior use the existing implementation.
+- `main` at `8e4729f`. PR #3 (merge `a4af15f`) and PR #4 (merge `af693b4`)
+  are merged. REVIEW-007 approved both; CI on the merge passed 169 tests and
+  built the APK.
+- Phase 1.1 device acceptance is with the owner and is **not** claimed here.
+  No owner device results for Phase 1.1 had reached the repository when this
+  was written.
+
+## This PR: Phase 1.2A — listening library and dialogue player
+
+### Content (v1.1.0)
+
+Six original dialogues, all `author_reviewed`, in
+`assets/content/v1/dialogues/`, listed in `curriculum.json`:
+
+- four Pre-A1 and two A1-U1;
+- 29 turns and 31 comprehension questions;
+- each linked to the lessons it builds on, and unlocking when all of them
+  are completed.
+
+Content lessons, ids and activities are unchanged. The version bump is for
+the added dialogues.
+
+### Player (`lib/features/listening/`)
+
+- **`DialoguePlayer`:** plays each turn as a separate utterance via a new
+  `SpeechService.speakAndWait`, which uses flutter_tts `awaitSpeakCompletion`.
+- **Highlighting is per turn.** There is no word-timing data, so none is claimed.
+- **Pause / resume:** pause stops the voice; resume restarts the interrupted
+  sentence, because Android TTS cannot resume mid-sentence reliably. The UI
+  says so.
+- **Stale playback:** a generation counter guarantees a stale playback loop
+  can never move the state after another action.
+- **Controls:** sentence replay, stop, and speeds of 60 %, 80 % and normal,
+  multiplying the learner's rate setting.
+- **Transcript and Arabic translation** are hidden by default, with toggles.
+  English is shown only with the existing setting.
+- **Only `turn.es` is ever spoken.**
+- **No Spanish voice:** an explicit notice, and the transcript is forced on.
+- **Saving and links:** any sentence can be saved to «عباراتي» (new
+  `PhraseSource` kind `dialogue`). Vocabulary chips open the vocabulary sheet;
+  grammar opens the note.
+- **Comprehension questions:** choice, "who said it", and dictation. Audio is
+  played and the sentence is not shown. They run in the existing
+  `ExerciseRunner` (failure-safe saves, one retry, first-try scoring) and are
+  stored as `activity_attempts` with context `listening`. The result screen
+  says it is practice, not a level test.
+
+### No schema change
+
+Dialogue progress is derived from attempts: the latest first attempt per
+question id. **Schema v5 is reserved for assessments (PR 1.2B).**
+
+### Validation
+
+New dialogue rules in `ContentValidator`, each proven by a negative test:
+
+- ids are unique;
+- level, unit and lessons exist and agree;
+- vocabulary exists and is taught by the linked lessons or earlier;
+- grammar references exist;
+- speakers are known, and at least two of them speak;
+- no Arabic in `es`, and balanced `¿?` / `¡!`;
+- questions have valid answers, distinct choices and existing turns.
+
+### Defect found by the new tests and fixed
+
+A comprehension run finishing in under one second logged no study session,
+so today's plan would not count it. A finished run now logs at least one
+second.
 
 ## Verification
 
-- Local Flutter 3.50.0 resolved dependencies. Formatting, static analysis,
-  the content validator and Drift regeneration passed. The regenerated
-  database file matched Git. The full suite passed **169 tests**, including
-  nine new regression tests. The staged secret scan found no matches.
-- Six of seven gated service regressions reproduced failures on the original
-  code. The fixed code passed both the service and widget tests covering
-  enable/disable, 19:00→20:00, rapid on/off/on, a late cancellation, a failed
-  write and retry, queued cleanup after a partial write, app resume during a
-  saved change, and stale Android permission results. The tests assert the
-  fake OS pending alarms and the state shown by Settings.
-- Local Windows Gradle could not download a Kotlin plugin dependency.
-  [GitHub Actions at the code SHA](https://github.com/abdulrahmanal-saeed/Espa-ol-Pro/actions/runs/43966228374)
-  passed **Format, analyze, content, tests** and **Android debug APK**.
-  The [PR checks](https://github.com/abdulrahmanal-saeed/Espa-ol-Pro/pull/4/checks)
-  track the handoff revision as well.
+Local, at `cb1476a`:
 
-## Independent review requested
+| Check | Result |
+|---|---|
+| `dart format --output=none --set-exit-if-changed lib test tool test_screenshots` | 0 changed |
+| `flutter analyze --fatal-infos` | No issues |
+| `dart run tool/validate_content.dart` | v1.1.0 OK — 6 dialogues, 29 turns, 31 questions |
+| `flutter test` | **207 passed** (baseline 169), 2 full runs |
+| Drift regeneration | identical to committed file |
 
-Re-review `ce1155c195314cee40578747d53fce780078308a` against
-[REVIEW-006](https://github.com/abdulrahmanal-saeed/Espa-ol-Pro/blob/99ed6970339f250ba0b0accb740634c25cb8f675/AI_BRIDGE/CHATGPT_REVIEW.md).
-Check that an older OS call or permission result cannot win, and that
-the failed-operation paths still converge to the latest saved preference.
-The reviewer report remains owned by ChatGPT.
+GitHub Actions on `cb1476a` (run 44025615075):
 
-## Merge order and Android acceptance
+| Job | Result |
+|---|---|
+| Format, analyze, content, tests | success |
+| Android debug APK | success |
 
-- [PR #3](https://github.com/abdulrahmanal-saeed/Espa-ol-Pro/pull/3) is ready
-  at the REVIEW-006-approved head `732b08504840923d04739fccb40f1a2a5ac0cf62`.
-  Its [CI](https://github.com/abdulrahmanal-saeed/Espa-ol-Pro/actions/runs/43946907184)
-  passed with 140 tests and an APK. A merge simulation against current
-  `main` had no conflicts. Owner authorization is pending.
-- PR #4 remains stacked on PR #3. After #3 merges, retarget #4 to `main`,
-  verify the resulting diff and CI, and confirm independent approval and
-  owner authorization for #4.
-- The [Phase 1.1 device checklist](../docs/REVIEW_HANDOFF.md#7-phase-11-android-acceptance)
-  covers the icon and splash, saved phrases, upgrading v3→v4, permission,
-  actual delivery, tapping from a closed app, cancelling and reboot
-  recovery. Native Phase 1.1 checks are pending. The original Phase 1
-  device results remain recorded in REVIEW-004.
-- The first Phase 1.2 slice can reuse the bundled content validator,
-  local Spanish TTS and saved-phrase storage for graded dialogue practice.
-  Phase 1.1 acceptance remains the dependency for advancing the roadmap.
+New tests:
+
+- `test/dialogue_player_test.dart` (9): ordering, pause/resume, replay
+  takeover, stop, speed, no voice, dispose.
+- `test/listening_content_test.dart` (23): shipped content, 15 validator
+  negatives, question building, progress derivation.
+- `test/listening_flow_test.dart` (6): lock/unlock, play order, toggles,
+  replay, Arabic never spoken, saving a sentence, the no-voice fallback,
+  questions recorded and completion shown, the Practice entry.
+
+Screenshots: `docs/screenshots/19_listening_library.png` and
+`20_dialogue_player.png`. Also added: `docs/LINGUISTIC_QA.md`, a checklist
+for the human Spanish reviewer.
+
+## Not verified — device checklist for this build
+
+Record the commit, device, Android version, expected and actual result, and
+pass/fail for each:
+
+1. Complete Pre-A1 lessons 4–5 → Practice → «مكتبة الاستماع» → «إلى الغد» opens.
+2. «شغّل الحوار» plays all four sentences in order; the highlight follows.
+3. Pause mid-sentence → «تابع» restarts that sentence.
+4. Speed 60 % is clearly slower; normal returns to the usual rate.
+5. Replay a single sentence; save one sentence and find it in «عباراتي».
+6. Answer the questions; the library then shows the score.
+7. With no Spanish voice installed, the notice appears and the transcript is shown.
+
+**Specific risk:** whether every Android TTS engine completes `speak` when
+`awaitSpeakCompletion` is on. If one does not, the dialogue stops after the
+first sentence. This is the most important thing to check on the device.
+
+## Specific review request
+
+1. The honest-limits design: per-turn highlighting, resume restarting the
+   sentence, no mid-sentence resume claimed.
+2. Deriving dialogue progress from attempts instead of a new table.
+3. The validator's "taught by its lessons or earlier" rule.
+
+## Next
+
+PR 1.2B (assessment foundation, schema v5) is in progress on
+`feat/phase-1.2b-assessments`, stacked on this branch. Then 1.2C (difficulty
+estimator, writing quality) and the A1 units. I will not merge; merging is
+the owner's decision.
