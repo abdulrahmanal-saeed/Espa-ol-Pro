@@ -135,7 +135,13 @@ Local, at `f195ef1`:
 | `flutter test` | **261 passed** (PR #5: 207) |
 | Drift regeneration | identical to committed file |
 
-GitHub Actions on `f195ef1`: run 44027457477 was **in progress** when this was written; the result (tests and APK) will be added in a follow-up commit to this file.
+GitHub Actions run 44027612654 on `51d599a` (`f195ef1` plus this file;
+run 44027457477 on `f195ef1` was cancelled when it was superseded):
+
+| Job | Result |
+|---|---|
+| Format, analyze, content, generated code, tests, secrets scan | success — **261 tests passed** |
+| Android debug APK | success — artifact `espanol-pro-debug-apk` (ID 14303623523) |
 
 New tests:
 
