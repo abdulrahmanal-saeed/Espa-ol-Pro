@@ -158,6 +158,29 @@ class ErrorRecords extends Table {
   IntColumn get lastSeen => integer()();
 }
 
+/// Sentences the learner chose to keep (schema v4). Not progress: kept when
+/// progress is reset, included in backups.
+///
+/// Identity is the normalised Spanish text ([phraseKey]), NOT a content id,
+/// so a saved phrase survives curriculum edits and the same sentence saved
+/// from two screens is one record.
+class SavedPhrases extends Table {
+  IntColumn get id => integer().autoIncrement()();
+  TextColumn get phraseKey => text().unique()();
+  TextColumn get es => text()();
+  TextColumn get ar => text()();
+  TextColumn get en => text().withDefault(const Constant(''))();
+
+  /// vocab | example | grammar | lesson_note
+  TextColumn get sourceKind => text()();
+
+  /// Content id of the item / grammar note the phrase came from, if any.
+  TextColumn get sourceId => text().nullable()();
+  TextColumn get sourceLessonId => text().nullable()();
+  TextColumn get note => text().withDefault(const Constant(''))();
+  IntColumn get savedAt => integer()();
+}
+
 @DriftDatabase(
   tables: [
     Settings,
@@ -167,6 +190,7 @@ class ErrorRecords extends Table {
     ReviewLogs,
     StudySessions,
     ErrorRecords,
+    SavedPhrases,
   ],
 )
 class AppDatabase extends _$AppDatabase {
@@ -183,7 +207,7 @@ class AppDatabase extends _$AppDatabase {
     );
   }
 
-  static const int latestSchemaVersion = 3;
+  static const int latestSchemaVersion = 4;
 
   @override
   int get schemaVersion => latestSchemaVersion;
@@ -206,6 +230,10 @@ class AppDatabase extends _$AppDatabase {
         // v3: tell first attempts apart from prompted retries. Existing rows
         // default to 1 because earlier versions did not record the difference.
         await m.addColumn(activityAttempts, activityAttempts.attemptNumber);
+      }
+      if (from < 4) {
+        // v4: personal saved phrases. New table only; nothing else changes.
+        await m.createTable(savedPhrases);
       }
       await _createIndexes();
     },

@@ -310,6 +310,7 @@ class SettingsScreen extends ConsumerWidget {
     'review_logs': 'مراجعات مسجّلة',
     'activity_attempts': 'إجابات',
     'error_records': 'أخطاء في الدفتر',
+    'saved_phrases': 'عبارات محفوظة',
   };
 
   Future<void> _import(BuildContext context, WidgetRef ref) async {
@@ -323,10 +324,18 @@ class SettingsScreen extends ConsumerWidget {
       final json = utf8.decode(await files.first.readAsBytes());
       // Show what the file contains BEFORE anything is replaced.
       final summary = BackupService.summarize(json);
+      // A backup made before saved phrases existed has no such table: say
+      // so, rather than showing "0" as if it would empty «عباراتي».
+      final hasPhrases = summary.containsKey('saved_phrases');
       final lines = [
         for (final e in _tableLabels.entries)
-          '${e.value}: ${summary[e.key] ?? 0}',
+          if (e.key != 'saved_phrases' || hasPhrases)
+            '${e.value}: ${summary[e.key] ?? 0}',
       ].join('\n');
+      final phrasesNote = hasPhrases
+          ? ''
+          : '\n\nهذه النسخة أقدم من ميزة «عباراتي»، فلا تحتوي عبارات محفوظة. '
+                'ستبقى عباراتك الحالية كما هي.';
       if (!context.mounted) return;
       final confirmed = await _confirm(
         context,
@@ -334,7 +343,8 @@ class SettingsScreen extends ConsumerWidget {
         body:
             'محتوى الملف:\n$lines\n\n'
             'ستُستبدل كل بياناتك الحالية بمحتوى هذا الملف. '
-            'إن كان الملف ناقصاً أو تالفاً فسيُرفض ولن يتغيّر شيء.',
+            'إن كان الملف ناقصاً أو تالفاً فسيُرفض ولن يتغيّر شيء.'
+            '$phrasesNote',
         action: 'استعد',
         destructive: true,
       );
@@ -358,7 +368,7 @@ class SettingsScreen extends ConsumerWidget {
     final confirmed = await _confirm(
       context,
       title: 'حذف كل التقدّم؟',
-      body: 'سيُحذف نهائياً: الدروس المكتملة، بطاقات المراجعة وسجلّها، وقت الدراسة، ودفتر الأخطاء. لا يمكن التراجع إلا من نسخة احتياطية.',
+      body: 'سيُحذف نهائياً: الدروس المكتملة، بطاقات المراجعة وسجلّها، وقت الدراسة، ودفتر الأخطاء. تبقى الإعدادات و«عباراتي». لا يمكن التراجع إلا من نسخة احتياطية.',
       action: 'احذف',
       destructive: true,
     );

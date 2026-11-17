@@ -7,6 +7,7 @@
 import 'package:espanol_pro/core/content/models.dart';
 import 'package:espanol_pro/core/learning/exercises.dart';
 import 'package:espanol_pro/core/learning/progress_repository.dart';
+import 'package:espanol_pro/core/phrases/saved_phrases_repository.dart';
 import 'package:espanol_pro/core/settings.dart';
 import 'package:espanol_pro/core/srs/review_repository.dart';
 import 'package:flutter_test/flutter_test.dart';
@@ -64,6 +65,24 @@ void main() {
       await repo.logStudy(kind: 'review', seconds: 240);
       if (i != 2) app.clock.advance(const Duration(days: 1));
     }
+    final phrases = SavedPhrasesRepository(app.db, clock: app.clock.call);
+    for (final (es, ar, kind, id, lesson) in [
+      ('Mi casa es tu casa.', 'بيتي بيتك.', 'example', 'casa', 'pa1_u1_l1'),
+      ('el trabajo', 'العمل', 'vocab', 'el_trabajo', 'pa1_u1_l2'),
+      ('Pero / perro', 'لكن / كلب', 'grammar', 'g_letters', null),
+    ]) {
+      await phrases.save(
+        PhraseDraft(
+          es: es,
+          ar: ar,
+          source: PhraseSource(kind: kind, id: id, lessonId: lesson),
+        ),
+      );
+    }
+    final first = (await phrases.all()).firstWhere(
+      (p) => p.es.startsWith('Mi'),
+    );
+    await phrases.updateNote(first.id, 'أقولها لضيف يزورني لأول مرة.');
     return app;
   }
 
@@ -84,6 +103,8 @@ void main() {
     await shot(tester, '05_library_dictionary');
     await tester.tapSettled(find.text('دفتر الأخطاء'));
     await shot(tester, '06_error_notebook');
+    await tester.tapSettled(find.text('عباراتي'));
+    await shot(tester, '18_saved_phrases');
     await tester.tapSettled(find.text('التقدّم'));
     await shot(tester, '07_progress');
     await app.dispose(tester);

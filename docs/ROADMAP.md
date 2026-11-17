@@ -6,15 +6,14 @@
 A phase is done only when its acceptance criteria are verified by tests or a
 documented manual check — never because screens exist.
 
-## Phase 1 — Educational foundation (in review)
+## Phase 1 — Educational foundation (merged; engineering approved in REVIEW-004)
 
 Working app: navigation, RTL design system, lesson engine, FSRS, progress,
 library, backup, Pre-A1 complete + first A1 unit. Detailed status:
 `IMPLEMENTATION_STATUS.md`.
 
-Remaining before Phase 1 can be called accepted:
-- Manual run on a physical Android device (audio, keyboard, file dialogs).
-- Reviewer sign-off through `AI_BRIDGE/`.
+Remaining before Phase 1 is fully accepted: a human review of the Spanish
+content. The five core device checks were confirmed by the owner.
 
 ## Phase 1.x — Foundation hardening (next)
 

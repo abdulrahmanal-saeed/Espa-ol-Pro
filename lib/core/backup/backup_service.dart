@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import '../db/database.dart';
+import '../phrases/saved_phrases_repository.dart';
 import '../srs/review_repository.dart';
 
 class BackupException implements Exception {
@@ -27,7 +28,9 @@ class BackupService {
     'study_sessions',
   ];
 
-  /// What a backup document contains, for the confirmation dialog.
+  /// What a backup document contains, for the confirmation dialog. A table
+  /// absent from the file (e.g. `saved_phrases` in a pre-v4 backup) is
+  /// absent from the result, not reported as 0.
   static Map<String, int> summarize(String json) {
     try {
       final tables = (jsonDecode(json) as Map)['tables'] as Map;
@@ -72,6 +75,9 @@ class BackupService {
         'error_records': [
           for (final r in await db.select(db.errorRecords).get()) r.toJson(),
         ],
+        'saved_phrases': [
+          for (final r in await db.select(db.savedPhrases).get()) r.toJson(),
+        ],
       },
     };
     return const JsonEncoder.withIndent(' ').convert(doc);
@@ -107,7 +113,11 @@ class BackupService {
     // Every table that existed in the backup's schema version MUST be
     // present as a list. A missing table is never read as "empty": that
     // would let a truncated file wipe the learner's data.
-    final required = [..._tablesV1, if (schema >= 2) 'error_records'];
+    final required = [
+      ..._tablesV1,
+      if (schema >= 2) 'error_records',
+      if (schema >= 4) 'saved_phrases',
+    ];
     for (final name in required) {
       if (tables[name] is! List) {
         throw BackupException(
@@ -140,6 +150,7 @@ class BackupService {
     final logs = parse('review_logs', ReviewLog.fromJson);
     final sessions = parse('study_sessions', StudySession.fromJson);
     final errors = parse('error_records', ErrorRecord.fromJson);
+    final phrases = parse('saved_phrases', SavedPhrase.fromJson);
 
     // Integrity checks, still before anything is deleted.
     void unique(String table, Iterable<Object> keys) {
@@ -160,6 +171,8 @@ class BackupService {
     unique('study_sessions', sessions.map((r) => r.id));
     unique('error_records', errors.map((r) => r.id));
     unique('error_records', errors.map((r) => r.signature));
+    unique('saved_phrases', phrases.map((r) => r.id));
+    unique('saved_phrases', phrases.map((r) => r.phraseKey));
     final cardIds = cards.map((c) => c.id).toSet();
     if (logs.any((l) => !cardIds.contains(l.cardId))) {
       throw BackupException(
@@ -198,6 +211,16 @@ class BackupService {
       ),
     );
     validate('review_logs', logs.every((l) => _validDue(l.dueAfter)));
+    validate(
+      'saved_phrases',
+      phrases.every(
+        (p) =>
+            p.es.trim().isNotEmpty &&
+            p.phraseKey == SavedPhrasesRepository.keyFor(p.es) &&
+            PhraseSource.kinds.contains(p.sourceKind) &&
+            _validDue(p.savedAt),
+      ),
+    );
 
     await db.transaction(() async {
       await db.delete(db.reviewLogs).go();
@@ -207,6 +230,10 @@ class BackupService {
       await db.delete(db.studySessions).go();
       await db.delete(db.errorRecords).go();
       await db.delete(db.settings).go();
+      // Saved phrases are replaced only by a backup that contains them. A
+      // backup from before they existed (schema < 4) leaves them untouched
+      // rather than silently deleting them.
+      if (schema >= 4) await db.delete(db.savedPhrases).go();
       await db.batch((b) {
         b.insertAll(db.settings, settings);
         b.insertAll(db.lessonProgress, progress);
@@ -215,6 +242,7 @@ class BackupService {
         b.insertAll(db.reviewLogs, logs);
         b.insertAll(db.studySessions, sessions);
         b.insertAll(db.errorRecords, errors);
+        if (schema >= 4) b.insertAll(db.savedPhrases, phrases);
       });
     });
   }
@@ -225,7 +253,8 @@ class BackupService {
   static bool _validDue(int millis) =>
       millis >= 0 && millis <= 8640000000000000;
 
-  /// Deletes all learner data (settings are kept).
+  /// Deletes all learning progress. Settings and saved phrases (the
+  /// learner's personal library, not progress) are kept.
   Future<void> resetProgress() async {
     await db.transaction(() async {
       await db.delete(db.reviewLogs).go();

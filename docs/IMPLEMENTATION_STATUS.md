@@ -1,10 +1,14 @@
 # Implementation status
 
-**Phase 1 — Working educational foundation**, pending acceptance. The fixes
-for REVIEW-002 are in code commit `65324da6e0e2b6d110ca8b550ce4e761096241ec`
-on [draft PR #2](https://github.com/abdulrahmanal-saeed/Espa-ol-Pro/pull/2).
-The PR tracks the latest head and checks. See [the review handoff](REVIEW_HANDOFF.md)
-for Android verification and the remaining acceptance checks.
+**Phase 1 — Working educational foundation.** PR #1 and PR #2 are merged
+into `main` (PR #2 merge: `ef35c1e`). REVIEW-004 approved the Phase 1
+engineering fixes (last reviewed application code: `65324da`). CI on the
+merge passed with 105 tests and a debug APK
+([run 43918437105](https://github.com/abdulrahmanal-saeed/Espa-ol-Pro/actions/runs/43918437105)).
+
+The owner confirmed five Android device checks with Codex (see below).
+The remaining Phase 1 acceptance gate is a human review of the Spanish
+content. Phase 1.1 work is in progress on later PRs.
 
 ## Implemented and covered by automated tests
 
@@ -33,6 +37,11 @@ for Android verification and the remaining acceptance checks.
 | Progress survives closing and reopening the database | `persistence_test` |
 | Backup export / restore / reset; v1–v3 restore compatibility and rejection of malformed fields with every existing row preserved | `persistence_test` |
 | Review ratings, FSRS state, and active study time commit together and survive reopening SQLite | `persistence_test`, including failure during the study-time write |
+| **Phase 1.1:** saved phrases («عباراتي»): save from vocabulary, examples, lesson notes and the grammar reference; search, audio, note, remove with undo; one record per sentence | `saved_phrases_test`, `app_flow_test` |
+| **Phase 1.1:** schema v4 (`saved_phrases`), migration v3→v4 on a real file; backups include and validate it; pre-v4 restores and progress resets keep saved phrases | `persistence_test` |
+| **Phase 1.1:** live due-review counter on Home and Practice: one timer to the next due instant, no polling, recomputed on resume | `due_counter_test`, `app_flow_test` (clock-controlled, no DB write) |
+| **Phase 1.1:** time on an opened but unrated review card is stored when the app is backgrounded or the screen closes. All review study-time writes go through one serialised checkpoint, which advances only after a successful write and retries failed seconds; a flush during an in-flight rating cannot double count (REVIEW-004 P2, REVIEW-005 P2) | `study_time_checkpoint_test` (failure, retry, both race orders), `app_flow_test` (background, immediate exit) |
+| **Phase 1.1:** app identity: adaptive icon with themed (monochrome) layer, density PNGs, Android 12+ and legacy splash, matching in-app loading screen | `branding_test` (resources and colours); not yet seen on a device |
 
 Local Windows verification used Flutter 3.50.0. All 105 tests passed,
 including the A1 unlock regression. Analysis passed with `--fatal-infos`,
@@ -51,9 +60,18 @@ remain at v3.
   the attempt.
 - On a Samsung Galaxy A15 running Android 16, the APK opened and the learner
   completed the first lesson. The on-device database contained 11 correct
-  graded attempts and 14 FSRS cards. See [device evidence](REVIEW_HANDOFF.md#4-android-device-checks)
-  for the outstanding checks.
-- The app icon and splash use the Flutter defaults.
+  graded attempts and 14 FSRS cards.
+- **Owner-confirmed device checks (passed).** The owner tested these with
+  Codex on a real Android device and reported all working, recorded in
+  REVIEW-004: (1) reviews and progress after closing and reopening the app,
+  (2) backup export and restore, (3) learning offline, (4) Spanish audio,
+  (5) on-screen keyboard. This is owner testimony, not automated or
+  reviewer-witnessed evidence.
+- Not covered by that confirmation: every accent/voice/speed variant, every
+  Settings/theme case, and the A1 transition on device. Automated tests
+  cover some of these paths. See [device evidence](REVIEW_HANDOFF.md#4-android-device-checks).
+- Phase 1.1 replaces the default icon and splash. Their appearance on a
+  device has not been checked yet.
 
 ## Not implemented (and not claimed)
 
@@ -85,7 +103,11 @@ remain at v3.
 7. Spelling quality is not yet reported separately: an answer accepted with
    an accent reminder is stored as correct. Planned for Phase 1.2 together
    with stricter accent requirements at higher levels.
-8. Attempts recorded before schema v3 all count as first attempts, because
+8. A final flush started while the review screen is being closed is not
+   awaited (dispose cannot wait). It is normally preceded by the lifecycle
+   flush when the app leaves the foreground, which is the reliable path
+   before Android kills a process.
+9. Attempts recorded before schema v3 all count as first attempts, because
    the distinction was not stored then.
 9. Review study time is checkpointed with completed ratings. Time spent on
    the last unrated card is lost if the learner exits or the app terminates.

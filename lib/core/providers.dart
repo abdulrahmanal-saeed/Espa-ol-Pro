@@ -1,3 +1,6 @@
+import 'dart:async';
+
+import 'package:flutter/widgets.dart' show AppLifecycleListener;
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'backup/backup_service.dart';
@@ -5,8 +8,10 @@ import 'content/models.dart';
 import 'db/database.dart';
 import 'learning/exercises.dart';
 import 'learning/progress_repository.dart';
+import 'phrases/saved_phrases_repository.dart';
 import 'settings.dart';
 import 'speech/speech_service.dart';
+import 'srs/due_counter.dart';
 import 'srs/review_repository.dart';
 
 // Overridden at bootstrap (and in tests).
@@ -101,4 +106,44 @@ final attemptsProvider = StreamProvider<List<ActivityAttempt>>(
       .watch(databaseProvider)
       .select(ref.watch(databaseProvider).activityAttempts)
       .watch(),
+);
+
+/// Live due-card count for the dashboard and practice tab.
+///
+/// No polling: the count changes only when the cards table changes (handled
+/// by [cardsProvider]) or when the next card's due instant arrives. For the
+/// latter, ONE timer is set for exactly that instant. The timer exists only
+/// while a screen listens (autoDispose), and the value is recomputed when the
+/// app returns to the foreground, in case timers were delayed in background.
+final dueSummaryProvider = Provider.autoDispose<DueSummary>((ref) {
+  final cards = ref.watch(cardsProvider).value ?? const <ReviewCard>[];
+  final clock = ref.watch(clockProvider);
+  final now = clock();
+  final summary = DueSummary.of(cards, now);
+  final wait = summary.refreshAfter(now);
+  if (wait != null) {
+    final timer = Timer(wait, ref.invalidateSelf);
+    ref.onDispose(timer.cancel);
+  }
+  final lifecycle = AppLifecycleListener(onResume: ref.invalidateSelf);
+  ref.onDispose(lifecycle.dispose);
+  return summary;
+});
+
+final savedPhrasesRepositoryProvider = Provider<SavedPhrasesRepository>(
+  (ref) => SavedPhrasesRepository(
+    ref.watch(databaseProvider),
+    clock: ref.watch(clockProvider),
+  ),
+);
+
+final savedPhrasesProvider = StreamProvider<List<SavedPhrase>>(
+  (ref) => ref.watch(savedPhrasesRepositoryProvider).watchAll(),
+);
+
+final savedPhraseKeysProvider = Provider<Set<String>>(
+  (ref) => {
+    for (final p in ref.watch(savedPhrasesProvider).value ?? const [])
+      p.phraseKey,
+  },
 );

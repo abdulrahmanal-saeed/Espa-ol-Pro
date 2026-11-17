@@ -60,9 +60,7 @@ class PracticeScreen extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final t = Theme.of(context);
-    final cards = ref.watch(cardsProvider).value ?? const [];
-    final now = ref.watch(clockProvider)().toUtc().millisecondsSinceEpoch;
-    final due = cards.where((c) => c.due <= now).length;
+    final due = ref.watch(dueSummaryProvider).dueNow;
     final learned = learnedItems(ref).length;
     final openErrors = (ref.watch(errorsProvider).value ?? const [])
         .where(ProgressRepository.isOpenError)

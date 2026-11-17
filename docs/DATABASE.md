@@ -1,7 +1,7 @@
 # Database
 
 SQLite via Drift. File: `espanol_pro.sqlite` in the app documents directory.
-Schema version **3**. Source: `lib/core/db/database.dart`.
+Schema version **4**. Source: `lib/core/db/database.dart`.
 
 Only learner-generated data is stored. Curriculum entities (levels, units,
 lessons, vocabulary, grammar, sources, licences) live in the versioned content
@@ -56,6 +56,13 @@ erDiagram
         text lesson_id  text item_id
         int count  int correct_since  int first_seen  int last_seen
     }
+    SAVED_PHRASES {
+        int id PK
+        text phrase_key UK "normalised Spanish text (v4)"
+        text es  text ar  text en
+        text source_kind "vocab | example | grammar | lesson_note"
+        text source_id  text source_lesson_id  text note  int saved_at
+    }
     REVIEW_CARDS ||--o{ REVIEW_LOGS : "has history (cascade)"
 ```
 
@@ -79,6 +86,20 @@ per item and direction, so repeating a lesson cannot duplicate cards ·
 | AudioAsset | not applicable yet (device TTS, no audio files) |
 | PronunciationAttempt, ConversationSession/Message, Assessment/Result, WorkScenario | Phase 2–4, not created yet |
 
+## Saved phrases (v4)
+
+Identity is `phrase_key`, the Spanish text normalised like a typed answer
+(case, punctuation and spacing ignored; accents and ñ kept). It does not
+depend on a content id, so a saved phrase survives curriculum edits, and the
+same sentence saved from two screens (or two lessons) is one row that
+keeps its first source, date and note. Saved phrases are a personal
+library, not progress: **Reset progress keeps them**, and **restoring a
+backup from before v4 leaves them untouched** instead of deleting them. The restore
+preview says so explicitly for such a file. A v4
+backup must contain the table and replaces it. They do not create FSRS cards
+yet; if they ever do, the card's `item_id` will be `phrase:<phrase_key>` so it
+cannot collide with curriculum items.
+
 ## Migrations
 
 Rule: migrations are additive and never drop learner data.
@@ -88,6 +109,7 @@ Rule: migrations are additive and never drop learner data.
 | 1 | settings, lesson_progress, activity_attempts, review_cards, review_logs, study_sessions |
 | 2 | + `error_records` table · + `activity_attempts.is_measured` (default true) |
 | 3 | + `activity_attempts.attempt_number` (default 1) — separates first attempts from prompted retries |
+| 4 | + `saved_phrases` table — the learner's saved sentences |
 
 `test/persistence_test.dart` builds real v1 and v2 database files from the
 verbatim historical DDL, fills them, opens them with the current code and

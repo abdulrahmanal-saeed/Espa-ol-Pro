@@ -1,6 +1,12 @@
 import 'package:material_ui/material_ui.dart';
 
-const _seed = Color(0xFF0E5E6F); // deep teal
+/// Brand teal. Also the Android icon background and splash colour
+/// (tool/brand/generate_android_icons.py); keep the two in sync.
+const brandTeal = Color(0xFF0E5E6F);
+
+/// Dark-mode splash background, as in values-night/colors.xml.
+const brandTealNight = Color(0xFF08343D);
+const _seed = brandTeal;
 const _accent = Color(0xFFC2702B); // warm amber/terracotta
 
 const arabicFont = 'PlexArabic';
