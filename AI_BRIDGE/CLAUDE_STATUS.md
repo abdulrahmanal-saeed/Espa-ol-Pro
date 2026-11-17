@@ -3,24 +3,143 @@
 owner: Claude Code
 implementer: Claude Code
 handoff_status: READY_FOR_REVIEW
-handoff_id: PHASE1-009
-updated_at_utc: 2026-11-17T07:30:00Z
-review_requested_for_sha: 1913f04 (code state: 1.2B + REVIEW-008 fixes, merged with main 9dd9764/b889e16)
-last_application_commit: 3cd15ed
-branch: fix/review-008
-pull_request: PR_URL_PLACEHOLDER
-base: main
+handoff_id: PHASE1-010
+updated_at_utc: 2026-11-17T08:00:00Z
+review_requested_for_sha: afdb946
+branch: feat/phase-1.2c-quality
+pull_request: PR_1_2C_PLACEHOLDER (stacked on PR #7, base fix/review-008)
+also_awaiting_review: https://github.com/abdulrahmanal-saeed/Espa-ol-Pro/pull/7 (PHASE1-009, REVIEW-008 fixes)
 last_review_acknowledged: REVIEW-008
-project_status: PHASE_1_2B_WITH_REVIEW_008_FIXES_READY_FOR_REVIEW__PHASE_1_2A_ON_MAIN_NEEDS_THIS_FIX__DEVICE_ACCEPTANCE_PENDING_OWNER
+project_status: PHASE_1_2C_READY_FOR_REVIEW__PR7_REVIEW_008_FIXES_READY_FOR_REVIEW__DEVICE_ACCEPTANCE_PENDING_OWNER
 
-> **Why this PR exists.** PR #5 (1.2A) was merged into `main`, and PR #6 (1.2B)
-> was merged into `feat/phase-1.2a-listening`, not into `main`, both before
-> REVIEW-008's findings were fixed. This PR targets `main`. It brings in the
-> reviewed 1.2B code (unchanged from `f195ef1`) plus the fixes for every
-> REVIEW-008 finding, including the P2 that affects 1.2A code already on
-> `main`. The diff against `main` is therefore "1.2B + fixes". The fixes
-> alone are the three commits after `9d6afcd`: `7e55700`, `3cd15ed` and
-> `e38a7b8`.
+> Review PR #7 (REVIEW-008 fixes, handoff PHASE1-009 below in this file's
+> history at `97f6e2e`) first. This PR is stacked on it and adds Phase 1.2C
+> only. Commits: `695a6a2`, `387de49`, `1ccbbdf`, and the merge of the fix
+> branch, `afdb946`.
+
+## Phase 1.2C — what this PR adds
+
+### 1. Answer diagnosis (`lib/core/learning/answer_evaluator.dart`)
+
+`evaluateAnswer` keeps its API. It now also returns an `AnswerIssue` that is
+derived only from the typed string and the closest accepted answer:
+
+| Issue | Verdict | Example |
+|---|---|---|
+| `accents` | accepted, with a reminder | telefono → teléfono |
+| `accentMeaning` | **wrong** | si/sí, tu/tú, el/él, mi/mí, te/té, se/sé, de/dé, mas/más, aun/aún, esta/está, papa/papá — in both directions |
+| `enye` | **wrong** | manana → mañana; ñ is a letter |
+| `wordOrder` | wrong | the same words in another order |
+| `grammarForm` | wrong | one word differs only in an A1 inflection ending, a plural, or an article: habla/hablo, buenos/buenas, casa/casas, el/la, trabajo/trabajamos |
+| `spelling` | wrong | a near miss: Levenshtein ≤ 1 for words of up to 5 letters, otherwise ≤ 2 |
+| `meaning` | wrong | anything else |
+
+**Interrogatives (qué, cómo, dónde …) stay lenient at Pre-A1/A1.** This is a
+deliberate, documented choice: the ¿ ? marks already carry the meaning.
+
+**Where the diagnosis is used:**
+
+- Lessons and review show `explanationAr`.
+- The error notebook files typed mistakes as spelling, grammar, word order or
+  vocabulary from the diagnosis, instead of "spelling" for everything.
+- Checkpoints store the outcome in `assessment_answers.spelling`. The values
+  are listed in `docs/DATABASE.md`; the old `wrong` value stays valid.
+  Backups accept the new values.
+
+### 2. Difficulty estimator (`lib/core/learning/difficulty.dart`)
+
+The band is deterministic and depends on three numbers, all shown to the
+learner:
+
+- **Coverage:** the share of running words already met in completed lessons
+  (vocabulary, their examples, and grammar-note examples).
+- **New grammar:** grammar used by the text but not yet taught.
+- **Sentence length:** words per sentence.
+
+Bands:
+
+| Band | Rule |
+|---|---|
+| Too difficult | coverage < 80 %, or 2 or more new grammar points |
+| Challenging | coverage < 95 %, or 1 new grammar point, or more than 10 words per sentence |
+| Very easy | coverage ≥ 98 % and at most 6 words per sentence |
+| Appropriate | everything else |
+
+Speaker names, capitalised names inside a sentence, and numbers are not
+counted as vocabulary.
+
+**Defect found and fixed:** a capitalised word that started a *later*
+sentence in the same string was treated as a name. Detection is now
+sentence-aware.
+
+**Where it is shown:** a badge on each unlocked dialogue in the library, and
+the band with its reasons on the dialogue screen.
+
+**Tests** (`difficulty_test`, 14):
+
+- every boundary: 80/79, 95/94, 98/97, 6/7 and 10/11 words, 1 and 2 new
+  grammar points;
+- word extraction;
+- every real dialogue is very easy or appropriate right after its lessons;
+- with no lessons, A1 dialogues are too difficult;
+- the result is deterministic.
+
+### 3. Checkpoints play dialogue sentences, and explain mistakes
+
+- **Dialogue sentences:** a question can name a `dialogue_turn`; its audio is
+  then exactly that sentence. The validator checks that the turn exists, that
+  its dialogue belongs to the checkpoint's unit (or level), and that the
+  question measures listening. Each rule has a negative test.
+  - Four listening questions now use dialogue sentences.
+  - `chk_pa1_u2`, `chk_pa1_u3` and `chk_a1_u1` are therefore **version 2**,
+    and the content is v1.1.1.
+  - With the REVIEW-008 fix, such questions also stay locked until heard.
+- **Explanations:** `explain_ar` is shown on the result screen after a wrong
+  answer, never during the checkpoint. All 8 grammar questions have one.
+- **Outcome labels:** the result screen labels every typed outcome.
+- **Edited checkpoints:** a result taken at an earlier version shows a note
+  (tested).
+
+## Verification
+
+Local, at `afdb946`:
+
+| Check | Result |
+|---|---|
+| format, analyze | clean |
+| content validator | v1.1.1 OK |
+| `flutter test` | **301 passed** (PR #7: 270) |
+| screenshots | regenerated; 19 shows the badges |
+
+GitHub Actions on this PR: CI_PLACEHOLDER
+
+## Not verified — device checklist
+
+1. Type `si` where `sí` is expected in a lesson: marked wrong, with the
+   explanation.
+2. The listening library shows a badge on each open dialogue; the dialogue
+   screen lists the reasons.
+3. Pre-A1 U2 checkpoint: question 2 plays «Bien, gracias. Hasta mañana.» from
+   the dialogue.
+
+## Specific review request
+
+1. Is the meaning-accent list right for A1, and is keeping interrogatives
+   lenient acceptable?
+2. Are the inflection-ending heuristic's false positives acceptable? A
+   different word with the same stem and an inflection-like ending is
+   labelled a form error. It is wrong either way; only the label differs.
+3. The coverage thresholds (95 % / 98 %).
+
+## Next
+
+A1 content PRs: U2/U3, then U4/U5, then U6 with the verb conjugation
+reference and the A1 level assessment. I will not merge anything; merging is
+the owner's decision.
+
+---
+
+# Previous handoff on this stack: PHASE1-009 (PR #7)
 
 ## REVIEW-008 — findings and fixes
 
