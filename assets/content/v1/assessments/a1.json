@@ -522,6 +522,362 @@
     }
    ],
    "source": "original-v1"
+  },
+  {
+   "id": "chk_a1_u4",
+   "version": 1,
+   "kind": "unit",
+   "level": "a1",
+   "unit": "a1_u4",
+   "title_ar": "نقطة تحقق: الطعام والتسوق",
+   "intro_ar": "نقطة تحقق قصيرة. لا تلميحات ولا إظهار للإجابات قبل النهاية، ولا إعادة للأسئلة. النتيجة دليل على ما تستطيعه الآن، وليست شهادة مستوى.",
+   "can_do": [
+    {
+     "id": "cd_a1_u4_order",
+     "ar": "أطلب طعاماً وشراباً بأدب في مقهى أو مطعم",
+     "lessons": [
+      "a1_u4_l1",
+      "a1_u4_l2"
+     ]
+    },
+    {
+     "id": "cd_a1_u4_prices",
+     "ar": "أسأل عن السعر وأفهمه وأدفع",
+     "lessons": [
+      "a1_u4_l3"
+     ]
+    },
+    {
+     "id": "cd_a1_u4_needs",
+     "ar": "أطلب ما يحتاجه العمل وأطلب فاتورة",
+     "lessons": [
+      "a1_u4_l4"
+     ]
+    }
+   ],
+   "questions": [
+    {
+     "id": "chk_a1_u4.q1",
+     "type": "choice",
+     "skill": "grammar",
+     "can_do": "cd_a1_u4_order",
+     "prompt_ar": "اختر الكلمة المناسبة للفراغ",
+     "stimulus_es": "Yo ___ un café, por favor.",
+     "choices": [
+      "quiero",
+      "quiere",
+      "quieres"
+     ],
+     "answer": 0,
+     "explain_ar": "مع yo: quiero (تغيّر الجذر e ← ie)."
+    },
+    {
+     "id": "chk_a1_u4.q2",
+     "type": "choice",
+     "skill": "listening",
+     "can_do": "cd_a1_u4_order",
+     "prompt_ar": "استمع إلى جملة من حوار المقهى: ماذا تطلب السيدة رويث؟",
+     "dialogue_turn": "dlg_a1_cafeteria.t2",
+     "choices": [
+      "قهوة بالحليب",
+      "شاي",
+      "ماء"
+     ],
+     "answer": 0,
+     "choices_es": false
+    },
+    {
+     "id": "chk_a1_u4.q3",
+     "type": "type",
+     "skill": "writing",
+     "can_do": "cd_a1_u4_order",
+     "prompt_ar": "اكتب بالإسبانية",
+     "stimulus_ar": "الحساب (في المطعم)",
+     "accepted": [
+      "la cuenta",
+      "cuenta"
+     ]
+    },
+    {
+     "id": "chk_a1_u4.q4",
+     "type": "choice",
+     "skill": "grammar",
+     "can_do": "cd_a1_u4_order",
+     "prompt_ar": "أي جملة تعني «أريد شاياً»؟",
+     "choices": [
+      "Quiero un té.",
+      "Quiero un te.",
+      "Te quiero."
+     ],
+     "answer": 0,
+     "explain_ar": "té (الشاي) بعلامة نبر؛ و«Te quiero» تعني «أحبك»."
+    },
+    {
+     "id": "chk_a1_u4.q5",
+     "type": "choice",
+     "skill": "listening",
+     "can_do": "cd_a1_u4_prices",
+     "prompt_ar": "استمع: كم السعر؟",
+     "audio_es": "Son cuarenta y cinco euros.",
+     "choices": [
+      "45 €",
+      "54 €",
+      "15 €"
+     ],
+     "answer": 0,
+     "choices_es": false
+    },
+    {
+     "id": "chk_a1_u4.q6",
+     "type": "choice",
+     "skill": "vocabulary",
+     "can_do": "cd_a1_u4_prices",
+     "prompt_ar": "ما معنى الكلمة؟",
+     "stimulus_es": "barato",
+     "choices": [
+      "رخيص",
+      "غالٍ",
+      "لذيذ"
+     ],
+     "answer": 0,
+     "choices_es": false
+    },
+    {
+     "id": "chk_a1_u4.q7",
+     "type": "type",
+     "skill": "writing",
+     "can_do": "cd_a1_u4_prices",
+     "prompt_ar": "اكتب بالإسبانية",
+     "stimulus_ar": "نقداً",
+     "accepted": [
+      "en efectivo"
+     ]
+    },
+    {
+     "id": "chk_a1_u4.q8",
+     "type": "choice",
+     "skill": "grammar",
+     "can_do": "cd_a1_u4_needs",
+     "prompt_ar": "تحتاج إيصالاً رسمياً للمحاسبة. ماذا تقول؟",
+     "choices": [
+      "Necesito una factura.",
+      "Necesito la cuenta.",
+      "Necesito una caja."
+     ],
+     "answer": 0,
+     "explain_ar": "للمحاسبة: la factura. أما la cuenta فحساب المطعم."
+    },
+    {
+     "id": "chk_a1_u4.q9",
+     "type": "choice",
+     "skill": "reading",
+     "can_do": "cd_a1_u4_needs",
+     "prompt_ar": "لكم شخصاً الطلبية؟",
+     "stimulus_es": "Necesito café y agua para quince personas. La reunión es a las diez.",
+     "choices": [
+      "15",
+      "10",
+      "50"
+     ],
+     "answer": 0,
+     "choices_es": false
+    },
+    {
+     "id": "chk_a1_u4.q10",
+     "type": "choice",
+     "skill": "listening",
+     "can_do": "cd_a1_u4_needs",
+     "prompt_ar": "استمع إلى جملة من حوار الطلبية: كم السعر، وماذا يسأل المورّد؟",
+     "dialogue_turn": "dlg_a1_pedido.t4",
+     "choices": [
+      "خمسون يورو، وهل تحتاج فاتورة",
+      "خمسة عشر يورو، ولكم شخصاً",
+      "مئة يورو، وهل الطلب عاجل"
+     ],
+     "answer": 0,
+     "choices_es": false
+    }
+   ],
+   "source": "original-v1"
+  },
+  {
+   "id": "chk_a1_u5",
+   "version": 1,
+   "kind": "unit",
+   "level": "a1",
+   "unit": "a1_u5",
+   "title_ar": "نقطة تحقق: المدينة والسفر",
+   "intro_ar": "نقطة تحقق قصيرة. لا تلميحات ولا إظهار للإجابات قبل النهاية، ولا إعادة للأسئلة. النتيجة دليل على ما تستطيعه الآن، وليست شهادة مستوى.",
+   "can_do": [
+    {
+     "id": "cd_a1_u5_where",
+     "ar": "أسأل عن مكان شيء وأفهم الاتجاهات البسيطة",
+     "lessons": [
+      "a1_u5_l1",
+      "a1_u5_l2"
+     ]
+    },
+    {
+     "id": "cd_a1_u5_transport",
+     "ar": "أقول كيف أذهب إلى مكان وأشتري تذكرة",
+     "lessons": [
+      "a1_u5_l3"
+     ]
+    },
+    {
+     "id": "cd_a1_u5_hotel",
+     "ar": "أسجّل الدخول في فندق وأسأل عن الخدمات",
+     "lessons": [
+      "a1_u5_l4"
+     ]
+    }
+   ],
+   "questions": [
+    {
+     "id": "chk_a1_u5.q1",
+     "type": "choice",
+     "skill": "grammar",
+     "can_do": "cd_a1_u5_where",
+     "prompt_ar": "أي جملة صحيحة لقول «البنك قريب»؟",
+     "choices": [
+      "El banco está cerca.",
+      "El banco es cerca.",
+      "El banco esta cerca."
+     ],
+     "answer": 0,
+     "explain_ar": "للمكان estar، وتُكتب está بعلامة نبر."
+    },
+    {
+     "id": "chk_a1_u5.q2",
+     "type": "choice",
+     "skill": "listening",
+     "can_do": "cd_a1_u5_where",
+     "prompt_ar": "استمع: أين المحطة؟",
+     "audio_es": "La estación está a la izquierda.",
+     "choices": [
+      "على اليسار",
+      "على اليمين",
+      "إلى الأمام"
+     ],
+     "answer": 0,
+     "choices_es": false
+    },
+    {
+     "id": "chk_a1_u5.q3",
+     "type": "choice",
+     "skill": "listening",
+     "can_do": "cd_a1_u5_where",
+     "prompt_ar": "استمع إلى جملة من حوار «أين المكتب؟»: أين مكتب تكنوسور؟",
+     "dialogue_turn": "dlg_a1_direccion.t4",
+     "choices": [
+      "مقابل البنك بجانب المحطة",
+      "بجانب البنك مقابل المحطة",
+      "داخل المحطة"
+     ],
+     "answer": 0,
+     "choices_es": false
+    },
+    {
+     "id": "chk_a1_u5.q4",
+     "type": "choice",
+     "skill": "grammar",
+     "can_do": "cd_a1_u5_where",
+     "prompt_ar": "اختر الكلمة المناسبة للفراغ",
+     "stimulus_es": "El hotel está al lado ___ banco.",
+     "choices": [
+      "del",
+      "de el",
+      "al"
+     ],
+     "answer": 0,
+     "explain_ar": "de + el تُدمج: del."
+    },
+    {
+     "id": "chk_a1_u5.q5",
+     "type": "choice",
+     "skill": "grammar",
+     "can_do": "cd_a1_u5_transport",
+     "prompt_ar": "اختر الكلمة المناسبة للفراغ",
+     "stimulus_es": "Yo ___ a la oficina en metro.",
+     "choices": [
+      "voy",
+      "va",
+      "estoy"
+     ],
+     "answer": 0,
+     "explain_ar": "ir شاذّ: مع yo نقول voy."
+    },
+    {
+     "id": "chk_a1_u5.q6",
+     "type": "type",
+     "skill": "writing",
+     "can_do": "cd_a1_u5_transport",
+     "prompt_ar": "اكتب بالإسبانية",
+     "stimulus_ar": "القطار",
+     "accepted": [
+      "el tren",
+      "tren"
+     ]
+    },
+    {
+     "id": "chk_a1_u5.q7",
+     "type": "choice",
+     "skill": "reading",
+     "can_do": "cd_a1_u5_transport",
+     "prompt_ar": "كيف تذهب آنا إلى العمل؟",
+     "stimulus_es": "Ana va al trabajo en autobús. Los viernes va a pie.",
+     "choices": [
+      "بالحافلة، وأيام الجمعة سيراً",
+      "بالمترو",
+      "بالتاكسي دائماً"
+     ],
+     "answer": 0,
+     "choices_es": false
+    },
+    {
+     "id": "chk_a1_u5.q8",
+     "type": "choice",
+     "skill": "vocabulary",
+     "can_do": "cd_a1_u5_hotel",
+     "prompt_ar": "ما معنى الكلمة؟",
+     "stimulus_es": "la llave",
+     "choices": [
+      "المفتاح",
+      "الغرفة",
+      "الحجز"
+     ],
+     "answer": 0,
+     "choices_es": false
+    },
+    {
+     "id": "chk_a1_u5.q9",
+     "type": "type",
+     "skill": "writing",
+     "can_do": "cd_a1_u5_hotel",
+     "prompt_ar": "اكتب بالإسبانية",
+     "stimulus_ar": "جواز السفر",
+     "accepted": [
+      "el pasaporte",
+      "pasaporte"
+     ]
+    },
+    {
+     "id": "chk_a1_u5.q10",
+     "type": "choice",
+     "skill": "listening",
+     "can_do": "cd_a1_u5_hotel",
+     "prompt_ar": "استمع إلى جملة من حوار الفندق: متى الفطور؟",
+     "dialogue_turn": "dlg_a1_hotel.t4",
+     "choices": [
+      "في السابعة",
+      "في الثامنة",
+      "في السادسة"
+     ],
+     "answer": 0,
+     "choices_es": false
+    }
+   ],
+   "source": "original-v1"
   }
  ]
 }

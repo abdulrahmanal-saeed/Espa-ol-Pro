@@ -1,0 +1,1328 @@
+{
+ "unit": "a1_u4",
+ "grammar": [
+  {
+   "id": "g_querer",
+   "title_ar": "الفعل querer (يريد)",
+   "body_ar": "querer فعل شاذّ: يتغيّر e إلى ie في جذره:\nyo quiero · tú quieres · él/ella/usted quiere\n\nللطلب المهذّب في المقهى أو المطعم: Quiero un café, por favor.\nوأكثر تهذيباً: Quisiera un café (أودّ…) — للاستعمال الرسمي.\nبعده اسم (Quiero agua) أو فعل بالمصدر (Quiero pagar).",
+   "examples": [
+    {
+     "es": "Quiero un té, por favor.",
+     "ar": "أريد شاياً من فضلك."
+    },
+    {
+     "es": "¿Quieres agua?",
+     "ar": "هل تريد ماءً؟"
+    },
+    {
+     "es": "¿Qué quiere usted?",
+     "ar": "ماذا تريد حضرتك؟"
+    }
+   ]
+  },
+  {
+   "id": "g_articles_food",
+   "title_ar": "un / una ومقادير الطعام",
+   "body_ar": "un مع المذكر وuna مع المؤنث: un café، una ensalada.\nللمشروبات والأطعمة غير المعدودة غالباً بلا أداة: Quiero agua. ¿Tienes leche?\n\nانتبه: el agua مؤنثة رغم el (لأنها تبدأ بـ a مشدّدة): el agua fría.",
+   "examples": [
+    {
+     "es": "Un café y una botella de agua.",
+     "ar": "قهوة وزجاجة ماء."
+    },
+    {
+     "es": "No quiero carne.",
+     "ar": "لا أريد لحماً."
+    }
+   ]
+  },
+  {
+   "id": "g_prices",
+   "title_ar": "الأسعار والأعداد الكبيرة",
+   "body_ar": "treinta، cuarenta، cincuenta (50)، cien (100).\nبين العشرات والآحاد نضع y: cincuenta y cinco (55). ولا نضعها بعد المئة: ciento cinco (105).\n\nللسؤال: ¿Cuánto cuesta? (لشيء واحد) / ¿Cuánto es? (للمجموع عند الدفع).\nالجواب: Cuesta diez euros. / Son veinte euros.",
+   "examples": [
+    {
+     "es": "¿Cuánto cuesta el menú? — Doce euros.",
+     "ar": "كم سعر الوجبة؟ — اثنا عشر يورو."
+    },
+    {
+     "es": "Son cincuenta euros.",
+     "ar": "المجموع خمسون يورو."
+    }
+   ]
+  },
+  {
+   "id": "g_necesitar",
+   "title_ar": "necesito + اسم أو فعل",
+   "body_ar": "necesitar فعل منتظم من نوع ‎-ar: necesito، necesitas، necesita.\nNecesito una factura. — أحتاج فاتورة.\nNecesito pagar. — أحتاج أن أدفع.\n\nمفيد جداً في العمل: يعبّر عن الحاجة دون أن يكون أمراً.",
+   "examples": [
+    {
+     "es": "Necesitamos agua para la reunión.",
+     "ar": "نحتاج ماءً للاجتماع."
+    },
+    {
+     "es": "¿Necesita una factura?",
+     "ar": "هل تحتاج حضرتك فاتورة؟"
+    }
+   ]
+  }
+ ],
+ "lessons": [
+  {
+   "id": "a1_u4_l1",
+   "title_ar": "في المقهى",
+   "title_es": "En la cafetería",
+   "objectives_ar": [
+    "طلب مشروب بأدب",
+    "تصريف querer في المفرد",
+    "الإجابة عن ¿Algo más?"
+   ],
+   "prerequisites": [
+    "a1_u3_l4"
+   ],
+   "minutes": 15,
+   "work_relevance_ar": "القهوة قبل الاجتماع أو بعده لحظة تواصل مع العميل.",
+   "source": "original-v1",
+   "grammar": [
+    "g_querer",
+    "g_articles_food"
+   ],
+   "items": [
+    {
+     "id": "quiero",
+     "es": "quiero",
+     "ar": "أريد",
+     "en": "I want",
+     "pos": "فعل",
+     "examples": [
+      {
+       "es": "Quiero un café, por favor.",
+       "ar": "أريد قهوة من فضلك."
+      }
+     ],
+     "connections": [
+      {
+       "type": "grammar",
+       "ar": "تغيّر الجذر e ← ie: querer ← quiero."
+      }
+     ]
+    },
+    {
+     "id": "quieres",
+     "es": "quieres",
+     "ar": "تريد (أنت)",
+     "en": "you want",
+     "pos": "فعل",
+     "examples": [
+      {
+       "es": "¿Quieres un té?",
+       "ar": "هل تريد شاياً؟"
+      }
+     ]
+    },
+    {
+     "id": "quiere",
+     "es": "quiere",
+     "ar": "يريد / تريد / تريد حضرتك",
+     "en": "he/she wants, you (formal) want",
+     "pos": "فعل",
+     "examples": [
+      {
+       "es": "¿Qué quiere usted?",
+       "ar": "ماذا تريد حضرتك؟"
+      }
+     ]
+    },
+    {
+     "id": "cafe",
+     "es": "el café",
+     "ar": "القهوة / المقهى",
+     "en": "coffee",
+     "pos": "اسم",
+     "examples": [
+      {
+       "es": "Un café con leche, por favor.",
+       "ar": "قهوة بالحليب من فضلك."
+      }
+     ],
+     "connections": [
+      {
+       "type": "arabic_origin",
+       "ar": "من «قهوة» العربية عبر التركية والإيطالية."
+      }
+     ]
+    },
+    {
+     "id": "agua",
+     "es": "el agua",
+     "ar": "الماء",
+     "en": "water",
+     "pos": "اسم",
+     "examples": [
+      {
+       "es": "Quiero agua, por favor.",
+       "ar": "أريد ماءً من فضلك."
+      }
+     ],
+     "note_ar": "مؤنثة رغم el: el agua fría.",
+     "connections": [
+      {
+       "type": "grammar",
+       "ar": "نقول el agua لا la agua، لأن الكلمة تبدأ بـ a مشدّدة، لكنها تبقى مؤنثة."
+      }
+     ]
+    },
+    {
+     "id": "te_bebida",
+     "es": "el té",
+     "ar": "الشاي",
+     "en": "tea",
+     "pos": "اسم",
+     "examples": [
+      {
+       "es": "Un té, por favor.",
+       "ar": "شاي من فضلك."
+      }
+     ],
+     "connections": [
+      {
+       "type": "grammar",
+       "ar": "té (الشاي) بعلامة نبر، وte بلا علامة ضمير (لك / إياك)."
+      }
+     ]
+    },
+    {
+     "id": "leche",
+     "es": "la leche",
+     "ar": "الحليب",
+     "en": "milk",
+     "pos": "اسم",
+     "examples": [
+      {
+       "es": "Café con leche, por favor.",
+       "ar": "قهوة بالحليب من فضلك."
+      }
+     ]
+    },
+    {
+     "id": "algo_mas",
+     "es": "¿Algo más?",
+     "ar": "شيء آخر؟",
+     "en": "Anything else?",
+     "pos": "سؤال",
+     "examples": [
+      {
+       "es": "¿Algo más? — No, gracias.",
+       "ar": "شيء آخر؟ — لا، شكراً."
+      }
+     ]
+    },
+    {
+     "id": "para_mi",
+     "es": "para mí",
+     "ar": "لي / بالنسبة لي",
+     "en": "for me",
+     "pos": "تعبير",
+     "examples": [
+      {
+       "es": "Para mí, un té.",
+       "ar": "لي أنا: شاي."
+      }
+     ],
+     "connections": [
+      {
+       "type": "grammar",
+       "ar": "mí هنا بعلامة لأنها ضمير بعد حرف جر، بخلاف mi (ملكي)."
+      }
+     ]
+    }
+   ],
+   "activities": [
+    {
+     "type": "teach",
+     "item": "quiero"
+    },
+    {
+     "type": "teach",
+     "item": "quieres"
+    },
+    {
+     "type": "teach",
+     "item": "quiere"
+    },
+    {
+     "type": "mcq_meaning",
+     "item": "quiero"
+    },
+    {
+     "type": "listen_pick_es",
+     "item": "quieres"
+    },
+    {
+     "type": "listen_choose",
+     "item": "quiere"
+    },
+    {
+     "type": "note",
+     "title_ar": "querer: quiero, quieres, quiere",
+     "body_ar": "yo quiero — أريد\ntú quieres — تريد\nél / ella / usted quiere — يريد / تريد حضرتك\n\nفي الطلب أضف دائماً por favor.",
+     "examples": [
+      {
+       "es": "Quiero un café, por favor.",
+       "ar": "أريد قهوة من فضلك."
+      }
+     ]
+    },
+    {
+     "type": "fill",
+     "es": "¿Usted ___ agua?",
+     "answer": "quiere",
+     "ar": "هل تريد حضرتك ماءً؟",
+     "options": [
+      "quiero",
+      "quieres",
+      "quiere"
+     ],
+     "explain_ar": "usted يأخذ صيغة الغائب: quiere."
+    },
+    {
+     "type": "teach",
+     "item": "cafe"
+    },
+    {
+     "type": "teach",
+     "item": "agua"
+    },
+    {
+     "type": "teach",
+     "item": "te_bebida"
+    },
+    {
+     "type": "teach",
+     "item": "leche"
+    },
+    {
+     "type": "mcq_meaning",
+     "item": "cafe"
+    },
+    {
+     "type": "listen_choose",
+     "item": "agua"
+    },
+    {
+     "type": "listen_pick_es",
+     "item": "te_bebida"
+    },
+    {
+     "type": "mcq_reverse",
+     "item": "leche"
+    },
+    {
+     "type": "choice",
+     "prompt_ar": "أي جملة تعني «أريد شاياً»؟",
+     "choices": [
+      "Quiero un té.",
+      "Quiero un te.",
+      "Te quiero."
+     ],
+     "answer": 0,
+     "skill": "grammar",
+     "choices_es": true,
+     "explain_ar": "té (الشاي) بعلامة. أما «Te quiero» فمعناها «أحبك»!"
+    },
+    {
+     "type": "teach",
+     "item": "algo_mas"
+    },
+    {
+     "type": "teach",
+     "item": "para_mi"
+    },
+    {
+     "type": "mcq_meaning",
+     "item": "algo_mas"
+    },
+    {
+     "type": "listen_choose",
+     "item": "para_mi"
+    },
+    {
+     "type": "match",
+     "items": [
+      "cafe",
+      "agua",
+      "te_bebida",
+      "leche"
+     ]
+    },
+    {
+     "type": "type_es",
+     "item": "leche"
+    },
+    {
+     "type": "type_es",
+     "item": "quiero"
+    },
+    {
+     "type": "order",
+     "es": "Para mí, un café con leche, por favor.",
+     "ar": "لي قهوة بالحليب من فضلك."
+    },
+    {
+     "type": "dictation",
+     "es": "Quiero agua, por favor.",
+     "ar": "أريد ماءً من فضلك."
+    },
+    {
+     "type": "choice",
+     "prompt_ar": "ماذا يطلب العميل؟",
+     "choices": [
+      "قهوة بالحليب وماء",
+      "شاي وماء",
+      "قهوة فقط"
+     ],
+     "answer": 0,
+     "skill": "reading",
+     "choices_es": false,
+     "stimulus_es": "— Buenos días. ¿Qué quiere usted?\n— Un café con leche, por favor.\n— ¿Algo más?\n— Sí, agua, por favor."
+    },
+    {
+     "type": "respond",
+     "prompt_ar": "النادل يسألك: «¿Qué quiere usted?». اطلب شاياً بأدب.",
+     "accepted": [
+      "Un té, por favor",
+      "Quiero un té, por favor",
+      "Para mí, un té, por favor",
+      "Un té por favor",
+      "Quiero un té"
+     ],
+     "audio_es": "¿Qué quiere usted?"
+    },
+    {
+     "type": "speak",
+     "es": "Para mí, un café con leche, por favor. Y un agua.",
+     "ar": "لي قهوة بالحليب من فضلك. وماء."
+    }
+   ]
+  },
+  {
+   "id": "a1_u4_l2",
+   "title_ar": "في المطعم",
+   "title_es": "En el restaurante",
+   "objectives_ar": [
+    "طلب وجبة من قائمة",
+    "تسمية أطعمة أساسية",
+    "طلب الحساب"
+   ],
+   "prerequisites": [
+    "a1_u4_l1"
+   ],
+   "minutes": 15,
+   "work_relevance_ar": "غداء العمل مع عميل جزء من العلاقة المهنية في الثقافة الإسبانية.",
+   "source": "original-v1",
+   "grammar": [
+    "g_querer",
+    "g_articles_food"
+   ],
+   "items": [
+    {
+     "id": "menu",
+     "es": "el menú",
+     "ar": "قائمة الطعام / وجبة اليوم",
+     "en": "menu",
+     "pos": "اسم",
+     "examples": [
+      {
+       "es": "El menú, por favor.",
+       "ar": "القائمة من فضلك."
+      }
+     ],
+     "note_ar": "في إسبانيا menú del día وجبة غداء بسعر ثابت. وقد تسمع la carta للقائمة."
+    },
+    {
+     "id": "pollo",
+     "es": "el pollo",
+     "ar": "الدجاج",
+     "en": "chicken",
+     "pos": "اسم",
+     "examples": [
+      {
+       "es": "Para mí, el pollo.",
+       "ar": "لي الدجاج."
+      }
+     ]
+    },
+    {
+     "id": "pescado",
+     "es": "el pescado",
+     "ar": "السمك (طعاماً)",
+     "en": "fish (food)",
+     "pos": "اسم",
+     "examples": [
+      {
+       "es": "¿El pescado es fresco?",
+       "ar": "هل السمك طازج؟"
+      }
+     ],
+     "connections": [
+      {
+       "type": "usage",
+       "ar": "pescado للسمك المطبوخ؛ والسمك الحي pez."
+      }
+     ]
+    },
+    {
+     "id": "carne",
+     "es": "la carne",
+     "ar": "اللحم",
+     "en": "meat",
+     "pos": "اسم",
+     "examples": [
+      {
+       "es": "No como carne.",
+       "ar": "لا آكل اللحم."
+      }
+     ]
+    },
+    {
+     "id": "ensalada",
+     "es": "la ensalada",
+     "ar": "السلطة",
+     "en": "salad",
+     "pos": "اسم",
+     "examples": [
+      {
+       "es": "Una ensalada, por favor.",
+       "ar": "سلطة من فضلك."
+      }
+     ],
+     "connections": [
+      {
+       "type": "cognate",
+       "ar": "قريبة من الإنجليزية salad."
+      }
+     ]
+    },
+    {
+     "id": "para_beber",
+     "es": "¿Y para beber?",
+     "ar": "وللشرب؟",
+     "en": "And to drink?",
+     "pos": "سؤال",
+     "examples": [
+      {
+       "es": "¿Y para beber? — Agua, por favor.",
+       "ar": "وللشرب؟ — ماء من فضلك."
+      }
+     ]
+    },
+    {
+     "id": "cuenta",
+     "es": "la cuenta",
+     "ar": "الحساب (الفاتورة في المطعم)",
+     "en": "the bill",
+     "pos": "اسم",
+     "examples": [
+      {
+       "es": "La cuenta, por favor.",
+       "ar": "الحساب من فضلك."
+      }
+     ]
+    },
+    {
+     "id": "rico",
+     "es": "rico",
+     "ar": "لذيذ",
+     "en": "delicious",
+     "pos": "صفة",
+     "examples": [
+      {
+       "es": "¡Está muy rico!",
+       "ar": "لذيذ جداً!"
+      }
+     ],
+     "note_ar": "للمؤنث: rica. ويعني أيضاً «غني».",
+     "alt": [
+      "rica"
+     ]
+    }
+   ],
+   "activities": [
+    {
+     "type": "teach",
+     "item": "menu"
+    },
+    {
+     "type": "teach",
+     "item": "pollo"
+    },
+    {
+     "type": "teach",
+     "item": "pescado"
+    },
+    {
+     "type": "teach",
+     "item": "carne"
+    },
+    {
+     "type": "mcq_meaning",
+     "item": "pollo"
+    },
+    {
+     "type": "listen_pick_es",
+     "item": "pescado"
+    },
+    {
+     "type": "mcq_reverse",
+     "item": "carne"
+    },
+    {
+     "type": "teach",
+     "item": "ensalada"
+    },
+    {
+     "type": "listen_choose",
+     "item": "ensalada"
+    },
+    {
+     "type": "note",
+     "title_ar": "طلب الطعام",
+     "body_ar": "للطلب: Para mí, el pollo. / Quiero la ensalada.\nالنادل يسأل: ¿Y para beber?\nوفي النهاية: La cuenta, por favor.\n\nفي إسبانيا يُطلب الحساب عادةً؛ لا يُحضره النادل دون طلب.",
+     "examples": [
+      {
+       "es": "Para mí, el pescado y una ensalada.",
+       "ar": "لي السمك وسلطة."
+      }
+     ]
+    },
+    {
+     "type": "teach",
+     "item": "para_beber"
+    },
+    {
+     "type": "teach",
+     "item": "cuenta"
+    },
+    {
+     "type": "teach",
+     "item": "rico"
+    },
+    {
+     "type": "mcq_meaning",
+     "item": "para_beber"
+    },
+    {
+     "type": "listen_choose",
+     "item": "cuenta"
+    },
+    {
+     "type": "mcq_meaning",
+     "item": "rico"
+    },
+    {
+     "type": "choice",
+     "prompt_ar": "انتهى الغداء مع العميل. ماذا تقول للنادل؟",
+     "choices": [
+      "La cuenta, por favor.",
+      "El menú, por favor.",
+      "¿Algo más?"
+     ],
+     "answer": 0,
+     "skill": "grammar",
+     "choices_es": true,
+     "explain_ar": "لطلب الحساب: La cuenta, por favor."
+    },
+    {
+     "type": "fill",
+     "es": "Para ___, el pollo.",
+     "answer": "mí",
+     "ar": "لي الدجاج.",
+     "options": [
+      "mí",
+      "mi",
+      "me"
+     ],
+     "explain_ar": "بعد para نستعمل mí بعلامة نبر."
+    },
+    {
+     "type": "match",
+     "items": [
+      "pollo",
+      "pescado",
+      "carne",
+      "ensalada"
+     ]
+    },
+    {
+     "type": "type_es",
+     "item": "cuenta"
+    },
+    {
+     "type": "type_es",
+     "item": "menu"
+    },
+    {
+     "type": "order",
+     "es": "Para mí, el pescado y una ensalada.",
+     "ar": "لي السمك وسلطة."
+    },
+    {
+     "type": "dictation",
+     "es": "La cuenta, por favor.",
+     "ar": "الحساب من فضلك."
+    },
+    {
+     "type": "choice",
+     "prompt_ar": "ماذا تطلب السيدة للشرب؟",
+     "choices": [
+      "ماء",
+      "قهوة",
+      "شاي"
+     ],
+     "answer": 0,
+     "skill": "reading",
+     "choices_es": false,
+     "stimulus_es": "— ¿Qué quiere usted?\n— Para mí, el pollo con ensalada.\n— ¿Y para beber?\n— Agua, por favor."
+    },
+    {
+     "type": "respond",
+     "prompt_ar": "النادل يسألك: «¿Y para beber?». اطلب ماءً.",
+     "accepted": [
+      "Agua, por favor",
+      "Agua",
+      "Quiero agua, por favor",
+      "Para mí, agua",
+      "Un agua, por favor"
+     ],
+     "audio_es": "¿Y para beber?"
+    },
+    {
+     "type": "speak",
+     "es": "Para mí, el pescado y una ensalada. Y la cuenta, por favor.",
+     "ar": "لي السمك وسلطة. والحساب من فضلك."
+    }
+   ]
+  },
+  {
+   "id": "a1_u4_l3",
+   "title_ar": "كم سعره؟",
+   "title_es": "¿Cuánto cuesta?",
+   "objectives_ar": [
+    "السؤال عن السعر وفهم الجواب",
+    "الأعداد حتى المئة",
+    "الدفع نقداً أو بالبطاقة"
+   ],
+   "prerequisites": [
+    "a1_u4_l2"
+   ],
+   "minutes": 15,
+   "work_relevance_ar": "فهم الأسعار والدفع أساس السفر والمشتريات وإيصالات العمل.",
+   "source": "original-v1",
+   "grammar": [
+    "g_prices"
+   ],
+   "items": [
+    {
+     "id": "cuanto_cuesta",
+     "es": "¿Cuánto cuesta?",
+     "ar": "كم سعره؟",
+     "en": "How much does it cost?",
+     "pos": "سؤال",
+     "examples": [
+      {
+       "es": "¿Cuánto cuesta el menú?",
+       "ar": "كم سعر الوجبة؟"
+      }
+     ],
+     "note_ar": "للجمع: ¿Cuánto cuestan?"
+    },
+    {
+     "id": "cuanto_es",
+     "es": "¿Cuánto es?",
+     "ar": "كم الحساب / المجموع؟",
+     "en": "How much is it (in total)?",
+     "pos": "سؤال",
+     "examples": [
+      {
+       "es": "¿Cuánto es? — Son quince euros.",
+       "ar": "كم المجموع؟ — خمسة عشر يورو."
+      }
+     ]
+    },
+    {
+     "id": "euros",
+     "es": "euros",
+     "ar": "يورو",
+     "en": "euros",
+     "pos": "اسم",
+     "examples": [
+      {
+       "es": "Cuesta diez euros.",
+       "ar": "سعره عشرة يورو."
+      }
+     ],
+     "note_ar": "المفرد: euro."
+    },
+    {
+     "id": "cincuenta",
+     "es": "cincuenta",
+     "ar": "خمسون",
+     "en": "fifty",
+     "pos": "عدد",
+     "examples": [
+      {
+       "es": "Son cincuenta euros.",
+       "ar": "المجموع خمسون يورو."
+      }
+     ]
+    },
+    {
+     "id": "cien",
+     "es": "cien",
+     "ar": "مئة",
+     "en": "one hundred",
+     "pos": "عدد",
+     "examples": [
+      {
+       "es": "Cuesta cien euros.",
+       "ar": "سعره مئة يورو."
+      }
+     ],
+     "note_ar": "مع ما بعدها: ciento uno (101)."
+    },
+    {
+     "id": "caro",
+     "es": "caro",
+     "ar": "غالٍ",
+     "en": "expensive",
+     "pos": "صفة",
+     "examples": [
+      {
+       "es": "Es un poco caro.",
+       "ar": "إنه غالٍ قليلاً."
+      }
+     ],
+     "note_ar": "للمؤنث: cara.",
+     "alt": [
+      "cara"
+     ]
+    },
+    {
+     "id": "barato",
+     "es": "barato",
+     "ar": "رخيص",
+     "en": "cheap",
+     "pos": "صفة",
+     "examples": [
+      {
+       "es": "El menú del día es barato.",
+       "ar": "وجبة اليوم رخيصة."
+      }
+     ],
+     "note_ar": "للمؤنث: barata.",
+     "alt": [
+      "barata"
+     ]
+    },
+    {
+     "id": "en_efectivo",
+     "es": "en efectivo",
+     "ar": "نقداً",
+     "en": "in cash",
+     "pos": "تعبير",
+     "examples": [
+      {
+       "es": "¿Paga en efectivo o con tarjeta?",
+       "ar": "تدفع حضرتك نقداً أم بالبطاقة؟"
+      }
+     ],
+     "work": true
+    },
+    {
+     "id": "con_tarjeta",
+     "es": "¿Puedo pagar con tarjeta?",
+     "ar": "هل أستطيع الدفع بالبطاقة؟",
+     "en": "Can I pay by card?",
+     "pos": "سؤال",
+     "examples": [
+      {
+       "es": "¿Puedo pagar con tarjeta? — Sí, claro.",
+       "ar": "هل أستطيع الدفع بالبطاقة؟ — نعم بالطبع."
+      }
+     ],
+     "note_ar": "puedo من poder (أستطيع): احفظها الآن عبارةً جاهزة.",
+     "work": true
+    }
+   ],
+   "activities": [
+    {
+     "type": "teach",
+     "item": "cuanto_cuesta"
+    },
+    {
+     "type": "teach",
+     "item": "cuanto_es"
+    },
+    {
+     "type": "teach",
+     "item": "euros"
+    },
+    {
+     "type": "mcq_meaning",
+     "item": "cuanto_cuesta"
+    },
+    {
+     "type": "listen_pick_es",
+     "item": "cuanto_es"
+    },
+    {
+     "type": "teach",
+     "item": "cincuenta"
+    },
+    {
+     "type": "teach",
+     "item": "cien"
+    },
+    {
+     "type": "listen_choose",
+     "item": "cincuenta"
+    },
+    {
+     "type": "listen_pick_es",
+     "item": "cien"
+    },
+    {
+     "type": "note",
+     "title_ar": "cincuenta y cinco · cien · ciento cinco",
+     "body_ar": "30 treinta · 40 cuarenta · 50 cincuenta · 100 cien\nبين العشرات والآحاد y: cuarenta y dos (42).\nبعد المئة بلا y: ciento dos (102).",
+     "examples": [
+      {
+       "es": "Son cincuenta y cinco euros.",
+       "ar": "المجموع خمسة وخمسون يورو."
+      }
+     ]
+    },
+    {
+     "type": "choice",
+     "prompt_ar": "السعر 45 €. ماذا تسمع؟",
+     "choices": [
+      "cuarenta y cinco euros",
+      "cincuenta y cuatro euros",
+      "catorce euros"
+     ],
+     "answer": 0,
+     "skill": "vocabulary",
+     "choices_es": true,
+     "explain_ar": "45 = cuarenta y cinco."
+    },
+    {
+     "type": "teach",
+     "item": "caro"
+    },
+    {
+     "type": "teach",
+     "item": "barato"
+    },
+    {
+     "type": "mcq_meaning",
+     "item": "caro"
+    },
+    {
+     "type": "mcq_reverse",
+     "item": "barato"
+    },
+    {
+     "type": "teach",
+     "item": "en_efectivo"
+    },
+    {
+     "type": "teach",
+     "item": "con_tarjeta"
+    },
+    {
+     "type": "mcq_meaning",
+     "item": "en_efectivo"
+    },
+    {
+     "type": "listen_choose",
+     "item": "con_tarjeta"
+    },
+    {
+     "type": "fill",
+     "es": "El café ___ dos euros.",
+     "answer": "cuesta",
+     "ar": "سعر القهوة يوروان.",
+     "options": [
+      "cuesta",
+      "cuestan",
+      "es"
+     ],
+     "explain_ar": "لشيء واحد: cuesta."
+    },
+    {
+     "type": "match",
+     "items": [
+      "euros",
+      "caro",
+      "barato",
+      "en_efectivo"
+     ]
+    },
+    {
+     "type": "type_es",
+     "item": "caro"
+    },
+    {
+     "type": "type_es",
+     "item": "cien"
+    },
+    {
+     "type": "order",
+     "es": "¿Cuánto cuesta el menú del día?",
+     "ar": "كم سعر وجبة اليوم؟"
+    },
+    {
+     "type": "dictation",
+     "es": "Son cuarenta y cinco euros.",
+     "ar": "المجموع خمسة وأربعون يورو."
+    },
+    {
+     "type": "choice",
+     "prompt_ar": "كيف يدفع الزبون؟",
+     "choices": [
+      "بالبطاقة",
+      "نقداً",
+      "لا يدفع"
+     ],
+     "answer": 0,
+     "skill": "reading",
+     "choices_es": false,
+     "stimulus_es": "— ¿Cuánto es?\n— Son treinta y dos euros.\n— ¿Puedo pagar con tarjeta?\n— Sí, claro."
+    },
+    {
+     "type": "respond",
+     "prompt_ar": "في المطعم تريد أن تعرف المجموع لتدفع. اسأل النادل.",
+     "accepted": [
+      "¿Cuánto es?",
+      "¿Cuánto es, por favor?",
+      "La cuenta, por favor",
+      "¿Cuánto cuesta?"
+     ]
+    },
+    {
+     "type": "speak",
+     "es": "¿Cuánto es? ¿Puedo pagar con tarjeta?",
+     "ar": "كم المجموع؟ هل أستطيع الدفع بالبطاقة؟"
+    }
+   ]
+  },
+  {
+   "id": "a1_u4_l4",
+   "title_ar": "طلب للمكتب",
+   "title_es": "Un pedido para la oficina",
+   "objectives_ar": [
+    "التعبير عن الحاجة بـ necesito",
+    "طلب كمية لعدد من الأشخاص",
+    "طلب فاتورة لشركة"
+   ],
+   "prerequisites": [
+    "a1_u4_l3"
+   ],
+   "minutes": 15,
+   "work_relevance_ar": "تجهيز ضيافة اجتماع وطلب فاتورة باسم الشركة مهمة إدارية شائعة.",
+   "source": "original-v1",
+   "grammar": [
+    "g_necesitar",
+    "g_prices"
+   ],
+   "items": [
+    {
+     "id": "necesito",
+     "es": "necesito",
+     "ar": "أحتاج",
+     "en": "I need",
+     "pos": "فعل",
+     "examples": [
+      {
+       "es": "Necesito una factura, por favor.",
+       "ar": "أحتاج فاتورة من فضلك."
+      }
+     ],
+     "work": true,
+     "connections": [
+      {
+       "type": "cognate",
+       "ar": "قريبة من الإنجليزية necessary."
+      }
+     ]
+    },
+    {
+     "id": "necesita",
+     "es": "necesita",
+     "ar": "يحتاج / تحتاج حضرتك",
+     "en": "he/she needs, you (formal) need",
+     "pos": "فعل",
+     "examples": [
+      {
+       "es": "¿Necesita algo más?",
+       "ar": "هل تحتاج حضرتك شيئاً آخر؟"
+      }
+     ],
+     "work": true
+    },
+    {
+     "id": "botella",
+     "es": "la botella",
+     "ar": "الزجاجة",
+     "en": "bottle",
+     "pos": "اسم",
+     "examples": [
+      {
+       "es": "Diez botellas de agua, por favor.",
+       "ar": "عشر زجاجات ماء من فضلك."
+      }
+     ]
+    },
+    {
+     "id": "caja",
+     "es": "la caja",
+     "ar": "الصندوق / العلبة",
+     "en": "box",
+     "pos": "اسم",
+     "examples": [
+      {
+       "es": "Una caja de café para la oficina.",
+       "ar": "علبة قهوة للمكتب."
+      }
+     ],
+     "note_ar": "وفي المتجر la caja أيضاً «الصندوق / مكان الدفع»."
+    },
+    {
+     "id": "cuantas_personas",
+     "es": "¿Para cuántas personas?",
+     "ar": "لكم شخصاً؟",
+     "en": "For how many people?",
+     "pos": "سؤال",
+     "examples": [
+      {
+       "es": "¿Para cuántas personas? — Para doce.",
+       "ar": "لكم شخصاً؟ — لاثني عشر."
+      }
+     ],
+     "work": true
+    },
+    {
+     "id": "pedido",
+     "es": "el pedido",
+     "ar": "الطلبية",
+     "en": "order",
+     "pos": "اسم",
+     "examples": [
+      {
+       "es": "El pedido llega a las diez.",
+       "ar": "الطلبية تصل في العاشرة."
+      }
+     ],
+     "work": true
+    },
+    {
+     "id": "factura",
+     "es": "la factura",
+     "ar": "الفاتورة (الرسمية)",
+     "en": "invoice",
+     "pos": "اسم",
+     "examples": [
+      {
+       "es": "¿Puede hacer la factura a nombre de la empresa?",
+       "ar": "هل يمكن عمل الفاتورة باسم الشركة؟"
+      }
+     ],
+     "work": true,
+     "connections": [
+      {
+       "type": "usage",
+       "ar": "la cuenta في المطعم للحساب؛ la factura للفاتورة الرسمية للمحاسبة."
+      }
+     ]
+    },
+    {
+     "id": "urgente",
+     "es": "urgente",
+     "ar": "عاجل",
+     "en": "urgent",
+     "pos": "صفة",
+     "examples": [
+      {
+       "es": "Es urgente, por favor.",
+       "ar": "إنه عاجل من فضلك."
+      }
+     ],
+     "work": true,
+     "connections": [
+      {
+       "type": "cognate",
+       "ar": "قريبة من الإنجليزية urgent."
+      }
+     ]
+    }
+   ],
+   "activities": [
+    {
+     "type": "teach",
+     "item": "necesito"
+    },
+    {
+     "type": "teach",
+     "item": "necesita"
+    },
+    {
+     "type": "mcq_meaning",
+     "item": "necesito"
+    },
+    {
+     "type": "listen_pick_es",
+     "item": "necesita"
+    },
+    {
+     "type": "teach",
+     "item": "botella"
+    },
+    {
+     "type": "teach",
+     "item": "caja"
+    },
+    {
+     "type": "listen_choose",
+     "item": "botella"
+    },
+    {
+     "type": "mcq_meaning",
+     "item": "caja"
+    },
+    {
+     "type": "teach",
+     "item": "cuantas_personas"
+    },
+    {
+     "type": "teach",
+     "item": "pedido"
+    },
+    {
+     "type": "mcq_meaning",
+     "item": "cuantas_personas"
+    },
+    {
+     "type": "listen_choose",
+     "item": "pedido"
+    },
+    {
+     "type": "teach",
+     "item": "factura"
+    },
+    {
+     "type": "teach",
+     "item": "urgente"
+    },
+    {
+     "type": "mcq_reverse",
+     "item": "factura"
+    },
+    {
+     "type": "listen_pick_es",
+     "item": "urgente"
+    },
+    {
+     "type": "note",
+     "title_ar": "la cuenta أم la factura؟",
+     "body_ar": "la cuenta: حساب المطعم أو المقهى.\nla factura: فاتورة رسمية بالبيانات الضريبية، تحتاجها الشركة.\n\nعبارة مفيدة: Necesito una factura a nombre de la empresa.",
+     "examples": [
+      {
+       "es": "¿Me da la factura, por favor?",
+       "ar": "هل تعطيني الفاتورة من فضلك؟"
+      }
+     ]
+    },
+    {
+     "type": "choice",
+     "prompt_ar": "تحتاج إيصالاً رسمياً لقسم المحاسبة. ماذا تطلب؟",
+     "choices": [
+      "Necesito una factura.",
+      "Necesito la cuenta.",
+      "Necesito una caja."
+     ],
+     "answer": 0,
+     "skill": "grammar",
+     "choices_es": true,
+     "explain_ar": "للمحاسبة نحتاج la factura."
+    },
+    {
+     "type": "fill",
+     "es": "Yo ___ veinte botellas de agua.",
+     "answer": "necesito",
+     "ar": "أحتاج عشرين زجاجة ماء.",
+     "options": [
+      "necesito",
+      "necesita",
+      "necesitas"
+     ],
+     "explain_ar": "مع yo: necesito."
+    },
+    {
+     "type": "match",
+     "items": [
+      "botella",
+      "caja",
+      "pedido",
+      "factura"
+     ]
+    },
+    {
+     "type": "type_es",
+     "item": "urgente"
+    },
+    {
+     "type": "type_es",
+     "item": "botella"
+    },
+    {
+     "type": "order",
+     "es": "Necesito agua y café para doce personas.",
+     "ar": "أحتاج ماءً وقهوة لاثني عشر شخصاً."
+    },
+    {
+     "type": "dictation",
+     "es": "El pedido es urgente.",
+     "ar": "الطلبية عاجلة."
+    },
+    {
+     "type": "choice",
+     "prompt_ar": "لماذا يتصل عمر؟",
+     "choices": [
+      "لطلب ضيافة لاجتماع",
+      "لحجز فندق",
+      "لشكوى من فاتورة"
+     ],
+     "answer": 0,
+     "skill": "reading",
+     "choices_es": false,
+     "stimulus_es": "— Buenos días. Necesito café y agua para una reunión.\n— ¿Para cuántas personas?\n— Para diez personas. Es urgente, la reunión es a las once.\n— Perfecto. ¿Necesita factura?\n— Sí, a nombre de la empresa, por favor."
+    },
+    {
+     "type": "respond",
+     "prompt_ar": "المورّد يسألك: «¿Para cuántas personas?». أجب: لعشرة أشخاص.",
+     "accepted": [
+      "Para diez personas",
+      "Para diez",
+      "Diez personas",
+      "Son diez personas"
+     ],
+     "audio_es": "¿Para cuántas personas?"
+    },
+    {
+     "type": "speak",
+     "es": "Necesito café y agua para diez personas. Es urgente, por favor.",
+     "ar": "أحتاج قهوة وماءً لعشرة أشخاص. إنه عاجل من فضلك."
+    }
+   ]
+  }
+ ]
+}

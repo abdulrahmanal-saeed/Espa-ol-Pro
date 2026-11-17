@@ -116,6 +116,14 @@ detect it.
 | Checkpoints `chk_a1_u2`, `chk_a1_u3` | `assessment_content_test`, `a1_units_test` |
 | Not reviewed by a native Spanish teacher (`author_reviewed`) | — |
 
+## A1-U4 and A1-U5 content (PR in review)
+
+| Area | Evidence |
+|---|---|
+| 8 lessons (food and shopping; city and travel), 66 items, 8 grammar notes (querer, food articles, prices, necesitar, estar for location, directions, ir, hotel phrases); content 1.3.0 | `tool/validate_content.dart`, `a1_units_test` |
+| Every lesson completed end to end in the app | `a1_units_test` |
+| 4 dialogues, accessible right after their lessons; checkpoints `chk_a1_u4`, `chk_a1_u5` (3 questions play dialogue sentences) | `difficulty_test`, `assessment_content_test` |
+
 ## Android build and runtime
 
 - The [code commit's CI run](https://github.com/abdulrahmanal-saeed/Espa-ol-Pro/actions/runs/43900871431)
