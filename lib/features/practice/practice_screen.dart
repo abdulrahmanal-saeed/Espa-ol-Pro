@@ -120,6 +120,13 @@ class PracticeScreen extends ConsumerWidget {
             badge: due == 0 ? null : '$due',
             onTap: () => context.push('/review'),
           ),
+          tile(
+            key: const ValueKey('practice-listening-library'),
+            icon: Icons.record_voice_over_outlined,
+            title: 'مكتبة الاستماع',
+            subtitle: 'حوارات قصيرة مع نص وترجمة اختيارية وأسئلة فهم',
+            onTap: () => context.push('/listening'),
+          ),
           if (learned == 0)
             Padding(
               padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 4),

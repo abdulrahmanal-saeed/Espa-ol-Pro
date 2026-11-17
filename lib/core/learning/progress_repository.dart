@@ -222,6 +222,12 @@ class ProgressRepository {
     'type_es' => 'spelling',
     'respond' => 'communication',
     'choice' => ex.skill == 'grammar' ? 'grammar' : 'meaning',
+    'dialogue_speaker' => 'listening',
+    'dialogue_choice' => switch (ex.skill) {
+      'grammar' => 'grammar',
+      'reading' => 'meaning',
+      _ => 'listening',
+    },
     _ => 'vocabulary',
   };
 

@@ -11,6 +11,7 @@ const _sourceLabels = {
   'example': 'جملة مثال',
   'grammar': 'مرجع القواعد',
   'lesson_note': 'شرح في درس',
+  'dialogue': 'حوار استماع',
 };
 
 String _date(int ms) {

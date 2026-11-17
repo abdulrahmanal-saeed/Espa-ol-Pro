@@ -6,6 +6,11 @@ abstract class SpeechService {
   Future<bool> isAvailable();
   Future<void> configure({required String accent, required double rate});
   Future<void> speak(String spanish, {bool slow = false});
+
+  /// Speaks [spanish] and completes when the utterance has FINISHED (or was
+  /// stopped). [rateFactor] scales the configured speech rate. Used to play
+  /// dialogues one turn at a time.
+  Future<void> speakAndWait(String spanish, {double rateFactor = 1.0});
   Future<void> stop();
 }
 
@@ -16,6 +21,7 @@ class DeviceTtsSpeech implements SpeechService {
   String _accent = 'es-MX';
   double _rate = 0.45;
   bool? _available;
+  bool _awaitConfigured = false;
 
   @override
   Future<void> configure({required String accent, required double rate}) async {
@@ -60,6 +66,23 @@ class DeviceTtsSpeech implements SpeechService {
   }
 
   @override
+  Future<void> speakAndWait(String spanish, {double rateFactor = 1.0}) async {
+    if (!await isAvailable()) return;
+    try {
+      if (!_awaitConfigured) {
+        // Makes `speak` complete when the utterance ends (or is stopped).
+        await _tts.awaitSpeakCompletion(true);
+        _awaitConfigured = true;
+      }
+      await _tts.stop();
+      await _tts.setSpeechRate((_rate * rateFactor).clamp(0.1, 1.0));
+      await _tts.speak(spanish);
+    } catch (_) {
+      _available = false;
+    }
+  }
+
+  @override
   Future<void> stop() async {
     try {
       await _tts.stop();
@@ -84,6 +107,11 @@ class SilentSpeech implements SpeechService {
 
   @override
   Future<void> speak(String spanish, {bool slow = false}) async {
+    spoken.add(spanish);
+  }
+
+  @override
+  Future<void> speakAndWait(String spanish, {double rateFactor = 1.0}) async {
     spoken.add(spanish);
   }
 
