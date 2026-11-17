@@ -78,6 +78,15 @@ const _endings = {
   'ais',
   'eis',
   'is',
+  // Pretérito indefinido (compared without accents: é → e, ió → io).
+  'aste',
+  'aron',
+  'i',
+  'io',
+  'iste',
+  'ieron',
+  'asteis',
+  'isteis',
 };
 
 bool _isInflection(String a, String b) {
@@ -128,7 +137,9 @@ class AnswerResult {
     AnswerIssue.none => '',
     AnswerIssue.accents => 'المعنى صحيح، لكن انتبه لعلامات النبر: $bestMatch',
     AnswerIssue.accentMeaning =>
-      'علامة النبر هنا تغيّر المعنى: «$expectedWord» ليست «$typedWord».',
+      isFinalStressPair(typedWord ?? '', expectedWord ?? '')
+          ? 'علامة النبر في آخر الفعل تغيّر الزمن أو الشخص: «$expectedWord» ليست «$typedWord».'
+          : 'علامة النبر هنا تغيّر المعنى: «$expectedWord» ليست «$typedWord».',
     AnswerIssue.enye => 'ñ حرف مستقل وليس n بعلامة: «$expectedWord».',
     AnswerIssue.wordOrder => 'الكلمات صحيحة لكن ترتيبها مختلف.',
     AnswerIssue.grammarForm =>
@@ -202,6 +213,21 @@ AnswerResult evaluateAnswer(String input, List<String> accepted) {
   return _diagnose(typed, best);
 }
 
+/// Whether [a] and [b] differ only by a written accent on a final é / ó, in
+/// a word of five letters or more: habló / hablo, trabajé / trabaje,
+/// envió / envio. In verbs that accent marks the pretérito indefinido (or
+/// another person), so leaving it out is a different form, not a slip.
+/// Short words keep the lenient rule (café / cafe).
+bool isFinalStressPair(String a, String b) {
+  if (a.length != b.length || a.length < 5 || a == b) return false;
+  const plain = {'é': 'e', 'ó': 'o'};
+  final head = a.substring(0, a.length - 1);
+  if (head != b.substring(0, b.length - 1)) return false;
+  final x = a[a.length - 1];
+  final y = b[b.length - 1];
+  return plain[x] == y || plain[y] == x;
+}
+
 /// The first word pair whose only difference is a meaning-bearing accent.
 (String, String)? _meaningAccentDifference(String typed, String expected) {
   final t = typed.split(' ');
@@ -209,6 +235,7 @@ AnswerResult evaluateAnswer(String input, List<String> accepted) {
   if (t.length != e.length) return null;
   for (var i = 0; i < t.length; i++) {
     if (t[i] == e[i]) continue;
+    if (isFinalStressPair(t[i], e[i])) return (t[i], e[i]);
     final bare = stripAccents(e[i]);
     final accented = meaningAccentPairs[bare];
     if (accented == null) continue;
