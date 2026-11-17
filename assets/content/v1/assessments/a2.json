@@ -1,0 +1,214 @@
+{
+ "assessments": [
+  {
+   "id": "chk_a2_u1",
+   "version": 1,
+   "kind": "unit",
+   "level": "a2",
+   "unit": "a2_u1",
+   "title_ar": "نقطة تحقق: الخدمات والتعاملات اليومية",
+   "intro_ar": "نقطة تحقق قصيرة. لا تلميحات ولا إظهار للإجابات قبل النهاية، ولا إعادة للأسئلة. النتيجة دليل على ما تستطيعه الآن، وليست شهادة مستوى.",
+   "can_do": [
+    {
+     "id": "cd_a2_u1_services",
+     "ar": "أطلب خدمة في البنك أو البريد بأدب",
+     "lessons": [
+      "a2_u1_l1",
+      "a2_u1_l2"
+     ]
+    },
+    {
+     "id": "cd_a2_u1_repair",
+     "ar": "أبلغ عن عطل وأطلب إصلاحه",
+     "lessons": [
+      "a2_u1_l3"
+     ]
+    },
+    {
+     "id": "cd_a2_u1_complaint",
+     "ar": "أقدّم شكوى بسيطة وأردّ على شكوى عميل",
+     "lessons": [
+      "a2_u1_l4",
+      "a2_u1_l5"
+     ]
+    }
+   ],
+   "questions": [
+    {
+     "id": "chk_a2_u1.q1",
+     "type": "choice",
+     "skill": "grammar",
+     "can_do": "cd_a2_u1_services",
+     "prompt_ar": "أيّ جملة هي الأكثر تهذيباً أمام موظف البنك؟",
+     "choices": [
+      "Quisiera abrir una cuenta.",
+      "Abro una cuenta.",
+      "Tú abres una cuenta."
+     ],
+     "answer": 0,
+     "explain_ar": "quisiera + مصدر طلب مهذّب، والموظف تخاطبه بـ usted."
+    },
+    {
+     "id": "chk_a2_u1.q2",
+     "type": "choice",
+     "skill": "grammar",
+     "can_do": "cd_a2_u1_services",
+     "prompt_ar": "اختر الكلمة المناسبة للفراغ",
+     "stimulus_es": "Yo no ___ sacar dinero hoy.",
+     "choices": [
+      "puedo",
+      "podo",
+      "puede"
+     ],
+     "answer": 0,
+     "explain_ar": "poder: o ← ue، ومع yo ← puedo."
+    },
+    {
+     "id": "chk_a2_u1.q3",
+     "type": "choice",
+     "skill": "listening",
+     "can_do": "cd_a2_u1_services",
+     "prompt_ar": "استمع إلى جملة من حوار «حساب جديد»: متى تصل البطاقة؟",
+     "dialogue_turn": "dlg_a2_banco.t5",
+     "choices": [
+      "بعد خمسة أيام",
+      "اليوم",
+      "بعد أسبوع"
+     ],
+     "answer": 0,
+     "choices_es": false
+    },
+    {
+     "id": "chk_a2_u1.q4",
+     "type": "type",
+     "skill": "writing",
+     "can_do": "cd_a2_u1_services",
+     "prompt_ar": "اكتب بالإسبانية",
+     "stimulus_ar": "الطرد",
+     "accepted": [
+      "el paquete",
+      "paquete"
+     ]
+    },
+    {
+     "id": "chk_a2_u1.q5",
+     "type": "choice",
+     "skill": "grammar",
+     "can_do": "cd_a2_u1_services",
+     "prompt_ar": "اختر الكلمة المناسبة للفراغ",
+     "stimulus_es": "Usted tiene ___ rellenar el formulario.",
+     "choices": [
+      "que",
+      "a",
+      "de"
+     ],
+     "answer": 0,
+     "explain_ar": "tener que + مصدر؛ لا تُحذف que."
+    },
+    {
+     "id": "chk_a2_u1.q6",
+     "type": "choice",
+     "skill": "vocabulary",
+     "can_do": "cd_a2_u1_repair",
+     "prompt_ar": "ما معنى العبارة؟",
+     "stimulus_es": "no funciona",
+     "choices": [
+      "لا يعمل",
+      "لا يفتح",
+      "ليس هنا"
+     ],
+     "answer": 0,
+     "choices_es": false
+    },
+    {
+     "id": "chk_a2_u1.q7",
+     "type": "choice",
+     "skill": "grammar",
+     "can_do": "cd_a2_u1_repair",
+     "prompt_ar": "اختر الكلمة المناسبة للفراغ",
+     "stimulus_es": "¿La impresora? El técnico ___ arregla mañana.",
+     "choices": [
+      "la",
+      "lo",
+      "le"
+     ],
+     "answer": 0,
+     "explain_ar": "impresora مؤنث ← la."
+    },
+    {
+     "id": "chk_a2_u1.q8",
+     "type": "choice",
+     "skill": "listening",
+     "can_do": "cd_a2_u1_repair",
+     "prompt_ar": "استمع إلى جملة من حوار «المكيّف»: ما المشكلة؟",
+     "dialogue_turn": "dlg_a2_averia.t2",
+     "choices": [
+      "المكيّف لا يعمل منذ أمس",
+      "الطابعة مكسورة",
+      "الحاسوب جديد"
+     ],
+     "answer": 0,
+     "choices_es": false
+    },
+    {
+     "id": "chk_a2_u1.q9",
+     "type": "type",
+     "skill": "writing",
+     "can_do": "cd_a2_u1_complaint",
+     "prompt_ar": "اكتب بالإسبانية",
+     "stimulus_ar": "المشكلة",
+     "accepted": [
+      "el problema",
+      "problema"
+     ]
+    },
+    {
+     "id": "chk_a2_u1.q10",
+     "type": "choice",
+     "skill": "reading",
+     "can_do": "cd_a2_u1_complaint",
+     "prompt_ar": "ماذا يطلب كاتب الرسالة؟",
+     "stimulus_es": "Buenos días: en mi factura hay un error. Me cobran el servicio dos veces. ¿Me pueden devolver el dinero? Gracias.",
+     "choices": [
+      "أن يعيدوا له المال",
+      "فاتورة بعنوان جديد",
+      "زيارة فنّي"
+     ],
+     "answer": 0,
+     "choices_es": false
+    },
+    {
+     "id": "chk_a2_u1.q11",
+     "type": "choice",
+     "skill": "listening",
+     "can_do": "cd_a2_u1_complaint",
+     "prompt_ar": "استمع: ماذا يقول الموظف؟",
+     "audio_es": "Disculpe las molestias. Ahora mismo lo compruebo.",
+     "choices": [
+      "نعتذر، أتحقّق منه حالاً",
+      "الفاتورة صحيحة",
+      "اتصل لاحقاً"
+     ],
+     "answer": 0,
+     "choices_es": false
+    },
+    {
+     "id": "chk_a2_u1.q12",
+     "type": "choice",
+     "skill": "listening",
+     "can_do": "cd_a2_u1_complaint",
+     "prompt_ar": "استمع إلى جملة من حوار «خطأ في الفاتورة»: ماذا يرسل خابيير اليوم؟",
+     "dialogue_turn": "dlg_a2_reclamacion.t11",
+     "choices": [
+      "الفاتورة الصحيحة",
+      "المال",
+      "فنّياً"
+     ],
+     "answer": 0,
+     "choices_es": false
+    }
+   ],
+   "source": "original-v1"
+  }
+ ]
+}

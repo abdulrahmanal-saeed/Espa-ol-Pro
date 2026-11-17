@@ -62,7 +62,8 @@
     "ellos": "tienen"
    },
    "lessons": [
-    "a1_u2_l1"
+    "a1_u2_l1",
+    "a2_u1_l2"
    ],
    "examples": [
     {
@@ -134,7 +135,8 @@
     "ellos": "pueden"
    },
    "lessons": [
-    "a1_u4_l3"
+    "a1_u4_l3",
+    "a2_u1_l1"
    ],
    "examples": [
     {
@@ -377,6 +379,146 @@
     }
    ],
    "note_ar": "النهايات منتظمة، لكن تُضاف علامة على í في المفرد ومع ellos: envío، envías، envía، envían."
+  },
+  {
+   "id": "abrir",
+   "infinitive": "abrir",
+   "ar": "يفتح",
+   "regular": true,
+   "present": {
+    "yo": "abro",
+    "tu": "abres",
+    "el": "abre",
+    "nosotros": "abrimos",
+    "vosotros": "abrís",
+    "ellos": "abren"
+   },
+   "lessons": [
+    "a2_u1_l1"
+   ],
+   "examples": [
+    {
+     "es": "El banco abre a las nueve.",
+     "ar": "يفتح البنك في التاسعة."
+    }
+   ]
+  },
+  {
+   "id": "sacar",
+   "infinitive": "sacar",
+   "ar": "يسحب / يُخرج",
+   "regular": true,
+   "present": {
+    "yo": "saco",
+    "tu": "sacas",
+    "el": "saca",
+    "nosotros": "sacamos",
+    "vosotros": "sacáis",
+    "ellos": "sacan"
+   },
+   "lessons": [
+    "a2_u1_l1"
+   ],
+   "examples": [
+    {
+     "es": "Saco dinero en el cajero.",
+     "ar": "أسحب نقوداً من الصرّاف."
+    }
+   ]
+  },
+  {
+   "id": "arreglar",
+   "infinitive": "arreglar",
+   "ar": "يُصلح",
+   "regular": true,
+   "present": {
+    "yo": "arreglo",
+    "tu": "arreglas",
+    "el": "arregla",
+    "nosotros": "arreglamos",
+    "vosotros": "arregláis",
+    "ellos": "arreglan"
+   },
+   "lessons": [
+    "a2_u1_l3"
+   ],
+   "examples": [
+    {
+     "es": "El técnico arregla el ordenador.",
+     "ar": "الفنّي يصلح الحاسوب."
+    }
+   ]
+  },
+  {
+   "id": "cobrar",
+   "infinitive": "cobrar",
+   "ar": "يتقاضى / يحصّل",
+   "regular": true,
+   "present": {
+    "yo": "cobro",
+    "tu": "cobras",
+    "el": "cobra",
+    "nosotros": "cobramos",
+    "vosotros": "cobráis",
+    "ellos": "cobran"
+   },
+   "lessons": [
+    "a2_u1_l4"
+   ],
+   "examples": [
+    {
+     "es": "¿Cuánto cobra usted?",
+     "ar": "كم تتقاضى؟"
+    }
+   ]
+  },
+  {
+   "id": "devolver",
+   "infinitive": "devolver",
+   "ar": "يُرجع / يردّ",
+   "regular": false,
+   "present": {
+    "yo": "devuelvo",
+    "tu": "devuelves",
+    "el": "devuelve",
+    "nosotros": "devolvemos",
+    "vosotros": "devolvéis",
+    "ellos": "devuelven"
+   },
+   "lessons": [
+    "a2_u1_l4"
+   ],
+   "examples": [
+    {
+     "es": "Le devolvemos el dinero.",
+     "ar": "نعيد لك المال."
+    }
+   ],
+   "note_ar": "o ← ue في كل الصيغ عدا nosotros وvosotros، مثل poder."
+  },
+  {
+   "id": "comprobar",
+   "infinitive": "comprobar",
+   "ar": "يتحقّق من",
+   "regular": false,
+   "present": {
+    "yo": "compruebo",
+    "tu": "compruebas",
+    "el": "comprueba",
+    "nosotros": "comprobamos",
+    "vosotros": "comprobáis",
+    "ellos": "comprueban"
+   },
+   "lessons": [
+    "a2_u1_l5"
+   ],
+   "examples": [
+    {
+     "es": "Ahora mismo lo compruebo.",
+     "ar": "أتحقّق منه حالاً."
+    }
+   ],
+   "note_ar": "o ← ue في كل الصيغ عدا nosotros وvosotros، مثل poder."
   }
  ],
  "note_ar": "vosotros يُستعمل في إسبانيا للجمع غير الرسمي؛ وفي أمريكا اللاتينية يُستعمل ustedes لكل الجمع."

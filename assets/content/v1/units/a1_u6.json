@@ -759,7 +759,8 @@
        "type": "false_friend",
        "ar": "revisar = يراجع ويتحقق، وليس «يعدّل» (revise) دائماً."
       }
-     ]
+     ],
+     "syn": "check"
     },
     {
      "id": "informe",
