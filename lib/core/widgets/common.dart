@@ -55,14 +55,22 @@ class SpeakButton extends ConsumerWidget {
     this.slow = false,
     this.filled = false,
     this.size = 24,
+    this.onResult,
   });
 
   final String spanish;
   final bool slow;
   final bool filled;
+
+  /// Told whether the sentence was actually played (false when no Spanish
+  /// voice exists or the engine failed).
+  final ValueChanged<bool>? onResult;
   final double size;
 
-  static Future<void> play(
+  /// Plays [spanish]; returns whether it was actually spoken. A missing
+  /// voice and an engine error both return false (the service marks itself
+  /// unavailable when playback throws).
+  static Future<bool> play(
     BuildContext context,
     WidgetRef ref,
     String spanish, {
@@ -83,9 +91,10 @@ class SpeakButton extends ConsumerWidget {
             ),
           );
       }
-      return;
+      return false;
     }
     await speech.speak(spanish, slow: slow);
+    return speech.isAvailable();
   }
 
   @override
@@ -95,7 +104,11 @@ class SpeakButton extends ConsumerWidget {
       size: size,
     );
     final tooltip = slow ? 'استمع ببطء' : 'استمع';
-    void onTap() => play(context, ref, spanish, slow: slow);
+    Future<void> onTap() async {
+      final ok = await play(context, ref, spanish, slow: slow);
+      onResult?.call(ok);
+    }
+
     return filled
         ? IconButton.filledTonal(
             onPressed: onTap,

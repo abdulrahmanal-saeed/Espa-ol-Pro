@@ -194,6 +194,12 @@ class BackupService {
     unique('saved_phrases', phrases.map((r) => r.phraseKey));
     unique('assessment_attempts', assessmentRuns.map((r) => r.id));
     unique('assessment_answers', assessmentAnswers.map((r) => r.id));
+    // One answer per question per attempt: a duplicated row would count a
+    // question twice as evidence even when the totals are adjusted to match.
+    unique(
+      'assessment_answers',
+      assessmentAnswers.map((r) => '${r.attemptId}|${r.questionId}'),
+    );
     // Every answer belongs to an attempt in this file, and every attempt's
     // stored score matches its answers: a result can never be inflated or
     // orphaned by an edited backup.
@@ -205,7 +211,8 @@ class BackupService {
     }
     for (final r in assessmentRuns) {
       final mine = assessmentAnswers.where((x) => x.attemptId == r.id);
-      if (r.maxScore != mine.length ||
+      if (r.maxScore < 1 ||
+          r.maxScore != mine.length ||
           r.score != mine.where((x) => x.isCorrect).length ||
           r.assessmentVersion < 1 ||
           r.completedAt < r.startedAt ||
@@ -216,7 +223,11 @@ class BackupService {
       }
     }
     if (assessmentAnswers.any(
-      (x) => x.spelling != null && !Spelling.all.contains(x.spelling),
+      (x) =>
+          (x.spelling != null && !Spelling.all.contains(x.spelling)) ||
+          x.questionId.trim().isEmpty ||
+          x.canDoId.trim().isEmpty ||
+          x.skill.trim().isEmpty,
     )) {
       throw BackupException('قيم غير صالحة في الجدول "assessment_answers".');
     }

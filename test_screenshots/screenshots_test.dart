@@ -199,6 +199,7 @@ void main() {
     final chk = pack.assessment('chk_pa1_u1')!;
     await app.pump(tester, location: '/assessment/${chk.id}');
     await tester.tapKey('assessment-start');
+    await tester.tapKey('assessment-play');
     await tester.tapKey('assessment-option-${chk.questions.first.answer}');
     await shot(tester, '21_checkpoint_question');
     final answers = {for (final q in chk.questions) q.id: q.correctAnswer}

@@ -88,6 +88,7 @@ class AssessmentRepository {
           AttemptRecord(
             id: a.id,
             assessmentId: a.assessmentId,
+            assessmentVersion: a.assessmentVersion,
             completedAtMs: a.completedAt,
             localDay: dayKey(
               DateTime.fromMillisecondsSinceEpoch(

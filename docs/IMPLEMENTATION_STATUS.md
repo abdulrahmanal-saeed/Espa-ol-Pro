@@ -94,6 +94,18 @@ remain at v3.
 Interrogative accents (qué, cómo, dónde …) remain accepted with a reminder at
 Pre-A1/A1; this is a deliberate, documented choice.
 
+## REVIEW-008 fixes
+
+| Finding | Fix | Evidence |
+|---|---|---|
+| P2: listening answered without audio counted as evidence | A checkpoint with audio cannot start without a Spanish voice; each listening question stays locked until its audio actually played (a failing engine never unlocks it). Dialogue comprehension questions are neither offered nor recorded without a voice; the transcript stays available. | `assessment_flow_test` (3 new), `listening_flow_test` (1 new) |
+| P2: backup accepted the same question twice in one attempt | Restore rejects duplicate (attempt, question) pairs, empty attempts and answers without a question/can-do; a unique index enforces it in the database | `assessment_test` (4 new), `persistence_test` |
+| P3: consistency compared different question sets | "Consistent" needs two passes at the same assessment version | `assessment_test` |
+
+Limit: a TTS failure in the middle of guided dialogue questions is not
+detected per question (they are practice, not assessment); checkpoints do
+detect it.
+
 ## Android build and runtime
 
 - The [code commit's CI run](https://github.com/abdulrahmanal-saeed/Espa-ol-Pro/actions/runs/43900871431)
