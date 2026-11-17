@@ -209,6 +209,211 @@
     }
    ],
    "source": "original-v1"
+  },
+  {
+   "id": "chk_a2_u2",
+   "version": 1,
+   "kind": "unit",
+   "level": "a2",
+   "unit": "a2_u2",
+   "title_ar": "نقطة تحقق: الماضي — ماذا حدث؟",
+   "intro_ar": "نقطة تحقق قصيرة. لا تلميحات ولا إظهار للإجابات قبل النهاية، ولا إعادة للأسئلة. النتيجة دليل على ما تستطيعه الآن، وليست شهادة مستوى.",
+   "can_do": [
+    {
+     "id": "cd_a2_u2_days",
+     "ar": "أحكي ما فعلته أمس وفي عطلة نهاية الأسبوع",
+     "lessons": [
+      "a2_u2_l1",
+      "a2_u2_l2"
+     ]
+    },
+    {
+     "id": "cd_a2_u2_work",
+     "ar": "أقدّم تحديثاً عن مهام عمل انتهت",
+     "lessons": [
+      "a2_u2_l3"
+     ]
+    },
+    {
+     "id": "cd_a2_u2_trip",
+     "ar": "أصف رحلة ومشكلة عميل وما فعلته لحلّها",
+     "lessons": [
+      "a2_u2_l4",
+      "a2_u2_l5"
+     ]
+    }
+   ],
+   "questions": [
+    {
+     "id": "chk_a2_u2.q1",
+     "type": "choice",
+     "skill": "grammar",
+     "can_do": "cd_a2_u2_days",
+     "prompt_ar": "اختر الكلمة المناسبة للفراغ",
+     "stimulus_es": "Ayer yo ___ con el cliente.",
+     "choices": [
+      "hablé",
+      "hablo",
+      "habló"
+     ],
+     "answer": 0,
+     "explain_ar": "ayer ← ماضٍ، ومع yo: hablé. habló = تكلّم هو."
+    },
+    {
+     "id": "chk_a2_u2.q2",
+     "type": "choice",
+     "skill": "listening",
+     "can_do": "cd_a2_u2_days",
+     "prompt_ar": "استمع إلى جملة من حوار «عطلة نهاية الأسبوع»: ماذا فعلت لوثيا يوم الأحد؟",
+     "dialogue_turn": "dlg_a2_finde.t6",
+     "choices": [
+      "استراحت في البيت",
+      "عملت",
+      "خرجت مع عائلتها"
+     ],
+     "answer": 0,
+     "choices_es": false
+    },
+    {
+     "id": "chk_a2_u2.q3",
+     "type": "choice",
+     "skill": "reading",
+     "can_do": "cd_a2_u2_days",
+     "prompt_ar": "ماذا فعل بابلو بعد الأكل؟",
+     "stimulus_es": "El sábado Pablo salió con unos amigos. Primero comieron en un restaurante y después visitaron un museo. Al final volvió a casa.",
+     "choices": [
+      "زار متحفاً",
+      "رجع إلى البيت",
+      "عمل"
+     ],
+     "answer": 0,
+     "choices_es": false
+    },
+    {
+     "id": "chk_a2_u2.q4",
+     "type": "type",
+     "skill": "writing",
+     "can_do": "cd_a2_u2_days",
+     "prompt_ar": "اكتب بالإسبانية (أنا، في الماضي)",
+     "stimulus_ar": "رجعتُ",
+     "accepted": [
+      "volví"
+     ]
+    },
+    {
+     "id": "chk_a2_u2.q5",
+     "type": "type",
+     "skill": "writing",
+     "can_do": "cd_a2_u2_work",
+     "prompt_ar": "اكتب بالإسبانية (أنا، في الماضي)",
+     "stimulus_ar": "أرسلتُ",
+     "accepted": [
+      "envié"
+     ]
+    },
+    {
+     "id": "chk_a2_u2.q6",
+     "type": "choice",
+     "skill": "grammar",
+     "can_do": "cd_a2_u2_work",
+     "prompt_ar": "كيف تكتب «وصلتُ»؟",
+     "choices": [
+      "llegué",
+      "llegé",
+      "llego"
+     ],
+     "answer": 0,
+     "choices_es": true,
+     "explain_ar": "g ← gu قبل é: llegué. llego = أصل (الآن)."
+    },
+    {
+     "id": "chk_a2_u2.q7",
+     "type": "choice",
+     "skill": "vocabulary",
+     "can_do": "cd_a2_u2_work",
+     "prompt_ar": "ما معنى العبارة؟",
+     "stimulus_es": "todavía no",
+     "choices": [
+      "ليس بعد",
+      "بالفعل",
+      "الآن"
+     ],
+     "answer": 0,
+     "choices_es": false
+    },
+    {
+     "id": "chk_a2_u2.q8",
+     "type": "choice",
+     "skill": "listening",
+     "can_do": "cd_a2_u2_work",
+     "prompt_ar": "استمع إلى جملة من حوار «كيف كان اليوم؟»: متى أرسل كريم الفاتورة؟",
+     "dialogue_turn": "dlg_a2_jornada.t6",
+     "choices": [
+      "في الثانية عشرة",
+      "في العاشرة",
+      "لم يرسلها بعد"
+     ],
+     "answer": 0,
+     "choices_es": false
+    },
+    {
+     "id": "chk_a2_u2.q9",
+     "type": "choice",
+     "skill": "grammar",
+     "can_do": "cd_a2_u2_trip",
+     "prompt_ar": "كيف تقول «كانت رحلة جيدة»؟",
+     "choices": [
+      "Fue un buen viaje.",
+      "Fui un buen viaje.",
+      "Fué un buen viaje."
+     ],
+     "answer": 0,
+     "choices_es": true,
+     "explain_ar": "el viaje (هو): fue، وبلا علامة نبر."
+    },
+    {
+     "id": "chk_a2_u2.q10",
+     "type": "type",
+     "skill": "writing",
+     "can_do": "cd_a2_u2_trip",
+     "prompt_ar": "اكتب بالإسبانية (أنا، في الماضي)",
+     "stimulus_ar": "ذهبتُ",
+     "accepted": [
+      "fui"
+     ]
+    },
+    {
+     "id": "chk_a2_u2.q11",
+     "type": "choice",
+     "skill": "listening",
+     "can_do": "cd_a2_u2_trip",
+     "prompt_ar": "استمع إلى جملة من حوار «الرحلة إلى بوغوتا»: ماذا فعل العميل؟",
+     "dialogue_turn": "dlg_a2_viaje.t6",
+     "choices": [
+      "اشتكى",
+      "ألغى الطلب",
+      "دفع الفاتورة"
+     ],
+     "answer": 0,
+     "choices_es": false
+    },
+    {
+     "id": "chk_a2_u2.q12",
+     "type": "choice",
+     "skill": "reading",
+     "can_do": "cd_a2_u2_trip",
+     "prompt_ar": "ماذا فعل الموظف أولاً؟",
+     "stimulus_es": "El lunes un cliente se quejó porque su pedido no llegó. Primero revisé el número de pedido. Después llamé a la empresa de transporte. Al día siguiente le escribí un correo de seguimiento.",
+     "choices": [
+      "راجع رقم الطلب",
+      "كتب بريد متابعة",
+      "اتصل بالعميل"
+     ],
+     "answer": 0,
+     "choices_es": false
+    }
+   ],
+   "source": "original-v1"
   }
  ]
 }

@@ -1,0 +1,1973 @@
+{
+ "unit": "a2_u2",
+ "grammar": [
+  {
+   "id": "g_pret_ar",
+   "title_ar": "الماضي البسيط: أفعال ‎-ar",
+   "body_ar": "pretérito indefinido = حدث انتهى في وقت محدّد في الماضي (ayer، anoche، el lunes pasado).\ntrabajar: trabajé · trabajaste · trabajó · trabajamos · trabajaron\nhablar: hablé · hablaste · habló · hablamos · hablaron\n\nعلامة النبر في آخر الفعل مهمّة: hablo = أتكلّم (الآن)، habló = تكلّم (هو، في الماضي). من دونها تصبح كلمة أخرى.\nnosotros له صيغة المضارع نفسها (trabajamos)؛ كلمة الزمن تحدّد المعنى: Ayer trabajamos mucho.",
+   "examples": [
+    {
+     "es": "Ayer trabajé en casa.",
+     "ar": "أمس عملتُ من البيت."
+    },
+    {
+     "es": "El cliente llamó anoche.",
+     "ar": "اتصل العميل ليلة أمس."
+    }
+   ]
+  },
+  {
+   "id": "g_past_markers",
+   "title_ar": "كلمات الزمن الماضي",
+   "body_ar": "ayer — أمس\nanoche — ليلة أمس\nel lunes pasado — يوم الاثنين الماضي\nla semana pasada — الأسبوع الماضي\nel año pasado — العام الماضي\n\nقارن: Hoy trabajo en casa (اليوم أعمل من البيت) ↔ Ayer trabajé en la oficina (أمس عملتُ في المكتب).\nومع desde (A2-U1) يبقى الحاضر: No funciona desde ayer.",
+   "examples": [
+    {
+     "es": "La semana pasada hablé con el jefe.",
+     "ar": "الأسبوع الماضي تكلّمتُ مع المدير."
+    },
+    {
+     "es": "Anoche terminé el informe.",
+     "ar": "ليلة أمس أنهيتُ التقرير."
+    }
+   ]
+  },
+  {
+   "id": "g_pret_er_ir",
+   "title_ar": "الماضي البسيط: أفعال ‎-er و‎-ir",
+   "body_ar": "النهايات واحدة للنوعين:\ncomer: comí · comiste · comió · comimos · comieron\nsalir: salí · saliste · salió · salimos · salieron\nvolver: volví · volviste · volvió · volvimos · volvieron\n\nvolver يتغيّر في المضارع (vuelvo)، لكنه منتظم في الماضي: volví.\ncomimos وsalimos لهما صيغة المضارع نفسها؛ كلمة الزمن تحدّد المعنى.",
+   "examples": [
+    {
+     "es": "El sábado salimos con unos amigos.",
+     "ar": "يوم السبت خرجنا مع بعض الأصدقاء."
+    },
+    {
+     "es": "Volví a casa a las diez.",
+     "ar": "رجعتُ إلى البيت في العاشرة."
+    }
+   ]
+  },
+  {
+   "id": "g_sequence",
+   "title_ar": "ترتيب الأحداث",
+   "body_ar": "primero — أولاً\ndespués — بعد ذلك\nluego — ثم\nal final — في النهاية\n\nPrimero desayuné, después trabajé y al final descansé.",
+   "examples": [
+    {
+     "es": "Primero comimos y luego visitamos el museo.",
+     "ar": "أولاً أكلنا ثم زرنا المتحف."
+    },
+    {
+     "es": "Al final volvimos a casa.",
+     "ar": "في النهاية رجعنا إلى البيت."
+    }
+   ]
+  },
+  {
+   "id": "g_pret_spelling",
+   "title_ar": "تغيّرات إملائية مع yo",
+   "body_ar": "لكي يبقى الصوت نفسه، يتغيّر آخر الجذر مع yo فقط:\nllegar ← llegué (g ← gu)\nsacar ← saqué (c ← qu)\nexplicar ← expliqué\nempezar ← empecé (z ← c)\n\nباقي الأشخاص عاديون: llegó، explicaste، empezamos.",
+   "examples": [
+    {
+     "es": "Llegué a la oficina a las ocho.",
+     "ar": "وصلتُ إلى المكتب في الثامنة."
+    },
+    {
+     "es": "Empecé el proyecto el lunes.",
+     "ar": "بدأتُ المشروع يوم الاثنين."
+    }
+   ]
+  },
+  {
+   "id": "g_ya_todavia",
+   "title_ar": "ya وtodavía no",
+   "body_ar": "ya = بالفعل / قد: Ya envié el correo. — أرسلتُ البريد بالفعل.\ntodavía no = ليس بعد: Todavía no terminé el informe. — لم أنهِ التقرير بعد.\n\nفي إسبانيا يُقال هنا كثيراً he enviado (زمن ستتعلّمه لاحقاً)؛ وفي أمريكا اللاتينية envié هو الأشيع، وهو مفهوم في كل مكان.",
+   "examples": [
+    {
+     "es": "¿Ya enviaste la factura?",
+     "ar": "هل أرسلتَ الفاتورة بالفعل؟"
+    },
+    {
+     "es": "Todavía no revisé el contrato.",
+     "ar": "لم أراجع العقد بعد."
+    }
+   ]
+  },
+  {
+   "id": "g_pret_irregular",
+   "title_ar": "أفعال شاذّة: ir / ser، hacer، tener، estar",
+   "body_ar": "ir وser لهما الماضي نفسه، والسياق يحدّد المعنى:\nfui · fuiste · fue · fuimos · fueron\nFui a Madrid. — ذهبتُ إلى مدريد. · Fue un buen viaje. — كانت رحلة جيدة.\n\nhacer: hice · hiciste · hizo · hicimos · hicieron\ntener: tuve · tuviste · tuvo · tuvimos · tuvieron\nestar: estuve · estuviste · estuvo · estuvimos · estuvieron\n\nلا علامة نبر في هذه الصيغ: fue، hizo، tuvo (وليس fué).",
+   "examples": [
+    {
+     "es": "¿Qué hiciste el fin de semana?",
+     "ar": "ماذا فعلتَ في عطلة نهاية الأسبوع؟"
+    },
+    {
+     "es": "Estuve tres días en Bogotá.",
+     "ar": "بقيتُ ثلاثة أيام في بوغوتا."
+    }
+   ]
+  },
+  {
+   "id": "g_past_vs_present",
+   "title_ar": "الحاضر أم الماضي؟",
+   "body_ar": "الحاضر لما يحدث الآن أو عادةً: Normalmente llego a las nueve.\nالماضي البسيط لحدث انتهى: Ayer llegué a las diez.\n\nفي تقرير عن عميل: ما حدث بالماضي (pasó، llamó، expliqué)، والوضع الآن بالحاضر (Ahora todo funciona bien).",
+   "examples": [
+    {
+     "es": "El cliente se quejó ayer y hoy todo funciona.",
+     "ar": "اشتكى العميل أمس، واليوم كل شيء يعمل."
+    },
+    {
+     "es": "Le escribí un correo de seguimiento.",
+     "ar": "كتبتُ له بريد متابعة."
+    }
+   ]
+  }
+ ],
+ "lessons": [
+  {
+   "id": "a2_u2_l1",
+   "title_ar": "ماذا فعلتَ أمس؟",
+   "title_es": "Ayer trabajé mucho",
+   "objectives_ar": [
+    "التعرّف على الماضي البسيط لأفعال ‎-ar واستعماله",
+    "ayer وanoche وel lunes pasado",
+    "وصف أعمال قصيرة انتهت"
+   ],
+   "prerequisites": [
+    "a2_u1_l5"
+   ],
+   "minutes": 16,
+   "work_relevance_ar": "إخبار زميل أو مدير بما فعلته أمس.",
+   "source": "original-v1",
+   "grammar": [
+    "g_pret_ar",
+    "g_past_markers"
+   ],
+   "items": [
+    {
+     "id": "ayer",
+     "es": "ayer",
+     "ar": "أمس",
+     "en": "yesterday",
+     "pos": "ظرف",
+     "examples": [
+      {
+       "es": "Ayer trabajé en casa.",
+       "ar": "أمس عملتُ من البيت."
+      }
+     ],
+     "connections": [
+      {
+       "type": "grammar",
+       "ar": "مع ayer يأتي الماضي: ayer trabajé (وليس ayer trabajo)."
+      }
+     ]
+    },
+    {
+     "id": "anoche",
+     "es": "anoche",
+     "ar": "ليلة أمس",
+     "en": "last night",
+     "pos": "ظرف",
+     "examples": [
+      {
+       "es": "Anoche llamé a mi madre.",
+       "ar": "ليلة أمس اتصلتُ بأمي."
+      }
+     ]
+    },
+    {
+     "id": "lunes_pasado",
+     "es": "el lunes pasado",
+     "ar": "يوم الاثنين الماضي",
+     "en": "last Monday",
+     "pos": "تعبير",
+     "examples": [
+      {
+       "es": "El lunes pasado terminé el proyecto.",
+       "ar": "الاثنين الماضي أنهيتُ المشروع."
+      }
+     ],
+     "note_ar": "وكذلك: la semana pasada، el mes pasado."
+    },
+    {
+     "id": "trabaje",
+     "es": "trabajé",
+     "ar": "عملتُ",
+     "en": "I worked",
+     "pos": "فعل",
+     "examples": [
+      {
+       "es": "Trabajé ocho horas.",
+       "ar": "عملتُ ثماني ساعات."
+      },
+      {
+       "es": "¿Trabajaste ayer?",
+       "ar": "هل عملتَ أمس؟"
+      }
+     ],
+     "work": true,
+     "connections": [
+      {
+       "type": "grammar",
+       "ar": "‎-ar + é مع yo. trabajo = أعمل (الآن)، trabajé = عملتُ."
+      }
+     ]
+    },
+    {
+     "id": "trabajo_el",
+     "es": "trabajó",
+     "ar": "عمل (هو) / عملتَ (حضرتك)",
+     "en": "he / she / you (formal) worked",
+     "pos": "فعل",
+     "examples": [
+      {
+       "es": "¿Usted trabajó ayer?",
+       "ar": "هل عملتَ (حضرتك) أمس؟"
+      }
+     ],
+     "connections": [
+      {
+       "type": "pronunciation",
+       "ar": "النبر في آخر الكلمة: tra-ba-JÓ. أما trabajo (tra-BA-jo) فمعناها «أعمل»."
+      }
+     ]
+    },
+    {
+     "id": "hable",
+     "es": "hablé",
+     "ar": "تكلّمتُ",
+     "en": "I spoke",
+     "pos": "فعل",
+     "examples": [
+      {
+       "es": "Hablé con el cliente.",
+       "ar": "تكلّمتُ مع العميل."
+      }
+     ],
+     "work": true
+    },
+    {
+     "id": "llame",
+     "es": "llamé",
+     "ar": "اتصلتُ",
+     "en": "I called",
+     "pos": "فعل",
+     "examples": [
+      {
+       "es": "Llamé al técnico.",
+       "ar": "اتصلتُ بالفنّي."
+      }
+     ]
+    },
+    {
+     "id": "termine",
+     "es": "terminé",
+     "ar": "أنهيتُ",
+     "en": "I finished",
+     "pos": "فعل",
+     "examples": [
+      {
+       "es": "Terminé el informe anoche.",
+       "ar": "أنهيتُ التقرير ليلة أمس."
+      },
+      {
+       "es": "¿Terminaste el informe?",
+       "ar": "هل أنهيتَ التقرير؟"
+      }
+     ],
+     "work": true
+    },
+    {
+     "id": "hablaste",
+     "es": "¿Hablaste con…?",
+     "ar": "هل تكلّمتَ مع…؟",
+     "en": "Did you speak with…?",
+     "pos": "سؤال",
+     "examples": [
+      {
+       "es": "¿Hablaste con el jefe?",
+       "ar": "هل تكلّمتَ مع المدير؟"
+      }
+     ],
+     "connections": [
+      {
+       "type": "grammar",
+       "ar": "مع tú: ‎-aste (hablaste، trabajaste، terminaste)."
+      }
+     ]
+    }
+   ],
+   "activities": [
+    {
+     "type": "teach",
+     "item": "ayer"
+    },
+    {
+     "type": "mcq_meaning",
+     "item": "ayer"
+    },
+    {
+     "type": "teach",
+     "item": "anoche"
+    },
+    {
+     "type": "teach",
+     "item": "lunes_pasado"
+    },
+    {
+     "type": "listen_choose",
+     "item": "anoche"
+    },
+    {
+     "type": "mcq_reverse",
+     "item": "lunes_pasado"
+    },
+    {
+     "type": "note",
+     "title_ar": "الماضي البسيط: ‎-ar",
+     "body_ar": "لحدث انتهى في الماضي:\ntrabajar: trabajé · trabajaste · trabajó · trabajamos · trabajaron\n\nانتبه للنبر في آخر الفعل: hablo (أتكلّم) ≠ habló (تكلّم هو).",
+     "examples": [
+      {
+       "es": "Ayer hablé con el cliente.",
+       "ar": "أمس تكلّمتُ مع العميل."
+      }
+     ]
+    },
+    {
+     "type": "teach",
+     "item": "trabaje"
+    },
+    {
+     "type": "teach",
+     "item": "trabajo_el"
+    },
+    {
+     "type": "mcq_meaning",
+     "item": "trabaje"
+    },
+    {
+     "type": "listen_pick_es",
+     "item": "trabajo_el"
+    },
+    {
+     "type": "choice",
+     "prompt_ar": "أيّ جملة صحيحة؟",
+     "choices": [
+      "Ayer trabajé en casa.",
+      "Ayer trabajo en casa.",
+      "Ayer trabaje en casa."
+     ],
+     "answer": 0,
+     "skill": "grammar",
+     "choices_es": true,
+     "explain_ar": "ayer ← ماضٍ: trabajé، وبعلامة النبر (trabaje كلمة أخرى)."
+    },
+    {
+     "type": "teach",
+     "item": "hable"
+    },
+    {
+     "type": "teach",
+     "item": "llame"
+    },
+    {
+     "type": "teach",
+     "item": "termine"
+    },
+    {
+     "type": "listen_choose",
+     "item": "termine"
+    },
+    {
+     "type": "mcq_reverse",
+     "item": "llame"
+    },
+    {
+     "type": "mcq_meaning",
+     "item": "hable"
+    },
+    {
+     "type": "fill",
+     "es": "Ayer yo ___ con el cliente.",
+     "answer": "hablé",
+     "ar": "أمس تكلّمتُ مع العميل.",
+     "options": [
+      "hablé",
+      "hablo",
+      "habló"
+     ],
+     "explain_ar": "yo في الماضي: ‎-é. hablo = أتكلّم الآن، habló = تكلّم هو."
+    },
+    {
+     "type": "fill",
+     "es": "Anoche Laura ___ el informe.",
+     "answer": "terminó",
+     "ar": "ليلة أمس أنهت لاورا التقرير.",
+     "options": [
+      "terminó",
+      "terminé",
+      "termina"
+     ],
+     "explain_ar": "ella في الماضي: ‎-ó."
+    },
+    {
+     "type": "teach",
+     "item": "hablaste"
+    },
+    {
+     "type": "mcq_meaning",
+     "item": "hablaste"
+    },
+    {
+     "type": "match",
+     "items": [
+      "ayer",
+      "anoche",
+      "trabaje",
+      "llame"
+     ]
+    },
+    {
+     "type": "type_es",
+     "item": "trabaje"
+    },
+    {
+     "type": "type_es",
+     "item": "ayer"
+    },
+    {
+     "type": "order",
+     "es": "El lunes pasado llamé al cliente.",
+     "ar": "الاثنين الماضي اتصلتُ بالعميل."
+    },
+    {
+     "type": "dictation",
+     "es": "Anoche terminé el informe.",
+     "ar": "ليلة أمس أنهيتُ التقرير."
+    },
+    {
+     "type": "choice",
+     "prompt_ar": "ماذا فعلت مارتا بعد الظهر؟",
+     "choices": [
+      "أنهت تقريراً",
+      "تكلّمت مع عميل",
+      "ذهبت إلى المكتب"
+     ],
+     "answer": 0,
+     "skill": "reading",
+     "choices_es": false,
+     "stimulus_es": "Ayer Marta trabajó en casa. Por la mañana habló con un cliente y por la tarde terminó un informe."
+    },
+    {
+     "type": "choice",
+     "prompt_ar": "استمع: ماذا يسأل زميلك؟",
+     "choices": [
+      "هل تكلّمتَ مع الفنّي أمس؟",
+      "هل تتكلّم مع الفنّي اليوم؟",
+      "متى يأتي الفنّي؟"
+     ],
+     "answer": 0,
+     "skill": "listening",
+     "choices_es": false,
+     "audio_es": "¿Hablaste con el técnico ayer?"
+    },
+    {
+     "type": "respond",
+     "prompt_ar": "زميل يسأل: «¿Trabajaste ayer?». قل: نعم، عملتُ من البيت.",
+     "accepted": [
+      "Sí, trabajé en casa",
+      "Sí, ayer trabajé en casa",
+      "Sí, trabajé ayer en casa",
+      "Sí, trabajé en casa ayer"
+     ],
+     "audio_es": "¿Trabajaste ayer?"
+    },
+    {
+     "type": "speak",
+     "es": "Ayer trabajé mucho: hablé con dos clientes y terminé el informe.",
+     "ar": "أمس عملتُ كثيراً: تكلّمتُ مع عميلين وأنهيتُ التقرير."
+    }
+   ]
+  },
+  {
+   "id": "a2_u2_l2",
+   "title_ar": "عطلة نهاية الأسبوع الماضية",
+   "title_es": "Mi último fin de semana",
+   "objectives_ar": [
+    "الماضي البسيط لأفعال ‎-er و‎-ir",
+    "ترتيب الأحداث: primero، después، luego، al final",
+    "فهم قصة قصيرة عن الماضي"
+   ],
+   "prerequisites": [
+    "a2_u2_l1"
+   ],
+   "minutes": 16,
+   "work_relevance_ar": "الحديث القصير مع الزملاء يوم الاثنين: ماذا فعلتَ في العطلة؟",
+   "source": "original-v1",
+   "grammar": [
+    "g_pret_er_ir",
+    "g_sequence"
+   ],
+   "items": [
+    {
+     "id": "fin_de_semana",
+     "es": "el fin de semana",
+     "ar": "عطلة نهاية الأسبوع",
+     "en": "the weekend",
+     "pos": "اسم",
+     "examples": [
+      {
+       "es": "El fin de semana descansé.",
+       "ar": "في عطلة نهاية الأسبوع استرحتُ."
+      }
+     ],
+     "note_ar": "في إسبانيا وأمريكا اللاتينية العطلة السبت والأحد. سؤال الاثنين المعتاد بين الزملاء: ¿Qué tal el fin de semana?",
+     "work": true
+    },
+    {
+     "id": "sali",
+     "es": "salí",
+     "ar": "خرجتُ",
+     "en": "I went out",
+     "pos": "فعل",
+     "examples": [
+      {
+       "es": "El sábado salí con mi familia.",
+       "ar": "يوم السبت خرجتُ مع عائلتي."
+      },
+      {
+       "es": "¿Saliste el sábado?",
+       "ar": "هل خرجتَ يوم السبت؟"
+      }
+     ],
+     "connections": [
+      {
+       "type": "grammar",
+       "ar": "‎-er و‎-ir: ‎-í مع yo (salí، comí، volví)."
+      }
+     ]
+    },
+    {
+     "id": "volvi",
+     "es": "volví",
+     "ar": "رجعتُ",
+     "en": "I came back",
+     "pos": "فعل",
+     "examples": [
+      {
+       "es": "Volví tarde a casa.",
+       "ar": "رجعتُ إلى البيت متأخراً."
+      }
+     ],
+     "connections": [
+      {
+       "type": "grammar",
+       "ar": "في المضارع vuelvo (o ← ue)، وفي الماضي منتظم: volví."
+      }
+     ]
+    },
+    {
+     "id": "comimos",
+     "es": "comimos",
+     "ar": "أكلنا (أو نأكل)",
+     "en": "we ate / we eat",
+     "pos": "فعل",
+     "examples": [
+      {
+       "es": "El domingo comimos en un restaurante.",
+       "ar": "يوم الأحد أكلنا في مطعم."
+      }
+     ],
+     "connections": [
+      {
+       "type": "grammar",
+       "ar": "صيغة المضارع نفسها؛ el domingo (الماضي) هو ما يحدّد المعنى."
+      }
+     ]
+    },
+    {
+     "id": "visite",
+     "es": "visité",
+     "ar": "زرتُ",
+     "en": "I visited",
+     "pos": "فعل",
+     "examples": [
+      {
+       "es": "Visité a mis padres.",
+       "ar": "زرتُ والديّ."
+      }
+     ],
+     "connections": [
+      {
+       "type": "grammar",
+       "ar": "مع الأشخاص: visitar a + الشخص."
+      }
+     ]
+    },
+    {
+     "id": "descanse",
+     "es": "descansé",
+     "ar": "استرحتُ",
+     "en": "I rested",
+     "pos": "فعل",
+     "examples": [
+      {
+       "es": "El domingo descansé en casa.",
+       "ar": "يوم الأحد استرحتُ في البيت."
+      }
+     ]
+    },
+    {
+     "id": "primero",
+     "es": "primero",
+     "ar": "أولاً",
+     "en": "first",
+     "pos": "ظرف",
+     "examples": [
+      {
+       "es": "Primero desayuné.",
+       "ar": "أولاً تناولتُ الفطور."
+      }
+     ]
+    },
+    {
+     "id": "despues",
+     "es": "después",
+     "ar": "بعد ذلك",
+     "en": "afterwards, then",
+     "pos": "ظرف",
+     "examples": [
+      {
+       "es": "Después salí con unos amigos.",
+       "ar": "بعد ذلك خرجتُ مع بعض الأصدقاء."
+      }
+     ],
+     "syn": "then"
+    },
+    {
+     "id": "luego",
+     "es": "luego",
+     "ar": "ثم / لاحقاً",
+     "en": "then, later",
+     "pos": "ظرف",
+     "examples": [
+      {
+       "es": "Luego volvimos a casa.",
+       "ar": "ثم رجعنا إلى البيت."
+      }
+     ],
+     "syn": "then",
+     "connections": [
+      {
+       "type": "usage",
+       "ar": "hasta luego (Pre-A1) = إلى اللقاء. وحدها: «ثم»."
+      }
+     ]
+    },
+    {
+     "id": "al_final",
+     "es": "al final",
+     "ar": "في النهاية",
+     "en": "in the end, finally",
+     "pos": "تعبير",
+     "examples": [
+      {
+       "es": "Al final descansé en casa.",
+       "ar": "في النهاية استرحتُ في البيت."
+      }
+     ]
+    }
+   ],
+   "activities": [
+    {
+     "type": "teach",
+     "item": "fin_de_semana"
+    },
+    {
+     "type": "mcq_meaning",
+     "item": "fin_de_semana"
+    },
+    {
+     "type": "note",
+     "title_ar": "الماضي البسيط: ‎-er و‎-ir",
+     "body_ar": "النهايات واحدة للنوعين:\ncomer: comí · comiste · comió · comimos · comieron\nsalir: salí · saliste · salió · salimos · salieron",
+     "examples": [
+      {
+       "es": "El sábado salimos con unos amigos.",
+       "ar": "يوم السبت خرجنا مع بعض الأصدقاء."
+      }
+     ]
+    },
+    {
+     "type": "teach",
+     "item": "sali"
+    },
+    {
+     "type": "teach",
+     "item": "volvi"
+    },
+    {
+     "type": "teach",
+     "item": "comimos"
+    },
+    {
+     "type": "listen_choose",
+     "item": "sali"
+    },
+    {
+     "type": "mcq_reverse",
+     "item": "volvi"
+    },
+    {
+     "type": "mcq_meaning",
+     "item": "comimos"
+    },
+    {
+     "type": "choice",
+     "prompt_ar": "كيف تقول «يوم السبت خرجتُ مع أصدقاء»؟",
+     "choices": [
+      "El sábado salí con unos amigos.",
+      "El sábado salgo con unos amigos.",
+      "El sábado salió con unos amigos."
+     ],
+     "answer": 0,
+     "skill": "grammar",
+     "choices_es": true,
+     "explain_ar": "yo في الماضي مع ‎-ir: salí. salió = خرج هو."
+    },
+    {
+     "type": "teach",
+     "item": "visite"
+    },
+    {
+     "type": "teach",
+     "item": "descanse"
+    },
+    {
+     "type": "listen_pick_es",
+     "item": "visite"
+    },
+    {
+     "type": "mcq_meaning",
+     "item": "descanse"
+    },
+    {
+     "type": "note",
+     "title_ar": "ترتيب الأحداث",
+     "body_ar": "primero — أولاً · después — بعد ذلك · luego — ثم · al final — في النهاية",
+     "examples": [
+      {
+       "es": "Primero comimos y luego visitamos el museo.",
+       "ar": "أولاً أكلنا ثم زرنا المتحف."
+      }
+     ]
+    },
+    {
+     "type": "teach",
+     "item": "primero"
+    },
+    {
+     "type": "teach",
+     "item": "despues"
+    },
+    {
+     "type": "teach",
+     "item": "luego"
+    },
+    {
+     "type": "teach",
+     "item": "al_final"
+    },
+    {
+     "type": "mcq_meaning",
+     "item": "al_final"
+    },
+    {
+     "type": "listen_choose",
+     "item": "primero"
+    },
+    {
+     "type": "mcq_reverse",
+     "item": "despues"
+    },
+    {
+     "type": "listen_pick_es",
+     "item": "luego"
+    },
+    {
+     "type": "fill",
+     "es": "Primero comimos y ___ visitamos la ciudad.",
+     "answer": "después",
+     "ar": "أولاً أكلنا وبعد ذلك زرنا المدينة.",
+     "options": [
+      "después",
+      "primero",
+      "ayer"
+     ],
+     "explain_ar": "بعد primero يأتي después أو luego.",
+     "alt": [
+      "luego"
+     ]
+    },
+    {
+     "type": "fill",
+     "es": "Anoche yo ___ a casa a las once.",
+     "answer": "volví",
+     "ar": "ليلة أمس رجعتُ إلى البيت في الحادية عشرة.",
+     "options": [
+      "volví",
+      "vuelvo",
+      "volvió"
+     ],
+     "explain_ar": "anoche ← ماضٍ، مع yo: volví (منتظم في الماضي رغم vuelvo)."
+    },
+    {
+     "type": "match",
+     "items": [
+      "primero",
+      "luego",
+      "al_final",
+      "fin_de_semana"
+     ]
+    },
+    {
+     "type": "type_es",
+     "item": "sali"
+    },
+    {
+     "type": "type_es",
+     "item": "fin_de_semana"
+    },
+    {
+     "type": "order",
+     "es": "Primero desayuné y después salí.",
+     "ar": "أولاً تناولتُ الفطور ثم خرجتُ."
+    },
+    {
+     "type": "dictation",
+     "es": "El domingo descansé en casa.",
+     "ar": "يوم الأحد استرحتُ في البيت."
+    },
+    {
+     "type": "choice",
+     "prompt_ar": "ماذا فعلت آنا في النهاية؟",
+     "choices": [
+      "رجعت إلى البيت",
+      "زارت والديها",
+      "أكلت مع والديها"
+     ],
+     "answer": 0,
+     "skill": "reading",
+     "choices_es": false,
+     "stimulus_es": "El sábado pasado Ana visitó a sus padres. Primero comieron juntos y después salieron a la ciudad. Al final, Ana volvió a casa a las nueve."
+    },
+    {
+     "type": "choice",
+     "prompt_ar": "استمع: ماذا فعلوا أولاً؟",
+     "choices": [
+      "أكلوا",
+      "زاروا المتحف",
+      "رجعوا إلى البيت"
+     ],
+     "answer": 0,
+     "skill": "listening",
+     "choices_es": false,
+     "audio_es": "Primero comimos y luego visitamos el museo."
+    },
+    {
+     "type": "respond",
+     "prompt_ar": "زميل يسأل يوم الاثنين: «¿Saliste el fin de semana?». قل: نعم، خرجتُ مع عائلتي.",
+     "accepted": [
+      "Sí, salí con mi familia",
+      "Sí, el sábado salí con mi familia",
+      "Sí, salí con mi familia el sábado",
+      "Sí, salí con mi familia el fin de semana"
+     ],
+     "audio_es": "¿Saliste el fin de semana?"
+    },
+    {
+     "type": "speak",
+     "es": "El sábado salí con mi familia. Primero comimos y después volví a casa.",
+     "ar": "يوم السبت خرجتُ مع عائلتي. أولاً أكلنا ثم رجعتُ إلى البيت."
+    }
+   ]
+  },
+  {
+   "id": "a2_u2_l3",
+   "title_ar": "يوم عمل في الماضي",
+   "title_es": "Un día de trabajo",
+   "objectives_ar": [
+    "الحديث عن مهام عمل انتهت",
+    "تغيّرات الإملاء: llegué، empecé",
+    "كتابة تحديث قصير بـ ya وtodavía no"
+   ],
+   "prerequisites": [
+    "a2_u2_l2"
+   ],
+   "minutes": 16,
+   "work_relevance_ar": "إرسال تحديث يومي لمديرك: ماذا أنجزتَ وماذا بقي.",
+   "source": "original-v1",
+   "grammar": [
+    "g_pret_spelling",
+    "g_ya_todavia"
+   ],
+   "items": [
+    {
+     "id": "llegue",
+     "es": "llegué",
+     "ar": "وصلتُ",
+     "en": "I arrived",
+     "pos": "فعل",
+     "examples": [
+      {
+       "es": "Llegué tarde a la reunión.",
+       "ar": "وصلتُ متأخراً إلى الاجتماع."
+      }
+     ],
+     "work": true,
+     "connections": [
+      {
+       "type": "grammar",
+       "ar": "g ← gu قبل é لكي يبقى الصوت: llegué (لكن llegó)."
+      }
+     ]
+    },
+    {
+     "id": "empece",
+     "es": "empecé",
+     "ar": "بدأتُ",
+     "en": "I started",
+     "pos": "فعل",
+     "examples": [
+      {
+       "es": "Empecé a trabajar a las nueve.",
+       "ar": "بدأتُ العمل في التاسعة."
+      }
+     ],
+     "connections": [
+      {
+       "type": "grammar",
+       "ar": "z ← c قبل é: empecé. وempezar a + مصدر = يبدأ في."
+      }
+     ]
+    },
+    {
+     "id": "esta_manana",
+     "es": "esta mañana",
+     "ar": "هذا الصباح",
+     "en": "this morning",
+     "pos": "تعبير",
+     "examples": [
+      {
+       "es": "Esta mañana revisé los correos.",
+       "ar": "هذا الصباح راجعتُ الرسائل."
+      }
+     ]
+    },
+    {
+     "id": "revise",
+     "es": "revisé",
+     "ar": "راجعتُ",
+     "en": "I checked, I reviewed",
+     "pos": "فعل",
+     "examples": [
+      {
+       "es": "Revisé el contrato.",
+       "ar": "راجعتُ العقد."
+      }
+     ],
+     "work": true
+    },
+    {
+     "id": "envie",
+     "es": "envié",
+     "ar": "أرسلتُ",
+     "en": "I sent",
+     "pos": "فعل",
+     "examples": [
+      {
+       "es": "Envié la factura al cliente.",
+       "ar": "أرسلتُ الفاتورة إلى العميل."
+      },
+      {
+       "es": "¿Enviaste la factura?",
+       "ar": "هل أرسلتَ الفاتورة؟"
+      }
+     ],
+     "work": true,
+     "connections": [
+      {
+       "type": "grammar",
+       "ar": "envío = أرسل (الآن)، envié = أرسلتُ، envió = أرسل (هو)."
+      }
+     ]
+    },
+    {
+     "id": "prepare",
+     "es": "preparé",
+     "ar": "أعددتُ / حضّرتُ",
+     "en": "I prepared",
+     "pos": "فعل",
+     "examples": [
+      {
+       "es": "Preparé la presentación.",
+       "ar": "أعددتُ العرض التقديمي."
+      }
+     ],
+     "work": true
+    },
+    {
+     "id": "terminamos",
+     "es": "terminamos",
+     "ar": "أنهينا (أو ننهي)",
+     "en": "we finished / we finish",
+     "pos": "فعل",
+     "examples": [
+      {
+       "es": "Ayer terminamos el proyecto.",
+       "ar": "أمس أنهينا المشروع."
+      }
+     ],
+     "work": true
+    },
+    {
+     "id": "ya",
+     "es": "ya",
+     "ar": "بالفعل / قد",
+     "en": "already",
+     "pos": "ظرف",
+     "examples": [
+      {
+       "es": "Ya envié el correo.",
+       "ar": "أرسلتُ البريد بالفعل."
+      }
+     ]
+    },
+    {
+     "id": "todavia_no",
+     "es": "todavía no",
+     "ar": "ليس بعد",
+     "en": "not yet",
+     "pos": "تعبير",
+     "examples": [
+      {
+       "es": "Todavía no terminé el informe.",
+       "ar": "لم أنهِ التقرير بعد."
+      }
+     ],
+     "work": true
+    }
+   ],
+   "activities": [
+    {
+     "type": "teach",
+     "item": "llegue"
+    },
+    {
+     "type": "teach",
+     "item": "empece"
+    },
+    {
+     "type": "mcq_meaning",
+     "item": "llegue"
+    },
+    {
+     "type": "listen_choose",
+     "item": "empece"
+    },
+    {
+     "type": "note",
+     "title_ar": "تغيّرات إملائية مع yo",
+     "body_ar": "llegar ← llegué · sacar ← saqué · empezar ← empecé\nيتغيّر الحرف ليبقى الصوت نفسه، ومع yo فقط.",
+     "examples": [
+      {
+       "es": "Llegué a la oficina a las ocho.",
+       "ar": "وصلتُ إلى المكتب في الثامنة."
+      }
+     ]
+    },
+    {
+     "type": "choice",
+     "prompt_ar": "كيف تكتب «وصلتُ»؟",
+     "choices": [
+      "llegué",
+      "llegé",
+      "llego"
+     ],
+     "answer": 0,
+     "skill": "grammar",
+     "choices_es": true,
+     "explain_ar": "g ← gu قبل é لكي يبقى الصوت: llegué. llego = أصل (الآن)."
+    },
+    {
+     "type": "teach",
+     "item": "esta_manana"
+    },
+    {
+     "type": "teach",
+     "item": "revise"
+    },
+    {
+     "type": "teach",
+     "item": "envie"
+    },
+    {
+     "type": "listen_pick_es",
+     "item": "envie"
+    },
+    {
+     "type": "mcq_meaning",
+     "item": "esta_manana"
+    },
+    {
+     "type": "mcq_reverse",
+     "item": "revise"
+    },
+    {
+     "type": "teach",
+     "item": "prepare"
+    },
+    {
+     "type": "teach",
+     "item": "terminamos"
+    },
+    {
+     "type": "mcq_meaning",
+     "item": "prepare"
+    },
+    {
+     "type": "listen_choose",
+     "item": "terminamos"
+    },
+    {
+     "type": "note",
+     "title_ar": "ya وtodavía no",
+     "body_ar": "ya = بالفعل: Ya envié el correo.\ntodavía no = ليس بعد: Todavía no terminé el informe.",
+     "examples": [
+      {
+       "es": "¿Ya enviaste la factura?",
+       "ar": "هل أرسلتَ الفاتورة بالفعل؟"
+      }
+     ]
+    },
+    {
+     "type": "teach",
+     "item": "ya"
+    },
+    {
+     "type": "teach",
+     "item": "todavia_no"
+    },
+    {
+     "type": "mcq_meaning",
+     "item": "todavia_no"
+    },
+    {
+     "type": "listen_pick_es",
+     "item": "ya"
+    },
+    {
+     "type": "fill",
+     "es": "Esta mañana yo ___ el informe al jefe.",
+     "answer": "envié",
+     "ar": "هذا الصباح أرسلتُ التقرير إلى المدير.",
+     "options": [
+      "envié",
+      "envío",
+      "envió"
+     ],
+     "explain_ar": "yo في الماضي: envié. envío = أرسل (الآن)، envió = أرسل (هو)."
+    },
+    {
+     "type": "fill",
+     "es": "¿El correo? Sí, ___ lo envié.",
+     "answer": "ya",
+     "ar": "البريد؟ نعم، أرسلتُه بالفعل.",
+     "options": [
+      "ya",
+      "todavía",
+      "mañana"
+     ],
+     "explain_ar": "ya = بالفعل، مع حدث حصل."
+    },
+    {
+     "type": "match",
+     "items": [
+      "llegue",
+      "revise",
+      "prepare",
+      "envie"
+     ]
+    },
+    {
+     "type": "type_es",
+     "item": "envie"
+    },
+    {
+     "type": "type_es",
+     "item": "todavia_no"
+    },
+    {
+     "type": "order",
+     "es": "Esta mañana revisé el contrato y envié la factura.",
+     "ar": "هذا الصباح راجعتُ العقد وأرسلتُ الفاتورة."
+    },
+    {
+     "type": "dictation",
+     "es": "Todavía no terminé la presentación.",
+     "ar": "لم أنهِ العرض التقديمي بعد."
+    },
+    {
+     "type": "choice",
+     "prompt_ar": "ما الذي لم ينهه كريم بعد؟",
+     "choices": [
+      "التقرير",
+      "العرض التقديمي",
+      "الفاتورة"
+     ],
+     "answer": 0,
+     "skill": "reading",
+     "choices_es": false,
+     "stimulus_es": "Hola, Laura: hoy llegué a las ocho. Primero revisé los correos y después preparé la presentación para el cliente. Ya envié la factura, pero todavía no terminé el informe. Karim"
+    },
+    {
+     "type": "choice",
+     "prompt_ar": "استمع: ماذا حدث؟",
+     "choices": [
+      "الفاتورة أُرسلت بالفعل",
+      "الفاتورة لم تُرسَل بعد",
+      "العميل أرسل الفاتورة"
+     ],
+     "answer": 0,
+     "skill": "listening",
+     "choices_es": false,
+     "audio_es": "Ya envié la factura al cliente."
+    },
+    {
+     "type": "respond",
+     "prompt_ar": "مديرك يسأل: «¿Enviaste el informe?». قل: نعم، أرسلتُه هذا الصباح.",
+     "accepted": [
+      "Sí, lo envié esta mañana",
+      "Sí, esta mañana lo envié",
+      "Sí, envié el informe esta mañana",
+      "Sí, esta mañana envié el informe"
+     ],
+     "audio_es": "¿Enviaste el informe?"
+    },
+    {
+     "type": "speak",
+     "es": "Esta mañana llegué a las ocho, revisé los correos y preparé la presentación.",
+     "ar": "هذا الصباح وصلتُ في الثامنة، وراجعتُ الرسائل وأعددتُ العرض التقديمي."
+    }
+   ]
+  },
+  {
+   "id": "a2_u2_l4",
+   "title_ar": "رحلتي الأخيرة",
+   "title_es": "Mi último viaje",
+   "objectives_ar": [
+    "الأفعال الشاذّة في الماضي: ir / ser، hacer، tener",
+    "وصف رحلة: الأماكن والأنشطة والمشكلات",
+    "فهم قصة سفر قصيرة"
+   ],
+   "prerequisites": [
+    "a2_u2_l3"
+   ],
+   "minutes": 17,
+   "work_relevance_ar": "الحديث عن رحلة عمل: إلى أين ذهبتَ، وماذا فعلتَ، وما المشكلات.",
+   "source": "original-v1",
+   "grammar": [
+    "g_pret_irregular"
+   ],
+   "items": [
+    {
+     "id": "viaje",
+     "es": "el viaje",
+     "ar": "الرحلة",
+     "en": "the trip",
+     "pos": "اسم",
+     "examples": [
+      {
+       "es": "El viaje fue muy bueno.",
+       "ar": "كانت الرحلة جيدة جداً."
+      }
+     ],
+     "work": true
+    },
+    {
+     "id": "ano_pasado",
+     "es": "el año pasado",
+     "ar": "العام الماضي",
+     "en": "last year",
+     "pos": "تعبير",
+     "examples": [
+      {
+       "es": "El año pasado fui a México.",
+       "ar": "العام الماضي ذهبتُ إلى المكسيك."
+      }
+     ]
+    },
+    {
+     "id": "fui",
+     "es": "fui",
+     "ar": "ذهبتُ / كنتُ",
+     "en": "I went / I was",
+     "pos": "فعل",
+     "examples": [
+      {
+       "es": "Fui a Barcelona en tren.",
+       "ar": "ذهبتُ إلى برشلونة بالقطار."
+      },
+      {
+       "es": "¿Adónde fuiste?",
+       "ar": "إلى أين ذهبتَ؟"
+      }
+     ],
+     "connections": [
+      {
+       "type": "grammar",
+       "ar": "ir وser لهما الماضي نفسه؛ السياق يحدّد المعنى."
+      }
+     ]
+    },
+    {
+     "id": "fue",
+     "es": "fue",
+     "ar": "ذهب / كان",
+     "en": "he / she went; it was",
+     "pos": "فعل",
+     "examples": [
+      {
+       "es": "Fue un viaje de trabajo.",
+       "ar": "كانت رحلة عمل."
+      }
+     ],
+     "connections": [
+      {
+       "type": "grammar",
+       "ar": "بلا علامة نبر: fue (وليس fué)."
+      }
+     ]
+    },
+    {
+     "id": "fuimos",
+     "es": "fuimos",
+     "ar": "ذهبنا / كنّا",
+     "en": "we went / we were",
+     "pos": "فعل",
+     "examples": [
+      {
+       "es": "Fuimos al hotel en taxi.",
+       "ar": "ذهبنا إلى الفندق بالتاكسي."
+      }
+     ]
+    },
+    {
+     "id": "hice",
+     "es": "hice",
+     "ar": "فعلتُ / عملتُ",
+     "en": "I did / I made",
+     "pos": "فعل",
+     "examples": [
+      {
+       "es": "Hice una presentación en Madrid.",
+       "ar": "قدّمتُ عرضاً في مدريد."
+      }
+     ],
+     "work": true,
+     "connections": [
+      {
+       "type": "grammar",
+       "ar": "hacer شاذّ: hice · hiciste · hizo · hicimos · hicieron."
+      }
+     ]
+    },
+    {
+     "id": "hizo",
+     "es": "hizo",
+     "ar": "فعل (هو) / فعلتَ (حضرتك)",
+     "en": "he / she / you (formal) did",
+     "pos": "فعل",
+     "examples": [
+      {
+       "es": "¿Qué hizo usted en Madrid?",
+       "ar": "ماذا فعلتَ (حضرتك) في مدريد؟"
+      }
+     ],
+     "connections": [
+      {
+       "type": "pronunciation",
+       "ar": "z لا c: hizo، لكي يبقى الصوت."
+      }
+     ]
+    },
+    {
+     "id": "tuve",
+     "es": "tuve",
+     "ar": "كان عندي / اضطررتُ",
+     "en": "I had / I had to",
+     "pos": "فعل",
+     "examples": [
+      {
+       "es": "Tuve un problema con el hotel.",
+       "ar": "كانت عندي مشكلة مع الفندق."
+      }
+     ],
+     "note_ar": "tuve que + مصدر = اضطررتُ إلى."
+    },
+    {
+     "id": "vuelo",
+     "es": "el vuelo",
+     "ar": "الرحلة الجوية",
+     "en": "the flight",
+     "pos": "اسم",
+     "examples": [
+      {
+       "es": "El vuelo llegó tarde.",
+       "ar": "وصلت الرحلة الجوية متأخرة."
+      }
+     ],
+     "work": true
+    }
+   ],
+   "activities": [
+    {
+     "type": "teach",
+     "item": "viaje"
+    },
+    {
+     "type": "teach",
+     "item": "ano_pasado"
+    },
+    {
+     "type": "mcq_meaning",
+     "item": "viaje"
+    },
+    {
+     "type": "listen_choose",
+     "item": "ano_pasado"
+    },
+    {
+     "type": "note",
+     "title_ar": "أفعال شاذّة في الماضي",
+     "body_ar": "ir / ser: fui · fuiste · fue · fuimos · fueron\nhacer: hice · hiciste · hizo · hicimos · hicieron\ntener: tuve · tuviste · tuvo · tuvimos · tuvieron\n\nلا علامة نبر: fue، hizo، tuvo.",
+     "examples": [
+      {
+       "es": "¿Qué hiciste el fin de semana?",
+       "ar": "ماذا فعلتَ في عطلة نهاية الأسبوع؟"
+      }
+     ]
+    },
+    {
+     "type": "teach",
+     "item": "fui"
+    },
+    {
+     "type": "teach",
+     "item": "fue"
+    },
+    {
+     "type": "teach",
+     "item": "fuimos"
+    },
+    {
+     "type": "mcq_meaning",
+     "item": "fui"
+    },
+    {
+     "type": "listen_pick_es",
+     "item": "fue"
+    },
+    {
+     "type": "mcq_reverse",
+     "item": "fuimos"
+    },
+    {
+     "type": "choice",
+     "prompt_ar": "كيف تقول «كانت رحلة جيدة»؟",
+     "choices": [
+      "Fue un buen viaje.",
+      "Fui un buen viaje.",
+      "Fué un buen viaje."
+     ],
+     "answer": 0,
+     "skill": "grammar",
+     "choices_es": true,
+     "explain_ar": "el viaje (هو): fue، وبلا علامة نبر. fui = كنتُ / ذهبتُ."
+    },
+    {
+     "type": "teach",
+     "item": "hice"
+    },
+    {
+     "type": "teach",
+     "item": "hizo"
+    },
+    {
+     "type": "teach",
+     "item": "tuve"
+    },
+    {
+     "type": "mcq_meaning",
+     "item": "hice"
+    },
+    {
+     "type": "listen_choose",
+     "item": "tuve"
+    },
+    {
+     "type": "mcq_reverse",
+     "item": "hizo"
+    },
+    {
+     "type": "teach",
+     "item": "vuelo"
+    },
+    {
+     "type": "listen_pick_es",
+     "item": "vuelo"
+    },
+    {
+     "type": "fill",
+     "es": "El año pasado yo ___ a México.",
+     "answer": "fui",
+     "ar": "العام الماضي ذهبتُ إلى المكسيك.",
+     "options": [
+      "fui",
+      "fue",
+      "voy"
+     ],
+     "explain_ar": "yo في الماضي من ir: fui. fue = ذهب هو."
+    },
+    {
+     "type": "fill",
+     "es": "En el viaje yo ___ un problema con el vuelo.",
+     "answer": "tuve",
+     "ar": "في الرحلة كانت عندي مشكلة مع الرحلة الجوية.",
+     "options": [
+      "tuve",
+      "tengo",
+      "tuvo"
+     ],
+     "explain_ar": "tener شاذّ في الماضي: tuve (yo)، tuvo (هو)."
+    },
+    {
+     "type": "match",
+     "items": [
+      "fui",
+      "hice",
+      "tuve",
+      "vuelo"
+     ]
+    },
+    {
+     "type": "type_es",
+     "item": "viaje"
+    },
+    {
+     "type": "type_es",
+     "item": "fui"
+    },
+    {
+     "type": "order",
+     "es": "El año pasado fuimos a Madrid en tren.",
+     "ar": "العام الماضي ذهبنا إلى مدريد بالقطار."
+    },
+    {
+     "type": "dictation",
+     "es": "El vuelo llegó tarde y fuimos al hotel en taxi.",
+     "ar": "وصلت الرحلة الجوية متأخرة وذهبنا إلى الفندق بالتاكسي."
+    },
+    {
+     "type": "choice",
+     "prompt_ar": "ماذا فعل يوم الثلاثاء؟",
+     "choices": [
+      "قدّم عرضاً لعميل",
+      "زار المدينة",
+      "وصل إلى الفندق"
+     ],
+     "answer": 0,
+     "skill": "reading",
+     "choices_es": false,
+     "stimulus_es": "El mes pasado fui a Bogotá por trabajo. El vuelo llegó tarde, pero el hotel fue muy bueno. El martes hice una presentación para un cliente y el miércoles visité la ciudad."
+    },
+    {
+     "type": "choice",
+     "prompt_ar": "استمع: ماذا يسأل؟",
+     "choices": [
+      "ماذا فعلتَ في الرحلة؟",
+      "إلى أين سافرتَ؟",
+      "كيف كانت الرحلة؟"
+     ],
+     "answer": 0,
+     "skill": "listening",
+     "choices_es": false,
+     "audio_es": "¿Qué hiciste en el viaje?"
+    },
+    {
+     "type": "respond",
+     "prompt_ar": "زميل يسأل: «¿Adónde fuiste el año pasado?». قل: ذهبتُ إلى إسبانيا.",
+     "accepted": [
+      "Fui a España",
+      "El año pasado fui a España",
+      "Fui a España el año pasado"
+     ],
+     "audio_es": "¿Adónde fuiste el año pasado?"
+    },
+    {
+     "type": "speak",
+     "es": "El año pasado fui a Madrid. Fue un viaje de trabajo y tuve muchas reuniones.",
+     "ar": "العام الماضي ذهبتُ إلى مدريد. كانت رحلة عمل وكانت عندي اجتماعات كثيرة."
+    }
+   ]
+  },
+  {
+   "id": "a2_u2_l5",
+   "title_ar": "ماذا حدث مع العميل؟",
+   "title_es": "¿Qué pasó con el cliente?",
+   "objectives_ar": [
+    "سرد مشكلة عميل وما فُعل لحلّها",
+    "الماضي لما حدث والحاضر للوضع الآن",
+    "كتابة رسالة متابعة قصيرة"
+   ],
+   "prerequisites": [
+    "a2_u2_l4"
+   ],
+   "minutes": 17,
+   "work_relevance_ar": "تقرير لمديرك عن شكوى عميل، ورسالة متابعة للعميل.",
+   "source": "original-v1",
+   "grammar": [
+    "g_past_vs_present"
+   ],
+   "items": [
+    {
+     "id": "que_paso",
+     "es": "¿Qué pasó?",
+     "ar": "ماذا حدث؟",
+     "en": "What happened?",
+     "pos": "سؤال",
+     "examples": [
+      {
+       "es": "¿Qué pasó con el pedido?",
+       "ar": "ماذا حدث مع الطلب؟"
+      }
+     ],
+     "work": true
+    },
+    {
+     "id": "se_quejo",
+     "es": "se quejó",
+     "ar": "اشتكى",
+     "en": "he / she complained",
+     "pos": "فعل",
+     "examples": [
+      {
+       "es": "El cliente se quejó de la factura.",
+       "ar": "اشتكى العميل من الفاتورة."
+      }
+     ],
+     "note_ar": "quejarse de = يشتكي من. me quejé = اشتكيتُ.",
+     "work": true
+    },
+    {
+     "id": "explique",
+     "es": "expliqué",
+     "ar": "شرحتُ",
+     "en": "I explained",
+     "pos": "فعل",
+     "examples": [
+      {
+       "es": "Le expliqué el problema.",
+       "ar": "شرحتُ له المشكلة."
+      }
+     ],
+     "work": true,
+     "connections": [
+      {
+       "type": "grammar",
+       "ar": "c ← qu قبل é: expliqué (لكن explicó)."
+      }
+     ]
+    },
+    {
+     "id": "solucione",
+     "es": "solucioné",
+     "ar": "حللتُ",
+     "en": "I solved",
+     "pos": "فعل",
+     "examples": [
+      {
+       "es": "Solucioné el error en una hora.",
+       "ar": "حللتُ الخطأ في ساعة."
+      }
+     ],
+     "work": true
+    },
+    {
+     "id": "le_escribi",
+     "es": "le escribí",
+     "ar": "كتبتُ له / لحضرتك",
+     "en": "I wrote to him / her / you",
+     "pos": "تعبير",
+     "examples": [
+      {
+       "es": "Le escribí un correo al cliente.",
+       "ar": "كتبتُ بريداً إلى العميل."
+      }
+     ],
+     "work": true,
+     "connections": [
+      {
+       "type": "grammar",
+       "ar": "le (A2-U1) + escribí (‎-ir: ‎-í)."
+      }
+     ]
+    },
+    {
+     "id": "al_dia_siguiente",
+     "es": "al día siguiente",
+     "ar": "في اليوم التالي",
+     "en": "the next day",
+     "pos": "تعبير",
+     "examples": [
+      {
+       "es": "Al día siguiente el técnico arregló la impresora.",
+       "ar": "في اليوم التالي أصلح الفنّي الطابعة."
+      }
+     ]
+    },
+    {
+     "id": "por_eso",
+     "es": "por eso",
+     "ar": "لذلك",
+     "en": "that's why, so",
+     "pos": "تعبير",
+     "examples": [
+      {
+       "es": "El cliente llamó; por eso revisé la factura.",
+       "ar": "اتصل العميل؛ لذلك راجعتُ الفاتورة."
+      }
+     ]
+    },
+    {
+     "id": "seguimiento",
+     "es": "el seguimiento",
+     "ar": "المتابعة",
+     "en": "follow-up",
+     "pos": "اسم",
+     "examples": [
+      {
+       "es": "Envié un correo de seguimiento.",
+       "ar": "أرسلتُ بريد متابعة."
+      }
+     ],
+     "work": true
+    },
+    {
+     "id": "ahora_funciona",
+     "es": "ahora todo funciona",
+     "ar": "الآن كل شيء يعمل",
+     "en": "now everything works",
+     "pos": "تعبير",
+     "examples": [
+      {
+       "es": "Ahora todo funciona bien.",
+       "ar": "الآن كل شيء يعمل جيداً."
+      }
+     ]
+    }
+   ],
+   "activities": [
+    {
+     "type": "teach",
+     "item": "que_paso"
+    },
+    {
+     "type": "mcq_meaning",
+     "item": "que_paso"
+    },
+    {
+     "type": "teach",
+     "item": "se_quejo"
+    },
+    {
+     "type": "listen_choose",
+     "item": "se_quejo"
+    },
+    {
+     "type": "teach",
+     "item": "explique"
+    },
+    {
+     "type": "teach",
+     "item": "solucione"
+    },
+    {
+     "type": "mcq_reverse",
+     "item": "explique"
+    },
+    {
+     "type": "listen_pick_es",
+     "item": "solucione"
+    },
+    {
+     "type": "choice",
+     "prompt_ar": "كيف تكتب «شرحتُ»؟",
+     "choices": [
+      "expliqué",
+      "explicé",
+      "explico"
+     ],
+     "answer": 0,
+     "skill": "grammar",
+     "choices_es": true,
+     "explain_ar": "c ← qu قبل é لكي يبقى الصوت: expliqué. explico = أشرح (الآن)."
+    },
+    {
+     "type": "note",
+     "title_ar": "الحاضر أم الماضي؟",
+     "body_ar": "ما حدث ← الماضي: El cliente se quejó. Le expliqué el problema.\nالوضع الآن ← الحاضر: Ahora todo funciona bien.",
+     "examples": [
+      {
+       "es": "El cliente se quejó ayer y hoy todo funciona.",
+       "ar": "اشتكى العميل أمس، واليوم كل شيء يعمل."
+      }
+     ]
+    },
+    {
+     "type": "teach",
+     "item": "le_escribi"
+    },
+    {
+     "type": "teach",
+     "item": "al_dia_siguiente"
+    },
+    {
+     "type": "mcq_meaning",
+     "item": "al_dia_siguiente"
+    },
+    {
+     "type": "listen_choose",
+     "item": "le_escribi"
+    },
+    {
+     "type": "teach",
+     "item": "por_eso"
+    },
+    {
+     "type": "teach",
+     "item": "seguimiento"
+    },
+    {
+     "type": "teach",
+     "item": "ahora_funciona"
+    },
+    {
+     "type": "mcq_meaning",
+     "item": "por_eso"
+    },
+    {
+     "type": "mcq_reverse",
+     "item": "seguimiento"
+    },
+    {
+     "type": "listen_pick_es",
+     "item": "ahora_funciona"
+    },
+    {
+     "type": "fill",
+     "es": "Ayer el cliente se ___ de la factura.",
+     "answer": "quejó",
+     "ar": "أمس اشتكى العميل من الفاتورة.",
+     "options": [
+      "quejó",
+      "queja",
+      "quejé"
+     ],
+     "explain_ar": "el cliente (هو) في الماضي: ‎-ó. me quejé = اشتكيتُ أنا."
+    },
+    {
+     "type": "fill",
+     "es": "Ayer el sistema no funcionó, pero ahora ___ bien.",
+     "answer": "funciona",
+     "ar": "أمس لم يعمل النظام، لكنه الآن يعمل جيداً.",
+     "options": [
+      "funciona",
+      "funcionó",
+      "funcioné"
+     ],
+     "explain_ar": "ahora ← الحاضر: funciona. الماضي funcionó لما حدث أمس."
+    },
+    {
+     "type": "match",
+     "items": [
+      "explique",
+      "solucione",
+      "por_eso",
+      "seguimiento"
+     ]
+    },
+    {
+     "type": "type_es",
+     "item": "solucione"
+    },
+    {
+     "type": "type_es",
+     "item": "que_paso"
+    },
+    {
+     "type": "order",
+     "es": "Al día siguiente le escribí un correo de seguimiento.",
+     "ar": "في اليوم التالي كتبتُ له بريد متابعة."
+    },
+    {
+     "type": "dictation",
+     "es": "El cliente se quejó y yo le expliqué el problema.",
+     "ar": "اشتكى العميل، وأنا شرحتُ له المشكلة."
+    },
+    {
+     "type": "choice",
+     "prompt_ar": "ماذا فعل الموظف في اليوم التالي؟",
+     "choices": [
+      "كتب بريد متابعة للعميل",
+      "اتصل بشركة النقل",
+      "راجع رقم الطلب"
+     ],
+     "answer": 0,
+     "skill": "reading",
+     "choices_es": false,
+     "stimulus_es": "Informe: el lunes un cliente se quejó porque el pedido no llegó. Primero revisé el número de pedido. Después llamé a la empresa de transporte y solucioné el problema. Al día siguiente le escribí un correo de seguimiento. Ahora todo funciona bien."
+    },
+    {
+     "type": "choice",
+     "prompt_ar": "مديرك يسأل: «¿Qué pasó con el cliente?». أيّ ردّ مناسب؟",
+     "choices": [
+      "Se quejó de la factura y le expliqué el error.",
+      "Mañana se quejó de la factura.",
+      "Me quejé de la factura y el cliente me explicó el error."
+     ],
+     "answer": 0,
+     "skill": "reading",
+     "choices_es": true,
+     "explain_ar": "تحكي ما حدث للعميل بالماضي: se quejó، expliqué. mañana لا تأتي مع الماضي."
+    },
+    {
+     "type": "respond",
+     "prompt_ar": "مديرك يسأل: «¿Solucionaste el problema?». قل: نعم، حللتُه أمس.",
+     "accepted": [
+      "Sí, lo solucioné ayer",
+      "Sí, ayer lo solucioné",
+      "Sí, solucioné el problema ayer",
+      "Sí, ayer solucioné el problema"
+     ],
+     "audio_es": "¿Solucionaste el problema?"
+    },
+    {
+     "type": "speak",
+     "es": "El cliente se quejó, le expliqué el problema y al día siguiente le escribí un correo de seguimiento.",
+     "ar": "اشتكى العميل، فشرحتُ له المشكلة، وفي اليوم التالي كتبتُ له بريد متابعة."
+    }
+   ]
+  }
+ ]
+}
