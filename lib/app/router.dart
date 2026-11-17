@@ -1,6 +1,7 @@
 import 'package:go_router/go_router.dart';
 import 'package:material_ui/material_ui.dart';
 
+import '../features/assessment/assessment_screens.dart';
 import '../features/home/home_screen.dart';
 import '../features/lesson/lesson_screen.dart';
 import '../features/library/library_screen.dart';
@@ -49,6 +50,18 @@ GoRouter buildRouter({String initialLocation = '/home'}) => GoRouter(
       path: '/listening/:id/questions',
       builder: (_, state) =>
           DialogueQuestionsScreen(dialogueId: state.pathParameters['id']!),
+    ),
+    GoRoute(
+      path: '/assessment/:id',
+      builder: (_, state) =>
+          AssessmentScreen(assessmentId: state.pathParameters['id']!),
+    ),
+    GoRoute(
+      path: '/assessment/:id/result/:attempt',
+      builder: (_, state) => AssessmentResultScreen(
+        assessmentId: state.pathParameters['id']!,
+        attemptId: int.parse(state.pathParameters['attempt']!),
+      ),
     ),
     GoRoute(path: '/settings', builder: (_, _) => const SettingsScreen()),
     GoRoute(path: '/tutor', builder: (_, _) => const TutorScreen()),

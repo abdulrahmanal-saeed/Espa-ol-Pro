@@ -6,6 +6,7 @@ import '../../core/content/models.dart';
 import '../../core/learning/progress_repository.dart';
 import '../../core/providers.dart';
 import '../../core/widgets/common.dart';
+import '../assessment/can_do_section.dart';
 
 const skillLabels = {
   'vocabulary': 'المفردات',
@@ -241,6 +242,10 @@ class ProgressScreen extends ConsumerWidget {
           ),
 
           // ---- skills -------------------------------------------------------
+          // ---- can-do evidence ---------------------------------------------
+          const SectionTitle('ما أستطيعه — من نقاط التحقق'),
+          const CanDoSection(),
+
           const SectionTitle('دلائل المهارات — المحاولة الأولى فقط'),
           Card(
             child: Padding(
