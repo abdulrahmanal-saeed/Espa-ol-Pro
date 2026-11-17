@@ -357,6 +357,31 @@ class ContentValidator {
           }
         }
       }
+      // Past tense (content ≥ 1.6.0): optional, but complete when given.
+      if (v.preterite.isNotEmpty) {
+        for (final p in Verb.persons) {
+          final f = v.preterite[p] ?? '';
+          if (f.trim().isEmpty) err(w, 'missing past form for "$p"');
+          if (_arabic.hasMatch(f)) {
+            err(w, 'past form for "$p" contains Arabic script');
+          }
+        }
+        for (final k in v.preterite.keys) {
+          if (!Verb.persons.contains(k)) err(w, 'unknown past person "$k"');
+        }
+        if (v.preteriteRegular) {
+          final expected = Verb.regularPreterite(v.infinitive);
+          if (expected == null) {
+            err(w, 'a regular past needs an -ar, -er or -ir verb');
+          } else {
+            for (final p in Verb.persons) {
+              if (v.preterite[p] != null && v.preterite[p] != expected[p]) {
+                err(w, 'regular past form for "$p" should be "${expected[p]}"');
+              }
+            }
+          }
+        }
+      }
       if (v.lessonIds.isEmpty) err(w, 'needs at least one lesson');
       for (final l in v.lessonIds) {
         if (pack.lesson(l) == null) err(w, 'unknown lesson "$l"');

@@ -259,10 +259,12 @@ class Verb {
     required this.ar,
     required this.regular,
     required this.forms,
+    this.preterite = const {},
+    bool? preteriteRegular,
     this.noteAr = '',
     this.examples = const [],
     this.lessonIds = const [],
-  });
+  }) : preteriteRegular = preteriteRegular ?? regular;
 
   final String id;
   final String infinitive;
@@ -273,6 +275,15 @@ class Verb {
 
   /// Present tense, keyed by [persons].
   final Map<String, String> forms;
+
+  /// Pretérito indefinido, keyed by [persons]; empty when not given
+  /// (content < 1.6.0), so older packages keep working.
+  final Map<String, String> preterite;
+
+  /// Whether [preterite] follows the rules (see [regularPreterite]). Defaults
+  /// to [regular]; a verb irregular in the present can be regular in the past
+  /// (volver: vuelvo / volví).
+  final bool preteriteRegular;
   final String noteAr;
   final List<Example> examples;
 
@@ -303,6 +314,35 @@ class Verb {
     };
     if (endings == null) return null;
     return {for (var i = 0; i < 6; i++) persons[i]: '$stem${endings[i]}'};
+  }
+
+  /// The pretérito indefinido a regular verb must have, or null for an
+  /// unknown ending. Includes the spelling changes of the yo form that keep
+  /// the sound: -car → qué, -gar → gué, -zar → cé (saqué, llegué, empecé).
+  static Map<String, String>? regularPreterite(String infinitive) {
+    if (infinitive.length < 3) return null;
+    final stem = infinitive.substring(0, infinitive.length - 2);
+    final ending = infinitive.substring(infinitive.length - 2);
+    final endings = switch (ending) {
+      'ar' => ['é', 'aste', 'ó', 'amos', 'asteis', 'aron'],
+      'er' || 'ir' => ['í', 'iste', 'ió', 'imos', 'isteis', 'ieron'],
+      _ => null,
+    };
+    if (endings == null) return null;
+    var yoStem = stem;
+    if (ending == 'ar') {
+      if (stem.endsWith('c')) {
+        yoStem = '${stem.substring(0, stem.length - 1)}qu';
+      } else if (stem.endsWith('g')) {
+        yoStem = '${stem}u';
+      } else if (stem.endsWith('z')) {
+        yoStem = '${stem.substring(0, stem.length - 1)}c';
+      }
+    }
+    return {
+      for (var i = 0; i < 6; i++)
+        persons[i]: '${i == 0 ? yoStem : stem}${endings[i]}',
+    };
   }
 }
 

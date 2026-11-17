@@ -194,6 +194,18 @@ proven on a broken copy in `test/assessment_content_test.dart`.
 }] }
 ```
 
+Content ≥ 1.6.0 may add the pretérito indefinido:
+
+```jsonc
+  "preterite": { "yo": "volví", "tu": "volviste", "el": "volvió",
+                 "nosotros": "volvimos", "vosotros": "volvisteis", "ellos": "volvieron" },
+  "preterite_regular": true   // optional; defaults to "regular"
+```
+
+Both keys are optional, so older files keep loading. When `preterite` is
+given, all six persons are required. A regular past must equal the rules,
+including the yo spelling changes (-car → qué, -gar → gué, -zar → cé).
+
 Validation: unique ids; Arabic gloss; all six persons present, no Arabic
 script, no unknown person keys; **a regular verb's six forms must equal the
 -ar / -er / -ir rules exactly** (so a typo such as *hablámos* is rejected);

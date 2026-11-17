@@ -54,6 +54,11 @@ class VerbsView extends ConsumerWidget {
                   subtitle: Text(
                     [
                       v.regular ? 'منتظم' : 'شاذّ',
+                      if (v.preterite.isNotEmpty &&
+                          v.regular != v.preteriteRegular)
+                        v.preteriteRegular
+                            ? 'منتظم في الماضي'
+                            : 'شاذّ في الماضي',
                       if (learned(v)) 'درستَه',
                     ].join(' · '),
                     style: t.textTheme.bodySmall,
@@ -61,36 +66,26 @@ class VerbsView extends ConsumerWidget {
                   childrenPadding: const EdgeInsets.fromLTRB(16, 0, 16, 12),
                   expandedCrossAxisAlignment: CrossAxisAlignment.stretch,
                   children: [
+                    _TenseHeader('المضارع · presente'),
                     for (final p in Verb.persons)
-                      Directionality(
-                        textDirection: TextDirection.ltr,
-                        child: Padding(
-                          padding: const EdgeInsets.symmetric(vertical: 2),
-                          child: Row(
-                            children: [
-                              SizedBox(
-                                width: 170,
-                                child: Text(
-                                  Verb.personLabels[p]!,
-                                  style: TextStyle(
-                                    fontFamily: spanishFont,
-                                    color: t.colorScheme.onSurfaceVariant,
-                                  ),
-                                ),
-                              ),
-                              Expanded(
-                                child: EsText(
-                                  v.forms[p] ?? '',
-                                  key: ValueKey('verb-form-${v.id}-$p'),
-                                  size: 17,
-                                  weight: FontWeight.w600,
-                                ),
-                              ),
-                              SpeakButton(v.forms[p] ?? '', size: 20),
-                            ],
-                          ),
-                        ),
+                      _FormRow(
+                        person: p,
+                        form: v.forms[p] ?? '',
+                        formKey: 'verb-form-${v.id}-$p',
                       ),
+                    if (v.preterite.isNotEmpty) ...[
+                      const SizedBox(height: 6),
+                      _TenseHeader(
+                        'الماضي البسيط · pretérito indefinido',
+                        key: ValueKey('verb-past-${v.id}'),
+                      ),
+                      for (final p in Verb.persons)
+                        _FormRow(
+                          person: p,
+                          form: v.preterite[p] ?? '',
+                          formKey: 'verb-past-${v.id}-$p',
+                        ),
+                    ],
                     if (v.noteAr.isNotEmpty) ...[
                       const SizedBox(height: 8),
                       Text(v.noteAr, style: const TextStyle(height: 1.7)),
@@ -105,4 +100,62 @@ class VerbsView extends ConsumerWidget {
       ],
     );
   }
+}
+
+class _TenseHeader extends StatelessWidget {
+  const _TenseHeader(this.label, {super.key});
+  final String label;
+
+  @override
+  Widget build(BuildContext context) => Padding(
+    padding: const EdgeInsets.only(top: 4, bottom: 2),
+    child: Text(
+      label,
+      style: Theme.of(context).textTheme.labelLarge!
+          .copyWith(color: Theme.of(context).colorScheme.primary),
+    ),
+  );
+}
+
+/// One person and its form, always left-to-right.
+class _FormRow extends StatelessWidget {
+  const _FormRow({
+    required this.person,
+    required this.form,
+    required this.formKey,
+  });
+  final String person;
+  final String form;
+  final String formKey;
+
+  @override
+  Widget build(BuildContext context) => Directionality(
+    textDirection: TextDirection.ltr,
+    child: Padding(
+      padding: const EdgeInsets.symmetric(vertical: 2),
+      child: Row(
+        children: [
+          SizedBox(
+            width: 170,
+            child: Text(
+              Verb.personLabels[person]!,
+              style: TextStyle(
+                fontFamily: spanishFont,
+                color: Theme.of(context).colorScheme.onSurfaceVariant,
+              ),
+            ),
+          ),
+          Expanded(
+            child: EsText(
+              form,
+              key: ValueKey(formKey),
+              size: 17,
+              weight: FontWeight.w600,
+            ),
+          ),
+          SpeakButton(form, size: 20),
+        ],
+      ),
+    ),
+  );
 }
