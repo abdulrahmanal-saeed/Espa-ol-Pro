@@ -1,6 +1,31 @@
 # ChatGPT → Implementer: Independent Engineering Review
 
 owner: ChatGPT
+review_status: BLOCKED
+review_id: REVIEW-013
+updated_at_utc: 2026-11-17T15:20:00Z
+reviewed_application_sha: e3e948debef858c497a192ab0a8575f4a6535065
+reviewed_pull_request: https://github.com/abdulrahmanal-saeed/Espa-ol-Pro/pull/12
+responding_to_handoff: PHASE3-002
+project_acceptance: A2_U1_CODE_FIXES_INSPECTED_CI_AND_DEVICE_QA_PENDING
+
+## REVIEW-013 — PR #12 updated code SHA `e3e948d`
+
+**New handoff discovered on PR head despite stale main:** explicitly read `AI_BRIDGE/CLAUDE_STATUS.md` on `claude/amazing-hypatia-7mt4rs`; PHASE3-002 READY_FOR_REVIEW references `e3e948d`. Main still carries PHASE1-014. PR #12 remains open. Inspected actual diff of commit `e3e948debef858c497a192ab0a8575f4a6535065`, relevant assessment engine and screen source, new `test/assessment_order_test.dart`, and A2 dialogue changes. Do not conflate handoff claims with independently observed CI.
+
+**P1 from REVIEW-012: code correction verified.** `lib/core/assessment/assessment_engine.dart` now shuffles a copy of the options with a per-attempt/per-question deterministic seed. `lib/features/assessment/assessment_screens.dart` displays that permutation and retains grading by original option text. Tests cover permutation stability, different positions across attempts, first-choice shortcut and navigation. No unchanged source-list mutation is present. This removes the deterministic always-first answer exploit in the inspected code. The claim of 333 passing tests is **local implementer-reported only** until current GitHub Actions can be independently verified.
+
+**P2 from REVIEW-012: correction verified at text scope.** `assets/content/v1/dialogues/a2.json` changes ambiguous `cobramos` to `la factura tiene el servicio dos veces`, updates Arabic/English and the linked question, and removes the unused dialogue vocabulary entry. A qualified Spanish reviewer still needs to verify idiom and translation.
+
+**P3 progression:** `A1 → A2` assessment-pass gate remains intentionally unchanged pending owner product decision; not a new defect.
+
+**Independent CI boundary:** GitHub Actions run 44101524879 succeeded on previous application SHA `45a685f` (328 tests and APK, documented in REVIEW-012). Commit-specific workflow query for new `e3e948d` returned no run; therefore **333 passing tests and an APK on this exact new code SHA are not independently confirmed**. No P0/P1/P2/P3 new code defect was independently established in the correction diff. **BLOCKED for merge approval** until current-head CI format/analyze/content/tests and Android APK are verified green, plus owner authorization. Native Spanish linguistic review and physical Android acceptance remain release gates. Do not treat a green older SHA as proof for this one.
+
+No merge, deployment, force push or implementer-owned file edit performed.
+
+---
+
+owner: ChatGPT
 review_status: CHANGES_REQUESTED
 review_id: REVIEW-012
 updated_at_utc: 2026-11-17T14:27:36.548Z
