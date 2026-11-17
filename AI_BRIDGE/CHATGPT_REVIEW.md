@@ -1,6 +1,31 @@
 # ChatGPT → Implementer: Independent Engineering Review
 
 owner: ChatGPT
+review_status: APPROVED_WITH_RELEASE_GATES
+review_id: REVIEW-011
+updated_at_utc: 2026-11-17T11:20:00Z
+reviewed_application_sha: 9f868767330b74099824e17da0e58d2c62c69571
+reviewed_pr7_application_sha: 9f868767330b74099824e17da0e58d2c62c69571
+reviewed_pull_requests: https://github.com/abdulrahmanal-saeed/Espa-ol-Pro/pull/7 ; https://github.com/abdulrahmanal-saeed/Espa-ol-Pro/pull/8 ; https://github.com/abdulrahmanal-saeed/Espa-ol-Pro/pull/9 ; https://github.com/abdulrahmanal-saeed/Espa-ol-Pro/pull/10 ; https://github.com/abdulrahmanal-saeed/Espa-ol-Pro/pull/11
+project_acceptance: RELEASE_NOT_VERIFIED_DEVICE_AND_SPANISH_QA_PENDING
+
+## REVIEW-011 — New PR #7 P2/P3 fixes; stack revalidation
+
+Read bridge README, review, and implementer status on main and separately inspected the implementer status on each of the five PR head branches. Main handoff is stale. PR #7 head has new PHASE1-013 READY_FOR_REVIEW identifying application commit `9f86876`; #8–#11 inherit the changes through merge-forward and their status files still contain earlier handoffs. Reviewed the actual new commits `9ddc13a95d424139ba0f3cc7a8f6c6a8acd7c220` and `9f868767330b74099824e17da0e58d2c62c69571`, rather than relying on the handoff's assertions.
+
+**P2 fixed at reviewed code scope:** `lib/features/listening/listening_screens.dart` now records audio-dependent guided dialogue answers as unmeasured unless the matching Spanish audio was logged after opening the question screen; `lib/core/speech/delivery_log.dart`, `lib/core/widgets/common.dart` and `lib/core/learning/progress_repository.dart` provide the delivery log and prevent downgraded attempts from feeding progress/error notebook. `test/listening_flow_test.dart` adds a mid-session voice-failure regression; `test/progress_test.dart` tests unmeasured notebook behavior. This addresses the prior unconditional measured-attempt path. The log proves the app's speech service returned successfully and remained available, **not independently verified acoustic output from an actual Android device**. Real-device TTS failure/return behavior remains an acceptance gate.
+
+**P3 fixed:** `lib/core/db/database.dart` explicitly queries legacy duplicate answer pairs, marks `assessmentAnswersDegraded` and preserves rows in that case, while other index creation errors now propagate. `test/persistence_test.dart` covers legacy duplicate preservation and unrelated SQLite failure. No broad exception swallowing remains in the inspected method. A degraded legacy database deliberately lacks the unique index and should be considered a documented data-integrity caveat, not a claim that every old database has the index.
+
+**Independent CI:** GitHub Actions runs #7 44069648158, #8 44069818348, #9 44069828802, #10 44069830535, #11 44069835150 each have successful test and Android debug APK jobs. Read actual #7 test job log: **275 passed**, including the new listening regression; #11 test job log: **323 passed**, including the regression. Prior A1 content review in REVIEW-010 is not repeated for unchanged content. The intervening merge-forward does not itself establish real-device or native Spanish linguistic quality.
+
+**Findings:** No newly verified P0/P1/P2/P3 defect in the two new correction commits. Prior REVIEW-009 P2/P3 are resolved in the inspected code. This is **conditional engineering approval for the correction scope**, not an unconditional release or automatic authorization to merge the stack. Verify the exact final head and green checks before each owner-authorized merge. Physical Android tests (including actual TTS output and mid-session failure, upgrade/migration, backup, unlocks) and qualified Spanish-language QA remain pending; no release is certified.
+
+No merge, deploy, force-push or implementer status edit performed.
+
+---
+
+owner: ChatGPT
 review_status: CHANGES_REQUESTED
 review_id: REVIEW-010
 updated_at_utc: 2026-11-17T10:52:29.763Z
