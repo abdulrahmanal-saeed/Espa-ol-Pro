@@ -88,6 +88,7 @@ class AttemptRecord {
   const AttemptRecord({
     required this.id,
     required this.assessmentId,
+    required this.assessmentVersion,
     required this.completedAtMs,
     required this.localDay,
     required this.answers,
@@ -95,6 +96,10 @@ class AttemptRecord {
 
   final int id;
   final String assessmentId;
+
+  /// The definition version the learner took. Attempts at different
+  /// versions are different question sets.
+  final int assessmentVersion;
   final int completedAtMs;
 
   /// Local calendar day of completion, `YYYY-MM-DD`.
@@ -148,7 +153,11 @@ enum CanDoState {
 /// - latest attempt not met → needs practice;
 /// - latest met → demonstrated;
 /// - latest and the previous attempt both met, completed on different local
-///   days → consistent (an immediate retake cannot produce it).
+///   days, **at the same assessment version** → consistent (an immediate
+///   retake cannot produce it, and neither can two different question
+///   sets after a content update).
+/// Needs-practice and demonstrated use the latest attempt whatever its
+/// version: it is the most recent evidence.
 /// Lessons opened or completed never change these states.
 abstract final class CanDoEvidence {
   static const threshold = 0.75;
@@ -173,11 +182,15 @@ abstract final class CanDoEvidence {
     if (covering.isEmpty) return CanDoState.notAssessed;
     final latest = covering.first;
     if (!met(canDoId, latest)) return CanDoState.needsPractice;
-    if (covering.length > 1) {
-      final previous = covering[1];
-      if (met(canDoId, previous) && previous.localDay != latest.localDay) {
-        return CanDoState.consistent;
-      }
+    // The previous attempt at the SAME version as the latest one.
+    final previous = covering
+        .skip(1)
+        .where((a) => a.assessmentVersion == latest.assessmentVersion)
+        .firstOrNull;
+    if (previous != null &&
+        met(canDoId, previous) &&
+        previous.localDay != latest.localDay) {
+      return CanDoState.consistent;
     }
     return CanDoState.demonstrated;
   }

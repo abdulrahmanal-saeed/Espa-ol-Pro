@@ -293,8 +293,26 @@ class AppDatabase extends _$AppDatabase {
     },
     beforeOpen: (details) async {
       await customStatement('PRAGMA foreign_keys = ON');
+      await _ensureOneAnswerPerQuestion();
     },
   );
+
+  /// One answer per question per attempt, enforced by the database too.
+  ///
+  /// Created on every open (not in a migration) so installs already on v5
+  /// get it without a schema bump. The app itself never writes duplicates
+  /// and restore rejects them; if an old database somehow holds one, the
+  /// index is skipped rather than deleting learner data or refusing to open.
+  Future<void> _ensureOneAnswerPerQuestion() async {
+    try {
+      await customStatement(
+        'CREATE UNIQUE INDEX IF NOT EXISTS idx_assessment_answers_question '
+        'ON assessment_answers (attempt_id, question_id)',
+      );
+    } on Object {
+      // Leave the data as it is; see above.
+    }
+  }
 
   Future<void> _createIndexes() async {
     await customStatement(

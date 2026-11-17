@@ -310,6 +310,7 @@ void main() {
             .map((r) => r['name'])
             .toList();
         expect(indexes, contains('idx_assessment_answers_attempt'));
+        expect(indexes, contains('idx_assessment_answers_question'));
         check.close();
       },
     );

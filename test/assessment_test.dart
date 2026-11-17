@@ -33,11 +33,13 @@ AttemptRecord record(
   int perCanDo = 3,
   int correctWhenMet = 3,
   int correctWhenNot = 1,
+  int version = 1,
 }) {
   final date = DateTime.parse('${day}T12:00:00');
   return AttemptRecord(
     id: id,
     assessmentId: 'a',
+    assessmentVersion: version,
     completedAtMs: date.millisecondsSinceEpoch,
     localDay: day,
     answers: [
@@ -184,6 +186,22 @@ void main() {
       expect(CanDoEvidence.state('c', [nextDay, a]), CanDoState.consistent);
     });
 
+    test('consistency only compares attempts at the same version', () {
+      final v1 = record(1, '2026-03-01', {'c': true});
+      final v2 = record(2, '2026-03-02', {'c': true}, version: 2);
+      // Two different question sets: demonstrated, not consistent.
+      expect(CanDoEvidence.state('c', [v1, v2]), CanDoState.demonstrated);
+      // A second pass at v2 on another day is consistent again.
+      final v2b = record(3, '2026-03-03', {'c': true}, version: 2);
+      expect(CanDoEvidence.state('c', [v1, v2, v2b]), CanDoState.consistent);
+      // The latest attempt still decides "needs practice", whatever version.
+      final v3fail = record(4, '2026-03-04', {'c': false}, version: 3);
+      expect(
+        CanDoEvidence.state('c', [v1, v2, v2b, v3fail]),
+        CanDoState.needsPractice,
+      );
+    });
+
     test('an earlier fail between does not count as consistent', () {
       final a = record(1, '2026-03-01', {'c': true});
       final fail = record(2, '2026-03-02', {'c': false});
@@ -247,6 +265,28 @@ void main() {
         'chk_pa1_u1.q1',
       );
     });
+
+    test(
+      'the database itself refuses a second answer to one question',
+      () async {
+        final id = await submit(allCorrect(chk));
+        await expectLater(
+          db
+              .into(db.assessmentAnswers)
+              .insert(
+                AssessmentAnswersCompanion.insert(
+                  attemptId: id,
+                  questionId: chk.questions.first.id,
+                  skill: 'listening',
+                  canDoId: chk.questions.first.canDoId,
+                  isCorrect: true,
+                ),
+              ),
+          throwsA(isA<raw.SqliteException>()),
+        );
+        expect((await repo.answers(id)).length, chk.questions.length);
+      },
+    );
 
     test('a failed answer write rolls back the whole submission', () async {
       await db.customStatement('''
@@ -450,6 +490,46 @@ void main() {
         });
       },
     );
+
+    test('the same question answered twice in one attempt is rejected, '
+        'even when the totals are adjusted to match', () async {
+      await expectRejected((t) {
+        final answers = t['assessment_answers'] as List;
+        final copy = Map<String, dynamic>.from(answers.first as Map);
+        final maxId = answers
+            .map((x) => (x as Map)['id'] as int)
+            .reduce((a, b) => a > b ? a : b);
+        copy['id'] = maxId + 1;
+        answers.add(copy);
+        final attempt = (t['assessment_attempts'] as List)
+            .cast<Map>()
+            .firstWhere((a) => a['id'] == copy['attemptId']);
+        attempt['maxScore'] = (attempt['maxScore'] as int) + 1;
+        if (copy['isCorrect'] == true) {
+          attempt['score'] = (attempt['score'] as int) + 1;
+        }
+      });
+    });
+
+    test('an attempt without answers is rejected', () async {
+      await expectRejected((t) {
+        final attempt = (t['assessment_attempts'] as List).first as Map;
+        (t['assessment_answers'] as List).removeWhere(
+          (x) => (x as Map)['attemptId'] == attempt['id'],
+        );
+        attempt['maxScore'] = 0;
+        attempt['score'] = 0;
+      });
+    });
+
+    test('an answer without a question or can-do is rejected', () async {
+      await expectRejected((t) {
+        ((t['assessment_answers'] as List).first as Map)['questionId'] = ' ';
+      });
+      await expectRejected((t) {
+        ((t['assessment_answers'] as List).first as Map)['canDoId'] = '';
+      });
+    });
 
     test('invalid versions, times and spellings are rejected', () async {
       await expectRejected((t) {
