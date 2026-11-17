@@ -1,0 +1,549 @@
+{
+ "dialogues": [
+  {
+   "id": "dlg_pa1_saludo",
+   "level": "pre_a1",
+   "unit": "pa1_u2",
+   "lessons": [
+    "pa1_u2_l1",
+    "pa1_u2_l2"
+   ],
+   "title_es": "Hasta mañana",
+   "title_ar": "إلى الغد",
+   "scenario_ar": "نهاية يوم العمل بعد الظهر. زميلان يلتقيان في ممرّ المكتب قبل المغادرة.",
+   "objectives_ar": [
+    "فهم تحية بعد الظهر عند سماعها",
+    "فهم السؤال عن الحال والرد عليه",
+    "تمييز عبارة الوداع حتى اليوم التالي"
+   ],
+   "speakers": [
+    {
+     "id": "laura",
+     "name": "Laura",
+     "role_ar": "زميلة في المكتب"
+    },
+    {
+     "id": "omar",
+     "name": "Omar",
+     "role_ar": "زميل في المكتب"
+    }
+   ],
+   "turns": [
+    {
+     "id": "dlg_pa1_saludo.t1",
+     "speaker": "laura",
+     "es": "Buenas tardes, Omar. ¿Cómo estás?",
+     "ar": "مساء الخير يا عمر. كيف حالك؟",
+     "en": "Good afternoon, Omar. How are you?"
+    },
+    {
+     "id": "dlg_pa1_saludo.t2",
+     "speaker": "omar",
+     "es": "Muy bien, gracias. ¿Y tú?",
+     "ar": "بخير جداً، شكراً. وأنتِ؟",
+     "en": "Very well, thanks. And you?"
+    },
+    {
+     "id": "dlg_pa1_saludo.t3",
+     "speaker": "laura",
+     "es": "Bien, gracias. Hasta mañana.",
+     "ar": "بخير، شكراً. إلى الغد.",
+     "en": "Fine, thanks. See you tomorrow."
+    },
+    {
+     "id": "dlg_pa1_saludo.t4",
+     "speaker": "omar",
+     "es": "Adiós, Laura. Hasta mañana.",
+     "ar": "وداعاً يا لاورا. إلى الغد.",
+     "en": "Goodbye, Laura. See you tomorrow."
+    }
+   ],
+   "items": [
+    "buenas_tardes",
+    "como_estas",
+    "muy_bien",
+    "y_tu",
+    "bien",
+    "adios",
+    "hasta_manana"
+   ],
+   "grammar": [
+    "g_greetings_time"
+   ],
+   "questions": [
+    {
+     "id": "dlg_pa1_saludo.q1",
+     "type": "choice",
+     "prompt_ar": "استمع: في أي وقت من اليوم يجري الحوار؟",
+     "choices": [
+      "بعد الظهر",
+      "في الصباح",
+      "في الليل"
+     ],
+     "answer": 0,
+     "choices_es": false,
+     "skill": "listening",
+     "turn": "dlg_pa1_saludo.t1",
+     "explain_ar": "Buenas tardes تحية ما بعد الظهر حتى المساء."
+    },
+    {
+     "id": "dlg_pa1_saludo.q2",
+     "type": "speaker",
+     "turn": "dlg_pa1_saludo.t2",
+     "skill": "listening"
+    },
+    {
+     "id": "dlg_pa1_saludo.q3",
+     "type": "choice",
+     "prompt_ar": "كيف حال لاورا؟",
+     "choices": [
+      "بخير",
+      "بخير جداً",
+      "ليست بخير"
+     ],
+     "answer": 0,
+     "choices_es": false,
+     "skill": "listening",
+     "turn": "dlg_pa1_saludo.t3",
+     "explain_ar": "قالت لاورا: Bien, gracias، أي «بخير»؛ أما «بخير جداً» فقالها عمر."
+    },
+    {
+     "id": "dlg_pa1_saludo.q4",
+     "type": "choice",
+     "prompt_ar": "متى سيلتقيان مرة أخرى؟",
+     "choices": [
+      "غداً",
+      "بعد قليل",
+      "الليلة"
+     ],
+     "answer": 0,
+     "choices_es": false,
+     "skill": "listening",
+     "turn": "dlg_pa1_saludo.t4",
+     "explain_ar": "Hasta mañana = إلى الغد."
+    },
+    {
+     "id": "dlg_pa1_saludo.q5",
+     "type": "dictation",
+     "turn": "dlg_pa1_saludo.t3",
+     "skill": "listening"
+    }
+   ],
+   "source": "original-v1"
+  },
+  {
+   "id": "dlg_pa1_presentacion",
+   "level": "pre_a1",
+   "unit": "pa1_u2",
+   "lessons": [
+    "pa1_u2_l2",
+    "pa1_u2_l3"
+   ],
+   "title_es": "Mucho gusto, señora Pérez",
+   "title_ar": "تشرّفنا يا سيدة بيريز",
+   "scenario_ar": "لقاء رسمي أول مع عميلة في الصباح. يستعمل الطرفان صيغة الاحترام usted.",
+   "objectives_ar": [
+    "فهم التعارف الرسمي بالاسم الكامل",
+    "تمييز صيغة usted في السؤال عن الاسم والحال",
+    "الرد بعبارات التعارف المهذبة"
+   ],
+   "speakers": [
+    {
+     "id": "perez",
+     "name": "Sra. Pérez",
+     "role_ar": "عميلة"
+    },
+    {
+     "id": "omar",
+     "name": "Omar",
+     "role_ar": "مندوب مبيعات"
+    }
+   ],
+   "turns": [
+    {
+     "id": "dlg_pa1_presentacion.t1",
+     "speaker": "perez",
+     "es": "Buenos días. Me llamo Laura Pérez. ¿Cómo se llama usted?",
+     "ar": "صباح الخير. اسمي لاورا بيريز. ما اسم حضرتك؟",
+     "en": "Good morning. My name is Laura Pérez. What is your name?"
+    },
+    {
+     "id": "dlg_pa1_presentacion.t2",
+     "speaker": "omar",
+     "es": "Me llamo Omar Hassan. Mucho gusto.",
+     "ar": "اسمي عمر حسن. تشرّفنا.",
+     "en": "My name is Omar Hassan. Nice to meet you."
+    },
+    {
+     "id": "dlg_pa1_presentacion.t3",
+     "speaker": "perez",
+     "es": "Encantada, señor Hassan. ¿Cómo está usted?",
+     "ar": "تشرّفت يا سيد حسن. كيف حال حضرتك؟",
+     "en": "Pleased to meet you, Mr. Hassan. How are you?"
+    },
+    {
+     "id": "dlg_pa1_presentacion.t4",
+     "speaker": "omar",
+     "es": "Muy bien, gracias. ¿Y usted?",
+     "ar": "بخير جداً، شكراً. وحضرتكِ؟",
+     "en": "Very well, thank you. And you?"
+    },
+    {
+     "id": "dlg_pa1_presentacion.t5",
+     "speaker": "perez",
+     "es": "Muy bien, gracias.",
+     "ar": "بخير جداً، شكراً.",
+     "en": "Very well, thank you."
+    }
+   ],
+   "items": [
+    "buenos_dias",
+    "me_llamo",
+    "como_se_llama_usted",
+    "mucho_gusto",
+    "encantado",
+    "senor",
+    "como_esta_usted",
+    "muy_bien",
+    "y_usted"
+   ],
+   "grammar": [
+    "g_tu_usted",
+    "g_gender_speaker"
+   ],
+   "questions": [
+    {
+     "id": "dlg_pa1_presentacion.q1",
+     "type": "choice",
+     "prompt_ar": "ما اسم العميلة كاملاً؟",
+     "choices": [
+      "Laura Pérez",
+      "Laura Hassan",
+      "Omar Pérez"
+     ],
+     "answer": 0,
+     "choices_es": true,
+     "skill": "listening",
+     "turn": "dlg_pa1_presentacion.t1"
+    },
+    {
+     "id": "dlg_pa1_presentacion.q2",
+     "type": "speaker",
+     "turn": "dlg_pa1_presentacion.t3",
+     "skill": "listening"
+    },
+    {
+     "id": "dlg_pa1_presentacion.q3",
+     "type": "choice",
+     "prompt_ar": "لماذا قالت «Encantada» وليس «Encantado»؟",
+     "choices": [
+      "لأن المتكلمة امرأة",
+      "لأن المخاطَب رجل",
+      "لأن الوقت صباح"
+     ],
+     "answer": 0,
+     "choices_es": false,
+     "skill": "grammar",
+     "explain_ar": "encantado / encantada تتبع جنس المتكلّم نفسه."
+    },
+    {
+     "id": "dlg_pa1_presentacion.q4",
+     "type": "choice",
+     "prompt_ar": "لماذا يقول عمر «¿Y usted?» وليس «¿Y tú?»؟",
+     "choices": [
+      "لأنه يخاطب عميلة بصيغة الاحترام",
+      "لأنه يخاطب صديقة",
+      "لأن الحوار ليلاً"
+     ],
+     "answer": 0,
+     "choices_es": false,
+     "skill": "grammar",
+     "explain_ar": "مع العملاء ومن لا نعرفهم نستعمل usted."
+    },
+    {
+     "id": "dlg_pa1_presentacion.q5",
+     "type": "dictation",
+     "turn": "dlg_pa1_presentacion.t2",
+     "skill": "listening"
+    }
+   ],
+   "source": "original-v1"
+  },
+  {
+   "id": "dlg_pa1_telefono",
+   "level": "pre_a1",
+   "unit": "pa1_u3",
+   "lessons": [
+    "pa1_u3_l1",
+    "pa1_u3_l2"
+   ],
+   "title_es": "¿Cuál es tu número?",
+   "title_ar": "ما رقمك؟",
+   "scenario_ar": "زميلان يتبادلان رقمَي الهاتف بعد اجتماع. الأرقام تُقال رقماً رقماً.",
+   "objectives_ar": [
+    "فهم رقم هاتف يُملى رقماً رقماً",
+    "طلب الرقم وتأكيده",
+    "تمييز الأرقام المتشابهة عند السماع"
+   ],
+   "speakers": [
+    {
+     "id": "laura",
+     "name": "Laura",
+     "role_ar": "زميلة"
+    },
+    {
+     "id": "omar",
+     "name": "Omar",
+     "role_ar": "زميل"
+    }
+   ],
+   "turns": [
+    {
+     "id": "dlg_pa1_telefono.t1",
+     "speaker": "laura",
+     "es": "Omar, ¿cuál es tu número de teléfono?",
+     "ar": "عمر، ما رقم هاتفك؟",
+     "en": "Omar, what's your phone number?"
+    },
+    {
+     "id": "dlg_pa1_telefono.t2",
+     "speaker": "omar",
+     "es": "Mi número es cinco, cero, uno, siete, tres.",
+     "ar": "رقمي هو ٥ ٠ ١ ٧ ٣.",
+     "en": "My number is five, zero, one, seven, three."
+    },
+    {
+     "id": "dlg_pa1_telefono.t3",
+     "speaker": "laura",
+     "es": "¿Cinco, cero, uno, siete, tres?",
+     "ar": "٥ ٠ ١ ٧ ٣؟",
+     "en": "Five, zero, one, seven, three?"
+    },
+    {
+     "id": "dlg_pa1_telefono.t4",
+     "speaker": "omar",
+     "es": "Sí. ¿Y tu número?",
+     "ar": "نعم. ورقمكِ؟",
+     "en": "Yes. And your number?"
+    },
+    {
+     "id": "dlg_pa1_telefono.t5",
+     "speaker": "laura",
+     "es": "Mi número es dos, nueve, ocho, cuatro, seis.",
+     "ar": "رقمي هو ٢ ٩ ٨ ٤ ٦.",
+     "en": "My number is two, nine, eight, four, six."
+    }
+   ],
+   "items": [
+    "cual_es_tu_numero",
+    "mi_numero_es",
+    "numero",
+    "cinco",
+    "cero",
+    "uno",
+    "siete",
+    "tres",
+    "dos",
+    "nueve",
+    "ocho",
+    "cuatro",
+    "seis",
+    "si"
+   ],
+   "grammar": [
+    "g_numbers"
+   ],
+   "questions": [
+    {
+     "id": "dlg_pa1_telefono.q1",
+     "type": "choice",
+     "prompt_ar": "ما رقم عمر؟",
+     "choices": [
+      "5 0 1 7 3",
+      "5 0 1 7 6",
+      "2 9 8 4 6"
+     ],
+     "answer": 0,
+     "choices_es": false,
+     "skill": "listening",
+     "turn": "dlg_pa1_telefono.t2"
+    },
+    {
+     "id": "dlg_pa1_telefono.q2",
+     "type": "choice",
+     "prompt_ar": "ما رقم لاورا؟",
+     "choices": [
+      "2 9 8 4 6",
+      "2 9 8 4 3",
+      "5 0 1 7 3"
+     ],
+     "answer": 0,
+     "choices_es": false,
+     "skill": "listening",
+     "turn": "dlg_pa1_telefono.t5"
+    },
+    {
+     "id": "dlg_pa1_telefono.q3",
+     "type": "choice",
+     "prompt_ar": "لماذا تكرّر لاورا الرقم؟",
+     "choices": [
+      "لتتأكد أنها سمعته صحيحاً",
+      "لأنها لا تعرف الأرقام",
+      "لتعطي رقمها"
+     ],
+     "answer": 0,
+     "choices_es": false,
+     "skill": "reading",
+     "turn": "dlg_pa1_telefono.t3"
+    },
+    {
+     "id": "dlg_pa1_telefono.q4",
+     "type": "speaker",
+     "turn": "dlg_pa1_telefono.t4",
+     "skill": "listening"
+    },
+    {
+     "id": "dlg_pa1_telefono.q5",
+     "type": "dictation",
+     "turn": "dlg_pa1_telefono.t4",
+     "skill": "listening"
+    }
+   ],
+   "source": "original-v1"
+  },
+  {
+   "id": "dlg_pa1_origen",
+   "level": "pre_a1",
+   "unit": "pa1_u3",
+   "lessons": [
+    "pa1_u3_l3"
+   ],
+   "title_es": "¿De dónde eres?",
+   "title_ar": "من أين أنت؟",
+   "scenario_ar": "تعارف غير رسمي بين شابّين في دورة لتعلّم اللغات.",
+   "objectives_ar": [
+    "فهم السؤال عن البلد والرد عليه",
+    "تمييز tú في الحوار غير الرسمي",
+    "تذكّر معلومة شخصية من حوار قصير"
+   ],
+   "speakers": [
+    {
+     "id": "sofia",
+     "name": "Sofía",
+     "role_ar": "طالبة في الدورة"
+    },
+    {
+     "id": "karim",
+     "name": "Karim",
+     "role_ar": "طالب في الدورة"
+    }
+   ],
+   "turns": [
+    {
+     "id": "dlg_pa1_origen.t1",
+     "speaker": "sofia",
+     "es": "Hola, me llamo Sofía. ¿Cómo te llamas?",
+     "ar": "مرحباً، اسمي صوفيا. ما اسمك؟",
+     "en": "Hi, my name is Sofía. What's your name?"
+    },
+    {
+     "id": "dlg_pa1_origen.t2",
+     "speaker": "karim",
+     "es": "Me llamo Karim. Mucho gusto.",
+     "ar": "اسمي كريم. تشرّفنا.",
+     "en": "My name is Karim. Nice to meet you."
+    },
+    {
+     "id": "dlg_pa1_origen.t3",
+     "speaker": "sofia",
+     "es": "Igualmente. ¿De dónde eres?",
+     "ar": "وأنا كذلك. من أين أنت؟",
+     "en": "Likewise. Where are you from?"
+    },
+    {
+     "id": "dlg_pa1_origen.t4",
+     "speaker": "karim",
+     "es": "Soy de Egipto. ¿Y tú?",
+     "ar": "أنا من مصر. وأنتِ؟",
+     "en": "I'm from Egypt. And you?"
+    },
+    {
+     "id": "dlg_pa1_origen.t5",
+     "speaker": "sofia",
+     "es": "Soy de México.",
+     "ar": "أنا من المكسيك.",
+     "en": "I'm from Mexico."
+    }
+   ],
+   "items": [
+    "hola",
+    "me_llamo",
+    "como_te_llamas",
+    "mucho_gusto",
+    "igualmente",
+    "de_donde_eres",
+    "soy_de",
+    "y_tu"
+   ],
+   "grammar": [
+    "g_ser"
+   ],
+   "questions": [
+    {
+     "id": "dlg_pa1_origen.q1",
+     "type": "choice",
+     "prompt_ar": "من أين كريم؟",
+     "choices": [
+      "من مصر",
+      "من المكسيك",
+      "من إسبانيا"
+     ],
+     "answer": 0,
+     "choices_es": false,
+     "skill": "listening",
+     "turn": "dlg_pa1_origen.t4"
+    },
+    {
+     "id": "dlg_pa1_origen.q2",
+     "type": "choice",
+     "prompt_ar": "من أين صوفيا؟",
+     "choices": [
+      "من المكسيك",
+      "من مصر",
+      "من إسبانيا"
+     ],
+     "answer": 0,
+     "choices_es": false,
+     "skill": "listening",
+     "turn": "dlg_pa1_origen.t5"
+    },
+    {
+     "id": "dlg_pa1_origen.q3",
+     "type": "speaker",
+     "turn": "dlg_pa1_origen.t3",
+     "skill": "listening"
+    },
+    {
+     "id": "dlg_pa1_origen.q4",
+     "type": "choice",
+     "prompt_ar": "هل الحوار رسمي أم غير رسمي؟",
+     "choices": [
+      "غير رسمي: يستعملان tú",
+      "رسمي: يستعملان usted"
+     ],
+     "answer": 0,
+     "choices_es": false,
+     "skill": "grammar",
+     "explain_ar": "¿Cómo te llamas? و ¿De dónde eres? صيغتا tú غير الرسمية."
+    },
+    {
+     "id": "dlg_pa1_origen.q5",
+     "type": "dictation",
+     "turn": "dlg_pa1_origen.t4",
+     "skill": "listening"
+    }
+   ],
+   "source": "original-v1"
+  }
+ ]
+}

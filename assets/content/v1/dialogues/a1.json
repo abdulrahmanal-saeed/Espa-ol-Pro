@@ -1,0 +1,305 @@
+{
+ "dialogues": [
+  {
+   "id": "dlg_a1_idiomas",
+   "level": "a1",
+   "unit": "a1_u1",
+   "lessons": [
+    "a1_u1_l1",
+    "a1_u1_l2"
+   ],
+   "title_es": "¿A qué te dedicas?",
+   "title_ar": "ماذا تعمل؟",
+   "scenario_ar": "استراحة في معرض تجاري. لاورا وكريم يتعارفان ويتحدثان عن اللغات والعمل.",
+   "objectives_ar": [
+    "فهم من يتكلم أي لغة",
+    "فهم المهنة ومجال العمل عند سماعهما",
+    "فهم كلمة también (أيضاً) في سياق حوار"
+   ],
+   "speakers": [
+    {
+     "id": "laura",
+     "name": "Laura",
+     "role_ar": "مديرة مبيعات"
+    },
+    {
+     "id": "karim",
+     "name": "Karim",
+     "role_ar": "مندوب مبيعات"
+    }
+   ],
+   "turns": [
+    {
+     "id": "dlg_a1_idiomas.t1",
+     "speaker": "laura",
+     "es": "Karim, ¿hablas español?",
+     "ar": "كريم، هل تتكلم الإسبانية؟",
+     "en": "Karim, do you speak Spanish?"
+    },
+    {
+     "id": "dlg_a1_idiomas.t2",
+     "speaker": "karim",
+     "es": "Sí, un poco. Hablo árabe e inglés.",
+     "ar": "نعم، قليلاً. أتكلم العربية والإنجليزية.",
+     "en": "Yes, a little. I speak Arabic and English."
+    },
+    {
+     "id": "dlg_a1_idiomas.t3",
+     "speaker": "laura",
+     "es": "¿A qué te dedicas?",
+     "ar": "ماذا تعمل؟",
+     "en": "What do you do?"
+    },
+    {
+     "id": "dlg_a1_idiomas.t4",
+     "speaker": "karim",
+     "es": "Soy vendedor. Trabajo en una empresa de tecnología.",
+     "ar": "أنا مندوب مبيعات. أعمل في شركة تقنية.",
+     "en": "I'm a salesperson. I work in a technology company."
+    },
+    {
+     "id": "dlg_a1_idiomas.t5",
+     "speaker": "laura",
+     "es": "Yo también trabajo en ventas. Soy gerente.",
+     "ar": "أنا أيضاً أعمل في المبيعات. أنا مديرة.",
+     "en": "I also work in sales. I'm a manager."
+    }
+   ],
+   "items": [
+    "hablas_espanol",
+    "un_poco",
+    "hablo",
+    "arabe",
+    "ingles",
+    "a_que_te_dedicas",
+    "vendedor",
+    "trabajo_en",
+    "empresa",
+    "tecnologia",
+    "tambien",
+    "ventas",
+    "gerente"
+   ],
+   "grammar": [
+    "g_ar_verbs",
+    "g_professions"
+   ],
+   "questions": [
+    {
+     "id": "dlg_a1_idiomas.q1",
+     "type": "choice",
+     "prompt_ar": "ما اللغات التي يتكلمها كريم إلى جانب قليل من الإسبانية؟",
+     "choices": [
+      "العربية والإنجليزية",
+      "العربية فقط",
+      "الإنجليزية والفرنسية"
+     ],
+     "answer": 0,
+     "choices_es": false,
+     "skill": "listening",
+     "turn": "dlg_a1_idiomas.t2"
+    },
+    {
+     "id": "dlg_a1_idiomas.q2",
+     "type": "choice",
+     "prompt_ar": "ماذا يعمل كريم؟",
+     "choices": [
+      "مندوب مبيعات في شركة تقنية",
+      "مدير في فندق",
+      "مدير مبيعات"
+     ],
+     "answer": 0,
+     "choices_es": false,
+     "skill": "listening",
+     "turn": "dlg_a1_idiomas.t4"
+    },
+    {
+     "id": "dlg_a1_idiomas.q3",
+     "type": "choice",
+     "prompt_ar": "ما وظيفة لاورا؟",
+     "choices": [
+      "مديرة",
+      "بائعة",
+      "عميلة"
+     ],
+     "answer": 0,
+     "choices_es": false,
+     "skill": "listening",
+     "turn": "dlg_a1_idiomas.t5"
+    },
+    {
+     "id": "dlg_a1_idiomas.q4",
+     "type": "speaker",
+     "turn": "dlg_a1_idiomas.t3",
+     "skill": "listening"
+    },
+    {
+     "id": "dlg_a1_idiomas.q5",
+     "type": "dictation",
+     "turn": "dlg_a1_idiomas.t4",
+     "skill": "listening"
+    }
+   ],
+   "source": "original-v1"
+  },
+  {
+   "id": "dlg_a1_recepcion",
+   "level": "a1",
+   "unit": "a1_u1",
+   "lessons": [
+    "a1_u1_l2",
+    "a1_u1_l3"
+   ],
+   "title_es": "Bienvenido a la empresa",
+   "title_ar": "أهلاً بك في الشركة",
+   "scenario_ar": "عميل يصل إلى استقبال شركة في الصباح. موظفة الاستقبال تقدّمه لمديرة المبيعات بصيغة رسمية.",
+   "objectives_ar": [
+    "فهم الترحيب الرسمي وعرض المساعدة",
+    "فهم تقديم شخص لآخر بوظيفته",
+    "فهم الردود المهذبة عند التعارف المهني"
+   ],
+   "speakers": [
+    {
+     "id": "recepcion",
+     "name": "Recepcionista",
+     "role_ar": "موظفة الاستقبال"
+    },
+    {
+     "id": "garcia",
+     "name": "Sr. García",
+     "role_ar": "عميل"
+    },
+    {
+     "id": "perez",
+     "name": "Sra. Pérez",
+     "role_ar": "مديرة المبيعات"
+    }
+   ],
+   "turns": [
+    {
+     "id": "dlg_a1_recepcion.t1",
+     "speaker": "recepcion",
+     "es": "Buenos días, señor. Bienvenido. ¿En qué puedo ayudarle?",
+     "ar": "صباح الخير يا سيدي. أهلاً وسهلاً. كيف يمكنني مساعدة حضرتك؟",
+     "en": "Good morning, sir. Welcome. How can I help you?"
+    },
+    {
+     "id": "dlg_a1_recepcion.t2",
+     "speaker": "garcia",
+     "es": "Buenos días. Me llamo Pablo García. Soy cliente de la empresa.",
+     "ar": "صباح الخير. اسمي بابلو غارسيا. أنا عميل لدى الشركة.",
+     "en": "Good morning. My name is Pablo García. I'm a client of the company."
+    },
+    {
+     "id": "dlg_a1_recepcion.t3",
+     "speaker": "recepcion",
+     "es": "Mucho gusto, señor García. Le presento a Laura Pérez, gerente de ventas.",
+     "ar": "تشرّفنا يا سيد غارسيا. أقدّم لحضرتك لاورا بيريز، مديرة المبيعات.",
+     "en": "Nice to meet you, Mr. García. Let me introduce you to Laura Pérez, sales manager."
+    },
+    {
+     "id": "dlg_a1_recepcion.t4",
+     "speaker": "perez",
+     "es": "Es un placer, señor García.",
+     "ar": "تشرّفت يا سيد غارسيا.",
+     "en": "It's a pleasure, Mr. García."
+    },
+    {
+     "id": "dlg_a1_recepcion.t5",
+     "speaker": "garcia",
+     "es": "El placer es mío. Aquí tiene mi tarjeta.",
+     "ar": "الشرف لي. تفضّلي بطاقتي.",
+     "en": "The pleasure is mine. Here is my card."
+    }
+   ],
+   "items": [
+    "bienvenido",
+    "en_que_puedo_ayudarle",
+    "le_presento_a",
+    "gerente",
+    "ventas",
+    "es_un_placer",
+    "el_placer_es_mio",
+    "aqui_tiene",
+    "tarjeta",
+    "senor",
+    "mucho_gusto"
+   ],
+   "grammar": [
+    "g_formal_intro",
+    "g_professions"
+   ],
+   "questions": [
+    {
+     "id": "dlg_a1_recepcion.q1",
+     "type": "choice",
+     "prompt_ar": "من هو السيد غارسيا؟",
+     "choices": [
+      "عميل لدى الشركة",
+      "مدير المبيعات",
+      "موظف الاستقبال"
+     ],
+     "answer": 0,
+     "choices_es": false,
+     "skill": "listening",
+     "turn": "dlg_a1_recepcion.t2"
+    },
+    {
+     "id": "dlg_a1_recepcion.q2",
+     "type": "choice",
+     "prompt_ar": "ما وظيفة لاورا بيريز؟",
+     "choices": [
+      "مديرة المبيعات",
+      "موظفة الاستقبال",
+      "عميلة"
+     ],
+     "answer": 0,
+     "choices_es": false,
+     "skill": "listening",
+     "turn": "dlg_a1_recepcion.t3"
+    },
+    {
+     "id": "dlg_a1_recepcion.q3",
+     "type": "speaker",
+     "turn": "dlg_a1_recepcion.t1",
+     "skill": "listening"
+    },
+    {
+     "id": "dlg_a1_recepcion.q4",
+     "type": "choice",
+     "prompt_ar": "ماذا يعطي السيد غارسيا للسيدة بيريز؟",
+     "choices": [
+      "بطاقته",
+      "رقم هاتفه",
+      "قهوة"
+     ],
+     "answer": 0,
+     "choices_es": false,
+     "skill": "listening",
+     "turn": "dlg_a1_recepcion.t5"
+    },
+    {
+     "id": "dlg_a1_recepcion.q5",
+     "type": "choice",
+     "prompt_ar": "بماذا يردّ غارسيا على «Es un placer»؟",
+     "choices": [
+      "El placer es mío.",
+      "De nada.",
+      "Hasta luego."
+     ],
+     "answer": 0,
+     "choices_es": true,
+     "skill": "reading",
+     "explain_ar": "الرد المهذب على «تشرّفت» هو «الشرف لي»."
+    },
+    {
+     "id": "dlg_a1_recepcion.q6",
+     "type": "dictation",
+     "turn": "dlg_a1_recepcion.t5",
+     "skill": "listening"
+    }
+   ],
+   "source": "original-v1"
+  }
+ ]
+}

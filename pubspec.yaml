@@ -37,6 +37,7 @@ flutter:
   assets:
     - assets/content/v1/
     - assets/content/v1/units/
+    - assets/content/v1/dialogues/
   fonts:
     - family: PlexArabic
       fonts:
