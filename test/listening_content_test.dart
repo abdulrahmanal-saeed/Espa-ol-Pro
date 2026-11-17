@@ -37,8 +37,12 @@ void main() {
       expect(issues, isEmpty, reason: issues.join('\n'));
     });
 
-    test('cover Pre-A1 and A1 and are reachable from real lessons', () {
-      expect(pack.dialogues.map((d) => d.levelId).toSet(), {'pre_a1', 'a1'});
+    test('cover Pre-A1, A1 and A2 and are reachable from real lessons', () {
+      expect(pack.dialogues.map((d) => d.levelId).toSet(), {
+        'pre_a1',
+        'a1',
+        'a2',
+      });
       for (final d in pack.dialogues) {
         for (final id in d.lessonIds) {
           expect(pack.lesson(id), isNotNull, reason: '${d.id} → $id');

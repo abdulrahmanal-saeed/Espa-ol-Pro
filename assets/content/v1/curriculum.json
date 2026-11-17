@@ -1,5 +1,5 @@
 {
- "version": "1.4.0",
+ "version": "1.5.0",
  "sources": [
   {
    "id": "original-v1",
@@ -11,11 +11,13 @@
  ],
  "dialogue_files": [
   "dialogues/pre_a1.json",
-  "dialogues/a1.json"
+  "dialogues/a1.json",
+  "dialogues/a2.json"
  ],
  "assessment_files": [
   "assessments/pre_a1.json",
-  "assessments/a1.json"
+  "assessments/a1.json",
+  "assessments/a2.json"
  ],
  "verb_file": "verbs.json",
  "levels": [
@@ -153,12 +155,13 @@
     {
      "id": "a2_u1",
      "title_ar": "الخدمات والتعاملات اليومية",
-     "description_ar": "البنك، البريد، الصيانة، الشكاوى البسيطة.",
+     "description_ar": "البنك، البريد، الأعطال والصيانة، الشكاوى، وخدمة العملاء من جهتك.",
      "objectives_ar": [
-      "إنجاز معاملة يومية",
-      "وصف مشكلة وطلب حلها"
+      "إنجاز معاملة يومية بأدب",
+      "وصف مشكلة وطلب حلّها",
+      "الردّ على شكوى عميل"
      ],
-     "status": "planned"
+     "status": "available"
     },
     {
      "id": "a2_u2",

@@ -41,7 +41,8 @@ Pre-A1 is a preparatory stage, not a DELE level.
 | | City and basic travel (4 lessons) | ✅ available (content 1.3.0) |
 | | At the workplace (4 lessons) | ✅ available (content 1.4.0) |
 | | **A1 level assessment** (24 questions, all six units) | ✅ available |
-| **A2** | Services · The past · Plans and future · Preferences and comparison · Simple work conversations | planned |
+| **A2** | Services and everyday transactions (5 lessons) | ✅ available (content 1.5.0) |
+| | The past · Plans and future · Preferences and comparison · Simple work conversations | planned |
 | **B1** | Opinion and reasoning · Narration · Solving client problems · Professional correspondence | planned |
 | **B2** | Meetings · Presentations · Job interviews · Discovery and negotiation · Explaining technical services | planned |
 | **C1** | Persuasion · Precise professional writing · Advanced listening and accents | planned |
@@ -87,13 +88,25 @@ no lessons and are never counted as progress.
 | 30 | We and they | 8 | nosotros / ellos / ustedes forms (-amos, -an; tenemos, vamos) |
 | 31 | Emails and tasks | 7 | ir a + infinitive (near future); enviar, revisar, el informe |
 | 32 | A work phone call | 8 | ¿Dígame?; ¿De parte de quién?; no está; leaving a message |
+| 33 | At the bank (A2) | 9 | quisiera (polite request); poder o→ue (puedo/puede); cuenta bancaria, cajero |
+| 34 | At the post office | 9 | tener que + infinitive; paquete, dirección, código postal; ¿Cuánto tarda? |
+| 35 | It doesn't work | 8 | no funciona, roto/rota with estar; object pronouns lo / la; desde ayer + present |
+| 36 | A complaint | 8 | el problema (masculine); error, cobrar, devolver (o→ue); ¿Me puede ayudar? |
+| 37 | Customer service, your side | 9 | disculpe las molestias; present for immediate promises; le envío…; comprobar (o→ue) |
 
 A1 is complete in content: 23 lessons over 6 units, closed by six unit
 checkpoints and the A1 level assessment `lvl_a1`, which opens only when every
 A1 lesson is completed. A present-tense **verb reference** (16 verbs, all six
 persons, regular forms machine-checked) is in Library → الأفعال.
 
-Totals: 101 items, 299 activities (172 graded), 14 grammar notes.
+A2 begins with A2-U1 (lessons 33–37, content 1.5.0): banks, post, repairs and
+complaints, ending with the learner on the provider's side of a complaint.
+Its first lesson follows the last A1 lesson. The A1 level assessment stays
+visible on the path until it has been taken once.
+
+Totals (content 1.5.0, from the validator): 37 lessons, 306 items,
+983 activities (598 graded), 40 grammar notes, 19 dialogues, 11 assessments,
+22 verbs.
 
 ## Lesson shape
 
@@ -145,6 +158,12 @@ Accent: default voice es-MX (seseo); notes point out Castilian differences
 
 | `dlg_a1_oficina` | A1 | lessons 29–30 | Showing a new colleague around the office |
 | `dlg_a1_llamada` | A1 | lessons 31–32 | Calling a client company; leaving no message |
+| `dlg_a2_banco` | A2 | lesson 33 | Opening a salary account after moving to Madrid |
+| `dlg_a2_averia` | A2 | lesson 35 | Reporting a broken air conditioner to technical support |
+| `dlg_a2_reclamacion` | A2 | lessons 36–37 | A customer reports a double charge; the agent fixes it |
+
+Checkpoint `chk_a2_u1` (12 questions, 3 can-dos, three play dialogue
+sentences) closes A2-U1.
 
 Checkpoints `chk_a1_u4` and `chk_a1_u5` close the food and travel units.
 Checkpoints `chk_a1_u2` and `chk_a1_u3` (10 questions, 3 can-dos each) close

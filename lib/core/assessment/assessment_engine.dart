@@ -1,5 +1,8 @@
+import 'dart:math';
+
 import '../content/models.dart';
 import '../learning/answer_evaluator.dart';
+import '../learning/exercises.dart' show stableHash;
 
 /// Outcome of a typed answer, stored in `assessment_answers.spelling`.
 ///
@@ -72,6 +75,20 @@ class GradedAnswer {
   /// For typed answers only (see [Spelling]); null for choices.
   final String? spelling;
 }
+
+/// The seed for one attempt's option order: the moment it started.
+String attemptSeed(DateTime startedAt) => '${startedAt.microsecondsSinceEpoch}';
+
+/// The order in which a choice question's options are shown in one attempt.
+///
+/// Content lists options in a fixed order (the correct one usually first), so
+/// showing them as authored would let "always the first option" pass. This is
+/// a shuffled copy, seeded by the attempt and the question: the same attempt
+/// always shows the same order (rebuilds, navigation, listening), a new
+/// attempt usually shows another. The content list is never changed, and
+/// grading compares option *text*, so stored answers mean the same thing.
+List<String> displayedChoices(AssessmentQuestion q, String seed) =>
+    [...q.choices]..shuffle(Random(stableHash('$seed|${q.id}')));
 
 /// Grades a complete set of answers. Pure and deterministic.
 ///

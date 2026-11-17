@@ -109,6 +109,32 @@ extension Robot on WidgetTester {
 
   Future<void> tapKey(String key) => tapSettled(find.byKey(ValueKey(key)));
 
+  /// Taps the checkpoint option showing [text], wherever this attempt's
+  /// shuffle placed it.
+  Future<void> tapOption(String text) => tapSettled(
+    find.ancestor(
+      of: find.text(text),
+      matching: find.byWidgetPredicate(isOption),
+    ),
+  );
+
+  /// The checkpoint options in the order they are shown.
+  List<String> shownOptions() => [
+    for (
+      var i = 0;
+      find.byKey(ValueKey('assessment-option-$i')).evaluate().isNotEmpty;
+      i++
+    )
+      widget<Text>(
+        find
+            .descendant(
+              of: find.byKey(ValueKey('assessment-option-$i')),
+              matching: find.byType(Text),
+            )
+            .first,
+      ).data!,
+  ];
+
   /// Answers one step on screen. [correct] = false gives a wrong answer
   /// (supported for choice / typed exercises).
   Future<void> answer(LessonStep step, {bool correct = true}) async {
@@ -151,4 +177,10 @@ extension Robot on WidgetTester {
         await tapSettled(find.text('كرّرتها بصوت مسموع'));
     }
   }
+}
+
+/// Whether [w] is a checkpoint option (`assessment-option-<display index>`).
+bool isOption(Widget w) {
+  final k = w.key;
+  return k is ValueKey<String> && k.value.startsWith('assessment-option-');
 }

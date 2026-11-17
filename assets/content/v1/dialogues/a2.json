@@ -1,0 +1,519 @@
+{
+ "dialogues": [
+  {
+   "id": "dlg_a2_banco",
+   "level": "a2",
+   "unit": "a2_u1",
+   "lessons": [
+    "a2_u1_l1"
+   ],
+   "title_es": "Una cuenta nueva",
+   "title_ar": "حساب جديد",
+   "scenario_ar": "كريم وصل حديثاً إلى مدريد، ويفتح حساباً في البنك لراتبه.",
+   "objectives_ar": [
+    "فهم طلب مهذّب بـ quisiera",
+    "فهم ما يمكن وما لا يمكن فعله (poder)",
+    "فهم مكان الصرّاف"
+   ],
+   "speakers": [
+    {
+     "id": "marta",
+     "name": "Marta",
+     "role_ar": "موظفة البنك"
+    },
+    {
+     "id": "karim",
+     "name": "Karim",
+     "role_ar": "عميل جديد"
+    }
+   ],
+   "turns": [
+    {
+     "id": "dlg_a2_banco.t1",
+     "speaker": "marta",
+     "es": "Buenos días, ¿en qué puedo ayudarle?",
+     "ar": "صباح الخير، كيف يمكنني مساعدتك؟",
+     "en": "Good morning, how can I help you?"
+    },
+    {
+     "id": "dlg_a2_banco.t2",
+     "speaker": "karim",
+     "es": "Buenos días. Quisiera abrir una cuenta bancaria.",
+     "ar": "صباح الخير. أودّ فتح حساب بنكي.",
+     "en": "Good morning. I would like to open a bank account."
+    },
+    {
+     "id": "dlg_a2_banco.t3",
+     "speaker": "marta",
+     "es": "Muy bien. ¿Tiene su pasaporte?",
+     "ar": "حسناً. هل معك جواز سفرك؟",
+     "en": "Very well. Do you have your passport?"
+    },
+    {
+     "id": "dlg_a2_banco.t4",
+     "speaker": "karim",
+     "es": "Sí, aquí tiene. ¿Puedo sacar dinero hoy?",
+     "ar": "نعم، تفضّلي. هل يمكنني سحب نقود اليوم؟",
+     "en": "Yes, here you are. Can I withdraw money today?"
+    },
+    {
+     "id": "dlg_a2_banco.t5",
+     "speaker": "marta",
+     "es": "Hoy no, lo siento. La tarjeta llega en cinco días. ¿Puede firmar aquí, por favor?",
+     "ar": "اليوم لا، آسفة. البطاقة تصل بعد خمسة أيام. هل يمكنك التوقيع هنا من فضلك؟",
+     "en": "Not today, sorry. The card arrives in five days. Can you sign here, please?"
+    },
+    {
+     "id": "dlg_a2_banco.t6",
+     "speaker": "karim",
+     "es": "¿Hay un cajero automático cerca?",
+     "ar": "هل يوجد صرّاف آلي قريب؟",
+     "en": "Is there an ATM nearby?"
+    },
+    {
+     "id": "dlg_a2_banco.t7",
+     "speaker": "marta",
+     "es": "Sí, al lado de la estación.",
+     "ar": "نعم، بجانب المحطة.",
+     "en": "Yes, next to the station."
+    }
+   ],
+   "items": [
+    "en_que_puedo_ayudarle",
+    "quisiera",
+    "abrir",
+    "cuenta_bancaria",
+    "pasaporte",
+    "aqui_tiene",
+    "puedo",
+    "sacar",
+    "dinero",
+    "lo_siento",
+    "puede",
+    "firmar",
+    "cajero",
+    "al_lado_de",
+    "estacion"
+   ],
+   "grammar": [
+    "g_quisiera",
+    "g_poder"
+   ],
+   "questions": [
+    {
+     "type": "choice",
+     "prompt_ar": "ماذا يريد كريم؟",
+     "choices": [
+      "فتح حساب بنكي",
+      "سحب نقود فقط",
+      "دفع فاتورة"
+     ],
+     "answer": 0,
+     "choices_es": false,
+     "turn": "dlg_a2_banco.t2",
+     "id": "dlg_a2_banco.q1",
+     "skill": "listening"
+    },
+    {
+     "type": "choice",
+     "prompt_ar": "متى تصل البطاقة؟",
+     "choices": [
+      "بعد خمسة أيام",
+      "اليوم",
+      "بعد يومين"
+     ],
+     "answer": 0,
+     "choices_es": false,
+     "turn": "dlg_a2_banco.t5",
+     "id": "dlg_a2_banco.q2",
+     "skill": "listening"
+    },
+    {
+     "type": "choice",
+     "prompt_ar": "أين الصرّاف الآلي؟",
+     "choices": [
+      "بجانب المحطة",
+      "أمام البنك",
+      "في المطار"
+     ],
+     "answer": 0,
+     "choices_es": false,
+     "turn": "dlg_a2_banco.t7",
+     "id": "dlg_a2_banco.q3",
+     "skill": "listening"
+    },
+    {
+     "type": "speaker",
+     "turn": "dlg_a2_banco.t4",
+     "id": "dlg_a2_banco.q4",
+     "skill": "listening"
+    },
+    {
+     "type": "dictation",
+     "turn": "dlg_a2_banco.t6",
+     "id": "dlg_a2_banco.q5",
+     "skill": "listening"
+    }
+   ],
+   "source": "original-v1"
+  },
+  {
+   "id": "dlg_a2_averia",
+   "level": "a2",
+   "unit": "a2_u1",
+   "lessons": [
+    "a2_u1_l3"
+   ],
+   "title_es": "El aire acondicionado",
+   "title_ar": "المكيّف",
+   "scenario_ar": "عمر، مدير مكتب، يتصل بالدعم الفنّي لأن المكيّف معطّل.",
+   "objectives_ar": [
+    "فهم وصف العطل",
+    "فهم موعد الفنّي",
+    "فهم lo / la في سياق"
+   ],
+   "speakers": [
+    {
+     "id": "sara",
+     "name": "Sara",
+     "role_ar": "موظفة الدعم الفنّي"
+    },
+    {
+     "id": "omar",
+     "name": "Omar",
+     "role_ar": "مدير المكتب"
+    }
+   ],
+   "turns": [
+    {
+     "id": "dlg_a2_averia.t1",
+     "speaker": "sara",
+     "es": "Buenas tardes, ¿en qué puedo ayudarle?",
+     "ar": "مساء الخير، كيف يمكنني مساعدتك؟",
+     "en": "Good afternoon, how can I help you?"
+    },
+    {
+     "id": "dlg_a2_averia.t2",
+     "speaker": "omar",
+     "es": "Buenas tardes. En la oficina el aire acondicionado no funciona desde ayer.",
+     "ar": "مساء الخير. في المكتب المكيّف لا يعمل منذ أمس.",
+     "en": "Good afternoon. In the office the air conditioning hasn't worked since yesterday."
+    },
+    {
+     "id": "dlg_a2_averia.t3",
+     "speaker": "sara",
+     "es": "Lo siento. ¿Cuál es la dirección?",
+     "ar": "آسفة. ما العنوان؟",
+     "en": "I'm sorry. What's the address?"
+    },
+    {
+     "id": "dlg_a2_averia.t4",
+     "speaker": "omar",
+     "es": "Calle Mayor, número diez. ¿Cuándo puede venir el técnico?",
+     "ar": "شارع مايور، رقم عشرة. متى يمكن أن يأتي الفنّي؟",
+     "en": "Calle Mayor, number ten. When can the technician come?"
+    },
+    {
+     "id": "dlg_a2_averia.t5",
+     "speaker": "sara",
+     "es": "Mañana a las nueve. ¿Le va bien?",
+     "ar": "غداً في التاسعة. هل يناسبك؟",
+     "en": "Tomorrow at nine. Does that suit you?"
+    },
+    {
+     "id": "dlg_a2_averia.t6",
+     "speaker": "omar",
+     "es": "Perfecto. También tenemos una impresora con la pantalla rota. ¿El técnico la puede arreglar?",
+     "ar": "ممتاز. وعندنا أيضاً طابعة شاشتها مكسورة. هل يستطيع الفنّي إصلاحها؟",
+     "en": "Perfect. We also have a printer with a broken screen. Can the technician fix it?"
+    },
+    {
+     "id": "dlg_a2_averia.t7",
+     "speaker": "sara",
+     "es": "Sí, el técnico la puede arreglar mañana.",
+     "ar": "نعم، يستطيع الفنّي إصلاحها غداً.",
+     "en": "Yes, the technician can fix it tomorrow."
+    }
+   ],
+   "items": [
+    "aire_acondicionado",
+    "no_funciona",
+    "desde_ayer",
+    "lo_siento",
+    "direccion",
+    "numero",
+    "cuando_puede_venir",
+    "tecnico",
+    "le_va_bien",
+    "perfecto",
+    "impresora",
+    "pantalla",
+    "roto",
+    "arreglar",
+    "en_que_puedo_ayudarle"
+   ],
+   "grammar": [
+    "g_object_pronouns"
+   ],
+   "questions": [
+    {
+     "type": "choice",
+     "prompt_ar": "ما المشكلة؟",
+     "choices": [
+      "المكيّف لا يعمل منذ أمس",
+      "الطابعة جديدة",
+      "لا يوجد إنترنت"
+     ],
+     "answer": 0,
+     "choices_es": false,
+     "turn": "dlg_a2_averia.t2",
+     "id": "dlg_a2_averia.q1",
+     "skill": "listening"
+    },
+    {
+     "type": "choice",
+     "prompt_ar": "متى يأتي الفنّي؟",
+     "choices": [
+      "غداً في التاسعة",
+      "اليوم بعد الظهر",
+      "غداً في الثالثة"
+     ],
+     "answer": 0,
+     "choices_es": false,
+     "turn": "dlg_a2_averia.t5",
+     "id": "dlg_a2_averia.q2",
+     "skill": "listening"
+    },
+    {
+     "type": "choice",
+     "prompt_ar": "ما مشكلة الطابعة؟",
+     "choices": [
+      "شاشتها مكسورة",
+      "لا يوجد ورق",
+      "هي قديمة"
+     ],
+     "answer": 0,
+     "choices_es": false,
+     "turn": "dlg_a2_averia.t6",
+     "id": "dlg_a2_averia.q3",
+     "skill": "listening"
+    },
+    {
+     "type": "speaker",
+     "turn": "dlg_a2_averia.t4",
+     "id": "dlg_a2_averia.q4",
+     "skill": "listening"
+    },
+    {
+     "type": "dictation",
+     "turn": "dlg_a2_averia.t3",
+     "id": "dlg_a2_averia.q5",
+     "skill": "listening"
+    }
+   ],
+   "source": "original-v1"
+  },
+  {
+   "id": "dlg_a2_reclamacion",
+   "level": "a2",
+   "unit": "a2_u1",
+   "lessons": [
+    "a2_u1_l4",
+    "a2_u1_l5"
+   ],
+   "title_es": "Un error en la factura",
+   "title_ar": "خطأ في الفاتورة",
+   "scenario_ar": "آنا تتصل بخدمة العملاء بسبب خطأ في فاتورتها، وخابيير يعالج المشكلة.",
+   "objectives_ar": [
+    "فهم الشكوى ورقم الطلب",
+    "فهم اعتذار رسمي ووعد بالحلّ",
+    "فهم ما سيحدث اليوم وما سيحدث لاحقاً"
+   ],
+   "speakers": [
+    {
+     "id": "javier",
+     "name": "Javier",
+     "role_ar": "موظف خدمة العملاء"
+    },
+    {
+     "id": "ana",
+     "name": "Ana",
+     "role_ar": "عميلة"
+    }
+   ],
+   "turns": [
+    {
+     "id": "dlg_a2_reclamacion.t1",
+     "speaker": "javier",
+     "es": "Atención al cliente, buenos días. ¿En qué puedo ayudarle?",
+     "ar": "خدمة العملاء، صباح الخير. كيف يمكنني مساعدتك؟",
+     "en": "Customer service, good morning. How can I help you?"
+    },
+    {
+     "id": "dlg_a2_reclamacion.t2",
+     "speaker": "ana",
+     "es": "Buenos días. Tengo un problema con la factura. Hay un error.",
+     "ar": "صباح الخير. عندي مشكلة في الفاتورة. يوجد خطأ.",
+     "en": "Good morning. I have a problem with the invoice. There's a mistake."
+    },
+    {
+     "id": "dlg_a2_reclamacion.t3",
+     "speaker": "javier",
+     "es": "Disculpe las molestias. ¿Me puede dar el número de pedido?",
+     "ar": "نعتذر عن الإزعاج. هل يمكنك أن تعطيني رقم الطلب؟",
+     "en": "Sorry for the inconvenience. Can you give me the order number?"
+    },
+    {
+     "id": "dlg_a2_reclamacion.t4",
+     "speaker": "ana",
+     "es": "Sí, es el cuatro, cinco, ocho, dos.",
+     "ar": "نعم، هو أربعة، خمسة، ثمانية، اثنان.",
+     "en": "Yes, it's four, five, eight, two."
+    },
+    {
+     "id": "dlg_a2_reclamacion.t5",
+     "speaker": "javier",
+     "es": "Un momento, ahora mismo lo compruebo.",
+     "ar": "لحظة، أتحقّق منه حالاً.",
+     "en": "One moment, I'll check it right now."
+    },
+    {
+     "id": "dlg_a2_reclamacion.t6",
+     "speaker": "ana",
+     "es": "Gracias.",
+     "ar": "شكراً.",
+     "en": "Thank you."
+    },
+    {
+     "id": "dlg_a2_reclamacion.t7",
+     "speaker": "javier",
+     "es": "Sí, hay un error: la factura tiene el servicio dos veces.",
+     "ar": "نعم، يوجد خطأ: الخدمة مذكورة في الفاتورة مرّتين.",
+     "en": "Yes, there's a mistake: the invoice has the service twice."
+    },
+    {
+     "id": "dlg_a2_reclamacion.t8",
+     "speaker": "ana",
+     "es": "¿Me pueden devolver el dinero?",
+     "ar": "هل يمكنكم إعادة المال لي؟",
+     "en": "Can you give me my money back?"
+    },
+    {
+     "id": "dlg_a2_reclamacion.t9",
+     "speaker": "javier",
+     "es": "Sí, le devolvemos el dinero lo antes posible.",
+     "ar": "نعم، نعيد لك المال في أقرب وقت ممكن.",
+     "en": "Yes, we'll refund the money as soon as possible."
+    },
+    {
+     "id": "dlg_a2_reclamacion.t10",
+     "speaker": "ana",
+     "es": "¿Y la factura?",
+     "ar": "والفاتورة؟",
+     "en": "And the invoice?"
+    },
+    {
+     "id": "dlg_a2_reclamacion.t11",
+     "speaker": "javier",
+     "es": "Hoy le envío la factura correcta. Gracias por su paciencia.",
+     "ar": "اليوم أرسل لك الفاتورة الصحيحة. شكراً على صبرك.",
+     "en": "Today I'll send you the correct invoice. Thank you for your patience."
+    }
+   ],
+   "items": [
+    "atencion_cliente",
+    "en_que_puedo_ayudarle",
+    "problema",
+    "factura",
+    "error",
+    "disculpe_molestias",
+    "numero_pedido",
+    "un_momento",
+    "ahora_mismo",
+    "comprobar",
+    "dos_veces",
+    "devolver",
+    "dinero",
+    "lo_antes_posible",
+    "le_envio",
+    "correcto",
+    "gracias_paciencia"
+   ],
+   "grammar": [
+    "g_me_le",
+    "g_present_promise"
+   ],
+   "questions": [
+    {
+     "type": "choice",
+     "prompt_ar": "ما مشكلة آنا؟",
+     "choices": [
+      "خطأ في الفاتورة",
+      "طلب لم يصل",
+      "جهاز مكسور"
+     ],
+     "answer": 0,
+     "choices_es": false,
+     "turn": "dlg_a2_reclamacion.t2",
+     "id": "dlg_a2_reclamacion.q1",
+     "skill": "listening"
+    },
+    {
+     "type": "choice",
+     "prompt_ar": "ما رقم الطلب؟",
+     "choices": [
+      "4582",
+      "4528",
+      "5482"
+     ],
+     "answer": 0,
+     "choices_es": false,
+     "turn": "dlg_a2_reclamacion.t4",
+     "id": "dlg_a2_reclamacion.q2",
+     "skill": "listening"
+    },
+    {
+     "type": "choice",
+     "prompt_ar": "ما الخطأ؟",
+     "choices": [
+      "الخدمة مذكورة مرّتين",
+      "العنوان غير صحيح",
+      "السعر مرتفع"
+     ],
+     "answer": 0,
+     "choices_es": false,
+     "turn": "dlg_a2_reclamacion.t7",
+     "id": "dlg_a2_reclamacion.q3",
+     "skill": "listening"
+    },
+    {
+     "type": "choice",
+     "prompt_ar": "ماذا يرسل خابيير اليوم؟",
+     "choices": [
+      "الفاتورة الصحيحة",
+      "المال",
+      "فنّياً"
+     ],
+     "answer": 0,
+     "choices_es": false,
+     "turn": "dlg_a2_reclamacion.t11",
+     "id": "dlg_a2_reclamacion.q4",
+     "skill": "listening"
+    },
+    {
+     "type": "speaker",
+     "turn": "dlg_a2_reclamacion.t8",
+     "id": "dlg_a2_reclamacion.q5",
+     "skill": "listening"
+    },
+    {
+     "type": "dictation",
+     "turn": "dlg_a2_reclamacion.t8",
+     "id": "dlg_a2_reclamacion.q6",
+     "skill": "listening"
+    }
+   ],
+   "source": "original-v1"
+  }
+ ]
+}

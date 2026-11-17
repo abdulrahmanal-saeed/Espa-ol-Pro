@@ -3,6 +3,217 @@
 owner: Claude Code
 implementer: Claude Code
 handoff_status: READY_FOR_REVIEW
+handoff_id: PHASE3-002
+updated_at_utc: 2026-11-17T19:30:00Z
+review_requested_for_sha: e3e948d
+branch: claude/amazing-hypatia-7mt4rs
+pull_request: https://github.com/abdulrahmanal-saeed/Espa-ol-Pro/pull/12
+last_review_acknowledged: REVIEW-012
+project_status: A2_U1_IN_REVIEW__REVIEW_012_FIXES_READY__DEVICE_AND_NATIVE_QA_PENDING
+
+## REVIEW-012 — findings and fixes (code SHA `e3e948d`)
+
+### P1 — assessment options always had the answer first → fixed
+
+**Engine** (`lib/core/assessment/assessment_engine.dart`):
+
+- `attemptSeed(startedAt)` gives the attempt's seed.
+- `displayedChoices(q, seed)` returns a shuffled copy of `q.choices`:
+  - it is seeded by the attempt and the question id (`stableHash`);
+  - the content list is never mutated.
+
+**Screen** (`assessment_screens.dart`):
+
+- The options are shown in that order.
+- The order is fixed for the whole attempt. It survives rebuilds, selection,
+  next/back and listening, because the seed is `_startedAt`.
+- A new attempt usually gets a different order.
+
+**Grading is unchanged.** It still compares the chosen **text** with
+`choices[answer]`, so stored answers and results mean the same as before.
+This applies to every checkpoint and level assessment: Pre-A1, A1 and A2.
+
+**New `test/assessment_order_test.dart`:**
+
+- every shipped choice question shows a permutation of its options, stable
+  for one seed, with content unchanged;
+- the correct option takes more than one position across seeds;
+- "always the first option" fails at least one choice on **every** shipped
+  assessment, and is right on fewer than half of all choices for a fixed
+  seed (content order made that 100%);
+- answering by text still grades fully correct;
+- widget, `chk_a2_u1`:
+  - the screen shows exactly `displayedChoices(q, attemptSeed(start))`;
+  - the same order holds after selecting, next and back;
+  - three attempts at different times do not all share one order.
+
+**Brittle tests:** `assessment_flow_test` and the screenshot test no longer
+tap `assessment-option-${q.answer}`. They tap the option by its text
+(`tapOption`).
+
+### P2 — ambiguous `cobramos` → rewritten
+
+`dlg_a2_reclamacion.t7` now reads: «Sí, hay un error: la factura tiene el
+servicio dos veces.» It uses only taught constructions.
+
+- The Arabic and English are updated: "الخدمة مذكورة في الفاتورة مرّتين".
+- Question q3's correct option now reads "الخدمة مذكورة مرّتين".
+- `cobrar` is removed from the dialogue's vocabulary list.
+- The line still passes `difficulty_test`.
+
+The other uses of cobrar in the unit are in the present ("me cobran", "el
+técnico cobra"). Native review is still pending.
+
+### P3 — progression gate → unchanged, as requested
+
+A2 still requires only the last A1 lesson. It does not require the A1 level
+assessment. The path change only keeps the level assessment visible. A
+pass gate stays the owner's decision.
+
+## Verification (local, Flutter 3.50.0)
+
+| Check | Result |
+|---|---|
+| format | 0 changed |
+| `flutter analyze --fatal-infos` | No issues |
+| content validator | OK |
+| `flutter test` | **333 passed** (328 + 5 in `assessment_order_test`) |
+| `flutter test test_screenshots` | see below |
+
+**Screenshots:** `07_progress`, `21_checkpoint_question` and
+`22_checkpoint_result` were regenerated.
+
+- 07: progress now lists A2 (0 / 5). This came from the A2-U1 commit, which
+  had not refreshed the goldens.
+- 21: the correct option "perro" is no longer first.
+- 22: the result screen.
+
+## Still not done or claimed
+
+- Device checks: checkpoint option order, path expansion after A1, and A2
+  dialogue TTS.
+- Native Spanish review of A2-U1.
+- A2-U2 onward, and the A2 level assessment.
+
+I will not merge; merging is the owner's decision.
+
+---
+
+# Previous handoff (PHASE3-001)
+
+owner: Claude Code
+implementer: Claude Code
+handoff_status: SUPERSEDED
+handoff_id: PHASE3-001
+updated_at_utc: 2026-11-17T18:00:00Z
+review_requested_for_sha: 2d2700b
+branch: claude/amazing-hypatia-7mt4rs
+pull_request: (draft PR from this branch to main; link in the PR itself)
+last_review_acknowledged: REVIEW-011
+project_status: A2_STARTED__A2_U1_IN_REVIEW__DEVICE_AND_NATIVE_QA_PENDING
+
+## Scope: the first A2 unit (Phase 3 begins)
+
+The owner asked, in this session, to start A2. This PR adds **A2-U1
+"Services and everyday transactions"** and one small path fix. It does
+not touch the REVIEW-009/011 code.
+
+### Content 1.5.0
+
+**Five lessons (33–37), chained after `a1_u6_l4`:**
+
+| Lesson | Focus |
+|---|---|
+| `a2_u1_l1` En el banco | quisiera (polite request); poder o→ue (puedo / puede); cuenta bancaria, cajero, firmar |
+| `a2_u1_l2` En correos | tener que + infinitive; paquete, sobre, dirección, código postal; ¿Cuánto tarda? |
+| `a2_u1_l3` No funciona | no funciona; roto/rota with estar; object pronouns lo / la; desde ayer + present |
+| `a2_u1_l4` Una reclamación | el problema (masc.); error, cobrar, devolver (o→ue); ¿Me puede ayudar? (me / le) |
+| `a2_u1_l5` Atención al cliente | provider's side: disculpe las molestias; present for immediate promises; le envío…; comprobar |
+
+- 43 items and 6 grammar notes. Every lesson has items marked `work`.
+- **3 dialogues:** `dlg_a2_banco`, `dlg_a2_averia`, `dlg_a2_reclamacion`.
+  - On first run the difficulty estimator rated two of them "challenging".
+  - Causes: untaught words (servicio, nuestra, revisa), and turns averaging
+    over 10 words.
+  - Fix: the words were rewritten and the long turns split. All three now
+    pass `difficulty_test`.
+- **Checkpoint `chk_a2_u1`:**
+  - 12 questions, 3 can-dos, 5 skills;
+  - 3 questions play dialogue sentences;
+  - every grammar question has `explain_ar`.
+- **Verb reference** grows from 16 to 22 verbs:
+  - abrir, sacar, arreglar and cobrar are regular, checked against the
+    conjugation rules;
+  - devolver and comprobar (o→ue) are entered by hand;
+  - poder and tener now also link to the A2 lessons that use them.
+- **One A1 change:** `revisar` gets `"syn": "check"`, shared with
+  `comprobar`, so the two near-synonyms are never shown as each other's
+  wrong answer. The item ID is unchanged.
+
+### Path fix — `lib/features/path/path_screen.dart`
+
+**Before:** once A2 had lessons, finishing A1 made the path expand A2
+(where the next lesson is) and collapse A1. The A1 level assessment tile
+was hidden. The existing `verbs_and_level_test` caught this.
+
+**Now:** a level whose lessons are all complete stays expanded until its
+level assessment has at least one attempt.
+
+## Verification (local, Flutter 3.50.0)
+
+| Check | Result |
+|---|---|
+| `dart format --set-exit-if-changed` | 0 changed |
+| `flutter analyze --fatal-infos` | No issues |
+| `dart run tool/validate_content.dart` | OK: 37 lessons, 306 items, 598 graded activities, 19 dialogues, 11 assessments, 22 verbs |
+| `flutter test` | **328 passed** (323 on main + 5 in `a2_units_test`) |
+| `build_runner` | `database.g.dart` unchanged |
+
+`a2_units_test` checks:
+
+- lesson order and prerequisites;
+- every A2-U1 lesson completed through the real UI with full marks and no
+  error records;
+- the checkpoint can be fully answered;
+- dialogues unlock inside the unit;
+- regular vs hand-entered verbs;
+- the synonym group.
+
+`listening_content_test` now expects dialogues for pre_a1, a1 and a2.
+
+## Not done or claimed
+
+- **Language review:** native Spanish review of A2-U1. Everything is
+  `author_reviewed`. Please check especially:
+  - the register of `disculpe las molestias` and `le envío…`;
+  - `cobramos` in `dlg_a2_reclamacion.t7`. It is ambiguous between present
+    and preterite and is translated as past. The preterite is formally
+    taught in A2-U2.
+- **Device:** device checks of the new unit and the path change.
+- **A2 app features (not started):**
+  - A2-U2 to A2-U5 and the A2 level assessment;
+  - the planned A2 features: stricter accent marking and less reliance on
+    Arabic translation.
+- **No gate on A2:** A2 does not require passing `lvl_a1`. The first A2
+  lesson only requires the last A1 lesson, consistent with "checkpoints are
+  evidence, not gates".
+
+## Request for review
+
+1. `assets/content/v1/units/a2_u1.json`, `dialogues/a2.json` and
+   `assessments/a2.json`: check pedagogy, Spanish and Arabic.
+2. The `PathScreen` expansion change.
+3. `test/a2_units_test.dart`.
+
+I will not merge; merging is the owner's decision.
+
+---
+
+# Previous handoff (PHASE1-014)
+
+owner: Claude Code
+implementer: Claude Code
+handoff_status: READY_FOR_REVIEW
 handoff_id: PHASE1-014
 updated_at_utc: 2026-11-17T15:00:00Z
 review_requested_for_sha: main after the PR #11 merge (application code unchanged since 9ddc13a / 9f86876 / 011fecb)

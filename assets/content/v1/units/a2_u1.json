@@ -1,0 +1,1813 @@
+{
+ "unit": "a2_u1",
+ "grammar": [
+  {
+   "id": "g_quisiera",
+   "title_ar": "quisiera: الطلب بأدب",
+   "body_ar": "quisiera + اسم أو مصدر = «أودّ»:\nQuisiera un café. — أودّ قهوة.\nQuisiera abrir una cuenta. — أودّ فتح حساب.\n\nquiero (A1) صحيحة لكنها مباشرة. في البنك والمكاتب ومع العملاء quisiera ألطف.",
+   "examples": [
+    {
+     "es": "Quisiera pagar con tarjeta.",
+     "ar": "أودّ الدفع بالبطاقة."
+    },
+    {
+     "es": "Quisiera hablar con el técnico.",
+     "ar": "أودّ التحدث مع الفنّي."
+    }
+   ]
+  },
+  {
+   "id": "g_poder",
+   "title_ar": "poder: o ← ue",
+   "body_ar": "poder (يستطيع) يتغيّر جذره: o ← ue في كل الصيغ عدا nosotros (وvosotros):\npuedo · puedes · puede · podemos · pueden\n\nبعده المصدر مباشرة، بلا a ولا que:\n¿Puedo sacar dinero? — هل يمكنني سحب نقود؟\n¿Puede firmar aquí? — هل يمكنك (حضرتك) التوقيع هنا؟\n\nأفعال أخرى بالتغيّر نفسه: devolver (devuelvo)، comprobar (compruebo).",
+   "examples": [
+    {
+     "es": "No podemos abrir la cuenta hoy.",
+     "ar": "لا نستطيع فتح الحساب اليوم."
+    },
+    {
+     "es": "¿Pueden ustedes venir mañana?",
+     "ar": "هل يمكنكم المجيء غداً؟"
+    }
+   ]
+  },
+  {
+   "id": "g_tener_que",
+   "title_ar": "tener que + مصدر: الالتزام",
+   "body_ar": "لما يجب فعله: tengo que / tienes que / tiene que + المصدر.\nTengo que enviar un paquete. — عليّ أن أرسل طرداً.\nTiene que rellenar el formulario. — عليك (حضرتك) أن تملأ الاستمارة.\n\nلا تحذف que: tengo que ir، وليس tengo ir.",
+   "examples": [
+    {
+     "es": "Tenemos que terminar el informe hoy.",
+     "ar": "علينا إنهاء التقرير اليوم."
+    },
+    {
+     "es": "¿Tengo que pagar ahora?",
+     "ar": "هل عليّ أن أدفع الآن؟"
+    }
+   ]
+  },
+  {
+   "id": "g_object_pronouns",
+   "title_ar": "lo / la: ضمير المفعول به",
+   "body_ar": "لكي لا تكرّر الاسم: lo للمذكّر، la للمؤنث (والجمع los / las).\n¿El ordenador? Lo arreglo hoy. — الحاسوب؟ أصلحه اليوم.\n¿La impresora? La arreglo mañana. — الطابعة؟ أصلحها غداً.\n\nمكانه قبل الفعل المصرَّف، أو متّصلاً بالمصدر:\n¿Lo puede arreglar? = ¿Puede arreglarlo?",
+   "examples": [
+    {
+     "es": "¿El informe? Lo reviso ahora.",
+     "ar": "التقرير؟ أراجعه الآن."
+    },
+    {
+     "es": "La pantalla está rota. ¿La puede cambiar?",
+     "ar": "الشاشة مكسورة. هل يمكنك تغييرها؟"
+    }
+   ]
+  },
+  {
+   "id": "g_me_le",
+   "title_ar": "me / le: «لي» و«لحضرتك»",
+   "body_ar": "me = لي / إياي. le = لحضرتك (usted)، أو له / لها.\nيأتيان قبل الفعل المصرَّف:\n¿Me puede ayudar? — هل يمكنك مساعدتي؟\n¿Me puede enviar la factura? — هل يمكنك أن ترسل لي الفاتورة؟\nLe envío el documento. — أرسل لحضرتك المستند.\n\nويمكن وصلهما بالمصدر: ¿Puede ayudarme?",
+   "examples": [
+    {
+     "es": "¿Me pueden devolver el dinero?",
+     "ar": "هل يمكنكم إعادة المال لي؟"
+    },
+    {
+     "es": "Le llamo mañana.",
+     "ar": "أتصل بحضرتك غداً."
+    }
+   ]
+  },
+  {
+   "id": "g_present_promise",
+   "title_ar": "الحاضر للوعد الفوري",
+   "body_ar": "في خدمة العملاء نستعمل الحاضر لما نفعله الآن أو بعد قليل:\nAhora mismo lo compruebo. — أتحقّق منه حالاً.\nLe envío la factura correcta hoy. — أرسل لحضرتك الفاتورة الصحيحة اليوم.\n\nوللخطة الأبعد: voy a / vamos a + مصدر (A1):\nLo vamos a solucionar. — سنحلّه.",
+   "examples": [
+    {
+     "es": "Ahora mismo le envío el número de pedido.",
+     "ar": "أرسل لحضرتك رقم الطلب حالاً."
+    },
+    {
+     "es": "Disculpe las molestias, lo solucionamos hoy.",
+     "ar": "نعتذر عن الإزعاج، نحلّه اليوم."
+    }
+   ]
+  }
+ ],
+ "lessons": [
+  {
+   "id": "a2_u1_l1",
+   "title_ar": "في البنك",
+   "title_es": "En el banco",
+   "objectives_ar": [
+    "طلب خدمة بأدب بـ quisiera",
+    "السؤال عن الإمكانية بـ puedo / puede",
+    "مفردات البنك والصرّاف"
+   ],
+   "prerequisites": [
+    "a1_u6_l4"
+   ],
+   "minutes": 16,
+   "work_relevance_ar": "فتح حساب لراتبك أو لشركتك عند الانتقال إلى بلد ناطق بالإسبانية.",
+   "source": "original-v1",
+   "grammar": [
+    "g_quisiera",
+    "g_poder"
+   ],
+   "items": [
+    {
+     "id": "quisiera",
+     "es": "quisiera",
+     "ar": "أودّ (طلب مهذّب)",
+     "en": "I would like",
+     "pos": "فعل",
+     "examples": [
+      {
+       "es": "Quisiera abrir una cuenta.",
+       "ar": "أودّ فتح حساب."
+      }
+     ],
+     "note_ar": "أكثر تهذيباً من quiero؛ تناسب البنك والمكاتب والعملاء.",
+     "connections": [
+      {
+       "type": "usage",
+       "ar": "quiero = «أريد»، quisiera = «أودّ»: المعنى واحد والنبرة ألطف."
+      }
+     ]
+    },
+    {
+     "id": "abrir",
+     "es": "abrir",
+     "ar": "يفتح (مصدر)",
+     "en": "to open",
+     "pos": "فعل",
+     "examples": [
+      {
+       "es": "¿A qué hora abre el banco?",
+       "ar": "متى يفتح البنك؟"
+      }
+     ],
+     "connections": [
+      {
+       "type": "grammar",
+       "ar": "فعل منتظم ‎-ir: abro, abres, abre."
+      }
+     ]
+    },
+    {
+     "id": "cuenta_bancaria",
+     "es": "la cuenta bancaria",
+     "ar": "الحساب البنكي",
+     "en": "bank account",
+     "pos": "اسم",
+     "examples": [
+      {
+       "es": "Tengo una cuenta bancaria en este banco.",
+       "ar": "لديّ حساب بنكي في هذا البنك."
+      }
+     ],
+     "work": true,
+     "connections": [
+      {
+       "type": "usage",
+       "ar": "la cuenta وحدها في المطعم = «الحساب / الفاتورة» (A1). في البنك تعني الحساب البنكي."
+      }
+     ]
+    },
+    {
+     "id": "dinero",
+     "es": "el dinero",
+     "ar": "المال / النقود",
+     "en": "money",
+     "pos": "اسم",
+     "examples": [
+      {
+       "es": "No tengo dinero en efectivo.",
+       "ar": "ليس معي نقود نقداً."
+      }
+     ],
+     "connections": [
+      {
+       "type": "grammar",
+       "ar": "مفرد دائماً: el dinero (وليس los dineros)."
+      }
+     ]
+    },
+    {
+     "id": "sacar",
+     "es": "sacar",
+     "ar": "يسحب (نقوداً) / يُخرج (مصدر)",
+     "en": "to withdraw, to take out",
+     "pos": "فعل",
+     "examples": [
+      {
+       "es": "Quiero sacar dinero.",
+       "ar": "أريد سحب نقود."
+      }
+     ]
+    },
+    {
+     "id": "cajero",
+     "es": "el cajero automático",
+     "ar": "الصرّاف الآلي",
+     "en": "ATM",
+     "pos": "اسم",
+     "examples": [
+      {
+       "es": "¿Hay un cajero automático cerca?",
+       "ar": "هل يوجد صرّاف آلي قريب؟"
+      }
+     ],
+     "note_ar": "في الكلام يكفي غالباً: el cajero.",
+     "alt": [
+      "el cajero"
+     ]
+    },
+    {
+     "id": "puedo",
+     "es": "puedo",
+     "ar": "أستطيع / يمكنني",
+     "en": "I can",
+     "pos": "فعل",
+     "examples": [
+      {
+       "es": "¿Puedo sacar dinero aquí?",
+       "ar": "هل يمكنني سحب نقود هنا؟"
+      }
+     ],
+     "connections": [
+      {
+       "type": "grammar",
+       "ar": "من poder: o ← ue ← puedo. عرفتها في ¿Puedo pagar con tarjeta?"
+      }
+     ]
+    },
+    {
+     "id": "puede",
+     "es": "puede",
+     "ar": "يستطيع / يمكن لحضرتك",
+     "en": "he / she / you (formal) can",
+     "pos": "فعل",
+     "examples": [
+      {
+       "es": "¿Puede ayudarme, por favor?",
+       "ar": "هل يمكنك مساعدتي من فضلك؟"
+      }
+     ],
+     "connections": [
+      {
+       "type": "usage",
+       "ar": "¿Puede + مصدر? = طلب مهذّب من شخص تخاطبه بـ usted."
+      }
+     ]
+    },
+    {
+     "id": "firmar",
+     "es": "firmar",
+     "ar": "يوقّع (مصدر)",
+     "en": "to sign",
+     "pos": "فعل",
+     "examples": [
+      {
+       "es": "¿Puede firmar aquí, por favor?",
+       "ar": "هل يمكنك التوقيع هنا من فضلك؟"
+      }
+     ],
+     "work": true
+    }
+   ],
+   "activities": [
+    {
+     "type": "teach",
+     "item": "quisiera"
+    },
+    {
+     "type": "mcq_meaning",
+     "item": "quisiera"
+    },
+    {
+     "type": "note",
+     "title_ar": "quisiera: الطلب بأدب",
+     "body_ar": "quisiera + اسم أو مصدر:\nQuisiera un café. — أودّ قهوة.\nQuisiera abrir una cuenta. — أودّ فتح حساب.\n\nفي البنك ومع موظف أو عميل: quisiera ألطف من quiero.",
+     "examples": [
+      {
+       "es": "Quisiera pagar con tarjeta.",
+       "ar": "أودّ الدفع بالبطاقة."
+      }
+     ]
+    },
+    {
+     "type": "teach",
+     "item": "abrir"
+    },
+    {
+     "type": "teach",
+     "item": "cuenta_bancaria"
+    },
+    {
+     "type": "mcq_meaning",
+     "item": "cuenta_bancaria"
+    },
+    {
+     "type": "listen_choose",
+     "item": "abrir"
+    },
+    {
+     "type": "choice",
+     "prompt_ar": "أيّ جملة هي الأكثر تهذيباً أمام موظف البنك؟",
+     "choices": [
+      "Quisiera abrir una cuenta.",
+      "Abrir una cuenta.",
+      "Tú abres una cuenta."
+     ],
+     "answer": 0,
+     "skill": "grammar",
+     "choices_es": true,
+     "explain_ar": "quisiera + مصدر طلب مهذّب. والموظف تخاطبه بـ usted لا بـ tú."
+    },
+    {
+     "type": "teach",
+     "item": "dinero"
+    },
+    {
+     "type": "teach",
+     "item": "sacar"
+    },
+    {
+     "type": "teach",
+     "item": "cajero"
+    },
+    {
+     "type": "mcq_reverse",
+     "item": "dinero"
+    },
+    {
+     "type": "listen_pick_es",
+     "item": "cajero"
+    },
+    {
+     "type": "mcq_meaning",
+     "item": "sacar"
+    },
+    {
+     "type": "note",
+     "title_ar": "poder: o ← ue",
+     "body_ar": "puedo · puedes · puede · podemos · pueden\n\nبعده المصدر مباشرة:\n¿Puedo sacar dinero? — هل يمكنني سحب نقود؟\n¿Puede firmar aquí? — هل يمكنك التوقيع هنا؟ (usted)",
+     "examples": [
+      {
+       "es": "No podemos abrir la cuenta hoy.",
+       "ar": "لا نستطيع فتح الحساب اليوم."
+      }
+     ]
+    },
+    {
+     "type": "teach",
+     "item": "puedo"
+    },
+    {
+     "type": "teach",
+     "item": "puede"
+    },
+    {
+     "type": "teach",
+     "item": "firmar"
+    },
+    {
+     "type": "listen_pick_es",
+     "item": "puedo"
+    },
+    {
+     "type": "mcq_meaning",
+     "item": "puede"
+    },
+    {
+     "type": "fill",
+     "es": "Yo no ___ firmar hoy.",
+     "answer": "puedo",
+     "ar": "لا أستطيع التوقيع اليوم.",
+     "options": [
+      "puedo",
+      "puede",
+      "podemos"
+     ],
+     "explain_ar": "مع yo: puedo (o ← ue)."
+    },
+    {
+     "type": "fill",
+     "es": "Señor, ¿___ firmar aquí, por favor?",
+     "answer": "puede",
+     "ar": "سيدي، هل يمكنك التوقيع هنا من فضلك؟",
+     "options": [
+      "puede",
+      "puedo",
+      "pueden"
+     ],
+     "explain_ar": "usted يأخذ صيغة الغائب المفرد: puede."
+    },
+    {
+     "type": "match",
+     "items": [
+      "quisiera",
+      "abrir",
+      "sacar",
+      "firmar"
+     ]
+    },
+    {
+     "type": "type_es",
+     "item": "dinero"
+    },
+    {
+     "type": "type_es",
+     "item": "cuenta_bancaria"
+    },
+    {
+     "type": "order",
+     "es": "Quisiera abrir una cuenta bancaria.",
+     "ar": "أودّ فتح حساب بنكي."
+    },
+    {
+     "type": "dictation",
+     "es": "¿Puedo sacar dinero en el cajero?",
+     "ar": "هل يمكنني سحب نقود من الصرّاف؟"
+    },
+    {
+     "type": "choice",
+     "prompt_ar": "هل يفتح البنك يوم السبت؟",
+     "choices": [
+      "لا",
+      "نعم، صباحاً",
+      "نعم، حتى الثانية"
+     ],
+     "answer": 0,
+     "skill": "reading",
+     "choices_es": false,
+     "stimulus_es": "Banco Sol abre de lunes a viernes, de nueve a dos. El sábado no abre. El cajero automático está al lado del banco."
+    },
+    {
+     "type": "respond",
+     "prompt_ar": "موظفة البنك تسأل: «Buenos días, ¿en qué puedo ayudarle?». قل بأدب إنك تودّ فتح حساب.",
+     "accepted": [
+      "Quisiera abrir una cuenta",
+      "Quisiera abrir una cuenta bancaria",
+      "Quisiera abrir una cuenta, por favor",
+      "Quisiera abrir una cuenta bancaria, por favor",
+      "Buenos días, quisiera abrir una cuenta",
+      "Buenos días, quisiera abrir una cuenta bancaria",
+      "Buenos días, quisiera abrir una cuenta, por favor",
+      "Buenos días, quisiera abrir una cuenta bancaria, por favor"
+     ],
+     "audio_es": "Buenos días, ¿en qué puedo ayudarle?"
+    },
+    {
+     "type": "speak",
+     "es": "Buenos días. Quisiera abrir una cuenta bancaria, por favor.",
+     "ar": "صباح الخير. أودّ فتح حساب بنكي من فضلك."
+    }
+   ]
+  },
+  {
+   "id": "a2_u1_l2",
+   "title_ar": "في مكتب البريد",
+   "title_es": "En correos",
+   "objectives_ar": [
+    "إرسال طرد والسؤال عن المدّة",
+    "التعبير عن الالتزام بـ tener que",
+    "العنوان والرمز البريدي"
+   ],
+   "prerequisites": [
+    "a2_u1_l1"
+   ],
+   "minutes": 15,
+   "work_relevance_ar": "إرسال عقود أو عيّنات إلى عميل بالبريد.",
+   "source": "original-v1",
+   "grammar": [
+    "g_tener_que"
+   ],
+   "items": [
+    {
+     "id": "oficina_correos",
+     "es": "la oficina de correos",
+     "ar": "مكتب البريد",
+     "en": "post office",
+     "pos": "اسم",
+     "examples": [
+      {
+       "es": "La oficina de correos está en la calle Mayor.",
+       "ar": "مكتب البريد في الشارع الرئيسي (كاليه مايور)."
+      }
+     ],
+     "connections": [
+      {
+       "type": "usage",
+       "ar": "el correo (A1) = البريد / البريد الإلكتروني. وفي إسبانيا اسم شركة البريد: Correos."
+      }
+     ]
+    },
+    {
+     "id": "paquete",
+     "es": "el paquete",
+     "ar": "الطرد",
+     "en": "parcel, package",
+     "pos": "اسم",
+     "examples": [
+      {
+       "es": "Tengo un paquete para Madrid.",
+       "ar": "عندي طرد إلى مدريد."
+      }
+     ],
+     "work": true
+    },
+    {
+     "id": "sobre",
+     "es": "el sobre",
+     "ar": "الظرف",
+     "en": "envelope",
+     "pos": "اسم",
+     "examples": [
+      {
+       "es": "El contrato está en el sobre.",
+       "ar": "العقد في الظرف."
+      }
+     ],
+     "connections": [
+      {
+       "type": "usage",
+       "ar": "sobre أيضاً حرف جرّ بمعنى «على / عن»: un libro sobre España."
+      }
+     ]
+    },
+    {
+     "id": "direccion",
+     "es": "la dirección",
+     "ar": "العنوان",
+     "en": "address",
+     "pos": "اسم",
+     "examples": [
+      {
+       "es": "¿Cuál es su dirección?",
+       "ar": "ما عنوانك؟"
+      }
+     ],
+     "work": true,
+     "connections": [
+      {
+       "type": "usage",
+       "ar": "تعني أيضاً «الاتجاه» و«الإدارة» حسب السياق."
+      }
+     ]
+    },
+    {
+     "id": "codigo_postal",
+     "es": "el código postal",
+     "ar": "الرمز البريدي",
+     "en": "postcode",
+     "pos": "اسم",
+     "examples": [
+      {
+       "es": "¿Cuál es el código postal?",
+       "ar": "ما الرمز البريدي؟"
+      }
+     ]
+    },
+    {
+     "id": "tengo_que",
+     "es": "tengo que…",
+     "ar": "يجب عليّ… / عليّ أن…",
+     "en": "I have to…",
+     "pos": "تعبير",
+     "examples": [
+      {
+       "es": "Tengo que enviar este paquete hoy.",
+       "ar": "عليّ أن أرسل هذا الطرد اليوم."
+      }
+     ],
+     "connections": [
+      {
+       "type": "grammar",
+       "ar": "tener que + مصدر للالتزام. لا تحذف que."
+      }
+     ]
+    },
+    {
+     "id": "tiene_que",
+     "es": "tiene que…",
+     "ar": "يجب عليه… / على حضرتك أن…",
+     "en": "he / she has to…; you (formal) have to…",
+     "pos": "تعبير",
+     "examples": [
+      {
+       "es": "Tiene que rellenar este formulario.",
+       "ar": "عليك أن تملأ هذه الاستمارة."
+      }
+     ]
+    },
+    {
+     "id": "formulario",
+     "es": "el formulario",
+     "ar": "الاستمارة",
+     "en": "form",
+     "pos": "اسم",
+     "examples": [
+      {
+       "es": "El formulario está en la mesa.",
+       "ar": "الاستمارة على الطاولة."
+      }
+     ],
+     "note_ar": "يملأ الاستمارة: rellenar el formulario.",
+     "connections": [
+      {
+       "type": "cognate",
+       "ar": "قريبة من form بالإنجليزية."
+      }
+     ]
+    },
+    {
+     "id": "cuanto_tarda",
+     "es": "¿Cuánto tarda?",
+     "ar": "كم يستغرق (من الوقت)؟",
+     "en": "How long does it take?",
+     "pos": "سؤال",
+     "examples": [
+      {
+       "es": "¿Cuánto tarda un paquete a Madrid?",
+       "ar": "كم يستغرق الطرد إلى مدريد؟"
+      }
+     ],
+     "work": true,
+     "connections": [
+      {
+       "type": "usage",
+       "ar": "قارن: ¿Cuánto cuesta? للسعر، و¿Cuánto tarda? للوقت."
+      }
+     ]
+    }
+   ],
+   "activities": [
+    {
+     "type": "teach",
+     "item": "oficina_correos"
+    },
+    {
+     "type": "mcq_meaning",
+     "item": "oficina_correos"
+    },
+    {
+     "type": "teach",
+     "item": "paquete"
+    },
+    {
+     "type": "teach",
+     "item": "sobre"
+    },
+    {
+     "type": "listen_choose",
+     "item": "paquete"
+    },
+    {
+     "type": "mcq_reverse",
+     "item": "sobre"
+    },
+    {
+     "type": "teach",
+     "item": "direccion"
+    },
+    {
+     "type": "teach",
+     "item": "codigo_postal"
+    },
+    {
+     "type": "mcq_meaning",
+     "item": "direccion"
+    },
+    {
+     "type": "listen_pick_es",
+     "item": "codigo_postal"
+    },
+    {
+     "type": "note",
+     "title_ar": "tener que + مصدر",
+     "body_ar": "للالتزام: tengo que / tienes que / tiene que + المصدر.\nTengo que enviar un paquete. — عليّ أن أرسل طرداً.\nTiene que escribir la dirección. — عليك أن تكتب العنوان.\n\nلا تقل: tengo enviar.",
+     "examples": [
+      {
+       "es": "¿Tengo que pagar ahora?",
+       "ar": "هل عليّ أن أدفع الآن؟"
+      }
+     ]
+    },
+    {
+     "type": "teach",
+     "item": "tengo_que"
+    },
+    {
+     "type": "teach",
+     "item": "tiene_que"
+    },
+    {
+     "type": "teach",
+     "item": "formulario"
+    },
+    {
+     "type": "teach",
+     "item": "cuanto_tarda"
+    },
+    {
+     "type": "fill",
+     "es": "Yo ___ que enviar el paquete hoy.",
+     "answer": "tengo",
+     "ar": "عليّ أن أرسل الطرد اليوم.",
+     "options": [
+      "tengo",
+      "tiene",
+      "tienen"
+     ],
+     "explain_ar": "مع yo: tengo que."
+    },
+    {
+     "type": "fill",
+     "es": "Usted tiene ___ rellenar el formulario.",
+     "answer": "que",
+     "ar": "عليك أن تملأ الاستمارة.",
+     "options": [
+      "que",
+      "a",
+      "de"
+     ],
+     "explain_ar": "tener que + مصدر؛ لا تُحذف que."
+    },
+    {
+     "type": "mcq_meaning",
+     "item": "cuanto_tarda"
+    },
+    {
+     "type": "mcq_meaning",
+     "item": "tiene_que"
+    },
+    {
+     "type": "match",
+     "items": [
+      "paquete",
+      "sobre",
+      "formulario",
+      "direccion"
+     ]
+    },
+    {
+     "type": "type_es",
+     "item": "paquete"
+    },
+    {
+     "type": "type_es",
+     "item": "direccion"
+    },
+    {
+     "type": "type_es",
+     "item": "tengo_que"
+    },
+    {
+     "type": "order",
+     "es": "Tengo que escribir el código postal.",
+     "ar": "عليّ أن أكتب الرمز البريدي."
+    },
+    {
+     "type": "dictation",
+     "es": "¿Cuánto tarda un paquete a Madrid?",
+     "ar": "كم يستغرق الطرد إلى مدريد؟"
+    },
+    {
+     "type": "choice",
+     "prompt_ar": "كم يستغرق الإرسال المستعجل؟",
+     "choices": [
+      "يوماً واحداً",
+      "خمسة أيام",
+      "عشرين يوماً"
+     ],
+     "answer": 0,
+     "skill": "reading",
+     "choices_es": false,
+     "stimulus_es": "Envío normal: cinco días, ocho euros. Envío urgente: un día, veinte euros."
+    },
+    {
+     "type": "choice",
+     "prompt_ar": "استمع: ماذا يطلب الموظف؟",
+     "choices": [
+      "أن تملأ الاستمارة",
+      "أن تكتب الرمز البريدي",
+      "أن تدفع عشرين يورو"
+     ],
+     "answer": 0,
+     "skill": "listening",
+     "choices_es": false,
+     "audio_es": "Tiene que rellenar este formulario."
+    },
+    {
+     "type": "respond",
+     "prompt_ar": "موظف البريد يسأل: «¿Qué necesita?». قل بأدب إنك تودّ إرسال هذا الطرد.",
+     "accepted": [
+      "Quisiera enviar este paquete",
+      "Quisiera enviar este paquete, por favor",
+      "Quisiera enviar un paquete",
+      "Quisiera enviar un paquete, por favor",
+      "Tengo que enviar este paquete"
+     ],
+     "audio_es": "¿Qué necesita?"
+    },
+    {
+     "type": "speak",
+     "es": "Tengo que enviar este paquete a Madrid. ¿Cuánto tarda?",
+     "ar": "عليّ أن أرسل هذا الطرد إلى مدريد. كم يستغرق؟"
+    }
+   ]
+  },
+  {
+   "id": "a2_u1_l3",
+   "title_ar": "جهاز لا يعمل",
+   "title_es": "No funciona",
+   "objectives_ar": [
+    "وصف عطل: no funciona، roto",
+    "طلب الإصلاح وموعد الفنّي",
+    "ضمير المفعول lo / la"
+   ],
+   "prerequisites": [
+    "a2_u1_l2"
+   ],
+   "minutes": 16,
+   "work_relevance_ar": "الإبلاغ عن عطل في المكتب: الطابعة، الحاسوب، المكيّف.",
+   "source": "original-v1",
+   "grammar": [
+    "g_object_pronouns"
+   ],
+   "items": [
+    {
+     "id": "no_funciona",
+     "es": "no funciona",
+     "ar": "لا يعمل (معطّل)",
+     "en": "it doesn't work",
+     "pos": "تعبير",
+     "examples": [
+      {
+       "es": "La impresora no funciona.",
+       "ar": "الطابعة لا تعمل."
+      }
+     ],
+     "work": true,
+     "connections": [
+      {
+       "type": "usage",
+       "ar": "funcionar للأجهزة. لا تقل no trabaja عن آلة: trabajar للأشخاص."
+      }
+     ]
+    },
+    {
+     "id": "pantalla",
+     "es": "la pantalla",
+     "ar": "الشاشة",
+     "en": "screen",
+     "pos": "اسم",
+     "examples": [
+      {
+       "es": "La pantalla del ordenador es grande.",
+       "ar": "شاشة الحاسوب كبيرة."
+      }
+     ]
+    },
+    {
+     "id": "roto",
+     "es": "roto",
+     "ar": "مكسور",
+     "en": "broken",
+     "pos": "صفة",
+     "examples": [
+      {
+       "es": "La pantalla está rota.",
+       "ar": "الشاشة مكسورة."
+      }
+     ],
+     "note_ar": "يتّفق مع الاسم: roto / rota، ويأتي مع estar (حالة).",
+     "connections": [
+      {
+       "type": "grammar",
+       "ar": "el ordenador está roto · la pantalla está rota."
+      }
+     ]
+    },
+    {
+     "id": "arreglar",
+     "es": "arreglar",
+     "ar": "يُصلح (مصدر)",
+     "en": "to fix, to repair",
+     "pos": "فعل",
+     "examples": [
+      {
+       "es": "¿Puede arreglar el ordenador?",
+       "ar": "هل يمكنك إصلاح الحاسوب؟"
+      }
+     ]
+    },
+    {
+     "id": "tecnico",
+     "es": "el técnico",
+     "ar": "الفنّي",
+     "en": "technician",
+     "pos": "اسم",
+     "examples": [
+      {
+       "es": "El técnico va a venir mañana.",
+       "ar": "الفنّي سيأتي غداً."
+      }
+     ],
+     "note_ar": "المؤنث: la técnica.",
+     "work": true
+    },
+    {
+     "id": "aire_acondicionado",
+     "es": "el aire acondicionado",
+     "ar": "المكيّف",
+     "en": "air conditioning",
+     "pos": "اسم",
+     "examples": [
+      {
+       "es": "El aire acondicionado no funciona.",
+       "ar": "المكيّف لا يعمل."
+      }
+     ],
+     "work": true
+    },
+    {
+     "id": "desde_ayer",
+     "es": "desde ayer",
+     "ar": "منذ أمس",
+     "en": "since yesterday",
+     "pos": "تعبير",
+     "examples": [
+      {
+       "es": "El ordenador no funciona desde ayer.",
+       "ar": "الحاسوب لا يعمل منذ أمس."
+      }
+     ],
+     "connections": [
+      {
+       "type": "grammar",
+       "ar": "مع desde يبقى الفعل في الحاضر: No funciona desde ayer = لا يعمل منذ أمس."
+      }
+     ]
+    },
+    {
+     "id": "cuando_puede_venir",
+     "es": "¿Cuándo puede venir?",
+     "ar": "متى يمكنك (حضرتك) المجيء؟",
+     "en": "When can you come?",
+     "pos": "سؤال",
+     "examples": [
+      {
+       "es": "¿Cuándo puede venir el técnico?",
+       "ar": "متى يمكن أن يأتي الفنّي؟"
+      }
+     ],
+     "work": true
+    }
+   ],
+   "activities": [
+    {
+     "type": "teach",
+     "item": "no_funciona"
+    },
+    {
+     "type": "teach",
+     "item": "pantalla"
+    },
+    {
+     "type": "mcq_meaning",
+     "item": "no_funciona"
+    },
+    {
+     "type": "teach",
+     "item": "roto"
+    },
+    {
+     "type": "teach",
+     "item": "arreglar"
+    },
+    {
+     "type": "listen_choose",
+     "item": "arreglar"
+    },
+    {
+     "type": "mcq_reverse",
+     "item": "roto"
+    },
+    {
+     "type": "choice",
+     "prompt_ar": "كيف تقول «الشاشة مكسورة»؟",
+     "choices": [
+      "La pantalla está rota.",
+      "La pantalla está roto.",
+      "La pantalla es rota."
+     ],
+     "answer": 0,
+     "skill": "grammar",
+     "choices_es": true,
+     "explain_ar": "pantalla مؤنث ← rota، وللحالة نستعمل estar."
+    },
+    {
+     "type": "teach",
+     "item": "tecnico"
+    },
+    {
+     "type": "teach",
+     "item": "aire_acondicionado"
+    },
+    {
+     "type": "mcq_meaning",
+     "item": "aire_acondicionado"
+    },
+    {
+     "type": "listen_pick_es",
+     "item": "tecnico"
+    },
+    {
+     "type": "note",
+     "title_ar": "lo / la: «ـه / ـها»",
+     "body_ar": "لكي لا تكرّر الاسم:\n¿El ordenador? Lo arreglo hoy. — الحاسوب؟ أصلحه اليوم.\n¿La impresora? La arreglo mañana. — الطابعة؟ أصلحها غداً.\n\nمذكّر ← lo، مؤنث ← la. قبل الفعل المصرَّف أو متّصلاً بالمصدر:\n¿Lo puede arreglar? = ¿Puede arreglarlo?",
+     "examples": [
+      {
+       "es": "¿El informe? Lo reviso ahora.",
+       "ar": "التقرير؟ أراجعه الآن."
+      }
+     ]
+    },
+    {
+     "type": "fill",
+     "es": "¿La impresora? El técnico ___ arregla mañana.",
+     "answer": "la",
+     "ar": "الطابعة؟ الفنّي يصلحها غداً.",
+     "options": [
+      "la",
+      "lo",
+      "le"
+     ],
+     "explain_ar": "impresora مؤنث ← la."
+    },
+    {
+     "type": "fill",
+     "es": "¿El ordenador? Ahora ___ reviso.",
+     "answer": "lo",
+     "ar": "الحاسوب؟ أراجعه الآن.",
+     "options": [
+      "lo",
+      "la",
+      "los"
+     ],
+     "explain_ar": "ordenador مذكّر مفرد ← lo."
+    },
+    {
+     "type": "teach",
+     "item": "desde_ayer"
+    },
+    {
+     "type": "teach",
+     "item": "cuando_puede_venir"
+    },
+    {
+     "type": "mcq_meaning",
+     "item": "desde_ayer"
+    },
+    {
+     "type": "listen_choose",
+     "item": "cuando_puede_venir"
+    },
+    {
+     "type": "match",
+     "items": [
+      "pantalla",
+      "tecnico",
+      "aire_acondicionado",
+      "arreglar"
+     ]
+    },
+    {
+     "type": "type_es",
+     "item": "arreglar"
+    },
+    {
+     "type": "type_es",
+     "item": "pantalla"
+    },
+    {
+     "type": "order",
+     "es": "El aire acondicionado no funciona desde ayer.",
+     "ar": "المكيّف لا يعمل منذ أمس."
+    },
+    {
+     "type": "dictation",
+     "es": "¿Puede arreglarlo hoy?",
+     "ar": "هل يمكنك إصلاحه اليوم؟"
+    },
+    {
+     "type": "choice",
+     "prompt_ar": "متى سيأتي الفنّي؟",
+     "choices": [
+      "الخميس صباحاً",
+      "الاثنين",
+      "الخميس مساءً"
+     ],
+     "answer": 0,
+     "skill": "reading",
+     "choices_es": false,
+     "stimulus_es": "Hola, Pedro: la impresora de la oficina no funciona desde el lunes. El técnico va a venir el jueves por la mañana. Laura"
+    },
+    {
+     "type": "respond",
+     "prompt_ar": "زميل يسأل: «¿Qué pasa con el ordenador?». قل إنه لا يعمل منذ أمس.",
+     "accepted": [
+      "No funciona desde ayer",
+      "El ordenador no funciona desde ayer"
+     ],
+     "audio_es": "¿Qué pasa con el ordenador?"
+    },
+    {
+     "type": "speak",
+     "es": "Perdone, el aire acondicionado no funciona. ¿Cuándo puede venir el técnico?",
+     "ar": "عذراً، المكيّف لا يعمل. متى يمكن أن يأتي الفنّي؟"
+    }
+   ]
+  },
+  {
+   "id": "a2_u1_l4",
+   "title_ar": "تقديم شكوى",
+   "title_es": "Una reclamación",
+   "objectives_ar": [
+    "شرح مشكلة في فاتورة أو خدمة",
+    "طلب الحلّ بأدب بـ ¿Me puede…?",
+    "طلب إعادة المال"
+   ],
+   "prerequisites": [
+    "a2_u1_l3"
+   ],
+   "minutes": 16,
+   "work_relevance_ar": "الاعتراض على فاتورة مورّد أو خدمة إنترنت للمكتب.",
+   "source": "original-v1",
+   "grammar": [
+    "g_me_le"
+   ],
+   "items": [
+    {
+     "id": "reclamacion",
+     "es": "la reclamación",
+     "ar": "الشكوى (الرسمية)",
+     "en": "complaint, claim",
+     "pos": "اسم",
+     "examples": [
+      {
+       "es": "Quisiera hacer una reclamación.",
+       "ar": "أودّ تقديم شكوى."
+      }
+     ],
+     "work": true,
+     "connections": [
+      {
+       "type": "usage",
+       "ar": "في إسبانيا يوجد في كل متجر «hoja de reclamaciones»: استمارة شكوى رسمية."
+      }
+     ]
+    },
+    {
+     "id": "problema",
+     "es": "el problema",
+     "ar": "المشكلة",
+     "en": "problem",
+     "pos": "اسم",
+     "examples": [
+      {
+       "es": "Tengo un problema con la factura.",
+       "ar": "عندي مشكلة في الفاتورة."
+      }
+     ],
+     "connections": [
+      {
+       "type": "grammar",
+       "ar": "مذكّر رغم انتهائه بـ ‎-a: el problema، un problema."
+      }
+     ]
+    },
+    {
+     "id": "error",
+     "es": "el error",
+     "ar": "الخطأ",
+     "en": "mistake, error",
+     "pos": "اسم",
+     "examples": [
+      {
+       "es": "Hay un error en la factura.",
+       "ar": "يوجد خطأ في الفاتورة."
+      }
+     ],
+     "connections": [
+      {
+       "type": "cognate",
+       "ar": "مثل error بالإنجليزية."
+      }
+     ]
+    },
+    {
+     "id": "correcto",
+     "es": "correcto",
+     "ar": "صحيح",
+     "en": "correct",
+     "pos": "صفة",
+     "examples": [
+      {
+       "es": "La dirección no es correcta.",
+       "ar": "العنوان غير صحيح."
+      }
+     ],
+     "note_ar": "المؤنث correcta، والعكس incorrecto."
+    },
+    {
+     "id": "cobrar",
+     "es": "cobrar",
+     "ar": "يتقاضى / يحصّل (مبلغاً) (مصدر)",
+     "en": "to charge",
+     "pos": "فعل",
+     "examples": [
+      {
+       "es": "El técnico cobra cincuenta euros.",
+       "ar": "الفنّي يتقاضى خمسين يورو."
+      }
+     ],
+     "work": true,
+     "connections": [
+      {
+       "type": "usage",
+       "ar": "pagar = يدفع (الزبون)، cobrar = يتقاضى (البائع أو الشركة)."
+      }
+     ]
+    },
+    {
+     "id": "dos_veces",
+     "es": "dos veces",
+     "ar": "مرّتين",
+     "en": "twice",
+     "pos": "تعبير",
+     "examples": [
+      {
+       "es": "El servicio aparece dos veces en la factura.",
+       "ar": "الخدمة تظهر مرّتين في الفاتورة."
+      }
+     ],
+     "connections": [
+      {
+       "type": "grammar",
+       "ar": "una vez · dos veces: الجمع veces (z ← c)."
+      }
+     ]
+    },
+    {
+     "id": "devolver",
+     "es": "devolver",
+     "ar": "يُرجع / يردّ (المال) (مصدر)",
+     "en": "to give back, to refund",
+     "pos": "فعل",
+     "examples": [
+      {
+       "es": "¿Me pueden devolver el dinero?",
+       "ar": "هل يمكنكم إعادة المال لي؟"
+      }
+     ],
+     "note_ar": "o ← ue: devuelvo, devuelve, devuelven."
+    },
+    {
+     "id": "me_puede_ayudar",
+     "es": "¿Me puede ayudar?",
+     "ar": "هل يمكنك (حضرتك) مساعدتي؟",
+     "en": "Can you help me?",
+     "pos": "سؤال",
+     "examples": [
+      {
+       "es": "Perdone, ¿me puede ayudar con esta factura?",
+       "ar": "عذراً، هل يمكنك مساعدتي في هذه الفاتورة؟"
+      }
+     ],
+     "connections": [
+      {
+       "type": "grammar",
+       "ar": "me = «ـني / لي» قبل الفعل. ويمكن: ¿Puede ayudarme?"
+      }
+     ]
+    }
+   ],
+   "activities": [
+    {
+     "type": "teach",
+     "item": "reclamacion"
+    },
+    {
+     "type": "teach",
+     "item": "problema"
+    },
+    {
+     "type": "mcq_meaning",
+     "item": "reclamacion"
+    },
+    {
+     "type": "listen_choose",
+     "item": "problema"
+    },
+    {
+     "type": "teach",
+     "item": "error"
+    },
+    {
+     "type": "teach",
+     "item": "correcto"
+    },
+    {
+     "type": "mcq_reverse",
+     "item": "error"
+    },
+    {
+     "type": "mcq_meaning",
+     "item": "correcto"
+    },
+    {
+     "type": "choice",
+     "prompt_ar": "اختر الكلمة المناسبة للفراغ",
+     "choices": [
+      "un",
+      "una",
+      "unos"
+     ],
+     "answer": 0,
+     "skill": "grammar",
+     "choices_es": true,
+     "stimulus_es": "Tengo ___ problema con la factura.",
+     "explain_ar": "problema مذكّر رغم ‎-a: un problema."
+    },
+    {
+     "type": "teach",
+     "item": "cobrar"
+    },
+    {
+     "type": "teach",
+     "item": "dos_veces"
+    },
+    {
+     "type": "mcq_meaning",
+     "item": "cobrar"
+    },
+    {
+     "type": "listen_pick_es",
+     "item": "dos_veces"
+    },
+    {
+     "type": "note",
+     "title_ar": "me / le: «لي» و«لحضرتك»",
+     "body_ar": "me = لي / إياي، le = لحضرتك (usted). قبل الفعل المصرَّف:\n¿Me puede ayudar? — هل يمكنك مساعدتي؟\n¿Me puede enviar la factura? — هل يمكنك أن ترسل لي الفاتورة؟\nLe envío el documento. — أرسل لحضرتك المستند.",
+     "examples": [
+      {
+       "es": "¿Me pueden devolver el dinero?",
+       "ar": "هل يمكنكم إعادة المال لي؟"
+      }
+     ]
+    },
+    {
+     "type": "teach",
+     "item": "devolver"
+    },
+    {
+     "type": "teach",
+     "item": "me_puede_ayudar"
+    },
+    {
+     "type": "fill",
+     "es": "Perdone, ¿___ puede ayudar?",
+     "answer": "me",
+     "ar": "عذراً، هل يمكنك مساعدتي؟",
+     "options": [
+      "me",
+      "yo",
+      "mi"
+     ],
+     "explain_ar": "قبل الفعل نستعمل me (ـني)، لا yo ولا mi."
+    },
+    {
+     "type": "mcq_meaning",
+     "item": "devolver"
+    },
+    {
+     "type": "listen_choose",
+     "item": "me_puede_ayudar"
+    },
+    {
+     "type": "match",
+     "items": [
+      "problema",
+      "error",
+      "reclamacion",
+      "cobrar"
+     ]
+    },
+    {
+     "type": "type_es",
+     "item": "problema"
+    },
+    {
+     "type": "type_es",
+     "item": "devolver"
+    },
+    {
+     "type": "order",
+     "es": "Hay un error en la factura.",
+     "ar": "يوجد خطأ في الفاتورة."
+    },
+    {
+     "type": "dictation",
+     "es": "En la factura me cobran el servicio dos veces.",
+     "ar": "في الفاتورة يحصّلون مني ثمن الخدمة مرّتين."
+    },
+    {
+     "type": "choice",
+     "prompt_ar": "ماذا يطلب كريم؟",
+     "choices": [
+      "أن يعيدوا له المال",
+      "فاتورة بعنوان جديد",
+      "زيارة فنّي"
+     ],
+     "answer": 0,
+     "skill": "reading",
+     "choices_es": false,
+     "stimulus_es": "Buenos días: en mi factura hay un error. El servicio de internet aparece dos veces. ¿Me pueden devolver el dinero? Gracias. Karim Haddad"
+    },
+    {
+     "type": "choice",
+     "prompt_ar": "استمع: ماذا تقول الموظفة؟",
+     "choices": [
+      "الفاتورة غير صحيحة",
+      "الفاتورة صحيحة",
+      "لا توجد فاتورة"
+     ],
+     "answer": 0,
+     "skill": "listening",
+     "choices_es": false,
+     "audio_es": "Lo siento, la factura no es correcta."
+    },
+    {
+     "type": "respond",
+     "prompt_ar": "في خدمة العملاء يسألونك: «¿Cuál es el problema?». قل إن في الفاتورة خطأ.",
+     "accepted": [
+      "Hay un error en la factura",
+      "En la factura hay un error",
+      "La factura tiene un error"
+     ],
+     "audio_es": "¿Cuál es el problema?"
+    },
+    {
+     "type": "speak",
+     "es": "Perdone, ¿me puede ayudar? Hay un error en la factura.",
+     "ar": "عذراً، هل يمكنك مساعدتي؟ يوجد خطأ في الفاتورة."
+    }
+   ]
+  },
+  {
+   "id": "a2_u1_l5",
+   "title_ar": "خدمة العملاء: من جهتك",
+   "title_es": "Atención al cliente",
+   "objectives_ar": [
+    "الاعتذار لعميل بصيغة رسمية",
+    "الوعد بالتحقّق والحلّ بالحاضر",
+    "استعمال le لمخاطبة العميل"
+   ],
+   "prerequisites": [
+    "a2_u1_l4"
+   ],
+   "minutes": 16,
+   "work_relevance_ar": "أنت المورّد: عميل يشتكي من خطأ، وعليك الاعتذار والتحقّق والوعد بحلّ.",
+   "source": "original-v1",
+   "grammar": [
+    "g_me_le",
+    "g_present_promise"
+   ],
+   "items": [
+    {
+     "id": "atencion_cliente",
+     "es": "la atención al cliente",
+     "ar": "خدمة العملاء",
+     "en": "customer service",
+     "pos": "اسم",
+     "examples": [
+      {
+       "es": "Trabajo en atención al cliente.",
+       "ar": "أعمل في خدمة العملاء."
+      }
+     ],
+     "work": true,
+     "connections": [
+      {
+       "type": "grammar",
+       "ar": "al = a + el (A1)."
+      }
+     ]
+    },
+    {
+     "id": "disculpe_molestias",
+     "es": "disculpe las molestias",
+     "ar": "نعتذر عن الإزعاج",
+     "en": "sorry for the inconvenience",
+     "pos": "تعبير",
+     "examples": [
+      {
+       "es": "Disculpe las molestias. Lo solucionamos hoy.",
+       "ar": "نعتذر عن الإزعاج. نحلّه اليوم."
+      }
+     ],
+     "note_ar": "صيغة رسمية مع usted؛ ولجماعة: disculpen las molestias.",
+     "work": true
+    },
+    {
+     "id": "numero_pedido",
+     "es": "el número de pedido",
+     "ar": "رقم الطلب",
+     "en": "order number",
+     "pos": "اسم",
+     "examples": [
+      {
+       "es": "¿Me puede dar el número de pedido?",
+       "ar": "هل يمكنك أن تعطيني رقم الطلب؟"
+      }
+     ],
+     "work": true
+    },
+    {
+     "id": "comprobar",
+     "es": "comprobar",
+     "ar": "يتحقّق من (مصدر)",
+     "en": "to check, to verify",
+     "pos": "فعل",
+     "examples": [
+      {
+       "es": "Ahora mismo lo compruebo.",
+       "ar": "أتحقّق منه حالاً."
+      }
+     ],
+     "note_ar": "o ← ue: compruebo, comprueba.",
+     "syn": "check",
+     "connections": [
+      {
+       "type": "usage",
+       "ar": "قريب من revisar (A1): comprobar للتأكّد من معلومة أو خطأ."
+      }
+     ]
+    },
+    {
+     "id": "solucionar",
+     "es": "solucionar",
+     "ar": "يحلّ (مشكلة) (مصدر)",
+     "en": "to solve",
+     "pos": "فعل",
+     "examples": [
+      {
+       "es": "Vamos a solucionar el problema.",
+       "ar": "سنحلّ المشكلة."
+      }
+     ],
+     "work": true,
+     "connections": [
+      {
+       "type": "cognate",
+       "ar": "من la solución (الحلّ)، قريب من solution بالإنجليزية."
+      }
+     ]
+    },
+    {
+     "id": "ahora_mismo",
+     "es": "ahora mismo",
+     "ar": "حالاً / فوراً",
+     "en": "right now",
+     "pos": "تعبير",
+     "examples": [
+      {
+       "es": "Ahora mismo le envío la factura.",
+       "ar": "أرسل لحضرتك الفاتورة حالاً."
+      }
+     ]
+    },
+    {
+     "id": "lo_antes_posible",
+     "es": "lo antes posible",
+     "ar": "في أقرب وقت ممكن",
+     "en": "as soon as possible",
+     "pos": "تعبير",
+     "examples": [
+      {
+       "es": "Le llamo lo antes posible.",
+       "ar": "أتصل بحضرتك في أقرب وقت ممكن."
+      }
+     ],
+     "work": true
+    },
+    {
+     "id": "le_envio",
+     "es": "le envío…",
+     "ar": "أرسل لحضرتك…",
+     "en": "I'll send you…",
+     "pos": "تعبير",
+     "examples": [
+      {
+       "es": "Le envío la factura correcta hoy.",
+       "ar": "أرسل لحضرتك الفاتورة الصحيحة اليوم."
+      }
+     ],
+     "work": true,
+     "connections": [
+      {
+       "type": "grammar",
+       "ar": "le = «لحضرتك» قبل الفعل؛ envío من enviar (A1)."
+      }
+     ]
+    },
+    {
+     "id": "gracias_paciencia",
+     "es": "gracias por su paciencia",
+     "ar": "شكراً على صبرك (حضرتك)",
+     "en": "thank you for your patience",
+     "pos": "تعبير",
+     "examples": [
+      {
+       "es": "Gracias por su paciencia, señora.",
+       "ar": "شكراً على صبرك يا سيدتي."
+      }
+     ],
+     "work": true
+    }
+   ],
+   "activities": [
+    {
+     "type": "teach",
+     "item": "atencion_cliente"
+    },
+    {
+     "type": "mcq_meaning",
+     "item": "atencion_cliente"
+    },
+    {
+     "type": "teach",
+     "item": "disculpe_molestias"
+    },
+    {
+     "type": "teach",
+     "item": "numero_pedido"
+    },
+    {
+     "type": "listen_choose",
+     "item": "disculpe_molestias"
+    },
+    {
+     "type": "mcq_reverse",
+     "item": "numero_pedido"
+    },
+    {
+     "type": "note",
+     "title_ar": "الحاضر للوعد الفوري",
+     "body_ar": "في خدمة العملاء نستعمل الحاضر لما نفعله الآن:\nAhora mismo lo compruebo. — أتحقّق منه حالاً.\nLe envío la factura nueva. — أرسل لحضرتك الفاتورة الجديدة.\n\nle = لحضرتك (usted). وللخطة الأبعد: voy a + مصدر (A1).",
+     "examples": [
+      {
+       "es": "Lo vamos a solucionar.",
+       "ar": "سنحلّه."
+      }
+     ]
+    },
+    {
+     "type": "teach",
+     "item": "comprobar"
+    },
+    {
+     "type": "teach",
+     "item": "solucionar"
+    },
+    {
+     "type": "teach",
+     "item": "ahora_mismo"
+    },
+    {
+     "type": "mcq_meaning",
+     "item": "solucionar"
+    },
+    {
+     "type": "listen_pick_es",
+     "item": "ahora_mismo"
+    },
+    {
+     "type": "fill",
+     "es": "Un momento, ahora mismo lo ___.",
+     "answer": "compruebo",
+     "ar": "لحظة، أتحقّق منه حالاً.",
+     "options": [
+      "compruebo",
+      "comprobar",
+      "compruebe"
+     ],
+     "explain_ar": "مع yo: compruebo (o ← ue)."
+    },
+    {
+     "type": "teach",
+     "item": "lo_antes_posible"
+    },
+    {
+     "type": "teach",
+     "item": "le_envio"
+    },
+    {
+     "type": "teach",
+     "item": "gracias_paciencia"
+    },
+    {
+     "type": "fill",
+     "es": "Señora, ___ envío la factura nueva hoy.",
+     "answer": "le",
+     "ar": "سيدتي، أرسل لحضرتك الفاتورة الجديدة اليوم.",
+     "options": [
+      "le",
+      "la",
+      "me"
+     ],
+     "explain_ar": "«لحضرتك» = le."
+    },
+    {
+     "type": "mcq_meaning",
+     "item": "gracias_paciencia"
+    },
+    {
+     "type": "listen_choose",
+     "item": "le_envio"
+    },
+    {
+     "type": "match",
+     "items": [
+      "comprobar",
+      "solucionar",
+      "ahora_mismo",
+      "lo_antes_posible"
+     ]
+    },
+    {
+     "type": "type_es",
+     "item": "solucionar"
+    },
+    {
+     "type": "type_es",
+     "item": "numero_pedido"
+    },
+    {
+     "type": "order",
+     "es": "Disculpe las molestias, lo vamos a solucionar.",
+     "ar": "نعتذر عن الإزعاج، سنحلّه."
+    },
+    {
+     "type": "dictation",
+     "es": "¿Me puede dar el número de pedido?",
+     "ar": "هل يمكنك أن تعطيني رقم الطلب؟"
+    },
+    {
+     "type": "choice",
+     "prompt_ar": "ماذا ستفعل الشركة اليوم؟",
+     "choices": [
+      "ترسل الفاتورة الصحيحة",
+      "تعيد المال اليوم",
+      "ترسل فنّياً"
+     ],
+     "answer": 0,
+     "skill": "reading",
+     "choices_es": false,
+     "stimulus_es": "Estimado cliente: disculpe las molestias. Hay un error en su factura. Hoy le enviamos la factura correcta y le devolvemos el dinero lo antes posible."
+    },
+    {
+     "type": "choice",
+     "prompt_ar": "عميل غاضب يقول: «¡La factura tiene un error!». أيّ ردّ مناسب ومهذّب؟",
+     "choices": [
+      "Disculpe las molestias. Ahora mismo lo compruebo.",
+      "No es mi problema.",
+      "Usted tiene que pagar."
+     ],
+     "answer": 0,
+     "skill": "reading",
+     "choices_es": true,
+     "explain_ar": "اعتذر أولاً (disculpe las molestias)، ثم قل ما ستفعله الآن."
+    },
+    {
+     "type": "respond",
+     "prompt_ar": "عميل يقول: «Mi pedido no llega». اعتذر بأدب وقل إنك تتحقّق منه حالاً.",
+     "accepted": [
+      "Disculpe las molestias, ahora mismo lo compruebo",
+      "Disculpe las molestias, lo compruebo ahora mismo",
+      "Lo siento, ahora mismo lo compruebo",
+      "Lo siento, lo compruebo ahora mismo"
+     ],
+     "audio_es": "Mi pedido no llega."
+    },
+    {
+     "type": "speak",
+     "es": "Gracias por su paciencia. Le envío la factura correcta lo antes posible.",
+     "ar": "شكراً على صبرك. أرسل لحضرتك الفاتورة الصحيحة في أقرب وقت ممكن."
+    }
+   ]
+  }
+ ]
+}

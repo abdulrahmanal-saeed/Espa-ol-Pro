@@ -155,7 +155,7 @@ from `activity_attempts` rows with `context = 'listening'` whose
 
 | `type` | required | graded by |
 |---|---|---|
-| `choice` | `prompt_ar`, ≥ 2 distinct `choices`, valid `answer` | exact option text |
+| `choice` | `prompt_ar`, ≥ 2 distinct `choices`, valid `answer` | exact option text; options are shown in a per-attempt shuffled order, so authored order never reveals the answer |
 | `type` | `prompt_ar`, `accepted` | the answer evaluator; missing accents = meaning right, spelling recorded apart |
 | `dictation` | `audio_es` | as `type`, against `audio_es` |
 

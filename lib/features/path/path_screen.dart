@@ -32,6 +32,20 @@ class PathScreen extends ConsumerWidget {
                     orElse: () => pack.levels.first,
                   )
                   .id;
+          // A finished level stays open until its level assessment has been
+          // taken once, so moving on to the next level does not hide it.
+          final taken = {
+            for (final a
+                in ref.watch(assessmentAttemptsProvider).value ?? const [])
+              a.assessmentId,
+          };
+          bool awaitsLevelTest(Level level) {
+            final test = pack.levelAssessmentFor(level.id);
+            return test != null &&
+                !taken.contains(test.id) &&
+                levelCompleted(pack, level.id, progress);
+          }
+
           return ListView(
             padding: const EdgeInsets.fromLTRB(16, 4, 16, 24),
             children: [
@@ -40,7 +54,8 @@ class PathScreen extends ConsumerWidget {
                   level: level,
                   progress: progress,
                   nextLessonId: next?.id,
-                  initiallyExpanded: level.id == focus,
+                  initiallyExpanded:
+                      level.id == focus || awaitsLevelTest(level),
                 ),
             ],
           );

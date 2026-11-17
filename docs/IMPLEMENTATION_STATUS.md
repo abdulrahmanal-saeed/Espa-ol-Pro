@@ -133,6 +133,17 @@ detect it.
 | A1 level assessment `lvl_a1`: 24 questions, all six units, five skills, no speaking; locked until every A1 lesson is done; tile at the end of A1 on the path; no-certification note | `verbs_and_level_test`, `assessment_content_test` |
 | When every lesson is done, the path opens the last level (so its level assessment is visible) | `verbs_and_level_test` |
 
+## A2-U1 services and everyday transactions (PR in review)
+
+| Area | Evidence |
+|---|---|
+| 5 lessons (bank, post office, repairs, complaints, customer service from the provider's side), 43 items, 6 grammar notes (quisiera, poder o→ue, tener que, lo/la, me/le, present for promises); content 1.5.0; first lesson follows `a1_u6_l4` | `a2_units_test` (every lesson completed in the app), `tool/validate_content.dart` |
+| 3 dialogues, each "very easy" or "appropriate" right after its lessons (the estimator flagged untaught words and long turns; they were rewritten and split) | `difficulty_test`, `listening_content_test` |
+| Checkpoint `chk_a2_u1`: 12 questions, 3 can-dos, 5 skills, 3 dialogue sentences | `a2_units_test`, `assessment_content_test` |
+| Verb reference +6 (abrir, sacar, arreglar, cobrar machine-checked; devolver, comprobar entered by hand) — 22 verbs | `a2_units_test`, `verbs_and_level_test` |
+| Path: a completed level stays expanded until its level assessment has been taken once, so starting A2 does not hide the A1 level assessment | `verbs_and_level_test` |
+| Checkpoint options (every unit checkpoint and level assessment, Pre-A1 to A2) are shown in a per-attempt shuffled order, stable within the attempt; grading by option text is unchanged (REVIEW-012 P1) | `assessment_order_test`, `assessment_flow_test` |
+
 ## Android build and runtime
 
 - The [code commit's CI run](https://github.com/abdulrahmanal-saeed/Espa-ol-Pro/actions/runs/43900871431)
@@ -164,7 +175,7 @@ detect it.
   pronunciation assessment. Listen-and-repeat is self-practice and never scored.
 - CEFR level estimates and the A1 level assessment (unit checkpoints exist; they are practice evidence, not certification).
 - Verb conjugation reference, stories.
-- Interview coach, work missions, the rest of A1 and all of A2–C2 lessons.
+- Interview coach, work missions, A2-U2 to A2-U5, the A2 level assessment, and all B1–C2 lessons.
 - Cloud sync. AI usage budget controls (nothing to budget yet).
 - Native-speaker review of content.
 
