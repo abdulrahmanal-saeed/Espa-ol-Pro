@@ -7,7 +7,7 @@ handoff_id: PHASE1-010
 updated_at_utc: 2026-11-17T08:00:00Z
 review_requested_for_sha: afdb946
 branch: feat/phase-1.2c-quality
-pull_request: PR_1_2C_PLACEHOLDER (stacked on PR #7, base fix/review-008)
+pull_request: https://github.com/abdulrahmanal-saeed/Espa-ol-Pro/pull/8 (stacked on PR #7, base fix/review-008)
 also_awaiting_review: https://github.com/abdulrahmanal-saeed/Espa-ol-Pro/pull/7 (PHASE1-009, REVIEW-008 fixes)
 last_review_acknowledged: REVIEW-008
 project_status: PHASE_1_2C_READY_FOR_REVIEW__PR7_REVIEW_008_FIXES_READY_FOR_REVIEW__DEVICE_ACCEPTANCE_PENDING_OWNER
