@@ -1,6 +1,147 @@
 # ChatGPT → Implementer: Independent Engineering Review
 
 owner: ChatGPT
+review_status: APPROVED_WITH_RELEASE_GATES
+review_id: REVIEW-011
+updated_at_utc: 2026-11-17T11:20:00Z
+reviewed_application_sha: 9f868767330b74099824e17da0e58d2c62c69571
+reviewed_pr7_application_sha: 9f868767330b74099824e17da0e58d2c62c69571
+reviewed_pull_requests: https://github.com/abdulrahmanal-saeed/Espa-ol-Pro/pull/7 ; https://github.com/abdulrahmanal-saeed/Espa-ol-Pro/pull/8 ; https://github.com/abdulrahmanal-saeed/Espa-ol-Pro/pull/9 ; https://github.com/abdulrahmanal-saeed/Espa-ol-Pro/pull/10 ; https://github.com/abdulrahmanal-saeed/Espa-ol-Pro/pull/11
+project_acceptance: RELEASE_NOT_VERIFIED_DEVICE_AND_SPANISH_QA_PENDING
+
+## REVIEW-011 — New PR #7 P2/P3 fixes; stack revalidation
+
+Read bridge README, review, and implementer status on main and separately inspected the implementer status on each of the five PR head branches. Main handoff is stale. PR #7 head has new PHASE1-013 READY_FOR_REVIEW identifying application commit `9f86876`; #8–#11 inherit the changes through merge-forward and their status files still contain earlier handoffs. Reviewed the actual new commits `9ddc13a95d424139ba0f3cc7a8f6c6a8acd7c220` and `9f868767330b74099824e17da0e58d2c62c69571`, rather than relying on the handoff's assertions.
+
+**P2 fixed at reviewed code scope:** `lib/features/listening/listening_screens.dart` now records audio-dependent guided dialogue answers as unmeasured unless the matching Spanish audio was logged after opening the question screen; `lib/core/speech/delivery_log.dart`, `lib/core/widgets/common.dart` and `lib/core/learning/progress_repository.dart` provide the delivery log and prevent downgraded attempts from feeding progress/error notebook. `test/listening_flow_test.dart` adds a mid-session voice-failure regression; `test/progress_test.dart` tests unmeasured notebook behavior. This addresses the prior unconditional measured-attempt path. The log proves the app's speech service returned successfully and remained available, **not independently verified acoustic output from an actual Android device**. Real-device TTS failure/return behavior remains an acceptance gate.
+
+**P3 fixed:** `lib/core/db/database.dart` explicitly queries legacy duplicate answer pairs, marks `assessmentAnswersDegraded` and preserves rows in that case, while other index creation errors now propagate. `test/persistence_test.dart` covers legacy duplicate preservation and unrelated SQLite failure. No broad exception swallowing remains in the inspected method. A degraded legacy database deliberately lacks the unique index and should be considered a documented data-integrity caveat, not a claim that every old database has the index.
+
+**Independent CI:** GitHub Actions runs #7 44069648158, #8 44069818348, #9 44069828802, #10 44069830535, #11 44069835150 each have successful test and Android debug APK jobs. Read actual #7 test job log: **275 passed**, including the new listening regression; #11 test job log: **323 passed**, including the regression. Prior A1 content review in REVIEW-010 is not repeated for unchanged content. The intervening merge-forward does not itself establish real-device or native Spanish linguistic quality.
+
+**Findings:** No newly verified P0/P1/P2/P3 defect in the two new correction commits. Prior REVIEW-009 P2/P3 are resolved in the inspected code. This is **conditional engineering approval for the correction scope**, not an unconditional release or automatic authorization to merge the stack. Verify the exact final head and green checks before each owner-authorized merge. Physical Android tests (including actual TTS output and mid-session failure, upgrade/migration, backup, unlocks) and qualified Spanish-language QA remain pending; no release is certified.
+
+No merge, deploy, force-push or implementer status edit performed.
+
+---
+
+owner: ChatGPT
+review_status: CHANGES_REQUESTED
+review_id: REVIEW-010
+updated_at_utc: 2026-11-17T10:52:29.763Z
+reviewed_application_sha: 011fecb
+reviewed_pr9_application_sha: 76eef9a
+reviewed_pr9_head_sha: e2e4ef16ff7e8832b46c505c469d692541f7c888
+reviewed_pr10_application_sha: 09c2991d317ccb4934d2a6e5682f0eb2f4ed1211
+reviewed_pr10_head_sha: 09c2991d317ccb4934d2a6e5682f0eb2f4ed1211
+reviewed_pr11_application_sha: 011fecb
+reviewed_pr11_head_sha: 7ed7a4a59a5b2ce2499c0e1c5032b0831e615313
+reviewed_pull_requests: https://github.com/abdulrahmanal-saeed/Espa-ol-Pro/pull/9 ; https://github.com/abdulrahmanal-saeed/Espa-ol-Pro/pull/10 ; https://github.com/abdulrahmanal-saeed/Espa-ol-Pro/pull/11
+pr7_review_status: CHANGES_REQUESTED_UNCHANGED
+pr8_review_status: PENDING_PR7_FIX
+pr9_review_status: PENDING_STACK_AND_HUMAN_LANGUAGE_QA
+pr10_review_status: PENDING_STACK_AND_HUMAN_LANGUAGE_QA
+pr11_review_status: PENDING_STACK_AND_DEVICE_QA
+project_acceptance: A1_CONTENT_IMPLEMENTED_IN_OPEN_STACK_NOT_ACCEPTED
+
+## REVIEW-010 follow-up — final CI evidence, unchanged application SHAs (2026-11-17T10:52:29.763Z)
+
+This is an **evidence-only update**, not a new code review or a new approval. On recheck, all five PRs #7 → #8 → #9 → #10 → #11 remain open draft PRs targeting their predecessor branches; none is merged. Their heads and application SHAs match those already reviewed in REVIEW-009/REVIEW-010. Inspected the `AI_BRIDGE/CLAUDE_STATUS.md` handoff separately at each head (PHASE1-009 on #7, PHASE1-010 on #8, PHASE1-011 on #9/#10, PHASE1-012 on #11). There is no newly committed implementation addressing the outstanding REVIEW-009 P2/P3.
+
+**Freshly confirmed completed CI:** 
+- PR #7, head `5f9bbdb`: https://github.com/abdulrahmanal-saeed/Espa-ol-Pro/actions/runs/44055658594 **both jobs successful**. Actual test job log: **270 passed**, analyzer/content validator clean, APK job successful.
+- PR #8, head `388a2ed`: previously successful run https://github.com/abdulrahmanal-saeed/Espa-ol-Pro/actions/runs/44054728074 at `9e02250`, **301 passed**; comparison of that head to current #8 head shows only `AI_BRIDGE/CLAUDE_STATUS.md` edits, not code.
+- PR #9, head `e2e4ef1`: https://github.com/abdulrahmanal-saeed/Espa-ol-Pro/actions/runs/44059954500 **both jobs successful**, **305 passed** (documented in REVIEW-010).
+- PR #10, head `09c2991`: https://github.com/abdulrahmanal-saeed/Espa-ol-Pro/actions/runs/44065354477 **both jobs successful**, **307 passed** (documented in REVIEW-010).
+- PR #11, current head `7ed7a4a`: https://github.com/abdulrahmanal-saeed/Espa-ol-Pro/actions/runs/44067890502 has now **both jobs successful**; test job log explicitly reports **318 tests passed**, formatter/analyzer and content validator clean, Android debug APK job successful. Its previous application-code CI was also successful; compared with previous code-head `dcfd4bf`, current head changes only `AI_BRIDGE/CLAUDE_STATUS.md`.
+- Current content validator at PR #11 reports **32 lessons total** (9 Pre-A1 + 23 A1), 16 dialogues total (4 Pre-A1 + 12 A1), 10 assessments, 16 verbs. A1 content exists *in the stacked PR branches*, not on main, and native Spanish linguistic QA and physical device validation are not complete.
+
+**Blocking decision unchanged:** `review_status: CHANGES_REQUESTED`. The P2 in `lib/features/listening/listening_screens.dart` remains at #7: Spanish voice availability is checked only before the question runner begins; `onAttempt` still records a measured attempt unconditionally after an in-session playback failure. Reviewed the same code path again to confirm no new fix SHA exists; no redundant broad content re-review performed. The REVIEW-009 P3 in `lib/core/db/database.dart` also persists: `_ensureOneAnswerPerQuestion` uses `on Object` to silently ignore **all** unique index creation errors. Correct the audio delivery/measurement case with deterministic mid-session failure tests and narrow index-error handling, then push a genuinely new code SHA to #7, update stacked branches safely and request independent re-review. P2 must be fixed before merge approval; qualified Spanish language QA and real-device checks are independent release/acceptance gates.
+
+No merges, deployments, force pushes or implementer status edits were made.
+
+## REVIEW-010 — new A1 content PRs #9–#11 (2026-11-17)
+
+**New review scope, not a re-review of PRs #7/#8.** Read README, review and implementer status on main; explicitly inspected `AI_BRIDGE/CLAUDE_STATUS.md` at all five open PR heads. Main's implementer status remains stale (PHASE1-007). PR #9 has handoff PHASE1-011, PR #10 has no new handoff of its own (inherits PHASE1-011), and PR #11 has PHASE1-012 covering #10 and #11. The reported application commits are `76eef9a`, `09c2991`, and `011fecb`; their PR head SHAs are recorded above. PRs #7/#8 retain the code reviewed in REVIEW-009, including the unresolved P2 and P3.
+
+**Actual stack:** #7 → #8 → #9 → #10 → #11, each targeting the preceding branch rather than main. None of these five PRs is merged. No part of this stack is independently merge-approved.
+
+### Independently verified code and test evidence
+
+- **PR #9:** inspected the PR file diff, new A1-U2/U3 lesson JSON, linked dialogues/checkpoints, `test/a1_units_test.dart`, and content validation. Eight lessons across family/people and routine/time, plus their linked content, are present in the actual diff. GitHub Actions at head `e2e4ef1`: both test and Android debug APK jobs successful; job log explicitly says **305 tests passed**: https://github.com/abdulrahmanal-saeed/Espa-ol-Pro/actions/runs/44059954500 .
+- **PR #10:** inspected its diff: new `assets/content/v1/units/a1_u4.json`, `a1_u5.json`, additional dialogue and assessment JSON, curriculum registration and extended end-to-end unit test. The intended eight lessons and associated content are present. CI at `09c2991`: **307 tests passed**, Android debug APK successful: https://github.com/abdulrahmanal-saeed/Espa-ol-Pro/actions/runs/44065354477 . There is **no fresh READY_FOR_REVIEW handoff at PR #10's own head**; PR #11's handoff explicitly covers it.
+- **PR #11:** inspected its diff and relevant implementation: A1-U6 JSON, new `verbs.json`, verb model/parser/validator, `lib/features/library/verbs_view.dart`, assessment/path gating, and `test/verbs_and_level_test.dart`. The code includes regular-verb conjugation validation, a 16-verb reference, a 24-question A1 level checkpoint and a path tile that is accessible when the level is completed. GitHub Actions on application-code descendant `dcfd4bf` passed **318 tests** and built the debug APK: https://github.com/abdulrahmanal-saeed/Espa-ol-Pro/actions/runs/44066977854 . At current PR head `7ed7a4a`, the test job has also completed successfully and its log reports **318 passed**; the APK job remains in progress at the check: https://github.com/abdulrahmanal-saeed/Espa-ol-Pro/actions/runs/44067890502 . Do not claim that newest run is fully green yet.
+- The source aligns with the implementer's claim that A1 content is now represented by 23 lessons across six units, 12 A1 dialogues, six unit checkpoints, one level assessment and 16 verbs. This establishes *implemented content in the open stack*, **not** a CEFR A1 certification, native-language quality approval, physical-device functionality or a completed release.
+- No new independently confirmed P0/P1 or new code defect was established in the inspected PR #9–#11 paths. The checks above do not constitute an exhaustive Spanish-language pedagogical audit.
+
+### Outstanding findings / acceptance blockers
+
+**P2 — Previously established in REVIEW-009, still inherited unchanged (not re-reviewed):** `lib/features/listening/listening_screens.dart:644-711` can persist measured guided-dialogue listening attempts after an audio playback failure during an already-started question session. Reproducer and fix remain in REVIEW-009. Require successful audio delivery for each question before recording measured evidence, with mid-session failure regression test. **PR #7 remains CHANGES_REQUESTED.**
+
+**P3 — Previously established in REVIEW-009, still inherited unchanged (not re-reviewed):** `lib/core/db/database.dart:300-315` suppresses all unique-index creation exceptions. Restrict handling to verified legacy duplicates and surface unrelated failures; add regression coverage.
+
+**Acceptance gate, not a newly verified bug:** All three new A1 PRs depend on #7 and #8. The unresolved P2 blocks approving or merging the stack. A native Spanish-language reviewer must check translations, question keys, idiomatic phrasing, conjugations and teaching progression. Real Android testing must cover TTS success/failure, unit and level unlocking, assessment persistence/migrations, backups, verb playback and Phase 1.1 owner checks. Green widget tests do not substitute for device evidence.
+
+### Decision
+
+**CHANGES_REQUESTED remains the overall status** because PR #7 is blocked. PR #9/#10/#11 are reviewed at the described code/diff/test scope but **not approved for merge** until the base issue is fixed, the stacked heads are revalidated, current CI is green, and human/device acceptance is completed. Next review should prioritize a genuinely new application SHA that fixes REVIEW-009 P2/P3, not repeat unchanged content reviews. No merges, releases, force-pushes, deploys, implementer-file edits, or secrets handling occurred.
+
+---
+
+# ChatGPT → Implementer: Independent Engineering Review
+
+owner: ChatGPT
+review_status: CHANGES_REQUESTED
+review_id: REVIEW-009
+updated_at_utc: 2026-11-17T09:27:00Z
+reviewed_application_sha: afdb9462fcecd4de480d5ed568013987c0845116
+reviewed_pr7_application_sha: 3cd15ed04cb1a43666d2f8b5169a57611a963e81
+reviewed_pr7_head_sha: 5f9bbdb6229c0f7d9c31860b57475dc07926d3eb
+reviewed_pr8_application_sha: afdb9462fcecd4de480d5ed568013987c0845116
+reviewed_pr8_head_sha: 388a2edaf43c17e2ddb862b1139d84f3d2adbebd
+reviewed_pull_requests: https://github.com/abdulrahmanal-saeed/Espa-ol-Pro/pull/7 ; https://github.com/abdulrahmanal-saeed/Espa-ol-Pro/pull/8
+pr7_review_status: CHANGES_REQUESTED
+pr8_review_status: PENDING_PR7_FIX_AND_DEVICE_QA
+project_acceptance: PHASE_1_2_NOT_APPROVED
+
+## REVIEW-009 — new PR #7 and PR #8, 2026-11-17
+
+**New handoffs discovered on PR heads despite stale main status:** PR #7 `fix/review-008`, PHASE1-009, READY_FOR_REVIEW; PR #8 `feat/phase-1.2c-quality`, PHASE1-010, READY_FOR_REVIEW. Both are open. PR #7 targets main; PR #8 is stacked on PR #7 and must not be integrated independently. The handoff documents claim 270 and 301 passing tests respectively; independent GitHub Actions inspection confirms PR #8's test job log explicitly reports **301 tests passed**, and both jobs (including Android debug APK) succeeded at `9e02250` (documentation-only descendant of reviewed code `afdb946`): https://github.com/abdulrahmanal-saeed/Espa-ol-Pro/actions/runs/44054728074 . PR #7's prior run at `3d973f4` completed successfully (tests and APK): https://github.com/abdulrahmanal-saeed/Espa-ol-Pro/actions/runs/44054760860 . The newest PR #7 head `5f9bbdb` is a documentation-only CI status update, and its new run https://github.com/abdulrahmanal-saeed/Espa-ol-Pro/actions/runs/44055658594 was still in progress at this check. A log fetch for its in-progress test job returned a transient 404; no result is inferred.
+
+### Verified improvements in PR #7
+
+- **REVIEW-008 P2 backup duplicate answers:** `lib/core/backup/backup_service.dart` now validates unique `(attemptId,questionId)` pairs before destructive restore, with regression tests in `test/assessment_test.dart`. A unique index is attempted in `lib/core/db/database.dart`. The original backup-validation finding is addressed in the inspected source.
+- **REVIEW-008 P2 no-voice checkpoint:** `lib/features/assessment/assessment_screens.dart` gates checkpoint start and individual audio questions. `lib/core/widgets/common.dart` returns a playback outcome; `lib/core/speech/speech_service.dart` marks the service unavailable on a thrown playback error. New widget tests cover absent voice and failures.
+- **REVIEW-008 P3 version consistency:** `lib/core/assessment/assessment_engine.dart` compares attempts of the same assessment version and has regression coverage.
+- PR #7 also correctly carries the previously merged PR #6 assessment implementation toward `main`.
+
+### New findings
+
+**P2 — Guided dialogue questions can still record measured listening after playback fails mid-session.**
+
+Paths: `lib/features/listening/listening_screens.dart:644-711`, `lib/core/widgets/common.dart:73-97`, `lib/core/speech/speech_service.dart:57-65`.
+
+The new `spanishVoiceProvider` guard only runs before `_questions` is initialized (`if (_questions == null && voice.value != true)`). Once `ExerciseRunner` starts, `onAttempt` unconditionally records each answer with `context: DialogueProgress.context`. A TTS engine may initially report a Spanish voice but fail when a question is replayed, or the voice can become unavailable mid-session. The code does not require a successful playback for each audio-dependent guided question and continues to save measured listening attempts. The implementer handoff explicitly acknowledges this limit; independent source inspection confirms it. **Reproducer:** start dialogue questions with a fake speech service reporting available=true; then make `speak` fail / report unavailable before the first question audio; submit a guess; inspect `activity_attempts` for a measured listening row. **Fix:** require successful audio delivery per question before accepting or measuring an answer, or persist a genuinely unmeasured practice state and exclude it from listening progress. Include a widget regression test for mid-session playback failure and direct navigation. This is a remaining part of the REVIEW-008 listening-evidence invariant, not a re-review of unchanged code.
+
+**P3 — Database index creation silently suppresses all errors, weakening the promised uniqueness invariant.**
+
+Path: `lib/core/db/database.dart:300-315`. `_ensureOneAnswerPerQuestion` catches `on Object` and ignores any failure, not just a verified legacy duplicate-data conflict. Consequently a schema/SQL/permission error could leave the database without the index while the app continues as if it were enforced. **Fix:** catch only the known duplicate-index creation case after checking its cause; surface other errors. Test both a legacy duplicate database (preserve data and flag degraded integrity) and a different index creation failure. The backup restore pair-validation itself remains a positive fix.
+
+### PR #8 — Phase 1.2C inspected, not approved independently
+
+Inspected `lib/core/learning/answer_evaluator.dart`, `lib/core/learning/difficulty.dart`, assessment parser/model/validator and UI changes, and `test/answer_evaluator_test.dart`. New code introduces meaning-bearing accent diagnostics, ñ distinction, word-order/grammar/spelling feedback, deterministic difficulty bands, dialogue-linked checkpoint audio, and versioned checkpoint content. The actual diff and source align with the main feature claims, and the independent CI test job reports 301 passed. No new P0/P1 established from these inspected paths. PR #8 inherits PR #7's unresolved guided-listening P2 and cannot be approved for merge while its base is not approved. Heuristic diagnosis and educational content accuracy require Spanish-language human QA; a green test suite is not a linguistic acceptance certificate.
+
+### Decision and next actions
+
+**CHANGES_REQUESTED** for PR #7 due to the remaining measured-listening failure path; P3 index error handling should also be tightened. PR #8 remains pending corrected PR #7, a clean updated stack and revalidation of the exact final application SHA. Neither PR should be merged or released now. No merge, deploy, branch mutation, or changes to implementer files were performed. Physical Android verification remains outstanding for TTS behavior, checkpoint audio, upgrade/migration, backup restore, and Phase 1.1 owner acceptance. Re-review only new application changes.
+
+---
+
+## Historical REVIEW-008 (preserved verbatim)
+
+# ChatGPT → Implementer: Independent Engineering Review
+
+owner: ChatGPT
 review_status: CHANGES_REQUESTED
 review_id: REVIEW-008
 updated_at_utc: 2026-11-17T06:02:03.331Z
