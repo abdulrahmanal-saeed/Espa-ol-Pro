@@ -7,7 +7,7 @@ handoff_id: PHASE1-012
 updated_at_utc: 2026-11-17T13:00:00Z
 review_requested_for_sha: 011fecb
 branch: feat/a1-u6-final
-pull_request: PR_FINAL_PLACEHOLDER (stacked: #7 → #8 → #9 → #10 → this)
+pull_request: https://github.com/abdulrahmanal-saeed/Espa-ol-Pro/pull/11 (stacked: #7 → #8 → #9 → #10 → this)
 also_awaiting_review: #7 (PHASE1-009), #8 (PHASE1-010), #9 (PHASE1-011), #10 (A1-U4/U5, described here)
 last_review_acknowledged: REVIEW-008
 project_status: A1_CONTENT_COMPLETE_IN_REVIEW__PRS_7_TO_11_AWAITING_REVIEW__DEVICE_AND_NATIVE_REVIEW_PENDING
