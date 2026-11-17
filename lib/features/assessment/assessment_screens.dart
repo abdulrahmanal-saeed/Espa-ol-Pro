@@ -25,6 +25,20 @@ const canDoLabels = {
   CanDoState.consistent: 'ثابت (مرتان في يومين مختلفين)',
 };
 
+/// Whether every available lesson of [levelId] is completed.
+bool levelCompleted(
+  ContentPack pack,
+  String levelId,
+  Map<String, LessonProgressData> progress,
+) {
+  final lessons = pack.levels
+      .where((l) => l.id == levelId)
+      .expand((l) => l.lessons)
+      .toList();
+  if (lessons.isEmpty) return false;
+  return lessons.every((l) => ProgressRepository.isCompleted(progress[l.id]));
+}
+
 /// Whether every lesson of [unitId] is completed.
 bool unitCompleted(
   ContentPack pack,
@@ -132,7 +146,11 @@ class _AssessmentScreenState extends ConsumerState<AssessmentScreen> {
       );
     }
     final progress = ref.watch(lessonProgressProvider).value ?? const {};
-    final open = a.unitId == null || unitCompleted(pack, a.unitId!, progress);
+    // A unit checkpoint opens with its unit; a level assessment only once
+    // every lesson of the level is completed.
+    final open = a.unitId == null
+        ? levelCompleted(pack, a.levelId, progress)
+        : unitCompleted(pack, a.unitId!, progress);
     final needsAudio = a.questions.any((q) => q.audioEs != null);
     final voice = needsAudio ? ref.watch(spanishVoiceProvider).value : true;
     final canStart = open && voice == true;
@@ -171,7 +189,9 @@ class _AssessmentScreenState extends ConsumerState<AssessmentScreen> {
             if (!open) ...[
               const SizedBox(height: 16),
               Text(
-                'تُفتح نقطة التحقق بعد إكمال كل دروس الوحدة.',
+                a.unitId == null
+                    ? 'يُفتح اختبار المستوى بعد إكمال كل دروس المستوى.'
+                    : 'تُفتح نقطة التحقق بعد إكمال كل دروس الوحدة.',
                 key: const ValueKey('assessment-locked'),
                 style: TextStyle(color: t.colorScheme.error),
               ),

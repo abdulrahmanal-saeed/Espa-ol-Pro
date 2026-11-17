@@ -22,6 +22,16 @@ class PathScreen extends ConsumerWidget {
         value: ref.watch(lessonProgressProvider),
         builder: (progress) {
           final next = ProgressRepository.nextLesson(pack, progress);
+          // With nothing left to do, open the furthest level with lessons:
+          // that is where its level assessment waits.
+          final focus =
+              next?.levelId ??
+              pack.levels
+                  .lastWhere(
+                    (l) => l.lessons.isNotEmpty,
+                    orElse: () => pack.levels.first,
+                  )
+                  .id;
           return ListView(
             padding: const EdgeInsets.fromLTRB(16, 4, 16, 24),
             children: [
@@ -30,8 +40,7 @@ class PathScreen extends ConsumerWidget {
                   level: level,
                   progress: progress,
                   nextLessonId: next?.id,
-                  initiallyExpanded:
-                      level.id == (next?.levelId ?? pack.levels.first.id),
+                  initiallyExpanded: level.id == focus,
                 ),
             ],
           );
@@ -41,7 +50,7 @@ class PathScreen extends ConsumerWidget {
   }
 }
 
-class _LevelSection extends StatelessWidget {
+class _LevelSection extends ConsumerWidget {
   const _LevelSection({
     required this.level,
     required this.progress,
@@ -55,8 +64,9 @@ class _LevelSection extends StatelessWidget {
   final bool initiallyExpanded;
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     final t = Theme.of(context);
+    final pack = ref.watch(contentProvider);
     final lessons = level.lessons.toList();
     final done = lessons
         .where((l) => ProgressRepository.isCompleted(progress[l.id]))
@@ -142,6 +152,11 @@ class _LevelSection extends StatelessWidget {
                   unit: unit,
                   progress: progress,
                   nextLessonId: nextLessonId,
+                ),
+              if (pack.levelAssessmentFor(level.id) != null)
+                _CheckpointTile(
+                  assessment: pack.levelAssessmentFor(level.id)!,
+                  open: levelCompleted(pack, level.id, progress),
                 ),
             ],
           ),
@@ -239,6 +254,7 @@ class _CheckpointTile extends ConsumerWidget {
         if (x.assessmentId == assessment.id) x,
     ];
     final last = attempts.isEmpty ? null : attempts.first;
+    final level = assessment.kind == 'level';
     return Padding(
       padding: const EdgeInsets.only(top: 8),
       child: Material(
@@ -254,12 +270,14 @@ class _CheckpointTile extends ConsumerWidget {
             color: open ? t.colorScheme.tertiary : t.colorScheme.outline,
           ),
           title: Text(
-            'نقطة تحقق الوحدة',
+            level ? assessment.titleAr : 'نقطة تحقق الوحدة',
             style: const TextStyle(fontWeight: FontWeight.w600),
           ),
           subtitle: Text(
             !open
-                ? 'تُفتح بعد إكمال كل دروس الوحدة'
+                ? (level
+                      ? 'يُفتح بعد إكمال كل دروس المستوى'
+                      : 'تُفتح بعد إكمال كل دروس الوحدة')
                 : last == null
                 ? '${assessment.questions.length} أسئلة بلا تلميحات'
                 : 'آخر نتيجة: ${fraction(last.score, last.maxScore)} · المحاولات: ${attempts.length}',
