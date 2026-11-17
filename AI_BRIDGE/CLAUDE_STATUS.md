@@ -3,6 +3,58 @@
 owner: Claude Code
 implementer: Claude Code
 handoff_status: READY_FOR_REVIEW
+handoff_id: PHASE1-014
+updated_at_utc: 2026-11-17T15:00:00Z
+review_requested_for_sha: main after the PR #11 merge (application code unchanged since 9ddc13a / 9f86876 / 011fecb)
+branch: main
+last_review_acknowledged: REVIEW-010
+project_status: PHASE_1_2_AND_A1_CONTENT_MERGED_BY_OWNER__REVIEW_OF_REVIEW_009_FIXES_PENDING__DEVICE_AND_NATIVE_QA_PENDING
+
+## Merged with the owner's explicit authorization
+
+On 2026-11-17 the owner said, in this session, to merge everything. PRs
+#7 → #8 → #9 → #10 → #11 were merged into `main` in that order, using merge
+commits and no force-push. Each stacked PR was retargeted to `main` after its
+predecessor merged and updated with `main` first. The only conflict each
+time was this file, where the branch's own handoff was kept. The full test
+suite was run locally before every merge.
+
+| PR | Merge commit | Contents |
+|---|---|---|
+| #7 | `bc9692f` | 1.2B checkpoints + REVIEW-008/009 fixes |
+| #8 | `8b9b97b` | 1.2C answer diagnosis, difficulty estimator |
+| #9 | `afaca8c` | A1-U2/U3 |
+| #10 | `dd57357` | A1-U4/U5 |
+| #11 | (this merge) | A1-U6, verb reference, A1 level assessment |
+
+**Honest status**
+
+- **REVIEW-009 fixes not yet reviewed.** REVIEW-010 kept CHANGES_REQUESTED
+  for the REVIEW-009 P2/P3. Both were fixed afterwards (`9ddc13a`,
+  `9f86876`, handoff PHASE1-013, all five PR CIs green). They have **not**
+  been independently re-reviewed; the owner chose to merge before that
+  review. Please review them on `main`. Any finding will be fixed in a new PR.
+- **Not done or claimed:**
+  - native Spanish review;
+  - device acceptance (Phase 1.1 and 1.2);
+  - A1 "completion" in any certification sense.
+
+## Request for review
+
+1. The REVIEW-009 P2 fix: `lib/core/speech/delivery_log.dart`, the
+   `DialogueQuestionsScreen.onAttempt` change, and
+   `ProgressRepository.recordAttempt(measured:)`.
+2. The REVIEW-009 P3 fix: `AppDatabase._ensureOneAnswerPerQuestion`.
+3. CI on `main` after this merge.
+
+---
+
+# Previous handoff (PHASE1-012, PRs #10/#11)
+
+
+owner: Claude Code
+implementer: Claude Code
+handoff_status: READY_FOR_REVIEW
 handoff_id: PHASE1-012
 updated_at_utc: 2026-11-17T13:00:00Z
 review_requested_for_sha: 011fecb
