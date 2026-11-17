@@ -3,6 +3,107 @@
 owner: Claude Code
 implementer: Claude Code
 handoff_status: READY_FOR_REVIEW
+handoff_id: PHASE1-013
+updated_at_utc: 2026-11-17T14:00:00Z
+review_requested_for_sha: 9f86876
+branch: fix/review-008
+pull_request: https://github.com/abdulrahmanal-saeed/Espa-ol-Pro/pull/7
+last_review_acknowledged: REVIEW-010
+project_status: REVIEW_009_P2_P3_FIXED_ON_PR7__STACK_8_TO_11_REBASED_BY_MERGE__AWAITING_REVIEW
+
+## REVIEW-009 / REVIEW-010: both findings fixed on PR #7
+
+New application commits on `fix/review-008`: `9ddc13a` (P2) and `9f86876`
+(P3). The stack #8 → #9 → #10 → #11 has each branch merged forward with
+these fixes, with no force-push. Each branch's own handoff is unchanged
+apart from that merge.
+
+### P2: guided dialogue questions after a mid-session playback failure (`9ddc13a`)
+
+The evidence now depends on audio that was **actually delivered**, not on a
+voice that was available when the screen opened.
+
+**How it works:**
+
+- **Delivery log.** A new `SpeechDeliveryLog` (`lib/core/speech/delivery_log.dart`)
+  records each sentence that `SpeakButton.play` really spoke: the engine
+  still reports available after `speak`, and `DeviceTtsSpeech` marks itself
+  unavailable when `speak` throws.
+- **Recording answers.** `DialogueQuestionsScreen` takes a log mark in
+  `initState`. In `onAttempt`, an answer to an audio question is recorded with
+  `measured: false` unless that question's sentence was delivered after the
+  mark.
+- **What "unmeasured" means here:**
+  - `DialogueProgress` counts only measured first attempts, so unheard
+    answers do not advance the dialogue;
+  - unmeasured attempts never create error-notebook records;
+  - the result screen says how many answers did not count.
+- **`recordAttempt(…, measured:)`** can only **downgrade** an attempt. It
+  cannot make self-assessed practice measured.
+
+**Tests:**
+
+- `listening_flow_test`: a voice that reports available and then fails on
+  the first sentence. Even right answers are stored with `is_measured = 0`,
+  the dialogue's answered count excludes them, and the notice is shown.
+- `progress_test`: a downgraded wrong answer creates no error record, and
+  `measured: true` cannot upgrade a speak exercise.
+- The existing no-voice tests (start gate, direct route) still pass.
+
+### P3: unique-index creation no longer swallows every error (`9f86876`)
+
+`_ensureOneAnswerPerQuestion` first queries for duplicate
+`(attempt_id, question_id)` rows:
+
+- **Duplicates present** (legacy only): the index is skipped, the data is
+  kept, and `AppDatabase.assessmentAnswersDegraded = true`.
+- **No duplicates:** `CREATE UNIQUE INDEX` runs **without any catch**, so
+  any other failure propagates.
+
+**Tests (`persistence_test`):**
+
+- A legacy duplicate database opens with both rows kept, the flag set and no
+  index.
+- An unrelated failure (another object already using the index name) makes
+  the open throw instead of continuing silently.
+
+## Verification (local, `fix/review-008` at `9f86876`)
+
+| Check | Result |
+|---|---|
+| format, analyze, content | clean |
+| Drift regeneration | identical |
+| `flutter test` | **275 passed** (was 270; +5 regression tests) |
+
+CI: CI_PLACEHOLDER
+
+## Stack after the merge-forward
+
+| PR | Branch | Adds |
+|---|---|---|
+| #7 | fix/review-008 | 1.2B + REVIEW-008/009 fixes |
+| #8 | feat/phase-1.2c-quality | 1.2C |
+| #9 | feat/a1-u2-u3 | A1-U2/U3 |
+| #10 | feat/a1-u4-u5 | A1-U4/U5 |
+| #11 | feat/a1-u6-final | A1-U6, verbs, A1 level assessment |
+
+Still pending:
+
+- independent review;
+- owner merge decisions, in order;
+- device checks;
+- native Spanish review.
+
+I will not merge anything.
+
+---
+
+# Earlier handoff on this branch: PHASE1-009
+
+
+owner: Claude Code
+implementer: Claude Code
+handoff_status: READY_FOR_REVIEW
 handoff_id: PHASE1-009
 updated_at_utc: 2026-11-17T07:30:00Z
 review_requested_for_sha: 1913f04 (code state: 1.2B + REVIEW-008 fixes, merged with main 9dd9764/b889e16)
