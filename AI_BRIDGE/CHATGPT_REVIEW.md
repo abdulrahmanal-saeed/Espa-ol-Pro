@@ -1,3 +1,81 @@
+# ChatGPT → Implementer: Independent Engineering Review
+
+owner: ChatGPT
+review_status: CHANGES_REQUESTED
+review_id: REVIEW-008
+updated_at_utc: 2026-11-17T06:02:03.331Z
+reviewed_application_sha: f195ef1cc760df57ab2facece92cd8018c1a48e3
+reviewed_pr5_application_sha: cb1476a5f6549854e0c7e477c90b725efdff51a7
+reviewed_pr5_head_sha: 4b3608de76c47242dd31a57aa653ea7b333d893a
+reviewed_pr6_application_sha: f195ef1cc760df57ab2facece92cd8018c1a48e3
+reviewed_pr6_head_sha: 51d599a54bd3877f9e04600375483126a404c266
+reviewed_pull_requests: https://github.com/abdulrahmanal-saeed/Espa-ol-Pro/pull/5 ; https://github.com/abdulrahmanal-saeed/Espa-ol-Pro/pull/6
+pr5_review_status: CHANGES_REQUESTED
+pr6_review_status: CHANGES_REQUESTED
+project_acceptance: PHASE_1_2A_AND_1_2B_PENDING_P2_FIXES_AND_DEVICE_QA
+
+## Scope and confirmed evidence
+
+New milestone review after REVIEW-007 (which approved and verified the merged Phase 1.1 baseline). Read `AI_BRIDGE/README.md`, `CHATGPT_REVIEW.md` and `CLAUDE_STATUS.md` on main, plus handoff `PHASE1-007` on PR #5 head and `PHASE1-008` on PR #6 head. Main's implementation handoff is stale relative to the two new PRs. These two PRs are **open drafts**. PR #6 is stacked on PR #5; neither has been merged. The handoffs name Claude Code as the actual implementer on these branches, although the owner previously assigned Codex the primary implementation role; repository attribution was not treated as proof of code behavior.
+
+### PR #5 — listening library (app SHA `cb1476a`, head `4b3608d`)
+
+- Verified source and diff: `SpeechService.speakAndWait`, `DialoguePlayer`, dialogue parser/models/content validator, `ListeningLibraryScreen`, `DialogueQuestionsScreen`, `ExerciseBuilder.buildDialogueQuestions`, attempt-derived `DialogueProgress`, saved-phrase integration, and accompanying tests.
+- Six dialogue JSON records / 29 turns / 31 guided comprehension questions appear in the handoff; the committed dialogue files, parser and validation paths were checked. These are guided practice, **not** CEFR/DELE assessments. Dialogue turn highlighting is intentionally per turn, and Android pause/resume intentionally restarts a turn; no word-level timestamps or mid-utterance resume are falsely claimed.
+- **Independently verified CI:** https://github.com/abdulrahmanal-saeed/Espa-ol-Pro/actions/runs/44026397052 passed both format/analyze/content/tests and Android debug APK jobs on PR #5 head. The test job log explicitly reports **207 tests passed**.
+- The real Android TTS engine's awaited utterance completion, pause/replay, speed and missing-voice behavior remain *unverified on a physical device*. Fake speech tests are not native device evidence.
+
+### PR #6 — unit checkpoints (app SHA `f195ef1`, head `51d599a`)
+
+- Verified actual diff and source: authored checkpoint JSON (four checkpoints, 10 questions each), assessment models/validator/grader, schema-v5 Drift tables and migration, `AssessmentRepository.submit`, assessment UI, can-do calculation, backup integration, and test files.
+- Submission of attempt plus answers occurs in one Drift transaction; a failure-injection SQLite trigger test proves rollback, and test paths cover v4→v5 migration, retakes, results persistence, backup round trip and rollback. No new P0/P1 established in those inspected flows.
+- **CI evidence at exact PR #6 head:** https://github.com/abdulrahmanal-saeed/Espa-ol-Pro/actions/runs/44027612654 . The **format/analyze/content/tests job completed successfully**, and its log explicitly reports **261 tests passed**. At the latest check, **Android debug APK job was still in progress**: do not claim the complete workflow or APK passed until it actually finishes.
+- The reported on-device checkpoint, voice prompts and installed-database v4→v5 migration have not been observed on a real phone. The owner's concurrent Phase 1.1 device tests are separate and should not be overwritten.
+
+## New findings (highest priority first)
+
+### P2 — Listening can be scored as measured even when no Spanish audio exists (PR #5 and #6)
+
+**Paths:** `lib/features/listening/listening_screens.dart` (`DialogueScreen`, `DialogueQuestionsScreen`); `lib/features/assessment/assessment_screens.dart` (`AssessmentScreen`, `_AssessmentQuestionView`); `lib/core/widgets/common.dart` (`SpeakButton.play`); `lib/core/assessment/assessment_engine.dart`.
+
+**Verified source path:** `SpeakButton.play` checks `speech.isAvailable()` and returns after showing a notice if no Spanish voice is installed. The new dialogue player itself has a text-only fallback, but `DialogueQuestionsScreen` still launches and records the dialogue audio questions as objectively measured `listening` attempts without checking that audio was available. In PR #6, `AssessmentScreen` similarly renders a `SpeakButton` for `audioEs` but lets the user answer and submit the checkpoint normally with audio unavailable; `gradeAssessment` counts these answers towards the scored listening skill and can-do evidence. Thus an audio prompt that never played can still produce purported evidence of listening comprehension from guesses.
+
+**Reproducer:** Run widget tests with `SilentSpeech(available:false)`. Open an unlocked dialogue's questions or a unit checkpoint containing `skill: listening`, tap the audio button, select a choice/enter a guess and submit. Observe `activity_attempts.is_measured=true` on the guided dialogue or `assessment_answers` counted in listening score/can-do despite no audio playback.
+
+**Fix:** Retain the useful text-only dialogue reader. However, when a Spanish voice is unavailable, **do not create measured listening evidence from an unheard stimulus**. For checkpoints, either prevent a measured listening checkpoint from starting/submitting with a clear install-voice instruction, or explicitly implement and persist an unmeasured/skipped state with score denominators and can-do logic that exclude unheard audio; do not silently count it as listening. For dialogue guided practice, gate audio-dependent questions or label/use a genuinely unmeasured text fallback. Prefer a testable capability/service check; account for playback errors as well as simple voice absence. Add no-voice widget/integration tests for both paths and a real device follow-up.
+
+### P2 — v5 backup accepts duplicate answers to the same question, allowing internally inconsistent assessment evidence (PR #6)
+
+**Paths:** `lib/core/backup/backup_service.dart` (`restoreJson` integrity checks); `lib/core/db/database.dart` (`AssessmentAnswers`); `test/assessment_test.dart` (backup validation tests).
+
+**Verified source path:** Restore validates unique answer **row IDs** and that the sum of rows/correct flags matches stored `maxScore`/`score`. It does **not** reject duplicate `(attemptId, questionId)` pairs. The new `assessment_answers` table has no unique constraint for that pair. A malformed but parseable v5 backup can therefore contain the same graded question twice for one attempt, yet satisfy both row-count and sum checks. This gives a fictitious extra question for skill/can-do evidence and violates the stated "one answer per checkpoint question" invariant.
+
+**Deterministic reproducer:** Export a valid v5 backup. Duplicate one `assessment_answers` row with a **new distinct row `id`**, retaining the same `attemptId` and `questionId`. Update that attempt's `maxScore` by +1 and its `score` by +1 if the copied answer is correct. The present validation has no check rejecting this specific duplication; verify with a new regression test that such a backup is rejected **before any learner data is changed**.
+
+**Fix:** Add composite uniqueness validation for `attemptId|questionId` before deletion, and ideally a corresponding DB uniqueness constraint for new installs or a safe additive index/migration compatible with existing v1–v5 files. Validate that positive score bounds and required evidence cardinality are sensible. Extend backup and repository tests with a duplicated-question fixture and assert the on-device pre-restore snapshot remains bit-for-bit unchanged.
+
+### P3 — Can-do consistency compares different assessment-definition versions without a compatibility rule (PR #6)
+
+**Paths:** `lib/core/assessment/assessment_repository.dart` (`watchRecords`); `lib/core/assessment/assessment_engine.dart` (`AttemptRecord`, `CanDoEvidence.state`); `lib/features/assessment/can_do_section.dart`.
+
+Attempts persist `assessment_version`, but `watchRecords` strips that version from `AttemptRecord`; the "consistent" rule compares the latest two passes on different local days using only `assessmentId` and `canDoId`. If future content revises the checkpoint questions while reusing can-do IDs, two objectively different question sets can be shown as "ثابت" without an explicit comparability rule.
+
+**Fix:** Retain assessment version in evidence records. Define whether a change in question/version resets consistency for that objective (safe default: compare only compatible/current versions), document it, and add a version-change regression test. This is a future curriculum update risk, not evidence that the current v1 checkpoints are wrong.
+
+## Decision and next actions
+
+**CHANGES_REQUESTED** for newly reviewed PR #5/#6 due to the two reproducible P2 evidence-integrity paths above. There is no new confirmed P0/P1. PR #5's Android CI and 207 tests have passed. PR #6's test job and 261 tests have passed, but **its APK job is still pending** as last checked; successful unit tests do not close these P2 paths.
+
+1. Fix the no-audio listening evidence path in PR #5, or make the corresponding improvement in a carefully coordinated stacked branch while preserving PR boundaries. Re-run focused no-voice tests and full CI.
+2. Fix duplicate-question backup validation in PR #6 and add integrity regression tests; retain schema v5 and all v1→v5 migration/backup tests.
+3. Carry PR #5 changes safely into PR #6 (stacked base). Update implementation-owned `CLAUDE_STATUS.md` on each relevant PR head with exact **new application SHA**, new test count and this REVIEW-008 acknowledgment; do not edit ChatGPT's review.
+4. After independent code approval, owner explicitly authorizes merging **PR #5 first**, then retarget/recheck PR #6 to main and separately authorize its merge. No merge/deploy performed here.
+5. Keep Phase 1.1 physical-device acceptance, native TTS playback verification and Spanish linguistic review pending until tested. Do not declare Phase 1.2 or full A1 complete.
+
+---
+
+## Historical review (REVIEW-007)
+
 # ChatGPT → Codex: Independent Engineering Review
 
 owner: ChatGPT
@@ -138,4 +216,5 @@ The owner's prior confirmed Android smoke tests apply to the *merged Phase 1 bas
 2. **PR #4:** fix the new P2 concurrency issue with a deterministic race test, push a new application SHA and update Claude-owned `PHASE1-005` handoff on that PR branch; reference REVIEW-006. Re-run format/analyze/content/test/APK. Do not edit this ChatGPT-owned file.
 3. Preserve stacked dependencies. After approved PR #3 merges, retarget PR #4 and verify actual diff/CI and device outcomes. Do not merge automatically.
 4. Continue scheduled independent reviews of **new** commits. No full release is being claimed or accepted, and owner confirmation is required before ending monitoring.
+
 
