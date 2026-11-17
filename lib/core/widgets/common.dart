@@ -94,7 +94,9 @@ class SpeakButton extends ConsumerWidget {
       return false;
     }
     await speech.speak(spanish, slow: slow);
-    return speech.isAvailable();
+    final ok = await speech.isAvailable();
+    if (ok) ref.read(speechDeliveryLogProvider).record(spanish);
+    return ok;
   }
 
   @override

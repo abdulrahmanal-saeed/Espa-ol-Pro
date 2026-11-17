@@ -139,7 +139,11 @@ class ProgressRepository {
     required String context,
     String? lessonId,
     int attemptNumber = 1,
+    bool? measured,
   }) async {
+    // A caller may downgrade an attempt to unmeasured (e.g. its audio was
+    // never heard); it can never upgrade self-assessed practice.
+    final isMeasured = ex.isMeasured && (measured ?? true);
     final now = _nowMs;
     await db.transaction(() async {
       await db
@@ -153,14 +157,14 @@ class ProgressRepository {
               exerciseType: ex.type,
               context: context,
               isCorrect: isCorrect,
-              isMeasured: Value(ex.isMeasured),
+              isMeasured: Value(isMeasured),
               attemptNumber: Value(attemptNumber),
               userAnswer: Value(userAnswer),
               expected: Value(ex.expected),
               createdAt: now,
             ),
           );
-      if (!ex.isMeasured) return;
+      if (!isMeasured) return;
 
       final signature = '${ex.type}|${normalizeAnswer(ex.expected)}';
       final existing = await (db.select(
