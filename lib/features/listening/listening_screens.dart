@@ -14,6 +14,7 @@ import '../lesson/exercise_widgets.dart';
 import '../library/vocab_sheet.dart';
 import '../phrases/save_phrase_button.dart';
 import 'dialogue_player.dart';
+import 'difficulty_badge.dart';
 import 'listening_progress.dart';
 
 // ---------------------------------------------------------------------------
@@ -134,6 +135,10 @@ class _DialogueTile extends StatelessWidget {
               EsText(dialogue.titleEs, size: 14),
               const SizedBox(height: 2),
               Text(status, style: t.textTheme.bodySmall),
+              if (unlocked) ...[
+                const SizedBox(height: 6),
+                DifficultyBadge(dialogue: dialogue),
+              ],
             ],
           ),
           onTap: unlocked
@@ -230,6 +235,8 @@ class _DialogueScreenState extends ConsumerState<DialogueScreen> {
           ),
           const SizedBox(height: 6),
           Text(d.scenarioAr, style: const TextStyle(height: 1.6)),
+          const SizedBox(height: 8),
+          DifficultyBadge(dialogue: d, showReasons: true),
           const SizedBox(height: 8),
           Wrap(
             spacing: 8,
