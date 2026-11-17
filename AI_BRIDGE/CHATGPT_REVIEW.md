@@ -14,6 +14,18 @@ pr5_review_status: CHANGES_REQUESTED
 pr6_review_status: CHANGES_REQUESTED
 project_acceptance: PHASE_1_2A_AND_1_2B_PENDING_P2_FIXES_AND_DEVICE_QA
 
+## Post-review merge-status alert — 2026-11-17 06:18 UTC (not a new application-code review)
+
+**Review status remains CHANGES_REQUESTED.** This is a fresh GitHub state verification, not a second review of unchanged application SHA `f195ef1` / `cb1476a`.
+
+- GitHub shows **PR #5 merged into `main` at 2026-11-17 06:06:29 UTC**, merge commit `9dd9764bb4aeda69dbe8643fc826cfab09fb8ab1`, although REVIEW-008 had already recorded an unresolved P2 no-voice listening-evidence defect. The corresponding main CI https://github.com/abdulrahmanal-saeed/Espa-ol-Pro/actions/runs/44028772765 is green for tests and Android APK. This does not establish that the P2 is fixed. Owner merge authorization cannot be independently determined from repository state; do not assert its absence.
+- GitHub shows **PR #6 merged at 2026-11-17 06:06:45 UTC into `feat/phase-1.2a-listening`, NOT into `main`**. PR #6 head `9d6afcd9097f012b8db978df490bfe383d5ff56f` differs from reviewed head `51d599a` only in `AI_BRIDGE/CLAUDE_STATUS.md`, updating CI claims. GitHub compare `51d599a...9d6afc` confirms **no new application-code change**. The PR #6 head CI https://github.com/abdulrahmanal-saeed/Espa-ol-Pro/actions/runs/44028376152 independently shows both test and Android APK jobs successful. PR #6's earlier https://github.com/abdulrahmanal-saeed/Espa-ol-Pro/actions/runs/44027612654 also finished successfully after REVIEW-008. Passing CI does not resolve the backup duplicate-answer P2.
+- No open PRs at the check. The branch `feat/phase-1.2a-listening` now points to `85fa7473` and contains the PR #6 merge; `main` remains `9dd9764` before this review-document update. The PR #6 implementation is **not yet on main**; its branch may be used for a follow-up PR after corrections.
+- Explicitly inspected `AI_BRIDGE/CLAUDE_STATUS.md` on `main`, `feat/phase-1.2a-listening`, and `feat/phase-1.2b-assessments`. The main and branch status files retain `READY_FOR_REVIEW` handoffs referring to the already reviewed application SHAs. The latest branch status adds only successful CI metadata and does **not** acknowledge or fix REVIEW-008.
+- **Action required before further integration/release:** Correct the existing P2 listening evidence issue on main and in the assessment branch; correct the P2 duplicate-question backup validation in the assessment branch; add regression tests, publish a fresh code SHA/PR handoff, and request independent review. The P3 version-compatibility issue remains as previously described. Physical Android TTS, checkpoint migration and Phase 1.1 acceptance remain unverified. Do not mark Phase 1.2 approved or release-complete.
+
+---
+
 ## Scope and confirmed evidence
 
 New milestone review after REVIEW-007 (which approved and verified the merged Phase 1.1 baseline). Read `AI_BRIDGE/README.md`, `CHATGPT_REVIEW.md` and `CLAUDE_STATUS.md` on main, plus handoff `PHASE1-007` on PR #5 head and `PHASE1-008` on PR #6 head. Main's implementation handoff is stale relative to the two new PRs. These two PRs are **open drafts**. PR #6 is stacked on PR #5; neither has been merged. The handoffs name Claude Code as the actual implementer on these branches, although the owner previously assigned Codex the primary implementation role; repository attribution was not treated as proof of code behavior.
