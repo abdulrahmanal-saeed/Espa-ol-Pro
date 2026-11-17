@@ -626,6 +626,18 @@ class _DialogueQuestionsScreenState
   RunResult? _result;
   List<Exercise>? _questions;
 
+  /// Delivery-log position when the questions screen opened.
+  late final int _mark;
+
+  @override
+  void initState() {
+    super.initState();
+    _mark = ref.read(speechDeliveryLogProvider).mark();
+  }
+
+  /// Questions answered without their audio having been heard.
+  final Set<String> _unheard = {};
+
   void _leave() => context.canPop() ? context.pop() : context.go('/listening');
 
   @override
@@ -672,6 +684,7 @@ class _DialogueQuestionsScreenState
           title: 'انتهت أسئلة الفهم',
           message:
               'الصحيح من المحاولة الأولى: ${result.firstTryCorrect} من ${result.measured}\n'
+              '${_unheard.isEmpty ? '' : 'لم يُشغَّل الصوت في ${_unheard.length} من الأسئلة، فلم تُحتسب إجاباتها في تقدّمك.\n'}'
               'هذا تدريب موجّه، وليس اختباراً لمستواك.',
           action: FilledButton(
             key: const ValueKey('questions-done'),
@@ -685,16 +698,27 @@ class _DialogueQuestionsScreenState
       body: ExerciseRunner(
         steps: questions,
         onExit: _leave,
-        onAttempt: (ex, s, attemptNumber) => ref
-            .read(progressRepositoryProvider)
-            .recordAttempt(
-              ex,
-              isCorrect: s.correct,
-              userAnswer: s.answer,
-              context: DialogueProgress.context,
-              lessonId: d.lessonIds.isEmpty ? null : d.lessonIds.last,
-              attemptNumber: attemptNumber,
-            ),
+        onAttempt: (ex, s, attemptNumber) {
+          // Listening evidence only counts when this question's sentence
+          // was actually spoken in this session. A voice that fails after
+          // the session started leaves an unmeasured practice record.
+          final audio = audioOf(ex);
+          final heard =
+              audio == null ||
+              ref.read(speechDeliveryLogProvider).deliveredSince(audio, _mark);
+          if (!heard && attemptNumber == 1) _unheard.add(ex.id);
+          return ref
+              .read(progressRepositoryProvider)
+              .recordAttempt(
+                ex,
+                isCorrect: s.correct,
+                userAnswer: s.answer,
+                context: DialogueProgress.context,
+                lessonId: d.lessonIds.isEmpty ? null : d.lessonIds.last,
+                attemptNumber: attemptNumber,
+                measured: heard,
+              );
+        },
         onFinished: (r) async {
           await ref
               .read(progressRepositoryProvider)
@@ -711,3 +735,10 @@ class _DialogueQuestionsScreenState
     );
   }
 }
+
+/// The sentence an exercise plays, if it depends on hearing one.
+String? audioOf(Exercise ex) => switch (ex) {
+  ChoiceExercise e => e.audioEs,
+  TypeExercise e => e.audioEs,
+  _ => null,
+};
