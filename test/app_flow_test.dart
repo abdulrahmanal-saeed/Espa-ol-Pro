@@ -1,14 +1,19 @@
 import 'package:espanol_pro/core/content/models.dart';
 import 'package:espanol_pro/core/learning/exercises.dart';
 import 'package:espanol_pro/core/learning/progress_repository.dart';
+import 'package:espanol_pro/core/providers.dart';
+import 'package:espanol_pro/core/reminders/reminder_service.dart';
 import 'package:espanol_pro/core/settings.dart';
 import 'package:espanol_pro/core/srs/review_repository.dart';
 import 'package:espanol_pro/core/widgets/common.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:go_router/go_router.dart';
 import 'package:fsrs/fsrs.dart' as fsrs;
+import 'package:go_router/go_router.dart';
 import 'package:material_ui/material_ui.dart';
+import 'package:timezone/data/latest_all.dart' as tzdata;
 
+import 'fake_reminders.dart';
 import 'support.dart';
 import 'widget_support.dart';
 
@@ -17,6 +22,7 @@ void main() {
   setUpAll(() async {
     pack = await loadRealContent();
     await loadAppFonts();
+    tzdata.initializeTimeZones();
   });
 
   Future<void> completeViaRepo(TestApp app, Lesson lesson) async {
@@ -735,6 +741,150 @@ void main() {
         (await app.db.select(app.db.studySessions).get()).length,
         greaterThan(sessionsBefore),
       );
+      await app.dispose(tester);
+    },
+  );
+
+  testWidgets('turning the reminder on asks once, schedules one, persists', (
+    tester,
+  ) async {
+    final app = TestApp(pack);
+    await app.pump(tester, location: '/settings');
+    await tester.ensureVisible(find.byKey(const ValueKey('reminder-switch')));
+    await tester.pumpAndSettle();
+    expect(app.reminders.pending, isEmpty);
+
+    await tester.tapKey('reminder-switch');
+    expect(app.reminders.permissionRequests, 1);
+    expect(app.reminders.pending.length, 1);
+    final at = app.reminders.pending[ReminderService.notificationId]!;
+    expect([at.hour, at.minute], [19, 0]);
+    expect(find.byKey(const ValueKey('reminder-ok')), findsOneWidget);
+    expect(find.text('19:00'), findsOneWidget);
+    expect((await SettingsRepository(app.db).load()).reminderEnabled, isTrue);
+
+    // Resuming the app re-syncs without creating another schedule.
+    tester.binding.handleAppLifecycleStateChanged(AppLifecycleState.inactive);
+    tester.binding.handleAppLifecycleStateChanged(AppLifecycleState.resumed);
+    await tester.pumpAndSettle();
+    expect(app.reminders.schedules, 1);
+
+    await tester.tapKey('reminder-switch');
+    expect(app.reminders.pending, isEmpty);
+    expect((await SettingsRepository(app.db).load()).reminderEnabled, isFalse);
+    await app.dispose(tester);
+  });
+
+  testWidgets('blocked notifications are explained, with a way to allow them', (
+    tester,
+  ) async {
+    final app = TestApp(pack);
+    app.reminders
+      ..enabled = false
+      ..grantOnRequest = false;
+    await app.pump(tester, location: '/settings');
+    await tester.ensureVisible(find.byKey(const ValueKey('reminder-switch')));
+    await tester.pumpAndSettle();
+    await tester.tapKey('reminder-switch');
+    expect(find.byKey(const ValueKey('reminder-notice')), findsOneWidget);
+    expect(find.textContaining('يمنع إشعارات هذا التطبيق'), findsOneWidget);
+
+    // The learner allows notifications from the prompt this time.
+    app.reminders.grantOnRequest = true;
+    await tester.tapKey('reminder-allow');
+    expect(find.byKey(const ValueKey('reminder-notice')), findsNothing);
+    // Present in the tree; its scroll position depends on the run.
+    expect(
+      find.byKey(const ValueKey('reminder-ok'), skipOffstage: false),
+      findsOneWidget,
+    );
+    expect(app.reminders.schedules, 1);
+    await app.dispose(tester);
+  });
+
+  testWidgets('resume during a settings change respects the saved disable', (
+    tester,
+  ) async {
+    final app = TestApp(pack);
+    await app.pump(tester, location: '/settings');
+    final gate = app.reminders.scheduleGate = ReminderGate();
+    await tester.tapKey('reminder-switch');
+    await gate.entered;
+    expect((await SettingsRepository(app.db).load()).reminderEnabled, isTrue);
+
+    tester.binding.handleAppLifecycleStateChanged(AppLifecycleState.inactive);
+    tester.binding.handleAppLifecycleStateChanged(AppLifecycleState.resumed);
+    await tester.tapKey('reminder-switch');
+    expect((await SettingsRepository(app.db).load()).reminderEnabled, isFalse);
+
+    gate.release();
+    await tester.pumpAndSettle();
+    final container = ProviderScope.containerOf(
+      tester.element(find.byType(Scaffold).first),
+    );
+    expect(container.read(reminderStateProvider), ReminderState.off);
+    expect(app.reminders.pending, isEmpty);
+    expect(app.reminders.schedules, 1);
+    expect(find.byKey(const ValueKey('reminder-ok')), findsNothing);
+    await app.dispose(tester);
+  });
+
+  testWidgets('a stale permission check does not update the settings UI', (
+    tester,
+  ) async {
+    final app = TestApp(pack);
+    await app.pump(tester, location: '/settings');
+    await tester.tapKey('reminder-switch');
+
+    void resume() {
+      tester.binding.handleAppLifecycleStateChanged(AppLifecycleState.inactive);
+      tester.binding.handleAppLifecycleStateChanged(AppLifecycleState.resumed);
+    }
+
+    app.reminders.enabled = false;
+    final oldPermission = app.reminders.permissionCheckGate = ReminderGate();
+    resume();
+    await tester.pump();
+    await oldPermission.entered;
+
+    app.reminders.enabled = true;
+    final latestPermission = app.reminders.permissionCheckGate = ReminderGate();
+    resume();
+    await tester.pump();
+    oldPermission.release();
+    await tester.pumpAndSettle();
+    await latestPermission.entered;
+    expect(find.byKey(const ValueKey('reminder-notice')), findsNothing);
+
+    latestPermission.release();
+    await tester.pumpAndSettle();
+    expect(find.byKey(const ValueKey('reminder-ok')), findsOneWidget);
+    app.reminders.enabled = false;
+    resume();
+    await tester.pumpAndSettle();
+    expect(find.byKey(const ValueKey('reminder-notice')), findsOneWidget);
+    expect(app.reminders.pending.keys, [ReminderService.notificationId]);
+    expect(app.reminders.schedules, 1);
+    await app.dispose(tester);
+  });
+
+  testWidgets(
+    'tapping a reminder opens its screen; unknown routes are ignored',
+    (tester) async {
+      final app = TestApp(pack);
+      await completeViaRepo(app, pack.orderedLessons.first);
+      await app.pump(tester, location: '/library');
+      final taps = ProviderScope.containerOf(
+        tester.element(find.byType(Scaffold).first),
+      ).read(notificationTapsProvider);
+
+      taps.value = '/settings'; // not an allowed notification route
+      await tester.pumpAndSettle();
+      expect(find.text('المكتبة'), findsWidgets);
+
+      taps.value = '/review';
+      await tester.pumpAndSettle();
+      expect(find.text('المراجعة'), findsOneWidget);
       await app.dispose(tester);
     },
   );

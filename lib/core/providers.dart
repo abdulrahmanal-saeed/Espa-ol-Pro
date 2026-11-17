@@ -1,6 +1,6 @@
 import 'dart:async';
 
-import 'package:flutter/widgets.dart' show AppLifecycleListener;
+import 'package:flutter/widgets.dart' show AppLifecycleListener, ValueNotifier;
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'backup/backup_service.dart';
@@ -9,6 +9,8 @@ import 'db/database.dart';
 import 'learning/exercises.dart';
 import 'learning/progress_repository.dart';
 import 'phrases/saved_phrases_repository.dart';
+import 'reminders/plugin_reminder_platform.dart';
+import 'reminders/reminder_service.dart';
 import 'settings.dart';
 import 'speech/speech_service.dart';
 import 'srs/due_counter.dart';
@@ -31,15 +33,33 @@ final speechProvider = Provider<SpeechService>((ref) => DeviceTtsSpeech());
 final fsrsFuzzProvider = Provider<bool>((ref) => true);
 
 class SettingsNotifier extends Notifier<AppSettings> {
+  late AppSettings _saved;
+  Future<void> _saveTail = Future.value();
+
   @override
-  AppSettings build() => ref.watch(initialSettingsProvider);
+  AppSettings build() => _saved = ref.watch(initialSettingsProvider);
+
+  AppSettings get saved => _saved;
 
   Future<void> update(AppSettings next) async {
+    final repository = SettingsRepository(ref.read(databaseProvider));
+    final save = _saveTail.then((_) async {
+      await repository.save(next);
+      _saved = next;
+    });
+    // Later changes can still be saved if this write fails.
+    _saveTail = save.then<void>((_) {}, onError: (Object _) {});
     state = next;
-    await SettingsRepository(ref.read(databaseProvider)).save(next);
+    await save;
+    if (!ref.mounted) return;
+
+    // Resume and settings changes both reconcile the latest saved snapshot.
+    // Platform work can continue while newer settings are written.
+    final reminder = ref.read(reminderStateProvider.notifier).sync();
     await ref
         .read(speechProvider)
-        .configure(accent: next.accent, rate: next.speechRate);
+        .configure(accent: _saved.accent, rate: _saved.speechRate);
+    await reminder;
   }
 }
 
@@ -147,3 +167,52 @@ final savedPhraseKeysProvider = Provider<Set<String>>(
       p.phraseKey,
   },
 );
+
+// ---- local study reminders -------------------------------------------------
+
+/// Overridden with a fake in tests; the real one talks to Android.
+final reminderPlatformProvider = Provider<ReminderPlatform>(
+  (ref) => PluginReminderPlatform(),
+);
+
+final reminderServiceProvider = Provider<ReminderService>(
+  (ref) => ReminderService(
+    ref.watch(reminderPlatformProvider),
+    clock: ref.watch(clockProvider),
+  ),
+);
+
+/// Last known reminder state, for the settings screen.
+class ReminderStateNotifier extends Notifier<ReminderState> {
+  int _latestRequest = 0;
+
+  @override
+  ReminderState build() => ReminderState.off;
+
+  Future<ReminderState> sync() async {
+    final request = ++_latestRequest;
+    final settings = ref.read(settingsProvider.notifier).saved;
+    final result = await ref.read(reminderServiceProvider).sync(settings);
+    if (ref.mounted && request == _latestRequest) state = result;
+    return result;
+  }
+
+  /// Asks the OS for notification permission, then re-checks.
+  Future<ReminderState> requestPermission() async {
+    await ref.read(reminderPlatformProvider).requestPermission();
+    return ref.mounted ? sync() : ReminderState.off;
+  }
+}
+
+final reminderStateProvider =
+    NotifierProvider<ReminderStateNotifier, ReminderState>(
+      ReminderStateNotifier.new,
+    );
+
+/// Routes requested by tapping a notification while the app is running.
+/// Set by the platform callback, consumed by the app root.
+final notificationTapsProvider = Provider<ValueNotifier<String?>>((ref) {
+  final taps = ValueNotifier<String?>(null);
+  ref.onDispose(taps.dispose);
+  return taps;
+});

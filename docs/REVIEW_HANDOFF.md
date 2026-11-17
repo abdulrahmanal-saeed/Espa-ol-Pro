@@ -127,3 +127,31 @@ changes that touch these flows.
 A native Spanish teacher review of the content is pending. See
 [`IMPLEMENTATION_STATUS.md`](IMPLEMENTATION_STATUS.md) for roadmap features
 outside Phase 1.
+
+## 7. Phase 1.1 Android acceptance
+
+Use the APK from the reviewed PR revision and record its SHA, the device
+model and Android version. The owner already confirmed the original
+Phase 1 checks in REVIEW-004.
+
+1. Export a backup. For the v3→v4 migration check, install the APK as an
+   update signed with the same key as the existing v3 app. Verify the
+   existing progress after launch. If Android reports a signature mismatch,
+   keep the existing app installed and use a spare device or a test profile
+   for the other checks.
+2. Launch from the new icon and check the splash. Save a phrase, close the
+   app, reopen it, and find the phrase in «عباراتي».
+3. In «الإعدادات» → «التذكير اليومي», enable reminders on a test profile.
+   Check Android's permission prompt and the notice shown when notifications
+   are denied. Allow notifications in Android Settings and return to the app.
+4. Set a time a few minutes ahead and lock the phone. Record the scheduled
+   and actual delivery times. On a later delivery, swipe the app out of
+   Recents first, then tap the notification and check that Home opens.
+5. Change the device time zone and return to the app. Check that the next
+   alarm uses the selected local time. Repeat a scheduled delivery after
+   restarting and unlocking the phone.
+6. Turn the reminder off before the next delivery and confirm the pending
+   alarm is gone. Restore the original device time zone after the check.
+
+Record the outcome of each check. Native notification delivery, reboot
+recovery and the installed-app migration are pending.

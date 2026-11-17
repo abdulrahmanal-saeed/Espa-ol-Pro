@@ -26,6 +26,7 @@ teacher dashboards, push marketing, streak-driven mechanics.
 | Audio | `flutter_tts` 4 | Device TTS: offline, free, no data leaves the phone | MIT |
 | Backup file I/O | `file_picker` 13 | System save/open dialogs, no storage permission | MIT |
 | Fonts | IBM Plex Sans Arabic, Inter (bundled) | Offline, consistent Arabic + Latin typography | OFL 1.1 |
+| Reminders | `flutter_local_notifications` 22.3, `timezone`, `flutter_timezone` | Local scheduled notifications with correct time-zone and reboot handling | BSD-3 / BSD-2 / Apache-2.0 |
 
 Rejected for Phase 1: **Supabase / any backend** (nothing needs it yet),
 **shared_preferences** (settings live in SQLite so one backup covers
@@ -107,6 +108,11 @@ working. There is no online-only code path yet.
 ## 6. Security, privacy, cost
 
 - No network permission in the release manifest; no backend; no analytics.
+- Study reminders are local notifications scheduled on the device by
+  `flutter_local_notifications`; nothing is sent to a server. Permissions
+  added: `POST_NOTIFICATIONS` (asked only when the learner turns reminders
+  on) and `RECEIVE_BOOT_COMPLETED` (to restore the reminder after a
+  restart). No exact-alarm permission: the reminder is deliberately inexact.
 - No secrets exist in Phase 1. `.env.example` documents the Phase 2 rule: the
   LLM key lives only in a backend proxy, never in the app or the repo.
 - CI scans the tree for common key patterns.

@@ -3,6 +3,7 @@ import 'package:go_router/go_router.dart';
 import 'package:material_ui/material_ui.dart';
 
 import '../core/providers.dart';
+import '../core/reminders/reminder_service.dart';
 import 'router.dart';
 import 'theme.dart';
 
@@ -21,8 +22,34 @@ class _EspanolProAppState extends ConsumerState<EspanolProApp> {
     initialLocation: widget.initialLocation,
   );
 
+  late final AppLifecycleListener _lifecycle;
+  late final ValueNotifier<String?> _taps;
+
+  @override
+  void initState() {
+    super.initState();
+    _taps = ref.read(notificationTapsProvider)..addListener(_openTapped);
+    // Re-sync on every return to the foreground: the device may have moved
+    // to another time zone, or notifications may have been allowed/blocked
+    // in system settings meanwhile.
+    _lifecycle = AppLifecycleListener(
+      onResume: () => ref.read(reminderStateProvider.notifier).sync(),
+    );
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      if (mounted) ref.read(reminderStateProvider.notifier).sync();
+    });
+  }
+
+  void _openTapped() {
+    final route = safeReminderRoute(_taps.value);
+    if (route != null) _router.go(route);
+    _taps.value = null;
+  }
+
   @override
   void dispose() {
+    _taps.removeListener(_openTapped);
+    _lifecycle.dispose();
     _router.dispose();
     super.dispose();
   }
