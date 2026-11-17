@@ -2,6 +2,7 @@ import 'package:espanol_pro/core/assessment/assessment_engine.dart';
 import 'package:espanol_pro/core/assessment/assessment_repository.dart';
 import 'package:espanol_pro/core/content/models.dart';
 import 'package:espanol_pro/core/learning/progress_repository.dart';
+import 'package:espanol_pro/core/speech/speech_service.dart';
 import 'package:espanol_pro/core/srs/review_repository.dart';
 import 'package:espanol_pro/core/widgets/common.dart';
 import 'package:espanol_pro/features/assessment/assessment_screens.dart';
@@ -57,6 +58,7 @@ void main() {
   }) async {
     for (var i = 0; i < chk.questions.length; i++) {
       final q = chk.questions[i];
+      if (q.audioEs != null) await tester.tapKey('assessment-play');
       if (q.type == 'choice') {
         await tester.tapKey('assessment-option-${q.answer}');
       } else {
@@ -262,4 +264,88 @@ void main() {
     expect(await stateText(app), canDoLabels[CanDoState.needsPractice]);
     await app.dispose(tester);
   });
+
+  testWidgets('no Spanish voice: a checkpoint with audio cannot start', (
+    tester,
+  ) async {
+    final app = TestApp(pack, voice: false);
+    await completeUnit(app, chk.unitId!);
+    await app.pump(tester, location: '/assessment/${chk.id}');
+    expect(find.byKey(const ValueKey('assessment-no-voice')), findsOneWidget);
+    final start = tester.widget<FilledButton>(
+      find.byKey(const ValueKey('assessment-start')),
+    );
+    expect(start.onPressed, isNull);
+    expect(await app.db.select(app.db.assessmentAttempts).get(), isEmpty);
+    await app.dispose(tester);
+  });
+
+  testWidgets('a listening question cannot be answered before its audio '
+      'played, and a failing voice never unlocks it', (tester) async {
+    final speech = _FailingSpeech();
+    final app = TestApp(pack, speech: speech);
+    await completeUnit(app, chk.unitId!);
+    await app.pump(tester, location: '/assessment/${chk.id}');
+    await tester.tapKey('assessment-start');
+    final q = chk.questions.first;
+    expect(q.audioEs, isNotNull);
+    expect(
+      find.byKey(const ValueKey('assessment-listen-first')),
+      findsOneWidget,
+    );
+    // Tapping an option before listening selects nothing.
+    await tester.tapKey('assessment-option-${q.answer}');
+    expect(
+      tester
+          .widget<FilledButton>(find.byKey(const ValueKey('assessment-next')))
+          .onPressed,
+      isNull,
+    );
+    // The engine fails while playing: the question stays locked.
+    await tester.tapKey('assessment-play');
+    await tester.tapKey('assessment-option-${q.answer}');
+    expect(
+      find.byKey(const ValueKey('assessment-listen-first')),
+      findsOneWidget,
+    );
+    expect(
+      tester
+          .widget<FilledButton>(find.byKey(const ValueKey('assessment-next')))
+          .onPressed,
+      isNull,
+    );
+    await app.dispose(tester);
+  });
+
+  testWidgets('a played question unlocks only itself', (tester) async {
+    final app = TestApp(pack);
+    await completeUnit(app, chk.unitId!);
+    await app.pump(tester, location: '/assessment/${chk.id}');
+    await tester.tapKey('assessment-start');
+    await tester.tapKey('assessment-play');
+    expect(find.byKey(const ValueKey('assessment-listen-first')), findsNothing);
+    await tester.tapKey('assessment-option-${chk.questions.first.answer}');
+    await tester.tapKey('assessment-next');
+    // Question 2 has its own audio and is locked again.
+    expect(chk.questions[1].audioEs, isNotNull);
+    expect(
+      find.byKey(const ValueKey('assessment-listen-first')),
+      findsOneWidget,
+    );
+    await app.dispose(tester);
+  });
+}
+
+/// A voice that reports itself available, then fails on the first sentence
+/// (as Android TTS can), after which it is unavailable.
+class _FailingSpeech extends SilentSpeech {
+  bool _ok = true;
+
+  @override
+  Future<bool> isAvailable() async => _ok;
+
+  @override
+  Future<void> speak(String spanish, {bool slow = false}) async {
+    _ok = false;
+  }
 }

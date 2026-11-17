@@ -121,7 +121,10 @@ void main() {
     await complete(app, upTo('pa1_u2_l2'));
     await app.pump(tester, location: '/listening/${d.id}');
     await tester.tapKey('play-all');
-    expect(find.byKey(const ValueKey('no-voice')), findsOneWidget);
+    expect(
+      find.byKey(const ValueKey('no-voice'), skipOffstage: false),
+      findsOneWidget,
+    );
     expect(find.widgetWithText(EsText, d.turns.first.es), findsOneWidget);
     expect(app.speech.spoken, isEmpty);
     await app.dispose(tester);
@@ -182,6 +185,40 @@ void main() {
     expect(
       find.byKey(const ValueKey('dialogue-dlg_a1_recepcion')),
       findsOneWidget,
+    );
+    await app.dispose(tester);
+  });
+
+  testWidgets('no Spanish voice: the text stays readable but comprehension '
+      'questions are neither asked nor recorded', (tester) async {
+    final app = TestApp(pack, voice: false);
+    await complete(app, upTo('pa1_u2_l2'));
+    await app.pump(tester, location: '/listening/dlg_pa1_saludo');
+    // Known before anything is played; the Spanish text is shown.
+    expect(
+      find.widgetWithText(
+        EsText,
+        pack.dialogue('dlg_pa1_saludo')!.turns.first.es,
+      ),
+      findsOneWidget,
+    );
+    expect(
+      find.byKey(const ValueKey('no-voice'), skipOffstage: false),
+      findsOneWidget,
+    );
+    final start = tester.widget<FilledButton>(
+      find.byKey(const ValueKey('start-quiz')),
+    );
+    expect(start.onPressed, isNull);
+
+    // Even reached directly, the questions screen refuses.
+    await app.pump(tester, location: '/listening/dlg_pa1_saludo/questions');
+    expect(find.byKey(const ValueKey('questions-no-voice')), findsOneWidget);
+    expect(
+      (await app.db.select(app.db.activityAttempts).get()).where(
+        (a) => a.context == 'listening',
+      ),
+      isEmpty,
     );
     await app.dispose(tester);
   });

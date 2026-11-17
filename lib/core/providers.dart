@@ -31,6 +31,12 @@ final initialSettingsProvider = Provider<AppSettings>(
 final clockProvider = Provider<Clock>((ref) => DateTime.now);
 final speechProvider = Provider<SpeechService>((ref) => DeviceTtsSpeech());
 
+/// Whether a Spanish voice is usable right now. Re-checked whenever a screen
+/// that needs it opens, so a voice installed meanwhile is picked up.
+final spanishVoiceProvider = FutureProvider.autoDispose<bool>(
+  (ref) => ref.watch(speechProvider).isAvailable(),
+);
+
 /// Disabled in tests so intervals are exactly reproducible.
 final fsrsFuzzProvider = Provider<bool>((ref) => true);
 

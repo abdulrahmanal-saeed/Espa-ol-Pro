@@ -54,6 +54,9 @@ class _AssessmentScreenState extends ConsumerState<AssessmentScreen> {
   bool _started = false;
   int _index = 0;
   final Map<String, String> _answers = {};
+
+  /// Questions whose audio was actually played in this attempt.
+  final Set<String> _heard = {};
   DateTime? _startedAt;
   bool _submitting = false;
   String? _submitError;
@@ -130,6 +133,9 @@ class _AssessmentScreenState extends ConsumerState<AssessmentScreen> {
     }
     final progress = ref.watch(lessonProgressProvider).value ?? const {};
     final open = a.unitId == null || unitCompleted(pack, a.unitId!, progress);
+    final needsAudio = a.questions.any((q) => q.audioEs != null);
+    final voice = needsAudio ? ref.watch(spanishVoiceProvider).value : true;
+    final canStart = open && voice == true;
 
     if (!_started) {
       return Scaffold(
@@ -170,6 +176,16 @@ class _AssessmentScreenState extends ConsumerState<AssessmentScreen> {
                 style: TextStyle(color: t.colorScheme.error),
               ),
             ],
+            if (voice == false) ...[
+              const SizedBox(height: 16),
+              Text(
+                'فيها أسئلة استماع، ولا يوجد صوت إسباني على الجهاز. لن تبدأ '
+                'حتى لا تُحسب إجابة على جملة لم تسمعها. ثبّت بيانات اللغة '
+                'الإسبانية من إعدادات «تحويل النص إلى كلام» ثم عُد.',
+                key: const ValueKey('assessment-no-voice'),
+                style: TextStyle(color: t.colorScheme.error, height: 1.6),
+              ),
+            ],
           ],
         ),
         bottomNavigationBar: SafeArea(
@@ -177,7 +193,7 @@ class _AssessmentScreenState extends ConsumerState<AssessmentScreen> {
             padding: const EdgeInsets.fromLTRB(20, 8, 20, 16),
             child: FilledButton(
               key: const ValueKey('assessment-start'),
-              onPressed: open
+              onPressed: canStart
                   ? () => setState(() {
                       _started = true;
                       _startedAt = ref.read(clockProvider)();
@@ -212,6 +228,8 @@ class _AssessmentScreenState extends ConsumerState<AssessmentScreen> {
           question: q,
           answer: answer,
           onChanged: (v) => setState(() => _answers[q.id] = v),
+          heard: _heard.contains(q.id),
+          onHeard: () => setState(() => _heard.add(q.id)),
         ),
         bottomNavigationBar: SafeArea(
           child: Padding(
@@ -289,11 +307,19 @@ class _AssessmentQuestionView extends ConsumerStatefulWidget {
     required this.question,
     required this.answer,
     required this.onChanged,
+    required this.heard,
+    required this.onHeard,
   });
 
   final AssessmentQuestion question;
   final String answer;
   final ValueChanged<String> onChanged;
+
+  /// Whether this question's audio has actually been played. A question
+  /// with audio cannot be answered before, so a guess at an unheard
+  /// sentence can never become listening evidence.
+  final bool heard;
+  final VoidCallback onHeard;
 
   @override
   ConsumerState<_AssessmentQuestionView> createState() =>
@@ -326,6 +352,7 @@ class _AssessmentQuestionViewState
   Widget build(BuildContext context) {
     final t = Theme.of(context);
     final q = widget.question;
+    final locked = q.audioEs != null && !widget.heard;
     return ListView(
       padding: const EdgeInsets.fromLTRB(20, 12, 20, 24),
       children: [
@@ -342,10 +369,36 @@ class _AssessmentQuestionViewState
             child: Row(
               mainAxisSize: MainAxisSize.min,
               children: [
-                SpeakButton(q.audioEs!, filled: true, size: 34),
+                SpeakButton(
+                  q.audioEs!,
+                  key: const ValueKey('assessment-play'),
+                  filled: true,
+                  size: 34,
+                  onResult: (ok) {
+                    if (ok) widget.onHeard();
+                  },
+                ),
                 const SizedBox(width: 12),
-                SpeakButton(q.audioEs!, slow: true, filled: true, size: 22),
+                SpeakButton(
+                  q.audioEs!,
+                  slow: true,
+                  filled: true,
+                  size: 22,
+                  onResult: (ok) {
+                    if (ok) widget.onHeard();
+                  },
+                ),
               ],
+            ),
+          ),
+        if (q.audioEs != null && !widget.heard)
+          Padding(
+            padding: const EdgeInsets.only(top: 10),
+            child: Text(
+              'استمع أولاً، ثم أجب.',
+              key: const ValueKey('assessment-listen-first'),
+              textAlign: TextAlign.center,
+              style: t.textTheme.bodySmall,
             ),
           ),
         if (q.stimulusEs != null)
@@ -377,7 +430,7 @@ class _AssessmentQuestionViewState
                 text: q.choices[i],
                 spanish: q.choicesEs,
                 selected: widget.answer == q.choices[i],
-                onTap: () => widget.onChanged(q.choices[i]),
+                onTap: locked ? null : () => widget.onChanged(q.choices[i]),
               ),
             )
         else ...[
@@ -386,6 +439,7 @@ class _AssessmentQuestionViewState
             child: TextField(
               key: const ValueKey('assessment-answer'),
               controller: _controller,
+              enabled: !locked,
               autocorrect: false,
               enableSuggestions: false,
               onChanged: widget.onChanged,
@@ -419,7 +473,7 @@ class _AssessmentQuestionViewState
                         padding: EdgeInsets.zero,
                         minimumSize: const Size(44, 44),
                       ),
-                      onPressed: () => _insert(ch),
+                      onPressed: locked ? null : () => _insert(ch),
                       child: Text(
                         ch,
                         style: const TextStyle(
@@ -450,7 +504,7 @@ class _Choice extends StatelessWidget {
   final String text;
   final bool spanish;
   final bool selected;
-  final VoidCallback onTap;
+  final VoidCallback? onTap;
 
   @override
   Widget build(BuildContext context) {
@@ -539,6 +593,7 @@ class AssessmentResultScreen extends ConsumerWidget {
           final run = AttemptRecord(
             id: attempt.id,
             assessmentId: attempt.assessmentId,
+            assessmentVersion: attempt.assessmentVersion,
             completedAtMs: attempt.completedAt,
             localDay: '',
             answers: records,
