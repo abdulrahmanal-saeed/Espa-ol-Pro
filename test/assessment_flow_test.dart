@@ -60,7 +60,7 @@ void main() {
       final q = chk.questions[i];
       if (q.audioEs != null) await tester.tapKey('assessment-play');
       if (q.type == 'choice') {
-        await tester.tapKey('assessment-option-${q.answer}');
+        await tester.tapOption(q.correctAnswer);
       } else {
         await tester.enterText(
           find.byKey(const ValueKey('assessment-answer')),
@@ -328,7 +328,7 @@ void main() {
       findsOneWidget,
     );
     // Tapping an option before listening selects nothing.
-    await tester.tapKey('assessment-option-${q.answer}');
+    await tester.tapOption(q.correctAnswer);
     expect(
       tester
           .widget<FilledButton>(find.byKey(const ValueKey('assessment-next')))
@@ -337,7 +337,7 @@ void main() {
     );
     // The engine fails while playing: the question stays locked.
     await tester.tapKey('assessment-play');
-    await tester.tapKey('assessment-option-${q.answer}');
+    await tester.tapOption(q.correctAnswer);
     expect(
       find.byKey(const ValueKey('assessment-listen-first')),
       findsOneWidget,
@@ -358,7 +358,7 @@ void main() {
     await tester.tapKey('assessment-start');
     await tester.tapKey('assessment-play');
     expect(find.byKey(const ValueKey('assessment-listen-first')), findsNothing);
-    await tester.tapKey('assessment-option-${chk.questions.first.answer}');
+    await tester.tapOption(chk.questions.first.correctAnswer);
     await tester.tapKey('assessment-next');
     // Question 2 has its own audio and is locked again.
     expect(chk.questions[1].audioEs, isNotNull);

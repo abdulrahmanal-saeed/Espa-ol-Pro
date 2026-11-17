@@ -142,6 +142,7 @@ detect it.
 | Checkpoint `chk_a2_u1`: 12 questions, 3 can-dos, 5 skills, 3 dialogue sentences | `a2_units_test`, `assessment_content_test` |
 | Verb reference +6 (abrir, sacar, arreglar, cobrar machine-checked; devolver, comprobar entered by hand) — 22 verbs | `a2_units_test`, `verbs_and_level_test` |
 | Path: a completed level stays expanded until its level assessment has been taken once, so starting A2 does not hide the A1 level assessment | `verbs_and_level_test` |
+| Checkpoint options (every unit checkpoint and level assessment, Pre-A1 to A2) are shown in a per-attempt shuffled order, stable within the attempt; grading by option text is unchanged (REVIEW-012 P1) | `assessment_order_test`, `assessment_flow_test` |
 
 ## Android build and runtime
 

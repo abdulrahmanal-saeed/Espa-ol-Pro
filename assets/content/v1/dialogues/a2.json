@@ -387,9 +387,9 @@
     {
      "id": "dlg_a2_reclamacion.t7",
      "speaker": "javier",
-     "es": "Sí, hay un error: le cobramos el servicio dos veces.",
-     "ar": "نعم، يوجد خطأ: حصّلنا منك ثمن الخدمة مرّتين.",
-     "en": "Yes, there's a mistake: we charged you twice for the service."
+     "es": "Sí, hay un error: la factura tiene el servicio dos veces.",
+     "ar": "نعم، يوجد خطأ: الخدمة مذكورة في الفاتورة مرّتين.",
+     "en": "Yes, there's a mistake: the invoice has the service twice."
     },
     {
      "id": "dlg_a2_reclamacion.t8",
@@ -431,7 +431,6 @@
     "un_momento",
     "ahora_mismo",
     "comprobar",
-    "cobrar",
     "dos_veces",
     "devolver",
     "dinero",
@@ -477,7 +476,7 @@
      "type": "choice",
      "prompt_ar": "ما الخطأ؟",
      "choices": [
-      "حصّلوا ثمن الخدمة مرّتين",
+      "الخدمة مذكورة مرّتين",
       "العنوان غير صحيح",
       "السعر مرتفع"
      ],

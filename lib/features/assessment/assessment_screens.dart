@@ -246,6 +246,7 @@ class _AssessmentScreenState extends ConsumerState<AssessmentScreen> {
         body: _AssessmentQuestionView(
           key: ValueKey(q.id),
           question: q,
+          choices: displayedChoices(q, attemptSeed(_startedAt!)),
           answer: answer,
           onChanged: (v) => setState(() => _answers[q.id] = v),
           heard: _heard.contains(q.id),
@@ -325,6 +326,7 @@ class _AssessmentQuestionView extends ConsumerStatefulWidget {
   const _AssessmentQuestionView({
     super.key,
     required this.question,
+    required this.choices,
     required this.answer,
     required this.onChanged,
     required this.heard,
@@ -332,6 +334,9 @@ class _AssessmentQuestionView extends ConsumerStatefulWidget {
   });
 
   final AssessmentQuestion question;
+
+  /// The options in this attempt's display order (see [displayedChoices]).
+  final List<String> choices;
   final String answer;
   final ValueChanged<String> onChanged;
 
@@ -442,15 +447,15 @@ class _AssessmentQuestionViewState
           ),
         const SizedBox(height: 16),
         if (q.type == 'choice')
-          for (var i = 0; i < q.choices.length; i++)
+          for (final (i, choice) in widget.choices.indexed)
             Padding(
               padding: const EdgeInsets.only(bottom: 10),
               child: _Choice(
                 key: ValueKey('assessment-option-$i'),
-                text: q.choices[i],
+                text: choice,
                 spanish: q.choicesEs,
-                selected: widget.answer == q.choices[i],
-                onTap: locked ? null : () => widget.onChanged(q.choices[i]),
+                selected: widget.answer == choice,
+                onTap: locked ? null : () => widget.onChanged(choice),
               ),
             )
         else ...[

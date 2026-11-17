@@ -200,7 +200,7 @@ void main() {
     await app.pump(tester, location: '/assessment/${chk.id}');
     await tester.tapKey('assessment-start');
     await tester.tapKey('assessment-play');
-    await tester.tapKey('assessment-option-${chk.questions.first.answer}');
+    await tester.tapOption(chk.questions.first.correctAnswer);
     await shot(tester, '21_checkpoint_question');
     final answers = {for (final q in chk.questions) q.id: q.correctAnswer}
       ..['chk_pa1_u1.q7'] = 'telefono'
