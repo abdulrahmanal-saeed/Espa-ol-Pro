@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import '../assessment/assessment_engine.dart' show Spelling;
 import '../db/database.dart';
 import '../phrases/saved_phrases_repository.dart';
 import '../srs/review_repository.dart';
@@ -214,8 +215,9 @@ class BackupService {
         );
       }
     }
-    const spellings = {null, 'exact', 'missing_accents', 'wrong'};
-    if (assessmentAnswers.any((x) => !spellings.contains(x.spelling))) {
+    if (assessmentAnswers.any(
+      (x) => x.spelling != null && !Spelling.all.contains(x.spelling),
+    )) {
       throw BackupException('قيم غير صالحة في الجدول "assessment_answers".');
     }
     final cardIds = cards.map((c) => c.id).toSet();

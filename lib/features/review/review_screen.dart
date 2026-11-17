@@ -425,7 +425,11 @@ class _ReviewScreenState extends ConsumerState<ReviewScreen> {
                       ),
                       child: Text(
                         wrongTyped
-                            ? 'كتبت: ${_controller.text.trim()}'
+                            ? [
+                                'كتبت: ${_controller.text.trim()}',
+                                if (_typed!.explanationAr.isNotEmpty)
+                                  _typed!.explanationAr,
+                              ].join('\n')
                             : _typed!.verdict ==
                                   AnswerVerdict.correctMissingAccents
                             ? 'صحيح — لكن انتبه لعلامات النبر.'

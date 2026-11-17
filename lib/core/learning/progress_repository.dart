@@ -184,7 +184,7 @@ class ProgressRepository {
                 signature: signature,
                 incorrect: userAnswer,
                 correct: ex.expected,
-                category: errorCategory(ex),
+                category: errorCategory(ex, userAnswer),
                 promptAr: Value(_promptFor(ex)),
                 lessonId: Value(lessonId),
                 itemId: Value(ex.itemId),
@@ -214,8 +214,34 @@ class ProgressRepository {
   };
 
   /// Category derived from what the exercise objectively tested — never a
-  /// guess about the learner's intent.
-  static String errorCategory(Exercise ex) => switch (ex.type) {
+  /// guess about the learner's intent. For a typed Spanish answer the
+  /// evaluator's diagnosis decides between spelling, grammar, word order
+  /// and meaning.
+  static String errorCategory(Exercise ex, [String? userAnswer]) {
+    if (userAnswer != null &&
+        ex is TypeExercise &&
+        (ex.type == 'type_es' || ex.type == 'respond')) {
+      final issue = evaluateAnswer(userAnswer, ex.accepted).issue;
+      switch (issue) {
+        case AnswerIssue.accents ||
+            AnswerIssue.accentMeaning ||
+            AnswerIssue.enye ||
+            AnswerIssue.spelling:
+          return 'spelling';
+        case AnswerIssue.grammarForm:
+          return 'grammar';
+        case AnswerIssue.wordOrder:
+          return 'word_order';
+        case AnswerIssue.meaning:
+          if (ex.type == 'type_es') return 'vocabulary';
+        case AnswerIssue.none:
+          break;
+      }
+    }
+    return _typeCategory(ex);
+  }
+
+  static String _typeCategory(Exercise ex) => switch (ex.type) {
     'order' => 'word_order',
     'dictation' || 'listen_choose' || 'listen_pick_es' => 'listening',
     'fill' => 'grammar',

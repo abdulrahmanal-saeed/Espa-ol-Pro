@@ -624,9 +624,7 @@ class _TypeViewState extends State<TypeView> {
       Submission(
         correct: result.isCorrect,
         answer: _controller.text.trim(),
-        noteAr: result.verdict == AnswerVerdict.correctMissingAccents
-            ? 'صحيح، لكن انتبه لعلامات النبر: ${result.bestMatch}'
-            : '',
+        noteAr: result.explanationAr,
       ),
     );
   }

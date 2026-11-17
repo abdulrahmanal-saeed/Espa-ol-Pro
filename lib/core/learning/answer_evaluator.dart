@@ -5,20 +5,137 @@ enum AnswerVerdict {
   /// Matches an accepted answer exactly (ignoring case/punctuation/spacing).
   correct,
 
-  /// Right words, but written accents (á é í ó ú ü) are missing or wrong.
-  /// Accepted, with an explicit spelling reminder.
+  /// Right words, but written accents (á é í ó ú ü) are missing or wrong,
+  /// and no missing accent changes the meaning. Accepted, with an explicit
+  /// spelling reminder.
   correctMissingAccents,
   incorrect,
 }
 
+/// What kind of difference separates the answer from the closest accepted
+/// one. Derived only from the two strings — never a guess about intent.
+enum AnswerIssue {
+  /// No difference.
+  none,
+
+  /// Only written accents differ, and none of them changes the meaning.
+  accents,
+
+  /// An accent that changes the meaning is missing or misplaced
+  /// (si/sí, tu/tú, el/él …). Marked wrong.
+  accentMeaning,
+
+  /// ñ written as n (or the reverse): a different letter, so a different
+  /// word (año / ano). Marked wrong.
+  enye,
+
+  /// The same words in a different order.
+  wordOrder,
+
+  /// One word has the wrong form (ending or article), e.g. hablo/habla,
+  /// bueno/buena, el/la.
+  grammarForm,
+
+  /// A small misspelling of the right word(s).
+  spelling,
+
+  /// A different answer.
+  meaning,
+}
+
+/// Pairs where the written accent distinguishes two words. Missing it is a
+/// meaning error, not a spelling slip. Interrogatives (qué, cómo, dónde …)
+/// are deliberately not here: at Pre-A1/A1 they are accepted with a
+/// reminder, because the question marks already carry the meaning.
+const meaningAccentPairs = {
+  'si': 'sí',
+  'tu': 'tú',
+  'el': 'él',
+  'mi': 'mí',
+  'te': 'té',
+  'se': 'sé',
+  'de': 'dé',
+  'mas': 'más',
+  'aun': 'aún',
+  'esta': 'está',
+  'papa': 'papá',
+};
+
+/// Endings that mark person, number or gender at A1. Two forms of one word
+/// differ only in these (hablo/habla, bueno/buenas, casa/casas).
+const _endings = {
+  'o',
+  'a',
+  'e',
+  'as',
+  'es',
+  'os',
+  'an',
+  'en',
+  'amos',
+  'emos',
+  'imos',
+  'ais',
+  'eis',
+  'is',
+};
+
+bool _isInflection(String a, String b) {
+  var p = 0;
+  while (p < a.length && p < b.length && a[p] == b[p]) {
+    p++;
+  }
+  if (p < 2 || a == b) return false;
+  final x = a.substring(p);
+  final y = b.substring(p);
+  bool ending(String s) => _endings.contains(s);
+  // Plural: casa/casas, ciudad/ciudades.
+  if ((x.isEmpty && (y == 's' || y == 'es')) ||
+      (y.isEmpty && (x == 's' || x == 'es'))) {
+    return true;
+  }
+  return ending(x) && ending(y) ||
+      // trabajo/trabajamos share "trabaj" only after backing off one letter.
+      (p >= 3 && ending(a.substring(p - 1)) && ending(b.substring(p - 1)));
+}
+
+const _articles = {'el', 'la', 'los', 'las', 'un', 'una', 'unos', 'unas'};
+
 class AnswerResult {
-  const AnswerResult(this.verdict, this.bestMatch);
+  const AnswerResult(
+    this.verdict,
+    this.bestMatch, {
+    this.issue = AnswerIssue.none,
+    this.typedWord,
+    this.expectedWord,
+  });
   final AnswerVerdict verdict;
 
   /// The accepted answer closest to what was typed (shown as the correction).
   final String bestMatch;
 
+  final AnswerIssue issue;
+
+  /// For single-word issues, the word as typed and as expected.
+  final String? typedWord;
+  final String? expectedWord;
+
   bool get isCorrect => verdict != AnswerVerdict.incorrect;
+
+  /// One-line Arabic explanation of [issue], empty when there is nothing to
+  /// say.
+  String get explanationAr => switch (issue) {
+    AnswerIssue.none => '',
+    AnswerIssue.accents => 'المعنى صحيح، لكن انتبه لعلامات النبر: $bestMatch',
+    AnswerIssue.accentMeaning =>
+      'علامة النبر هنا تغيّر المعنى: «$expectedWord» ليست «$typedWord».',
+    AnswerIssue.enye => 'ñ حرف مستقل وليس n بعلامة: «$expectedWord».',
+    AnswerIssue.wordOrder => 'الكلمات صحيحة لكن ترتيبها مختلف.',
+    AnswerIssue.grammarForm =>
+      'الكلمة صحيحة لكن صيغتها لا تناسب الجملة: «$expectedWord» بدل «$typedWord».',
+    AnswerIssue.spelling => 'قريبة جداً — خطأ إملائي: «$expectedWord».',
+    AnswerIssue.meaning => '',
+  };
 }
 
 final _punct = RegExp(r'''[¿?¡!.,;:"'()«»…\-–—]''');
@@ -50,11 +167,28 @@ AnswerResult evaluateAnswer(String input, List<String> accepted) {
     }
   }
   final typedBare = stripAccents(typed);
+  AnswerResult? meaningAccent;
   for (final a in accepted) {
-    if (stripAccents(normalizeAnswer(a)) == typedBare) {
-      return AnswerResult(AnswerVerdict.correctMissingAccents, a);
+    final norm = normalizeAnswer(a);
+    if (stripAccents(norm) != typedBare) continue;
+    final pair = _meaningAccentDifference(typed, norm);
+    if (pair == null) {
+      return AnswerResult(
+        AnswerVerdict.correctMissingAccents,
+        a,
+        issue: AnswerIssue.accents,
+      );
     }
+    meaningAccent ??= AnswerResult(
+      AnswerVerdict.incorrect,
+      a,
+      issue: AnswerIssue.accentMeaning,
+      typedWord: pair.$1,
+      expectedWord: pair.$2,
+    );
   }
+  if (meaningAccent != null) return meaningAccent;
+
   // Pick the closest accepted answer to show as the correction.
   var best = accepted.first;
   var bestDistance = 1 << 30;
@@ -65,7 +199,88 @@ AnswerResult evaluateAnswer(String input, List<String> accepted) {
       best = a;
     }
   }
-  return AnswerResult(AnswerVerdict.incorrect, best);
+  return _diagnose(typed, best);
+}
+
+/// The first word pair whose only difference is a meaning-bearing accent.
+(String, String)? _meaningAccentDifference(String typed, String expected) {
+  final t = typed.split(' ');
+  final e = expected.split(' ');
+  if (t.length != e.length) return null;
+  for (var i = 0; i < t.length; i++) {
+    if (t[i] == e[i]) continue;
+    final bare = stripAccents(e[i]);
+    final accented = meaningAccentPairs[bare];
+    if (accented == null) continue;
+    // Either form typed where the other was required.
+    if ((e[i] == accented && t[i] == bare) ||
+        (e[i] == bare && t[i] == accented)) {
+      return (t[i], e[i]);
+    }
+  }
+  return null;
+}
+
+AnswerResult _diagnose(String typed, String best) {
+  AnswerResult r(AnswerIssue issue, [String? tw, String? ew]) => AnswerResult(
+    AnswerVerdict.incorrect,
+    best,
+    issue: issue,
+    typedWord: tw,
+    expectedWord: ew,
+  );
+  final expected = normalizeAnswer(best);
+  final tBare = stripAccents(typed);
+  final eBare = stripAccents(expected);
+  final tWords = tBare.split(' ');
+  final eWords = eBare.split(' ');
+  final eShown = expected.split(' ');
+
+  int? differing() {
+    if (tWords.length != eWords.length) return null;
+    int? index;
+    for (var i = 0; i < tWords.length; i++) {
+      if (tWords[i] == eWords[i]) continue;
+      if (index != null) return null;
+      index = i;
+    }
+    return index;
+  }
+
+  // ñ ↔ n.
+  if (tBare.replaceAll('ñ', 'n') == eBare.replaceAll('ñ', 'n')) {
+    final k = differing();
+    return r(
+      AnswerIssue.enye,
+      k == null ? null : typed.split(' ')[k],
+      k == null ? expected : eShown[k],
+    );
+  }
+  // Same words, other order.
+  if (tWords.length > 1 && tWords.length == eWords.length) {
+    final a = [...tWords]..sort();
+    final b = [...eWords]..sort();
+    if (a.join(' ') == b.join(' ')) return r(AnswerIssue.wordOrder);
+  }
+  final k = differing();
+  if (k != null) {
+    final tw = tWords[k];
+    final ew = eWords[k];
+    final articleSwap = _articles.contains(tw) && _articles.contains(ew);
+    if (articleSwap || _isInflection(tw, ew)) {
+      return r(AnswerIssue.grammarForm, typed.split(' ')[k], eShown[k]);
+    }
+    final limit = ew.length <= 5 ? 1 : 2;
+    if (levenshtein(tw, ew) <= limit) {
+      return r(AnswerIssue.spelling, typed.split(' ')[k], eShown[k]);
+    }
+    return r(AnswerIssue.meaning);
+  }
+  final limit = eBare.length <= 5 ? 1 : 2;
+  if (levenshtein(tBare, eBare) <= limit) {
+    return r(AnswerIssue.spelling, null, expected);
+  }
+  return r(AnswerIssue.meaning);
 }
 
 int levenshtein(String a, String b) {
