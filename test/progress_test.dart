@@ -102,6 +102,44 @@ void main() {
   });
 
   group('attempts and error notebook', () {
+    test(
+      'an attempt downgraded to unmeasured never feeds the notebook',
+      () async {
+        final ex = ExerciseBuilder(pack)
+            .buildLesson(pack.orderedLessons.first)
+            .whereType<TypeExercise>()
+            .first;
+        await repo.recordAttempt(
+          ex,
+          isCorrect: false,
+          userAnswer: 'zzz',
+          context: 'listening',
+          measured: false,
+        );
+        final a = (await db.select(db.activityAttempts).get()).single;
+        expect(a.isMeasured, isFalse);
+        expect(await db.select(db.errorRecords).get(), isEmpty);
+      },
+    );
+
+    test('measured: true cannot upgrade self-assessed practice', () async {
+      final speak = ExerciseBuilder(pack)
+          .buildLesson(pack.orderedLessons.first)
+          .whereType<SpeakExercise>()
+          .first;
+      await repo.recordAttempt(
+        speak,
+        isCorrect: true,
+        userAnswer: 'self-practised',
+        context: 'lesson',
+        measured: true,
+      );
+      expect(
+        (await db.select(db.activityAttempts).get()).single.isMeasured,
+        isFalse,
+      );
+    });
+
     late List<Exercise> exercises;
     setUp(() {
       exercises = ExerciseBuilder(pack)
