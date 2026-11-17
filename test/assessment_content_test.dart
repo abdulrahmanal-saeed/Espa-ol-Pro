@@ -42,7 +42,10 @@ void main() {
       final claim = RegExp(r'CEFR|DELE|شهادة معتمدة', caseSensitive: false);
       for (final a in pack.assessments) {
         expect(a.questions.any((q) => q.skill == 'speaking'), isFalse);
-        expect(claim.hasMatch(a.introAr), isFalse, reason: a.id);
+        // Mentioning CEFR/DELE is allowed only to say it is NOT one.
+        if (claim.hasMatch(a.introAr)) {
+          expect(a.introAr, contains('ليست'), reason: a.id);
+        }
         expect(claim.hasMatch(a.titleAr), isFalse, reason: a.id);
       }
     });
@@ -59,7 +62,11 @@ void main() {
           (d) => d.turns.any((t) => t.id == q.dialogueTurnId),
         );
         expect(q.audioEs, d.turn(q.dialogueTurnId!)!.es, reason: q.id);
-        expect(d.unitId, a.unitId, reason: q.id);
+        if (a.unitId != null) {
+          expect(d.unitId, a.unitId, reason: q.id);
+        } else {
+          expect(d.levelId, a.levelId, reason: q.id);
+        }
         expect(q.skill, 'listening');
       }
     });

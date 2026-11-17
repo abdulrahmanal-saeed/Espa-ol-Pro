@@ -31,7 +31,8 @@ Future<void> main(List<String> args) async {
     '(${pack.dialogues.fold<int>(0, (n, d) => n + d.turns.length)} turns, '
     '${pack.dialogues.fold<int>(0, (n, d) => n + d.questions.length)} questions), '
     '${pack.assessments.length} assessments '
-    '(${pack.assessments.fold<int>(0, (n, a) => n + a.questions.length)} questions).',
+    '(${pack.assessments.fold<int>(0, (n, a) => n + a.questions.length)} questions), '
+    '${pack.verbs.length} verbs.',
   );
   if (issues.isEmpty) {
     stdout.writeln('OK — no issues found.');

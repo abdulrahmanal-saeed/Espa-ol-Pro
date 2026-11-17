@@ -178,3 +178,30 @@ its unit/level, and **at least 2 questions** as evidence; at least 8 questions
 covering at least 3 skills; speaking is rejected (not objectively measurable);
 Spanish fields have no Arabic script and balanced `¿ ?` / `¡ !`. Every rule is
 proven on a broken copy in `test/assessment_content_test.dart`.
+
+## Verb reference (content ≥ 1.4.0)
+
+`curriculum.json` names one file in `verb_file` (`verbs.json`):
+
+```jsonc
+{ "verbs": [{
+  "id": "hablar", "infinitive": "hablar", "ar": "يتكلم",
+  "regular": true,                      // regular verbs are machine-checked
+  "present": { "yo": "hablo", "tu": "hablas", "el": "habla",
+               "nosotros": "hablamos", "vosotros": "habláis", "ellos": "hablan" },
+  "note_ar": "…", "examples": [{ "es": "…", "ar": "…" }],
+  "lessons": ["a1_u1_l1"]               // where it is taught
+}] }
+```
+
+Validation: unique ids; Arabic gloss; all six persons present, no Arabic
+script, no unknown person keys; **a regular verb's six forms must equal the
+-ar / -er / -ir rules exactly** (so a typo such as *hablámos* is rejected);
+at least one existing lesson and one example. Irregular verbs are entered by
+hand and marked `"regular": false`.
+
+## Level assessments
+
+`"kind": "level"` with no `unit`. Its can-dos may point at lessons anywhere in
+the level. It opens only when every available lesson of the level is
+completed, and appears at the end of the level on the learning path.

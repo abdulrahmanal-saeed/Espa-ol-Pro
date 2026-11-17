@@ -1414,6 +1414,290 @@
     }
    ],
    "source": "original-v1"
+  },
+  {
+   "id": "dlg_a1_oficina",
+   "level": "a1",
+   "unit": "a1_u6",
+   "lessons": [
+    "a1_u6_l1",
+    "a1_u6_l2"
+   ],
+   "title_es": "Nuestra oficina",
+   "title_ar": "مكتبنا",
+   "scenario_ar": "لاورا تُري موظفاً جديداً مكتب الفريق.",
+   "objectives_ar": [
+    "فهم وصف المكان بـ hay",
+    "فهم أفعال الجمع (nosotros)",
+    "فهم أماكن الأشياء"
+   ],
+   "speakers": [
+    {
+     "id": "laura",
+     "name": "Laura",
+     "role_ar": "مديرة الفريق"
+    },
+    {
+     "id": "karim",
+     "name": "Karim",
+     "role_ar": "موظف جديد"
+    }
+   ],
+   "turns": [
+    {
+     "id": "dlg_a1_oficina.t1",
+     "speaker": "laura",
+     "es": "Esta es la oficina. En el equipo hay seis personas.",
+     "ar": "هذا المكتب. في الفريق ستة أشخاص.",
+     "en": "This is the office. There are six people in the team."
+    },
+    {
+     "id": "dlg_a1_oficina.t2",
+     "speaker": "karim",
+     "es": "¿Hay una sala de reuniones?",
+     "ar": "هل توجد قاعة اجتماعات؟",
+     "en": "Is there a meeting room?"
+    },
+    {
+     "id": "dlg_a1_oficina.t3",
+     "speaker": "laura",
+     "es": "Sí, está a la izquierda. Tenemos reuniones los lunes.",
+     "ar": "نعم، على اليسار. عندنا اجتماعات أيام الاثنين.",
+     "en": "Yes, it's on the left. We have meetings on Mondays."
+    },
+    {
+     "id": "dlg_a1_oficina.t4",
+     "speaker": "karim",
+     "es": "¿Y mi escritorio?",
+     "ar": "ومكتبي؟",
+     "en": "And my desk?"
+    },
+    {
+     "id": "dlg_a1_oficina.t5",
+     "speaker": "laura",
+     "es": "Aquí, al lado de la impresora. Tu ordenador es nuevo.",
+     "ar": "هنا، بجانب الطابعة. حاسوبك جديد.",
+     "en": "Here, next to the printer. Your computer is new."
+    }
+   ],
+   "items": [
+    "hay",
+    "sala_reuniones",
+    "tenemos",
+    "escritorio",
+    "impresora",
+    "ordenador",
+    "nuevo",
+    "equipo",
+    "al_lado_de"
+   ],
+   "grammar": [
+    "g_hay",
+    "g_plural_present"
+   ],
+   "questions": [
+    {
+     "type": "choice",
+     "prompt_ar": "كم شخصاً في الفريق؟",
+     "choices": [
+      "ستة",
+      "اثنا عشر",
+      "ثلاثة"
+     ],
+     "answer": 0,
+     "choices_es": false,
+     "turn": "dlg_a1_oficina.t1",
+     "id": "dlg_a1_oficina.q1",
+     "skill": "listening"
+    },
+    {
+     "type": "choice",
+     "prompt_ar": "متى اجتماعات الفريق؟",
+     "choices": [
+      "أيام الاثنين",
+      "أيام الجمعة",
+      "كل يوم"
+     ],
+     "answer": 0,
+     "choices_es": false,
+     "turn": "dlg_a1_oficina.t3",
+     "id": "dlg_a1_oficina.q2",
+     "skill": "listening"
+    },
+    {
+     "type": "choice",
+     "prompt_ar": "أين مكتب كريم؟",
+     "choices": [
+      "بجانب الطابعة",
+      "في قاعة الاجتماعات",
+      "على اليسار"
+     ],
+     "answer": 0,
+     "choices_es": false,
+     "turn": "dlg_a1_oficina.t5",
+     "id": "dlg_a1_oficina.q3",
+     "skill": "listening"
+    },
+    {
+     "type": "speaker",
+     "turn": "dlg_a1_oficina.t2",
+     "id": "dlg_a1_oficina.q4",
+     "skill": "listening"
+    },
+    {
+     "type": "dictation",
+     "turn": "dlg_a1_oficina.t2",
+     "id": "dlg_a1_oficina.q5",
+     "skill": "listening"
+    }
+   ],
+   "source": "original-v1"
+  },
+  {
+   "id": "dlg_a1_llamada",
+   "level": "a1",
+   "unit": "a1_u6",
+   "lessons": [
+    "a1_u6_l3",
+    "a1_u6_l4"
+   ],
+   "title_es": "Una llamada para la señora Pérez",
+   "title_ar": "مكالمة للسيدة بيريث",
+   "scenario_ar": "عمر يتصل بشركة عميلة، والسكرتير يرد.",
+   "objectives_ar": [
+    "فهم الرد على مكالمة عمل",
+    "فهم أن الشخص غير موجود",
+    "فهم ما سيفعله المتصل"
+   ],
+   "speakers": [
+    {
+     "id": "secretario",
+     "name": "Secretario",
+     "role_ar": "سكرتير"
+    },
+    {
+     "id": "omar",
+     "name": "Omar",
+     "role_ar": "مندوب مبيعات"
+    }
+   ],
+   "turns": [
+    {
+     "id": "dlg_a1_llamada.t1",
+     "speaker": "secretario",
+     "es": "¿Dígame?",
+     "ar": "نعم؟",
+     "en": "Hello?"
+    },
+    {
+     "id": "dlg_a1_llamada.t2",
+     "speaker": "omar",
+     "es": "Buenos días. ¿Puedo hablar con la señora Pérez?",
+     "ar": "صباح الخير. هل يمكنني التحدث مع السيدة بيريث؟",
+     "en": "Good morning. May I speak with Mrs Pérez?"
+    },
+    {
+     "id": "dlg_a1_llamada.t3",
+     "speaker": "secretario",
+     "es": "¿De parte de quién?",
+     "ar": "من المتصل؟",
+     "en": "Who's calling?"
+    },
+    {
+     "id": "dlg_a1_llamada.t4",
+     "speaker": "omar",
+     "es": "De Omar Hassan, de Tecnosur.",
+     "ar": "عمر حسن، من تكنوسور.",
+     "en": "Omar Hassan, from Tecnosur."
+    },
+    {
+     "id": "dlg_a1_llamada.t5",
+     "speaker": "secretario",
+     "es": "Lo siento, ahora no está. ¿Quiere dejar un mensaje?",
+     "ar": "آسف، ليست موجودة الآن. هل تريد ترك رسالة؟",
+     "en": "Sorry, she's not in right now. Would you like to leave a message?"
+    },
+    {
+     "id": "dlg_a1_llamada.t6",
+     "speaker": "omar",
+     "es": "No, gracias. Voy a llamar más tarde.",
+     "ar": "لا، شكراً. سأتصل لاحقاً.",
+     "en": "No, thanks. I'll call later."
+    }
+   ],
+   "items": [
+    "digame",
+    "puedo_hablar",
+    "de_parte",
+    "lo_siento",
+    "ahora",
+    "no_esta",
+    "mensaje",
+    "voy_a",
+    "llamar",
+    "mas_tarde"
+   ],
+   "grammar": [
+    "g_phone",
+    "g_ir_a"
+   ],
+   "questions": [
+    {
+     "type": "choice",
+     "prompt_ar": "مع مَن يريد عمر أن يتحدث؟",
+     "choices": [
+      "السيدة بيريث",
+      "السيد غارثيا",
+      "السكرتير"
+     ],
+     "answer": 0,
+     "choices_es": false,
+     "turn": "dlg_a1_llamada.t2",
+     "id": "dlg_a1_llamada.q1",
+     "skill": "listening"
+    },
+    {
+     "type": "choice",
+     "prompt_ar": "لماذا لا يستطيع التحدث معها؟",
+     "choices": [
+      "ليست موجودة الآن",
+      "هي في اجتماع",
+      "الرقم خطأ"
+     ],
+     "answer": 0,
+     "choices_es": false,
+     "turn": "dlg_a1_llamada.t5",
+     "id": "dlg_a1_llamada.q2",
+     "skill": "listening"
+    },
+    {
+     "type": "choice",
+     "prompt_ar": "ماذا سيفعل عمر؟",
+     "choices": [
+      "سيتصل لاحقاً",
+      "سيترك رسالة",
+      "سيرسل بريداً"
+     ],
+     "answer": 0,
+     "choices_es": false,
+     "turn": "dlg_a1_llamada.t6",
+     "id": "dlg_a1_llamada.q3",
+     "skill": "listening"
+    },
+    {
+     "type": "speaker",
+     "turn": "dlg_a1_llamada.t3",
+     "id": "dlg_a1_llamada.q4",
+     "skill": "listening"
+    },
+    {
+     "type": "dictation",
+     "turn": "dlg_a1_llamada.t6",
+     "id": "dlg_a1_llamada.q5",
+     "skill": "listening"
+    }
+   ],
+   "source": "original-v1"
   }
  ]
 }

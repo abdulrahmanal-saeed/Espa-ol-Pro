@@ -39,7 +39,8 @@ Pre-A1 is a preparatory stage, not a DELE level.
 | | Daily routine and time (4 lessons) | ✅ available (content 1.2.0) |
 | | Food and shopping (4 lessons) | ✅ available (content 1.3.0) |
 | | City and basic travel (4 lessons) | ✅ available (content 1.3.0) |
-| | At the workplace | planned |
+| | At the workplace (4 lessons) | ✅ available (content 1.4.0) |
+| | **A1 level assessment** (24 questions, all six units) | ✅ available |
 | **A2** | Services · The past · Plans and future · Preferences and comparison · Simple work conversations | planned |
 | **B1** | Opinion and reasoning · Narration · Solving client problems · Professional correspondence | planned |
 | **B2** | Meetings · Presentations · Job interviews · Discovery and negotiation · Explaining technical services | planned |
@@ -82,6 +83,15 @@ no lessons and are never counted as progress.
 | 26 | Directions | 7 | a la derecha/izquierda; todo recto; del/al |
 | 27 | Transport | 8 | ir (voy/vas/va); ir a + place, en + vehicle |
 | 28 | At the hotel | 8 | tengo una reserva a nombre de…; pasaporte, llave |
+| 29 | My office | 7 | hay vs está; office equipment |
+| 30 | We and they | 8 | nosotros / ellos / ustedes forms (-amos, -an; tenemos, vamos) |
+| 31 | Emails and tasks | 7 | ir a + infinitive (near future); enviar, revisar, el informe |
+| 32 | A work phone call | 8 | ¿Dígame?; ¿De parte de quién?; no está; leaving a message |
+
+A1 is complete in content: 23 lessons over 6 units, closed by six unit
+checkpoints and the A1 level assessment `lvl_a1`, which opens only when every
+A1 lesson is completed. A present-tense **verb reference** (16 verbs, all six
+persons, regular forms machine-checked) is in Library → الأفعال.
 
 Totals: 101 items, 299 activities (172 graded), 14 grammar notes.
 
@@ -132,6 +142,9 @@ Accent: default voice es-MX (seseo); notes point out Castilian differences
 | `dlg_a1_pedido` | A1 | lessons 23–24 | Ordering catering with an invoice |
 | `dlg_a1_direccion` | A1 | lessons 25–26 | Asking the way to a client's office |
 | `dlg_a1_hotel` | A1 | lessons 27–28 | Business-trip hotel check-in |
+
+| `dlg_a1_oficina` | A1 | lessons 29–30 | Showing a new colleague around the office |
+| `dlg_a1_llamada` | A1 | lessons 31–32 | Calling a client company; leaving no message |
 
 Checkpoints `chk_a1_u4` and `chk_a1_u5` close the food and travel units.
 Checkpoints `chk_a1_u2` and `chk_a1_u3` (10 questions, 3 can-dos each) close

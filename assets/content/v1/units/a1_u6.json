@@ -1,0 +1,1274 @@
+{
+ "unit": "a1_u6",
+ "grammar": [
+  {
+   "id": "g_hay",
+   "title_ar": "hay (يوجد / توجد)",
+   "body_ar": "hay صيغة واحدة للمفرد والجمع: «يوجد / توجد».\nHay una impresora en la oficina. — توجد طابعة في المكتب.\nHay tres salas de reuniones. — توجد ثلاث قاعات اجتماعات.\n\nhay لوجود شيء غير محدّد (un / una / أرقام)؛ وestá لمكان شيء محدّد (el / la):\nHay un banco cerca. — يوجد بنك قريب.\nEl banco está cerca. — البنك (المعروف) قريب.",
+   "examples": [
+    {
+     "es": "¿Hay wifi en la oficina?",
+     "ar": "هل يوجد واي فاي في المكتب؟"
+    },
+    {
+     "es": "No hay papel en la impresora.",
+     "ar": "لا يوجد ورق في الطابعة."
+    }
+   ]
+  },
+  {
+   "id": "g_plural_present",
+   "title_ar": "المضارع مع nosotros وellos",
+   "body_ar": "أفعال ‎-ar: ‎-amos لـ nosotros (نحن)، ‎-an لـ ellos / ellas / ustedes (هم / حضراتكم).\ntrabajar: trabajamos · trabajan\ntener: tenemos · tienen\nir: vamos · van\nser: somos · son\n\nustedes تُستعمل مع صيغة ellos: ¿Ustedes trabajan aquí?\n(في إسبانيا يوجد أيضاً vosotros للجمع غير الرسمي؛ تجده في مرجع الأفعال.)",
+   "examples": [
+    {
+     "es": "Trabajamos en el mismo equipo.",
+     "ar": "نعمل في الفريق نفسه."
+    },
+    {
+     "es": "Ellos tienen una reunión a las diez.",
+     "ar": "عندهم اجتماع في العاشرة."
+    }
+   ]
+  },
+  {
+   "id": "g_ir_a",
+   "title_ar": "ir a + مصدر: المستقبل القريب",
+   "body_ar": "لما ستفعله قريباً: voy a / vas a / va a + المصدر.\nVoy a enviar el correo. — سأرسل البريد.\n¿Vas a revisar el informe? — هل ستراجع التقرير؟\n\nهذه أسهل طريقة للحديث عن المستقبل في المستوى A1.",
+   "examples": [
+    {
+     "es": "Vamos a terminar el proyecto el viernes.",
+     "ar": "سننهي المشروع يوم الجمعة."
+    },
+    {
+     "es": "Voy a llamar al cliente más tarde.",
+     "ar": "سأتصل بالعميل لاحقاً."
+    }
+   ]
+  },
+  {
+   "id": "g_phone",
+   "title_ar": "على الهاتف",
+   "body_ar": "للرد (في إسبانيا): ¿Dígame? أو ¿Sí? — وفي أمريكا اللاتينية: ¿Aló? أو ¿Bueno?\nلطلب شخص: ¿Puedo hablar con…, por favor?\nالسكرتير قد يسأل: ¿De parte de quién? (من المتصل؟)\nإن لم يكن موجوداً: No está en este momento. ¿Quiere dejar un mensaje?\n\nعلى الهاتف المهني يُستعمل usted دائماً تقريباً.",
+   "examples": [
+    {
+     "es": "Buenos días, ¿puedo hablar con la señora Pérez?",
+     "ar": "صباح الخير، هل يمكنني التحدث مع السيدة بيريث؟"
+    },
+    {
+     "es": "Un momento, por favor.",
+     "ar": "لحظة من فضلك."
+    }
+   ]
+  }
+ ],
+ "lessons": [
+  {
+   "id": "a1_u6_l1",
+   "title_ar": "مكتبي",
+   "title_es": "Mi oficina",
+   "objectives_ar": [
+    "وصف مكان العمل بـ hay",
+    "تسمية أدوات المكتب",
+    "التمييز بين hay وestá"
+   ],
+   "prerequisites": [
+    "a1_u5_l4"
+   ],
+   "minutes": 15,
+   "work_relevance_ar": "وصف مكتبك أو تجهيزات قاعة الاجتماع لزائر.",
+   "source": "original-v1",
+   "grammar": [
+    "g_hay"
+   ],
+   "items": [
+    {
+     "id": "hay",
+     "es": "hay",
+     "ar": "يوجد / توجد",
+     "en": "there is / there are",
+     "pos": "فعل",
+     "examples": [
+      {
+       "es": "Hay una impresora aquí.",
+       "ar": "توجد طابعة هنا."
+      }
+     ],
+     "connections": [
+      {
+       "type": "grammar",
+       "ar": "صيغة واحدة للمفرد والجمع، مثل «يوجد / توجد»."
+      }
+     ]
+    },
+    {
+     "id": "ordenador",
+     "es": "el ordenador",
+     "ar": "الحاسوب",
+     "en": "computer",
+     "pos": "اسم",
+     "examples": [
+      {
+       "es": "Mi ordenador es nuevo.",
+       "ar": "حاسوبي جديد."
+      }
+     ],
+     "note_ar": "في أمريكا اللاتينية: la computadora.",
+     "alt": [
+      "la computadora"
+     ],
+     "work": true
+    },
+    {
+     "id": "impresora",
+     "es": "la impresora",
+     "ar": "الطابعة",
+     "en": "printer",
+     "pos": "اسم",
+     "examples": [
+      {
+       "es": "La impresora no funciona.",
+       "ar": "الطابعة لا تعمل."
+      }
+     ],
+     "work": true
+    },
+    {
+     "id": "escritorio",
+     "es": "el escritorio",
+     "ar": "المكتب (قطعة الأثاث)",
+     "en": "desk",
+     "pos": "اسم",
+     "examples": [
+      {
+       "es": "El informe está en mi escritorio.",
+       "ar": "التقرير على مكتبي."
+      }
+     ],
+     "work": true,
+     "connections": [
+      {
+       "type": "usage",
+       "ar": "la oficina = مكان العمل؛ el escritorio = الطاولة التي تعمل عليها."
+      }
+     ]
+    },
+    {
+     "id": "sala_reuniones",
+     "es": "la sala de reuniones",
+     "ar": "قاعة الاجتماعات",
+     "en": "meeting room",
+     "pos": "اسم",
+     "examples": [
+      {
+       "es": "La sala de reuniones está a la izquierda.",
+       "ar": "قاعة الاجتماعات على اليسار."
+      }
+     ],
+     "work": true
+    },
+    {
+     "id": "documento",
+     "es": "el documento",
+     "ar": "المستند",
+     "en": "document",
+     "pos": "اسم",
+     "examples": [
+      {
+       "es": "Necesito el documento hoy.",
+       "ar": "أحتاج المستند اليوم."
+      }
+     ],
+     "work": true,
+     "connections": [
+      {
+       "type": "cognate",
+       "ar": "قريبة من الإنجليزية document."
+      }
+     ]
+    },
+    {
+     "id": "nuevo",
+     "es": "nuevo",
+     "ar": "جديد",
+     "en": "new",
+     "pos": "صفة",
+     "examples": [
+      {
+       "es": "Tenemos una oficina nueva.",
+       "ar": "عندنا مكتب جديد."
+      }
+     ],
+     "note_ar": "للمؤنث: nueva.",
+     "alt": [
+      "nueva"
+     ]
+    }
+   ],
+   "activities": [
+    {
+     "type": "teach",
+     "item": "hay"
+    },
+    {
+     "type": "mcq_meaning",
+     "item": "hay"
+    },
+    {
+     "type": "note",
+     "title_ar": "hay أم está؟",
+     "body_ar": "hay + شيء غير محدّد: Hay una impresora. — توجد طابعة.\nestá + شيء محدّد: La impresora está aquí. — الطابعة هنا.\n\nلا تقل: Hay la impresora.",
+     "examples": [
+      {
+       "es": "Hay dos salas de reuniones.",
+       "ar": "توجد قاعتا اجتماعات."
+      }
+     ]
+    },
+    {
+     "type": "teach",
+     "item": "ordenador"
+    },
+    {
+     "type": "teach",
+     "item": "impresora"
+    },
+    {
+     "type": "teach",
+     "item": "escritorio"
+    },
+    {
+     "type": "mcq_meaning",
+     "item": "ordenador"
+    },
+    {
+     "type": "listen_choose",
+     "item": "impresora"
+    },
+    {
+     "type": "listen_pick_es",
+     "item": "escritorio"
+    },
+    {
+     "type": "choice",
+     "prompt_ar": "أي جملة صحيحة؟",
+     "choices": [
+      "Hay una impresora en la oficina.",
+      "Hay la impresora en la oficina.",
+      "Está una impresora en la oficina."
+     ],
+     "answer": 0,
+     "skill": "grammar",
+     "choices_es": true,
+     "explain_ar": "hay مع غير المحدّد (una)."
+    },
+    {
+     "type": "teach",
+     "item": "sala_reuniones"
+    },
+    {
+     "type": "teach",
+     "item": "documento"
+    },
+    {
+     "type": "teach",
+     "item": "nuevo"
+    },
+    {
+     "type": "mcq_meaning",
+     "item": "sala_reuniones"
+    },
+    {
+     "type": "listen_choose",
+     "item": "documento"
+    },
+    {
+     "type": "mcq_reverse",
+     "item": "nuevo"
+    },
+    {
+     "type": "fill",
+     "es": "En mi oficina ___ tres ordenadores.",
+     "answer": "hay",
+     "ar": "في مكتبي توجد ثلاثة حواسيب.",
+     "options": [
+      "hay",
+      "está",
+      "es"
+     ],
+     "explain_ar": "لوجود أشياء غير محدّدة: hay."
+    },
+    {
+     "type": "match",
+     "items": [
+      "ordenador",
+      "impresora",
+      "escritorio",
+      "documento"
+     ]
+    },
+    {
+     "type": "type_es",
+     "item": "hay"
+    },
+    {
+     "type": "type_es",
+     "item": "impresora"
+    },
+    {
+     "type": "order",
+     "es": "Hay una sala de reuniones a la derecha.",
+     "ar": "توجد قاعة اجتماعات على اليمين."
+    },
+    {
+     "type": "dictation",
+     "es": "El documento está en mi escritorio.",
+     "ar": "المستند على مكتبي."
+    },
+    {
+     "type": "choice",
+     "prompt_ar": "كم قاعة اجتماعات في المكتب الجديد؟",
+     "choices": [
+      "اثنتان",
+      "واحدة",
+      "ثلاث"
+     ],
+     "answer": 0,
+     "skill": "reading",
+     "choices_es": false,
+     "stimulus_es": "Nuestra oficina nueva es grande. Hay veinte escritorios, dos salas de reuniones y una impresora nueva."
+    },
+    {
+     "type": "respond",
+     "prompt_ar": "زائر يسأل: «¿Hay una impresora aquí?». قل نعم، على اليسار.",
+     "accepted": [
+      "Sí, está a la izquierda",
+      "Sí, a la izquierda",
+      "Sí, hay una a la izquierda",
+      "Sí, hay una impresora a la izquierda"
+     ],
+     "audio_es": "¿Hay una impresora aquí?"
+    },
+    {
+     "type": "speak",
+     "es": "En mi oficina hay un escritorio, un ordenador y una impresora.",
+     "ar": "في مكتبي يوجد مكتب وحاسوب وطابعة."
+    }
+   ]
+  },
+  {
+   "id": "a1_u6_l2",
+   "title_ar": "نحن الفريق",
+   "title_es": "Nosotros y ellos",
+   "objectives_ar": [
+    "تصريف الأفعال مع nosotros وellos",
+    "وصف ما يفعله الفريق",
+    "استعمال ustedes مع العملاء"
+   ],
+   "prerequisites": [
+    "a1_u6_l1"
+   ],
+   "minutes": 15,
+   "work_relevance_ar": "الحديث عن فريقك وشركتك بصيغة الجمع.",
+   "source": "original-v1",
+   "grammar": [
+    "g_plural_present"
+   ],
+   "items": [
+    {
+     "id": "nosotros",
+     "es": "nosotros",
+     "ar": "نحن",
+     "en": "we",
+     "pos": "ضمير",
+     "examples": [
+      {
+       "es": "Nosotros trabajamos en ventas.",
+       "ar": "نحن نعمل في المبيعات."
+      }
+     ],
+     "note_ar": "للمؤنث: nosotras.",
+     "alt": [
+      "nosotras"
+     ]
+    },
+    {
+     "id": "ellos",
+     "es": "ellos",
+     "ar": "هم",
+     "en": "they",
+     "pos": "ضمير",
+     "examples": [
+      {
+       "es": "Ellos son nuestros clientes.",
+       "ar": "هم عملاؤنا."
+      }
+     ],
+     "note_ar": "للمؤنث: ellas.",
+     "alt": [
+      "ellas"
+     ]
+    },
+    {
+     "id": "ustedes",
+     "es": "ustedes",
+     "ar": "حضراتكم / أنتم",
+     "en": "you (plural)",
+     "pos": "ضمير",
+     "examples": [
+      {
+       "es": "¿Ustedes trabajan aquí?",
+       "ar": "هل حضراتكم تعملون هنا؟"
+      }
+     ],
+     "connections": [
+      {
+       "type": "grammar",
+       "ar": "ustedes يأخذ صيغة ellos: trabajan، tienen، van."
+      }
+     ]
+    },
+    {
+     "id": "trabajamos",
+     "es": "trabajamos",
+     "ar": "نعمل",
+     "en": "we work",
+     "pos": "فعل",
+     "examples": [
+      {
+       "es": "Trabajamos de lunes a viernes.",
+       "ar": "نعمل من الاثنين إلى الجمعة."
+      }
+     ],
+     "work": true
+    },
+    {
+     "id": "trabajan",
+     "es": "trabajan",
+     "ar": "يعملون / حضراتكم تعملون",
+     "en": "they work",
+     "pos": "فعل",
+     "examples": [
+      {
+       "es": "Ellos trabajan en Madrid.",
+       "ar": "هم يعملون في مدريد."
+      }
+     ],
+     "work": true
+    },
+    {
+     "id": "tenemos",
+     "es": "tenemos",
+     "ar": "عندنا",
+     "en": "we have",
+     "pos": "فعل",
+     "examples": [
+      {
+       "es": "Tenemos una reunión a las diez.",
+       "ar": "عندنا اجتماع في العاشرة."
+      }
+     ]
+    },
+    {
+     "id": "vamos",
+     "es": "vamos",
+     "ar": "نذهب",
+     "en": "we go",
+     "pos": "فعل",
+     "examples": [
+      {
+       "es": "Vamos a la sala de reuniones.",
+       "ar": "نذهب إلى قاعة الاجتماعات."
+      }
+     ]
+    },
+    {
+     "id": "proyecto",
+     "es": "el proyecto",
+     "ar": "المشروع",
+     "en": "project",
+     "pos": "اسم",
+     "examples": [
+      {
+       "es": "Es un proyecto importante.",
+       "ar": "إنه مشروع مهم."
+      }
+     ],
+     "work": true,
+     "connections": [
+      {
+       "type": "cognate",
+       "ar": "قريبة من الإنجليزية project."
+      }
+     ]
+    }
+   ],
+   "activities": [
+    {
+     "type": "teach",
+     "item": "nosotros"
+    },
+    {
+     "type": "teach",
+     "item": "ellos"
+    },
+    {
+     "type": "teach",
+     "item": "ustedes"
+    },
+    {
+     "type": "mcq_meaning",
+     "item": "nosotros"
+    },
+    {
+     "type": "listen_pick_es",
+     "item": "ellos"
+    },
+    {
+     "type": "mcq_reverse",
+     "item": "ustedes"
+    },
+    {
+     "type": "teach",
+     "item": "trabajamos"
+    },
+    {
+     "type": "teach",
+     "item": "trabajan"
+    },
+    {
+     "type": "note",
+     "title_ar": "‎-amos و‎-an",
+     "body_ar": "trabajar: (nosotros) trabajamos · (ellos / ustedes) trabajan\nhablar: hablamos · hablan\n\nوالشاذّة:\ntener: tenemos · tienen\nir: vamos · van\nser: somos · son",
+     "examples": [
+      {
+       "es": "¿Ustedes hablan inglés? — Sí, hablamos inglés.",
+       "ar": "هل حضراتكم تتكلمون الإنجليزية؟ — نعم، نتكلم الإنجليزية."
+      }
+     ]
+    },
+    {
+     "type": "listen_choose",
+     "item": "trabajamos"
+    },
+    {
+     "type": "mcq_meaning",
+     "item": "trabajan"
+    },
+    {
+     "type": "teach",
+     "item": "tenemos"
+    },
+    {
+     "type": "teach",
+     "item": "vamos"
+    },
+    {
+     "type": "teach",
+     "item": "proyecto"
+    },
+    {
+     "type": "listen_pick_es",
+     "item": "tenemos"
+    },
+    {
+     "type": "mcq_meaning",
+     "item": "vamos"
+    },
+    {
+     "type": "listen_choose",
+     "item": "proyecto"
+    },
+    {
+     "type": "fill",
+     "es": "Nosotros ___ en el mismo equipo.",
+     "answer": "trabajamos",
+     "ar": "نعمل في الفريق نفسه.",
+     "options": [
+      "trabajamos",
+      "trabajan",
+      "trabajo"
+     ],
+     "explain_ar": "مع nosotros: ‎-amos."
+    },
+    {
+     "type": "fill",
+     "es": "¿Ustedes ___ una reunión hoy?",
+     "answer": "tienen",
+     "ar": "هل عند حضراتكم اجتماع اليوم؟",
+     "options": [
+      "tienen",
+      "tenemos",
+      "tiene"
+     ],
+     "explain_ar": "ustedes يأخذ صيغة ellos: tienen."
+    },
+    {
+     "type": "choice",
+     "prompt_ar": "كيف تسأل مجموعة عملاء «هل تعملون في مدريد؟» بأدب؟",
+     "choices": [
+      "¿Ustedes trabajan en Madrid?",
+      "¿Ustedes trabajamos en Madrid?",
+      "¿Usted trabajan en Madrid?"
+     ],
+     "answer": 0,
+     "skill": "grammar",
+     "choices_es": true,
+     "explain_ar": "ustedes + صيغة ellos: trabajan."
+    },
+    {
+     "type": "match",
+     "items": [
+      "nosotros",
+      "ellos",
+      "tenemos",
+      "proyecto"
+     ]
+    },
+    {
+     "type": "type_es",
+     "item": "vamos"
+    },
+    {
+     "type": "type_es",
+     "item": "proyecto"
+    },
+    {
+     "type": "order",
+     "es": "Tenemos un proyecto nuevo con ellos.",
+     "ar": "عندنا مشروع جديد معهم."
+    },
+    {
+     "type": "dictation",
+     "es": "Nosotros trabajamos de lunes a viernes.",
+     "ar": "نحن نعمل من الاثنين إلى الجمعة."
+    },
+    {
+     "type": "choice",
+     "prompt_ar": "أين يعمل فريق لاورا؟",
+     "choices": [
+      "في مدريد",
+      "في القاهرة",
+      "في المكسيك"
+     ],
+     "answer": 0,
+     "skill": "reading",
+     "choices_es": false,
+     "stimulus_es": "Somos un equipo de seis personas. Trabajamos en Madrid, pero nuestros clientes están en México y en Egipto. Tenemos reuniones todos los lunes."
+    },
+    {
+     "type": "respond",
+     "prompt_ar": "عميل يسأل: «¿Ustedes trabajan los sábados?». أجب: لا، نعمل من الاثنين إلى الجمعة.",
+     "accepted": [
+      "No, trabajamos de lunes a viernes",
+      "No, de lunes a viernes",
+      "No, nosotros trabajamos de lunes a viernes"
+     ],
+     "audio_es": "¿Ustedes trabajan los sábados?"
+    },
+    {
+     "type": "speak",
+     "es": "Somos un equipo pequeño. Trabajamos en un proyecto nuevo y tenemos muchos clientes.",
+     "ar": "نحن فريق صغير. نعمل على مشروع جديد وعندنا عملاء كثيرون."
+    }
+   ]
+  },
+  {
+   "id": "a1_u6_l3",
+   "title_ar": "البريد والمهام",
+   "title_es": "Correos y tareas",
+   "objectives_ar": [
+    "الحديث عن المهام القريبة بـ voy a + مصدر",
+    "مفردات البريد الإلكتروني",
+    "ترتيب مهام اليوم"
+   ],
+   "prerequisites": [
+    "a1_u6_l2"
+   ],
+   "minutes": 15,
+   "work_relevance_ar": "إخبار مديرك بما ستنجزه اليوم.",
+   "source": "original-v1",
+   "grammar": [
+    "g_ir_a"
+   ],
+   "items": [
+    {
+     "id": "voy_a",
+     "es": "voy a…",
+     "ar": "سـ… (سأفعل)",
+     "en": "I'm going to…",
+     "pos": "تعبير",
+     "examples": [
+      {
+       "es": "Voy a enviar el informe.",
+       "ar": "سأرسل التقرير."
+      }
+     ],
+     "work": true,
+     "connections": [
+      {
+       "type": "grammar",
+       "ar": "ir a + مصدر = المستقبل القريب، مثل «سـ» أو «سوف»."
+      }
+     ]
+    },
+    {
+     "id": "correo",
+     "es": "el correo",
+     "ar": "البريد (الإلكتروني)",
+     "en": "email",
+     "pos": "اسم",
+     "examples": [
+      {
+       "es": "Tengo muchos correos hoy.",
+       "ar": "عندي رسائل بريد كثيرة اليوم."
+      }
+     ],
+     "note_ar": "كاملة: el correo electrónico. وتسمع أيضاً: el email.",
+     "work": true
+    },
+    {
+     "id": "enviar",
+     "es": "enviar",
+     "ar": "يرسل (مصدر)",
+     "en": "to send",
+     "pos": "فعل",
+     "examples": [
+      {
+       "es": "Voy a enviar el correo ahora.",
+       "ar": "سأرسل البريد الآن."
+      }
+     ],
+     "work": true
+    },
+    {
+     "id": "revisar",
+     "es": "revisar",
+     "ar": "يراجع (مصدر)",
+     "en": "to review, to check",
+     "pos": "فعل",
+     "examples": [
+      {
+       "es": "Voy a revisar el documento.",
+       "ar": "سأراجع المستند."
+      }
+     ],
+     "work": true,
+     "connections": [
+      {
+       "type": "false_friend",
+       "ar": "revisar = يراجع ويتحقق، وليس «يعدّل» (revise) دائماً."
+      }
+     ]
+    },
+    {
+     "id": "informe",
+     "es": "el informe",
+     "ar": "التقرير",
+     "en": "report",
+     "pos": "اسم",
+     "examples": [
+      {
+       "es": "El informe es para el viernes.",
+       "ar": "التقرير مطلوب يوم الجمعة."
+      }
+     ],
+     "work": true
+    },
+    {
+     "id": "tarea",
+     "es": "la tarea",
+     "ar": "المهمة",
+     "en": "task",
+     "pos": "اسم",
+     "examples": [
+      {
+       "es": "Tengo tres tareas para hoy.",
+       "ar": "عندي ثلاث مهام لليوم."
+      }
+     ],
+     "work": true
+    },
+    {
+     "id": "mas_tarde",
+     "es": "más tarde",
+     "ar": "لاحقاً",
+     "en": "later",
+     "pos": "تعبير",
+     "examples": [
+      {
+       "es": "Voy a llamar más tarde.",
+       "ar": "سأتصل لاحقاً."
+      }
+     ],
+     "connections": [
+      {
+       "type": "grammar",
+       "ar": "más (أكثر) بعلامة نبر، وmas بدونها كلمة نادرة بمعنى «لكن»."
+      }
+     ]
+    }
+   ],
+   "activities": [
+    {
+     "type": "teach",
+     "item": "voy_a"
+    },
+    {
+     "type": "mcq_meaning",
+     "item": "voy_a"
+    },
+    {
+     "type": "note",
+     "title_ar": "ir a + مصدر",
+     "body_ar": "voy a enviar — سأرسل\nvas a revisar — سترسل / ستراجع\nva a llamar — سيتصل\nvamos a terminar — سننهي\n\nالفعل الثاني يبقى بالمصدر (‎-ar / ‎-er / ‎-ir).",
+     "examples": [
+      {
+       "es": "¿Qué vas a hacer hoy?",
+       "ar": "ماذا ستفعل اليوم؟"
+      }
+     ]
+    },
+    {
+     "type": "teach",
+     "item": "correo"
+    },
+    {
+     "type": "teach",
+     "item": "enviar"
+    },
+    {
+     "type": "teach",
+     "item": "revisar"
+    },
+    {
+     "type": "listen_pick_es",
+     "item": "correo"
+    },
+    {
+     "type": "mcq_meaning",
+     "item": "enviar"
+    },
+    {
+     "type": "listen_choose",
+     "item": "revisar"
+    },
+    {
+     "type": "teach",
+     "item": "informe"
+    },
+    {
+     "type": "teach",
+     "item": "tarea"
+    },
+    {
+     "type": "teach",
+     "item": "mas_tarde"
+    },
+    {
+     "type": "mcq_meaning",
+     "item": "informe"
+    },
+    {
+     "type": "listen_choose",
+     "item": "tarea"
+    },
+    {
+     "type": "mcq_reverse",
+     "item": "mas_tarde"
+    },
+    {
+     "type": "fill",
+     "es": "Hoy voy a ___ el informe.",
+     "answer": "enviar",
+     "ar": "اليوم سأرسل التقرير.",
+     "options": [
+      "enviar",
+      "envío",
+      "envía"
+     ],
+     "explain_ar": "بعد voy a يأتي المصدر."
+    },
+    {
+     "type": "choice",
+     "prompt_ar": "كيف تقول «سنراجع التقرير يوم الجمعة»؟",
+     "choices": [
+      "Vamos a revisar el informe el viernes.",
+      "Vamos revisar el informe el viernes.",
+      "Vamos a revisamos el informe el viernes."
+     ],
+     "answer": 0,
+     "skill": "grammar",
+     "choices_es": true,
+     "explain_ar": "ir a + مصدر: vamos a revisar."
+    },
+    {
+     "type": "match",
+     "items": [
+      "correo",
+      "informe",
+      "tarea",
+      "mas_tarde"
+     ]
+    },
+    {
+     "type": "type_es",
+     "item": "correo"
+    },
+    {
+     "type": "type_es",
+     "item": "informe"
+    },
+    {
+     "type": "order",
+     "es": "Voy a enviar el correo más tarde.",
+     "ar": "سأرسل البريد لاحقاً."
+    },
+    {
+     "type": "dictation",
+     "es": "Voy a revisar el informe hoy.",
+     "ar": "سأراجع التقرير اليوم."
+    },
+    {
+     "type": "choice",
+     "prompt_ar": "ماذا سيفعل كريم أولاً؟",
+     "choices": [
+      "يراجع التقرير",
+      "يرسل البريد",
+      "يتصل بالعميل"
+     ],
+     "answer": 0,
+     "skill": "reading",
+     "choices_es": false,
+     "stimulus_es": "Hoy tengo tres tareas. Primero voy a revisar el informe. Después voy a enviar los correos. Y más tarde voy a llamar a un cliente."
+    },
+    {
+     "type": "respond",
+     "prompt_ar": "مديرك يسأل: «¿Vas a enviar el informe hoy?». أجب: نعم، سأرسله لاحقاً.",
+     "accepted": [
+      "Sí, voy a enviar el informe más tarde",
+      "Sí, más tarde",
+      "Sí, voy a enviarlo más tarde",
+      "Sí, lo voy a enviar más tarde",
+      "Sí, voy a enviar el informe hoy más tarde"
+     ],
+     "audio_es": "¿Vas a enviar el informe hoy?"
+    },
+    {
+     "type": "speak",
+     "es": "Hoy voy a revisar el informe y voy a enviar los correos.",
+     "ar": "اليوم سأراجع التقرير وسأرسل الرسائل."
+    }
+   ]
+  },
+  {
+   "id": "a1_u6_l4",
+   "title_ar": "مكالمة عمل",
+   "title_es": "Una llamada de trabajo",
+   "objectives_ar": [
+    "الرد على مكالمة عمل بسيطة",
+    "طلب التحدث مع شخص",
+    "أخذ رسالة أو تركها"
+   ],
+   "prerequisites": [
+    "a1_u6_l3"
+   ],
+   "minutes": 15,
+   "work_relevance_ar": "الرد على هاتف المكتب وتحويل المكالمة أو أخذ رسالة.",
+   "source": "original-v1",
+   "grammar": [
+    "g_phone",
+    "g_ir_a"
+   ],
+   "items": [
+    {
+     "id": "digame",
+     "es": "¿Dígame?",
+     "ar": "نعم؟ تفضّل (للرد على الهاتف)",
+     "en": "Hello? (answering the phone)",
+     "pos": "تعبير",
+     "examples": [
+      {
+       "es": "¿Dígame? — Hola, soy Laura.",
+       "ar": "نعم؟ — مرحباً، أنا لاورا."
+      }
+     ],
+     "note_ar": "في إسبانيا. وفي أمريكا اللاتينية: ¿Aló? أو ¿Bueno?",
+     "work": true
+    },
+    {
+     "id": "puedo_hablar",
+     "es": "¿Puedo hablar con…?",
+     "ar": "هل يمكنني التحدث مع…؟",
+     "en": "May I speak with…?",
+     "pos": "سؤال",
+     "examples": [
+      {
+       "es": "¿Puedo hablar con el señor García?",
+       "ar": "هل يمكنني التحدث مع السيد غارثيا؟"
+      }
+     ],
+     "work": true
+    },
+    {
+     "id": "de_parte",
+     "es": "¿De parte de quién?",
+     "ar": "من المتصل؟",
+     "en": "Who's calling?",
+     "pos": "سؤال",
+     "examples": [
+      {
+       "es": "¿De parte de quién? — De Omar Hassan.",
+       "ar": "من المتصل؟ — عمر حسن."
+      }
+     ],
+     "work": true,
+     "connections": [
+      {
+       "type": "usage",
+       "ar": "حرفياً «من طرف مَن؟». quién = مَن."
+      }
+     ]
+    },
+    {
+     "id": "un_momento",
+     "es": "un momento",
+     "ar": "لحظة",
+     "en": "one moment",
+     "pos": "تعبير",
+     "examples": [
+      {
+       "es": "Un momento, por favor.",
+       "ar": "لحظة من فضلك."
+      }
+     ]
+    },
+    {
+     "id": "no_esta",
+     "es": "no está",
+     "ar": "ليس موجوداً",
+     "en": "is not in",
+     "pos": "تعبير",
+     "examples": [
+      {
+       "es": "Lo siento, la señora Pérez no está.",
+       "ar": "آسف، السيدة بيريث ليست موجودة."
+      }
+     ],
+     "work": true
+    },
+    {
+     "id": "mensaje",
+     "es": "el mensaje",
+     "ar": "الرسالة",
+     "en": "message",
+     "pos": "اسم",
+     "examples": [
+      {
+       "es": "¿Quiere dejar un mensaje?",
+       "ar": "هل تريد حضرتك ترك رسالة؟"
+      }
+     ],
+     "work": true,
+     "connections": [
+      {
+       "type": "cognate",
+       "ar": "قريبة من الإنجليزية message."
+      }
+     ]
+    },
+    {
+     "id": "llamar",
+     "es": "llamar",
+     "ar": "يتصل (مصدر)",
+     "en": "to call",
+     "pos": "فعل",
+     "examples": [
+      {
+       "es": "Voy a llamar más tarde.",
+       "ar": "سأتصل لاحقاً."
+      }
+     ],
+     "work": true,
+     "connections": [
+      {
+       "type": "grammar",
+       "ar": "تعرف منها me llamo: «أُسمّى نفسي». llamar = ينادي / يتصل."
+      }
+     ]
+    },
+    {
+     "id": "ahora",
+     "es": "ahora",
+     "ar": "الآن",
+     "en": "now",
+     "pos": "ظرف",
+     "examples": [
+      {
+       "es": "Ahora no está.",
+       "ar": "الآن ليس موجوداً."
+      }
+     ]
+    }
+   ],
+   "activities": [
+    {
+     "type": "teach",
+     "item": "digame"
+    },
+    {
+     "type": "teach",
+     "item": "puedo_hablar"
+    },
+    {
+     "type": "mcq_meaning",
+     "item": "puedo_hablar"
+    },
+    {
+     "type": "listen_pick_es",
+     "item": "digame"
+    },
+    {
+     "type": "teach",
+     "item": "de_parte"
+    },
+    {
+     "type": "teach",
+     "item": "un_momento"
+    },
+    {
+     "type": "mcq_meaning",
+     "item": "de_parte"
+    },
+    {
+     "type": "listen_choose",
+     "item": "un_momento"
+    },
+    {
+     "type": "note",
+     "title_ar": "مكالمة عمل قصيرة",
+     "body_ar": "— ¿Dígame?\n— Buenos días. ¿Puedo hablar con la señora Pérez?\n— ¿De parte de quién?\n— De Omar Hassan, de Tecnosur.\n— Un momento, por favor.\n\nإن لم تكن موجودة: Lo siento, ahora no está. ¿Quiere dejar un mensaje?",
+     "examples": [
+      {
+       "es": "Voy a llamar más tarde, gracias.",
+       "ar": "سأتصل لاحقاً، شكراً."
+      }
+     ]
+    },
+    {
+     "type": "teach",
+     "item": "no_esta"
+    },
+    {
+     "type": "teach",
+     "item": "mensaje"
+    },
+    {
+     "type": "teach",
+     "item": "llamar"
+    },
+    {
+     "type": "teach",
+     "item": "ahora"
+    },
+    {
+     "type": "mcq_meaning",
+     "item": "no_esta"
+    },
+    {
+     "type": "listen_choose",
+     "item": "mensaje"
+    },
+    {
+     "type": "mcq_reverse",
+     "item": "llamar"
+    },
+    {
+     "type": "listen_pick_es",
+     "item": "ahora"
+    },
+    {
+     "type": "choice",
+     "prompt_ar": "السكرتيرة تسألك: «¿De parte de quién?». ماذا تقول؟",
+     "choices": [
+      "De Omar Hassan, de Tecnosur.",
+      "Un momento, por favor.",
+      "No está."
+     ],
+     "answer": 0,
+     "skill": "grammar",
+     "choices_es": true,
+     "explain_ar": "تسأل عن اسمك: «من طرف عمر حسن»."
+    },
+    {
+     "type": "fill",
+     "es": "Lo siento, el señor García no ___ ahora.",
+     "answer": "está",
+     "ar": "آسف، السيد غارثيا ليس موجوداً الآن.",
+     "options": [
+      "está",
+      "es",
+      "hay"
+     ],
+     "explain_ar": "للوجود في مكان: estar."
+    },
+    {
+     "type": "match",
+     "items": [
+      "un_momento",
+      "mensaje",
+      "llamar",
+      "ahora"
+     ]
+    },
+    {
+     "type": "type_es",
+     "item": "mensaje"
+    },
+    {
+     "type": "type_es",
+     "item": "ahora"
+    },
+    {
+     "type": "order",
+     "es": "¿Puedo hablar con la señora Pérez, por favor?",
+     "ar": "هل يمكنني التحدث مع السيدة بيريث من فضلك؟"
+    },
+    {
+     "type": "dictation",
+     "es": "Voy a llamar más tarde.",
+     "ar": "سأتصل لاحقاً."
+    },
+    {
+     "type": "choice",
+     "prompt_ar": "ماذا سيفعل عمر؟",
+     "choices": [
+      "سيتصل لاحقاً",
+      "سيترك رسالة",
+      "سينتظر على الخط"
+     ],
+     "answer": 0,
+     "skill": "reading",
+     "choices_es": false,
+     "stimulus_es": "— ¿Dígame?\n— Buenos días. ¿Puedo hablar con el señor García?\n— Lo siento, ahora no está. ¿Quiere dejar un mensaje?\n— No, gracias. Voy a llamar más tarde."
+    },
+    {
+     "type": "respond",
+     "prompt_ar": "ترد على هاتف المكتب، والمتصل يطلب مديرك وهو غير موجود. قل: آسف، ليس موجوداً الآن.",
+     "accepted": [
+      "Lo siento, ahora no está",
+      "Lo siento, no está ahora",
+      "Lo siento, no está",
+      "Ahora no está",
+      "Lo siento, ahora no está. ¿Quiere dejar un mensaje?"
+     ]
+    },
+    {
+     "type": "speak",
+     "es": "Buenos días. ¿Puedo hablar con la señora Pérez, por favor? Soy Omar Hassan.",
+     "ar": "صباح الخير. هل يمكنني التحدث مع السيدة بيريث من فضلك؟ أنا عمر حسن."
+    }
+   ]
+  }
+ ]
+}

@@ -3,6 +3,178 @@
 owner: Claude Code
 implementer: Claude Code
 handoff_status: READY_FOR_REVIEW
+handoff_id: PHASE1-014
+updated_at_utc: 2026-11-17T15:00:00Z
+review_requested_for_sha: main after the PR #11 merge (application code unchanged since 9ddc13a / 9f86876 / 011fecb)
+branch: main
+last_review_acknowledged: REVIEW-010
+project_status: PHASE_1_2_AND_A1_CONTENT_MERGED_BY_OWNER__REVIEW_OF_REVIEW_009_FIXES_PENDING__DEVICE_AND_NATIVE_QA_PENDING
+
+## Merged with the owner's explicit authorization
+
+On 2026-11-17 the owner said, in this session, to merge everything. PRs
+#7 → #8 → #9 → #10 → #11 were merged into `main` in that order, using merge
+commits and no force-push. Each stacked PR was retargeted to `main` after its
+predecessor merged and updated with `main` first. The only conflict each
+time was this file, where the branch's own handoff was kept. The full test
+suite was run locally before every merge.
+
+| PR | Merge commit | Contents |
+|---|---|---|
+| #7 | `bc9692f` | 1.2B checkpoints + REVIEW-008/009 fixes |
+| #8 | `8b9b97b` | 1.2C answer diagnosis, difficulty estimator |
+| #9 | `afaca8c` | A1-U2/U3 |
+| #10 | `dd57357` | A1-U4/U5 |
+| #11 | (this merge) | A1-U6, verb reference, A1 level assessment |
+
+**Honest status**
+
+- **REVIEW-009 fixes not yet reviewed.** REVIEW-010 kept CHANGES_REQUESTED
+  for the REVIEW-009 P2/P3. Both were fixed afterwards (`9ddc13a`,
+  `9f86876`, handoff PHASE1-013, all five PR CIs green). They have **not**
+  been independently re-reviewed; the owner chose to merge before that
+  review. Please review them on `main`. Any finding will be fixed in a new PR.
+- **Not done or claimed:**
+  - native Spanish review;
+  - device acceptance (Phase 1.1 and 1.2);
+  - A1 "completion" in any certification sense.
+
+## Request for review
+
+1. The REVIEW-009 P2 fix: `lib/core/speech/delivery_log.dart`, the
+   `DialogueQuestionsScreen.onAttempt` change, and
+   `ProgressRepository.recordAttempt(measured:)`.
+2. The REVIEW-009 P3 fix: `AppDatabase._ensureOneAnswerPerQuestion`.
+3. CI on `main` after this merge.
+
+---
+
+# Previous handoff (PHASE1-012, PRs #10/#11)
+
+
+owner: Claude Code
+implementer: Claude Code
+handoff_status: READY_FOR_REVIEW
+handoff_id: PHASE1-012
+updated_at_utc: 2026-11-17T13:00:00Z
+review_requested_for_sha: 011fecb
+branch: feat/a1-u6-final
+pull_request: https://github.com/abdulrahmanal-saeed/Espa-ol-Pro/pull/11 (stacked: #7 → #8 → #9 → #10 → this)
+also_awaiting_review: #7 (PHASE1-009), #8 (PHASE1-010), #9 (PHASE1-011), #10 (A1-U4/U5, described here)
+last_review_acknowledged: REVIEW-008
+project_status: A1_CONTENT_COMPLETE_IN_REVIEW__PRS_7_TO_11_AWAITING_REVIEW__DEVICE_AND_NATIVE_REVIEW_PENDING
+
+> This handoff covers the last two PRs of the A1 stack: #10 (A1-U4/U5,
+> commit `09c2991`) and this one (`94ab106`, `977ed8a`, `011fecb`). Review
+> order: #7, #8, #9, #10, then this.
+
+## A1 is complete in content (not "accepted")
+
+The A1 content is now complete: **23 lessons in 6 units**, 12 A1 dialogues,
+6 unit checkpoints, the **A1 level assessment** and a **verb reference**.
+
+It is **not** declared complete or accepted. That still requires your review,
+device checks and a native Spanish reviewer. All content is
+`author_reviewed`.
+
+### #10: A1-U4 food and shopping, A1-U5 city and travel (content 1.3.0)
+
+**Lessons 21–28:**
+
+- café: querer; té ≠ te; para mí;
+- restaurant: la cuenta;
+- prices to 100: cash or card;
+- an office order: necesito; la factura ≠ la cuenta;
+- ¿Dónde está?: estar for location;
+- directions: del / al;
+- transport: ir a + place, en + vehicle;
+- hotel check-in.
+
+**Also:** 4 dialogues and the checkpoints `chk_a1_u4` and `chk_a1_u5`.
+
+### This PR: A1-U6, the verb reference, and the A1 level assessment (content 1.4.0)
+
+**A1-U6 at the workplace (lessons 29–32):**
+
+- hay vs está;
+- nosotros / ellos / ustedes forms;
+- ir a + infinitive (near future) for tasks and emails;
+- a work phone call: ¿De parte de quién?, no está, leaving a message.
+
+It also has 2 dialogues and the checkpoint `chk_a1_u6`.
+
+**Verb reference (`verbs.json`, new `Verb` model, Library → الأفعال):**
+
+- 16 verbs, with all six persons, a note, examples and the lesson that
+  teaches each.
+- **Validator:** each regular verb's six forms must equal the -ar/-er/-ir
+  rules (*hablámos* is rejected).
+- **Hand-entered verbs:** irregular verbs, and *enviar* with its accent
+  shift, are entered by hand.
+- **vosotros:** shown, and explained as Spain-only.
+
+**A1 level assessment `lvl_a1`:**
+
+- 24 questions across all six units and five skills; no speaking;
+  4 dialogue sentences.
+- Locked until every A1 lesson is completed (`levelCompleted`).
+- A tile at the end of A1 on the path.
+- The result screen carries the same "not a CEFR certificate or DELE exam"
+  note.
+
+### Defects found and fixed in this PR
+
+1. **The A1 level-test tile was hidden when A1 was finished.** When every
+   lesson was done, the path fell back to expanding Pre-A1, which hid the
+   newly opened tile. It now expands the last level with lessons. Found by
+   the new widget test.
+2. **One dialogue fell just below the difficulty bar.** The estimator rated
+   `dlg_a1_oficina` 94.6 % coverage because *nuestra* and *somos* had not
+   been taught. The sentence was rewritten.
+3. **Two older tests did not allow for level assessments.** The rule "no
+   CEFR mention in an intro" now allows the negative disclaimer. The rule
+   "dialogue questions must come from the same unit" now applies the level
+   scope to level assessments.
+
+## Verification (local, at `011fecb`)
+
+| Check | Result |
+|---|---|
+| format, analyze | clean |
+| content validator | v1.4.0: 32 lessons (23 in A1), 263 items, 16 dialogues, 10 assessments (114 questions), 16 verbs — OK |
+| `flutter test` | **318 passed** |
+| `a1_units_test` | every lesson of A1-U2…U6 completed end to end in the app |
+| `verbs_and_level_test` | the rule check, 4 validator negatives, the library widget with audio, level gating and the path tile |
+| screenshots | new 23_verb_reference; library and progress shots regenerated for the fifth tab and the new counts |
+
+GitHub Actions: PR #11 run 44066977854 on `dcfd4bf` — format, analyze, content, generated code, secrets: success, **318 tests passed**; Android debug APK: success. PR #10 run 44065354477 on `09c2991` — success (tests and APK).
+
+## Not verified — device checklist
+
+1. Library → الأفعال: open *tener*, tap ▶ on each form.
+2. With all A1 lessons completed, the A1 level test opens from the end of A1
+   on the path. Before that it is locked with an explanation.
+3. Lesson 32 (phone call): the respond prompt and the dialogue audio.
+
+## Next
+
+- **Stop and wait for your review of #7–#11 and the owner's merge decisions.**
+- Then the owner chooses:
+  - **A2 content** (Phase 3);
+  - **Phase 2** (AI tutor), which is blocked on the owner's provider, budget
+    and server decision;
+  - **the REVIEW-007 P3 settings follow-up**.
+
+I will not merge anything; merging is the owner's decision.
+
+---
+
+# Earlier handoff on this stack: PHASE1-011 (PR #9)
+
+
+owner: Claude Code
+implementer: Claude Code
+handoff_status: READY_FOR_REVIEW
 handoff_id: PHASE1-011
 updated_at_utc: 2026-11-17T11:00:00Z
 review_requested_for_sha: 76eef9a

@@ -1,0 +1,383 @@
+{
+ "verbs": [
+  {
+   "id": "ser",
+   "infinitive": "ser",
+   "ar": "يكون (الهوية والصفة)",
+   "regular": false,
+   "present": {
+    "yo": "soy",
+    "tu": "eres",
+    "el": "es",
+    "nosotros": "somos",
+    "vosotros": "sois",
+    "ellos": "son"
+   },
+   "lessons": [
+    "pa1_u3_l3"
+   ],
+   "examples": [
+    {
+     "es": "Soy egipcio. Somos un equipo pequeño.",
+     "ar": "أنا مصري. نحن فريق صغير."
+    }
+   ],
+   "note_ar": "للهوية والمهنة والجنسية والصفة الدائمة. للمكان استعمل estar."
+  },
+  {
+   "id": "estar",
+   "infinitive": "estar",
+   "ar": "يكون (المكان والحال)",
+   "regular": false,
+   "present": {
+    "yo": "estoy",
+    "tu": "estás",
+    "el": "está",
+    "nosotros": "estamos",
+    "vosotros": "estáis",
+    "ellos": "están"
+   },
+   "lessons": [
+    "a1_u5_l1"
+   ],
+   "examples": [
+    {
+     "es": "Estoy en la oficina. ¿Dónde están ustedes?",
+     "ar": "أنا في المكتب. أين حضراتكم؟"
+    }
+   ],
+   "note_ar": "للمكان والحال الآن. انتبه للعلامات: estás، está، están."
+  },
+  {
+   "id": "tener",
+   "infinitive": "tener",
+   "ar": "يملك / عنده",
+   "regular": false,
+   "present": {
+    "yo": "tengo",
+    "tu": "tienes",
+    "el": "tiene",
+    "nosotros": "tenemos",
+    "vosotros": "tenéis",
+    "ellos": "tienen"
+   },
+   "lessons": [
+    "a1_u2_l1"
+   ],
+   "examples": [
+    {
+     "es": "Tengo treinta años. Tenemos una reunión.",
+     "ar": "عمري ثلاثون سنة. عندنا اجتماع."
+    }
+   ],
+   "note_ar": "شاذّ: tengo، وتغيّر e ← ie في tienes / tiene / tienen. ويُستعمل للعمر."
+  },
+  {
+   "id": "ir",
+   "infinitive": "ir",
+   "ar": "يذهب",
+   "regular": false,
+   "present": {
+    "yo": "voy",
+    "tu": "vas",
+    "el": "va",
+    "nosotros": "vamos",
+    "vosotros": "vais",
+    "ellos": "van"
+   },
+   "lessons": [
+    "a1_u5_l3"
+   ],
+   "examples": [
+    {
+     "es": "Voy a la oficina. Vamos a enviar el informe.",
+     "ar": "أذهب إلى المكتب. سنرسل التقرير."
+    }
+   ],
+   "note_ar": "شاذّ تماماً. ir a + مصدر = المستقبل القريب."
+  },
+  {
+   "id": "querer",
+   "infinitive": "querer",
+   "ar": "يريد",
+   "regular": false,
+   "present": {
+    "yo": "quiero",
+    "tu": "quieres",
+    "el": "quiere",
+    "nosotros": "queremos",
+    "vosotros": "queréis",
+    "ellos": "quieren"
+   },
+   "lessons": [
+    "a1_u4_l1"
+   ],
+   "examples": [
+    {
+     "es": "Quiero un café. ¿Qué quieren ustedes?",
+     "ar": "أريد قهوة. ماذا تريدون حضراتكم؟"
+    }
+   ],
+   "note_ar": "تغيّر الجذر e ← ie إلا مع nosotros وvosotros."
+  },
+  {
+   "id": "poder",
+   "infinitive": "poder",
+   "ar": "يستطيع",
+   "regular": false,
+   "present": {
+    "yo": "puedo",
+    "tu": "puedes",
+    "el": "puede",
+    "nosotros": "podemos",
+    "vosotros": "podéis",
+    "ellos": "pueden"
+   },
+   "lessons": [
+    "a1_u4_l3"
+   ],
+   "examples": [
+    {
+     "es": "¿Puedo pagar con tarjeta?",
+     "ar": "هل أستطيع الدفع بالبطاقة؟"
+    }
+   ],
+   "note_ar": "تغيّر الجذر o ← ue إلا مع nosotros وvosotros."
+  },
+  {
+   "id": "hablar",
+   "infinitive": "hablar",
+   "ar": "يتكلم",
+   "regular": true,
+   "present": {
+    "yo": "hablo",
+    "tu": "hablas",
+    "el": "habla",
+    "nosotros": "hablamos",
+    "vosotros": "habláis",
+    "ellos": "hablan"
+   },
+   "lessons": [
+    "a1_u1_l1"
+   ],
+   "examples": [
+    {
+     "es": "Hablamos árabe e inglés.",
+     "ar": "نتكلم العربية والإنجليزية."
+    }
+   ],
+   "note_ar": "النموذج المنتظم لأفعال ‎-ar."
+  },
+  {
+   "id": "trabajar",
+   "infinitive": "trabajar",
+   "ar": "يعمل",
+   "regular": true,
+   "present": {
+    "yo": "trabajo",
+    "tu": "trabajas",
+    "el": "trabaja",
+    "nosotros": "trabajamos",
+    "vosotros": "trabajáis",
+    "ellos": "trabajan"
+   },
+   "lessons": [
+    "a1_u1_l2"
+   ],
+   "examples": [
+    {
+     "es": "Trabajan en una empresa de tecnología.",
+     "ar": "يعملون في شركة تقنية."
+    }
+   ]
+  },
+  {
+   "id": "llegar",
+   "infinitive": "llegar",
+   "ar": "يصل",
+   "regular": true,
+   "present": {
+    "yo": "llego",
+    "tu": "llegas",
+    "el": "llega",
+    "nosotros": "llegamos",
+    "vosotros": "llegáis",
+    "ellos": "llegan"
+   },
+   "lessons": [
+    "a1_u3_l3"
+   ],
+   "examples": [
+    {
+     "es": "Llego a la oficina a las ocho.",
+     "ar": "أصل إلى المكتب في الثامنة."
+    }
+   ]
+  },
+  {
+   "id": "terminar",
+   "infinitive": "terminar",
+   "ar": "ينهي",
+   "regular": true,
+   "present": {
+    "yo": "termino",
+    "tu": "terminas",
+    "el": "termina",
+    "nosotros": "terminamos",
+    "vosotros": "termináis",
+    "ellos": "terminan"
+   },
+   "lessons": [
+    "a1_u3_l3"
+   ],
+   "examples": [
+    {
+     "es": "Terminamos el proyecto el viernes.",
+     "ar": "ننهي المشروع يوم الجمعة."
+    }
+   ]
+  },
+  {
+   "id": "necesitar",
+   "infinitive": "necesitar",
+   "ar": "يحتاج",
+   "regular": true,
+   "present": {
+    "yo": "necesito",
+    "tu": "necesitas",
+    "el": "necesita",
+    "nosotros": "necesitamos",
+    "vosotros": "necesitáis",
+    "ellos": "necesitan"
+   },
+   "lessons": [
+    "a1_u4_l4"
+   ],
+   "examples": [
+    {
+     "es": "Necesitamos una factura.",
+     "ar": "نحتاج فاتورة."
+    }
+   ]
+  },
+  {
+   "id": "llamar",
+   "infinitive": "llamar",
+   "ar": "يتصل / ينادي",
+   "regular": true,
+   "present": {
+    "yo": "llamo",
+    "tu": "llamas",
+    "el": "llama",
+    "nosotros": "llamamos",
+    "vosotros": "llamáis",
+    "ellos": "llaman"
+   },
+   "lessons": [
+    "a1_u6_l4"
+   ],
+   "examples": [
+    {
+     "es": "Llamo al cliente más tarde.",
+     "ar": "أتصل بالعميل لاحقاً."
+    }
+   ]
+  },
+  {
+   "id": "revisar",
+   "infinitive": "revisar",
+   "ar": "يراجع",
+   "regular": true,
+   "present": {
+    "yo": "reviso",
+    "tu": "revisas",
+    "el": "revisa",
+    "nosotros": "revisamos",
+    "vosotros": "revisáis",
+    "ellos": "revisan"
+   },
+   "lessons": [
+    "a1_u6_l3"
+   ],
+   "examples": [
+    {
+     "es": "Reviso los correos por la mañana.",
+     "ar": "أراجع البريد صباحاً."
+    }
+   ]
+  },
+  {
+   "id": "comer",
+   "infinitive": "comer",
+   "ar": "يأكل / يتغدّى",
+   "regular": true,
+   "present": {
+    "yo": "como",
+    "tu": "comes",
+    "el": "come",
+    "nosotros": "comemos",
+    "vosotros": "coméis",
+    "ellos": "comen"
+   },
+   "lessons": [
+    "a1_u3_l3"
+   ],
+   "examples": [
+    {
+     "es": "Comemos a las dos.",
+     "ar": "نتغدّى في الثانية."
+    }
+   ],
+   "note_ar": "النموذج المنتظم لأفعال ‎-er."
+  },
+  {
+   "id": "vivir",
+   "infinitive": "vivir",
+   "ar": "يعيش / يسكن",
+   "regular": true,
+   "present": {
+    "yo": "vivo",
+    "tu": "vives",
+    "el": "vive",
+    "nosotros": "vivimos",
+    "vosotros": "vivís",
+    "ellos": "viven"
+   },
+   "lessons": [
+    "a1_u2_l1"
+   ],
+   "examples": [
+    {
+     "es": "Mis padres viven en El Cairo.",
+     "ar": "والداي يعيشان في القاهرة."
+    }
+   ],
+   "note_ar": "النموذج المنتظم لأفعال ‎-ir."
+  },
+  {
+   "id": "enviar",
+   "infinitive": "enviar",
+   "ar": "يرسل",
+   "regular": false,
+   "present": {
+    "yo": "envío",
+    "tu": "envías",
+    "el": "envía",
+    "nosotros": "enviamos",
+    "vosotros": "enviáis",
+    "ellos": "envían"
+   },
+   "lessons": [
+    "a1_u6_l3"
+   ],
+   "examples": [
+    {
+     "es": "Envío el informe hoy.",
+     "ar": "أرسل التقرير اليوم."
+    }
+   ],
+   "note_ar": "النهايات منتظمة، لكن تُضاف علامة على í في المفرد ومع ellos: envío، envías، envía، envían."
+  }
+ ],
+ "note_ar": "vosotros يُستعمل في إسبانيا للجمع غير الرسمي؛ وفي أمريكا اللاتينية يُستعمل ustedes لكل الجمع."
+}

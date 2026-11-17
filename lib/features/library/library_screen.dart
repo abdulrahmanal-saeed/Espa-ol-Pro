@@ -13,6 +13,7 @@ import '../../core/phrases/saved_phrases_repository.dart';
 import '../lesson/exercise_widgets.dart';
 import '../phrases/saved_phrases_view.dart';
 import '../practice/practice_screen.dart';
+import 'verbs_view.dart';
 import 'vocab_sheet.dart';
 
 const errorCategoryLabels = {
@@ -30,7 +31,7 @@ class LibraryScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => DefaultTabController(
-    length: 4,
+    length: 5,
     child: Scaffold(
       appBar: AppBar(
         title: const Text('المكتبة'),
@@ -41,6 +42,7 @@ class LibraryScreen extends StatelessWidget {
             Tab(text: 'قاموسي'),
             Tab(text: 'عباراتي'),
             Tab(text: 'القواعد'),
+            Tab(text: 'الأفعال'),
             Tab(text: 'دفتر الأخطاء'),
           ],
         ),
@@ -50,6 +52,7 @@ class LibraryScreen extends StatelessWidget {
           _Dictionary(),
           SavedPhrasesView(),
           _Grammar(),
+          VerbsView(),
           _ErrorNotebook(),
         ],
       ),

@@ -103,12 +103,42 @@ Future<ContentPack> parseContentPack(ContentReader read) async {
       assessments.add(_assessment((raw as Map).cast<String, dynamic>(), turns));
     }
   }
+  final verbs = <Verb>[];
+  final verbFile = root['verb_file'] as String?;
+  if (verbFile != null) {
+    final json = jsonDecode(await read(verbFile)) as Map<String, dynamic>;
+    for (final raw in json['verbs'] as List? ?? const []) {
+      final j = (raw as Map).cast<String, dynamic>();
+      verbs.add(
+        Verb(
+          id: j['id'] as String? ?? '',
+          infinitive: j['infinitive'] as String? ?? '',
+          ar: j['ar'] as String? ?? '',
+          regular: j['regular'] as bool? ?? false,
+          forms: {
+            for (final e in ((j['present'] as Map?) ?? const {}).entries)
+              e.key as String: e.value as String,
+          },
+          noteAr: j['note_ar'] as String? ?? '',
+          examples: [
+            for (final e in j['examples'] as List? ?? const [])
+              Example(
+                es: (e as Map)['es'] as String? ?? '',
+                ar: e['ar'] as String? ?? '',
+              ),
+          ],
+          lessonIds: _strings(j['lessons']),
+        ),
+      );
+    }
+  }
   return ContentPack(
     version: version,
     levels: levels,
     sources: sources,
     dialogues: dialogues,
     assessments: assessments,
+    verbs: verbs,
   );
 }
 
