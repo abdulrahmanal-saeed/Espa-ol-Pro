@@ -95,7 +95,7 @@ It also has 2 dialogues and the checkpoint `chk_a1_u6`.
 | `verbs_and_level_test` | the rule check, 4 validator negatives, the library widget with audio, level gating and the path tile |
 | screenshots | new 23_verb_reference; library and progress shots regenerated for the fifth tab and the new counts |
 
-GitHub Actions: CI_PLACEHOLDER
+GitHub Actions: PR #11 run 44066977854 on `dcfd4bf` — format, analyze, content, generated code, secrets: success, **318 tests passed**; Android debug APK: success. PR #10 run 44065354477 on `09c2991` — success (tests and APK).
 
 ## Not verified — device checklist
 
