@@ -297,21 +297,28 @@ class AppDatabase extends _$AppDatabase {
     },
   );
 
+  /// True when the database holds duplicate answers to one question in one
+  /// attempt (possible only in a database written before the restore check
+  /// existed). The unique index is then not created, so nothing is deleted;
+  /// restore and new submissions still never add duplicates.
+  bool assessmentAnswersDegraded = false;
+
   /// One answer per question per attempt, enforced by the database too.
   ///
   /// Created on every open (not in a migration) so installs already on v5
-  /// get it without a schema bump. The app itself never writes duplicates
-  /// and restore rejects them; if an old database somehow holds one, the
-  /// index is skipped rather than deleting learner data or refusing to open.
+  /// get it without a schema bump. Only the known legacy case, existing
+  /// duplicate rows, is tolerated; any other failure propagates.
   Future<void> _ensureOneAnswerPerQuestion() async {
-    try {
-      await customStatement(
-        'CREATE UNIQUE INDEX IF NOT EXISTS idx_assessment_answers_question '
-        'ON assessment_answers (attempt_id, question_id)',
-      );
-    } on Object {
-      // Leave the data as it is; see above.
-    }
+    final duplicates = await customSelect(
+      'SELECT 1 FROM assessment_answers '
+      'GROUP BY attempt_id, question_id HAVING COUNT(*) > 1 LIMIT 1',
+    ).get();
+    assessmentAnswersDegraded = duplicates.isNotEmpty;
+    if (assessmentAnswersDegraded) return;
+    await customStatement(
+      'CREATE UNIQUE INDEX IF NOT EXISTS idx_assessment_answers_question '
+      'ON assessment_answers (attempt_id, question_id)',
+    );
   }
 
   Future<void> _createIndexes() async {

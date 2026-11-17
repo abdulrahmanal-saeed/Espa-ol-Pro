@@ -315,6 +315,57 @@ void main() {
       },
     );
 
+    test('a legacy database with duplicate answers opens, keeps its data '
+        'and reports degraded integrity', () async {
+      final file = File('${tmp.path}/dup.sqlite');
+      final fresh = open(file);
+      await fresh.select(fresh.settings).get();
+      expect(fresh.assessmentAnswersDegraded, isFalse);
+      await fresh.close();
+      final legacy = raw.sqlite3.open(file.path);
+      legacy.execute(
+        'DROP INDEX idx_assessment_answers_question;'
+        "INSERT INTO assessment_attempts (id, assessment_id, assessment_version, content_version, started_at, completed_at, max_score, score)"
+        " VALUES (1, 'chk_pa1_u1', 1, '1.1.0', 1, 2, 2, 2);"
+        "INSERT INTO assessment_answers (attempt_id, question_id, skill, can_do_id, is_correct)"
+        " VALUES (1, 'chk_pa1_u1.q1', 'listening', 'cd_pa1_u1_hear', 1),"
+        " (1, 'chk_pa1_u1.q1', 'listening', 'cd_pa1_u1_hear', 1);",
+      );
+      legacy.close();
+
+      final db = open(file);
+      expect((await db.select(db.assessmentAnswers).get()).length, 2);
+      expect(db.assessmentAnswersDegraded, isTrue);
+      await db.close();
+      final check = raw.sqlite3.open(file.path);
+      final indexes = check
+          .select("SELECT name FROM sqlite_master WHERE type = 'index'")
+          .map((r) => r['name']);
+      expect(indexes, isNot(contains('idx_assessment_answers_question')));
+      check.close();
+    });
+
+    test('any other failure creating the index is not hidden', () async {
+      final file = File('${tmp.path}/broken.sqlite');
+      final fresh = open(file);
+      await fresh.select(fresh.settings).get();
+      await fresh.close();
+      final broken = raw.sqlite3.open(file.path);
+      // Something else already uses the index's name.
+      broken.execute(
+        'DROP INDEX idx_assessment_answers_question;'
+        'CREATE TABLE idx_assessment_answers_question (x INTEGER);',
+      );
+      broken.close();
+
+      final db = open(file);
+      await expectLater(
+        db.select(db.settings).get(),
+        throwsA(isA<raw.SqliteException>()),
+      );
+      await db.close();
+    });
+
     test('a fresh install creates the latest schema directly', () async {
       final file = File('${tmp.path}/fresh.sqlite');
       final db = open(file);
