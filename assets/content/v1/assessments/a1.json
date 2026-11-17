@@ -878,6 +878,595 @@
     }
    ],
    "source": "original-v1"
+  },
+  {
+   "id": "chk_a1_u6",
+   "version": 1,
+   "kind": "unit",
+   "level": "a1",
+   "unit": "a1_u6",
+   "title_ar": "نقطة تحقق: في مكان العمل",
+   "intro_ar": "نقطة تحقق قصيرة. لا تلميحات ولا إظهار للإجابات قبل النهاية، ولا إعادة للأسئلة. النتيجة دليل على ما تستطيعه الآن، وليست شهادة مستوى.",
+   "can_do": [
+    {
+     "id": "cd_a1_u6_office",
+     "ar": "أصف مكان عملي وفريقي",
+     "lessons": [
+      "a1_u6_l1",
+      "a1_u6_l2"
+     ]
+    },
+    {
+     "id": "cd_a1_u6_tasks",
+     "ar": "أقول ما سأفعله اليوم من مهام",
+     "lessons": [
+      "a1_u6_l3"
+     ]
+    },
+    {
+     "id": "cd_a1_u6_phone",
+     "ar": "أفهم مكالمة عمل بسيطة وأرد عليها",
+     "lessons": [
+      "a1_u6_l4"
+     ]
+    }
+   ],
+   "questions": [
+    {
+     "id": "chk_a1_u6.q1",
+     "type": "choice",
+     "skill": "grammar",
+     "can_do": "cd_a1_u6_office",
+     "prompt_ar": "أي جملة صحيحة؟",
+     "choices": [
+      "Hay una impresora en la oficina.",
+      "Hay la impresora en la oficina.",
+      "Está una impresora en la oficina."
+     ],
+     "answer": 0,
+     "explain_ar": "hay مع غير المحدّد (una)، وestá مع المحدّد (la)."
+    },
+    {
+     "id": "chk_a1_u6.q2",
+     "type": "choice",
+     "skill": "grammar",
+     "can_do": "cd_a1_u6_office",
+     "prompt_ar": "اختر الكلمة المناسبة للفراغ",
+     "stimulus_es": "Nosotros ___ en el mismo equipo.",
+     "choices": [
+      "trabajamos",
+      "trabajan",
+      "trabajo"
+     ],
+     "answer": 0,
+     "explain_ar": "مع nosotros: ‎-amos."
+    },
+    {
+     "id": "chk_a1_u6.q3",
+     "type": "choice",
+     "skill": "listening",
+     "can_do": "cd_a1_u6_office",
+     "prompt_ar": "استمع إلى جملة من حوار «مكتبنا»: أين قاعة الاجتماعات؟",
+     "dialogue_turn": "dlg_a1_oficina.t3",
+     "choices": [
+      "على اليسار",
+      "على اليمين",
+      "بجانب الطابعة"
+     ],
+     "answer": 0,
+     "choices_es": false
+    },
+    {
+     "id": "chk_a1_u6.q4",
+     "type": "type",
+     "skill": "writing",
+     "can_do": "cd_a1_u6_office",
+     "prompt_ar": "اكتب بالإسبانية",
+     "stimulus_ar": "الطابعة",
+     "accepted": [
+      "la impresora",
+      "impresora"
+     ]
+    },
+    {
+     "id": "chk_a1_u6.q5",
+     "type": "choice",
+     "skill": "grammar",
+     "can_do": "cd_a1_u6_tasks",
+     "prompt_ar": "كيف تقول «سأرسل التقرير»؟",
+     "choices": [
+      "Voy a enviar el informe.",
+      "Voy enviar el informe.",
+      "Voy a envío el informe."
+     ],
+     "answer": 0,
+     "explain_ar": "ir a + مصدر: voy a enviar."
+    },
+    {
+     "id": "chk_a1_u6.q6",
+     "type": "choice",
+     "skill": "reading",
+     "can_do": "cd_a1_u6_tasks",
+     "prompt_ar": "ماذا ستفعل لاورا بعد الظهر؟",
+     "stimulus_es": "Por la mañana voy a revisar los correos. Por la tarde voy a enviar el informe al cliente.",
+     "choices": [
+      "ترسل التقرير للعميل",
+      "تراجع الرسائل",
+      "تتصل بالعميل"
+     ],
+     "answer": 0,
+     "choices_es": false
+    },
+    {
+     "id": "chk_a1_u6.q7",
+     "type": "type",
+     "skill": "writing",
+     "can_do": "cd_a1_u6_tasks",
+     "prompt_ar": "اكتب بالإسبانية",
+     "stimulus_ar": "التقرير",
+     "accepted": [
+      "el informe",
+      "informe"
+     ]
+    },
+    {
+     "id": "chk_a1_u6.q8",
+     "type": "choice",
+     "skill": "listening",
+     "can_do": "cd_a1_u6_phone",
+     "prompt_ar": "استمع إلى جملة من المكالمة: ماذا يسأل السكرتير؟",
+     "dialogue_turn": "dlg_a1_llamada.t3",
+     "choices": [
+      "من المتصل",
+      "هل تريد ترك رسالة",
+      "متى ستتصل"
+     ],
+     "answer": 0,
+     "choices_es": false
+    },
+    {
+     "id": "chk_a1_u6.q9",
+     "type": "choice",
+     "skill": "vocabulary",
+     "can_do": "cd_a1_u6_phone",
+     "prompt_ar": "ما معنى العبارة؟",
+     "stimulus_es": "un momento, por favor",
+     "choices": [
+      "لحظة من فضلك",
+      "سأتصل لاحقاً",
+      "ليس موجوداً"
+     ],
+     "answer": 0,
+     "choices_es": false
+    },
+    {
+     "id": "chk_a1_u6.q10",
+     "type": "choice",
+     "skill": "listening",
+     "can_do": "cd_a1_u6_phone",
+     "prompt_ar": "استمع: ماذا يقول؟",
+     "audio_es": "Lo siento, ahora no está.",
+     "choices": [
+      "آسف، ليس موجوداً الآن",
+      "لحظة من فضلك",
+      "من المتصل؟"
+     ],
+     "answer": 0,
+     "choices_es": false
+    }
+   ],
+   "source": "original-v1"
+  },
+  {
+   "id": "lvl_a1",
+   "version": 1,
+   "kind": "level",
+   "level": "a1",
+   "title_ar": "اختبار مستوى A1",
+   "intro_ar": "اختبار مستوى A1 داخل التطبيق: أسئلة من كل وحدات المستوى، بلا تلميحات ولا إظهار للإجابات قبل النهاية. النتيجة دليل تدريبي على ما تستطيعه الآن في مستوى A1، وليست شهادة CEFR ولا امتحان DELE.",
+   "can_do": [
+    {
+     "id": "cd_lvl_a1_self",
+     "ar": "أقدّم نفسي ولغاتي وعملي",
+     "lessons": [
+      "a1_u1_l1",
+      "a1_u1_l2",
+      "a1_u1_l3"
+     ]
+    },
+    {
+     "id": "cd_lvl_a1_people",
+     "ar": "أتحدث عن عائلتي وأصف الأشخاص",
+     "lessons": [
+      "a1_u2_l1",
+      "a1_u2_l2",
+      "a1_u2_l3",
+      "a1_u2_l4"
+     ]
+    },
+    {
+     "id": "cd_lvl_a1_time",
+     "ar": "أتعامل مع الساعة والأيام والمواعيد",
+     "lessons": [
+      "a1_u3_l1",
+      "a1_u3_l2",
+      "a1_u3_l3",
+      "a1_u3_l4"
+     ]
+    },
+    {
+     "id": "cd_lvl_a1_buy",
+     "ar": "أطلب الطعام وأسأل عن الأسعار وأدفع",
+     "lessons": [
+      "a1_u4_l1",
+      "a1_u4_l2",
+      "a1_u4_l3",
+      "a1_u4_l4"
+     ]
+    },
+    {
+     "id": "cd_lvl_a1_travel",
+     "ar": "أجد طريقي وأتنقّل وأسجّل في فندق",
+     "lessons": [
+      "a1_u5_l1",
+      "a1_u5_l2",
+      "a1_u5_l3",
+      "a1_u5_l4"
+     ]
+    },
+    {
+     "id": "cd_lvl_a1_work",
+     "ar": "أتعامل مع مواقف عمل بسيطة: الفريق والمهام والهاتف",
+     "lessons": [
+      "a1_u6_l1",
+      "a1_u6_l2",
+      "a1_u6_l3",
+      "a1_u6_l4"
+     ]
+    }
+   ],
+   "questions": [
+    {
+     "id": "lvl_a1.q1",
+     "type": "choice",
+     "skill": "grammar",
+     "can_do": "cd_lvl_a1_self",
+     "prompt_ar": "منى من مصر. ماذا تقول؟",
+     "choices": [
+      "Soy egipcia.",
+      "Soy egipcio.",
+      "Es egipcia yo."
+     ],
+     "answer": 0,
+     "explain_ar": "المتكلمة امرأة: egipcia."
+    },
+    {
+     "id": "lvl_a1.q2",
+     "type": "choice",
+     "skill": "listening",
+     "can_do": "cd_lvl_a1_self",
+     "prompt_ar": "استمع: ماذا يعمل؟",
+     "audio_es": "Soy vendedor. Trabajo en una empresa de tecnología.",
+     "choices": [
+      "مندوب مبيعات في شركة تقنية",
+      "مدير فندق",
+      "معلّم"
+     ],
+     "answer": 0,
+     "choices_es": false
+    },
+    {
+     "id": "lvl_a1.q3",
+     "type": "choice",
+     "skill": "reading",
+     "can_do": "cd_lvl_a1_self",
+     "prompt_ar": "ما اللغات التي تتكلمها سارة؟",
+     "stimulus_es": "Me llamo Sara. Soy de Jordania. Hablo árabe, inglés y un poco de español.",
+     "choices": [
+      "العربية والإنجليزية وقليلاً من الإسبانية",
+      "الإسبانية فقط",
+      "العربية فقط"
+     ],
+     "answer": 0,
+     "choices_es": false
+    },
+    {
+     "id": "lvl_a1.q4",
+     "type": "type",
+     "skill": "writing",
+     "can_do": "cd_lvl_a1_self",
+     "prompt_ar": "اكتب بالإسبانية",
+     "stimulus_ar": "أنا مدير (المهنة بلا أداة)",
+     "accepted": [
+      "Soy gerente",
+      "Yo soy gerente"
+     ]
+    },
+    {
+     "id": "lvl_a1.q5",
+     "type": "choice",
+     "skill": "grammar",
+     "can_do": "cd_lvl_a1_people",
+     "prompt_ar": "اختر الصيغة الصحيحة لقول «عمري ثلاثون سنة»",
+     "choices": [
+      "Tengo treinta años.",
+      "Soy treinta años.",
+      "Estoy treinta años."
+     ],
+     "answer": 0,
+     "explain_ar": "العمر بالفعل tener."
+    },
+    {
+     "id": "lvl_a1.q6",
+     "type": "choice",
+     "skill": "listening",
+     "can_do": "cd_lvl_a1_people",
+     "prompt_ar": "استمع إلى جملة من حوار «هل عندك أولاد؟»: كم عمر الابنة؟",
+     "dialogue_turn": "dlg_a1_familia.t4",
+     "choices": [
+      "خمس سنوات",
+      "عشر سنوات",
+      "خمس عشرة سنة"
+     ],
+     "answer": 0,
+     "choices_es": false
+    },
+    {
+     "id": "lvl_a1.q7",
+     "type": "choice",
+     "skill": "grammar",
+     "can_do": "cd_lvl_a1_people",
+     "prompt_ar": "اختر الكلمة المناسبة للفراغ",
+     "stimulus_es": "Mis compañeras son muy ___.",
+     "choices": [
+      "simpáticas",
+      "simpático",
+      "simpática"
+     ],
+     "answer": 0,
+     "explain_ar": "الصفة تطابق: مؤنث جمع."
+    },
+    {
+     "id": "lvl_a1.q8",
+     "type": "type",
+     "skill": "writing",
+     "can_do": "cd_lvl_a1_people",
+     "prompt_ar": "اكتب بالإسبانية",
+     "stimulus_ar": "الأخ",
+     "accepted": [
+      "el hermano",
+      "hermano"
+     ]
+    },
+    {
+     "id": "lvl_a1.q9",
+     "type": "choice",
+     "skill": "listening",
+     "can_do": "cd_lvl_a1_time",
+     "prompt_ar": "استمع: في أي ساعة الاجتماع؟",
+     "audio_es": "La reunión es a las diez y media.",
+     "choices": [
+      "10:30",
+      "10:15",
+      "12:30"
+     ],
+     "answer": 0,
+     "choices_es": false
+    },
+    {
+     "id": "lvl_a1.q10",
+     "type": "choice",
+     "skill": "grammar",
+     "can_do": "cd_lvl_a1_time",
+     "prompt_ar": "الساعة 1:15. ماذا تقول؟",
+     "choices": [
+      "Es la una y cuarto.",
+      "Son las una y cuarto.",
+      "Es una y cuarto."
+     ],
+     "answer": 0,
+     "explain_ar": "الواحدة مفردة: Es la una."
+    },
+    {
+     "id": "lvl_a1.q11",
+     "type": "choice",
+     "skill": "reading",
+     "can_do": "cd_lvl_a1_time",
+     "prompt_ar": "متى الموعد النهائي؟",
+     "stimulus_es": "— ¿Le va bien el lunes?\n— Lo siento, el lunes estoy ocupado. ¿El miércoles a las nueve?\n— Perfecto.",
+     "choices": [
+      "الأربعاء في التاسعة",
+      "الاثنين في التاسعة",
+      "الأربعاء في العاشرة"
+     ],
+     "answer": 0,
+     "choices_es": false
+    },
+    {
+     "id": "lvl_a1.q12",
+     "type": "type",
+     "skill": "writing",
+     "can_do": "cd_lvl_a1_time",
+     "prompt_ar": "اكتب بالإسبانية",
+     "stimulus_ar": "الخميس",
+     "accepted": [
+      "jueves",
+      "el jueves"
+     ]
+    },
+    {
+     "id": "lvl_a1.q13",
+     "type": "choice",
+     "skill": "grammar",
+     "can_do": "cd_lvl_a1_buy",
+     "prompt_ar": "تنهي الغداء مع عميل. ماذا تقول للنادل؟",
+     "choices": [
+      "La cuenta, por favor.",
+      "La factura, por favor.",
+      "¿Algo más?"
+     ],
+     "answer": 0,
+     "explain_ar": "حساب المطعم: la cuenta."
+    },
+    {
+     "id": "lvl_a1.q14",
+     "type": "choice",
+     "skill": "listening",
+     "can_do": "cd_lvl_a1_buy",
+     "prompt_ar": "استمع: كم السعر؟",
+     "audio_es": "Son treinta y ocho euros.",
+     "choices": [
+      "38 €",
+      "83 €",
+      "28 €"
+     ],
+     "answer": 0,
+     "choices_es": false
+    },
+    {
+     "id": "lvl_a1.q15",
+     "type": "choice",
+     "skill": "vocabulary",
+     "can_do": "cd_lvl_a1_buy",
+     "prompt_ar": "ما معنى الكلمة؟",
+     "stimulus_es": "caro",
+     "choices": [
+      "غالٍ",
+      "رخيص",
+      "لذيذ"
+     ],
+     "answer": 0,
+     "choices_es": false
+    },
+    {
+     "id": "lvl_a1.q16",
+     "type": "type",
+     "skill": "writing",
+     "can_do": "cd_lvl_a1_buy",
+     "prompt_ar": "اكتب بالإسبانية",
+     "stimulus_ar": "الماء",
+     "accepted": [
+      "el agua",
+      "agua"
+     ]
+    },
+    {
+     "id": "lvl_a1.q17",
+     "type": "choice",
+     "skill": "grammar",
+     "can_do": "cd_lvl_a1_travel",
+     "prompt_ar": "أي جملة صحيحة لقول «أنا في الفندق»؟",
+     "choices": [
+      "Estoy en el hotel.",
+      "Soy en el hotel.",
+      "Hay en el hotel."
+     ],
+     "answer": 0,
+     "explain_ar": "للمكان estar."
+    },
+    {
+     "id": "lvl_a1.q18",
+     "type": "choice",
+     "skill": "listening",
+     "can_do": "cd_lvl_a1_travel",
+     "prompt_ar": "استمع إلى جملة من حوار الفندق: كم ليلة الحجز؟",
+     "dialogue_turn": "dlg_a1_hotel.t2",
+     "choices": [
+      "ليلتان",
+      "ثلاث ليالٍ",
+      "ليلة واحدة"
+     ],
+     "answer": 0,
+     "choices_es": false
+    },
+    {
+     "id": "lvl_a1.q19",
+     "type": "choice",
+     "skill": "grammar",
+     "can_do": "cd_lvl_a1_travel",
+     "prompt_ar": "اختر الكلمة المناسبة للفراغ",
+     "stimulus_es": "Mañana ___ al aeropuerto en taxi.",
+     "choices": [
+      "voy",
+      "estoy",
+      "soy"
+     ],
+     "answer": 0,
+     "explain_ar": "للذهاب: ir، ومع yo: voy."
+    },
+    {
+     "id": "lvl_a1.q20",
+     "type": "choice",
+     "skill": "reading",
+     "can_do": "cd_lvl_a1_travel",
+     "prompt_ar": "أين المكتب؟",
+     "stimulus_es": "La oficina está en la calle Mayor, a la derecha, enfrente del banco.",
+     "choices": [
+      "على اليمين مقابل البنك",
+      "على اليسار بجانب البنك",
+      "داخل البنك"
+     ],
+     "answer": 0,
+     "choices_es": false
+    },
+    {
+     "id": "lvl_a1.q21",
+     "type": "choice",
+     "skill": "grammar",
+     "can_do": "cd_lvl_a1_work",
+     "prompt_ar": "كيف تقول «سنراجع التقرير»؟",
+     "choices": [
+      "Vamos a revisar el informe.",
+      "Vamos revisar el informe.",
+      "Vamos a revisamos el informe."
+     ],
+     "answer": 0,
+     "explain_ar": "ir a + مصدر."
+    },
+    {
+     "id": "lvl_a1.q22",
+     "type": "choice",
+     "skill": "listening",
+     "can_do": "cd_lvl_a1_work",
+     "prompt_ar": "استمع إلى جملة من المكالمة: ماذا سيفعل عمر؟",
+     "dialogue_turn": "dlg_a1_llamada.t6",
+     "choices": [
+      "سيتصل لاحقاً",
+      "سيترك رسالة",
+      "سيذهب إلى المكتب"
+     ],
+     "answer": 0,
+     "choices_es": false
+    },
+    {
+     "id": "lvl_a1.q23",
+     "type": "choice",
+     "skill": "reading",
+     "can_do": "cd_lvl_a1_work",
+     "prompt_ar": "ماذا يوجد في المكتب الجديد؟",
+     "stimulus_es": "En nuestra oficina nueva hay doce escritorios y una sala de reuniones grande.",
+     "choices": [
+      "اثنا عشر مكتباً وقاعة اجتماعات",
+      "عشرون مكتباً",
+      "قاعتا اجتماعات"
+     ],
+     "answer": 0,
+     "choices_es": false
+    },
+    {
+     "id": "lvl_a1.q24",
+     "type": "type",
+     "skill": "writing",
+     "can_do": "cd_lvl_a1_work",
+     "prompt_ar": "اكتب بالإسبانية",
+     "stimulus_ar": "الرسالة (في الهاتف)",
+     "accepted": [
+      "el mensaje",
+      "mensaje"
+     ]
+    }
+   ],
+   "source": "original-v1"
   }
  ]
 }

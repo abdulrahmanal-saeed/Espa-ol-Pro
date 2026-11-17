@@ -214,6 +214,12 @@ void main() {
     );
     await app.pump(tester, location: '/assessment/${chk.id}/result/$id');
     await shot(tester, '22_checkpoint_result');
+
+    // Verb conjugation reference.
+    await app.pump(tester, location: '/library');
+    await tester.tapSettled(find.text('الأفعال'));
+    await tester.tapKey('verb-tener');
+    await shot(tester, '23_verb_reference');
     await app.dispose(tester);
   });
 }

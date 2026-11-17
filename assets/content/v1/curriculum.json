@@ -1,5 +1,5 @@
 {
- "version": "1.3.0",
+ "version": "1.4.0",
  "sources": [
   {
    "id": "original-v1",
@@ -17,6 +17,7 @@
   "assessments/pre_a1.json",
   "assessments/a1.json"
  ],
+ "verb_file": "verbs.json",
  "levels": [
   {
    "id": "pre_a1",
@@ -133,7 +134,7 @@
       "وصف مكان عملك",
       "الرد على مكالمة عمل بسيطة"
      ],
-     "status": "planned"
+     "status": "available"
     }
    ]
   },

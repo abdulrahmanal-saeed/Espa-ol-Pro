@@ -124,6 +124,15 @@ detect it.
 | Every lesson completed end to end in the app | `a1_units_test` |
 | 4 dialogues, accessible right after their lessons; checkpoints `chk_a1_u4`, `chk_a1_u5` (3 questions play dialogue sentences) | `difficulty_test`, `assessment_content_test` |
 
+## A1-U6, verb reference, A1 level assessment (PR in review)
+
+| Area | Evidence |
+|---|---|
+| A1-U6 at the workplace: 4 lessons (hay, plural present, ir a + infinitive, phone calls), 2 dialogues, checkpoint; content 1.4.0 — A1 now 23 lessons in 6 units | `a1_units_test`, `difficulty_test` |
+| Verb reference: 16 verbs, six persons; regular verbs checked against the conjugation rules; Library → الأفعال with audio per form | `verbs_and_level_test` |
+| A1 level assessment `lvl_a1`: 24 questions, all six units, five skills, no speaking; locked until every A1 lesson is done; tile at the end of A1 on the path; no-certification note | `verbs_and_level_test`, `assessment_content_test` |
+| When every lesson is done, the path opens the last level (so its level assessment is visible) | `verbs_and_level_test` |
+
 ## Android build and runtime
 
 - The [code commit's CI run](https://github.com/abdulrahmanal-saeed/Espa-ol-Pro/actions/runs/43900871431)
