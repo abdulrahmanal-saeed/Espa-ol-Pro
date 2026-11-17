@@ -3,6 +3,8 @@ import 'dart:async';
 import 'package:flutter/widgets.dart' show AppLifecycleListener, ValueNotifier;
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import 'assessment/assessment_engine.dart';
+import 'assessment/assessment_repository.dart';
 import 'backup/backup_service.dart';
 import 'content/models.dart';
 import 'db/database.dart';
@@ -12,6 +14,7 @@ import 'phrases/saved_phrases_repository.dart';
 import 'reminders/plugin_reminder_platform.dart';
 import 'reminders/reminder_service.dart';
 import 'settings.dart';
+import 'speech/delivery_log.dart';
 import 'speech/speech_service.dart';
 import 'srs/due_counter.dart';
 import 'srs/review_repository.dart';
@@ -28,6 +31,17 @@ final initialSettingsProvider = Provider<AppSettings>(
 );
 final clockProvider = Provider<Clock>((ref) => DateTime.now);
 final speechProvider = Provider<SpeechService>((ref) => DeviceTtsSpeech());
+
+/// Sentences actually spoken in this app run (see [SpeechDeliveryLog]).
+final speechDeliveryLogProvider = Provider<SpeechDeliveryLog>(
+  (ref) => SpeechDeliveryLog(),
+);
+
+/// Whether a Spanish voice is usable right now. Re-checked whenever a screen
+/// that needs it opens, so a voice installed meanwhile is picked up.
+final spanishVoiceProvider = FutureProvider.autoDispose<bool>(
+  (ref) => ref.watch(speechProvider).isAvailable(),
+);
 
 /// Disabled in tests so intervals are exactly reproducible.
 final fsrsFuzzProvider = Provider<bool>((ref) => true);
@@ -216,3 +230,20 @@ final notificationTapsProvider = Provider<ValueNotifier<String?>>((ref) {
   ref.onDispose(taps.dispose);
   return taps;
 });
+
+// ---- assessments ------------------------------------------------------------
+
+final assessmentRepositoryProvider = Provider<AssessmentRepository>(
+  (ref) => AssessmentRepository(
+    ref.watch(databaseProvider),
+    clock: ref.watch(clockProvider),
+  ),
+);
+
+final assessmentAttemptsProvider = StreamProvider<List<AssessmentAttempt>>(
+  (ref) => ref.watch(assessmentRepositoryProvider).watchAttempts(),
+);
+
+final assessmentRecordsProvider = StreamProvider<List<AttemptRecord>>(
+  (ref) => ref.watch(assessmentRepositoryProvider).watchRecords(),
+);

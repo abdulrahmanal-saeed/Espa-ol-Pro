@@ -62,6 +62,35 @@ remain at v3.
 | Comprehension questions: audio played, sentence not shown; answers stored as attempts (context `listening`); retries are attempt 2 | `listening_flow_test` |
 | Not verified on a device: real TTS sequencing of turns, pause/resume timing, speed changes, long dialogues | — |
 
+## Phase 1.2B — assessment foundation (PR in review)
+
+| Area | Evidence |
+|---|---|
+| Four unit checkpoints (Pre-A1 U1–U3, A1-U1), 10 questions each, 3 can-dos each, JSON definitions with versions | `assessment_content_test`, `tool/validate_content.dart` |
+| Checkpoint validation; each rule proven on a broken copy | `assessment_content_test` (19 negative cases) |
+| Schema v5 (`assessment_attempts`, `assessment_answers`), additive; v1/v2/v3/v4 → v5 with data kept | `persistence_test` |
+| Deterministic grading; no partial credit; missing accents recorded as `missing_accents` | `assessment_test` |
+| Atomic submission; a failed write stores nothing; retry stores exactly one attempt; results survive reopening; retakes are separate rows | `assessment_test`, `assessment_flow_test` |
+| Assessments never change FSRS, lesson progress, attempts, errors or study time | `assessment_test`, `assessment_flow_test` |
+| Checkpoint screen: locked until the unit is complete, no feedback while answering, exit confirmation | `assessment_flow_test` |
+| Result screen: score, per-skill scores, "speaking not measured", no-certification disclaimer, accent notes, weak can-dos linking back to lessons | `assessment_flow_test`, screenshots 21–22 |
+| Can-do states (not assessed / needs practice / demonstrated / consistent on two different days) with the rule shown in the UI | `assessment_test`, `assessment_flow_test` |
+| Backup v5 round trip; v5 files missing the tables, orphan answers, score mismatches and invalid fields rejected with data untouched; pre-v5 backups keep device results; reset clears results, keeps phrases | `assessment_test` |
+| Fractions ("8 / 10") read left to right inside Arabic text (also fixed in the matching exercise counter) | screenshots 13, 22 |
+| Not verified on a device: checkpoint audio, keyboard with the accent bar, result screen scrolling | — |
+
+## REVIEW-008 fixes
+
+| Finding | Fix | Evidence |
+|---|---|---|
+| P2: listening answered without audio counted as evidence | A checkpoint with audio cannot start without a Spanish voice; each listening question stays locked until its audio actually played (a failing engine never unlocks it). Dialogue comprehension questions are neither offered nor recorded without a voice; the transcript stays available. | `assessment_flow_test` (3 new), `listening_flow_test` (1 new) |
+| P2: backup accepted the same question twice in one attempt | Restore rejects duplicate (attempt, question) pairs, empty attempts and answers without a question/can-do; a unique index enforces it in the database | `assessment_test` (4 new), `persistence_test` |
+| P3: consistency compared different question sets | "Consistent" needs two passes at the same assessment version | `assessment_test` |
+
+Limit: a TTS failure in the middle of guided dialogue questions is not
+detected per question (they are practice, not assessment); checkpoints do
+detect it.
+
 ## Android build and runtime
 
 - The [code commit's CI run](https://github.com/abdulrahmanal-saeed/Espa-ol-Pro/actions/runs/43900871431)
@@ -91,11 +120,8 @@ remain at v3.
 - AI tutor, roleplay, AI writing feedback — the Tutor screen states this.
 - Voice conversation, speech recognition, recording, shadowing playback,
   pronunciation assessment. Listen-and-repeat is self-practice and never scored.
-- CEFR assessment engine (checkpoints, unit/level tests, estimates).
-- Listening library (graded dialogues, transcript toggle, segment repeat,
-  speed control beyond normal/slow).
-- Notifications / reminders.
-- Saved phrases, verb conjugation reference, stories.
+- CEFR level estimates and the A1 level assessment (unit checkpoints exist; they are practice evidence, not certification).
+- Verb conjugation reference, stories.
 - Interview coach, work missions, the rest of A1 and all of A2–C2 lessons.
 - Cloud sync. AI usage budget controls (nothing to budget yet).
 - Native-speaker review of content.

@@ -1,0 +1,171 @@
+{
+ "assessments": [
+  {
+   "id": "chk_a1_u1",
+   "version": 1,
+   "kind": "unit",
+   "level": "a1",
+   "unit": "a1_u1",
+   "title_ar": "نقطة تحقق: تقديم النفس والعمل",
+   "intro_ar": "نقطة تحقق قصيرة. لا تلميحات ولا إظهار للإجابات قبل النهاية، ولا إعادة للأسئلة. النتيجة دليل على ما تستطيعه الآن، وليست شهادة مستوى.",
+   "can_do": [
+    {
+     "id": "cd_a1_u1_languages",
+     "ar": "أذكر جنسيتي واللغات التي أتكلمها وأسأل عنها",
+     "lessons": [
+      "a1_u1_l1"
+     ]
+    },
+    {
+     "id": "cd_a1_u1_job",
+     "ar": "أعرّف بمهنتي ومجال عملي",
+     "lessons": [
+      "a1_u1_l2"
+     ]
+    },
+    {
+     "id": "cd_a1_u1_formal",
+     "ar": "أستقبل عميلاً وأقدّم شخصاً بصيغة رسمية",
+     "lessons": [
+      "a1_u1_l3"
+     ]
+    }
+   ],
+   "questions": [
+    {
+     "id": "chk_a1_u1.q1",
+     "type": "choice",
+     "skill": "grammar",
+     "can_do": "cd_a1_u1_languages",
+     "prompt_ar": "اختر الكلمة المناسبة للفراغ",
+     "choices": [
+      "habla",
+      "hablo",
+      "hablas"
+     ],
+     "answer": 0,
+     "choices_es": true,
+     "stimulus_es": "Laura ___ español."
+    },
+    {
+     "id": "chk_a1_u1.q2",
+     "type": "choice",
+     "skill": "grammar",
+     "can_do": "cd_a1_u1_languages",
+     "prompt_ar": "منى من مصر. ماذا تقول عن نفسها؟",
+     "choices": [
+      "Soy egipcia.",
+      "Soy egipcio."
+     ],
+     "answer": 0,
+     "choices_es": true
+    },
+    {
+     "id": "chk_a1_u1.q3",
+     "type": "choice",
+     "skill": "listening",
+     "can_do": "cd_a1_u1_languages",
+     "prompt_ar": "استمع: ما معنى ما سمعته؟",
+     "choices": [
+      "أتكلم العربية والإنجليزية",
+      "أتكلم العربية فقط",
+      "أتكلم الإنجليزية والإسبانية"
+     ],
+     "answer": 0,
+     "choices_es": false,
+     "audio_es": "Hablo árabe e inglés."
+    },
+    {
+     "id": "chk_a1_u1.q4",
+     "type": "type",
+     "skill": "writing",
+     "can_do": "cd_a1_u1_languages",
+     "prompt_ar": "اكتب بالإسبانية",
+     "accepted": [
+      "Hablo un poco de español",
+      "Yo hablo un poco de español"
+     ],
+     "stimulus_ar": "أتكلم قليلاً من الإسبانية."
+    },
+    {
+     "id": "chk_a1_u1.q5",
+     "type": "choice",
+     "skill": "grammar",
+     "can_do": "cd_a1_u1_job",
+     "prompt_ar": "أي جملة صحيحة لقول «أنا مدير»؟",
+     "choices": [
+      "Soy gerente.",
+      "Soy un gerente.",
+      "Yo gerente."
+     ],
+     "answer": 0,
+     "choices_es": true
+    },
+    {
+     "id": "chk_a1_u1.q6",
+     "type": "choice",
+     "skill": "reading",
+     "can_do": "cd_a1_u1_job",
+     "prompt_ar": "أين يعمل كريم؟",
+     "choices": [
+      "في شركة تقنية",
+      "في فندق",
+      "في مكتب حكومي"
+     ],
+     "answer": 0,
+     "choices_es": false,
+     "stimulus_es": "Me llamo Karim. Soy vendedor. Trabajo en una empresa de tecnología."
+    },
+    {
+     "id": "chk_a1_u1.q7",
+     "type": "type",
+     "skill": "writing",
+     "can_do": "cd_a1_u1_job",
+     "prompt_ar": "اكتب بالإسبانية",
+     "accepted": [
+      "Trabajo en ventas",
+      "Yo trabajo en ventas"
+     ],
+     "stimulus_ar": "أعمل في المبيعات."
+    },
+    {
+     "id": "chk_a1_u1.q8",
+     "type": "choice",
+     "skill": "listening",
+     "can_do": "cd_a1_u1_formal",
+     "prompt_ar": "استمع: ما معنى ما سمعته؟",
+     "choices": [
+      "كيف يمكنني مساعدة حضرتك؟",
+      "ما اسم حضرتك؟",
+      "ماذا تعمل حضرتك؟"
+     ],
+     "answer": 0,
+     "choices_es": false,
+     "audio_es": "¿En qué puedo ayudarle?"
+    },
+    {
+     "id": "chk_a1_u1.q9",
+     "type": "choice",
+     "skill": "reading",
+     "can_do": "cd_a1_u1_formal",
+     "prompt_ar": "يقول لك العميل «Es un placer». بماذا تردّ؟",
+     "choices": [
+      "El placer es mío.",
+      "De nada.",
+      "Hasta luego."
+     ],
+     "answer": 0,
+     "choices_es": true
+    },
+    {
+     "id": "chk_a1_u1.q10",
+     "type": "dictation",
+     "skill": "listening",
+     "can_do": "cd_a1_u1_formal",
+     "audio_es": "Aquí tiene mi tarjeta."
+    }
+   ],
+   "source": "original-v1"
+  }
+ ]
+}

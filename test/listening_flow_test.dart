@@ -1,6 +1,8 @@
 import 'package:espanol_pro/core/content/models.dart';
 import 'package:espanol_pro/core/learning/exercises.dart';
 import 'package:espanol_pro/core/learning/progress_repository.dart';
+import 'package:espanol_pro/core/speech/speech_service.dart';
+import 'package:espanol_pro/features/listening/listening_progress.dart';
 import 'package:espanol_pro/core/srs/review_repository.dart';
 import 'package:espanol_pro/core/widgets/common.dart';
 import 'package:flutter_test/flutter_test.dart';
@@ -121,7 +123,10 @@ void main() {
     await complete(app, upTo('pa1_u2_l2'));
     await app.pump(tester, location: '/listening/${d.id}');
     await tester.tapKey('play-all');
-    expect(find.byKey(const ValueKey('no-voice')), findsOneWidget);
+    expect(
+      find.byKey(const ValueKey('no-voice'), skipOffstage: false),
+      findsOneWidget,
+    );
     expect(find.widgetWithText(EsText, d.turns.first.es), findsOneWidget);
     expect(app.speech.spoken, isEmpty);
     await app.dispose(tester);
@@ -185,4 +190,83 @@ void main() {
     );
     await app.dispose(tester);
   });
+
+  testWidgets('no Spanish voice: the text stays readable but comprehension '
+      'questions are neither asked nor recorded', (tester) async {
+    final app = TestApp(pack, voice: false);
+    await complete(app, upTo('pa1_u2_l2'));
+    await app.pump(tester, location: '/listening/dlg_pa1_saludo');
+    // Known before anything is played; the Spanish text is shown.
+    expect(
+      find.widgetWithText(
+        EsText,
+        pack.dialogue('dlg_pa1_saludo')!.turns.first.es,
+      ),
+      findsOneWidget,
+    );
+    expect(
+      find.byKey(const ValueKey('no-voice'), skipOffstage: false),
+      findsOneWidget,
+    );
+    final start = tester.widget<FilledButton>(
+      find.byKey(const ValueKey('start-quiz')),
+    );
+    expect(start.onPressed, isNull);
+
+    // Even reached directly, the questions screen refuses.
+    await app.pump(tester, location: '/listening/dlg_pa1_saludo/questions');
+    expect(find.byKey(const ValueKey('questions-no-voice')), findsOneWidget);
+    expect(
+      (await app.db.select(app.db.activityAttempts).get()).where(
+        (a) => a.context == 'listening',
+      ),
+      isEmpty,
+    );
+    await app.dispose(tester);
+  });
+
+  testWidgets('a voice that fails mid-session never produces measured '
+      'listening evidence', (tester) async {
+    final d = pack.dialogue('dlg_pa1_saludo')!;
+    final app = TestApp(pack, speech: _VoiceThatDies());
+    await complete(app, upTo('pa1_u2_l2'));
+    await app.pump(tester, location: '/listening/${d.id}/questions');
+    final steps = ExerciseBuilder(pack).buildDialogueQuestions(d);
+    // Even right answers must not count when the sentence was never heard.
+    for (final step in steps) {
+      await tester.answer(step);
+    }
+    await tester.pumpAndSettle();
+    expect(find.textContaining('لم يُشغَّل الصوت'), findsOneWidget);
+
+    final attempts = (await app.db.select(app.db.activityAttempts).get())
+        .where((a) => a.context == 'listening')
+        .toList();
+    expect(attempts, isNotEmpty);
+    final withAudio = {
+      for (final q in d.questions)
+        if (q.turnId != null) q.id,
+    };
+    for (final a in attempts.where((a) => withAudio.contains(a.activityId))) {
+      expect(a.isMeasured, isFalse, reason: a.activityId);
+    }
+    // And the dialogue does not count as answered.
+    final progress = DialogueProgress.of(d, attempts);
+    expect(progress.answered, d.questions.length - withAudio.length);
+    await app.dispose(tester);
+  });
+}
+
+/// Reports a Spanish voice, then fails on the first sentence (as an
+/// Android TTS engine can) and stays unavailable.
+class _VoiceThatDies extends SilentSpeech {
+  bool _ok = true;
+
+  @override
+  Future<bool> isAvailable() async => _ok;
+
+  @override
+  Future<void> speak(String spanish, {bool slow = false}) async {
+    _ok = false;
+  }
 }

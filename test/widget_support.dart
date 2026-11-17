@@ -52,10 +52,10 @@ String _flutterRoot() {
 }
 
 class TestApp {
-  TestApp(this.pack, {bool voice = true})
+  TestApp(this.pack, {bool voice = true, SilentSpeech? speech})
     : db = memoryDb(),
       clock = FakeClock(),
-      speech = SilentSpeech(available: voice),
+      speech = speech ?? SilentSpeech(available: voice),
       reminders = FakeReminderPlatform();
 
   final ContentPack pack;

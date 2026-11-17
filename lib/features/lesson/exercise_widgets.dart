@@ -926,7 +926,7 @@ class _MatchViewState extends State<MatchView> {
         ],
       ),
       action: Text(
-        '${_done.length} / ${ex.pairs.length}',
+        fraction(_done.length, ex.pairs.length),
         textAlign: TextAlign.center,
         style: t.textTheme.titleMedium,
       ),

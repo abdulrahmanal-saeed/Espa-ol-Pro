@@ -128,3 +128,41 @@ indices, distinct choices, and existing turn references.
 Learner state is not stored separately. A dialogue's progress is derived
 from `activity_attempts` rows with `context = 'listening'` whose
 `activity_id` is a question id (first attempts only, most recent run).
+
+## Assessments (checkpoints, content ≥ 1.1.0)
+
+`curriculum.json` lists assessment files in `assessment_files`
+(`assessments/<level>.json`), each `{ "assessments": [ … ] }`:
+
+```jsonc
+{
+  "id": "chk_pa1_u1", "version": 1,      // bump version when questions change
+  "kind": "unit",                        // unit | level
+  "level": "pre_a1", "unit": "pa1_u1",   // a level assessment has no unit
+  "title_ar": "…", "intro_ar": "…",
+  "can_do": [{ "id": "cd_pa1_u1_hear", "ar": "أميّز …",
+               "lessons": ["pa1_u1_l1"] }],   // lessons to revisit when weak
+  "questions": [{
+    "id": "chk_pa1_u1.q1", "type": "choice", // choice | type | dictation
+    "skill": "listening",                     // vocabulary | reading | listening | writing | grammar
+    "can_do": "cd_pa1_u1_hear",
+    "prompt_ar": "…", "audio_es": "perro",    // or stimulus_es / stimulus_ar
+    "choices": ["perro", "pero"], "answer": 0, "choices_es": true
+  }],
+  "source": "original-v1"
+}
+```
+
+| `type` | required | graded by |
+|---|---|---|
+| `choice` | `prompt_ar`, ≥ 2 distinct `choices`, valid `answer` | exact option text |
+| `type` | `prompt_ar`, `accepted` | the answer evaluator; missing accents = meaning right, spelling recorded apart |
+| `dictation` | `audio_es` | as `type`, against `audio_es` |
+
+Validation: unique ids; `version ≥ 1`; title and intro present; known source;
+a `unit` checkpoint names an available unit of its level, one per unit; a
+`level` assessment names no unit; each can-do has Arabic text, lessons inside
+its unit/level, and **at least 2 questions** as evidence; at least 8 questions
+covering at least 3 skills; speaking is rejected (not objectively measurable);
+Spanish fields have no Arabic script and balanced `¿ ?` / `¡ !`. Every rule is
+proven on a broken copy in `test/assessment_content_test.dart`.

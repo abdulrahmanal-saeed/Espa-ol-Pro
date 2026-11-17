@@ -38,6 +38,7 @@ flutter:
     - assets/content/v1/
     - assets/content/v1/units/
     - assets/content/v1/dialogues/
+    - assets/content/v1/assessments/
   fonts:
     - family: PlexArabic
       fonts:

@@ -4632,6 +4632,1097 @@ class SavedPhrasesCompanion extends UpdateCompanion<SavedPhrase> {
   }
 }
 
+class $AssessmentAttemptsTable extends AssessmentAttempts
+    with TableInfo<$AssessmentAttemptsTable, AssessmentAttempt> {
+  @override
+  final GeneratedDatabase attachedDatabase;
+  final String? _alias;
+  $AssessmentAttemptsTable(this.attachedDatabase, [this._alias]);
+  static const VerificationMeta _idMeta = const VerificationMeta('id');
+  @override
+  late final GeneratedColumn<int> id = GeneratedColumn<int>(
+    'id',
+    aliasedName,
+    false,
+    hasAutoIncrement: true,
+    type: DriftSqlType.int,
+    requiredDuringInsert: false,
+    defaultConstraints: GeneratedColumn.constraintIsAlways(
+      'PRIMARY KEY AUTOINCREMENT',
+    ),
+  );
+  static const VerificationMeta _assessmentIdMeta = const VerificationMeta(
+    'assessmentId',
+  );
+  @override
+  late final GeneratedColumn<String> assessmentId = GeneratedColumn<String>(
+    'assessment_id',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _assessmentVersionMeta = const VerificationMeta(
+    'assessmentVersion',
+  );
+  @override
+  late final GeneratedColumn<int> assessmentVersion = GeneratedColumn<int>(
+    'assessment_version',
+    aliasedName,
+    false,
+    type: DriftSqlType.int,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _contentVersionMeta = const VerificationMeta(
+    'contentVersion',
+  );
+  @override
+  late final GeneratedColumn<String> contentVersion = GeneratedColumn<String>(
+    'content_version',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _startedAtMeta = const VerificationMeta(
+    'startedAt',
+  );
+  @override
+  late final GeneratedColumn<int> startedAt = GeneratedColumn<int>(
+    'started_at',
+    aliasedName,
+    false,
+    type: DriftSqlType.int,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _completedAtMeta = const VerificationMeta(
+    'completedAt',
+  );
+  @override
+  late final GeneratedColumn<int> completedAt = GeneratedColumn<int>(
+    'completed_at',
+    aliasedName,
+    false,
+    type: DriftSqlType.int,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _maxScoreMeta = const VerificationMeta(
+    'maxScore',
+  );
+  @override
+  late final GeneratedColumn<int> maxScore = GeneratedColumn<int>(
+    'max_score',
+    aliasedName,
+    false,
+    type: DriftSqlType.int,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _scoreMeta = const VerificationMeta('score');
+  @override
+  late final GeneratedColumn<int> score = GeneratedColumn<int>(
+    'score',
+    aliasedName,
+    false,
+    type: DriftSqlType.int,
+    requiredDuringInsert: true,
+  );
+  @override
+  List<GeneratedColumn> get $columns => [
+    id,
+    assessmentId,
+    assessmentVersion,
+    contentVersion,
+    startedAt,
+    completedAt,
+    maxScore,
+    score,
+  ];
+  @override
+  String get aliasedName => _alias ?? actualTableName;
+  @override
+  String get actualTableName => $name;
+  static const String $name = 'assessment_attempts';
+  @override
+  VerificationContext validateIntegrity(
+    Insertable<AssessmentAttempt> instance, {
+    bool isInserting = false,
+  }) {
+    final context = VerificationContext();
+    final data = instance.toColumns(true);
+    if (data.containsKey('id')) {
+      context.handle(_idMeta, id.isAcceptableOrUnknown(data['id']!, _idMeta));
+    }
+    if (data.containsKey('assessment_id')) {
+      context.handle(
+        _assessmentIdMeta,
+        assessmentId.isAcceptableOrUnknown(
+          data['assessment_id']!,
+          _assessmentIdMeta,
+        ),
+      );
+    } else if (isInserting) {
+      context.missing(_assessmentIdMeta);
+    }
+    if (data.containsKey('assessment_version')) {
+      context.handle(
+        _assessmentVersionMeta,
+        assessmentVersion.isAcceptableOrUnknown(
+          data['assessment_version']!,
+          _assessmentVersionMeta,
+        ),
+      );
+    } else if (isInserting) {
+      context.missing(_assessmentVersionMeta);
+    }
+    if (data.containsKey('content_version')) {
+      context.handle(
+        _contentVersionMeta,
+        contentVersion.isAcceptableOrUnknown(
+          data['content_version']!,
+          _contentVersionMeta,
+        ),
+      );
+    } else if (isInserting) {
+      context.missing(_contentVersionMeta);
+    }
+    if (data.containsKey('started_at')) {
+      context.handle(
+        _startedAtMeta,
+        startedAt.isAcceptableOrUnknown(data['started_at']!, _startedAtMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_startedAtMeta);
+    }
+    if (data.containsKey('completed_at')) {
+      context.handle(
+        _completedAtMeta,
+        completedAt.isAcceptableOrUnknown(
+          data['completed_at']!,
+          _completedAtMeta,
+        ),
+      );
+    } else if (isInserting) {
+      context.missing(_completedAtMeta);
+    }
+    if (data.containsKey('max_score')) {
+      context.handle(
+        _maxScoreMeta,
+        maxScore.isAcceptableOrUnknown(data['max_score']!, _maxScoreMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_maxScoreMeta);
+    }
+    if (data.containsKey('score')) {
+      context.handle(
+        _scoreMeta,
+        score.isAcceptableOrUnknown(data['score']!, _scoreMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_scoreMeta);
+    }
+    return context;
+  }
+
+  @override
+  Set<GeneratedColumn> get $primaryKey => {id};
+  @override
+  AssessmentAttempt map(Map<String, dynamic> data, {String? tablePrefix}) {
+    final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
+    return AssessmentAttempt(
+      id: attachedDatabase.typeMapping.read(
+        DriftSqlType.int,
+        data['${effectivePrefix}id'],
+      )!,
+      assessmentId: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}assessment_id'],
+      )!,
+      assessmentVersion: attachedDatabase.typeMapping.read(
+        DriftSqlType.int,
+        data['${effectivePrefix}assessment_version'],
+      )!,
+      contentVersion: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}content_version'],
+      )!,
+      startedAt: attachedDatabase.typeMapping.read(
+        DriftSqlType.int,
+        data['${effectivePrefix}started_at'],
+      )!,
+      completedAt: attachedDatabase.typeMapping.read(
+        DriftSqlType.int,
+        data['${effectivePrefix}completed_at'],
+      )!,
+      maxScore: attachedDatabase.typeMapping.read(
+        DriftSqlType.int,
+        data['${effectivePrefix}max_score'],
+      )!,
+      score: attachedDatabase.typeMapping.read(
+        DriftSqlType.int,
+        data['${effectivePrefix}score'],
+      )!,
+    );
+  }
+
+  @override
+  $AssessmentAttemptsTable createAlias(String alias) {
+    return $AssessmentAttemptsTable(attachedDatabase, alias);
+  }
+}
+
+class AssessmentAttempt extends DataClass
+    implements Insertable<AssessmentAttempt> {
+  final int id;
+  final String assessmentId;
+
+  /// Version of the assessment definition the learner actually took, so a
+  /// later edit of the questions never reinterprets an old result.
+  final int assessmentVersion;
+  final String contentVersion;
+  final int startedAt;
+  final int completedAt;
+
+  /// Objectively scored questions in this attempt.
+  final int maxScore;
+
+  /// Of those, answered correctly.
+  final int score;
+  const AssessmentAttempt({
+    required this.id,
+    required this.assessmentId,
+    required this.assessmentVersion,
+    required this.contentVersion,
+    required this.startedAt,
+    required this.completedAt,
+    required this.maxScore,
+    required this.score,
+  });
+  @override
+  Map<String, Expression> toColumns(bool nullToAbsent) {
+    final map = <String, Expression>{};
+    map['id'] = Variable<int>(id);
+    map['assessment_id'] = Variable<String>(assessmentId);
+    map['assessment_version'] = Variable<int>(assessmentVersion);
+    map['content_version'] = Variable<String>(contentVersion);
+    map['started_at'] = Variable<int>(startedAt);
+    map['completed_at'] = Variable<int>(completedAt);
+    map['max_score'] = Variable<int>(maxScore);
+    map['score'] = Variable<int>(score);
+    return map;
+  }
+
+  AssessmentAttemptsCompanion toCompanion(bool nullToAbsent) {
+    return AssessmentAttemptsCompanion(
+      id: Value(id),
+      assessmentId: Value(assessmentId),
+      assessmentVersion: Value(assessmentVersion),
+      contentVersion: Value(contentVersion),
+      startedAt: Value(startedAt),
+      completedAt: Value(completedAt),
+      maxScore: Value(maxScore),
+      score: Value(score),
+    );
+  }
+
+  factory AssessmentAttempt.fromJson(
+    Map<String, dynamic> json, {
+    ValueSerializer? serializer,
+  }) {
+    serializer ??= driftRuntimeOptions.defaultSerializer;
+    return AssessmentAttempt(
+      id: serializer.fromJson<int>(json['id']),
+      assessmentId: serializer.fromJson<String>(json['assessmentId']),
+      assessmentVersion: serializer.fromJson<int>(json['assessmentVersion']),
+      contentVersion: serializer.fromJson<String>(json['contentVersion']),
+      startedAt: serializer.fromJson<int>(json['startedAt']),
+      completedAt: serializer.fromJson<int>(json['completedAt']),
+      maxScore: serializer.fromJson<int>(json['maxScore']),
+      score: serializer.fromJson<int>(json['score']),
+    );
+  }
+  @override
+  Map<String, dynamic> toJson({ValueSerializer? serializer}) {
+    serializer ??= driftRuntimeOptions.defaultSerializer;
+    return <String, dynamic>{
+      'id': serializer.toJson<int>(id),
+      'assessmentId': serializer.toJson<String>(assessmentId),
+      'assessmentVersion': serializer.toJson<int>(assessmentVersion),
+      'contentVersion': serializer.toJson<String>(contentVersion),
+      'startedAt': serializer.toJson<int>(startedAt),
+      'completedAt': serializer.toJson<int>(completedAt),
+      'maxScore': serializer.toJson<int>(maxScore),
+      'score': serializer.toJson<int>(score),
+    };
+  }
+
+  AssessmentAttempt copyWith({
+    int? id,
+    String? assessmentId,
+    int? assessmentVersion,
+    String? contentVersion,
+    int? startedAt,
+    int? completedAt,
+    int? maxScore,
+    int? score,
+  }) => AssessmentAttempt(
+    id: id ?? this.id,
+    assessmentId: assessmentId ?? this.assessmentId,
+    assessmentVersion: assessmentVersion ?? this.assessmentVersion,
+    contentVersion: contentVersion ?? this.contentVersion,
+    startedAt: startedAt ?? this.startedAt,
+    completedAt: completedAt ?? this.completedAt,
+    maxScore: maxScore ?? this.maxScore,
+    score: score ?? this.score,
+  );
+  AssessmentAttempt copyWithCompanion(AssessmentAttemptsCompanion data) {
+    return AssessmentAttempt(
+      id: data.id.present ? data.id.value : this.id,
+      assessmentId: data.assessmentId.present
+          ? data.assessmentId.value
+          : this.assessmentId,
+      assessmentVersion: data.assessmentVersion.present
+          ? data.assessmentVersion.value
+          : this.assessmentVersion,
+      contentVersion: data.contentVersion.present
+          ? data.contentVersion.value
+          : this.contentVersion,
+      startedAt: data.startedAt.present ? data.startedAt.value : this.startedAt,
+      completedAt: data.completedAt.present
+          ? data.completedAt.value
+          : this.completedAt,
+      maxScore: data.maxScore.present ? data.maxScore.value : this.maxScore,
+      score: data.score.present ? data.score.value : this.score,
+    );
+  }
+
+  @override
+  String toString() {
+    return (StringBuffer('AssessmentAttempt(')
+          ..write('id: $id, ')
+          ..write('assessmentId: $assessmentId, ')
+          ..write('assessmentVersion: $assessmentVersion, ')
+          ..write('contentVersion: $contentVersion, ')
+          ..write('startedAt: $startedAt, ')
+          ..write('completedAt: $completedAt, ')
+          ..write('maxScore: $maxScore, ')
+          ..write('score: $score')
+          ..write(')'))
+        .toString();
+  }
+
+  @override
+  int get hashCode => Object.hash(
+    id,
+    assessmentId,
+    assessmentVersion,
+    contentVersion,
+    startedAt,
+    completedAt,
+    maxScore,
+    score,
+  );
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      (other is AssessmentAttempt &&
+          other.id == this.id &&
+          other.assessmentId == this.assessmentId &&
+          other.assessmentVersion == this.assessmentVersion &&
+          other.contentVersion == this.contentVersion &&
+          other.startedAt == this.startedAt &&
+          other.completedAt == this.completedAt &&
+          other.maxScore == this.maxScore &&
+          other.score == this.score);
+}
+
+class AssessmentAttemptsCompanion extends UpdateCompanion<AssessmentAttempt> {
+  final Value<int> id;
+  final Value<String> assessmentId;
+  final Value<int> assessmentVersion;
+  final Value<String> contentVersion;
+  final Value<int> startedAt;
+  final Value<int> completedAt;
+  final Value<int> maxScore;
+  final Value<int> score;
+  const AssessmentAttemptsCompanion({
+    this.id = const Value.absent(),
+    this.assessmentId = const Value.absent(),
+    this.assessmentVersion = const Value.absent(),
+    this.contentVersion = const Value.absent(),
+    this.startedAt = const Value.absent(),
+    this.completedAt = const Value.absent(),
+    this.maxScore = const Value.absent(),
+    this.score = const Value.absent(),
+  });
+  AssessmentAttemptsCompanion.insert({
+    this.id = const Value.absent(),
+    required String assessmentId,
+    required int assessmentVersion,
+    required String contentVersion,
+    required int startedAt,
+    required int completedAt,
+    required int maxScore,
+    required int score,
+  }) : assessmentId = Value(assessmentId),
+       assessmentVersion = Value(assessmentVersion),
+       contentVersion = Value(contentVersion),
+       startedAt = Value(startedAt),
+       completedAt = Value(completedAt),
+       maxScore = Value(maxScore),
+       score = Value(score);
+  static Insertable<AssessmentAttempt> custom({
+    Expression<int>? id,
+    Expression<String>? assessmentId,
+    Expression<int>? assessmentVersion,
+    Expression<String>? contentVersion,
+    Expression<int>? startedAt,
+    Expression<int>? completedAt,
+    Expression<int>? maxScore,
+    Expression<int>? score,
+  }) {
+    return RawValuesInsertable({
+      if (id != null) 'id': id,
+      if (assessmentId != null) 'assessment_id': assessmentId,
+      if (assessmentVersion != null) 'assessment_version': assessmentVersion,
+      if (contentVersion != null) 'content_version': contentVersion,
+      if (startedAt != null) 'started_at': startedAt,
+      if (completedAt != null) 'completed_at': completedAt,
+      if (maxScore != null) 'max_score': maxScore,
+      if (score != null) 'score': score,
+    });
+  }
+
+  AssessmentAttemptsCompanion copyWith({
+    Value<int>? id,
+    Value<String>? assessmentId,
+    Value<int>? assessmentVersion,
+    Value<String>? contentVersion,
+    Value<int>? startedAt,
+    Value<int>? completedAt,
+    Value<int>? maxScore,
+    Value<int>? score,
+  }) {
+    return AssessmentAttemptsCompanion(
+      id: id ?? this.id,
+      assessmentId: assessmentId ?? this.assessmentId,
+      assessmentVersion: assessmentVersion ?? this.assessmentVersion,
+      contentVersion: contentVersion ?? this.contentVersion,
+      startedAt: startedAt ?? this.startedAt,
+      completedAt: completedAt ?? this.completedAt,
+      maxScore: maxScore ?? this.maxScore,
+      score: score ?? this.score,
+    );
+  }
+
+  @override
+  Map<String, Expression> toColumns(bool nullToAbsent) {
+    final map = <String, Expression>{};
+    if (id.present) {
+      map['id'] = Variable<int>(id.value);
+    }
+    if (assessmentId.present) {
+      map['assessment_id'] = Variable<String>(assessmentId.value);
+    }
+    if (assessmentVersion.present) {
+      map['assessment_version'] = Variable<int>(assessmentVersion.value);
+    }
+    if (contentVersion.present) {
+      map['content_version'] = Variable<String>(contentVersion.value);
+    }
+    if (startedAt.present) {
+      map['started_at'] = Variable<int>(startedAt.value);
+    }
+    if (completedAt.present) {
+      map['completed_at'] = Variable<int>(completedAt.value);
+    }
+    if (maxScore.present) {
+      map['max_score'] = Variable<int>(maxScore.value);
+    }
+    if (score.present) {
+      map['score'] = Variable<int>(score.value);
+    }
+    return map;
+  }
+
+  @override
+  String toString() {
+    return (StringBuffer('AssessmentAttemptsCompanion(')
+          ..write('id: $id, ')
+          ..write('assessmentId: $assessmentId, ')
+          ..write('assessmentVersion: $assessmentVersion, ')
+          ..write('contentVersion: $contentVersion, ')
+          ..write('startedAt: $startedAt, ')
+          ..write('completedAt: $completedAt, ')
+          ..write('maxScore: $maxScore, ')
+          ..write('score: $score')
+          ..write(')'))
+        .toString();
+  }
+}
+
+class $AssessmentAnswersTable extends AssessmentAnswers
+    with TableInfo<$AssessmentAnswersTable, AssessmentAnswer> {
+  @override
+  final GeneratedDatabase attachedDatabase;
+  final String? _alias;
+  $AssessmentAnswersTable(this.attachedDatabase, [this._alias]);
+  static const VerificationMeta _idMeta = const VerificationMeta('id');
+  @override
+  late final GeneratedColumn<int> id = GeneratedColumn<int>(
+    'id',
+    aliasedName,
+    false,
+    hasAutoIncrement: true,
+    type: DriftSqlType.int,
+    requiredDuringInsert: false,
+    defaultConstraints: GeneratedColumn.constraintIsAlways(
+      'PRIMARY KEY AUTOINCREMENT',
+    ),
+  );
+  static const VerificationMeta _attemptIdMeta = const VerificationMeta(
+    'attemptId',
+  );
+  @override
+  late final GeneratedColumn<int> attemptId = GeneratedColumn<int>(
+    'attempt_id',
+    aliasedName,
+    false,
+    type: DriftSqlType.int,
+    requiredDuringInsert: true,
+    defaultConstraints: GeneratedColumn.constraintIsAlways(
+      'REFERENCES assessment_attempts (id) ON DELETE CASCADE',
+    ),
+  );
+  static const VerificationMeta _questionIdMeta = const VerificationMeta(
+    'questionId',
+  );
+  @override
+  late final GeneratedColumn<String> questionId = GeneratedColumn<String>(
+    'question_id',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _skillMeta = const VerificationMeta('skill');
+  @override
+  late final GeneratedColumn<String> skill = GeneratedColumn<String>(
+    'skill',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _canDoIdMeta = const VerificationMeta(
+    'canDoId',
+  );
+  @override
+  late final GeneratedColumn<String> canDoId = GeneratedColumn<String>(
+    'can_do_id',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _isCorrectMeta = const VerificationMeta(
+    'isCorrect',
+  );
+  @override
+  late final GeneratedColumn<bool> isCorrect = GeneratedColumn<bool>(
+    'is_correct',
+    aliasedName,
+    false,
+    type: DriftSqlType.bool,
+    requiredDuringInsert: true,
+    defaultConstraints: GeneratedColumn.constraintIsAlways(
+      'CHECK ("is_correct" IN (0, 1))',
+    ),
+  );
+  static const VerificationMeta _spellingMeta = const VerificationMeta(
+    'spelling',
+  );
+  @override
+  late final GeneratedColumn<String> spelling = GeneratedColumn<String>(
+    'spelling',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _userAnswerMeta = const VerificationMeta(
+    'userAnswer',
+  );
+  @override
+  late final GeneratedColumn<String> userAnswer = GeneratedColumn<String>(
+    'user_answer',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+    defaultValue: const Constant(''),
+  );
+  static const VerificationMeta _expectedMeta = const VerificationMeta(
+    'expected',
+  );
+  @override
+  late final GeneratedColumn<String> expected = GeneratedColumn<String>(
+    'expected',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+    defaultValue: const Constant(''),
+  );
+  @override
+  List<GeneratedColumn> get $columns => [
+    id,
+    attemptId,
+    questionId,
+    skill,
+    canDoId,
+    isCorrect,
+    spelling,
+    userAnswer,
+    expected,
+  ];
+  @override
+  String get aliasedName => _alias ?? actualTableName;
+  @override
+  String get actualTableName => $name;
+  static const String $name = 'assessment_answers';
+  @override
+  VerificationContext validateIntegrity(
+    Insertable<AssessmentAnswer> instance, {
+    bool isInserting = false,
+  }) {
+    final context = VerificationContext();
+    final data = instance.toColumns(true);
+    if (data.containsKey('id')) {
+      context.handle(_idMeta, id.isAcceptableOrUnknown(data['id']!, _idMeta));
+    }
+    if (data.containsKey('attempt_id')) {
+      context.handle(
+        _attemptIdMeta,
+        attemptId.isAcceptableOrUnknown(data['attempt_id']!, _attemptIdMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_attemptIdMeta);
+    }
+    if (data.containsKey('question_id')) {
+      context.handle(
+        _questionIdMeta,
+        questionId.isAcceptableOrUnknown(data['question_id']!, _questionIdMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_questionIdMeta);
+    }
+    if (data.containsKey('skill')) {
+      context.handle(
+        _skillMeta,
+        skill.isAcceptableOrUnknown(data['skill']!, _skillMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_skillMeta);
+    }
+    if (data.containsKey('can_do_id')) {
+      context.handle(
+        _canDoIdMeta,
+        canDoId.isAcceptableOrUnknown(data['can_do_id']!, _canDoIdMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_canDoIdMeta);
+    }
+    if (data.containsKey('is_correct')) {
+      context.handle(
+        _isCorrectMeta,
+        isCorrect.isAcceptableOrUnknown(data['is_correct']!, _isCorrectMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_isCorrectMeta);
+    }
+    if (data.containsKey('spelling')) {
+      context.handle(
+        _spellingMeta,
+        spelling.isAcceptableOrUnknown(data['spelling']!, _spellingMeta),
+      );
+    }
+    if (data.containsKey('user_answer')) {
+      context.handle(
+        _userAnswerMeta,
+        userAnswer.isAcceptableOrUnknown(data['user_answer']!, _userAnswerMeta),
+      );
+    }
+    if (data.containsKey('expected')) {
+      context.handle(
+        _expectedMeta,
+        expected.isAcceptableOrUnknown(data['expected']!, _expectedMeta),
+      );
+    }
+    return context;
+  }
+
+  @override
+  Set<GeneratedColumn> get $primaryKey => {id};
+  @override
+  AssessmentAnswer map(Map<String, dynamic> data, {String? tablePrefix}) {
+    final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
+    return AssessmentAnswer(
+      id: attachedDatabase.typeMapping.read(
+        DriftSqlType.int,
+        data['${effectivePrefix}id'],
+      )!,
+      attemptId: attachedDatabase.typeMapping.read(
+        DriftSqlType.int,
+        data['${effectivePrefix}attempt_id'],
+      )!,
+      questionId: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}question_id'],
+      )!,
+      skill: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}skill'],
+      )!,
+      canDoId: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}can_do_id'],
+      )!,
+      isCorrect: attachedDatabase.typeMapping.read(
+        DriftSqlType.bool,
+        data['${effectivePrefix}is_correct'],
+      )!,
+      spelling: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}spelling'],
+      ),
+      userAnswer: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}user_answer'],
+      )!,
+      expected: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}expected'],
+      )!,
+    );
+  }
+
+  @override
+  $AssessmentAnswersTable createAlias(String alias) {
+    return $AssessmentAnswersTable(attachedDatabase, alias);
+  }
+}
+
+class AssessmentAnswer extends DataClass
+    implements Insertable<AssessmentAnswer> {
+  final int id;
+  final int attemptId;
+  final String questionId;
+
+  /// vocabulary | reading | listening | writing | grammar
+  final String skill;
+
+  /// The "can do" statement this question gives evidence for.
+  final String canDoId;
+  final bool isCorrect;
+
+  /// For typed answers: exact | missing_accents | wrong. Null when spelling
+  /// does not apply (choices).
+  final String? spelling;
+  final String userAnswer;
+  final String expected;
+  const AssessmentAnswer({
+    required this.id,
+    required this.attemptId,
+    required this.questionId,
+    required this.skill,
+    required this.canDoId,
+    required this.isCorrect,
+    this.spelling,
+    required this.userAnswer,
+    required this.expected,
+  });
+  @override
+  Map<String, Expression> toColumns(bool nullToAbsent) {
+    final map = <String, Expression>{};
+    map['id'] = Variable<int>(id);
+    map['attempt_id'] = Variable<int>(attemptId);
+    map['question_id'] = Variable<String>(questionId);
+    map['skill'] = Variable<String>(skill);
+    map['can_do_id'] = Variable<String>(canDoId);
+    map['is_correct'] = Variable<bool>(isCorrect);
+    if (!nullToAbsent || spelling != null) {
+      map['spelling'] = Variable<String>(spelling);
+    }
+    map['user_answer'] = Variable<String>(userAnswer);
+    map['expected'] = Variable<String>(expected);
+    return map;
+  }
+
+  AssessmentAnswersCompanion toCompanion(bool nullToAbsent) {
+    return AssessmentAnswersCompanion(
+      id: Value(id),
+      attemptId: Value(attemptId),
+      questionId: Value(questionId),
+      skill: Value(skill),
+      canDoId: Value(canDoId),
+      isCorrect: Value(isCorrect),
+      spelling: spelling == null && nullToAbsent
+          ? const Value.absent()
+          : Value(spelling),
+      userAnswer: Value(userAnswer),
+      expected: Value(expected),
+    );
+  }
+
+  factory AssessmentAnswer.fromJson(
+    Map<String, dynamic> json, {
+    ValueSerializer? serializer,
+  }) {
+    serializer ??= driftRuntimeOptions.defaultSerializer;
+    return AssessmentAnswer(
+      id: serializer.fromJson<int>(json['id']),
+      attemptId: serializer.fromJson<int>(json['attemptId']),
+      questionId: serializer.fromJson<String>(json['questionId']),
+      skill: serializer.fromJson<String>(json['skill']),
+      canDoId: serializer.fromJson<String>(json['canDoId']),
+      isCorrect: serializer.fromJson<bool>(json['isCorrect']),
+      spelling: serializer.fromJson<String?>(json['spelling']),
+      userAnswer: serializer.fromJson<String>(json['userAnswer']),
+      expected: serializer.fromJson<String>(json['expected']),
+    );
+  }
+  @override
+  Map<String, dynamic> toJson({ValueSerializer? serializer}) {
+    serializer ??= driftRuntimeOptions.defaultSerializer;
+    return <String, dynamic>{
+      'id': serializer.toJson<int>(id),
+      'attemptId': serializer.toJson<int>(attemptId),
+      'questionId': serializer.toJson<String>(questionId),
+      'skill': serializer.toJson<String>(skill),
+      'canDoId': serializer.toJson<String>(canDoId),
+      'isCorrect': serializer.toJson<bool>(isCorrect),
+      'spelling': serializer.toJson<String?>(spelling),
+      'userAnswer': serializer.toJson<String>(userAnswer),
+      'expected': serializer.toJson<String>(expected),
+    };
+  }
+
+  AssessmentAnswer copyWith({
+    int? id,
+    int? attemptId,
+    String? questionId,
+    String? skill,
+    String? canDoId,
+    bool? isCorrect,
+    Value<String?> spelling = const Value.absent(),
+    String? userAnswer,
+    String? expected,
+  }) => AssessmentAnswer(
+    id: id ?? this.id,
+    attemptId: attemptId ?? this.attemptId,
+    questionId: questionId ?? this.questionId,
+    skill: skill ?? this.skill,
+    canDoId: canDoId ?? this.canDoId,
+    isCorrect: isCorrect ?? this.isCorrect,
+    spelling: spelling.present ? spelling.value : this.spelling,
+    userAnswer: userAnswer ?? this.userAnswer,
+    expected: expected ?? this.expected,
+  );
+  AssessmentAnswer copyWithCompanion(AssessmentAnswersCompanion data) {
+    return AssessmentAnswer(
+      id: data.id.present ? data.id.value : this.id,
+      attemptId: data.attemptId.present ? data.attemptId.value : this.attemptId,
+      questionId: data.questionId.present
+          ? data.questionId.value
+          : this.questionId,
+      skill: data.skill.present ? data.skill.value : this.skill,
+      canDoId: data.canDoId.present ? data.canDoId.value : this.canDoId,
+      isCorrect: data.isCorrect.present ? data.isCorrect.value : this.isCorrect,
+      spelling: data.spelling.present ? data.spelling.value : this.spelling,
+      userAnswer: data.userAnswer.present
+          ? data.userAnswer.value
+          : this.userAnswer,
+      expected: data.expected.present ? data.expected.value : this.expected,
+    );
+  }
+
+  @override
+  String toString() {
+    return (StringBuffer('AssessmentAnswer(')
+          ..write('id: $id, ')
+          ..write('attemptId: $attemptId, ')
+          ..write('questionId: $questionId, ')
+          ..write('skill: $skill, ')
+          ..write('canDoId: $canDoId, ')
+          ..write('isCorrect: $isCorrect, ')
+          ..write('spelling: $spelling, ')
+          ..write('userAnswer: $userAnswer, ')
+          ..write('expected: $expected')
+          ..write(')'))
+        .toString();
+  }
+
+  @override
+  int get hashCode => Object.hash(
+    id,
+    attemptId,
+    questionId,
+    skill,
+    canDoId,
+    isCorrect,
+    spelling,
+    userAnswer,
+    expected,
+  );
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      (other is AssessmentAnswer &&
+          other.id == this.id &&
+          other.attemptId == this.attemptId &&
+          other.questionId == this.questionId &&
+          other.skill == this.skill &&
+          other.canDoId == this.canDoId &&
+          other.isCorrect == this.isCorrect &&
+          other.spelling == this.spelling &&
+          other.userAnswer == this.userAnswer &&
+          other.expected == this.expected);
+}
+
+class AssessmentAnswersCompanion extends UpdateCompanion<AssessmentAnswer> {
+  final Value<int> id;
+  final Value<int> attemptId;
+  final Value<String> questionId;
+  final Value<String> skill;
+  final Value<String> canDoId;
+  final Value<bool> isCorrect;
+  final Value<String?> spelling;
+  final Value<String> userAnswer;
+  final Value<String> expected;
+  const AssessmentAnswersCompanion({
+    this.id = const Value.absent(),
+    this.attemptId = const Value.absent(),
+    this.questionId = const Value.absent(),
+    this.skill = const Value.absent(),
+    this.canDoId = const Value.absent(),
+    this.isCorrect = const Value.absent(),
+    this.spelling = const Value.absent(),
+    this.userAnswer = const Value.absent(),
+    this.expected = const Value.absent(),
+  });
+  AssessmentAnswersCompanion.insert({
+    this.id = const Value.absent(),
+    required int attemptId,
+    required String questionId,
+    required String skill,
+    required String canDoId,
+    required bool isCorrect,
+    this.spelling = const Value.absent(),
+    this.userAnswer = const Value.absent(),
+    this.expected = const Value.absent(),
+  }) : attemptId = Value(attemptId),
+       questionId = Value(questionId),
+       skill = Value(skill),
+       canDoId = Value(canDoId),
+       isCorrect = Value(isCorrect);
+  static Insertable<AssessmentAnswer> custom({
+    Expression<int>? id,
+    Expression<int>? attemptId,
+    Expression<String>? questionId,
+    Expression<String>? skill,
+    Expression<String>? canDoId,
+    Expression<bool>? isCorrect,
+    Expression<String>? spelling,
+    Expression<String>? userAnswer,
+    Expression<String>? expected,
+  }) {
+    return RawValuesInsertable({
+      if (id != null) 'id': id,
+      if (attemptId != null) 'attempt_id': attemptId,
+      if (questionId != null) 'question_id': questionId,
+      if (skill != null) 'skill': skill,
+      if (canDoId != null) 'can_do_id': canDoId,
+      if (isCorrect != null) 'is_correct': isCorrect,
+      if (spelling != null) 'spelling': spelling,
+      if (userAnswer != null) 'user_answer': userAnswer,
+      if (expected != null) 'expected': expected,
+    });
+  }
+
+  AssessmentAnswersCompanion copyWith({
+    Value<int>? id,
+    Value<int>? attemptId,
+    Value<String>? questionId,
+    Value<String>? skill,
+    Value<String>? canDoId,
+    Value<bool>? isCorrect,
+    Value<String?>? spelling,
+    Value<String>? userAnswer,
+    Value<String>? expected,
+  }) {
+    return AssessmentAnswersCompanion(
+      id: id ?? this.id,
+      attemptId: attemptId ?? this.attemptId,
+      questionId: questionId ?? this.questionId,
+      skill: skill ?? this.skill,
+      canDoId: canDoId ?? this.canDoId,
+      isCorrect: isCorrect ?? this.isCorrect,
+      spelling: spelling ?? this.spelling,
+      userAnswer: userAnswer ?? this.userAnswer,
+      expected: expected ?? this.expected,
+    );
+  }
+
+  @override
+  Map<String, Expression> toColumns(bool nullToAbsent) {
+    final map = <String, Expression>{};
+    if (id.present) {
+      map['id'] = Variable<int>(id.value);
+    }
+    if (attemptId.present) {
+      map['attempt_id'] = Variable<int>(attemptId.value);
+    }
+    if (questionId.present) {
+      map['question_id'] = Variable<String>(questionId.value);
+    }
+    if (skill.present) {
+      map['skill'] = Variable<String>(skill.value);
+    }
+    if (canDoId.present) {
+      map['can_do_id'] = Variable<String>(canDoId.value);
+    }
+    if (isCorrect.present) {
+      map['is_correct'] = Variable<bool>(isCorrect.value);
+    }
+    if (spelling.present) {
+      map['spelling'] = Variable<String>(spelling.value);
+    }
+    if (userAnswer.present) {
+      map['user_answer'] = Variable<String>(userAnswer.value);
+    }
+    if (expected.present) {
+      map['expected'] = Variable<String>(expected.value);
+    }
+    return map;
+  }
+
+  @override
+  String toString() {
+    return (StringBuffer('AssessmentAnswersCompanion(')
+          ..write('id: $id, ')
+          ..write('attemptId: $attemptId, ')
+          ..write('questionId: $questionId, ')
+          ..write('skill: $skill, ')
+          ..write('canDoId: $canDoId, ')
+          ..write('isCorrect: $isCorrect, ')
+          ..write('spelling: $spelling, ')
+          ..write('userAnswer: $userAnswer, ')
+          ..write('expected: $expected')
+          ..write(')'))
+        .toString();
+  }
+}
+
 abstract class _$AppDatabase extends GeneratedDatabase {
   _$AppDatabase(QueryExecutor e) : super(e);
   $AppDatabaseManager get managers => $AppDatabaseManager(this);
@@ -4645,6 +5736,10 @@ abstract class _$AppDatabase extends GeneratedDatabase {
   late final $StudySessionsTable studySessions = $StudySessionsTable(this);
   late final $ErrorRecordsTable errorRecords = $ErrorRecordsTable(this);
   late final $SavedPhrasesTable savedPhrases = $SavedPhrasesTable(this);
+  late final $AssessmentAttemptsTable assessmentAttempts =
+      $AssessmentAttemptsTable(this);
+  late final $AssessmentAnswersTable assessmentAnswers =
+      $AssessmentAnswersTable(this);
   @override
   Iterable<TableInfo<Table, Object?>> get allTables =>
       allSchemaEntities.whereType<TableInfo<Table, Object?>>();
@@ -4658,6 +5753,8 @@ abstract class _$AppDatabase extends GeneratedDatabase {
     studySessions,
     errorRecords,
     savedPhrases,
+    assessmentAttempts,
+    assessmentAnswers,
   ];
   @override
   StreamQueryUpdateRules get streamUpdateRules => const StreamQueryUpdateRules([
@@ -4667,6 +5764,13 @@ abstract class _$AppDatabase extends GeneratedDatabase {
         limitUpdateKind: UpdateKind.delete,
       ),
       result: [TableUpdate('review_logs', kind: UpdateKind.delete)],
+    ),
+    WritePropagation(
+      on: TableUpdateQuery.onTableName(
+        'assessment_attempts',
+        limitUpdateKind: UpdateKind.delete,
+      ),
+      result: [TableUpdate('assessment_answers', kind: UpdateKind.delete)],
     ),
   ]);
 }
@@ -7205,6 +8309,794 @@ typedef $$SavedPhrasesTableProcessedTableManager =
       SavedPhrase,
       PrefetchHooks Function()
     >;
+typedef $$AssessmentAttemptsTableCreateCompanionBuilder =
+    AssessmentAttemptsCompanion Function({
+      Value<int> id,
+      required String assessmentId,
+      required int assessmentVersion,
+      required String contentVersion,
+      required int startedAt,
+      required int completedAt,
+      required int maxScore,
+      required int score,
+    });
+typedef $$AssessmentAttemptsTableUpdateCompanionBuilder =
+    AssessmentAttemptsCompanion Function({
+      Value<int> id,
+      Value<String> assessmentId,
+      Value<int> assessmentVersion,
+      Value<String> contentVersion,
+      Value<int> startedAt,
+      Value<int> completedAt,
+      Value<int> maxScore,
+      Value<int> score,
+    });
+
+final class $$AssessmentAttemptsTableReferences
+    extends
+        BaseReferences<
+          _$AppDatabase,
+          $AssessmentAttemptsTable,
+          AssessmentAttempt
+        > {
+  $$AssessmentAttemptsTableReferences(
+    super.$_db,
+    super.$_table,
+    super.$_typedResult,
+  );
+
+  static MultiTypedResultKey<$AssessmentAnswersTable, List<AssessmentAnswer>>
+  _assessmentAnswersRefsTable(_$AppDatabase db) =>
+      MultiTypedResultKey.fromTable(
+        db.assessmentAnswers,
+        aliasName: 'assessment_attempts__id__assessment_answers__attempt_id',
+      );
+
+  $$AssessmentAnswersTableProcessedTableManager get assessmentAnswersRefs {
+    final manager = $$AssessmentAnswersTableTableManager(
+      $_db,
+      $_db.assessmentAnswers,
+    ).filter((f) => f.attemptId.id.sqlEquals($_itemColumn<int>('id')!));
+
+    final cache = $_typedResult.readTableOrNull(
+      _assessmentAnswersRefsTable($_db),
+    );
+    return ProcessedTableManager(
+      manager.$state.copyWith(prefetchedData: cache),
+    );
+  }
+}
+
+class $$AssessmentAttemptsTableFilterComposer
+    extends Composer<_$AppDatabase, $AssessmentAttemptsTable> {
+  $$AssessmentAttemptsTableFilterComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  ColumnFilters<int> get id => $composableBuilder(
+    column: $table.id,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get assessmentId => $composableBuilder(
+    column: $table.assessmentId,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<int> get assessmentVersion => $composableBuilder(
+    column: $table.assessmentVersion,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get contentVersion => $composableBuilder(
+    column: $table.contentVersion,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<int> get startedAt => $composableBuilder(
+    column: $table.startedAt,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<int> get completedAt => $composableBuilder(
+    column: $table.completedAt,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<int> get maxScore => $composableBuilder(
+    column: $table.maxScore,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<int> get score => $composableBuilder(
+    column: $table.score,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  Expression<bool> assessmentAnswersRefs(
+    Expression<bool> Function($$AssessmentAnswersTableFilterComposer f) f,
+  ) {
+    final $$AssessmentAnswersTableFilterComposer composer = $composerBuilder(
+      composer: this,
+      getCurrentColumn: (t) => t.id,
+      referencedTable: $db.assessmentAnswers,
+      getReferencedColumn: (t) => t.attemptId,
+      builder:
+          (
+            joinBuilder, {
+            $addJoinBuilderToRootComposer,
+            $removeJoinBuilderFromRootComposer,
+          }) => $$AssessmentAnswersTableFilterComposer(
+            $db: $db,
+            $table: $db.assessmentAnswers,
+            $addJoinBuilderToRootComposer: $addJoinBuilderToRootComposer,
+            joinBuilder: joinBuilder,
+            $removeJoinBuilderFromRootComposer:
+                $removeJoinBuilderFromRootComposer,
+          ),
+    );
+    return f(composer);
+  }
+}
+
+class $$AssessmentAttemptsTableOrderingComposer
+    extends Composer<_$AppDatabase, $AssessmentAttemptsTable> {
+  $$AssessmentAttemptsTableOrderingComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  ColumnOrderings<int> get id => $composableBuilder(
+    column: $table.id,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get assessmentId => $composableBuilder(
+    column: $table.assessmentId,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<int> get assessmentVersion => $composableBuilder(
+    column: $table.assessmentVersion,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get contentVersion => $composableBuilder(
+    column: $table.contentVersion,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<int> get startedAt => $composableBuilder(
+    column: $table.startedAt,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<int> get completedAt => $composableBuilder(
+    column: $table.completedAt,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<int> get maxScore => $composableBuilder(
+    column: $table.maxScore,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<int> get score => $composableBuilder(
+    column: $table.score,
+    builder: (column) => ColumnOrderings(column),
+  );
+}
+
+class $$AssessmentAttemptsTableAnnotationComposer
+    extends Composer<_$AppDatabase, $AssessmentAttemptsTable> {
+  $$AssessmentAttemptsTableAnnotationComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  GeneratedColumn<int> get id =>
+      $composableBuilder(column: $table.id, builder: (column) => column);
+
+  GeneratedColumn<String> get assessmentId => $composableBuilder(
+    column: $table.assessmentId,
+    builder: (column) => column,
+  );
+
+  GeneratedColumn<int> get assessmentVersion => $composableBuilder(
+    column: $table.assessmentVersion,
+    builder: (column) => column,
+  );
+
+  GeneratedColumn<String> get contentVersion => $composableBuilder(
+    column: $table.contentVersion,
+    builder: (column) => column,
+  );
+
+  GeneratedColumn<int> get startedAt =>
+      $composableBuilder(column: $table.startedAt, builder: (column) => column);
+
+  GeneratedColumn<int> get completedAt => $composableBuilder(
+    column: $table.completedAt,
+    builder: (column) => column,
+  );
+
+  GeneratedColumn<int> get maxScore =>
+      $composableBuilder(column: $table.maxScore, builder: (column) => column);
+
+  GeneratedColumn<int> get score =>
+      $composableBuilder(column: $table.score, builder: (column) => column);
+
+  Expression<T> assessmentAnswersRefs<T extends Object>(
+    Expression<T> Function($$AssessmentAnswersTableAnnotationComposer a) f,
+  ) {
+    final $$AssessmentAnswersTableAnnotationComposer composer =
+        $composerBuilder(
+          composer: this,
+          getCurrentColumn: (t) => t.id,
+          referencedTable: $db.assessmentAnswers,
+          getReferencedColumn: (t) => t.attemptId,
+          builder:
+              (
+                joinBuilder, {
+                $addJoinBuilderToRootComposer,
+                $removeJoinBuilderFromRootComposer,
+              }) => $$AssessmentAnswersTableAnnotationComposer(
+                $db: $db,
+                $table: $db.assessmentAnswers,
+                $addJoinBuilderToRootComposer: $addJoinBuilderToRootComposer,
+                joinBuilder: joinBuilder,
+                $removeJoinBuilderFromRootComposer:
+                    $removeJoinBuilderFromRootComposer,
+              ),
+        );
+    return f(composer);
+  }
+}
+
+class $$AssessmentAttemptsTableTableManager
+    extends
+        RootTableManager<
+          _$AppDatabase,
+          $AssessmentAttemptsTable,
+          AssessmentAttempt,
+          $$AssessmentAttemptsTableFilterComposer,
+          $$AssessmentAttemptsTableOrderingComposer,
+          $$AssessmentAttemptsTableAnnotationComposer,
+          $$AssessmentAttemptsTableCreateCompanionBuilder,
+          $$AssessmentAttemptsTableUpdateCompanionBuilder,
+          (AssessmentAttempt, $$AssessmentAttemptsTableReferences),
+          AssessmentAttempt,
+          PrefetchHooks Function({bool assessmentAnswersRefs})
+        > {
+  $$AssessmentAttemptsTableTableManager(
+    _$AppDatabase db,
+    $AssessmentAttemptsTable table,
+  ) : super(
+        TableManagerState(
+          db: db,
+          table: table,
+          createFilteringComposer: () =>
+              $$AssessmentAttemptsTableFilterComposer($db: db, $table: table),
+          createOrderingComposer: () =>
+              $$AssessmentAttemptsTableOrderingComposer($db: db, $table: table),
+          createComputedFieldComposer: () =>
+              $$AssessmentAttemptsTableAnnotationComposer(
+                $db: db,
+                $table: table,
+              ),
+          updateCompanionCallback:
+              ({
+                Value<int> id = const Value.absent(),
+                Value<String> assessmentId = const Value.absent(),
+                Value<int> assessmentVersion = const Value.absent(),
+                Value<String> contentVersion = const Value.absent(),
+                Value<int> startedAt = const Value.absent(),
+                Value<int> completedAt = const Value.absent(),
+                Value<int> maxScore = const Value.absent(),
+                Value<int> score = const Value.absent(),
+              }) => AssessmentAttemptsCompanion(
+                id: id,
+                assessmentId: assessmentId,
+                assessmentVersion: assessmentVersion,
+                contentVersion: contentVersion,
+                startedAt: startedAt,
+                completedAt: completedAt,
+                maxScore: maxScore,
+                score: score,
+              ),
+          createCompanionCallback:
+              ({
+                Value<int> id = const Value.absent(),
+                required String assessmentId,
+                required int assessmentVersion,
+                required String contentVersion,
+                required int startedAt,
+                required int completedAt,
+                required int maxScore,
+                required int score,
+              }) => AssessmentAttemptsCompanion.insert(
+                id: id,
+                assessmentId: assessmentId,
+                assessmentVersion: assessmentVersion,
+                contentVersion: contentVersion,
+                startedAt: startedAt,
+                completedAt: completedAt,
+                maxScore: maxScore,
+                score: score,
+              ),
+          withReferenceMapper: (p0) => p0
+              .map(
+                (e) => (
+                  e.readTable<$AssessmentAttemptsTable, AssessmentAttempt>(
+                    table,
+                  ),
+                  $$AssessmentAttemptsTableReferences(db, table, e),
+                ),
+              )
+              .toList(),
+          prefetchHooksCallback: ({assessmentAnswersRefs = false}) {
+            return PrefetchHooks(
+              db: db,
+              explicitlyWatchedTables: [
+                if (assessmentAnswersRefs) db.assessmentAnswers,
+              ],
+              addJoins: null,
+              getPrefetchedDataCallback: (items) async {
+                return [
+                  if (assessmentAnswersRefs)
+                    await $_getPrefetchedDataByColumns<
+                      AssessmentAttempt,
+                      $AssessmentAttemptsTable,
+                      AssessmentAnswer,
+                      $AssessmentAnswersTable
+                    >(
+                      currentTable: table,
+                      referencedTable: $$AssessmentAttemptsTableReferences
+                          ._assessmentAnswersRefsTable(db),
+                      managerFromTypedResult: (p0) =>
+                          $$AssessmentAttemptsTableReferences(
+                            db,
+                            table,
+                            p0,
+                          ).assessmentAnswersRefs,
+                      currentColumn: 'id',
+                      referencedColumn: 'attempt_id',
+                      typedResults: items,
+                    ),
+                ];
+              },
+            );
+          },
+        ),
+      );
+}
+
+typedef $$AssessmentAttemptsTableProcessedTableManager =
+    ProcessedTableManager<
+      _$AppDatabase,
+      $AssessmentAttemptsTable,
+      AssessmentAttempt,
+      $$AssessmentAttemptsTableFilterComposer,
+      $$AssessmentAttemptsTableOrderingComposer,
+      $$AssessmentAttemptsTableAnnotationComposer,
+      $$AssessmentAttemptsTableCreateCompanionBuilder,
+      $$AssessmentAttemptsTableUpdateCompanionBuilder,
+      (AssessmentAttempt, $$AssessmentAttemptsTableReferences),
+      AssessmentAttempt,
+      PrefetchHooks Function({bool assessmentAnswersRefs})
+    >;
+typedef $$AssessmentAnswersTableCreateCompanionBuilder =
+    AssessmentAnswersCompanion Function({
+      Value<int> id,
+      required int attemptId,
+      required String questionId,
+      required String skill,
+      required String canDoId,
+      required bool isCorrect,
+      Value<String?> spelling,
+      Value<String> userAnswer,
+      Value<String> expected,
+    });
+typedef $$AssessmentAnswersTableUpdateCompanionBuilder =
+    AssessmentAnswersCompanion Function({
+      Value<int> id,
+      Value<int> attemptId,
+      Value<String> questionId,
+      Value<String> skill,
+      Value<String> canDoId,
+      Value<bool> isCorrect,
+      Value<String?> spelling,
+      Value<String> userAnswer,
+      Value<String> expected,
+    });
+
+final class $$AssessmentAnswersTableReferences
+    extends
+        BaseReferences<
+          _$AppDatabase,
+          $AssessmentAnswersTable,
+          AssessmentAnswer
+        > {
+  $$AssessmentAnswersTableReferences(
+    super.$_db,
+    super.$_table,
+    super.$_typedResult,
+  );
+
+  static $AssessmentAttemptsTable _attemptIdTable(_$AppDatabase db) => db
+      .assessmentAttempts
+      .createAlias('assessment_answers__attempt_id__assessment_attempts__id');
+
+  $$AssessmentAttemptsTableProcessedTableManager get attemptId {
+    final $_column = $_itemColumn<int>('attempt_id')!;
+
+    final manager = $$AssessmentAttemptsTableTableManager(
+      $_db,
+      $_db.assessmentAttempts,
+    ).filter((f) => f.id.sqlEquals($_column));
+    final item = $_typedResult.readTableOrNull(_attemptIdTable($_db));
+    if (item == null) return manager;
+    return ProcessedTableManager(
+      manager.$state.copyWith(prefetchedData: [item]),
+    );
+  }
+}
+
+class $$AssessmentAnswersTableFilterComposer
+    extends Composer<_$AppDatabase, $AssessmentAnswersTable> {
+  $$AssessmentAnswersTableFilterComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  ColumnFilters<int> get id => $composableBuilder(
+    column: $table.id,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get questionId => $composableBuilder(
+    column: $table.questionId,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get skill => $composableBuilder(
+    column: $table.skill,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get canDoId => $composableBuilder(
+    column: $table.canDoId,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<bool> get isCorrect => $composableBuilder(
+    column: $table.isCorrect,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get spelling => $composableBuilder(
+    column: $table.spelling,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get userAnswer => $composableBuilder(
+    column: $table.userAnswer,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get expected => $composableBuilder(
+    column: $table.expected,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  $$AssessmentAttemptsTableFilterComposer get attemptId {
+    final $$AssessmentAttemptsTableFilterComposer composer = $composerBuilder(
+      composer: this,
+      getCurrentColumn: (t) => t.attemptId,
+      referencedTable: $db.assessmentAttempts,
+      getReferencedColumn: (t) => t.id,
+      builder:
+          (
+            joinBuilder, {
+            $addJoinBuilderToRootComposer,
+            $removeJoinBuilderFromRootComposer,
+          }) => $$AssessmentAttemptsTableFilterComposer(
+            $db: $db,
+            $table: $db.assessmentAttempts,
+            $addJoinBuilderToRootComposer: $addJoinBuilderToRootComposer,
+            joinBuilder: joinBuilder,
+            $removeJoinBuilderFromRootComposer:
+                $removeJoinBuilderFromRootComposer,
+          ),
+    );
+    return composer;
+  }
+}
+
+class $$AssessmentAnswersTableOrderingComposer
+    extends Composer<_$AppDatabase, $AssessmentAnswersTable> {
+  $$AssessmentAnswersTableOrderingComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  ColumnOrderings<int> get id => $composableBuilder(
+    column: $table.id,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get questionId => $composableBuilder(
+    column: $table.questionId,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get skill => $composableBuilder(
+    column: $table.skill,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get canDoId => $composableBuilder(
+    column: $table.canDoId,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<bool> get isCorrect => $composableBuilder(
+    column: $table.isCorrect,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get spelling => $composableBuilder(
+    column: $table.spelling,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get userAnswer => $composableBuilder(
+    column: $table.userAnswer,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get expected => $composableBuilder(
+    column: $table.expected,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  $$AssessmentAttemptsTableOrderingComposer get attemptId {
+    final $$AssessmentAttemptsTableOrderingComposer composer = $composerBuilder(
+      composer: this,
+      getCurrentColumn: (t) => t.attemptId,
+      referencedTable: $db.assessmentAttempts,
+      getReferencedColumn: (t) => t.id,
+      builder:
+          (
+            joinBuilder, {
+            $addJoinBuilderToRootComposer,
+            $removeJoinBuilderFromRootComposer,
+          }) => $$AssessmentAttemptsTableOrderingComposer(
+            $db: $db,
+            $table: $db.assessmentAttempts,
+            $addJoinBuilderToRootComposer: $addJoinBuilderToRootComposer,
+            joinBuilder: joinBuilder,
+            $removeJoinBuilderFromRootComposer:
+                $removeJoinBuilderFromRootComposer,
+          ),
+    );
+    return composer;
+  }
+}
+
+class $$AssessmentAnswersTableAnnotationComposer
+    extends Composer<_$AppDatabase, $AssessmentAnswersTable> {
+  $$AssessmentAnswersTableAnnotationComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  GeneratedColumn<int> get id =>
+      $composableBuilder(column: $table.id, builder: (column) => column);
+
+  GeneratedColumn<String> get questionId => $composableBuilder(
+    column: $table.questionId,
+    builder: (column) => column,
+  );
+
+  GeneratedColumn<String> get skill =>
+      $composableBuilder(column: $table.skill, builder: (column) => column);
+
+  GeneratedColumn<String> get canDoId =>
+      $composableBuilder(column: $table.canDoId, builder: (column) => column);
+
+  GeneratedColumn<bool> get isCorrect =>
+      $composableBuilder(column: $table.isCorrect, builder: (column) => column);
+
+  GeneratedColumn<String> get spelling =>
+      $composableBuilder(column: $table.spelling, builder: (column) => column);
+
+  GeneratedColumn<String> get userAnswer => $composableBuilder(
+    column: $table.userAnswer,
+    builder: (column) => column,
+  );
+
+  GeneratedColumn<String> get expected =>
+      $composableBuilder(column: $table.expected, builder: (column) => column);
+
+  $$AssessmentAttemptsTableAnnotationComposer get attemptId {
+    final $$AssessmentAttemptsTableAnnotationComposer composer =
+        $composerBuilder(
+          composer: this,
+          getCurrentColumn: (t) => t.attemptId,
+          referencedTable: $db.assessmentAttempts,
+          getReferencedColumn: (t) => t.id,
+          builder:
+              (
+                joinBuilder, {
+                $addJoinBuilderToRootComposer,
+                $removeJoinBuilderFromRootComposer,
+              }) => $$AssessmentAttemptsTableAnnotationComposer(
+                $db: $db,
+                $table: $db.assessmentAttempts,
+                $addJoinBuilderToRootComposer: $addJoinBuilderToRootComposer,
+                joinBuilder: joinBuilder,
+                $removeJoinBuilderFromRootComposer:
+                    $removeJoinBuilderFromRootComposer,
+              ),
+        );
+    return composer;
+  }
+}
+
+class $$AssessmentAnswersTableTableManager
+    extends
+        RootTableManager<
+          _$AppDatabase,
+          $AssessmentAnswersTable,
+          AssessmentAnswer,
+          $$AssessmentAnswersTableFilterComposer,
+          $$AssessmentAnswersTableOrderingComposer,
+          $$AssessmentAnswersTableAnnotationComposer,
+          $$AssessmentAnswersTableCreateCompanionBuilder,
+          $$AssessmentAnswersTableUpdateCompanionBuilder,
+          (AssessmentAnswer, $$AssessmentAnswersTableReferences),
+          AssessmentAnswer,
+          PrefetchHooks Function({bool attemptId})
+        > {
+  $$AssessmentAnswersTableTableManager(
+    _$AppDatabase db,
+    $AssessmentAnswersTable table,
+  ) : super(
+        TableManagerState(
+          db: db,
+          table: table,
+          createFilteringComposer: () =>
+              $$AssessmentAnswersTableFilterComposer($db: db, $table: table),
+          createOrderingComposer: () =>
+              $$AssessmentAnswersTableOrderingComposer($db: db, $table: table),
+          createComputedFieldComposer: () =>
+              $$AssessmentAnswersTableAnnotationComposer(
+                $db: db,
+                $table: table,
+              ),
+          updateCompanionCallback:
+              ({
+                Value<int> id = const Value.absent(),
+                Value<int> attemptId = const Value.absent(),
+                Value<String> questionId = const Value.absent(),
+                Value<String> skill = const Value.absent(),
+                Value<String> canDoId = const Value.absent(),
+                Value<bool> isCorrect = const Value.absent(),
+                Value<String?> spelling = const Value.absent(),
+                Value<String> userAnswer = const Value.absent(),
+                Value<String> expected = const Value.absent(),
+              }) => AssessmentAnswersCompanion(
+                id: id,
+                attemptId: attemptId,
+                questionId: questionId,
+                skill: skill,
+                canDoId: canDoId,
+                isCorrect: isCorrect,
+                spelling: spelling,
+                userAnswer: userAnswer,
+                expected: expected,
+              ),
+          createCompanionCallback:
+              ({
+                Value<int> id = const Value.absent(),
+                required int attemptId,
+                required String questionId,
+                required String skill,
+                required String canDoId,
+                required bool isCorrect,
+                Value<String?> spelling = const Value.absent(),
+                Value<String> userAnswer = const Value.absent(),
+                Value<String> expected = const Value.absent(),
+              }) => AssessmentAnswersCompanion.insert(
+                id: id,
+                attemptId: attemptId,
+                questionId: questionId,
+                skill: skill,
+                canDoId: canDoId,
+                isCorrect: isCorrect,
+                spelling: spelling,
+                userAnswer: userAnswer,
+                expected: expected,
+              ),
+          withReferenceMapper: (p0) => p0
+              .map(
+                (e) => (
+                  e.readTable<$AssessmentAnswersTable, AssessmentAnswer>(table),
+                  $$AssessmentAnswersTableReferences(db, table, e),
+                ),
+              )
+              .toList(),
+          prefetchHooksCallback: ({attemptId = false}) {
+            return PrefetchHooks(
+              db: db,
+              explicitlyWatchedTables: [],
+              addJoins:
+                  <
+                    T extends TableManagerState<
+                      dynamic,
+                      dynamic,
+                      dynamic,
+                      dynamic,
+                      dynamic,
+                      dynamic,
+                      dynamic,
+                      dynamic,
+                      dynamic,
+                      dynamic,
+                      dynamic
+                    >
+                  >(state) {
+                    if (attemptId) {
+                      state = state.withJoin(
+                        currentTable: table,
+                        currentColumn: table.attemptId,
+                        referencedTable: $$AssessmentAnswersTableReferences
+                            ._attemptIdTable(db),
+                        referencedColumn: $$AssessmentAnswersTableReferences
+                            ._attemptIdTable(db)
+                            .id,
+                      ) as T;
+                    }
+
+                    return state;
+                  },
+              getPrefetchedDataCallback: (items) async {
+                return [];
+              },
+            );
+          },
+        ),
+      );
+}
+
+typedef $$AssessmentAnswersTableProcessedTableManager =
+    ProcessedTableManager<
+      _$AppDatabase,
+      $AssessmentAnswersTable,
+      AssessmentAnswer,
+      $$AssessmentAnswersTableFilterComposer,
+      $$AssessmentAnswersTableOrderingComposer,
+      $$AssessmentAnswersTableAnnotationComposer,
+      $$AssessmentAnswersTableCreateCompanionBuilder,
+      $$AssessmentAnswersTableUpdateCompanionBuilder,
+      (AssessmentAnswer, $$AssessmentAnswersTableReferences),
+      AssessmentAnswer,
+      PrefetchHooks Function({bool attemptId})
+    >;
 
 class $AppDatabaseManager {
   final _$AppDatabase _db;
@@ -7225,4 +9117,8 @@ class $AppDatabaseManager {
       $$ErrorRecordsTableTableManager(_db, _db.errorRecords);
   $$SavedPhrasesTableTableManager get savedPhrases =>
       $$SavedPhrasesTableTableManager(_db, _db.savedPhrases);
+  $$AssessmentAttemptsTableTableManager get assessmentAttempts =>
+      $$AssessmentAttemptsTableTableManager(_db, _db.assessmentAttempts);
+  $$AssessmentAnswersTableTableManager get assessmentAnswers =>
+      $$AssessmentAnswersTableTableManager(_db, _db.assessmentAnswers);
 }

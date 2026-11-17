@@ -1,7 +1,7 @@
 # Database
 
 SQLite via Drift. File: `espanol_pro.sqlite` in the app documents directory.
-Schema version **4**. Source: `lib/core/db/database.dart`.
+Schema version **5**. Source: `lib/core/db/database.dart`.
 
 Only learner-generated data is stored. Curriculum entities (levels, units,
 lessons, vocabulary, grammar, sources, licences) live in the versioned content
@@ -63,13 +63,28 @@ erDiagram
         text source_kind "vocab | example | grammar | lesson_note"
         text source_id  text source_lesson_id  text note  int saved_at
     }
+    ASSESSMENT_ATTEMPTS {
+        int id PK
+        text assessment_id "→ content assessment (v5)"
+        int assessment_version  text content_version
+        int started_at  int completed_at
+        int max_score  int score
+    }
+    ASSESSMENT_ANSWERS {
+        int id PK
+        int attempt_id FK
+        text question_id  text skill  text can_do_id
+        bool is_correct  text spelling "exact | missing_accents | wrong | null"
+        text user_answer  text expected
+    }
     REVIEW_CARDS ||--o{ REVIEW_LOGS : "has history (cascade)"
+    ASSESSMENT_ATTEMPTS ||--o{ ASSESSMENT_ANSWERS : "answers (cascade)"
 ```
 
 Constraints and indexes: `UNIQUE(review_cards.item_id, card_type)` — one card
 per item and direction, so repeating a lesson cannot duplicate cards ·
 `idx_review_cards_due` · `idx_review_logs_card` · `idx_attempts_created` ·
-`idx_sessions_day` · foreign keys enforced (`PRAGMA foreign_keys = ON`).
+`idx_sessions_day` · `idx_assessment_answers_attempt` · foreign keys enforced (`PRAGMA foreign_keys = ON`).
 
 ## Mapping to the specification's entity list
 
@@ -84,7 +99,9 @@ per item and direction, so repeating a lesson cannot duplicate cards ·
 | BackupMetadata | header of the backup document |
 | UserProfile | not needed for a single user without accounts |
 | AudioAsset | not applicable yet (device TTS, no audio files) |
-| PronunciationAttempt, ConversationSession/Message, Assessment/Result, WorkScenario | Phase 2–4, not created yet |
+| Assessment (definition) | content package (`assessments/*.json`) |
+| AssessmentResult | `assessment_attempts` + `assessment_answers` (v5) |
+| PronunciationAttempt, ConversationSession/Message, WorkScenario | Phase 2–4, not created yet |
 
 ## Saved phrases (v4)
 
@@ -100,6 +117,39 @@ backup must contain the table and replaces it. They do not create FSRS cards
 yet; if they ever do, the card's `item_id` will be `phrase:<phrase_key>` so it
 cannot collide with curriculum items.
 
+## Assessment results (v5)
+
+A checkpoint is defined in the content package; only what the learner
+submitted is stored. `AssessmentRepository.submit` writes the attempt row and
+**all** its answers in one transaction: a row in `assessment_attempts` always
+means a complete submission, and a failed write stores nothing (tested with a
+SQLite trigger that aborts the answer insert). Abandoned attempts are never
+stored. Each attempt is a new row — retakes never overwrite or average
+earlier results. `assessment_version` records which definition was taken, so
+a later edit of the questions never reinterprets an old result.
+
+`score`/`max_score` count objectively graded questions only; speaking is never
+measured. `spelling` keeps "meaning right, accents missing" apart from
+"exact" instead of hiding it inside `is_correct`. Assessments never write to
+FSRS cards, lesson progress, `activity_attempts` or the error notebook.
+Can-do states are derived from these rows, never stored
+(`CanDoEvidence` in `lib/core/assessment/assessment_engine.dart`, also
+explained on the progress screen): a can-do is *met* in an attempt when at
+least 75 % of its questions are right; latest attempt not met → needs
+practice; met → demonstrated; the latest attempt and the previous attempt
+**at the same assessment version** both met, on different local days →
+consistent. A content update that changes a checkpoint's questions (and so
+its version) restarts consistency. Completing lessons never changes these
+states.
+
+Integrity: one answer per question per attempt (unique index
+`idx_assessment_answers_question`, created on every open so existing v5
+installs get it; restore also rejects duplicates), every attempt has at
+least one answer, and stored totals equal its answers.
+
+Reset progress deletes assessment results (they are progress); saved phrases
+are kept. A backup from before v5 leaves the device's results untouched.
+
 ## Migrations
 
 Rule: migrations are additive and never drop learner data.
@@ -110,9 +160,11 @@ Rule: migrations are additive and never drop learner data.
 | 2 | + `error_records` table · + `activity_attempts.is_measured` (default true) |
 | 3 | + `activity_attempts.attempt_number` (default 1) — separates first attempts from prompted retries |
 | 4 | + `saved_phrases` table — the learner's saved sentences |
+| 5 | + `assessment_attempts`, `assessment_answers` tables — checkpoint results |
 
 `test/persistence_test.dart` builds real v1 and v2 database files from the
-verbatim historical DDL, fills them, opens them with the current code and
+verbatim historical DDL (and v3/v4 files by removing later tables from the
+current schema), fills them, opens them with the current code and
 asserts that every row survives, new columns default correctly, new tables
 work and `user_version` becomes the latest. Add a fixture + test for every future version.
 
@@ -123,14 +175,15 @@ work and `user_version` becomes the latest. Add a fixture + test for every futur
   "content_version": "1.0.0", "exported_at": "…Z",
   "tables": { "settings": [], "lesson_progress": [], "activity_attempts": [],
               "review_cards": [], "review_logs": [], "study_sessions": [],
-              "error_records": [] } }
+              "error_records": [], "saved_phrases": [],          // v4
+              "assessment_attempts": [], "assessment_answers": [] } } // v5
 ```
 
 Restore is validate-then-replace. Before anything is deleted it requires:
 a known `schema_version` (1 … latest); **every table of that schema version
 present as a list** (a missing table is an error, never "empty"); every row
 parseable; unique primary and natural keys; every review log pointing at a
-card in the same file; ratings and card states in range. Only then are all
+card in the same file; ratings and card states in range; every assessment answer pointing at an attempt in the file, each attempt's `score`/`max_score` equal to its answers, versions ≥ 1, `completed_at ≥ started_at`, and valid spelling values. Only then are all
 tables replaced in one transaction. Foreign, newer, truncated, inconsistent
 or damaged files are rejected with the database byte-for-value unchanged
 (tested on row values, not counts). Backups from schema 1 and 2 restore, with

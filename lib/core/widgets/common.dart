@@ -55,14 +55,22 @@ class SpeakButton extends ConsumerWidget {
     this.slow = false,
     this.filled = false,
     this.size = 24,
+    this.onResult,
   });
 
   final String spanish;
   final bool slow;
   final bool filled;
+
+  /// Told whether the sentence was actually played (false when no Spanish
+  /// voice exists or the engine failed).
+  final ValueChanged<bool>? onResult;
   final double size;
 
-  static Future<void> play(
+  /// Plays [spanish]; returns whether it was actually spoken. A missing
+  /// voice and an engine error both return false (the service marks itself
+  /// unavailable when playback throws).
+  static Future<bool> play(
     BuildContext context,
     WidgetRef ref,
     String spanish, {
@@ -83,9 +91,12 @@ class SpeakButton extends ConsumerWidget {
             ),
           );
       }
-      return;
+      return false;
     }
     await speech.speak(spanish, slow: slow);
+    final ok = await speech.isAvailable();
+    if (ok) ref.read(speechDeliveryLogProvider).record(spanish);
+    return ok;
   }
 
   @override
@@ -95,7 +106,11 @@ class SpeakButton extends ConsumerWidget {
       size: size,
     );
     final tooltip = slow ? 'استمع ببطء' : 'استمع';
-    void onTap() => play(context, ref, spanish, slow: slow);
+    Future<void> onTap() async {
+      final ok = await play(context, ref, spanish, slow: slow);
+      onResult?.call(ok);
+    }
+
     return filled
         ? IconButton.filledTonal(
             onPressed: onTap,
@@ -219,3 +234,7 @@ String formatInterval(DateTime now, DateTime due) {
   if (d.inDays < 365) return '${(d.inDays / 30).toStringAsFixed(1)} شهر';
   return '${(d.inDays / 365).toStringAsFixed(1)} سنة';
 }
+
+/// "a / b" that reads left to right inside Arabic text. Without the isolate
+/// (U+2066 … U+2069) an RTL paragraph shows "8 / 10" as "10 / 8".
+String fraction(int a, int b) => '\u2066$a / $b\u2069';

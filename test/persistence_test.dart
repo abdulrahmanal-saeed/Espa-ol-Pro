@@ -109,6 +109,9 @@ void main() {
         expect(oldAttempt.attemptNumber, 1);
         expect(oldAttempt.userAnswer, 'بيت');
         expect(await db.select(db.errorRecords).get(), isEmpty);
+        expect(await db.select(db.savedPhrases).get(), isEmpty);
+        expect(await db.select(db.assessmentAttempts).get(), isEmpty);
+        expect(await db.select(db.assessmentAnswers).get(), isEmpty);
 
         // The migrated database is fully functional.
         final clock = FakeClock();
@@ -182,13 +185,16 @@ void main() {
       'v3 → latest adds saved phrases and keeps every existing row',
       () async {
         // Build a real v3 file with the current code's v3 tables, by creating
-        // the latest schema and removing what v4 added.
+        // the latest schema and removing what v4 and v5 added.
         final file = File('${tmp.path}/v3.sqlite');
         final fresh = open(file);
         await fresh.select(fresh.settings).get();
         await fresh.close();
         final v3 = raw.sqlite3.open(file.path);
-        v3.execute('DROP TABLE saved_phrases; PRAGMA user_version = 3;');
+        v3.execute(
+          'DROP TABLE saved_phrases; DROP TABLE assessment_answers; '
+          'DROP TABLE assessment_attempts; PRAGMA user_version = 3;',
+        );
         v3.execute(
           "INSERT INTO settings VALUES ('dailyMinutes', '60');"
           "INSERT INTO lesson_progress (lesson_id, status, best_score, last_score, completions, started_at, first_completed_at, last_completed_at, content_version)"
@@ -228,6 +234,137 @@ void main() {
         check.close();
       },
     );
+
+    test(
+      'v4 → v5 adds assessment tables and keeps phrases and progress',
+      () async {
+        // A real v4 file: the latest schema minus what v5 added.
+        final file = File('${tmp.path}/v4.sqlite');
+        final fresh = open(file);
+        await fresh.select(fresh.settings).get();
+        await fresh.close();
+        final v4 = raw.sqlite3.open(file.path);
+        v4.execute(
+          'DROP INDEX IF EXISTS idx_assessment_answers_attempt; '
+          'DROP TABLE assessment_answers; DROP TABLE assessment_attempts; '
+          'PRAGMA user_version = 4;',
+        );
+        v4.execute(
+          "INSERT INTO settings VALUES ('dailyMinutes', '20');"
+          "INSERT INTO lesson_progress (lesson_id, status, best_score, last_score, completions, started_at, first_completed_at, last_completed_at, content_version)"
+          " VALUES ('pa1_u1_l1', 'completed', 0.7, 0.7, 2, 1000, 2000, 3000, '1.0.3');"
+          "INSERT INTO saved_phrases (phrase_key, es, ar, en, source_kind, source_id, source_lesson_id, note, saved_at)"
+          " VALUES ('buenos dias', 'Buenos días.', 'صباح الخير.', '', 'vocab', 'buenos_dias', 'pa1_u2_l1', 'مهم', 5000);",
+        );
+        final tables = v4
+            .select("SELECT name FROM sqlite_master WHERE type = 'table'")
+            .map((r) => r['name'])
+            .toList();
+        expect(tables, isNot(contains('assessment_attempts')));
+        v4.close();
+
+        final db = open(file);
+        expect((await SettingsRepository(db).load()).dailyMinutes, 20);
+        final progress = (await db.select(db.lessonProgress).get()).single;
+        expect(progress.completions, 2);
+        final phrase = (await db.select(db.savedPhrases).get()).single;
+        expect(phrase.es, 'Buenos días.');
+        expect(phrase.note, 'مهم');
+        expect(await db.select(db.assessmentAttempts).get(), isEmpty);
+
+        // The new tables are usable, including the cascade.
+        final id = await db
+            .into(db.assessmentAttempts)
+            .insert(
+              AssessmentAttemptsCompanion.insert(
+                assessmentId: 'chk_pa1_u1',
+                assessmentVersion: 1,
+                contentVersion: '1.1.0',
+                startedAt: 1,
+                completedAt: 2,
+                maxScore: 1,
+                score: 1,
+              ),
+            );
+        await db
+            .into(db.assessmentAnswers)
+            .insert(
+              AssessmentAnswersCompanion.insert(
+                attemptId: id,
+                questionId: 'chk_pa1_u1.q1',
+                skill: 'vocabulary',
+                canDoId: 'cd_pa1_u1_hear',
+                isCorrect: true,
+              ),
+            );
+        await (db.delete(
+          db.assessmentAttempts,
+        )..where((t) => t.id.equals(id))).go();
+        expect(await db.select(db.assessmentAnswers).get(), isEmpty);
+        await db.close();
+
+        final check = raw.sqlite3.open(file.path);
+        expect(check.select('PRAGMA user_version').single.values.single, 5);
+        final indexes = check
+            .select("SELECT name FROM sqlite_master WHERE type = 'index'")
+            .map((r) => r['name'])
+            .toList();
+        expect(indexes, contains('idx_assessment_answers_attempt'));
+        expect(indexes, contains('idx_assessment_answers_question'));
+        check.close();
+      },
+    );
+
+    test('a legacy database with duplicate answers opens, keeps its data '
+        'and reports degraded integrity', () async {
+      final file = File('${tmp.path}/dup.sqlite');
+      final fresh = open(file);
+      await fresh.select(fresh.settings).get();
+      expect(fresh.assessmentAnswersDegraded, isFalse);
+      await fresh.close();
+      final legacy = raw.sqlite3.open(file.path);
+      legacy.execute(
+        'DROP INDEX idx_assessment_answers_question;'
+        "INSERT INTO assessment_attempts (id, assessment_id, assessment_version, content_version, started_at, completed_at, max_score, score)"
+        " VALUES (1, 'chk_pa1_u1', 1, '1.1.0', 1, 2, 2, 2);"
+        "INSERT INTO assessment_answers (attempt_id, question_id, skill, can_do_id, is_correct)"
+        " VALUES (1, 'chk_pa1_u1.q1', 'listening', 'cd_pa1_u1_hear', 1),"
+        " (1, 'chk_pa1_u1.q1', 'listening', 'cd_pa1_u1_hear', 1);",
+      );
+      legacy.close();
+
+      final db = open(file);
+      expect((await db.select(db.assessmentAnswers).get()).length, 2);
+      expect(db.assessmentAnswersDegraded, isTrue);
+      await db.close();
+      final check = raw.sqlite3.open(file.path);
+      final indexes = check
+          .select("SELECT name FROM sqlite_master WHERE type = 'index'")
+          .map((r) => r['name']);
+      expect(indexes, isNot(contains('idx_assessment_answers_question')));
+      check.close();
+    });
+
+    test('any other failure creating the index is not hidden', () async {
+      final file = File('${tmp.path}/broken.sqlite');
+      final fresh = open(file);
+      await fresh.select(fresh.settings).get();
+      await fresh.close();
+      final broken = raw.sqlite3.open(file.path);
+      // Something else already uses the index's name.
+      broken.execute(
+        'DROP INDEX idx_assessment_answers_question;'
+        'CREATE TABLE idx_assessment_answers_question (x INTEGER);',
+      );
+      broken.close();
+
+      final db = open(file);
+      await expectLater(
+        db.select(db.settings).get(),
+        throwsA(isA<raw.SqliteException>()),
+      );
+      await db.close();
+    });
 
     test('a fresh install creates the latest schema directly', () async {
       final file = File('${tmp.path}/fresh.sqlite');

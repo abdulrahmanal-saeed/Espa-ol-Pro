@@ -215,6 +215,11 @@ class _DialogueScreenState extends ConsumerState<DialogueScreen> {
     }
     final showEn = ref.watch(settingsProvider.select((s) => s.showEnglish));
     final playing = player.status == PlayerStatus.playing;
+    // Known before anything is played, so the questions are never offered
+    // on a device that cannot speak them.
+    final noVoice =
+        player.status == PlayerStatus.unavailable ||
+        ref.watch(spanishVoiceProvider).value == false;
     final paused = player.status == PlayerStatus.paused;
 
     return Scaffold(
@@ -243,7 +248,7 @@ class _DialogueScreenState extends ConsumerState<DialogueScreen> {
                 ),
             ],
           ),
-          if (player.status == PlayerStatus.unavailable)
+          if (noVoice)
             Container(
               key: const ValueKey('no-voice'),
               margin: const EdgeInsets.only(top: 12),
@@ -254,8 +259,9 @@ class _DialogueScreenState extends ConsumerState<DialogueScreen> {
               ),
               child: Text(
                 'لا يوجد صوت إسباني مثبّت على الجهاز، فلا يمكن تشغيل الحوار. '
-                'النص ظاهر لتدرسه قراءةً. لتفعيل الصوت ثبّت بيانات اللغة '
-                'الإسبانية من إعدادات «تحويل النص إلى كلام» في أندرويد.',
+                'النص ظاهر لتدرسه قراءةً، أما أسئلة الفهم فتحتاج الصوت. '
+                'لتفعيل الصوت ثبّت بيانات اللغة الإسبانية من إعدادات «تحويل '
+                'النص إلى كلام» في أندرويد.',
                 style: TextStyle(
                   color: t.colorScheme.onErrorContainer,
                   height: 1.6,
@@ -363,7 +369,8 @@ class _DialogueScreenState extends ConsumerState<DialogueScreen> {
               dialogue: d,
               index: i,
               active: player.current == i && (playing || paused),
-              showEs: _transcript,
+              // Without a voice the transcript is the only way to study.
+              showEs: _transcript || noVoice,
               showAr: _translation,
               showEn: showEn,
               onReplay: () => player.playTurn(i),
@@ -431,10 +438,12 @@ class _DialogueScreenState extends ConsumerState<DialogueScreen> {
           padding: const EdgeInsets.fromLTRB(16, 8, 16, 16),
           child: FilledButton.icon(
             key: const ValueKey('start-quiz'),
-            onPressed: () {
-              player.stop();
-              context.push('/listening/${d.id}/questions');
-            },
+            onPressed: noVoice
+                ? null
+                : () {
+                    player.stop();
+                    context.push('/listening/${d.id}/questions');
+                  },
             icon: const Icon(Icons.quiz_outlined),
             label: Text('أسئلة الفهم (${d.questions.length})'),
           ),
@@ -617,6 +626,18 @@ class _DialogueQuestionsScreenState
   RunResult? _result;
   List<Exercise>? _questions;
 
+  /// Delivery-log position when the questions screen opened.
+  late final int _mark;
+
+  @override
+  void initState() {
+    super.initState();
+    _mark = ref.read(speechDeliveryLogProvider).mark();
+  }
+
+  /// Questions answered without their audio having been heard.
+  final Set<String> _unheard = {};
+
   void _leave() => context.canPop() ? context.pop() : context.go('/listening');
 
   @override
@@ -632,6 +653,25 @@ class _DialogueQuestionsScreenState
         ),
       );
     }
+    // Every question depends on hearing the dialogue. Without a Spanish
+    // voice an answer would be a guess, so nothing is asked or recorded.
+    final voice = ref.watch(spanishVoiceProvider);
+    if (_questions == null && voice.value != true) {
+      return Scaffold(
+        appBar: AppBar(title: Text(d.titleAr)),
+        body: voice.isLoading
+            ? const Center(child: CircularProgressIndicator())
+            : const EmptyState(
+                key: ValueKey('questions-no-voice'),
+                icon: Icons.volume_off_rounded,
+                title: 'أسئلة الفهم تحتاج صوتاً إسبانياً',
+                message:
+                    'تعتمد الأسئلة على سماع الحوار، فلا تُطرح ولا تُسجَّل '
+                    'بدون صوت. ثبّت بيانات اللغة الإسبانية من إعدادات «تحويل '
+                    'النص إلى كلام» ثم عُد. يمكنك قراءة نص الحوار في الأثناء.',
+              ),
+      );
+    }
     final questions = _questions ??= ref
         .read(exerciseBuilderProvider)
         .buildDialogueQuestions(d);
@@ -644,6 +684,7 @@ class _DialogueQuestionsScreenState
           title: 'انتهت أسئلة الفهم',
           message:
               'الصحيح من المحاولة الأولى: ${result.firstTryCorrect} من ${result.measured}\n'
+              '${_unheard.isEmpty ? '' : 'لم يُشغَّل الصوت في ${_unheard.length} من الأسئلة، فلم تُحتسب إجاباتها في تقدّمك.\n'}'
               'هذا تدريب موجّه، وليس اختباراً لمستواك.',
           action: FilledButton(
             key: const ValueKey('questions-done'),
@@ -657,16 +698,27 @@ class _DialogueQuestionsScreenState
       body: ExerciseRunner(
         steps: questions,
         onExit: _leave,
-        onAttempt: (ex, s, attemptNumber) => ref
-            .read(progressRepositoryProvider)
-            .recordAttempt(
-              ex,
-              isCorrect: s.correct,
-              userAnswer: s.answer,
-              context: DialogueProgress.context,
-              lessonId: d.lessonIds.isEmpty ? null : d.lessonIds.last,
-              attemptNumber: attemptNumber,
-            ),
+        onAttempt: (ex, s, attemptNumber) {
+          // Listening evidence only counts when this question's sentence
+          // was actually spoken in this session. A voice that fails after
+          // the session started leaves an unmeasured practice record.
+          final audio = audioOf(ex);
+          final heard =
+              audio == null ||
+              ref.read(speechDeliveryLogProvider).deliveredSince(audio, _mark);
+          if (!heard && attemptNumber == 1) _unheard.add(ex.id);
+          return ref
+              .read(progressRepositoryProvider)
+              .recordAttempt(
+                ex,
+                isCorrect: s.correct,
+                userAnswer: s.answer,
+                context: DialogueProgress.context,
+                lessonId: d.lessonIds.isEmpty ? null : d.lessonIds.last,
+                attemptNumber: attemptNumber,
+                measured: heard,
+              );
+        },
         onFinished: (r) async {
           await ref
               .read(progressRepositoryProvider)
@@ -683,3 +735,10 @@ class _DialogueQuestionsScreenState
     );
   }
 }
+
+/// The sentence an exercise plays, if it depends on hearing one.
+String? audioOf(Exercise ex) => switch (ex) {
+  ChoiceExercise e => e.audioEs,
+  TypeExercise e => e.audioEs,
+  _ => null,
+};

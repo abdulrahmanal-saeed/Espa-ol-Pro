@@ -1,0 +1,502 @@
+{
+ "assessments": [
+  {
+   "id": "chk_pa1_u1",
+   "version": 1,
+   "kind": "unit",
+   "level": "pre_a1",
+   "unit": "pa1_u1",
+   "title_ar": "نقطة تحقق: الأصوات والحروف",
+   "intro_ar": "نقطة تحقق قصيرة. لا تلميحات ولا إظهار للإجابات قبل النهاية، ولا إعادة للأسئلة. النتيجة دليل على ما تستطيعه الآن، وليست شهادة مستوى.",
+   "can_do": [
+    {
+     "id": "cd_pa1_u1_hear",
+     "ar": "أميّز أصواتاً إسبانية متقاربة عند سماعها",
+     "lessons": [
+      "pa1_u1_l1",
+      "pa1_u1_l3"
+     ]
+    },
+    {
+     "id": "cd_pa1_u1_read",
+     "ar": "أقرأ كلمات قصيرة وأعرف معناها وموضع النبر فيها",
+     "lessons": [
+      "pa1_u1_l2",
+      "pa1_u1_l3"
+     ]
+    },
+    {
+     "id": "cd_pa1_u1_write",
+     "ar": "أكتب كلمات قصيرة تعلّمتها أو سمعتها",
+     "lessons": [
+      "pa1_u1_l1",
+      "pa1_u1_l2",
+      "pa1_u1_l3"
+     ]
+    }
+   ],
+   "questions": [
+    {
+     "id": "chk_pa1_u1.q1",
+     "type": "choice",
+     "skill": "listening",
+     "can_do": "cd_pa1_u1_hear",
+     "prompt_ar": "استمع: أي كلمة سمعت؟",
+     "choices": [
+      "perro",
+      "pero"
+     ],
+     "answer": 0,
+     "choices_es": true,
+     "audio_es": "perro"
+    },
+    {
+     "id": "chk_pa1_u1.q2",
+     "type": "choice",
+     "skill": "listening",
+     "can_do": "cd_pa1_u1_hear",
+     "prompt_ar": "استمع: أي كلمة سمعت؟",
+     "choices": [
+      "mesa",
+      "misa",
+      "musa"
+     ],
+     "answer": 0,
+     "choices_es": true,
+     "audio_es": "mesa"
+    },
+    {
+     "id": "chk_pa1_u1.q3",
+     "type": "choice",
+     "skill": "vocabulary",
+     "can_do": "cd_pa1_u1_read",
+     "prompt_ar": "ما معنى هذه الكلمة؟",
+     "choices": [
+      "مكتب (مكان العمل)",
+      "فندق",
+      "بيت"
+     ],
+     "answer": 0,
+     "choices_es": false,
+     "stimulus_es": "oficina"
+    },
+    {
+     "id": "chk_pa1_u1.q4",
+     "type": "choice",
+     "skill": "vocabulary",
+     "can_do": "cd_pa1_u1_read",
+     "prompt_ar": "ما معنى هذه الكلمة؟",
+     "choices": [
+      "شكراً",
+      "مرحباً",
+      "غداً"
+     ],
+     "answer": 0,
+     "choices_es": false,
+     "stimulus_es": "gracias"
+    },
+    {
+     "id": "chk_pa1_u1.q5",
+     "type": "choice",
+     "skill": "reading",
+     "can_do": "cd_pa1_u1_read",
+     "prompt_ar": "أين يقع النبر في كلمة hotel؟",
+     "choices": [
+      "ho-TEL",
+      "HO-tel"
+     ],
+     "answer": 0,
+     "choices_es": true
+    },
+    {
+     "id": "chk_pa1_u1.q6",
+     "type": "choice",
+     "skill": "reading",
+     "can_do": "cd_pa1_u1_read",
+     "prompt_ar": "لماذا تحمل كلمة teléfono علامة النبر؟",
+     "choices": [
+      "لأن نبرها على مقطع تخالف فيه القاعدة العامة",
+      "لأنها كلمة مأخوذة من الإنجليزية",
+      "لأن كل كلمة طويلة تحمل علامة"
+     ],
+     "answer": 0,
+     "choices_es": false
+    },
+    {
+     "id": "chk_pa1_u1.q7",
+     "type": "type",
+     "skill": "writing",
+     "can_do": "cd_pa1_u1_write",
+     "prompt_ar": "اكتب بالإسبانية",
+     "accepted": [
+      "teléfono"
+     ],
+     "stimulus_ar": "هاتف"
+    },
+    {
+     "id": "chk_pa1_u1.q8",
+     "type": "type",
+     "skill": "writing",
+     "can_do": "cd_pa1_u1_write",
+     "prompt_ar": "اكتب بالإسبانية",
+     "accepted": [
+      "amigo",
+      "amiga"
+     ],
+     "stimulus_ar": "صديق"
+    },
+    {
+     "id": "chk_pa1_u1.q9",
+     "type": "dictation",
+     "skill": "listening",
+     "can_do": "cd_pa1_u1_write",
+     "audio_es": "cliente"
+    },
+    {
+     "id": "chk_pa1_u1.q10",
+     "type": "dictation",
+     "skill": "listening",
+     "can_do": "cd_pa1_u1_write",
+     "audio_es": "mañana"
+    }
+   ],
+   "source": "original-v1"
+  },
+  {
+   "id": "chk_pa1_u2",
+   "version": 1,
+   "kind": "unit",
+   "level": "pre_a1",
+   "unit": "pa1_u2",
+   "title_ar": "نقطة تحقق: التحيات والتعارف",
+   "intro_ar": "نقطة تحقق قصيرة. لا تلميحات ولا إظهار للإجابات قبل النهاية، ولا إعادة للأسئلة. النتيجة دليل على ما تستطيعه الآن، وليست شهادة مستوى.",
+   "can_do": [
+    {
+     "id": "cd_pa1_u2_greet",
+     "ar": "أحيّي وأودّع بحسب وقت اليوم",
+     "lessons": [
+      "pa1_u2_l1"
+     ]
+    },
+    {
+     "id": "cd_pa1_u2_courtesy",
+     "ar": "أسأل عن الحال وأرد بلباقة، رسمياً وغير رسمي",
+     "lessons": [
+      "pa1_u2_l2"
+     ]
+    },
+    {
+     "id": "cd_pa1_u2_intro",
+     "ar": "أعرّف باسمي وأسأل عن اسم غيري",
+     "lessons": [
+      "pa1_u2_l3"
+     ]
+    }
+   ],
+   "questions": [
+    {
+     "id": "chk_pa1_u2.q1",
+     "type": "choice",
+     "skill": "vocabulary",
+     "can_do": "cd_pa1_u2_greet",
+     "prompt_ar": "الساعة التاسعة صباحاً وتدخل اجتماعاً. ماذا تقول؟",
+     "choices": [
+      "Buenos días.",
+      "Buenas noches.",
+      "Buenas tardes."
+     ],
+     "answer": 0,
+     "choices_es": true
+    },
+    {
+     "id": "chk_pa1_u2.q2",
+     "type": "choice",
+     "skill": "listening",
+     "can_do": "cd_pa1_u2_greet",
+     "prompt_ar": "استمع: ما معنى ما سمعته؟",
+     "choices": [
+      "إلى الغد",
+      "صباح الخير",
+      "شكراً"
+     ],
+     "answer": 0,
+     "choices_es": false,
+     "audio_es": "Hasta mañana."
+    },
+    {
+     "id": "chk_pa1_u2.q3",
+     "type": "choice",
+     "skill": "grammar",
+     "can_do": "cd_pa1_u2_greet",
+     "prompt_ar": "اختر الكلمة المناسبة للفراغ",
+     "choices": [
+      "Buenas",
+      "Buenos"
+     ],
+     "answer": 0,
+     "choices_es": true,
+     "stimulus_es": "___ tardes."
+    },
+    {
+     "id": "chk_pa1_u2.q4",
+     "type": "choice",
+     "skill": "reading",
+     "can_do": "cd_pa1_u2_courtesy",
+     "prompt_ar": "هل هذا الحوار رسمي أم غير رسمي؟",
+     "choices": [
+      "رسمي",
+      "غير رسمي"
+     ],
+     "answer": 0,
+     "choices_es": false,
+     "stimulus_es": "— ¿Cómo está usted?\n— Muy bien, gracias. ¿Y usted?"
+    },
+    {
+     "id": "chk_pa1_u2.q5",
+     "type": "choice",
+     "skill": "grammar",
+     "can_do": "cd_pa1_u2_courtesy",
+     "prompt_ar": "تخاطب عميلاً لأول مرة. أي سؤال أنسب؟",
+     "choices": [
+      "¿Cómo está usted?",
+      "¿Cómo estás?"
+     ],
+     "answer": 0,
+     "choices_es": true
+    },
+    {
+     "id": "chk_pa1_u2.q6",
+     "type": "type",
+     "skill": "writing",
+     "can_do": "cd_pa1_u2_courtesy",
+     "prompt_ar": "زميلك قال لك «Gracias». اكتب الرد المناسب بالإسبانية.",
+     "accepted": [
+      "De nada"
+     ]
+    },
+    {
+     "id": "chk_pa1_u2.q7",
+     "type": "choice",
+     "skill": "listening",
+     "can_do": "cd_pa1_u2_intro",
+     "prompt_ar": "استمع: ما معنى السؤال؟",
+     "choices": [
+      "ما اسمك؟",
+      "من أين أنت؟",
+      "كيف حالك؟"
+     ],
+     "answer": 0,
+     "choices_es": false,
+     "audio_es": "¿Cómo te llamas?"
+    },
+    {
+     "id": "chk_pa1_u2.q8",
+     "type": "type",
+     "skill": "writing",
+     "can_do": "cd_pa1_u2_intro",
+     "prompt_ar": "اكتب بالإسبانية",
+     "accepted": [
+      "Me llamo Omar",
+      "Soy Omar"
+     ],
+     "stimulus_ar": "اسمي عمر."
+    },
+    {
+     "id": "chk_pa1_u2.q9",
+     "type": "choice",
+     "skill": "grammar",
+     "can_do": "cd_pa1_u2_intro",
+     "prompt_ar": "امرأة تتعرّف على زميل جديد. ماذا تقول؟",
+     "choices": [
+      "Encantada.",
+      "Encantado."
+     ],
+     "answer": 0,
+     "choices_es": true
+    },
+    {
+     "id": "chk_pa1_u2.q10",
+     "type": "dictation",
+     "skill": "listening",
+     "can_do": "cd_pa1_u2_intro",
+     "audio_es": "Mucho gusto."
+    }
+   ],
+   "source": "original-v1"
+  },
+  {
+   "id": "chk_pa1_u3",
+   "version": 1,
+   "kind": "unit",
+   "level": "pre_a1",
+   "unit": "pa1_u3",
+   "title_ar": "نقطة تحقق: الأرقام والجملة الأولى",
+   "intro_ar": "نقطة تحقق قصيرة. لا تلميحات ولا إظهار للإجابات قبل النهاية، ولا إعادة للأسئلة. النتيجة دليل على ما تستطيعه الآن، وليست شهادة مستوى.",
+   "can_do": [
+    {
+     "id": "cd_pa1_u3_numbers",
+     "ar": "أفهم الأرقام من 0 إلى 20 وأكتبها",
+     "lessons": [
+      "pa1_u3_l1",
+      "pa1_u3_l2"
+     ]
+    },
+    {
+     "id": "cd_pa1_u3_phone",
+     "ar": "أفهم رقم هاتف يُملى وأسأل عن رقم غيري",
+     "lessons": [
+      "pa1_u3_l2"
+     ]
+    },
+    {
+     "id": "cd_pa1_u3_origin",
+     "ar": "أقول من أنا ومن أين أنا وأسأل غيري",
+     "lessons": [
+      "pa1_u3_l3"
+     ]
+    }
+   ],
+   "questions": [
+    {
+     "id": "chk_pa1_u3.q1",
+     "type": "choice",
+     "skill": "listening",
+     "can_do": "cd_pa1_u3_numbers",
+     "prompt_ar": "استمع: أي رقم سمعت؟",
+     "choices": [
+      "12",
+      "2",
+      "20"
+     ],
+     "answer": 0,
+     "choices_es": false,
+     "audio_es": "doce"
+    },
+    {
+     "id": "chk_pa1_u3.q2",
+     "type": "choice",
+     "skill": "listening",
+     "can_do": "cd_pa1_u3_numbers",
+     "prompt_ar": "استمع: أي رقم سمعت؟",
+     "choices": [
+      "15",
+      "5",
+      "14"
+     ],
+     "answer": 0,
+     "choices_es": false,
+     "audio_es": "quince"
+    },
+    {
+     "id": "chk_pa1_u3.q3",
+     "type": "type",
+     "skill": "writing",
+     "can_do": "cd_pa1_u3_numbers",
+     "prompt_ar": "اكتب هذا الرقم بالحروف الإسبانية",
+     "accepted": [
+      "siete"
+     ],
+     "stimulus_ar": "7"
+    },
+    {
+     "id": "chk_pa1_u3.q4",
+     "type": "type",
+     "skill": "writing",
+     "can_do": "cd_pa1_u3_numbers",
+     "prompt_ar": "اكتب هذا الرقم بالحروف الإسبانية",
+     "accepted": [
+      "dieciséis"
+     ],
+     "stimulus_ar": "16"
+    },
+    {
+     "id": "chk_pa1_u3.q5",
+     "type": "choice",
+     "skill": "listening",
+     "can_do": "cd_pa1_u3_phone",
+     "prompt_ar": "استمع: ما رقم الهاتف؟",
+     "choices": [
+      "3 8 0 1",
+      "3 8 1 0",
+      "8 3 0 1"
+     ],
+     "answer": 0,
+     "choices_es": false,
+     "audio_es": "Mi número es tres, ocho, cero, uno."
+    },
+    {
+     "id": "chk_pa1_u3.q6",
+     "type": "choice",
+     "skill": "reading",
+     "can_do": "cd_pa1_u3_phone",
+     "prompt_ar": "كيف تسأل زميلك عن رقم هاتفه؟",
+     "choices": [
+      "¿Cuál es tu número de teléfono?",
+      "¿De dónde eres?",
+      "¿Cómo te llamas?"
+     ],
+     "answer": 0,
+     "choices_es": true
+    },
+    {
+     "id": "chk_pa1_u3.q7",
+     "type": "choice",
+     "skill": "grammar",
+     "can_do": "cd_pa1_u3_origin",
+     "prompt_ar": "اختر الكلمة المناسبة للفراغ",
+     "choices": [
+      "soy",
+      "eres",
+      "es"
+     ],
+     "answer": 0,
+     "choices_es": true,
+     "stimulus_es": "Yo ___ de Egipto."
+    },
+    {
+     "id": "chk_pa1_u3.q8",
+     "type": "choice",
+     "skill": "grammar",
+     "can_do": "cd_pa1_u3_origin",
+     "prompt_ar": "اختر الكلمة المناسبة للفراغ",
+     "choices": [
+      "es",
+      "eres",
+      "soy"
+     ],
+     "answer": 0,
+     "choices_es": true,
+     "stimulus_es": "Usted ___ el cliente."
+    },
+    {
+     "id": "chk_pa1_u3.q9",
+     "type": "type",
+     "skill": "writing",
+     "can_do": "cd_pa1_u3_origin",
+     "prompt_ar": "اكتب بالإسبانية",
+     "accepted": [
+      "No soy de España",
+      "Yo no soy de España"
+     ],
+     "stimulus_ar": "لست من إسبانيا."
+    },
+    {
+     "id": "chk_pa1_u3.q10",
+     "type": "choice",
+     "skill": "listening",
+     "can_do": "cd_pa1_u3_origin",
+     "prompt_ar": "استمع: ما معنى السؤال؟",
+     "choices": [
+      "من أين حضرتك؟",
+      "ما اسم حضرتك؟",
+      "كيف حال حضرتك؟"
+     ],
+     "answer": 0,
+     "choices_es": false,
+     "audio_es": "¿De dónde es usted?"
+    }
+   ],
+   "source": "original-v1"
+  }
+ ]
+}

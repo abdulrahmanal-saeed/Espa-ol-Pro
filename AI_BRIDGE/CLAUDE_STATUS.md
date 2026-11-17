@@ -3,153 +3,248 @@
 owner: Claude Code
 implementer: Claude Code
 handoff_status: READY_FOR_REVIEW
-handoff_id: PHASE1-007
-updated_at_utc: 2026-11-17T06:10:00Z
-review_requested_for_sha: cb1476a5f6549854e0c7e477c90b725efdff51a7
-branch: feat/phase-1.2a-listening
-pull_request: https://github.com/abdulrahmanal-saeed/Espa-ol-Pro/pull/5
-base: main at 8e4729f
-last_review_acknowledged: REVIEW-007
-project_status: PHASE_1_2A_LISTENING_READY_FOR_REVIEW__PHASE_1_1_DEVICE_ACCEPTANCE_PENDING_OWNER
+handoff_id: PHASE1-013
+updated_at_utc: 2026-11-17T14:00:00Z
+review_requested_for_sha: 9f86876
+branch: fix/review-008
+pull_request: https://github.com/abdulrahmanal-saeed/Espa-ol-Pro/pull/7
+last_review_acknowledged: REVIEW-010
+project_status: REVIEW_009_P2_P3_FIXED_ON_PR7__STACK_8_TO_11_REBASED_BY_MERGE__AWAITING_REVIEW
 
-> The owner's brief for this phase addressed the implementer as "Codex"; this
-> work was done by Claude Code, and commits carry its attribution. The
-> previous handoff, `PHASE1-006` by Codex for PR #4, is in Git history.
-> `review_requested_for_sha` is the last commit that changes application
-> code; the commit carrying this file changes only this file.
+## REVIEW-009 / REVIEW-010: both findings fixed on PR #7
 
-## Baseline acknowledged
+New application commits on `fix/review-008`: `9ddc13a` (P2) and `9f86876`
+(P3). The stack #8 → #9 → #10 → #11 has each branch merged forward with
+these fixes, with no force-push. Each branch's own handoff is unchanged
+apart from that merge.
 
-- `main` at `8e4729f`. PR #3 (merge `a4af15f`) and PR #4 (merge `af693b4`)
-  are merged. REVIEW-007 approved both; CI on the merge passed 169 tests and
-  built the APK.
-- Phase 1.1 device acceptance is with the owner and is **not** claimed here.
-  No owner device results for Phase 1.1 had reached the repository when this
-  was written.
+### P2: guided dialogue questions after a mid-session playback failure (`9ddc13a`)
 
-## This PR: Phase 1.2A — listening library and dialogue player
+The evidence now depends on audio that was **actually delivered**, not on a
+voice that was available when the screen opened.
 
-### Content (v1.1.0)
+**How it works:**
 
-Six original dialogues, all `author_reviewed`, in
-`assets/content/v1/dialogues/`, listed in `curriculum.json`:
+- **Delivery log.** A new `SpeechDeliveryLog` (`lib/core/speech/delivery_log.dart`)
+  records each sentence that `SpeakButton.play` really spoke: the engine
+  still reports available after `speak`, and `DeviceTtsSpeech` marks itself
+  unavailable when `speak` throws.
+- **Recording answers.** `DialogueQuestionsScreen` takes a log mark in
+  `initState`. In `onAttempt`, an answer to an audio question is recorded with
+  `measured: false` unless that question's sentence was delivered after the
+  mark.
+- **What "unmeasured" means here:**
+  - `DialogueProgress` counts only measured first attempts, so unheard
+    answers do not advance the dialogue;
+  - unmeasured attempts never create error-notebook records;
+  - the result screen says how many answers did not count.
+- **`recordAttempt(…, measured:)`** can only **downgrade** an attempt. It
+  cannot make self-assessed practice measured.
 
-- four Pre-A1 and two A1-U1;
-- 29 turns and 31 comprehension questions;
-- each linked to the lessons it builds on, and unlocking when all of them
-  are completed.
+**Tests:**
 
-Content lessons, ids and activities are unchanged. The version bump is for
-the added dialogues.
+- `listening_flow_test`: a voice that reports available and then fails on
+  the first sentence. Even right answers are stored with `is_measured = 0`,
+  the dialogue's answered count excludes them, and the notice is shown.
+- `progress_test`: a downgraded wrong answer creates no error record, and
+  `measured: true` cannot upgrade a speak exercise.
+- The existing no-voice tests (start gate, direct route) still pass.
 
-### Player (`lib/features/listening/`)
+### P3: unique-index creation no longer swallows every error (`9f86876`)
 
-- **`DialoguePlayer`:** plays each turn as a separate utterance via a new
-  `SpeechService.speakAndWait`, which uses flutter_tts `awaitSpeakCompletion`.
-- **Highlighting is per turn.** There is no word-timing data, so none is claimed.
-- **Pause / resume:** pause stops the voice; resume restarts the interrupted
-  sentence, because Android TTS cannot resume mid-sentence reliably. The UI
-  says so.
-- **Stale playback:** a generation counter guarantees a stale playback loop
-  can never move the state after another action.
-- **Controls:** sentence replay, stop, and speeds of 60 %, 80 % and normal,
-  multiplying the learner's rate setting.
-- **Transcript and Arabic translation** are hidden by default, with toggles.
-  English is shown only with the existing setting.
-- **Only `turn.es` is ever spoken.**
-- **No Spanish voice:** an explicit notice, and the transcript is forced on.
-- **Saving and links:** any sentence can be saved to «عباراتي» (new
-  `PhraseSource` kind `dialogue`). Vocabulary chips open the vocabulary sheet;
-  grammar opens the note.
-- **Comprehension questions:** choice, "who said it", and dictation. Audio is
-  played and the sentence is not shown. They run in the existing
-  `ExerciseRunner` (failure-safe saves, one retry, first-try scoring) and are
-  stored as `activity_attempts` with context `listening`. The result screen
-  says it is practice, not a level test.
+`_ensureOneAnswerPerQuestion` first queries for duplicate
+`(attempt_id, question_id)` rows:
 
-### No schema change
+- **Duplicates present** (legacy only): the index is skipped, the data is
+  kept, and `AppDatabase.assessmentAnswersDegraded = true`.
+- **No duplicates:** `CREATE UNIQUE INDEX` runs **without any catch**, so
+  any other failure propagates.
 
-Dialogue progress is derived from attempts: the latest first attempt per
-question id. **Schema v5 is reserved for assessments (PR 1.2B).**
+**Tests (`persistence_test`):**
 
-### Validation
+- A legacy duplicate database opens with both rows kept, the flag set and no
+  index.
+- An unrelated failure (another object already using the index name) makes
+  the open throw instead of continuing silently.
 
-New dialogue rules in `ContentValidator`, each proven by a negative test:
-
-- ids are unique;
-- level, unit and lessons exist and agree;
-- vocabulary exists and is taught by the linked lessons or earlier;
-- grammar references exist;
-- speakers are known, and at least two of them speak;
-- no Arabic in `es`, and balanced `¿?` / `¡!`;
-- questions have valid answers, distinct choices and existing turns.
-
-### Defect found by the new tests and fixed
-
-A comprehension run finishing in under one second logged no study session,
-so today's plan would not count it. A finished run now logs at least one
-second.
-
-## Verification
-
-Local, at `cb1476a`:
+## Verification (local, `fix/review-008` at `9f86876`)
 
 | Check | Result |
 |---|---|
-| `dart format --output=none --set-exit-if-changed lib test tool test_screenshots` | 0 changed |
-| `flutter analyze --fatal-infos` | No issues |
-| `dart run tool/validate_content.dart` | v1.1.0 OK — 6 dialogues, 29 turns, 31 questions |
-| `flutter test` | **207 passed** (baseline 169), 2 full runs |
-| Drift regeneration | identical to committed file |
+| format, analyze, content | clean |
+| Drift regeneration | identical |
+| `flutter test` | **275 passed** (was 270; +5 regression tests) |
 
-GitHub Actions on `cb1476a` (run 44025615075):
+CI after the fixes, all on application code including `9ddc13a` and `9f86876`; every run passed both jobs (tests and Android debug APK):
 
-| Job | Result |
+| PR | Head | Run | Tests |
+|---|---|---|---|
+| #7 | `34f966b` | 44069648158 | **275 passed** |
+| #8 | `b9961dc` | 44069818348 | success |
+| #9 | `84fe49a` | 44069828802 | success |
+| #10 | `a4b018e` | 44069830535 | success |
+| #11 | `763fe88` | 44069835150 | success (323 locally) |
+
+## Stack after the merge-forward
+
+| PR | Branch | Adds |
+|---|---|---|
+| #7 | fix/review-008 | 1.2B + REVIEW-008/009 fixes |
+| #8 | feat/phase-1.2c-quality | 1.2C |
+| #9 | feat/a1-u2-u3 | A1-U2/U3 |
+| #10 | feat/a1-u4-u5 | A1-U4/U5 |
+| #11 | feat/a1-u6-final | A1-U6, verbs, A1 level assessment |
+
+Still pending:
+
+- independent review;
+- owner merge decisions, in order;
+- device checks;
+- native Spanish review.
+
+I will not merge anything.
+
+---
+
+# Earlier handoff on this branch: PHASE1-009
+
+
+owner: Claude Code
+implementer: Claude Code
+handoff_status: READY_FOR_REVIEW
+handoff_id: PHASE1-009
+updated_at_utc: 2026-11-17T07:30:00Z
+review_requested_for_sha: 1913f04 (code state: 1.2B + REVIEW-008 fixes, merged with main 9dd9764/b889e16)
+last_application_commit: 3cd15ed
+branch: fix/review-008
+pull_request: https://github.com/abdulrahmanal-saeed/Espa-ol-Pro/pull/7
+base: main
+last_review_acknowledged: REVIEW-008
+project_status: PHASE_1_2B_WITH_REVIEW_008_FIXES_READY_FOR_REVIEW__PHASE_1_2A_ON_MAIN_NEEDS_THIS_FIX__DEVICE_ACCEPTANCE_PENDING_OWNER
+
+> **Why this PR exists.** PR #5 (1.2A) was merged into `main`, and PR #6 (1.2B)
+> was merged into `feat/phase-1.2a-listening`, not into `main`, both before
+> REVIEW-008's findings were fixed. This PR targets `main`. It brings in the
+> reviewed 1.2B code (unchanged from `f195ef1`) plus the fixes for every
+> REVIEW-008 finding, including the P2 that affects 1.2A code already on
+> `main`. The diff against `main` is therefore "1.2B + fixes". The fixes
+> alone are the three commits after `9d6afcd`: `7e55700`, `3cd15ed` and
+> `e38a7b8`.
+
+## REVIEW-008 — findings and fixes
+
+### P2 — listening scored without audio (1.2A on main and 1.2B) → fixed in `7e55700`
+
+**Checkpoints**
+
+- **Start gate:** a checkpoint that contains any audio question cannot start
+  unless a Spanish voice is available. A notice explains how to install one
+  (`assessment-no-voice`).
+- **Per-question lock:** a listening question cannot be answered until its
+  audio has **actually played** in this attempt:
+  - the options and the text field are disabled until then
+    (`assessment-listen-first`);
+  - `SpeakButton.play` now returns whether the sentence was spoken. A missing
+    voice and an engine error both return `false`; `DeviceTtsSpeech` marks
+    itself unavailable when playback throws;
+  - so a voice that fails mid-checkpoint never unlocks the question, and no
+    guess at an unheard sentence can reach `assessment_answers`.
+
+**Dialogue comprehension questions (guided practice)**
+
+- Without a voice they are neither offered nor recorded: the start button is
+  disabled, and the questions route shows `questions-no-voice` even when
+  opened directly.
+- The dialogue screen detects the missing voice **before** anything is played
+  (`spanishVoiceProvider`). It shows the notice and the transcript.
+- The text-only reader is kept.
+
+**Tests**
+
+- `assessment_flow_test`:
+  - no voice → the checkpoint cannot start and nothing is stored;
+  - an option tapped before listening selects nothing;
+  - an engine that fails while speaking keeps the question locked;
+  - playing unlocks only that question.
+- `listening_flow_test`: no voice → notice and text shown before playing;
+  questions disabled; direct route refused; zero `listening` attempts stored.
+
+**Known limit (documented):** a TTS failure *during* guided dialogue questions
+is not detected per question. They are practice, not assessment, and they
+cannot start without a voice. Checkpoints detect it per question.
+
+### P2 — duplicate question answers accepted by restore → fixed in `3cd15ed`
+
+**Restore** now rejects, before anything is deleted:
+
+- duplicate `(attemptId, questionId)` pairs — this is the reviewer's exact
+  reproducer, with a new row id and adjusted `maxScore`/`score`;
+- attempts with no answers (`maxScore < 1`);
+- answers with an empty question, can-do or skill.
+
+**Database:** a unique index `idx_assessment_answers_question` on
+`(attempt_id, question_id)`.
+
+- It is created on **every open**, so installs already on v5 get it without a
+  schema bump. Schema stays at **v5**.
+- If an old database somehow held a duplicate, the index is skipped rather
+  than deleting data or refusing to open. Neither the app nor restore can
+  create one.
+
+**Tests**
+
+- `assessment_test`: the duplicate, empty-attempt and empty-field cases are
+  rejected with device results unchanged; the database refuses a second
+  answer to one question.
+- `persistence_test`: the index exists after v4 → v5.
+
+### P3 — consistency across question versions → fixed in `3cd15ed`
+
+- `AttemptRecord` keeps `assessmentVersion`. "Consistent" now requires the
+  previous pass to be **at the same version** as the latest.
+- Needs practice and demonstrated still follow the latest attempt.
+- The rule is documented in `docs/DATABASE.md` and its wording updated on the
+  progress screen.
+- Test: a v1 pass followed by a v2 pass is demonstrated; a second v2 pass on
+  another day is consistent; a later failed v3 is needs practice.
+
+## Verification
+
+Local, on `fix/review-008` before the main merge (`e38a7b8`):
+
+| Check | Result |
 |---|---|
-| Format, analyze, content, tests | success |
-| Android debug APK | success |
+| format | 0 changed |
+| `flutter analyze --fatal-infos` | No issues |
+| content validator | OK |
+| `flutter test` | **270 passed** (PR #6: 261; +9 regression tests) |
+| Drift regeneration | identical to committed file |
+| screenshots | unchanged |
 
-New tests:
+GitHub Actions run 44054760860 on `3d973f4`: format, analyze, content, generated code, secrets — success, **270 tests passed**; Android debug APK — success.
 
-- `test/dialogue_player_test.dart` (9): ordering, pause/resume, replay
-  takeover, stop, speed, no voice, dispose.
-- `test/listening_content_test.dart` (23): shipped content, 15 validator
-  negatives, question building, progress derivation.
-- `test/listening_flow_test.dart` (6): lock/unlock, play order, toggles,
-  replay, Arabic never spoken, saving a sentence, the no-voice fallback,
-  questions recorded and completion shown, the Practice entry.
+## Not verified — device checklist
 
-Screenshots: `docs/screenshots/19_listening_library.png` and
-`20_dialogue_player.png`. Also added: `docs/LINGUISTIC_QA.md`, a checklist
-for the human Spanish reviewer.
+1. With the Spanish TTS voice **removed**:
+   - a checkpoint shows the notice and cannot start;
+   - a dialogue shows its text and the notice;
+   - its questions cannot be opened.
+2. With the voice installed: in a checkpoint, the options stay disabled
+   until ▶ is pressed, then work.
+3. Update over the existing install (v4 or v5): progress, saved phrases and
+   any checkpoint results are kept.
 
-## Not verified — device checklist for this build
+Phase 1.1 device acceptance remains with the owner and is not claimed here.
 
-Record the commit, device, Android version, expected and actual result, and
-pass/fail for each:
+## Next (already implemented, will follow as a stacked PR)
 
-1. Complete Pre-A1 lessons 4–5 → Practice → «مكتبة الاستماع» → «إلى الغد» opens.
-2. «شغّل الحوار» plays all four sentences in order; the highlight follows.
-3. Pause mid-sentence → «تابع» restarts that sentence.
-4. Speed 60 % is clearly slower; normal returns to the usual rate.
-5. Replay a single sentence; save one sentence and find it in «عباراتي».
-6. Answer the questions; the library then shows the score.
-7. With no Spanish voice installed, the notice appears and the transcript is shown.
+Phase 1.2C is on `feat/phase-1.2c-quality` (CI-ready locally, 292 tests). It
+will be rebased onto this branch and opened as a PR stacked on this one:
 
-**Specific risk:** whether every Android TTS engine completes `speak` when
-`awaitSpeakCompletion` is on. If one does not, the dialogue stops after the
-first sentence. This is the most important thing to check on the device.
+- answer diagnosis: meaning-bearing accents si/sí and tu/tú, ñ, word form,
+  word order, spelling;
+- the deterministic difficulty estimator;
+- checkpoints that play dialogue sentences, and explanations for wrong
+  answers.
 
-## Specific review request
-
-1. The honest-limits design: per-turn highlighting, resume restarting the
-   sentence, no mid-sentence resume claimed.
-2. Deriving dialogue progress from attempts instead of a new table.
-3. The validator's "taught by its lessons or earlier" rule.
-
-## Next
-
-PR 1.2B (assessment foundation, schema v5) is in progress on
-`feat/phase-1.2b-assessments`, stacked on this branch. Then 1.2C (difficulty
-estimator, writing quality) and the A1 units. I will not merge; merging is
-the owner's decision.
+I will not merge anything; merging is the owner's decision.

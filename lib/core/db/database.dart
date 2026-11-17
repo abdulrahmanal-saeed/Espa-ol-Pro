@@ -181,6 +181,53 @@ class SavedPhrases extends Table {
   IntColumn get savedAt => integer()();
 }
 
+/// One submitted checkpoint or level assessment (schema v5).
+///
+/// Written together with all its [AssessmentAnswers] in one transaction:
+/// a row here always means a complete, stored submission. Abandoned or
+/// failed attempts leave no row.
+class AssessmentAttempts extends Table {
+  IntColumn get id => integer().autoIncrement()();
+  TextColumn get assessmentId => text()();
+
+  /// Version of the assessment definition the learner actually took, so a
+  /// later edit of the questions never reinterprets an old result.
+  IntColumn get assessmentVersion => integer()();
+  TextColumn get contentVersion => text()();
+  IntColumn get startedAt => integer()();
+  IntColumn get completedAt => integer()();
+
+  /// Objectively scored questions in this attempt.
+  IntColumn get maxScore => integer()();
+
+  /// Of those, answered correctly.
+  IntColumn get score => integer()();
+}
+
+/// One answer within an [AssessmentAttempts] row (schema v5).
+class AssessmentAnswers extends Table {
+  IntColumn get id => integer().autoIncrement()();
+  IntColumn get attemptId => integer().references(
+    AssessmentAttempts,
+    #id,
+    onDelete: KeyAction.cascade,
+  )();
+  TextColumn get questionId => text()();
+
+  /// vocabulary | reading | listening | writing | grammar
+  TextColumn get skill => text()();
+
+  /// The "can do" statement this question gives evidence for.
+  TextColumn get canDoId => text()();
+  BoolColumn get isCorrect => boolean()();
+
+  /// For typed answers: exact | missing_accents | wrong. Null when spelling
+  /// does not apply (choices).
+  TextColumn get spelling => text().nullable()();
+  TextColumn get userAnswer => text().withDefault(const Constant(''))();
+  TextColumn get expected => text().withDefault(const Constant(''))();
+}
+
 @DriftDatabase(
   tables: [
     Settings,
@@ -191,6 +238,8 @@ class SavedPhrases extends Table {
     StudySessions,
     ErrorRecords,
     SavedPhrases,
+    AssessmentAttempts,
+    AssessmentAnswers,
   ],
 )
 class AppDatabase extends _$AppDatabase {
@@ -207,7 +256,7 @@ class AppDatabase extends _$AppDatabase {
     );
   }
 
-  static const int latestSchemaVersion = 4;
+  static const int latestSchemaVersion = 5;
 
   @override
   int get schemaVersion => latestSchemaVersion;
@@ -235,12 +284,42 @@ class AppDatabase extends _$AppDatabase {
         // v4: personal saved phrases. New table only; nothing else changes.
         await m.createTable(savedPhrases);
       }
+      if (from < 5) {
+        // v5: checkpoint and level assessment results. New tables only.
+        await m.createTable(assessmentAttempts);
+        await m.createTable(assessmentAnswers);
+      }
       await _createIndexes();
     },
     beforeOpen: (details) async {
       await customStatement('PRAGMA foreign_keys = ON');
+      await _ensureOneAnswerPerQuestion();
     },
   );
+
+  /// True when the database holds duplicate answers to one question in one
+  /// attempt (possible only in a database written before the restore check
+  /// existed). The unique index is then not created, so nothing is deleted;
+  /// restore and new submissions still never add duplicates.
+  bool assessmentAnswersDegraded = false;
+
+  /// One answer per question per attempt, enforced by the database too.
+  ///
+  /// Created on every open (not in a migration) so installs already on v5
+  /// get it without a schema bump. Only the known legacy case, existing
+  /// duplicate rows, is tolerated; any other failure propagates.
+  Future<void> _ensureOneAnswerPerQuestion() async {
+    final duplicates = await customSelect(
+      'SELECT 1 FROM assessment_answers '
+      'GROUP BY attempt_id, question_id HAVING COUNT(*) > 1 LIMIT 1',
+    ).get();
+    assessmentAnswersDegraded = duplicates.isNotEmpty;
+    if (assessmentAnswersDegraded) return;
+    await customStatement(
+      'CREATE UNIQUE INDEX IF NOT EXISTS idx_assessment_answers_question '
+      'ON assessment_answers (attempt_id, question_id)',
+    );
+  }
 
   Future<void> _createIndexes() async {
     await customStatement(
@@ -254,6 +333,11 @@ class AppDatabase extends _$AppDatabase {
     );
     await customStatement(
       'CREATE INDEX IF NOT EXISTS idx_sessions_day ON study_sessions (day)',
+    );
+    // Runs after every migration step, so the v5 table always exists here.
+    await customStatement(
+      'CREATE INDEX IF NOT EXISTS idx_assessment_answers_attempt '
+      'ON assessment_answers (attempt_id)',
     );
   }
 }
