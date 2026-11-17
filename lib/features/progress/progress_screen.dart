@@ -314,7 +314,7 @@ class _LevelBar extends StatelessWidget {
           ),
         ),
         const SizedBox(width: 12),
-        Text('$done / $total'),
+        Text(fraction(done, total)),
       ],
     ),
   );
