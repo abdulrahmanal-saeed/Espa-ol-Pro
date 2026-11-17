@@ -84,7 +84,19 @@ Future<ContentPack> parseContentPack(ContentReader read) async {
       ),
     );
   }
-  return ContentPack(version: version, levels: levels, sources: sources);
+  final dialogues = <Dialogue>[];
+  for (final file in _strings(root['dialogue_files'])) {
+    final json = jsonDecode(await read(file)) as Map<String, dynamic>;
+    for (final raw in json['dialogues'] as List? ?? const []) {
+      dialogues.add(_dialogue((raw as Map).cast<String, dynamic>()));
+    }
+  }
+  return ContentPack(
+    version: version,
+    levels: levels,
+    sources: sources,
+    dialogues: dialogues,
+  );
 }
 
 Lesson _lesson(
@@ -147,3 +159,62 @@ Lesson _lesson(
     grammarIds: _strings(j['grammar']),
   );
 }
+
+Dialogue _dialogue(Map<String, dynamic> j) {
+  final id = j['id'] as String;
+  return Dialogue(
+    id: id,
+    levelId: j['level'] as String? ?? '',
+    unitId: j['unit'] as String? ?? '',
+    lessonIds: _strings(j['lessons']),
+    titleEs: j['title_es'] as String? ?? '',
+    titleAr: j['title_ar'] as String? ?? '',
+    scenarioAr: j['scenario_ar'] as String? ?? '',
+    objectivesAr: _strings(j['objectives_ar']),
+    speakers: [
+      for (final raw in j['speakers'] as List? ?? const [])
+        DialogueSpeaker(
+          id: (raw as Map)['id'] as String? ?? '',
+          name: raw['name'] as String? ?? '',
+          roleAr: raw['role_ar'] as String? ?? '',
+        ),
+    ],
+    turns: [
+      for (var i = 0; i < (j['turns'] as List? ?? const []).length; i++)
+        _turn(id, i, ((j['turns'] as List)[i] as Map).cast<String, dynamic>()),
+    ],
+    items: _strings(j['items']),
+    grammarIds: _strings(j['grammar']),
+    questions: [
+      for (var i = 0; i < (j['questions'] as List? ?? const []).length; i++)
+        _question(
+          id,
+          i,
+          ((j['questions'] as List)[i] as Map).cast<String, dynamic>(),
+        ),
+    ],
+    sourceId: j['source'] as String? ?? '',
+  );
+}
+
+DialogueTurn _turn(String dialogueId, int i, Map<String, dynamic> j) =>
+    DialogueTurn(
+      id: j['id'] as String? ?? '$dialogueId.t${i + 1}',
+      speaker: j['speaker'] as String? ?? '',
+      es: j['es'] as String? ?? '',
+      ar: j['ar'] as String? ?? '',
+      en: j['en'] as String? ?? '',
+    );
+
+DialogueQuestion _question(String dialogueId, int i, Map<String, dynamic> j) =>
+    DialogueQuestion(
+      id: j['id'] as String? ?? '$dialogueId.q${i + 1}',
+      type: j['type'] as String? ?? '',
+      skill: j['skill'] as String? ?? 'listening',
+      promptAr: j['prompt_ar'] as String? ?? '',
+      choices: _strings(j['choices']),
+      answer: j['answer'] as int? ?? 0,
+      turnId: j['turn'] as String?,
+      choicesEs: j['choices_es'] as bool? ?? true,
+      explainAr: j['explain_ar'] as String? ?? '',
+    );

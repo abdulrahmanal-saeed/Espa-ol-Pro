@@ -4,6 +4,7 @@ import 'package:material_ui/material_ui.dart';
 import '../features/home/home_screen.dart';
 import '../features/lesson/lesson_screen.dart';
 import '../features/library/library_screen.dart';
+import '../features/listening/listening_screens.dart';
 import '../features/path/path_screen.dart';
 import '../features/practice/practice_screen.dart';
 import '../features/progress/progress_screen.dart';
@@ -34,6 +35,20 @@ GoRouter buildRouter({String initialLocation = '/home'}) => GoRouter(
       path: '/practice/:mode',
       builder: (_, state) =>
           PracticeRunScreen(mode: state.pathParameters['mode']!),
+    ),
+    GoRoute(
+      path: '/listening',
+      builder: (_, _) => const ListeningLibraryScreen(),
+    ),
+    GoRoute(
+      path: '/listening/:id',
+      builder: (_, state) =>
+          DialogueScreen(dialogueId: state.pathParameters['id']!),
+    ),
+    GoRoute(
+      path: '/listening/:id/questions',
+      builder: (_, state) =>
+          DialogueQuestionsScreen(dialogueId: state.pathParameters['id']!),
     ),
     GoRoute(path: '/settings', builder: (_, _) => const SettingsScreen()),
     GoRoute(path: '/tutor', builder: (_, _) => const TutorScreen()),

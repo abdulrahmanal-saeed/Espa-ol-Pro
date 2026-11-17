@@ -89,3 +89,42 @@ accurate. That is tracked by `review_status` (see `CURRICULUM.md`).
 2. Bump `version` (patch for fixes, minor for new lessons).
 3. Run the validator and `flutter test`.
 4. Never reuse or repurpose an existing item ID: review cards point at it.
+
+## Dialogues (listening library, content ≥ 1.1.0)
+
+`curriculum.json` lists dialogue files in `dialogue_files`
+(`dialogues/<level>.json`). Each file holds `{ "dialogues": [ … ] }`:
+
+```jsonc
+{
+  "id": "dlg_pa1_saludo",            // stable; attempts reference question ids
+  "level": "pre_a1", "unit": "pa1_u2",
+  "lessons": ["pa1_u2_l1", "pa1_u2_l2"], // unlocks when ALL are completed
+  "title_es": "…", "title_ar": "…", "scenario_ar": "…",
+  "objectives_ar": ["…"],
+  "speakers": [{ "id": "laura", "name": "Laura", "role_ar": "…" }],
+  "turns": [{ "id": "dlg_pa1_saludo.t1", "speaker": "laura",
+              "es": "…", "ar": "…", "en": "…" }],   // only `es` is ever spoken
+  "items": ["buenas_tardes"],        // vocabulary the dialogue practises
+  "grammar": ["g_greetings_time"],
+  "questions": [ /* see below */ ],
+  "source": "original-v1"
+}
+```
+
+| question `type` | fields | what the learner sees |
+|---|---|---|
+| `choice` | `prompt_ar`, `choices`, `answer` (index), optional `turn`, `choices_es`, `skill`, `explain_ar` | the turn's Spanish is **played, not shown**; choose |
+| `speaker` | `turn` | "who said this?"; choices are the dialogue's speakers |
+| `dictation` | `turn` | type what was heard |
+
+Validation adds: unique dialogue / turn / question ids; level, unit and
+lessons exist and agree; every vocabulary item exists **and is taught by the
+linked lessons or earlier**; grammar references exist; known speakers, at
+least two of whom speak; Spanish has no Arabic script and balanced `¿ ?` /
+`¡ !`; Arabic fields contain Arabic; at least 3 questions; valid answer
+indices, distinct choices, and existing turn references.
+
+Learner state is not stored separately. A dialogue's progress is derived
+from `activity_attempts` rows with `context = 'listening'` whose
+`activity_id` is a question id (first attempts only, most recent run).

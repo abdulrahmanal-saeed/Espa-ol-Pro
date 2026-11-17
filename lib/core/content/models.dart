@@ -257,7 +257,11 @@ class ContentPack {
     required this.version,
     required this.levels,
     required this.sources,
+    this.dialogues = const [],
   }) {
+    for (final d in dialogues) {
+      _dialogues[d.id] = d;
+    }
     for (final level in levels) {
       for (final unit in level.units) {
         _units[unit.id] = unit;
@@ -278,6 +282,11 @@ class ContentPack {
   final String version;
   final List<Level> levels;
   final List<ContentSource> sources;
+
+  /// Listening library, in authored order.
+  final List<Dialogue> dialogues;
+  final Map<String, Dialogue> _dialogues = {};
+  Dialogue? dialogue(String id) => _dialogues[id];
 
   final Map<String, Unit> _units = {};
   final Map<String, Lesson> _lessons = {};
@@ -310,5 +319,127 @@ class ContentPack {
       if (l.id == lesson.id) break;
     }
     return out;
+  }
+}
+
+// ---------------------------------------------------------------------------
+// Listening library (Phase 1.2). Authored, versioned content: only the
+// learner's attempts are stored in SQLite.
+// ---------------------------------------------------------------------------
+
+class DialogueSpeaker {
+  const DialogueSpeaker({
+    required this.id,
+    required this.name,
+    required this.roleAr,
+  });
+
+  final String id;
+
+  /// Display name (a Spanish first name, or a role in Arabic). Never spoken.
+  final String name;
+  final String roleAr;
+}
+
+class DialogueTurn {
+  const DialogueTurn({
+    required this.id,
+    required this.speaker,
+    required this.es,
+    required this.ar,
+    this.en = '',
+  });
+
+  final String id;
+  final String speaker;
+
+  /// The only text ever sent to the Spanish voice.
+  final String es;
+  final String ar;
+  final String en;
+}
+
+/// A comprehension question about a dialogue.
+///
+/// `choice`: [promptAr], [choices], [answer] (index); optional [turnId] whose
+/// Spanish is played as the stimulus; [choicesEs] says the choices are Spanish.
+/// `speaker`: "who said this?" for [turnId]; choices are the speakers.
+/// `dictation`: type what [turnId] says.
+class DialogueQuestion {
+  const DialogueQuestion({
+    required this.id,
+    required this.type,
+    required this.skill,
+    this.promptAr = '',
+    this.choices = const [],
+    this.answer = 0,
+    this.turnId,
+    this.choicesEs = true,
+    this.explainAr = '',
+  });
+
+  final String id;
+  final String type;
+  final String skill;
+  final String promptAr;
+  final List<String> choices;
+  final int answer;
+  final String? turnId;
+  final bool choicesEs;
+  final String explainAr;
+
+  static const types = {'choice', 'speaker', 'dictation'};
+}
+
+class Dialogue {
+  const Dialogue({
+    required this.id,
+    required this.levelId,
+    required this.unitId,
+    required this.lessonIds,
+    required this.titleEs,
+    required this.titleAr,
+    required this.scenarioAr,
+    required this.objectivesAr,
+    required this.speakers,
+    required this.turns,
+    required this.items,
+    required this.grammarIds,
+    required this.questions,
+    required this.sourceId,
+  });
+
+  final String id;
+  final String levelId;
+  final String unitId;
+
+  /// Lessons whose content the dialogue uses. It unlocks when ALL of them are
+  /// completed, so a learner never meets it before the language it needs.
+  final List<String> lessonIds;
+  final String titleEs;
+  final String titleAr;
+  final String scenarioAr;
+  final List<String> objectivesAr;
+  final List<DialogueSpeaker> speakers;
+  final List<DialogueTurn> turns;
+
+  /// Vocabulary items the dialogue practises (curriculum item ids).
+  final List<String> items;
+  final List<String> grammarIds;
+  final List<DialogueQuestion> questions;
+  final String sourceId;
+
+  DialogueSpeaker? speaker(String id) {
+    for (final s in speakers) {
+      if (s.id == id) return s;
+    }
+    return null;
+  }
+
+  DialogueTurn? turn(String id) {
+    for (final t in turns) {
+      if (t.id == id) return t;
+    }
+    return null;
   }
 }

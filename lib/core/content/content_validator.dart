@@ -322,7 +322,132 @@ class ContentValidator {
         }
       }
     }
+    _validateDialogues(pack, sourceIds, grammarIds, err);
     return issues;
+  }
+
+  /// Listening library: every reference must resolve, and a dialogue may only
+  /// use vocabulary taught by (or before) the lessons it is linked to.
+  void _validateDialogues(
+    ContentPack pack,
+    Set<String> sourceIds,
+    Set<String> grammarIds,
+    void Function(String, String) err,
+  ) {
+    final order = {
+      for (var i = 0; i < pack.orderedLessons.length; i++)
+        pack.orderedLessons[i].id: i,
+    };
+    final dialogueIds = <String>{};
+    final turnIds = <String>{};
+    final questionIds = <String>{};
+    for (final d in pack.dialogues) {
+      final w = 'dialogue:${d.id}';
+      if (!dialogueIds.add(d.id)) err(w, 'duplicate dialogue id');
+      if (d.titleEs.trim().isEmpty || d.titleAr.trim().isEmpty) {
+        err(w, 'needs title_es and title_ar');
+      }
+      if (d.scenarioAr.trim().isEmpty) err(w, 'needs scenario_ar');
+      if (d.objectivesAr.isEmpty) err(w, 'needs objectives_ar');
+      if (!sourceIds.contains(d.sourceId)) {
+        err(w, 'unknown content source "${d.sourceId}"');
+      }
+      final level = pack.level(d.levelId);
+      final unit = pack.unit(d.unitId);
+      if (level == null) err(w, 'unknown level "${d.levelId}"');
+      if (unit == null) {
+        err(w, 'unknown unit "${d.unitId}"');
+      } else if (unit.levelId != d.levelId) {
+        err(w, 'unit "${d.unitId}" is not in level "${d.levelId}"');
+      }
+
+      // Lessons: must exist; the latest one defines what has been taught.
+      if (d.lessonIds.isEmpty) err(w, 'must be linked to at least one lesson');
+      var latest = -1;
+      for (final id in d.lessonIds) {
+        final i = order[id];
+        if (i == null) {
+          err(w, 'unknown lesson "$id"');
+        } else if (i > latest) {
+          latest = i;
+        }
+      }
+      final taught = latest < 0
+          ? <String>{}
+          : {
+              for (final l in pack.orderedLessons.take(latest + 1))
+                for (final it in l.items) it.id,
+            };
+      for (final id in d.items) {
+        if (pack.item(id) == null) {
+          err(w, 'unknown item "$id"');
+        } else if (latest >= 0 && !taught.contains(id)) {
+          err(w, 'item "$id" is not taught by its lessons or earlier');
+        }
+      }
+      for (final g in d.grammarIds) {
+        if (!grammarIds.contains(g)) err(w, 'unknown grammar reference "$g"');
+      }
+
+      // Speakers and turns.
+      final speakerIds = <String>{};
+      for (final sp in d.speakers) {
+        if (!speakerIds.add(sp.id)) err(w, 'duplicate speaker "${sp.id}"');
+        if (sp.name.trim().isEmpty || sp.roleAr.trim().isEmpty) {
+          err(w, 'speaker "${sp.id}" needs name and role_ar');
+        }
+      }
+      if (d.turns.length < 2) err(w, 'needs at least 2 turns');
+      final used = <String>{};
+      for (final t in d.turns) {
+        final tw = '$w/${t.id}';
+        if (!turnIds.add(t.id)) err(tw, 'duplicate turn id');
+        if (!speakerIds.contains(t.speaker)) {
+          err(tw, 'unknown speaker "${t.speaker}"');
+        }
+        used.add(t.speaker);
+        if (t.es.trim().isEmpty || t.ar.trim().isEmpty) {
+          err(tw, 'turn needs es and ar');
+        }
+        if (_arabic.hasMatch(t.es)) err(tw, 'es contains Arabic script');
+        if (!_latin.hasMatch(t.es)) err(tw, 'es has no Latin letters');
+        if (t.ar.isNotEmpty && !_arabic.hasMatch(t.ar)) {
+          err(tw, 'ar has no Arabic script');
+        }
+        if (_arabic.hasMatch(t.en)) err(tw, 'en contains Arabic script');
+        _checkPunctuation(t.es, tw, err);
+      }
+      if (used.length < 2) err(w, 'needs at least two speakers who speak');
+
+      // Questions.
+      if (d.questions.length < 3) err(w, 'needs at least 3 questions');
+      for (final q in d.questions) {
+        final qw = '$w/${q.id}';
+        if (!questionIds.add(q.id)) err(qw, 'duplicate question id');
+        if (!DialogueQuestion.types.contains(q.type)) {
+          err(qw, 'unknown question type "${q.type}"');
+          continue;
+        }
+        if (!skills.contains(q.skill)) err(qw, 'invalid skill "${q.skill}"');
+        if (q.turnId != null && d.turn(q.turnId!) == null) {
+          err(qw, 'unknown turn "${q.turnId}"');
+        }
+        switch (q.type) {
+          case 'choice':
+            if (q.promptAr.trim().isEmpty) err(qw, 'choice needs prompt_ar');
+            if (q.choices.length < 2) err(qw, 'choice needs ≥ 2 choices');
+            if (q.choices.toSet().length != q.choices.length) {
+              err(qw, 'choices must be distinct');
+            }
+            if (q.answer < 0 || q.answer >= q.choices.length) {
+              err(qw, 'answer must be a valid index');
+            }
+          case 'speaker':
+          case 'dictation':
+            if (q.turnId == null) err(qw, '${q.type} needs "turn"');
+        }
+      }
+    }
   }
 
   void _checkExample(

@@ -1,5 +1,5 @@
 {
- "version": "1.0.2",
+ "version": "1.1.0",
  "sources": [
   {
    "id": "original-v1",
@@ -8,6 +8,10 @@
    "attribution": "Written for Español Pro. Learning objectives are aligned to CEFR Companion Volume descriptors; no third-party lesson text, audio or exam material is included.",
    "review_status": "author_reviewed"
   }
+ ],
+ "dialogue_files": [
+  "dialogues/pre_a1.json",
+  "dialogues/a1.json"
  ],
  "levels": [
   {

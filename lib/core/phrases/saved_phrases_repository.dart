@@ -8,12 +8,18 @@ import '../srs/review_repository.dart';
 class PhraseSource {
   const PhraseSource({required this.kind, this.id, this.lessonId});
 
-  /// vocab | example | grammar | lesson_note
+  /// vocab | example | grammar | lesson_note | dialogue
   final String kind;
   final String? id;
   final String? lessonId;
 
-  static const kinds = {'vocab', 'example', 'grammar', 'lesson_note'};
+  static const kinds = {
+    'vocab',
+    'example',
+    'grammar',
+    'lesson_note',
+    'dialogue',
+  };
 }
 
 /// A phrase that can be saved: what the screen shows plus where it came from.

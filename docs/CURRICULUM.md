@@ -46,7 +46,7 @@ Pre-A1 is a preparatory stage, not a DELE level.
 whole road is visible in the app, clearly labelled "قيد الإعداد". They contain
 no lessons and are never counted as progress.
 
-## Shipped lessons (content v1.0.2)
+## Shipped lessons (content v1.0.2; unchanged in v1.1.0)
 
 | # | Lesson | New items | Focus |
 |---|---|---|---|
@@ -92,3 +92,16 @@ is pending.
 
 Accent: default voice es-MX (seseo); notes point out Castilian differences
 (c/z as θ) where they matter.
+
+## Dialogues (content v1.1.0)
+
+| Id | Level | Built on | Situation |
+|---|---|---|---|
+| `dlg_pa1_saludo` | Pre-A1 | lessons 4–5 | Colleagues part at the end of the day |
+| `dlg_pa1_presentacion` | Pre-A1 | lessons 5–6 | Formal first meeting with a client (usted) |
+| `dlg_pa1_telefono` | Pre-A1 | lessons 7–8 | Exchanging phone numbers digit by digit |
+| `dlg_pa1_origen` | Pre-A1 | lesson 9 | Informal introductions at a language course (tú) |
+| `dlg_a1_idiomas` | A1 | lessons 10–11 | Languages and jobs at a trade fair |
+| `dlg_a1_recepcion` | A1 | lessons 11–12 | A client arrives at reception and is introduced |
+
+All are original and `author_reviewed`; see [LINGUISTIC_QA.md](LINGUISTIC_QA.md).

@@ -415,6 +415,72 @@ class ExerciseBuilder {
   ///
   /// [mode]: `listening` | `writing` | `pronunciation` | `errors`.
   /// [salt] varies the shuffle between runs (pass the run start time).
+  /// Comprehension questions for a dialogue, in authored order.
+  ///
+  /// The Spanish of the referenced turn is played as audio and is NOT shown,
+  /// so the learner answers from what they hear. Options are shuffled
+  /// deterministically per question.
+  List<Exercise> buildDialogueQuestions(Dialogue d) {
+    final out = <Exercise>[];
+    for (final q in d.questions) {
+      final rnd = Random(stableHash(q.id));
+      final turn = q.turnId == null ? null : d.turn(q.turnId!);
+      switch (q.type) {
+        case 'choice':
+          final correct = q.choices[q.answer];
+          final options = [...q.choices]..shuffle(rnd);
+          out.add(
+            ChoiceExercise(
+              q.id,
+              type: 'dialogue_choice',
+              skill: q.skill,
+              promptAr: turn == null
+                  ? q.promptAr
+                  : '${q.promptAr}\n(استمع إلى الجملة)',
+              expected: correct,
+              audioEs: turn?.es,
+              options: options,
+              correctIndex: options.indexOf(correct),
+              optionsAreSpanish: q.choicesEs,
+              explainAr: q.explainAr,
+            ),
+          );
+        case 'speaker':
+          String label(DialogueSpeaker sp) => '${sp.name} — ${sp.roleAr}';
+          final correct = label(d.speaker(turn!.speaker)!);
+          final options = [for (final sp in d.speakers) label(sp)]
+            ..shuffle(rnd);
+          out.add(
+            ChoiceExercise(
+              q.id,
+              type: 'dialogue_speaker',
+              skill: q.skill,
+              promptAr: 'استمع: مَن قال هذه الجملة في الحوار؟',
+              expected: correct,
+              audioEs: turn.es,
+              options: options,
+              correctIndex: options.indexOf(correct),
+              optionsAreSpanish: false,
+              explainAr: q.explainAr,
+            ),
+          );
+        case 'dictation':
+          out.add(
+            TypeExercise(
+              q.id,
+              type: 'dictation',
+              skill: q.skill,
+              promptAr: 'استمع واكتب الجملة كما سمعتها',
+              expected: turn!.es,
+              audioEs: turn.es,
+              accepted: [turn.es],
+            ),
+          );
+      }
+    }
+    return out;
+  }
+
   List<Exercise> buildPractice({
     required String mode,
     required List<VocabItem> items,
