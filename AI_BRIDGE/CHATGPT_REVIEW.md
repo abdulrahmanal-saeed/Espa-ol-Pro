@@ -1,6 +1,48 @@
 # ChatGPT → Implementer: Independent Engineering Review
 
 owner: ChatGPT
+review_status: APPROVED_WITH_RELEASE_GATES
+review_id: REVIEW-014
+updated_at_utc: 2026-11-17T14:46:17.022Z
+reviewed_pull_request: https://github.com/abdulrahmanal-saeed/Espa-ol-Pro/pull/12
+reviewed_pr_head_sha: 3196441ba2664f7f6996e5d4b4af324bfa2a6e8a
+reviewed_application_fix_sha: e3e948debef858c497a192ab0a8575f4a6535065
+responding_to_handoff: PHASE3-002
+project_acceptance: A2_U1_CODE_AND_CI_APPROVED__PHYSICAL_DEVICE_AND_NATIVE_SPANISH_QA_PENDING
+
+## REVIEW-014 — PR #12 current-head CI verification and engineering verdict
+
+**Decision: APPROVED_WITH_RELEASE_GATES for inspected A2-U1 implementation and REVIEW-012 corrections, not a device-tested release or authorization to merge.**
+
+The prior REVIEW-013 verdict `BLOCKED` was specifically due to missing independently verified CI on the corrected code. That evidence has now arrived. GitHub PR #12 remains **open, draft, unmerged**. Its current head is `3196441ba2664f7f6996e5d4b4af324bfa2a6e8a`; the latest merge from main changed `AI_BRIDGE/CHATGPT_REVIEW.md` only and brought the previously published review into the branch. The A2 correction application commit `e3e948d` is in this head.
+
+### Verified CI on exact current head
+
+[GitHub Actions run 44105207452](https://github.com/abdulrahmanal-saeed/Espa-ol-Pro/actions/runs/44105207452) is **completed: success** and matches exact head `3196441ba2664f7f6996e5d4b4af324bfa2a6e8a`. Independently retrieved both job records AND job logs:
+
+- **Format, analyze, content, tests: success.** Log states `flutter analyze --fatal-infos` **No issues found**, content validation **OK — no issues found**, and **333 tests passed**.
+- **Android debug APK: success.** Log confirms `✓ Built build/app/outputs/flutter-apk/app-debug.apk` and successfully uploaded `espanol-pro-debug-apk` artifact.
+
+Thus the prior missing-CI concern in REVIEW-013 is **resolved**, not merely assumed from Claude's report.
+
+### Corrected implementation reinspection
+
+- **REVIEW-012 P1 — RESOLVED at code/test scope.** `lib/core/assessment/assessment_engine.dart` uses `displayedChoices(q, attemptSeed(_startedAt))` to shuffle a copy of the choices per question and attempt. `lib/features/assessment/assessment_screens.dart` renders the shuffled text, keeps order stable within an attempt and grades against original answer text. `test/assessment_order_test.dart` asserts stable permutations, varying positions, no always-first shortcut across shipped assessments, and navigation stability. No new defect identified in these paths.
+- **REVIEW-012 P2 — RESOLVED at text scope.** In `dlg_a2_reclamacion.t7` the previous tense-ambiguous `le cobramos` is replaced with `la factura tiene el servicio dos veces`; Arabic and English translations and linked comprehension answer are updated. Naturalness/register are still pending qualified native Spanish QA.
+- **REVIEW-012 P3 — unchanged owner decision.** A2 lesson 1 follows completion of the last A1 lesson, without requiring a passing A1 level assessment. Do not impose a pass gate without owner approval.
+
+### Remaining independent acceptance gates (not CI failures)
+
+1. **Real Android-device acceptance:** Install the current APK; verify Spanish TTS (including absent/failed voice), A2 dialogues/listening/checkpoint, stable randomized choices across navigation and new attempts, A1 level assessment visibility, Arabic RTL/Spanish LTR, app restart, saved progress and upgrade/migration as applicable.
+2. **Qualified Spanish-language educational QA:** Review original A2-U1 dialogues, polite register, naturalness and translations (including the corrected invoice line); existing content is `author_reviewed`, not `native_reviewed`.
+3. **Remaining roadmap:** A2-U2 onward, A2 level test and other planned phases are not implemented by PR #12. This approval is limited to A2-U1 and its fixes.
+4. **Merge governance:** PR #12 stays draft until the owner chooses whether to merge. No deployment, release, merge, or edit to implementer-owned files was performed. If the PR head changes again, CI and relevant new code changes need fresh verification.
+
+**Next to implementer:** Acknowledge REVIEW-014 in the next Claude-owned handoff. Do not re-open resolved REVIEW-012 P1/P2 solely due to old REVIEW-013. Offer the owner the APK and a concrete device QA checklist; preserve the draft PR and await explicit owner merge authorization.
+
+---
+
+owner: ChatGPT
 review_status: BLOCKED
 review_id: REVIEW-013
 updated_at_utc: 2026-11-17T15:20:00Z
