@@ -78,6 +78,14 @@ class BackupService {
         'saved_phrases': [
           for (final r in await db.select(db.savedPhrases).get()) r.toJson(),
         ],
+        'assessment_attempts': [
+          for (final r in await db.select(db.assessmentAttempts).get())
+            r.toJson(),
+        ],
+        'assessment_answers': [
+          for (final r in await db.select(db.assessmentAnswers).get())
+            r.toJson(),
+        ],
       },
     };
     return const JsonEncoder.withIndent(' ').convert(doc);
@@ -117,6 +125,8 @@ class BackupService {
       ..._tablesV1,
       if (schema >= 2) 'error_records',
       if (schema >= 4) 'saved_phrases',
+      if (schema >= 5) 'assessment_attempts',
+      if (schema >= 5) 'assessment_answers',
     ];
     for (final name in required) {
       if (tables[name] is! List) {
@@ -151,6 +161,14 @@ class BackupService {
     final sessions = parse('study_sessions', StudySession.fromJson);
     final errors = parse('error_records', ErrorRecord.fromJson);
     final phrases = parse('saved_phrases', SavedPhrase.fromJson);
+    final assessmentRuns = parse(
+      'assessment_attempts',
+      AssessmentAttempt.fromJson,
+    );
+    final assessmentAnswers = parse(
+      'assessment_answers',
+      AssessmentAnswer.fromJson,
+    );
 
     // Integrity checks, still before anything is deleted.
     void unique(String table, Iterable<Object> keys) {
@@ -173,6 +191,33 @@ class BackupService {
     unique('error_records', errors.map((r) => r.signature));
     unique('saved_phrases', phrases.map((r) => r.id));
     unique('saved_phrases', phrases.map((r) => r.phraseKey));
+    unique('assessment_attempts', assessmentRuns.map((r) => r.id));
+    unique('assessment_answers', assessmentAnswers.map((r) => r.id));
+    // Every answer belongs to an attempt in this file, and every attempt's
+    // stored score matches its answers: a result can never be inflated or
+    // orphaned by an edited backup.
+    final runIds = {for (final r in assessmentRuns) r.id};
+    if (assessmentAnswers.any((x) => !runIds.contains(x.attemptId))) {
+      throw BackupException(
+        'النسخة الاحتياطية غير متّسقة: إجابة تقييم بلا محاولة.',
+      );
+    }
+    for (final r in assessmentRuns) {
+      final mine = assessmentAnswers.where((x) => x.attemptId == r.id);
+      if (r.maxScore != mine.length ||
+          r.score != mine.where((x) => x.isCorrect).length ||
+          r.assessmentVersion < 1 ||
+          r.completedAt < r.startedAt ||
+          !_validDue(r.completedAt)) {
+        throw BackupException(
+          'النسخة الاحتياطية غير متّسقة: نتيجة تقييم لا تطابق إجاباتها.',
+        );
+      }
+    }
+    const spellings = {null, 'exact', 'missing_accents', 'wrong'};
+    if (assessmentAnswers.any((x) => !spellings.contains(x.spelling))) {
+      throw BackupException('قيم غير صالحة في الجدول "assessment_answers".');
+    }
     final cardIds = cards.map((c) => c.id).toSet();
     if (logs.any((l) => !cardIds.contains(l.cardId))) {
       throw BackupException(
@@ -234,6 +279,11 @@ class BackupService {
       // backup from before they existed (schema < 4) leaves them untouched
       // rather than silently deleting them.
       if (schema >= 4) await db.delete(db.savedPhrases).go();
+      // Same for assessment results (schema 5).
+      if (schema >= 5) {
+        await db.delete(db.assessmentAnswers).go();
+        await db.delete(db.assessmentAttempts).go();
+      }
       await db.batch((b) {
         b.insertAll(db.settings, settings);
         b.insertAll(db.lessonProgress, progress);
@@ -243,6 +293,10 @@ class BackupService {
         b.insertAll(db.studySessions, sessions);
         b.insertAll(db.errorRecords, errors);
         if (schema >= 4) b.insertAll(db.savedPhrases, phrases);
+        if (schema >= 5) {
+          b.insertAll(db.assessmentAttempts, assessmentRuns);
+          b.insertAll(db.assessmentAnswers, assessmentAnswers);
+        }
       });
     });
   }
@@ -253,10 +307,13 @@ class BackupService {
   static bool _validDue(int millis) =>
       millis >= 0 && millis <= 8640000000000000;
 
-  /// Deletes all learning progress. Settings and saved phrases (the
-  /// learner's personal library, not progress) are kept.
+  /// Deletes all learning progress, including assessment results. Settings
+  /// and saved phrases (the learner's personal library, not progress) are
+  /// kept.
   Future<void> resetProgress() async {
     await db.transaction(() async {
+      await db.delete(db.assessmentAnswers).go();
+      await db.delete(db.assessmentAttempts).go();
       await db.delete(db.reviewLogs).go();
       await db.delete(db.reviewCards).go();
       await db.delete(db.activityAttempts).go();

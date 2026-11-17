@@ -219,3 +219,7 @@ String formatInterval(DateTime now, DateTime due) {
   if (d.inDays < 365) return '${(d.inDays / 30).toStringAsFixed(1)} شهر';
   return '${(d.inDays / 365).toStringAsFixed(1)} سنة';
 }
+
+/// "a / b" that reads left to right inside Arabic text. Without the isolate
+/// (U+2066 … U+2069) an RTL paragraph shows "8 / 10" as "10 / 8".
+String fraction(int a, int b) => '\u2066$a / $b\u2069';

@@ -13,6 +13,10 @@
   "dialogues/pre_a1.json",
   "dialogues/a1.json"
  ],
+ "assessment_files": [
+  "assessments/pre_a1.json",
+  "assessments/a1.json"
+ ],
  "levels": [
   {
    "id": "pre_a1",

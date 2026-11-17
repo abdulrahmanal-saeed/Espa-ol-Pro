@@ -3,6 +3,8 @@ import 'dart:async';
 import 'package:flutter/widgets.dart' show AppLifecycleListener, ValueNotifier;
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import 'assessment/assessment_engine.dart';
+import 'assessment/assessment_repository.dart';
 import 'backup/backup_service.dart';
 import 'content/models.dart';
 import 'db/database.dart';
@@ -216,3 +218,20 @@ final notificationTapsProvider = Provider<ValueNotifier<String?>>((ref) {
   ref.onDispose(taps.dispose);
   return taps;
 });
+
+// ---- assessments ------------------------------------------------------------
+
+final assessmentRepositoryProvider = Provider<AssessmentRepository>(
+  (ref) => AssessmentRepository(
+    ref.watch(databaseProvider),
+    clock: ref.watch(clockProvider),
+  ),
+);
+
+final assessmentAttemptsProvider = StreamProvider<List<AssessmentAttempt>>(
+  (ref) => ref.watch(assessmentRepositoryProvider).watchAttempts(),
+);
+
+final assessmentRecordsProvider = StreamProvider<List<AttemptRecord>>(
+  (ref) => ref.watch(assessmentRepositoryProvider).watchRecords(),
+);

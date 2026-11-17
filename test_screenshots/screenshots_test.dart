@@ -4,6 +4,8 @@
 //
 // Not part of the default `flutter test` run: pixel output differs slightly
 // between machines, so these are evidence, not regression gates.
+import 'package:espanol_pro/core/assessment/assessment_engine.dart';
+import 'package:espanol_pro/core/assessment/assessment_repository.dart';
 import 'package:espanol_pro/core/content/models.dart';
 import 'package:espanol_pro/core/learning/exercises.dart';
 import 'package:espanol_pro/core/learning/progress_repository.dart';
@@ -191,6 +193,26 @@ void main() {
     await tester.tapKey('toggle-transcript');
     await tester.tapKey('toggle-translation');
     await shot(tester, '20_dialogue_player');
+
+    // A unit checkpoint: one question, then a stored result with a missing
+    // accent and one weak can-do.
+    final chk = pack.assessment('chk_pa1_u1')!;
+    await app.pump(tester, location: '/assessment/${chk.id}');
+    await tester.tapKey('assessment-start');
+    await tester.tapKey('assessment-option-${chk.questions.first.answer}');
+    await shot(tester, '21_checkpoint_question');
+    final answers = {for (final q in chk.questions) q.id: q.correctAnswer}
+      ..['chk_pa1_u1.q7'] = 'telefono'
+      ..['chk_pa1_u1.q1'] = ''
+      ..['chk_pa1_u1.q2'] = '';
+    final id = await AssessmentRepository(app.db, clock: app.clock.call).submit(
+      assessment: chk,
+      graded: gradeAssessment(chk, answers),
+      startedAt: app.clock(),
+      contentVersion: pack.version,
+    );
+    await app.pump(tester, location: '/assessment/${chk.id}/result/$id');
+    await shot(tester, '22_checkpoint_result');
     await app.dispose(tester);
   });
 }

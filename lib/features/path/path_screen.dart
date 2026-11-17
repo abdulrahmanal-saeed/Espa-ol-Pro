@@ -8,6 +8,7 @@ import '../../core/db/database.dart';
 import '../../core/learning/progress_repository.dart';
 import '../../core/providers.dart';
 import '../../core/widgets/common.dart';
+import '../assessment/assessment_screens.dart';
 
 class PathScreen extends ConsumerWidget {
   const PathScreen({super.key});
@@ -214,7 +215,58 @@ class _UnitBlock extends ConsumerWidget {
                 ..showSnackBar(SnackBar(content: Text('أكمل أولاً: $missing')));
             },
           ),
+        if (pack.checkpointFor(unit.id) != null)
+          _CheckpointTile(
+            assessment: pack.checkpointFor(unit.id)!,
+            open: unitCompleted(pack, unit.id, progress),
+          ),
       ],
+    );
+  }
+}
+
+/// The unit checkpoint: opens once every lesson of the unit is completed.
+class _CheckpointTile extends ConsumerWidget {
+  const _CheckpointTile({required this.assessment, required this.open});
+  final Assessment assessment;
+  final bool open;
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final t = Theme.of(context);
+    final attempts = [
+      for (final x in ref.watch(assessmentAttemptsProvider).value ?? const [])
+        if (x.assessmentId == assessment.id) x,
+    ];
+    final last = attempts.isEmpty ? null : attempts.first;
+    return Padding(
+      padding: const EdgeInsets.only(top: 8),
+      child: Material(
+        color: t.colorScheme.tertiaryContainer.withValues(
+          alpha: open ? 0.6 : 0.25,
+        ),
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(14)),
+        clipBehavior: Clip.antiAlias,
+        child: ListTile(
+          key: ValueKey('checkpoint-${assessment.id}'),
+          leading: Icon(
+            open ? Icons.fact_check_outlined : Icons.lock_outline_rounded,
+            color: open ? t.colorScheme.tertiary : t.colorScheme.outline,
+          ),
+          title: Text(
+            'نقطة تحقق الوحدة',
+            style: const TextStyle(fontWeight: FontWeight.w600),
+          ),
+          subtitle: Text(
+            !open
+                ? 'تُفتح بعد إكمال كل دروس الوحدة'
+                : last == null
+                ? '${assessment.questions.length} أسئلة بلا تلميحات'
+                : 'آخر نتيجة: ${fraction(last.score, last.maxScore)} · المحاولات: ${attempts.length}',
+          ),
+          onTap: () => context.push('/assessment/${assessment.id}'),
+        ),
+      ),
     );
   }
 }

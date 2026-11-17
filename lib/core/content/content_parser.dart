@@ -91,11 +91,19 @@ Future<ContentPack> parseContentPack(ContentReader read) async {
       dialogues.add(_dialogue((raw as Map).cast<String, dynamic>()));
     }
   }
+  final assessments = <Assessment>[];
+  for (final file in _strings(root['assessment_files'])) {
+    final json = jsonDecode(await read(file)) as Map<String, dynamic>;
+    for (final raw in json['assessments'] as List? ?? const []) {
+      assessments.add(_assessment((raw as Map).cast<String, dynamic>()));
+    }
+  }
   return ContentPack(
     version: version,
     levels: levels,
     sources: sources,
     dialogues: dialogues,
+    assessments: assessments,
   );
 }
 
@@ -218,3 +226,53 @@ DialogueQuestion _question(String dialogueId, int i, Map<String, dynamic> j) =>
       choicesEs: j['choices_es'] as bool? ?? true,
       explainAr: j['explain_ar'] as String? ?? '',
     );
+
+Assessment _assessment(Map<String, dynamic> j) {
+  final id = j['id'] as String;
+  final questions = j['questions'] as List? ?? const [];
+  return Assessment(
+    id: id,
+    version: j['version'] as int? ?? 0,
+    kind: j['kind'] as String? ?? '',
+    levelId: j['level'] as String? ?? '',
+    unitId: j['unit'] as String?,
+    titleAr: j['title_ar'] as String? ?? '',
+    introAr: j['intro_ar'] as String? ?? '',
+    canDos: [
+      for (final raw in j['can_do'] as List? ?? const [])
+        CanDo(
+          id: (raw as Map)['id'] as String? ?? '',
+          ar: raw['ar'] as String? ?? '',
+          lessonIds: _strings(raw['lessons']),
+        ),
+    ],
+    questions: [
+      for (var i = 0; i < questions.length; i++)
+        _assessmentQuestion(
+          id,
+          i,
+          (questions[i] as Map).cast<String, dynamic>(),
+        ),
+    ],
+    sourceId: j['source'] as String? ?? '',
+  );
+}
+
+AssessmentQuestion _assessmentQuestion(
+  String assessmentId,
+  int i,
+  Map<String, dynamic> j,
+) => AssessmentQuestion(
+  id: j['id'] as String? ?? '$assessmentId.q${i + 1}',
+  type: j['type'] as String? ?? '',
+  skill: j['skill'] as String? ?? '',
+  canDoId: j['can_do'] as String? ?? '',
+  promptAr: j['prompt_ar'] as String? ?? '',
+  stimulusEs: j['stimulus_es'] as String?,
+  stimulusAr: j['stimulus_ar'] as String?,
+  audioEs: j['audio_es'] as String?,
+  choices: _strings(j['choices']),
+  answer: j['answer'] as int? ?? 0,
+  choicesEs: j['choices_es'] as bool? ?? true,
+  accepted: _strings(j['accepted']),
+);
