@@ -112,7 +112,7 @@ Local, on `fix/review-008` before the main merge (`e38a7b8`):
 | Drift regeneration | identical to committed file |
 | screenshots | unchanged |
 
-GitHub Actions on this PR: CI_PLACEHOLDER
+GitHub Actions run 44054760860 on `3d973f4`: format, analyze, content, generated code, secrets — success, **270 tests passed**; Android debug APK — success.
 
 ## Not verified — device checklist
 
