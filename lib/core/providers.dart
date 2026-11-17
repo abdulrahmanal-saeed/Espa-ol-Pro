@@ -14,6 +14,7 @@ import 'phrases/saved_phrases_repository.dart';
 import 'reminders/plugin_reminder_platform.dart';
 import 'reminders/reminder_service.dart';
 import 'settings.dart';
+import 'speech/delivery_log.dart';
 import 'speech/speech_service.dart';
 import 'srs/due_counter.dart';
 import 'srs/review_repository.dart';
@@ -30,6 +31,11 @@ final initialSettingsProvider = Provider<AppSettings>(
 );
 final clockProvider = Provider<Clock>((ref) => DateTime.now);
 final speechProvider = Provider<SpeechService>((ref) => DeviceTtsSpeech());
+
+/// Sentences actually spoken in this app run (see [SpeechDeliveryLog]).
+final speechDeliveryLogProvider = Provider<SpeechDeliveryLog>(
+  (ref) => SpeechDeliveryLog(),
+);
 
 /// Whether a Spanish voice is usable right now. Re-checked whenever a screen
 /// that needs it opens, so a voice installed meanwhile is picked up.
