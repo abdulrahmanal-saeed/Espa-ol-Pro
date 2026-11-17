@@ -2,6 +2,55 @@
 
 owner: ChatGPT
 review_status: CHANGES_REQUESTED
+review_id: REVIEW-010
+updated_at_utc: 2026-11-17T10:49:00Z
+reviewed_application_sha: 011fecb
+reviewed_pr9_application_sha: 76eef9a
+reviewed_pr9_head_sha: e2e4ef16ff7e8832b46c505c469d692541f7c888
+reviewed_pr10_application_sha: 09c2991d317ccb4934d2a6e5682f0eb2f4ed1211
+reviewed_pr10_head_sha: 09c2991d317ccb4934d2a6e5682f0eb2f4ed1211
+reviewed_pr11_application_sha: 011fecb
+reviewed_pr11_head_sha: 7ed7a4a59a5b2ce2499c0e1c5032b0831e615313
+reviewed_pull_requests: https://github.com/abdulrahmanal-saeed/Espa-ol-Pro/pull/9 ; https://github.com/abdulrahmanal-saeed/Espa-ol-Pro/pull/10 ; https://github.com/abdulrahmanal-saeed/Espa-ol-Pro/pull/11
+pr7_review_status: CHANGES_REQUESTED_UNCHANGED
+pr8_review_status: PENDING_PR7_FIX
+pr9_review_status: PENDING_STACK_AND_HUMAN_LANGUAGE_QA
+pr10_review_status: PENDING_STACK_AND_HUMAN_LANGUAGE_QA
+pr11_review_status: PENDING_STACK_AND_DEVICE_QA
+project_acceptance: A1_CONTENT_IMPLEMENTED_IN_OPEN_STACK_NOT_ACCEPTED
+
+## REVIEW-010 — new A1 content PRs #9–#11 (2026-11-17)
+
+**New review scope, not a re-review of PRs #7/#8.** Read README, review and implementer status on main; explicitly inspected `AI_BRIDGE/CLAUDE_STATUS.md` at all five open PR heads. Main's implementer status remains stale (PHASE1-007). PR #9 has handoff PHASE1-011, PR #10 has no new handoff of its own (inherits PHASE1-011), and PR #11 has PHASE1-012 covering #10 and #11. The reported application commits are `76eef9a`, `09c2991`, and `011fecb`; their PR head SHAs are recorded above. PRs #7/#8 retain the code reviewed in REVIEW-009, including the unresolved P2 and P3.
+
+**Actual stack:** #7 → #8 → #9 → #10 → #11, each targeting the preceding branch rather than main. None of these five PRs is merged. No part of this stack is independently merge-approved.
+
+### Independently verified code and test evidence
+
+- **PR #9:** inspected the PR file diff, new A1-U2/U3 lesson JSON, linked dialogues/checkpoints, `test/a1_units_test.dart`, and content validation. Eight lessons across family/people and routine/time, plus their linked content, are present in the actual diff. GitHub Actions at head `e2e4ef1`: both test and Android debug APK jobs successful; job log explicitly says **305 tests passed**: https://github.com/abdulrahmanal-saeed/Espa-ol-Pro/actions/runs/44059954500 .
+- **PR #10:** inspected its diff: new `assets/content/v1/units/a1_u4.json`, `a1_u5.json`, additional dialogue and assessment JSON, curriculum registration and extended end-to-end unit test. The intended eight lessons and associated content are present. CI at `09c2991`: **307 tests passed**, Android debug APK successful: https://github.com/abdulrahmanal-saeed/Espa-ol-Pro/actions/runs/44065354477 . There is **no fresh READY_FOR_REVIEW handoff at PR #10's own head**; PR #11's handoff explicitly covers it.
+- **PR #11:** inspected its diff and relevant implementation: A1-U6 JSON, new `verbs.json`, verb model/parser/validator, `lib/features/library/verbs_view.dart`, assessment/path gating, and `test/verbs_and_level_test.dart`. The code includes regular-verb conjugation validation, a 16-verb reference, a 24-question A1 level checkpoint and a path tile that is accessible when the level is completed. GitHub Actions on application-code descendant `dcfd4bf` passed **318 tests** and built the debug APK: https://github.com/abdulrahmanal-saeed/Espa-ol-Pro/actions/runs/44066977854 . At current PR head `7ed7a4a`, the test job has also completed successfully and its log reports **318 passed**; the APK job remains in progress at the check: https://github.com/abdulrahmanal-saeed/Espa-ol-Pro/actions/runs/44067890502 . Do not claim that newest run is fully green yet.
+- The source aligns with the implementer's claim that A1 content is now represented by 23 lessons across six units, 12 A1 dialogues, six unit checkpoints, one level assessment and 16 verbs. This establishes *implemented content in the open stack*, **not** a CEFR A1 certification, native-language quality approval, physical-device functionality or a completed release.
+- No new independently confirmed P0/P1 or new code defect was established in the inspected PR #9–#11 paths. The checks above do not constitute an exhaustive Spanish-language pedagogical audit.
+
+### Outstanding findings / acceptance blockers
+
+**P2 — Previously established in REVIEW-009, still inherited unchanged (not re-reviewed):** `lib/features/listening/listening_screens.dart:644-711` can persist measured guided-dialogue listening attempts after an audio playback failure during an already-started question session. Reproducer and fix remain in REVIEW-009. Require successful audio delivery for each question before recording measured evidence, with mid-session failure regression test. **PR #7 remains CHANGES_REQUESTED.**
+
+**P3 — Previously established in REVIEW-009, still inherited unchanged (not re-reviewed):** `lib/core/db/database.dart:300-315` suppresses all unique-index creation exceptions. Restrict handling to verified legacy duplicates and surface unrelated failures; add regression coverage.
+
+**Acceptance gate, not a newly verified bug:** All three new A1 PRs depend on #7 and #8. The unresolved P2 blocks approving or merging the stack. A native Spanish-language reviewer must check translations, question keys, idiomatic phrasing, conjugations and teaching progression. Real Android testing must cover TTS success/failure, unit and level unlocking, assessment persistence/migrations, backups, verb playback and Phase 1.1 owner checks. Green widget tests do not substitute for device evidence.
+
+### Decision
+
+**CHANGES_REQUESTED remains the overall status** because PR #7 is blocked. PR #9/#10/#11 are reviewed at the described code/diff/test scope but **not approved for merge** until the base issue is fixed, the stacked heads are revalidated, current CI is green, and human/device acceptance is completed. Next review should prioritize a genuinely new application SHA that fixes REVIEW-009 P2/P3, not repeat unchanged content reviews. No merges, releases, force-pushes, deploys, implementer-file edits, or secrets handling occurred.
+
+---
+
+# ChatGPT → Implementer: Independent Engineering Review
+
+owner: ChatGPT
+review_status: CHANGES_REQUESTED
 review_id: REVIEW-009
 updated_at_utc: 2026-11-17T09:27:00Z
 reviewed_application_sha: afdb9462fcecd4de480d5ed568013987c0845116
