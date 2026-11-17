@@ -47,6 +47,31 @@ void main() {
       }
     });
 
+    test('dialogue-turn questions play exactly the dialogue sentence', () {
+      final linked = [
+        for (final a in pack.assessments)
+          for (final q in a.questions)
+            if (q.dialogueTurnId != null) (a, q),
+      ];
+      expect(linked.length, greaterThanOrEqualTo(3));
+      for (final (a, q) in linked) {
+        final d = pack.dialogues.firstWhere(
+          (d) => d.turns.any((t) => t.id == q.dialogueTurnId),
+        );
+        expect(q.audioEs, d.turn(q.dialogueTurnId!)!.es, reason: q.id);
+        expect(d.unitId, a.unitId, reason: q.id);
+        expect(q.skill, 'listening');
+      }
+    });
+
+    test('grammar questions explain the right answer', () {
+      for (final a in pack.assessments) {
+        for (final q in a.questions.where((q) => q.skill == 'grammar')) {
+          expect(q.explainAr, isNotEmpty, reason: q.id);
+        }
+      }
+    });
+
     test('every can-do has at least two questions as evidence', () {
       for (final a in pack.assessments) {
         for (final c in a.canDos) {
@@ -219,5 +244,33 @@ void main() {
         }
       }, 'needs at least 3 different skills'),
     );
+  });
+
+  group('validator rejects broken dialogue links', () {
+    Map<String, dynamic> linked(List<Map<String, dynamic>> as) => as
+        .expand((a) => (a['questions'] as List).cast<Map<String, dynamic>>())
+        .firstWhere((q) => q['dialogue_turn'] != null);
+
+    test('unknown turn', () async {
+      final issues = await issuesWith(
+        (as) => linked(as)['dialogue_turn'] = 'dlg_nothing.t1',
+      );
+      expect(issues.join('\n'), contains('unknown dialogue turn'));
+    });
+
+    test('a dialogue from another unit', () async {
+      final issues = await issuesWith(
+        (as) => linked(as)['dialogue_turn'] = 'dlg_pa1_telefono.t2',
+      );
+      expect(issues.join('\n'), contains("outside this assessment's scope"));
+    });
+
+    test('a dialogue-turn question must measure listening', () async {
+      final issues = await issuesWith((as) => linked(as)['skill'] = 'reading');
+      expect(
+        issues.join('\n'),
+        contains('a dialogue-turn question measures listening'),
+      );
+    });
   });
 }

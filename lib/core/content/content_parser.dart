@@ -91,11 +91,16 @@ Future<ContentPack> parseContentPack(ContentReader read) async {
       dialogues.add(_dialogue((raw as Map).cast<String, dynamic>()));
     }
   }
+  // Turn text by id, so a checkpoint question can play a dialogue sentence.
+  final turns = {
+    for (final d in dialogues)
+      for (final t in d.turns) t.id: t.es,
+  };
   final assessments = <Assessment>[];
   for (final file in _strings(root['assessment_files'])) {
     final json = jsonDecode(await read(file)) as Map<String, dynamic>;
     for (final raw in json['assessments'] as List? ?? const []) {
-      assessments.add(_assessment((raw as Map).cast<String, dynamic>()));
+      assessments.add(_assessment((raw as Map).cast<String, dynamic>(), turns));
     }
   }
   return ContentPack(
@@ -227,7 +232,7 @@ DialogueQuestion _question(String dialogueId, int i, Map<String, dynamic> j) =>
       explainAr: j['explain_ar'] as String? ?? '',
     );
 
-Assessment _assessment(Map<String, dynamic> j) {
+Assessment _assessment(Map<String, dynamic> j, Map<String, String> turns) {
   final id = j['id'] as String;
   final questions = j['questions'] as List? ?? const [];
   return Assessment(
@@ -252,6 +257,7 @@ Assessment _assessment(Map<String, dynamic> j) {
           id,
           i,
           (questions[i] as Map).cast<String, dynamic>(),
+          turns,
         ),
     ],
     sourceId: j['source'] as String? ?? '',
@@ -262,15 +268,20 @@ AssessmentQuestion _assessmentQuestion(
   String assessmentId,
   int i,
   Map<String, dynamic> j,
+  Map<String, String> turns,
 ) => AssessmentQuestion(
   id: j['id'] as String? ?? '$assessmentId.q${i + 1}',
+  dialogueTurnId: j['dialogue_turn'] as String?,
+  explainAr: j['explain_ar'] as String? ?? '',
   type: j['type'] as String? ?? '',
   skill: j['skill'] as String? ?? '',
   canDoId: j['can_do'] as String? ?? '',
   promptAr: j['prompt_ar'] as String? ?? '',
   stimulusEs: j['stimulus_es'] as String?,
   stimulusAr: j['stimulus_ar'] as String?,
-  audioEs: j['audio_es'] as String?,
+  // A dialogue turn supplies the audio, so the checkpoint plays exactly
+  // the sentence the learner heard in the listening library.
+  audioEs: j['audio_es'] as String? ?? turns[j['dialogue_turn']],
   choices: _strings(j['choices']),
   answer: j['answer'] as int? ?? 0,
   choicesEs: j['choices_es'] as bool? ?? true,

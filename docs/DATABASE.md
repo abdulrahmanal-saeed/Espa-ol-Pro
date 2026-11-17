@@ -74,7 +74,7 @@ erDiagram
         int id PK
         int attempt_id FK
         text question_id  text skill  text can_do_id
-        bool is_correct  text spelling "exact | missing_accents | wrong | null"
+        bool is_correct  text spelling "typed outcome, see below; null for choices"
         text user_answer  text expected
     }
     REVIEW_CARDS ||--o{ REVIEW_LOGS : "has history (cascade)"
@@ -129,8 +129,22 @@ earlier results. `assessment_version` records which definition was taken, so
 a later edit of the questions never reinterprets an old result.
 
 `score`/`max_score` count objectively graded questions only; speaking is never
-measured. `spelling` keeps "meaning right, accents missing" apart from
-"exact" instead of hiding it inside `is_correct`. Assessments never write to
+measured. `spelling` stores the outcome of a typed answer, so that
+"meaning right, accents missing" is never hidden inside `is_correct`:
+
+| value | `is_correct` | meaning |
+|---|---|---|
+| `exact` | true | matches an accepted answer |
+| `missing_accents` | true | only accents differ, none of them changes the meaning |
+| `accent_meaning` | false | a meaning-bearing accent is missing or wrong (si/sí, tu/tú, el/él …) |
+| `enye` | false | ñ written as n (or the reverse) |
+| `word_order` | false | the same words in another order |
+| `grammar_form` | false | one word has the wrong ending, plural or article |
+| `spelling` | false | a near miss of the right word |
+| `meaning` | false | a different answer |
+| `wrong` | false | an empty answer, or a wrong answer stored before 1.2C |
+
+The column is text and the change is additive: no migration was needed. Assessments never write to
 FSRS cards, lesson progress, `activity_attempts` or the error notebook.
 Can-do states are derived from these rows, never stored
 (`CanDoEvidence` in `lib/core/assessment/assessment_engine.dart`, also

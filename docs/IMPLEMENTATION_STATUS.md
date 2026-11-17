@@ -79,6 +79,21 @@ remain at v3.
 | Fractions ("8 / 10") read left to right inside Arabic text (also fixed in the matching exercise counter) | screenshots 13, 22 |
 | Not verified on a device: checkpoint audio, keyboard with the accent bar, result screen scrolling | — |
 
+## Phase 1.2C — answer quality, difficulty, checkpoint feedback (PR in review)
+
+| Area | Evidence |
+|---|---|
+| Typed answers diagnosed: harmless accents (accepted with a reminder), meaning-bearing accents si/sí, tu/tú, el/él, mi/mí, te/té, se/sé, de/dé, más, aún, está, papá (wrong), ñ ≠ n (wrong), word order, wrong word form (ending, plural, article), spelling near miss, different answer | `answer_evaluator_test` |
+| Lessons and review show the reason; the error notebook files typed mistakes as spelling, grammar, word order or vocabulary from the diagnosis | `answer_evaluator_test`, `progress_test`, full suite |
+| Checkpoints store the finer outcome; backups accept it; old `wrong` values stay valid | `assessment_test`, `assessment_flow_test` |
+| Difficulty estimate per dialogue (very easy / appropriate / challenging / too difficult) from known-word coverage, new grammar and sentence length, with the reasons shown; every boundary tested | `difficulty_test`, `listening_flow_test` |
+| Checkpoints play real dialogue sentences (4 questions, content 1.1.1, checkpoint versions 2); validator checks the link | `assessment_content_test` |
+| Result screen explains wrong grammar answers and labels each typed outcome; edited checkpoints are flagged on old results | `assessment_flow_test` |
+| Not verified on a device: dialogue sentences played inside checkpoints | — |
+
+Interrogative accents (qué, cómo, dónde …) remain accepted with a reminder at
+Pre-A1/A1; this is a deliberate, documented choice.
+
 ## REVIEW-008 fixes
 
 | Finding | Fix | Evidence |
@@ -139,9 +154,9 @@ detect it.
    goal (it counts completions dated today, not only first completions).
 5. Review queue is capped at 60 cards per session.
 6. Curriculum entities are in JSON, not SQL tables (deliberate — DATABASE.md).
-7. Spelling quality is not yet reported separately: an answer accepted with
-   an accent reminder is stored as correct. Planned for Phase 1.2 together
-   with stricter accent requirements at higher levels.
+7. Lesson attempts still store accepted-with-accent-reminder answers as
+   correct (only checkpoints store the outcome). Stricter accent rules for
+   higher levels are planned with A2.
 8. A final flush started while the review screen is being closed is not
    awaited (dispose cannot wait). It is normally preceded by the lifecycle
    flush when the app leaves the foreground, which is the reliable path

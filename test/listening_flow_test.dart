@@ -191,6 +191,31 @@ void main() {
     await app.dispose(tester);
   });
 
+  testWidgets('dialogues show an explained difficulty for this learner', (
+    tester,
+  ) async {
+    final app = TestApp(pack);
+    await complete(app, upTo('pa1_u2_l2'));
+    await app.pump(tester, location: '/listening');
+    final badge = find.byKey(const ValueKey('difficulty-dlg_pa1_saludo'));
+    expect(
+      find.descendant(of: badge, matching: find.text('سهل جداً')),
+      findsOneWidget,
+    );
+    // Locked dialogues show no estimate.
+    expect(
+      find.byKey(const ValueKey('difficulty-dlg_a1_recepcion')),
+      findsNothing,
+    );
+    await tester.tapKey('dialogue-dlg_pa1_saludo');
+    final reasons = tester.widget<Text>(
+      find.byKey(const ValueKey('difficulty-reasons')),
+    );
+    expect(reasons.data, contains('100٪'));
+    expect(reasons.data, contains('لا قواعد جديدة'));
+    await app.dispose(tester);
+  });
+
   testWidgets('no Spanish voice: the text stays readable but comprehension '
       'questions are neither asked nor recorded', (tester) async {
     final app = TestApp(pack, voice: false);

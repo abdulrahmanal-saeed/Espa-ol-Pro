@@ -164,7 +164,7 @@
   },
   {
    "id": "chk_pa1_u2",
-   "version": 1,
+   "version": 2,
    "kind": "unit",
    "level": "pre_a1",
    "unit": "pa1_u2",
@@ -213,15 +213,15 @@
      "type": "choice",
      "skill": "listening",
      "can_do": "cd_pa1_u2_greet",
-     "prompt_ar": "استمع: ما معنى ما سمعته؟",
+     "prompt_ar": "استمع إلى جملة من حوار «إلى الغد»: بماذا تودّع لورا؟",
      "choices": [
       "إلى الغد",
       "صباح الخير",
-      "شكراً"
+      "مساء الخير"
      ],
      "answer": 0,
      "choices_es": false,
-     "audio_es": "Hasta mañana."
+     "dialogue_turn": "dlg_pa1_saludo.t3"
     },
     {
      "id": "chk_pa1_u2.q3",
@@ -235,7 +235,8 @@
      ],
      "answer": 0,
      "choices_es": true,
-     "stimulus_es": "___ tardes."
+     "stimulus_es": "___ tardes.",
+     "explain_ar": "«tardes» كلمة مؤنثة، لذلك نقول «Buenas tardes» وليس «Buenos»."
     },
     {
      "id": "chk_pa1_u2.q4",
@@ -262,7 +263,8 @@
       "¿Cómo estás?"
      ],
      "answer": 0,
-     "choices_es": true
+     "choices_es": true,
+     "explain_ar": "مع عميل تقابله لأول مرة نستخدم usted: «¿Cómo está usted?». أما «¿Cómo estás?» فللأصدقاء والزملاء المقرّبين."
     },
     {
      "id": "chk_pa1_u2.q6",
@@ -312,7 +314,8 @@
       "Encantado."
      ],
      "answer": 0,
-     "choices_es": true
+     "choices_es": true,
+     "explain_ar": "المتكلمة امرأة، فتقول «Encantada». الرجل يقول «Encantado»."
     },
     {
      "id": "chk_pa1_u2.q10",
@@ -326,7 +329,7 @@
   },
   {
    "id": "chk_pa1_u3",
-   "version": 1,
+   "version": 2,
    "kind": "unit",
    "level": "pre_a1",
    "unit": "pa1_u3",
@@ -414,15 +417,15 @@
      "type": "choice",
      "skill": "listening",
      "can_do": "cd_pa1_u3_phone",
-     "prompt_ar": "استمع: ما رقم الهاتف؟",
+     "prompt_ar": "استمع إلى جملة من حوار الهاتف: ما رقم عمر؟",
      "choices": [
-      "3 8 0 1",
-      "3 8 1 0",
-      "8 3 0 1"
+      "5 0 1 7 3",
+      "5 0 7 1 3",
+      "5 1 0 7 3"
      ],
      "answer": 0,
      "choices_es": false,
-     "audio_es": "Mi número es tres, ocho, cero, uno."
+     "dialogue_turn": "dlg_pa1_telefono.t2"
     },
     {
      "id": "chk_pa1_u3.q6",
@@ -451,7 +454,8 @@
      ],
      "answer": 0,
      "choices_es": true,
-     "stimulus_es": "Yo ___ de Egipto."
+     "stimulus_es": "Yo ___ de Egipto.",
+     "explain_ar": "مع «yo» يأتي «soy»: Yo soy de Egipto."
     },
     {
      "id": "chk_pa1_u3.q8",
@@ -466,7 +470,8 @@
      ],
      "answer": 0,
      "choices_es": true,
-     "stimulus_es": "Usted ___ el cliente."
+     "stimulus_es": "Usted ___ el cliente.",
+     "explain_ar": "«usted» يأخذ صيغة الغائب: Usted es… (وليس eres)."
     },
     {
      "id": "chk_pa1_u3.q9",

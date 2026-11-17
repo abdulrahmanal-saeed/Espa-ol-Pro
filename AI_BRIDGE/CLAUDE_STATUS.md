@@ -3,133 +3,143 @@
 owner: Claude Code
 implementer: Claude Code
 handoff_status: READY_FOR_REVIEW
-handoff_id: PHASE1-013
-updated_at_utc: 2026-11-17T14:00:00Z
-review_requested_for_sha: 9f86876
-branch: fix/review-008
-pull_request: https://github.com/abdulrahmanal-saeed/Espa-ol-Pro/pull/7
-last_review_acknowledged: REVIEW-010
-project_status: REVIEW_009_P2_P3_FIXED_ON_PR7__STACK_8_TO_11_REBASED_BY_MERGE__AWAITING_REVIEW
+handoff_id: PHASE1-010
+updated_at_utc: 2026-11-17T08:00:00Z
+review_requested_for_sha: afdb946
+branch: feat/phase-1.2c-quality
+pull_request: https://github.com/abdulrahmanal-saeed/Espa-ol-Pro/pull/8 (stacked on PR #7, base fix/review-008)
+also_awaiting_review: https://github.com/abdulrahmanal-saeed/Espa-ol-Pro/pull/7 (PHASE1-009, REVIEW-008 fixes)
+last_review_acknowledged: REVIEW-008
+project_status: PHASE_1_2C_READY_FOR_REVIEW__PR7_REVIEW_008_FIXES_READY_FOR_REVIEW__DEVICE_ACCEPTANCE_PENDING_OWNER
 
-## REVIEW-009 / REVIEW-010: both findings fixed on PR #7
+> Review PR #7 (REVIEW-008 fixes, handoff PHASE1-009 below in this file's
+> history at `97f6e2e`) first. This PR is stacked on it and adds Phase 1.2C
+> only. Commits: `695a6a2`, `387de49`, `1ccbbdf`, and the merge of the fix
+> branch, `afdb946`.
 
-New application commits on `fix/review-008`: `9ddc13a` (P2) and `9f86876`
-(P3). The stack #8 → #9 → #10 → #11 has each branch merged forward with
-these fixes, with no force-push. Each branch's own handoff is unchanged
-apart from that merge.
+## Phase 1.2C — what this PR adds
 
-### P2: guided dialogue questions after a mid-session playback failure (`9ddc13a`)
+### 1. Answer diagnosis (`lib/core/learning/answer_evaluator.dart`)
 
-The evidence now depends on audio that was **actually delivered**, not on a
-voice that was available when the screen opened.
+`evaluateAnswer` keeps its API. It now also returns an `AnswerIssue` that is
+derived only from the typed string and the closest accepted answer:
 
-**How it works:**
+| Issue | Verdict | Example |
+|---|---|---|
+| `accents` | accepted, with a reminder | telefono → teléfono |
+| `accentMeaning` | **wrong** | si/sí, tu/tú, el/él, mi/mí, te/té, se/sé, de/dé, mas/más, aun/aún, esta/está, papa/papá — in both directions |
+| `enye` | **wrong** | manana → mañana; ñ is a letter |
+| `wordOrder` | wrong | the same words in another order |
+| `grammarForm` | wrong | one word differs only in an A1 inflection ending, a plural, or an article: habla/hablo, buenos/buenas, casa/casas, el/la, trabajo/trabajamos |
+| `spelling` | wrong | a near miss: Levenshtein ≤ 1 for words of up to 5 letters, otherwise ≤ 2 |
+| `meaning` | wrong | anything else |
 
-- **Delivery log.** A new `SpeechDeliveryLog` (`lib/core/speech/delivery_log.dart`)
-  records each sentence that `SpeakButton.play` really spoke: the engine
-  still reports available after `speak`, and `DeviceTtsSpeech` marks itself
-  unavailable when `speak` throws.
-- **Recording answers.** `DialogueQuestionsScreen` takes a log mark in
-  `initState`. In `onAttempt`, an answer to an audio question is recorded with
-  `measured: false` unless that question's sentence was delivered after the
-  mark.
-- **What "unmeasured" means here:**
-  - `DialogueProgress` counts only measured first attempts, so unheard
-    answers do not advance the dialogue;
-  - unmeasured attempts never create error-notebook records;
-  - the result screen says how many answers did not count.
-- **`recordAttempt(…, measured:)`** can only **downgrade** an attempt. It
-  cannot make self-assessed practice measured.
+**Interrogatives (qué, cómo, dónde …) stay lenient at Pre-A1/A1.** This is a
+deliberate, documented choice: the ¿ ? marks already carry the meaning.
 
-**Tests:**
+**Where the diagnosis is used:**
 
-- `listening_flow_test`: a voice that reports available and then fails on
-  the first sentence. Even right answers are stored with `is_measured = 0`,
-  the dialogue's answered count excludes them, and the notice is shown.
-- `progress_test`: a downgraded wrong answer creates no error record, and
-  `measured: true` cannot upgrade a speak exercise.
-- The existing no-voice tests (start gate, direct route) still pass.
+- Lessons and review show `explanationAr`.
+- The error notebook files typed mistakes as spelling, grammar, word order or
+  vocabulary from the diagnosis, instead of "spelling" for everything.
+- Checkpoints store the outcome in `assessment_answers.spelling`. The values
+  are listed in `docs/DATABASE.md`; the old `wrong` value stays valid.
+  Backups accept the new values.
 
-### P3: unique-index creation no longer swallows every error (`9f86876`)
+### 2. Difficulty estimator (`lib/core/learning/difficulty.dart`)
 
-`_ensureOneAnswerPerQuestion` first queries for duplicate
-`(attempt_id, question_id)` rows:
+The band is deterministic and depends on three numbers, all shown to the
+learner:
 
-- **Duplicates present** (legacy only): the index is skipped, the data is
-  kept, and `AppDatabase.assessmentAnswersDegraded = true`.
-- **No duplicates:** `CREATE UNIQUE INDEX` runs **without any catch**, so
-  any other failure propagates.
+- **Coverage:** the share of running words already met in completed lessons
+  (vocabulary, their examples, and grammar-note examples).
+- **New grammar:** grammar used by the text but not yet taught.
+- **Sentence length:** words per sentence.
 
-**Tests (`persistence_test`):**
+Bands:
 
-- A legacy duplicate database opens with both rows kept, the flag set and no
-  index.
-- An unrelated failure (another object already using the index name) makes
-  the open throw instead of continuing silently.
+| Band | Rule |
+|---|---|
+| Too difficult | coverage < 80 %, or 2 or more new grammar points |
+| Challenging | coverage < 95 %, or 1 new grammar point, or more than 10 words per sentence |
+| Very easy | coverage ≥ 98 % and at most 6 words per sentence |
+| Appropriate | everything else |
 
-## Verification (local, `fix/review-008` at `9f86876`)
+Speaker names, capitalised names inside a sentence, and numbers are not
+counted as vocabulary.
+
+**Defect found and fixed:** a capitalised word that started a *later*
+sentence in the same string was treated as a name. Detection is now
+sentence-aware.
+
+**Where it is shown:** a badge on each unlocked dialogue in the library, and
+the band with its reasons on the dialogue screen.
+
+**Tests** (`difficulty_test`, 14):
+
+- every boundary: 80/79, 95/94, 98/97, 6/7 and 10/11 words, 1 and 2 new
+  grammar points;
+- word extraction;
+- every real dialogue is very easy or appropriate right after its lessons;
+- with no lessons, A1 dialogues are too difficult;
+- the result is deterministic.
+
+### 3. Checkpoints play dialogue sentences, and explain mistakes
+
+- **Dialogue sentences:** a question can name a `dialogue_turn`; its audio is
+  then exactly that sentence. The validator checks that the turn exists, that
+  its dialogue belongs to the checkpoint's unit (or level), and that the
+  question measures listening. Each rule has a negative test.
+  - Four listening questions now use dialogue sentences.
+  - `chk_pa1_u2`, `chk_pa1_u3` and `chk_a1_u1` are therefore **version 2**,
+    and the content is v1.1.1.
+  - With the REVIEW-008 fix, such questions also stay locked until heard.
+- **Explanations:** `explain_ar` is shown on the result screen after a wrong
+  answer, never during the checkpoint. All 8 grammar questions have one.
+- **Outcome labels:** the result screen labels every typed outcome.
+- **Edited checkpoints:** a result taken at an earlier version shows a note
+  (tested).
+
+## Verification
+
+Local, at `afdb946`:
 
 | Check | Result |
 |---|---|
-| format, analyze, content | clean |
-| Drift regeneration | identical |
-| `flutter test` | **275 passed** (was 270; +5 regression tests) |
+| format, analyze | clean |
+| content validator | v1.1.1 OK |
+| `flutter test` | **301 passed** (PR #7: 270) |
+| screenshots | regenerated; 19 shows the badges |
 
-CI after the fixes, all on application code including `9ddc13a` and `9f86876`; every run passed both jobs (tests and Android debug APK):
+GitHub Actions run 44054728074 on `9e02250`: format, analyze, content, generated code, secrets — success, **301 tests passed**; Android debug APK — success.
 
-| PR | Head | Run | Tests |
-|---|---|---|---|
-| #7 | `34f966b` | 44069648158 | **275 passed** |
-| #8 | `b9961dc` | 44069818348 | success |
-| #9 | `84fe49a` | 44069828802 | success |
-| #10 | `a4b018e` | 44069830535 | success |
-| #11 | `763fe88` | 44069835150 | success (323 locally) |
+## Not verified — device checklist
 
-## Stack after the merge-forward
+1. Type `si` where `sí` is expected in a lesson: marked wrong, with the
+   explanation.
+2. The listening library shows a badge on each open dialogue; the dialogue
+   screen lists the reasons.
+3. Pre-A1 U2 checkpoint: question 2 plays «Bien, gracias. Hasta mañana.» from
+   the dialogue.
 
-| PR | Branch | Adds |
-|---|---|---|
-| #7 | fix/review-008 | 1.2B + REVIEW-008/009 fixes |
-| #8 | feat/phase-1.2c-quality | 1.2C |
-| #9 | feat/a1-u2-u3 | A1-U2/U3 |
-| #10 | feat/a1-u4-u5 | A1-U4/U5 |
-| #11 | feat/a1-u6-final | A1-U6, verbs, A1 level assessment |
+## Specific review request
 
-Still pending:
+1. Is the meaning-accent list right for A1, and is keeping interrogatives
+   lenient acceptable?
+2. Are the inflection-ending heuristic's false positives acceptable? A
+   different word with the same stem and an inflection-like ending is
+   labelled a form error. It is wrong either way; only the label differs.
+3. The coverage thresholds (95 % / 98 %).
 
-- independent review;
-- owner merge decisions, in order;
-- device checks;
-- native Spanish review.
+## Next
 
-I will not merge anything.
+A1 content PRs: U2/U3, then U4/U5, then U6 with the verb conjugation
+reference and the A1 level assessment. I will not merge anything; merging is
+the owner's decision.
 
 ---
 
-# Earlier handoff on this branch: PHASE1-009
-
-
-owner: Claude Code
-implementer: Claude Code
-handoff_status: READY_FOR_REVIEW
-handoff_id: PHASE1-009
-updated_at_utc: 2026-11-17T07:30:00Z
-review_requested_for_sha: 1913f04 (code state: 1.2B + REVIEW-008 fixes, merged with main 9dd9764/b889e16)
-last_application_commit: 3cd15ed
-branch: fix/review-008
-pull_request: https://github.com/abdulrahmanal-saeed/Espa-ol-Pro/pull/7
-base: main
-last_review_acknowledged: REVIEW-008
-project_status: PHASE_1_2B_WITH_REVIEW_008_FIXES_READY_FOR_REVIEW__PHASE_1_2A_ON_MAIN_NEEDS_THIS_FIX__DEVICE_ACCEPTANCE_PENDING_OWNER
-
-> **Why this PR exists.** PR #5 (1.2A) was merged into `main`, and PR #6 (1.2B)
-> was merged into `feat/phase-1.2a-listening`, not into `main`, both before
-> REVIEW-008's findings were fixed. This PR targets `main`. It brings in the
-> reviewed 1.2B code (unchanged from `f195ef1`) plus the fixes for every
-> REVIEW-008 finding, including the P2 that affects 1.2A code already on
-> `main`. The diff against `main` is therefore "1.2B + fixes". The fixes
-> alone are the three commits after `9d6afcd`: `7e55700`, `3cd15ed` and
-> `e38a7b8`.
+# Previous handoff on this stack: PHASE1-009 (PR #7)
 
 ## REVIEW-008 — findings and fixes
 
@@ -221,7 +231,7 @@ Local, on `fix/review-008` before the main merge (`e38a7b8`):
 | Drift regeneration | identical to committed file |
 | screenshots | unchanged |
 
-GitHub Actions run 44054760860 on `3d973f4`: format, analyze, content, generated code, secrets — success, **270 tests passed**; Android debug APK — success.
+GitHub Actions run 44054760860 on `3d973f4`: success, **270 tests passed**, APK built.
 
 ## Not verified — device checklist
 

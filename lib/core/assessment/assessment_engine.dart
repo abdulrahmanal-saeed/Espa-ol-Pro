@@ -1,11 +1,56 @@
 import '../content/models.dart';
 import '../learning/answer_evaluator.dart';
 
-/// Spelling outcome of a typed answer.
+/// Outcome of a typed answer, stored in `assessment_answers.spelling`.
+///
+/// Values are stable strings (they are stored and backed up). `wrong` is the
+/// outcome of an empty answer, and of every wrong answer stored before the
+/// finer diagnosis existed.
 abstract final class Spelling {
   static const exact = 'exact';
   static const missingAccents = 'missing_accents';
+  static const accentMeaning = 'accent_meaning';
+  static const enye = 'enye';
+  static const wordOrder = 'word_order';
+  static const grammarForm = 'grammar_form';
+  static const spelling = 'spelling';
+  static const meaning = 'meaning';
   static const wrong = 'wrong';
+
+  static const all = {
+    exact,
+    missingAccents,
+    accentMeaning,
+    enye,
+    wordOrder,
+    grammarForm,
+    spelling,
+    meaning,
+    wrong,
+  };
+
+  static String of(AnswerIssue issue) => switch (issue) {
+    AnswerIssue.none => exact,
+    AnswerIssue.accents => missingAccents,
+    AnswerIssue.accentMeaning => accentMeaning,
+    AnswerIssue.enye => enye,
+    AnswerIssue.wordOrder => wordOrder,
+    AnswerIssue.grammarForm => grammarForm,
+    AnswerIssue.spelling => spelling,
+    AnswerIssue.meaning => meaning,
+  };
+
+  /// Short Arabic label for the result screen; empty when there is nothing
+  /// to add to "right" or "wrong".
+  static String labelAr(String? outcome) => switch (outcome) {
+    missingAccents => 'المعنى صحيح، لكن علامات النبر ناقصة',
+    accentMeaning => 'علامة النبر هنا تغيّر المعنى',
+    enye => 'ñ حرف مستقل وليس n',
+    wordOrder => 'الكلمات صحيحة والترتيب مختلف',
+    grammarForm => 'الكلمة صحيحة والصيغة خاطئة',
+    spelling => 'قريبة — خطأ إملائي',
+    _ => '',
+  };
 }
 
 /// One graded answer, before it is stored.
@@ -59,11 +104,7 @@ GradedAnswer _grade(AssessmentQuestion q, String answer) {
         question: q,
         userAnswer: answer,
         isCorrect: r.isCorrect,
-        spelling: switch (r.verdict) {
-          AnswerVerdict.correct => Spelling.exact,
-          AnswerVerdict.correctMissingAccents => Spelling.missingAccents,
-          AnswerVerdict.incorrect => Spelling.wrong,
-        },
+        spelling: Spelling.of(r.issue),
       );
   }
 }

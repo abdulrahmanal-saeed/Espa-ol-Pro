@@ -799,13 +799,33 @@ class _AnswerRow extends StatelessWidget {
               const SizedBox(height: 2),
             ],
             text(answer.expected, color: ok),
-            if (answer.spelling == Spelling.missingAccents)
+            if (!answer.isCorrect && (question?.explainAr ?? '').isNotEmpty)
+              Padding(
+                padding: const EdgeInsets.only(top: 6),
+                child: Text(
+                  question!.explainAr,
+                  key: ValueKey('explain-${answer.questionId}'),
+                  style: t.textTheme.bodySmall!.copyWith(height: 1.6),
+                ),
+              ),
+            if (Spelling.labelAr(answer.spelling).isNotEmpty)
               Padding(
                 padding: const EdgeInsets.only(top: 4),
                 child: Text(
-                  'المعنى صحيح، لكن علامات النبر ناقصة: ${answer.userAnswer}',
-                  key: ValueKey('accent-note-${answer.questionId}'),
-                  style: TextStyle(color: AppColors.of(context).warning),
+                  answer.isCorrect
+                      // A wrong answer is already shown above, struck out.
+                      ? '${Spelling.labelAr(answer.spelling)}: ${answer.userAnswer}'
+                      : Spelling.labelAr(answer.spelling),
+                  key: ValueKey(
+                    answer.spelling == Spelling.missingAccents
+                        ? 'accent-note-${answer.questionId}'
+                        : 'outcome-${answer.questionId}',
+                  ),
+                  style: TextStyle(
+                    color: answer.isCorrect
+                        ? AppColors.of(context).warning
+                        : t.colorScheme.error,
+                  ),
                 ),
               ),
           ],

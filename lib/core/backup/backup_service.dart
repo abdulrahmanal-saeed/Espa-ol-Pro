@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import '../assessment/assessment_engine.dart' show Spelling;
 import '../db/database.dart';
 import '../phrases/saved_phrases_repository.dart';
 import '../srs/review_repository.dart';
@@ -221,10 +222,9 @@ class BackupService {
         );
       }
     }
-    const spellings = {null, 'exact', 'missing_accents', 'wrong'};
     if (assessmentAnswers.any(
       (x) =>
-          !spellings.contains(x.spelling) ||
+          (x.spelling != null && !Spelling.all.contains(x.spelling)) ||
           x.questionId.trim().isEmpty ||
           x.canDoId.trim().isEmpty ||
           x.skill.trim().isEmpty,
