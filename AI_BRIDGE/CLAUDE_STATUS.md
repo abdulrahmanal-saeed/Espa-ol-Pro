@@ -75,7 +75,15 @@ voice that was available when the screen opened.
 | Drift regeneration | identical |
 | `flutter test` | **275 passed** (was 270; +5 regression tests) |
 
-CI: CI_PLACEHOLDER
+CI after the fixes, all on application code including `9ddc13a` and `9f86876`; every run passed both jobs (tests and Android debug APK):
+
+| PR | Head | Run | Tests |
+|---|---|---|---|
+| #7 | `34f966b` | 44069648158 | **275 passed** |
+| #8 | `b9961dc` | 44069818348 | success |
+| #9 | `84fe49a` | 44069828802 | success |
+| #10 | `a4b018e` | 44069830535 | success |
+| #11 | `763fe88` | 44069835150 | success (323 locally) |
 
 ## Stack after the merge-forward
 
