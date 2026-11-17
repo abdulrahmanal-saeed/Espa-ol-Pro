@@ -324,7 +324,49 @@ class ContentValidator {
     }
     _validateDialogues(pack, sourceIds, grammarIds, err);
     _validateAssessments(pack, sourceIds, err);
+    _validateVerbs(pack, err);
     return issues;
+  }
+
+  /// Verb reference: complete, Spanish-only, tied to real lessons, and every
+  /// regular verb conjugated exactly by the rules.
+  void _validateVerbs(ContentPack pack, void Function(String, String) err) {
+    final ids = <String>{};
+    for (final v in pack.verbs) {
+      final w = 'verb:${v.id}';
+      if (!ids.add(v.id)) err(w, 'duplicate verb id');
+      if (v.infinitive.trim().isEmpty) err(w, 'missing infinitive');
+      if (!_arabic.hasMatch(v.ar)) err(w, 'ar has no Arabic script');
+      for (final p in Verb.persons) {
+        final f = v.forms[p] ?? '';
+        if (f.trim().isEmpty) err(w, 'missing form for "$p"');
+        if (_arabic.hasMatch(f)) err(w, 'form for "$p" contains Arabic script');
+      }
+      for (final k in v.forms.keys) {
+        if (!Verb.persons.contains(k)) err(w, 'unknown person "$k"');
+      }
+      if (v.regular) {
+        final expected = Verb.regularPresent(v.infinitive);
+        if (expected == null) {
+          err(w, 'a regular verb must end in -ar, -er or -ir');
+        } else {
+          for (final p in Verb.persons) {
+            if (v.forms[p] != null && v.forms[p] != expected[p]) {
+              err(w, 'regular form for "$p" should be "${expected[p]}"');
+            }
+          }
+        }
+      }
+      if (v.lessonIds.isEmpty) err(w, 'needs at least one lesson');
+      for (final l in v.lessonIds) {
+        if (pack.lesson(l) == null) err(w, 'unknown lesson "$l"');
+      }
+      if (v.examples.isEmpty) err(w, 'needs at least one example');
+      for (final e in v.examples) {
+        if (_arabic.hasMatch(e.es)) err(w, 'example es contains Arabic script');
+        if (!_arabic.hasMatch(e.ar)) err(w, 'example ar has no Arabic script');
+      }
+    }
   }
 
   /// Assessments: objective, answerable, and tied to real lessons.

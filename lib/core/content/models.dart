@@ -251,6 +251,61 @@ class Lesson {
   final List<String> grammarIds;
 }
 
+/// One verb in the conjugation reference (present tense).
+class Verb {
+  const Verb({
+    required this.id,
+    required this.infinitive,
+    required this.ar,
+    required this.regular,
+    required this.forms,
+    this.noteAr = '',
+    this.examples = const [],
+    this.lessonIds = const [],
+  });
+
+  final String id;
+  final String infinitive;
+  final String ar;
+
+  /// Regular verbs are checked against the conjugation rules.
+  final bool regular;
+
+  /// Present tense, keyed by [persons].
+  final Map<String, String> forms;
+  final String noteAr;
+  final List<Example> examples;
+
+  /// Lessons where the verb is taught or used first.
+  final List<String> lessonIds;
+
+  static const persons = ['yo', 'tu', 'el', 'nosotros', 'vosotros', 'ellos'];
+
+  static const personLabels = {
+    'yo': 'yo',
+    'tu': 'tú',
+    'el': 'él / ella / usted',
+    'nosotros': 'nosotros / nosotras',
+    'vosotros': 'vosotros / vosotras',
+    'ellos': 'ellos / ellas / ustedes',
+  };
+
+  /// The present tense a regular verb must have, or null for an unknown
+  /// ending.
+  static Map<String, String>? regularPresent(String infinitive) {
+    if (infinitive.length < 3) return null;
+    final stem = infinitive.substring(0, infinitive.length - 2);
+    final endings = switch (infinitive.substring(infinitive.length - 2)) {
+      'ar' => ['o', 'as', 'a', 'amos', 'áis', 'an'],
+      'er' => ['o', 'es', 'e', 'emos', 'éis', 'en'],
+      'ir' => ['o', 'es', 'e', 'imos', 'ís', 'en'],
+      _ => null,
+    };
+    if (endings == null) return null;
+    return {for (var i = 0; i < 6; i++) persons[i]: '$stem${endings[i]}'};
+  }
+}
+
 /// The fully loaded and indexed content package.
 class ContentPack {
   ContentPack({
@@ -259,7 +314,11 @@ class ContentPack {
     required this.sources,
     this.dialogues = const [],
     this.assessments = const [],
+    this.verbs = const [],
   }) {
+    for (final v in verbs) {
+      _verbs[v.id] = v;
+    }
     for (final a in assessments) {
       _assessments[a.id] = a;
     }
@@ -292,6 +351,11 @@ class ContentPack {
   final Map<String, Dialogue> _dialogues = {};
   Dialogue? dialogue(String id) => _dialogues[id];
 
+  /// Verb conjugation reference, in authored order.
+  final List<Verb> verbs;
+  final Map<String, Verb> _verbs = {};
+  Verb? verb(String id) => _verbs[id];
+
   /// Unit checkpoints and level assessments, in authored order.
   final List<Assessment> assessments;
   final Map<String, Assessment> _assessments = {};
@@ -301,6 +365,14 @@ class ContentPack {
   Assessment? checkpointFor(String unitId) {
     for (final a in assessments) {
       if (a.kind == 'unit' && a.unitId == unitId) return a;
+    }
+    return null;
+  }
+
+  /// The end-of-level assessment for [levelId], if one ships.
+  Assessment? levelAssessmentFor(String levelId) {
+    for (final a in assessments) {
+      if (a.kind == 'level' && a.levelId == levelId) return a;
     }
     return null;
   }
