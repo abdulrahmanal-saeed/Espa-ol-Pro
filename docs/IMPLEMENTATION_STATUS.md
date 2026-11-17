@@ -50,6 +50,18 @@ formatting and content v1.0.2 passed validation, and Drift regeneration
 produced an identical checked-in file. The database and backup schema
 remain at v3.
 
+## Phase 1.2A — listening library (PR in review)
+
+| Area | Evidence |
+|---|---|
+| Six original dialogues (4 Pre-A1, 2 A1-U1), 29 turns, 31 comprehension questions; content v1.1.0 | `listening_content_test`, `tool/validate_content.dart` |
+| Dialogue validation: ids, level/unit/lessons, vocabulary taught by the linked lessons, grammar, speakers, script and punctuation, question integrity; each rule proven on a broken copy | `listening_content_test` (15 negative cases) |
+| Dialogue player: whole dialogue turn by turn, single-sentence replay, pause (stops; resume restarts the sentence), stop, three speeds, no-voice state; stale playback can never move the state | `dialogue_player_test` |
+| Library: dialogues unlock when their lessons are completed; progress derived from first attempts | `listening_flow_test`, `listening_content_test` |
+| Player screen: transcript and Arabic translation hidden by default with toggles; only Spanish reaches the voice; sentences saved to «عباراتي»; vocabulary and grammar links | `listening_flow_test` |
+| Comprehension questions: audio played, sentence not shown; answers stored as attempts (context `listening`); retries are attempt 2 | `listening_flow_test` |
+| Not verified on a device: real TTS sequencing of turns, pause/resume timing, speed changes, long dialogues | — |
+
 ## Android build and runtime
 
 - The [code commit's CI run](https://github.com/abdulrahmanal-saeed/Espa-ol-Pro/actions/runs/43900871431)

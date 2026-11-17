@@ -168,5 +168,29 @@ void main() {
     await app.pump(tester, location: '/settings');
     await shot(tester, '17_settings');
     await app.dispose(tester);
+
+    // Listening library and player, for a learner who finished Pre-A1 and
+    // A1-U1 (so every shipped dialogue is open).
+    app = await seeded();
+    final repo = ProgressRepository(
+      app.db,
+      ReviewRepository(app.db, clock: app.clock.call, enableFuzzing: false),
+      clock: app.clock.call,
+    );
+    for (final l in pack.orderedLessons) {
+      await repo.completeLesson(
+        l,
+        score: 1,
+        seconds: 60,
+        contentVersion: pack.version,
+      );
+    }
+    await app.pump(tester, location: '/listening');
+    await shot(tester, '19_listening_library');
+    await app.pump(tester, location: '/listening/dlg_a1_recepcion');
+    await tester.tapKey('toggle-transcript');
+    await tester.tapKey('toggle-translation');
+    await shot(tester, '20_dialogue_player');
+    await app.dispose(tester);
   });
 }
