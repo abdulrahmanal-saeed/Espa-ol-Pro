@@ -1,0 +1,1408 @@
+{
+ "unit": "a1_u2",
+ "grammar": [
+  {
+   "id": "g_tener",
+   "title_ar": "الفعل tener (يملك / عنده)",
+   "body_ar": "tener فعل شاذّ وكثير الاستعمال جداً:\nyo tengo · tú tienes · él/ella/usted tiene\n\nيُستعمل للملكية وللعائلة: Tengo dos hermanos (عندي أخَوان).\nويُستعمل للعمر، بخلاف العربية والإنجليزية: Tengo treinta años — حرفياً «عندي ثلاثون سنة».\n\nالنفي بـ no قبل الفعل: No tengo hijos.",
+   "examples": [
+    {
+     "es": "Tengo una hermana.",
+     "ar": "عندي أخت."
+    },
+    {
+     "es": "¿Tienes hijos?",
+     "ar": "هل عندك أولاد؟"
+    },
+    {
+     "es": "Ana tiene treinta años.",
+     "ar": "عمر آنا ثلاثون سنة."
+    }
+   ]
+  },
+  {
+   "id": "g_possessives",
+   "title_ar": "صفات الملكية: mi / tu / su",
+   "body_ar": "تأتي قبل الاسم، وتأخذ s مع الجمع:\nmi hermano · mis hermanos — أخي · إخوتي\ntu madre · tus padres — أمك · والداك\nsu hija · sus hijos — ابنته/ابنتها/ابنة حضرتك · أولاده…\n\nsu تعني «له» و«لها» و«لحضرتك»؛ والسياق يوضّح المقصود.\nانتبه: tu (ملكك) بلا علامة، وtú (أنت) بعلامة. وmi (ملكي) بلا علامة، وmí (لي/إياي) بعلامة.",
+   "examples": [
+    {
+     "es": "Mi padre es médico.",
+     "ar": "أبي طبيب."
+    },
+    {
+     "es": "Mis hijos hablan árabe.",
+     "ar": "أولادي يتكلمون العربية."
+    },
+    {
+     "es": "¿Cómo se llama su esposa?",
+     "ar": "ما اسم زوجته / زوجة حضرتك؟"
+    }
+   ]
+  },
+  {
+   "id": "g_adjectives",
+   "title_ar": "الصفة بعد الاسم وتطابقه",
+   "body_ar": "الصفة تأتي عادةً بعد الاسم وتطابقه في الجنس والعدد:\nun compañero simpático · una compañera simpática · unos compañeros simpáticos\n\nالصفات المنتهية بـ e أو بحرف ساكن لا تتغيّر للمؤنث: inteligente، joven، trabajador ← trabajadora (استثناء).\nلوصف شخص نستعمل ser: Laura es alta y simpática.",
+   "examples": [
+    {
+     "es": "Mi jefe es serio.",
+     "ar": "مديري جادّ."
+    },
+    {
+     "es": "Mi hermana es alta.",
+     "ar": "أختي طويلة."
+    },
+    {
+     "es": "Son muy trabajadores.",
+     "ar": "إنهم مجتهدون جداً."
+    }
+   ]
+  },
+  {
+   "id": "g_este_esta",
+   "title_ar": "للتقديم: este / esta",
+   "body_ar": "لتقديم شخص قريب منك: este (للمذكر) / esta (للمؤنث) + es.\nEste es Pablo. — هذا بابلو.\nEsta es Laura, mi jefa. — هذه لاورا، مديرتي.\n\nفي المواقف الرسمية تبقى «Le presento a…» أكثر تهذيباً.",
+   "examples": [
+    {
+     "es": "Este es mi compañero Karim.",
+     "ar": "هذا زميلي كريم."
+    },
+    {
+     "es": "Esta es mi hermana.",
+     "ar": "هذه أختي."
+    }
+   ]
+  }
+ ],
+ "lessons": [
+  {
+   "id": "a1_u2_l1",
+   "title_ar": "عائلتي",
+   "title_es": "Mi familia",
+   "objectives_ar": [
+    "تسمية أفراد العائلة الأساسيين",
+    "قول كم أخاً أو ابناً عندك",
+    "تصريف tener في المفرد",
+    "السؤال: ¿Tienes hijos?"
+   ],
+   "prerequisites": [
+    "a1_u1_l3"
+   ],
+   "minutes": 15,
+   "work_relevance_ar": "العائلة موضوع شائع في الأحاديث الجانبية قبل الاجتماعات وبعدها.",
+   "source": "original-v1",
+   "grammar": [
+    "g_tener"
+   ],
+   "items": [
+    {
+     "id": "familia",
+     "es": "la familia",
+     "ar": "العائلة",
+     "en": "family",
+     "pos": "اسم",
+     "examples": [
+      {
+       "es": "Mi familia es de Egipto.",
+       "ar": "عائلتي من مصر."
+      }
+     ],
+     "connections": [
+      {
+       "type": "cognate",
+       "ar": "قريبة من الإنجليزية family."
+      }
+     ]
+    },
+    {
+     "id": "padre",
+     "es": "el padre",
+     "ar": "الأب",
+     "en": "father",
+     "pos": "اسم",
+     "examples": [
+      {
+       "es": "Mi padre se llama Ahmed.",
+       "ar": "اسم أبي أحمد."
+      }
+     ],
+     "note_ar": "بالعامية الشائعة: papá."
+    },
+    {
+     "id": "madre",
+     "es": "la madre",
+     "ar": "الأم",
+     "en": "mother",
+     "pos": "اسم",
+     "examples": [
+      {
+       "es": "Mi madre es profesora.",
+       "ar": "أمي معلّمة."
+      }
+     ],
+     "note_ar": "بالعامية الشائعة: mamá."
+    },
+    {
+     "id": "padres",
+     "es": "los padres",
+     "ar": "الوالدان",
+     "en": "parents",
+     "pos": "اسم",
+     "examples": [
+      {
+       "es": "Mis padres viven en El Cairo.",
+       "ar": "والداي يعيشان في القاهرة."
+      }
+     ],
+     "connections": [
+      {
+       "type": "false_friend",
+       "ar": "los padres تعني الوالدين (الأب والأم معاً)، وليس «الآباء» فقط."
+      }
+     ]
+    },
+    {
+     "id": "hermano",
+     "es": "el hermano",
+     "ar": "الأخ",
+     "en": "brother",
+     "pos": "اسم",
+     "examples": [
+      {
+       "es": "Tengo un hermano.",
+       "ar": "عندي أخ."
+      }
+     ],
+     "note_ar": "للمؤنث: la hermana (الأخت).",
+     "alt": [
+      "la hermana"
+     ]
+    },
+    {
+     "id": "hijo",
+     "es": "el hijo",
+     "ar": "الابن",
+     "en": "son",
+     "pos": "اسم",
+     "examples": [
+      {
+       "es": "Mi hijo tiene cinco años.",
+       "ar": "ابني عمره خمس سنوات."
+      }
+     ],
+     "note_ar": "للمؤنث: la hija. والجمع hijos يعني «أولاد» ذكوراً وإناثاً.",
+     "alt": [
+      "la hija"
+     ]
+    },
+    {
+     "id": "tengo",
+     "es": "tengo",
+     "ar": "عندي / أملك",
+     "en": "I have",
+     "pos": "فعل",
+     "examples": [
+      {
+       "es": "Tengo dos hijos.",
+       "ar": "عندي ولدان."
+      }
+     ],
+     "connections": [
+      {
+       "type": "grammar",
+       "ar": "«عندي» بالعربية تُقال بفعل في الإسبانية: tengo (من tener)."
+      }
+     ]
+    },
+    {
+     "id": "tienes",
+     "es": "tienes",
+     "ar": "عندك (أنت)",
+     "en": "you have",
+     "pos": "فعل",
+     "examples": [
+      {
+       "es": "¿Tienes hermanos?",
+       "ar": "هل عندك إخوة؟"
+      }
+     ]
+    },
+    {
+     "id": "tiene",
+     "es": "tiene",
+     "ar": "عنده / عندها / عند حضرتك",
+     "en": "he/she has, you (formal) have",
+     "pos": "فعل",
+     "examples": [
+      {
+       "es": "Laura tiene una hija.",
+       "ar": "لاورا عندها ابنة."
+      }
+     ]
+    }
+   ],
+   "activities": [
+    {
+     "type": "teach",
+     "item": "familia"
+    },
+    {
+     "type": "teach",
+     "item": "padre"
+    },
+    {
+     "type": "teach",
+     "item": "madre"
+    },
+    {
+     "type": "mcq_meaning",
+     "item": "familia"
+    },
+    {
+     "type": "listen_pick_es",
+     "item": "padre"
+    },
+    {
+     "type": "teach",
+     "item": "padres"
+    },
+    {
+     "type": "mcq_reverse",
+     "item": "padres"
+    },
+    {
+     "type": "note",
+     "title_ar": "los padres = الوالدان",
+     "body_ar": "الجمع المذكر في الإسبانية يشمل الذكور والإناث معاً:\nlos padres = الأب والأم\nlos hermanos = الإخوة والأخوات\nlos hijos = الأولاد ذكوراً وإناثاً",
+     "examples": [
+      {
+       "es": "Tengo tres hijos: dos hijas y un hijo.",
+       "ar": "عندي ثلاثة أولاد: بنتان وولد."
+      }
+     ]
+    },
+    {
+     "type": "teach",
+     "item": "hermano"
+    },
+    {
+     "type": "teach",
+     "item": "hijo"
+    },
+    {
+     "type": "listen_choose",
+     "item": "hermano"
+    },
+    {
+     "type": "mcq_meaning",
+     "item": "hijo"
+    },
+    {
+     "type": "teach",
+     "item": "tengo"
+    },
+    {
+     "type": "teach",
+     "item": "tienes"
+    },
+    {
+     "type": "teach",
+     "item": "tiene"
+    },
+    {
+     "type": "note",
+     "title_ar": "tener: عندي، عندك، عنده",
+     "body_ar": "yo tengo — عندي\ntú tienes — عندك\nél / ella / usted tiene — عنده / عندها / عند حضرتك\n\nفعل شاذّ: احفظه كما هو.",
+     "examples": [
+      {
+       "es": "¿Tienes hijos? — No, no tengo hijos.",
+       "ar": "هل عندك أولاد؟ — لا، ليس عندي أولاد."
+      }
+     ]
+    },
+    {
+     "type": "fill",
+     "es": "Yo ___ dos hermanos.",
+     "answer": "tengo",
+     "ar": "عندي أخَوان.",
+     "options": [
+      "tengo",
+      "tienes",
+      "tiene"
+     ],
+     "explain_ar": "مع yo: tengo."
+    },
+    {
+     "type": "fill",
+     "es": "¿Tú ___ hijos?",
+     "answer": "tienes",
+     "ar": "هل عندك أولاد؟",
+     "options": [
+      "tengo",
+      "tienes",
+      "tiene"
+     ],
+     "explain_ar": "مع tú: tienes."
+    },
+    {
+     "type": "fill",
+     "es": "Mi madre ___ una hermana.",
+     "answer": "tiene",
+     "ar": "أمي عندها أخت.",
+     "options": [
+      "tengo",
+      "tienes",
+      "tiene"
+     ],
+     "explain_ar": "مع ella (mi madre): tiene."
+    },
+    {
+     "type": "match",
+     "items": [
+      "padre",
+      "madre",
+      "hermano",
+      "hijo"
+     ]
+    },
+    {
+     "type": "type_es",
+     "item": "familia"
+    },
+    {
+     "type": "type_es",
+     "item": "tengo"
+    },
+    {
+     "type": "mcq_reverse",
+     "item": "tienes"
+    },
+    {
+     "type": "listen_choose",
+     "item": "tiene"
+    },
+    {
+     "type": "order",
+     "es": "Tengo un hermano y una hermana.",
+     "ar": "عندي أخ وأخت."
+    },
+    {
+     "type": "dictation",
+     "es": "Mis padres tienen tres hijos.",
+     "ar": "والداي عندهما ثلاثة أولاد."
+    },
+    {
+     "type": "choice",
+     "prompt_ar": "كم ولداً عند كريم؟",
+     "choices": [
+      "اثنان",
+      "ثلاثة",
+      "لا شيء"
+     ],
+     "answer": 0,
+     "skill": "reading",
+     "choices_es": false,
+     "stimulus_es": "— Karim, ¿tienes hijos?\n— Sí, tengo dos hijos: un hijo y una hija.\n— ¡Qué bien!"
+    },
+    {
+     "type": "respond",
+     "prompt_ar": "زميل يسألك: «¿Tienes hermanos?». أجب بأن عندك أخاً واحداً.",
+     "accepted": [
+      "Sí, tengo un hermano",
+      "Tengo un hermano",
+      "Sí, un hermano",
+      "Un hermano"
+     ],
+     "audio_es": "¿Tienes hermanos?"
+    },
+    {
+     "type": "speak",
+     "es": "Tengo una familia grande. Tengo dos hermanos y una hermana.",
+     "ar": "عندي عائلة كبيرة. عندي أخَوان وأخت."
+    }
+   ]
+  },
+  {
+   "id": "a1_u2_l2",
+   "title_ar": "عمري ومن يخصّني",
+   "title_es": "Edad y posesivos",
+   "objectives_ar": [
+    "السؤال عن العمر والإجابة عنه",
+    "استعمال mi / tu / su ومع الجمع",
+    "ذكر الحالة الاجتماعية"
+   ],
+   "prerequisites": [
+    "a1_u2_l1"
+   ],
+   "minutes": 15,
+   "work_relevance_ar": "قد تُسأل عن عمرك وحالتك في استمارة توظيف أو تسجيل.",
+   "source": "original-v1",
+   "grammar": [
+    "g_tener",
+    "g_possessives"
+   ],
+   "items": [
+    {
+     "id": "cuantos_anos",
+     "es": "¿Cuántos años tienes?",
+     "ar": "كم عمرك؟",
+     "en": "How old are you?",
+     "pos": "سؤال",
+     "examples": [
+      {
+       "es": "¿Cuántos años tienes? — Tengo treinta años.",
+       "ar": "كم عمرك؟ — عمري ثلاثون سنة."
+      }
+     ],
+     "note_ar": "للرسمي: ¿Cuántos años tiene usted?",
+     "connections": [
+      {
+       "type": "grammar",
+       "ar": "حرفياً «كم سنةً عندك؟»: العمر بالفعل tener لا بالفعل ser."
+      }
+     ]
+    },
+    {
+     "id": "anos",
+     "es": "años",
+     "ar": "سنوات / سنة (في العمر)",
+     "en": "years",
+     "pos": "اسم",
+     "examples": [
+      {
+       "es": "Tengo veinte años.",
+       "ar": "عمري عشرون سنة."
+      }
+     ],
+     "note_ar": "المفرد: año. انتبه للـ ñ: año (سنة) غير ano."
+    },
+    {
+     "id": "treinta",
+     "es": "treinta",
+     "ar": "ثلاثون",
+     "en": "thirty",
+     "pos": "عدد",
+     "examples": [
+      {
+       "es": "Tengo treinta y dos años.",
+       "ar": "عمري اثنان وثلاثون سنة."
+      }
+     ],
+     "note_ar": "بعدها: treinta y uno، treinta y dos… (31، 32…)."
+    },
+    {
+     "id": "cuarenta",
+     "es": "cuarenta",
+     "ar": "أربعون",
+     "en": "forty",
+     "pos": "عدد",
+     "examples": [
+      {
+       "es": "Mi jefe tiene cuarenta años.",
+       "ar": "عمر مديري أربعون سنة."
+      }
+     ]
+    },
+    {
+     "id": "mi",
+     "es": "mi",
+     "ar": "ـي (ملكي)",
+     "en": "my",
+     "pos": "صفة ملكية",
+     "examples": [
+      {
+       "es": "Mi hermana es médica.",
+       "ar": "أختي طبيبة."
+      }
+     ],
+     "note_ar": "مع الجمع: mis (mis hijos).",
+     "connections": [
+      {
+       "type": "grammar",
+       "ar": "بدون علامة نبر. أما mí بعلامة فمعناها «لي / إياي»."
+      }
+     ]
+    },
+    {
+     "id": "su",
+     "es": "su",
+     "ar": "ـه / ـها / ـك (لحضرتك)",
+     "en": "his / her / your (formal)",
+     "pos": "صفة ملكية",
+     "examples": [
+      {
+       "es": "¿Cómo se llama su hijo?",
+       "ar": "ما اسم ابنه / ابن حضرتك؟"
+      }
+     ],
+     "note_ar": "مع الجمع: sus."
+    },
+    {
+     "id": "casado",
+     "es": "casado",
+     "ar": "متزوج",
+     "en": "married",
+     "pos": "صفة",
+     "examples": [
+      {
+       "es": "Estoy casado.",
+       "ar": "أنا متزوج."
+      }
+     ],
+     "note_ar": "للمؤنث: casada. تُقال مع estar كعبارة جاهزة: Estoy casado (أنا متزوج). وغير متزوج: soltero / soltera.",
+     "alt": [
+      "casada"
+     ]
+    },
+    {
+     "id": "esposa",
+     "es": "la esposa",
+     "ar": "الزوجة",
+     "en": "wife",
+     "pos": "اسم",
+     "examples": [
+      {
+       "es": "Mi esposa trabaja en un banco.",
+       "ar": "زوجتي تعمل في بنك."
+      }
+     ],
+     "note_ar": "للمذكر: el esposo (الزوج).",
+     "alt": [
+      "el esposo"
+     ]
+    }
+   ],
+   "activities": [
+    {
+     "type": "teach",
+     "item": "cuantos_anos"
+    },
+    {
+     "type": "teach",
+     "item": "anos"
+    },
+    {
+     "type": "teach",
+     "item": "treinta"
+    },
+    {
+     "type": "teach",
+     "item": "cuarenta"
+    },
+    {
+     "type": "note",
+     "title_ar": "العمر بالفعل tener",
+     "body_ar": "في الإسبانية «تملك» سنواتك:\nTengo treinta años. — عمري ثلاثون سنة.\n¿Cuántos años tiene usted? — كم عمر حضرتك؟\n\nلا تقل: Soy treinta.",
+     "examples": [
+      {
+       "es": "Mi hijo tiene diez años.",
+       "ar": "ابني عمره عشر سنوات."
+      }
+     ]
+    },
+    {
+     "type": "mcq_meaning",
+     "item": "cuantos_anos"
+    },
+    {
+     "type": "listen_pick_es",
+     "item": "treinta"
+    },
+    {
+     "type": "listen_choose",
+     "item": "cuarenta"
+    },
+    {
+     "type": "choice",
+     "prompt_ar": "أي جملة صحيحة لقول «عمري أربعون سنة»؟",
+     "choices": [
+      "Tengo cuarenta años.",
+      "Soy cuarenta años.",
+      "Estoy cuarenta años."
+     ],
+     "answer": 0,
+     "skill": "grammar",
+     "choices_es": true,
+     "explain_ar": "العمر بالفعل tener: Tengo … años."
+    },
+    {
+     "type": "teach",
+     "item": "mi"
+    },
+    {
+     "type": "teach",
+     "item": "su"
+    },
+    {
+     "type": "note",
+     "title_ar": "mi / mis · tu / tus · su / sus",
+     "body_ar": "الملكية تطابق الشيء المملوك في العدد، لا المالك:\nmi hijo · mis hijos\ntu hermana · tus hermanas\nsu padre · sus padres\n\nsu = له / لها / لحضرتك.",
+     "examples": [
+      {
+       "es": "Sus hijos viven en Madrid.",
+       "ar": "أولاده يعيشون في مدريد."
+      }
+     ]
+    },
+    {
+     "type": "fill",
+     "es": "___ hijos tienen diez y doce años.",
+     "answer": "Mis",
+     "ar": "أولادي عمرهم عشر واثنتا عشرة سنة.",
+     "options": [
+      "Mi",
+      "Mis",
+      "Su"
+     ],
+     "explain_ar": "hijos جمع، فنقول mis."
+    },
+    {
+     "type": "fill",
+     "es": "Señor García, ¿cómo se llama ___ esposa?",
+     "answer": "su",
+     "ar": "سيد غارثيا، ما اسم زوجة حضرتك؟",
+     "options": [
+      "su",
+      "tu",
+      "mi"
+     ],
+     "explain_ar": "مع usted نستعمل su."
+    },
+    {
+     "type": "mcq_reverse",
+     "item": "mi"
+    },
+    {
+     "type": "mcq_meaning",
+     "item": "su"
+    },
+    {
+     "type": "teach",
+     "item": "casado"
+    },
+    {
+     "type": "teach",
+     "item": "esposa"
+    },
+    {
+     "type": "mcq_meaning",
+     "item": "casado"
+    },
+    {
+     "type": "listen_choose",
+     "item": "esposa"
+    },
+    {
+     "type": "match",
+     "items": [
+      "anos",
+      "treinta",
+      "casado",
+      "esposa"
+     ]
+    },
+    {
+     "type": "type_es",
+     "item": "anos"
+    },
+    {
+     "type": "type_es",
+     "item": "esposa"
+    },
+    {
+     "type": "order",
+     "es": "¿Cuántos años tiene su hijo?",
+     "ar": "كم عمر ابنه / ابن حضرتك؟"
+    },
+    {
+     "type": "dictation",
+     "es": "Tengo treinta y cinco años.",
+     "ar": "عمري خمس وثلاثون سنة."
+    },
+    {
+     "type": "choice",
+     "prompt_ar": "كم عمر ابنة السيدة بيريث؟",
+     "choices": [
+      "عشر سنوات",
+      "عشرون سنة",
+      "ثلاثون سنة"
+     ],
+     "answer": 0,
+     "skill": "reading",
+     "choices_es": false,
+     "stimulus_es": "— Señora Pérez, ¿tiene hijos?\n— Sí, tengo una hija. Tiene diez años.\n— ¿Y su esposo?\n— Mi esposo tiene cuarenta años."
+    },
+    {
+     "type": "respond",
+     "prompt_ar": "في استمارة تسجيل يسألونك: «¿Cuántos años tiene usted?». أجب بأن عمرك ثلاثون سنة.",
+     "accepted": [
+      "Tengo treinta años",
+      "Treinta años",
+      "Tengo treinta"
+     ],
+     "audio_es": "¿Cuántos años tiene usted?"
+    },
+    {
+     "type": "speak",
+     "es": "Me llamo Omar. Tengo treinta años. Estoy casado y tengo dos hijos.",
+     "ar": "اسمي عمر. عمري ثلاثون سنة. أنا متزوج وعندي ولدان."
+    }
+   ]
+  },
+  {
+   "id": "a1_u2_l3",
+   "title_ar": "كيف هو؟",
+   "title_es": "¿Cómo es?",
+   "objectives_ar": [
+    "وصف شخص بصفات بسيطة",
+    "مطابقة الصفة في الجنس والعدد",
+    "السؤال: ¿Cómo es…?"
+   ],
+   "prerequisites": [
+    "a1_u2_l2"
+   ],
+   "minutes": 15,
+   "work_relevance_ar": "وصف زميل أو عميل بكلمات بسيطة ومهذّبة.",
+   "source": "original-v1",
+   "grammar": [
+    "g_adjectives"
+   ],
+   "items": [
+    {
+     "id": "como_es",
+     "es": "¿Cómo es?",
+     "ar": "كيف هو / هي؟ (صفته)",
+     "en": "What is he/she like?",
+     "pos": "سؤال",
+     "examples": [
+      {
+       "es": "¿Cómo es tu jefe? — Es serio pero amable.",
+       "ar": "كيف مديرك؟ — جادّ لكنه لطيف."
+      }
+     ],
+     "connections": [
+      {
+       "type": "usage",
+       "ar": "¿Cómo es? يسأل عن الصفات الدائمة؛ أما ¿Cómo está? فعن الحال الآن."
+      }
+     ]
+    },
+    {
+     "id": "alto",
+     "es": "alto",
+     "ar": "طويل",
+     "en": "tall",
+     "pos": "صفة",
+     "examples": [
+      {
+       "es": "Mi hermano es alto.",
+       "ar": "أخي طويل."
+      }
+     ],
+     "note_ar": "للمؤنث: alta.",
+     "alt": [
+      "alta"
+     ]
+    },
+    {
+     "id": "bajo",
+     "es": "bajo",
+     "ar": "قصير",
+     "en": "short",
+     "pos": "صفة",
+     "examples": [
+      {
+       "es": "Mi madre es baja.",
+       "ar": "أمي قصيرة."
+      }
+     ],
+     "note_ar": "للمؤنث: baja.",
+     "alt": [
+      "baja"
+     ]
+    },
+    {
+     "id": "joven",
+     "es": "joven",
+     "ar": "شاب / صغير السن",
+     "en": "young",
+     "pos": "صفة",
+     "examples": [
+      {
+       "es": "Mi jefa es joven.",
+       "ar": "مديرتي شابّة."
+      }
+     ],
+     "note_ar": "لا تتغيّر للمؤنث. الجمع: jóvenes."
+    },
+    {
+     "id": "simpatico",
+     "es": "simpático",
+     "ar": "لطيف / ودود",
+     "en": "nice, friendly",
+     "pos": "صفة",
+     "examples": [
+      {
+       "es": "Laura es muy simpática.",
+       "ar": "لاورا لطيفة جداً."
+      }
+     ],
+     "note_ar": "للمؤنث: simpática.",
+     "alt": [
+      "simpática"
+     ],
+     "connections": [
+      {
+       "type": "false_friend",
+       "ar": "simpático لا تعني sympathetic بالإنجليزية (متعاطف)، بل «ودود ولطيف»."
+      }
+     ]
+    },
+    {
+     "id": "serio",
+     "es": "serio",
+     "ar": "جادّ",
+     "en": "serious",
+     "pos": "صفة",
+     "examples": [
+      {
+       "es": "El cliente es serio.",
+       "ar": "العميل جادّ."
+      }
+     ],
+     "note_ar": "للمؤنث: seria.",
+     "alt": [
+      "seria"
+     ],
+     "connections": [
+      {
+       "type": "cognate",
+       "ar": "قريبة من الإنجليزية serious."
+      }
+     ]
+    },
+    {
+     "id": "trabajador",
+     "es": "trabajador",
+     "ar": "مجتهد",
+     "en": "hard-working",
+     "pos": "صفة",
+     "examples": [
+      {
+       "es": "Karim es muy trabajador.",
+       "ar": "كريم مجتهد جداً."
+      }
+     ],
+     "note_ar": "للمؤنث: trabajadora.",
+     "alt": [
+      "trabajadora"
+     ],
+     "work": true
+    },
+    {
+     "id": "inteligente",
+     "es": "inteligente",
+     "ar": "ذكي",
+     "en": "intelligent",
+     "pos": "صفة",
+     "examples": [
+      {
+       "es": "Es una mujer inteligente.",
+       "ar": "إنها امرأة ذكية."
+      }
+     ],
+     "note_ar": "لا تتغيّر للمؤنث.",
+     "connections": [
+      {
+       "type": "cognate",
+       "ar": "قريبة من الإنجليزية intelligent."
+      }
+     ]
+    }
+   ],
+   "activities": [
+    {
+     "type": "teach",
+     "item": "como_es"
+    },
+    {
+     "type": "mcq_meaning",
+     "item": "como_es"
+    },
+    {
+     "type": "teach",
+     "item": "alto"
+    },
+    {
+     "type": "teach",
+     "item": "bajo"
+    },
+    {
+     "type": "teach",
+     "item": "joven"
+    },
+    {
+     "type": "listen_pick_es",
+     "item": "alto"
+    },
+    {
+     "type": "mcq_reverse",
+     "item": "bajo"
+    },
+    {
+     "type": "listen_choose",
+     "item": "joven"
+    },
+    {
+     "type": "note",
+     "title_ar": "الصفة تطابق الاسم",
+     "body_ar": "o ← a للمؤنث، وs للجمع:\nalto · alta · altos · altas\n\nالمنتهية بـ e أو بحرف ساكن لا تتغيّر غالباً: joven، inteligente.\nلكن trabajador ← trabajadora.",
+     "examples": [
+      {
+       "es": "Mis hermanas son altas.",
+       "ar": "أخواتي طويلات."
+      }
+     ]
+    },
+    {
+     "type": "fill",
+     "es": "Mi hermana es ___.",
+     "answer": "alta",
+     "ar": "أختي طويلة.",
+     "options": [
+      "alto",
+      "alta",
+      "altos"
+     ],
+     "explain_ar": "hermana مؤنث مفرد: alta."
+    },
+    {
+     "type": "teach",
+     "item": "simpatico"
+    },
+    {
+     "type": "teach",
+     "item": "serio"
+    },
+    {
+     "type": "teach",
+     "item": "trabajador"
+    },
+    {
+     "type": "teach",
+     "item": "inteligente"
+    },
+    {
+     "type": "mcq_meaning",
+     "item": "simpatico"
+    },
+    {
+     "type": "listen_choose",
+     "item": "serio"
+    },
+    {
+     "type": "fill",
+     "es": "Laura es muy ___.",
+     "answer": "trabajadora",
+     "ar": "لاورا مجتهدة جداً.",
+     "options": [
+      "trabajador",
+      "trabajadora",
+      "trabajadores"
+     ],
+     "explain_ar": "Laura مؤنث: trabajadora."
+    },
+    {
+     "type": "choice",
+     "prompt_ar": "كيف تقول «زميلاتي لطيفات»؟",
+     "choices": [
+      "Mis compañeras son simpáticas.",
+      "Mis compañeras son simpático.",
+      "Mi compañeras es simpática."
+     ],
+     "answer": 0,
+     "skill": "grammar",
+     "choices_es": true,
+     "explain_ar": "الملكية والفعل والصفة كلها بالجمع، والصفة مؤنثة."
+    },
+    {
+     "type": "match",
+     "items": [
+      "alto",
+      "joven",
+      "serio",
+      "inteligente"
+     ]
+    },
+    {
+     "type": "type_es",
+     "item": "joven"
+    },
+    {
+     "type": "type_es",
+     "item": "simpatico"
+    },
+    {
+     "type": "mcq_reverse",
+     "item": "trabajador"
+    },
+    {
+     "type": "order",
+     "es": "Mi jefe es serio pero simpático.",
+     "ar": "مديري جادّ لكنه لطيف.",
+     "distractors": [
+      "está"
+     ]
+    },
+    {
+     "type": "dictation",
+     "es": "Es alta, joven e inteligente.",
+     "ar": "إنها طويلة وشابّة وذكية."
+    },
+    {
+     "type": "choice",
+     "prompt_ar": "كيف هو المدير الجديد؟",
+     "choices": [
+      "جادّ لكنه لطيف",
+      "شابّ وقصير",
+      "غير مجتهد"
+     ],
+     "answer": 0,
+     "skill": "reading",
+     "choices_es": false,
+     "stimulus_es": "— ¿Cómo es el nuevo gerente?\n— Es alto y serio, pero muy simpático.\n— ¿Es joven?\n— Sí, tiene treinta años."
+    },
+    {
+     "type": "respond",
+     "prompt_ar": "صديق يسألك عن أختك: «¿Cómo es tu hermana?». قل إنها ذكية ولطيفة.",
+     "accepted": [
+      "Es inteligente y simpática",
+      "Es simpática e inteligente",
+      "Mi hermana es inteligente y simpática",
+      "Es muy inteligente y simpática",
+      "Inteligente y simpática"
+     ],
+     "audio_es": "¿Cómo es tu hermana?"
+    },
+    {
+     "type": "speak",
+     "es": "Mi compañera Laura es joven, simpática y muy trabajadora.",
+     "ar": "زميلتي لاورا شابّة ولطيفة ومجتهدة جداً."
+    }
+   ]
+  },
+  {
+   "id": "a1_u2_l4",
+   "title_ar": "فريق العمل",
+   "title_es": "Mi equipo de trabajo",
+   "objectives_ar": [
+    "تقديم زميل بـ este / esta",
+    "الحديث عن المدير والفريق",
+    "وصف خبرة زميل باختصار"
+   ],
+   "prerequisites": [
+    "a1_u2_l3"
+   ],
+   "minutes": 15,
+   "work_relevance_ar": "تقديم فريقك لعميل أو زائر موقف مهني متكرر.",
+   "source": "original-v1",
+   "grammar": [
+    "g_este_esta",
+    "g_adjectives"
+   ],
+   "items": [
+    {
+     "id": "jefe",
+     "es": "el jefe",
+     "ar": "المدير / الرئيس المباشر",
+     "en": "boss",
+     "pos": "اسم",
+     "examples": [
+      {
+       "es": "Mi jefe se llama Pablo.",
+       "ar": "اسم مديري بابلو."
+      }
+     ],
+     "note_ar": "للمؤنث: la jefa.",
+     "alt": [
+      "la jefa"
+     ],
+     "work": true
+    },
+    {
+     "id": "equipo",
+     "es": "el equipo",
+     "ar": "الفريق",
+     "en": "team",
+     "pos": "اسم",
+     "examples": [
+      {
+       "es": "Mi equipo es pequeño.",
+       "ar": "فريقي صغير."
+      }
+     ],
+     "note_ar": "تعني أيضاً «المعدّات» حسب السياق.",
+     "work": true
+    },
+    {
+     "id": "este_es",
+     "es": "este es…",
+     "ar": "هذا… (للتقديم)",
+     "en": "this is… (m.)",
+     "pos": "تعبير",
+     "examples": [
+      {
+       "es": "Este es Karim, mi compañero.",
+       "ar": "هذا كريم، زميلي."
+      }
+     ],
+     "work": true
+    },
+    {
+     "id": "esta_es",
+     "es": "esta es…",
+     "ar": "هذه… (للتقديم)",
+     "en": "this is… (f.)",
+     "pos": "تعبير",
+     "examples": [
+      {
+       "es": "Esta es Laura, la jefa de ventas.",
+       "ar": "هذه لاورا، مديرة المبيعات."
+      }
+     ],
+     "work": true
+    },
+    {
+     "id": "amable",
+     "es": "amable",
+     "ar": "لطيف / مهذّب",
+     "en": "kind, polite",
+     "pos": "صفة",
+     "examples": [
+      {
+       "es": "El cliente es muy amable.",
+       "ar": "العميل مهذّب جداً."
+      }
+     ],
+     "note_ar": "لا تتغيّر للمؤنث.",
+     "connections": [
+      {
+       "type": "cognate",
+       "ar": "قريبة من الإنجليزية amiable."
+      }
+     ]
+    },
+    {
+     "id": "responsable",
+     "es": "responsable",
+     "ar": "مسؤول / يُعتمد عليه",
+     "en": "responsible",
+     "pos": "صفة",
+     "examples": [
+      {
+       "es": "Es una persona responsable.",
+       "ar": "إنه شخص يُعتمد عليه."
+      }
+     ],
+     "work": true,
+     "connections": [
+      {
+       "type": "cognate",
+       "ar": "قريبة من الإنجليزية responsible."
+      }
+     ]
+    },
+    {
+     "id": "experiencia",
+     "es": "la experiencia",
+     "ar": "الخبرة",
+     "en": "experience",
+     "pos": "اسم",
+     "examples": [
+      {
+       "es": "Tiene mucha experiencia en ventas.",
+       "ar": "عنده خبرة كبيرة في المبيعات."
+      }
+     ],
+     "work": true,
+     "connections": [
+      {
+       "type": "cognate",
+       "ar": "قريبة من الإنجليزية experience."
+      }
+     ]
+    },
+    {
+     "id": "mucho",
+     "es": "mucho",
+     "ar": "كثير",
+     "en": "a lot, much",
+     "pos": "صفة / ظرف",
+     "examples": [
+      {
+       "es": "Tengo mucho trabajo.",
+       "ar": "عندي عمل كثير."
+      }
+     ],
+     "note_ar": "للمؤنث: mucha (mucha experiencia).",
+     "alt": [
+      "mucha"
+     ]
+    }
+   ],
+   "activities": [
+    {
+     "type": "teach",
+     "item": "jefe"
+    },
+    {
+     "type": "teach",
+     "item": "equipo"
+    },
+    {
+     "type": "mcq_meaning",
+     "item": "jefe"
+    },
+    {
+     "type": "listen_pick_es",
+     "item": "equipo"
+    },
+    {
+     "type": "teach",
+     "item": "este_es"
+    },
+    {
+     "type": "teach",
+     "item": "esta_es"
+    },
+    {
+     "type": "note",
+     "title_ar": "este / esta",
+     "body_ar": "نقدّم الرجل بـ este والمرأة بـ esta:\nEste es Pablo. — هذا بابلو.\nEsta es Ana. — هذه آنا.\n\nمع عميل مهم: Le presento a… أكثر رسمية.",
+     "examples": [
+      {
+       "es": "Esta es mi jefa, la señora Pérez.",
+       "ar": "هذه مديرتي، السيدة بيريث."
+      }
+     ]
+    },
+    {
+     "type": "choice",
+     "prompt_ar": "تقدّم زميلتك سارة لزائر. ماذا تقول؟",
+     "choices": [
+      "Esta es Sara.",
+      "Este es Sara.",
+      "Esta Sara es."
+     ],
+     "answer": 0,
+     "skill": "grammar",
+     "choices_es": true,
+     "explain_ar": "سارة امرأة: esta es."
+    },
+    {
+     "type": "listen_choose",
+     "item": "este_es"
+    },
+    {
+     "type": "mcq_reverse",
+     "item": "esta_es"
+    },
+    {
+     "type": "teach",
+     "item": "amable"
+    },
+    {
+     "type": "teach",
+     "item": "responsable"
+    },
+    {
+     "type": "teach",
+     "item": "experiencia"
+    },
+    {
+     "type": "teach",
+     "item": "mucho"
+    },
+    {
+     "type": "mcq_meaning",
+     "item": "responsable"
+    },
+    {
+     "type": "listen_choose",
+     "item": "experiencia"
+    },
+    {
+     "type": "fill",
+     "es": "Tiene ___ experiencia en tecnología.",
+     "answer": "mucha",
+     "ar": "عنده خبرة كبيرة في التقنية.",
+     "options": [
+      "mucho",
+      "mucha",
+      "muchos"
+     ],
+     "explain_ar": "experiencia مؤنث: mucha."
+    },
+    {
+     "type": "match",
+     "items": [
+      "jefe",
+      "equipo",
+      "amable",
+      "experiencia"
+     ]
+    },
+    {
+     "type": "type_es",
+     "item": "equipo"
+    },
+    {
+     "type": "type_es",
+     "item": "amable"
+    },
+    {
+     "type": "mcq_reverse",
+     "item": "mucho"
+    },
+    {
+     "type": "order",
+     "es": "Este es Pablo, el jefe de mi equipo.",
+     "ar": "هذا بابلو، رئيس فريقي."
+    },
+    {
+     "type": "dictation",
+     "es": "Mi equipo es pequeño pero muy trabajador.",
+     "ar": "فريقي صغير لكنه مجتهد جداً."
+    },
+    {
+     "type": "choice",
+     "prompt_ar": "ماذا نعرف عن مارتا؟",
+     "choices": [
+      "عندها خبرة كبيرة",
+      "هي مديرة الشركة",
+      "هي جديدة بلا خبرة"
+     ],
+     "answer": 0,
+     "skill": "reading",
+     "choices_es": false,
+     "stimulus_es": "— Señor García, esta es Marta, de mi equipo.\n— Mucho gusto, Marta.\n— Marta es muy responsable y tiene mucha experiencia en ventas."
+    },
+    {
+     "type": "respond",
+     "prompt_ar": "تقدّم زميلك كريم لعميل. قل: «هذا كريم، من فريقي».",
+     "accepted": [
+      "Este es Karim, de mi equipo",
+      "Este es Karim de mi equipo",
+      "Este es Karim, es de mi equipo",
+      "Le presento a Karim, de mi equipo"
+     ]
+    },
+    {
+     "type": "speak",
+     "es": "Esta es Laura, la jefa de mi equipo. Es muy amable y tiene mucha experiencia.",
+     "ar": "هذه لاورا، رئيسة فريقي. هي لطيفة جداً ولديها خبرة كبيرة."
+    }
+   ]
+  }
+ ]
+}

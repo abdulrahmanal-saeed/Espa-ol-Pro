@@ -3,6 +3,122 @@
 owner: Claude Code
 implementer: Claude Code
 handoff_status: READY_FOR_REVIEW
+handoff_id: PHASE1-011
+updated_at_utc: 2026-11-17T11:00:00Z
+review_requested_for_sha: 76eef9a
+branch: feat/a1-u2-u3
+pull_request: https://github.com/abdulrahmanal-saeed/Espa-ol-Pro/pull/9 (stacked on PR #8 → PR #7 → main)
+also_awaiting_review: PR #7 (PHASE1-009, REVIEW-008 fixes), PR #8 (PHASE1-010, Phase 1.2C)
+last_review_acknowledged: REVIEW-008
+project_status: A1_U2_U3_READY_FOR_REVIEW__PR7_PR8_READY_FOR_REVIEW__DEVICE_ACCEPTANCE_PENDING_OWNER
+
+> Review order: #7, then #8, then this PR. Commits in this PR: `ad24e73`
+> (a fix) and `76eef9a` (content). Earlier handoffs on the stack follow below.
+
+## This PR: A1-U2 and A1-U3 (content 1.2.0)
+
+All content is original and `author_reviewed`. It still needs native Spanish
+review. A1-U1 ids are unchanged.
+
+### Lessons
+
+| # | Lesson | Items | Focus |
+|---|---|---|---|
+| 13 | `a1_u2_l1` My family | 9 | tener (tengo/tienes/tiene); los padres = parents |
+| 14 | `a1_u2_l2` Age and possessives | 8 | ¿Cuántos años tienes?; mi/mis, su/sus; casado |
+| 15 | `a1_u2_l3` What is he/she like? | 8 | adjective agreement; simpático (false friend) |
+| 16 | `a1_u2_l4` My work team | 8 | este/esta es…; experience, reliability |
+| 17 | `a1_u3_l1` What time is it? | 8 | es la una / son las…; y media, menos cuarto |
+| 18 | `a1_u3_l2` Days of the week | 9 | el lunes vs los lunes; hoy |
+| 19 | `a1_u3_l3` My normal day | 8 | yo forms; como ≠ ¿cómo?; por la mañana |
+| 20 | `a1_u3_l4` Making an appointment | 8 | ¿Le va bien…?; de acuerdo; lo siento |
+
+**What every lesson has:**
+
+- Arabic objectives and a work-relevance line.
+- Teach steps, then guided practice (choice, fill, match, listening) and
+  independent practice (typing, ordering, dictation, a respond prompt with
+  audio).
+- A short reading text and a self-practice speaking step (never scored).
+- Its items become FSRS cards.
+- A prerequisite: the previous lesson (U2-L1 requires U1-L3).
+
+**Professional situations:**
+
+- presenting your team to a client (L16);
+- describing a colleague's experience (L16);
+- scheduling and rescheduling a client meeting formally with usted (L20);
+- working hours and days (L18–19).
+
+### Grammar notes (8)
+
+- U2: `g_tener`, `g_possessives`, `g_adjectives`, `g_este_esta`.
+- U3: `g_time`, `g_days`, `g_present_regular`, `g_appointments`.
+
+**Language links for Arabic speakers:**
+
+- tener for age ("عندي ثلاثون سنة");
+- tu/tú and mi/mí;
+- como/¿cómo?;
+- false friends: los padres, simpático, agenda;
+- sábado and السبت.
+
+### Dialogues and checkpoints
+
+- **4 dialogues:** `dlg_a1_familia`, `dlg_a1_equipo`, `dlg_a1_rutina`,
+  `dlg_a1_cita`.
+- **2 checkpoints:** `chk_a1_u2` and `chk_a1_u3`.
+  - 10 questions and 3 can-dos each.
+  - Each plays one dialogue sentence and explains its grammar questions.
+
+### The difficulty estimator caught a content issue
+
+`dlg_a1_equipo` scored "challenging" (93 % coverage) right after its lessons,
+because one sentence used *quién* and *del*, which had not been taught. The
+sentence was rewritten with taught words rather than relaxing the rule.
+
+### Defect fixed: `ad24e73`
+
+The progress screen's level counter showed "9 / 4" for 4 of 9 lessons, the
+same RTL issue fixed for checkpoints in 1.2B. It now uses `fraction()`.
+
+## Verification
+
+Local, at `76eef9a`:
+
+| Check | Result |
+|---|---|
+| format, analyze | clean |
+| content validator | v1.2.0: 20 lessons, 167 items, 10 dialogues, 6 checkpoints — OK |
+| `flutter test` | **305 passed** (PR #8: 301) |
+| new `a1_units_test` | every new lesson completed end to end in the app with full marks; structure, prerequisites, work items; checkpoints grade fully with correct answers |
+| screenshots | 07 (progress, fraction fix) and 22 regenerated |
+
+GitHub Actions run 44059168635 on `1142caf`: format, analyze, content, generated code, secrets — success, **305 tests passed**; Android debug APK — success.
+
+## Not verified — device checklist
+
+1. Path: A1 shows 11 lessons. U2-L1 opens after U1-L3.
+2. Lesson 17: listening items for the times ("Son las ocho y media").
+3. Lesson 20: the respond prompt plays "¿Le va bien el viernes a las nueve?".
+4. Checkpoint A1-U3: question 4 plays "Llego a las ocho y media." from the
+   dialogue.
+5. The progress screen reads "0 / 11" for A1, left to right.
+
+## Next
+
+A1-U4 (food and shopping) and A1-U5 (city and travel). Then A1-U6 (work),
+the verb conjugation reference and the A1 level assessment. I will not merge
+anything; merging is the owner's decision.
+
+---
+
+# Earlier handoff on this stack: PHASE1-010 (PR #8)
+
+
+owner: Claude Code
+implementer: Claude Code
+handoff_status: READY_FOR_REVIEW
 handoff_id: PHASE1-010
 updated_at_utc: 2026-11-17T08:00:00Z
 review_requested_for_sha: afdb946

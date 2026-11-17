@@ -169,6 +169,359 @@
     }
    ],
    "source": "original-v1"
+  },
+  {
+   "id": "chk_a1_u2",
+   "version": 1,
+   "kind": "unit",
+   "level": "a1",
+   "unit": "a1_u2",
+   "title_ar": "نقطة تحقق: العائلة والأشخاص",
+   "intro_ar": "نقطة تحقق قصيرة. لا تلميحات ولا إظهار للإجابات قبل النهاية، ولا إعادة للأسئلة. النتيجة دليل على ما تستطيعه الآن، وليست شهادة مستوى.",
+   "can_do": [
+    {
+     "id": "cd_a1_u2_family",
+     "ar": "أتحدث عن أفراد عائلتي وأعمارهم",
+     "lessons": [
+      "a1_u2_l1",
+      "a1_u2_l2"
+     ]
+    },
+    {
+     "id": "cd_a1_u2_describe",
+     "ar": "أصف شخصاً بصفات بسيطة مطابِقة",
+     "lessons": [
+      "a1_u2_l3"
+     ]
+    },
+    {
+     "id": "cd_a1_u2_team",
+     "ar": "أقدّم زملائي وأفهم تقديم الآخرين لفريقهم",
+     "lessons": [
+      "a1_u2_l4"
+     ]
+    }
+   ],
+   "questions": [
+    {
+     "id": "chk_a1_u2.q1",
+     "type": "choice",
+     "skill": "grammar",
+     "can_do": "cd_a1_u2_family",
+     "prompt_ar": "اختر الكلمة المناسبة للفراغ",
+     "stimulus_es": "Yo ___ dos hermanos.",
+     "choices": [
+      "tengo",
+      "tiene",
+      "soy"
+     ],
+     "answer": 0,
+     "explain_ar": "مع yo: tengo. والعائلة بالفعل tener."
+    },
+    {
+     "id": "chk_a1_u2.q2",
+     "type": "choice",
+     "skill": "listening",
+     "can_do": "cd_a1_u2_family",
+     "prompt_ar": "استمع: كم عمره؟",
+     "audio_es": "Tengo cuarenta años.",
+     "choices": [
+      "40",
+      "14",
+      "30"
+     ],
+     "answer": 0,
+     "choices_es": false
+    },
+    {
+     "id": "chk_a1_u2.q3",
+     "type": "type",
+     "skill": "writing",
+     "can_do": "cd_a1_u2_family",
+     "prompt_ar": "اكتب بالإسبانية",
+     "stimulus_ar": "الأم",
+     "accepted": [
+      "la madre",
+      "madre"
+     ]
+    },
+    {
+     "id": "chk_a1_u2.q4",
+     "type": "choice",
+     "skill": "grammar",
+     "can_do": "cd_a1_u2_family",
+     "prompt_ar": "أي جملة صحيحة لقول «عمري ثلاثون سنة»؟",
+     "choices": [
+      "Tengo treinta años.",
+      "Soy treinta años.",
+      "Tengo treinta año."
+     ],
+     "answer": 0,
+     "explain_ar": "العمر بالفعل tener، و«سنوات» بالجمع: años."
+    },
+    {
+     "id": "chk_a1_u2.q5",
+     "type": "choice",
+     "skill": "grammar",
+     "can_do": "cd_a1_u2_describe",
+     "prompt_ar": "اختر الكلمة المناسبة للفراغ",
+     "stimulus_es": "Mi hermana es muy ___.",
+     "choices": [
+      "simpática",
+      "simpático",
+      "simpáticos"
+     ],
+     "answer": 0,
+     "explain_ar": "hermana مؤنث مفرد، فالصفة simpática."
+    },
+    {
+     "id": "chk_a1_u2.q6",
+     "type": "choice",
+     "skill": "vocabulary",
+     "can_do": "cd_a1_u2_describe",
+     "prompt_ar": "ما معنى الكلمة؟",
+     "stimulus_es": "trabajador",
+     "choices": [
+      "مجتهد",
+      "عامل بناء",
+      "مدير"
+     ],
+     "answer": 0,
+     "choices_es": false
+    },
+    {
+     "id": "chk_a1_u2.q7",
+     "type": "type",
+     "skill": "writing",
+     "can_do": "cd_a1_u2_describe",
+     "prompt_ar": "اكتب بالإسبانية",
+     "stimulus_ar": "شابّ",
+     "accepted": [
+      "joven"
+     ]
+    },
+    {
+     "id": "chk_a1_u2.q8",
+     "type": "choice",
+     "skill": "listening",
+     "can_do": "cd_a1_u2_team",
+     "prompt_ar": "استمع إلى جملة من حوار «فريقي»: من هي لاورا؟",
+     "dialogue_turn": "dlg_a1_equipo.t3",
+     "choices": [
+      "المديرة",
+      "عميلة",
+      "زميلة جديدة"
+     ],
+     "answer": 0,
+     "choices_es": false
+    },
+    {
+     "id": "chk_a1_u2.q9",
+     "type": "choice",
+     "skill": "grammar",
+     "can_do": "cd_a1_u2_team",
+     "prompt_ar": "تقدّم زميلتك آنا لعميل. ماذا تقول؟",
+     "choices": [
+      "Esta es Ana.",
+      "Este es Ana.",
+      "Esta Ana es."
+     ],
+     "answer": 0,
+     "explain_ar": "آنا امرأة: esta es."
+    },
+    {
+     "id": "chk_a1_u2.q10",
+     "type": "choice",
+     "skill": "reading",
+     "can_do": "cd_a1_u2_team",
+     "prompt_ar": "ماذا نعرف عن بابلو؟",
+     "stimulus_es": "Este es Pablo, de mi equipo. Es muy responsable y tiene mucha experiencia en ventas.",
+     "choices": [
+      "يُعتمد عليه ولديه خبرة في المبيعات",
+      "هو مدير الشركة",
+      "جديد بلا خبرة"
+     ],
+     "answer": 0,
+     "choices_es": false
+    }
+   ],
+   "source": "original-v1"
+  },
+  {
+   "id": "chk_a1_u3",
+   "version": 1,
+   "kind": "unit",
+   "level": "a1",
+   "unit": "a1_u3",
+   "title_ar": "نقطة تحقق: الروتين والوقت",
+   "intro_ar": "نقطة تحقق قصيرة. لا تلميحات ولا إظهار للإجابات قبل النهاية، ولا إعادة للأسئلة. النتيجة دليل على ما تستطيعه الآن، وليست شهادة مستوى.",
+   "can_do": [
+    {
+     "id": "cd_a1_u3_time",
+     "ar": "أفهم الساعة وأقولها، ومتى يحدث شيء",
+     "lessons": [
+      "a1_u3_l1"
+     ]
+    },
+    {
+     "id": "cd_a1_u3_routine",
+     "ar": "أصف يوم عملي بالأيام والساعات",
+     "lessons": [
+      "a1_u3_l2",
+      "a1_u3_l3"
+     ]
+    },
+    {
+     "id": "cd_a1_u3_appointment",
+     "ar": "أحدّد موعداً بأدب وأقبله أو أعتذر عنه",
+     "lessons": [
+      "a1_u3_l4"
+     ]
+    }
+   ],
+   "questions": [
+    {
+     "id": "chk_a1_u3.q1",
+     "type": "choice",
+     "skill": "listening",
+     "can_do": "cd_a1_u3_time",
+     "prompt_ar": "استمع: كم الساعة؟",
+     "audio_es": "Son las nueve y media.",
+     "choices": [
+      "9:30",
+      "9:15",
+      "10:30"
+     ],
+     "answer": 0,
+     "choices_es": false
+    },
+    {
+     "id": "chk_a1_u3.q2",
+     "type": "choice",
+     "skill": "grammar",
+     "can_do": "cd_a1_u3_time",
+     "prompt_ar": "الساعة 1:00. ماذا تقول؟",
+     "choices": [
+      "Es la una.",
+      "Son las una.",
+      "Es una."
+     ],
+     "answer": 0,
+     "explain_ar": "الواحدة مفردة: Es la una."
+    },
+    {
+     "id": "chk_a1_u3.q3",
+     "type": "type",
+     "skill": "writing",
+     "can_do": "cd_a1_u3_time",
+     "prompt_ar": "اكتب بالإسبانية",
+     "stimulus_ar": "والنصف (في الساعة)",
+     "accepted": [
+      "y media"
+     ]
+    },
+    {
+     "id": "chk_a1_u3.q4",
+     "type": "choice",
+     "skill": "listening",
+     "can_do": "cd_a1_u3_routine",
+     "prompt_ar": "استمع إلى جملة من حوار «يومي»: متى يصل كريم؟",
+     "dialogue_turn": "dlg_a1_rutina.t2",
+     "choices": [
+      "في الثامنة والنصف",
+      "في الثامنة تماماً",
+      "في التاسعة"
+     ],
+     "answer": 0,
+     "choices_es": false
+    },
+    {
+     "id": "chk_a1_u3.q5",
+     "type": "choice",
+     "skill": "grammar",
+     "can_do": "cd_a1_u3_routine",
+     "prompt_ar": "اختر الكلمة المناسبة للفراغ",
+     "stimulus_es": "Yo ___ a la oficina a las ocho.",
+     "choices": [
+      "llego",
+      "llega",
+      "llegas"
+     ],
+     "answer": 0,
+     "explain_ar": "مع yo تنتهي الأفعال المنتظمة بـ ‎-o: llego."
+    },
+    {
+     "id": "chk_a1_u3.q6",
+     "type": "type",
+     "skill": "writing",
+     "can_do": "cd_a1_u3_routine",
+     "prompt_ar": "اكتب بالإسبانية",
+     "stimulus_ar": "الأربعاء",
+     "accepted": [
+      "miércoles"
+     ]
+    },
+    {
+     "id": "chk_a1_u3.q7",
+     "type": "choice",
+     "skill": "reading",
+     "can_do": "cd_a1_u3_routine",
+     "prompt_ar": "متى تعمل لاورا من البيت؟",
+     "stimulus_es": "Trabajo en la oficina de lunes a jueves. Los viernes trabajo en casa.",
+     "choices": [
+      "أيام الجمعة",
+      "أيام الاثنين",
+      "كل يوم"
+     ],
+     "answer": 0,
+     "choices_es": false
+    },
+    {
+     "id": "chk_a1_u3.q8",
+     "type": "choice",
+     "skill": "grammar",
+     "can_do": "cd_a1_u3_appointment",
+     "prompt_ar": "تقترح موعداً على عميل. أي سؤال أنسب؟",
+     "choices": [
+      "¿Le va bien el lunes a las diez?",
+      "¿Te va bien el lunes a las diez?",
+      "¿Lunes diez?"
+     ],
+     "answer": 0,
+     "explain_ar": "مع العميل نستعمل الصيغة الرسمية: le va bien."
+    },
+    {
+     "id": "chk_a1_u3.q9",
+     "type": "choice",
+     "skill": "listening",
+     "can_do": "cd_a1_u3_appointment",
+     "prompt_ar": "استمع إلى جملة من حوار الموعد: ماذا يقول السيد غارثيا؟",
+     "dialogue_turn": "dlg_a1_cita.t2",
+     "choices": [
+      "إنه مشغول الثلاثاء",
+      "إنه موافق على الثلاثاء",
+      "إنه متفرّغ الثلاثاء"
+     ],
+     "answer": 0,
+     "choices_es": false
+    },
+    {
+     "id": "chk_a1_u3.q10",
+     "type": "choice",
+     "skill": "reading",
+     "can_do": "cd_a1_u3_appointment",
+     "prompt_ar": "متى الاجتماع؟",
+     "stimulus_es": "— ¿Le va bien el miércoles a las once?\n— Lo siento, estoy ocupada. ¿El jueves?\n— Sí, perfecto. El jueves a las once.",
+     "choices": [
+      "الخميس في الحادية عشرة",
+      "الأربعاء في الحادية عشرة",
+      "الخميس في العاشرة"
+     ],
+     "answer": 0,
+     "choices_es": false
+    }
+   ],
+   "source": "original-v1"
   }
  ]
 }

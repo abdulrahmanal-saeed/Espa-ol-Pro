@@ -106,6 +106,16 @@ Limit: a TTS failure in the middle of guided dialogue questions is not
 detected per question (they are practice, not assessment); checkpoints do
 detect it.
 
+## A1-U2 and A1-U3 content (PR in review)
+
+| Area | Evidence |
+|---|---|
+| 8 new lessons (A1-U2 family and people, A1-U3 routine and time), 66 items, 4 grammar notes each unit; A1-U1 ids unchanged; content 1.2.0 | `tool/validate_content.dart`, `a1_units_test` |
+| Every new lesson completed end to end in the app with full marks | `a1_units_test` (widget) |
+| 4 dialogues, all "very easy" or "appropriate" right after their lessons (the estimator caught one sentence with untaught words; it was rewritten) | `difficulty_test` |
+| Checkpoints `chk_a1_u2`, `chk_a1_u3` | `assessment_content_test`, `a1_units_test` |
+| Not reviewed by a native Spanish teacher (`author_reviewed`) | — |
+
 ## Android build and runtime
 
 - The [code commit's CI run](https://github.com/abdulrahmanal-saeed/Espa-ol-Pro/actions/runs/43900871431)
