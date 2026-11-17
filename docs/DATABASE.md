@@ -136,8 +136,16 @@ Can-do states are derived from these rows, never stored
 (`CanDoEvidence` in `lib/core/assessment/assessment_engine.dart`, also
 explained on the progress screen): a can-do is *met* in an attempt when at
 least 75 % of its questions are right; latest attempt not met → needs
-practice; met → demonstrated; the latest two both met on different local days
-→ consistent. Completing lessons never changes these states.
+practice; met → demonstrated; the latest attempt and the previous attempt
+**at the same assessment version** both met, on different local days →
+consistent. A content update that changes a checkpoint's questions (and so
+its version) restarts consistency. Completing lessons never changes these
+states.
+
+Integrity: one answer per question per attempt (unique index
+`idx_assessment_answers_question`, created on every open so existing v5
+installs get it; restore also rejects duplicates), every attempt has at
+least one answer, and stored totals equal its answers.
 
 Reset progress deletes assessment results (they are progress); saved phrases
 are kept. A backup from before v5 leaves the device's results untouched.
