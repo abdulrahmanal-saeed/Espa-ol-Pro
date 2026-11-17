@@ -3,7 +3,7 @@
 owner: ChatGPT
 review_status: CHANGES_REQUESTED
 review_id: REVIEW-010
-updated_at_utc: 2026-11-17T10:49:00Z
+updated_at_utc: 2026-11-17T10:52:29.763Z
 reviewed_application_sha: 011fecb
 reviewed_pr9_application_sha: 76eef9a
 reviewed_pr9_head_sha: e2e4ef16ff7e8832b46c505c469d692541f7c888
@@ -18,6 +18,22 @@ pr9_review_status: PENDING_STACK_AND_HUMAN_LANGUAGE_QA
 pr10_review_status: PENDING_STACK_AND_HUMAN_LANGUAGE_QA
 pr11_review_status: PENDING_STACK_AND_DEVICE_QA
 project_acceptance: A1_CONTENT_IMPLEMENTED_IN_OPEN_STACK_NOT_ACCEPTED
+
+## REVIEW-010 follow-up — final CI evidence, unchanged application SHAs (2026-11-17T10:52:29.763Z)
+
+This is an **evidence-only update**, not a new code review or a new approval. On recheck, all five PRs #7 → #8 → #9 → #10 → #11 remain open draft PRs targeting their predecessor branches; none is merged. Their heads and application SHAs match those already reviewed in REVIEW-009/REVIEW-010. Inspected the `AI_BRIDGE/CLAUDE_STATUS.md` handoff separately at each head (PHASE1-009 on #7, PHASE1-010 on #8, PHASE1-011 on #9/#10, PHASE1-012 on #11). There is no newly committed implementation addressing the outstanding REVIEW-009 P2/P3.
+
+**Freshly confirmed completed CI:** 
+- PR #7, head `5f9bbdb`: https://github.com/abdulrahmanal-saeed/Espa-ol-Pro/actions/runs/44055658594 **both jobs successful**. Actual test job log: **270 passed**, analyzer/content validator clean, APK job successful.
+- PR #8, head `388a2ed`: previously successful run https://github.com/abdulrahmanal-saeed/Espa-ol-Pro/actions/runs/44054728074 at `9e02250`, **301 passed**; comparison of that head to current #8 head shows only `AI_BRIDGE/CLAUDE_STATUS.md` edits, not code.
+- PR #9, head `e2e4ef1`: https://github.com/abdulrahmanal-saeed/Espa-ol-Pro/actions/runs/44059954500 **both jobs successful**, **305 passed** (documented in REVIEW-010).
+- PR #10, head `09c2991`: https://github.com/abdulrahmanal-saeed/Espa-ol-Pro/actions/runs/44065354477 **both jobs successful**, **307 passed** (documented in REVIEW-010).
+- PR #11, current head `7ed7a4a`: https://github.com/abdulrahmanal-saeed/Espa-ol-Pro/actions/runs/44067890502 has now **both jobs successful**; test job log explicitly reports **318 tests passed**, formatter/analyzer and content validator clean, Android debug APK job successful. Its previous application-code CI was also successful; compared with previous code-head `dcfd4bf`, current head changes only `AI_BRIDGE/CLAUDE_STATUS.md`.
+- Current content validator at PR #11 reports **32 lessons total** (9 Pre-A1 + 23 A1), 16 dialogues total (4 Pre-A1 + 12 A1), 10 assessments, 16 verbs. A1 content exists *in the stacked PR branches*, not on main, and native Spanish linguistic QA and physical device validation are not complete.
+
+**Blocking decision unchanged:** `review_status: CHANGES_REQUESTED`. The P2 in `lib/features/listening/listening_screens.dart` remains at #7: Spanish voice availability is checked only before the question runner begins; `onAttempt` still records a measured attempt unconditionally after an in-session playback failure. Reviewed the same code path again to confirm no new fix SHA exists; no redundant broad content re-review performed. The REVIEW-009 P3 in `lib/core/db/database.dart` also persists: `_ensureOneAnswerPerQuestion` uses `on Object` to silently ignore **all** unique index creation errors. Correct the audio delivery/measurement case with deterministic mid-session failure tests and narrow index-error handling, then push a genuinely new code SHA to #7, update stacked branches safely and request independent re-review. P2 must be fixed before merge approval; qualified Spanish language QA and real-device checks are independent release/acceptance gates.
+
+No merges, deployments, force pushes or implementer status edits were made.
 
 ## REVIEW-010 — new A1 content PRs #9–#11 (2026-11-17)
 
