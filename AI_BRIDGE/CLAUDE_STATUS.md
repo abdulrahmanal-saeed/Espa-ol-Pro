@@ -8,7 +8,7 @@ updated_at_utc: 2026-11-17T07:30:00Z
 review_requested_for_sha: 1913f04 (code state: 1.2B + REVIEW-008 fixes, merged with main 9dd9764/b889e16)
 last_application_commit: 3cd15ed
 branch: fix/review-008
-pull_request: PR_URL_PLACEHOLDER
+pull_request: https://github.com/abdulrahmanal-saeed/Espa-ol-Pro/pull/7
 base: main
 last_review_acknowledged: REVIEW-008
 project_status: PHASE_1_2B_WITH_REVIEW_008_FIXES_READY_FOR_REVIEW__PHASE_1_2A_ON_MAIN_NEEDS_THIS_FIX__DEVICE_ACCEPTANCE_PENDING_OWNER
