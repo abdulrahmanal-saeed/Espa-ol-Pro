@@ -42,7 +42,8 @@ Pre-A1 is a preparatory stage, not a DELE level.
 | | At the workplace (4 lessons) | ✅ available (content 1.4.0) |
 | | **A1 level assessment** (24 questions, all six units) | ✅ available |
 | **A2** | Services and everyday transactions (5 lessons) | ✅ available (content 1.5.0) |
-| | The past · Plans and future · Preferences and comparison · Simple work conversations | planned |
+| | The past — what happened? (5 lessons, pretérito indefinido) | ✅ available (content 1.6.0) |
+| | Plans and future · Preferences and comparison · Simple work conversations | planned |
 | **B1** | Opinion and reasoning · Narration · Solving client problems · Professional correspondence | planned |
 | **B2** | Meetings · Presentations · Job interviews · Discovery and negotiation · Explaining technical services | planned |
 | **C1** | Persuasion · Precise professional writing · Advanced listening and accents | planned |
@@ -93,6 +94,11 @@ no lessons and are never counted as progress.
 | 35 | It doesn't work | 8 | no funciona, roto/rota with estar; object pronouns lo / la; desde ayer + present |
 | 36 | A complaint | 8 | el problema (masculine); error, cobrar, devolver (o→ue); ¿Me puede ayudar? |
 | 37 | Customer service, your side | 9 | disculpe las molestias; present for immediate promises; le envío…; comprobar (o→ue) |
+| 38 | Yesterday (A2-U2) | 9 | pretérito indefinido -ar (trabajé, habló); ayer, anoche, el lunes pasado; final-accent tense contrast |
+| 39 | My last weekend | 10 | -er / -ir past (salí, volví, comimos); primero, después, luego, al final; a short story |
+| 40 | A workday in the past | 9 | yo spelling changes (llegué, empecé); envié, revisé, preparé; ya / todavía no; a work update |
+| 41 | My last trip | 9 | irregular fui / fue (ir and ser), hice / hizo, tuve; el viaje, el vuelo; a travel narrative |
+| 42 | What happened with the client? | 9 | ¿Qué pasó?; se quejó, expliqué, solucioné; past for events vs present for the current state; follow-up |
 
 A1 is complete in content: 23 lessons over 6 units, closed by six unit
 checkpoints and the A1 level assessment `lvl_a1`, which opens only when every
@@ -104,9 +110,16 @@ complaints, ending with the learner on the provider's side of a complaint.
 Its first lesson follows the last A1 lesson. The A1 level assessment stays
 visible on the path until it has been taken once.
 
-Totals (content 1.5.0, from the validator): 37 lessons, 306 items,
-983 activities (598 graded), 40 grammar notes, 19 dialogues, 11 assessments,
-22 verbs.
+A2-U2 (lessons 38–42, content 1.6.0) teaches the pretérito indefinido in
+five steps: regular -ar, then -er/-ir with sequencing, then the yo spelling
+changes, then the irregular ir/ser, hacer and tener, and finally a connected
+client report contrasting past events with the present state. Lesson 41 is
+the first place irregular past forms are practised or assessed. The verb
+reference now shows the past of all 32 verbs.
+
+Totals (content 1.6.0, from the validator): 42 lessons, 352 items,
+1142 activities (699 graded), 48 grammar notes, 22 dialogues, 12 assessments,
+32 verbs.
 
 ## Lesson shape
 
@@ -164,6 +177,15 @@ Accent: default voice es-MX (seseo); notes point out Castilian differences
 
 Checkpoint `chk_a2_u1` (12 questions, 3 can-dos, three play dialogue
 sentences) closes A2-U1.
+
+| Id | Level | Built on | Situation |
+|---|---|---|---|
+| `dlg_a2_finde` | A2 | lessons 38–39 | Monday small talk about the weekend |
+| `dlg_a2_jornada` | A2 | lesson 40 | End-of-day update to the team manager |
+| `dlg_a2_viaje` | A2 | lessons 41–42 | Back from a business trip; a client complaint handled |
+
+Checkpoint `chk_a2_u2` (12 questions, 3 can-dos, 5 skills, three dialogue
+sentences) closes A2-U2.
 
 Checkpoints `chk_a1_u4` and `chk_a1_u5` close the food and travel units.
 Checkpoints `chk_a1_u2` and `chk_a1_u3` (10 questions, 3 can-dos each) close
