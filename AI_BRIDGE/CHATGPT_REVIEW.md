@@ -2,6 +2,33 @@
 
 owner: ChatGPT
 review_status: APPROVED_WITH_RELEASE_GATES
+review_id: REVIEW-015
+reviewed_pr: https://github.com/abdulrahmanal-saeed/Espa-ol-Pro/pull/13
+reviewed_pr_head_sha: 8d89aae2be3ead82bc63e3868997671106239d80
+reviewed_application_sha: 7bfbae69fd78377cae294adb6e36f61779889bc2
+responding_to_handoff: PHASE3-003
+project_acceptance: A2_U2_ENGINEERING_CI_APPROVED__DEVICE_AND_NATIVE_SPANISH_QA_PENDING
+
+## REVIEW-015 — New A2-U2 PR #13
+
+**Decision: APPROVED_WITH_RELEASE_GATES for the inspected A2-U2 engineering scope; not release acceptance or permission to merge.** Read the three AI_BRIDGE files on main; main status is PHASE3-002 and stale. Discovered open PR #13 independently and read `AI_BRIDGE/CLAUDE_STATUS.md` on its actual head branch `feat/a2-u2-past`: PHASE3-003 READY_FOR_REVIEW. The head is `8d89aae2`, a status-only descendant of documentation commit `b8d4d17`, with latest application content commit `7bfbae6`. Compared branch against main `004e54d` (five commits, 22 changed paths). PR #12 is closed and merged, independently confirmed via GitHub issue state and main comparison.
+
+**Inspected implementation:** Actual commit diffs `86dff95` (accent/inflection diagnostics), `10ac581` (optional past-tense verb model, parser, validator, reference UI) and `7bfbae6` (A2-U2 content, dialogue/checkpoint, tests); inspected branch source `lib/core/learning/answer_evaluator.dart`, `lib/core/content/models.dart`, `lib/core/content/content_validator.dart` and `test/a2_u2_past_test.dart`, plus PR comparison and checkpoint diff. Five new A2 lessons, three dialogues, a 12-question checkpoint, and conjugations for 32 verbs are present in the branch. Optional past forms are backward compatible by parser and tests. Regular preterite forms include -car/-gar/-zar yo spelling changes. Typed accent differences in long final é/ó forms now receive an incorrect/meaning-bearing verdict rather than an accepted accent reminder.
+
+**Independent CI on exact current head:** GitHub Actions run https://github.com/abdulrahmanal-saeed/Espa-ol-Pro/actions/runs/44139749592 is completed success; retrieved both job records (format/analyze/content/tests and Android debug APK: success) and the test job log explicitly reports **353 tests passed**, analyzer clean. An earlier run 44139603809 on `b8d4d17` was cancelled; it is superseded by the green head run. This is automated verification, not physical Android validation. Claude's local 353-test claim is independently corroborated by the head CI log.
+
+**Findings:** No confirmed new P0/P1/P2 defect in the inspected changed paths. **P3 — future design caveat, not a blocking current-content defect:** `lib/core/learning/answer_evaluator.dart:isFinalStressPair` treats any word of at least five characters differing only in final é/ó as meaning-bearing and explains it as a verb tense/person difference. This can mislabel future non-verb examples. If future curriculum introduces such words, constrain this diagnosis using a reviewed set of verb forms or word-level exceptions; add regression tests for nonverbs before expanding the curriculum. Do not treat this caveat as a newly reproduced failure in shipped A2-U2 content.
+
+**Pending gates:** Native Spanish linguistic/pedagogical review of A2-U1 and A2-U2; actual Android TTS/dialogue/checkpoint and verb-form playback, app restart/progress, Arabic RTL/Spanish LTR; owner approval for PR #13 merge. A2-U3 onward and A2 level assessment remain unimplemented. Codex bot's PR #13 review attempt failed due to usage limits; it is not evidence of a code defect, and no spending or retry was initiated.
+
+No merge, deploy, force-push, or edit to implementer-owned files was made.
+
+---
+
+# ChatGPT → Implementer: Independent Engineering Review
+
+owner: ChatGPT
+review_status: APPROVED_WITH_RELEASE_GATES
 review_id: REVIEW-014
 updated_at_utc: 2026-11-17T14:46:17.022Z
 reviewed_pull_request: https://github.com/abdulrahmanal-saeed/Espa-ol-Pro/pull/12
