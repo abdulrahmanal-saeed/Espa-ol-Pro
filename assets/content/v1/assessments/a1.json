@@ -2,7 +2,7 @@
  "assessments": [
   {
    "id": "chk_a1_u1",
-   "version": 1,
+   "version": 2,
    "kind": "unit",
    "level": "a1",
    "unit": "a1_u1",
@@ -45,7 +45,8 @@
      ],
      "answer": 0,
      "choices_es": true,
-     "stimulus_es": "Laura ___ español."
+     "stimulus_es": "Laura ___ español.",
+     "explain_ar": "Laura = هي، فالفعل ينتهي بـ ‎-a‎: Laura habla."
     },
     {
      "id": "chk_a1_u1.q2",
@@ -58,22 +59,23 @@
       "Soy egipcio."
      ],
      "answer": 0,
-     "choices_es": true
+     "choices_es": true,
+     "explain_ar": "منى امرأة، فتقول «egipcia» بالمؤنث."
     },
     {
      "id": "chk_a1_u1.q3",
      "type": "choice",
      "skill": "listening",
      "can_do": "cd_a1_u1_languages",
-     "prompt_ar": "استمع: ما معنى ما سمعته؟",
+     "prompt_ar": "استمع إلى جملة من حوار اللغات: ما اللغات التي يتكلمها كريم؟",
      "choices": [
-      "أتكلم العربية والإنجليزية",
-      "أتكلم العربية فقط",
-      "أتكلم الإنجليزية والإسبانية"
+      "العربية والإنجليزية",
+      "العربية فقط",
+      "الإنجليزية والإسبانية"
      ],
      "answer": 0,
      "choices_es": false,
-     "audio_es": "Hablo árabe e inglés."
+     "dialogue_turn": "dlg_a1_idiomas.t2"
     },
     {
      "id": "chk_a1_u1.q4",
@@ -99,7 +101,8 @@
       "Yo gerente."
      ],
      "answer": 0,
-     "choices_es": true
+     "choices_es": true,
+     "explain_ar": "في الإسبانية لا نضع «un/una» قبل المهنة بعد «ser»: Soy gerente."
     },
     {
      "id": "chk_a1_u1.q6",
@@ -133,7 +136,7 @@
      "type": "choice",
      "skill": "listening",
      "can_do": "cd_a1_u1_formal",
-     "prompt_ar": "استمع: ما معنى ما سمعته؟",
+     "prompt_ar": "استمع إلى جملة من حوار الاستقبال: ماذا تسأل موظفة الاستقبال؟",
      "choices": [
       "كيف يمكنني مساعدة حضرتك؟",
       "ما اسم حضرتك؟",
@@ -141,7 +144,7 @@
      ],
      "answer": 0,
      "choices_es": false,
-     "audio_es": "¿En qué puedo ayudarle?"
+     "dialogue_turn": "dlg_a1_recepcion.t1"
     },
     {
      "id": "chk_a1_u1.q9",

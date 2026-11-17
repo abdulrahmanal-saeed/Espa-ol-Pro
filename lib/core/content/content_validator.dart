@@ -396,6 +396,22 @@ class ContentValidator {
       for (final q in a.questions) {
         final qw = '$w/${q.id}';
         if (!questionIds.add(q.id)) err(qw, 'duplicate question id');
+        final turnId = q.dialogueTurnId;
+        if (turnId != null) {
+          final d = pack.dialogues
+              .where((d) => d.turns.any((t) => t.id == turnId))
+              .firstOrNull;
+          if (d == null) {
+            err(qw, 'unknown dialogue turn "$turnId"');
+          } else if (a.unitId != null
+              ? d.unitId != a.unitId
+              : d.levelId != a.levelId) {
+            err(qw, 'dialogue "${d.id}" is outside this assessment\'s scope');
+          }
+          if (q.skill != 'listening') {
+            err(qw, 'a dialogue-turn question measures listening');
+          }
+        }
         if (!AssessmentQuestion.types.contains(q.type)) {
           err(qw, 'unknown question type "${q.type}"');
           continue;

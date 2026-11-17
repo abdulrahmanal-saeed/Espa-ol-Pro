@@ -262,4 +262,38 @@ void main() {
     expect(await stateText(app), canDoLabels[CanDoState.needsPractice]);
     await app.dispose(tester);
   });
+
+  testWidgets('wrong answers are explained; edited checkpoints are flagged', (
+    tester,
+  ) async {
+    final u2 = pack.assessment('chk_pa1_u2')!;
+    expect(u2.version, greaterThan(1));
+    final app = TestApp(pack);
+    final repo = AssessmentRepository(app.db, clock: app.clock.call);
+    final id = await repo.submit(
+      assessment: u2,
+      graded: gradeAssessment(u2, {
+        for (final q in u2.questions) q.id: q.correctAnswer,
+        'chk_pa1_u2.q3': 'Buenos',
+        'chk_pa1_u2.q6': 'De nda',
+      }),
+      startedAt: app.clock(),
+      contentVersion: pack.version,
+    );
+    // An attempt taken against the earlier question set.
+    await app.db.customStatement(
+      'UPDATE assessment_attempts SET assessment_version = 1 WHERE id = $id',
+    );
+    await app.pump(tester, location: '/assessment/${u2.id}/result/$id');
+    expect(find.textContaining('تغيّرت أسئلة نقطة التحقق'), findsOneWidget);
+    final explain = find.byKey(const ValueKey('explain-chk_pa1_u2.q3'));
+    await tester.scrollUntilVisible(explain, 200);
+    expect(tester.widget<Text>(explain).data, contains('Buenas'));
+    final outcome = find.byKey(const ValueKey('outcome-chk_pa1_u2.q6'));
+    await tester.scrollUntilVisible(outcome, 200);
+    expect(tester.widget<Text>(outcome).data, Spelling.labelAr('spelling'));
+    // Right answers carry no explanation.
+    expect(find.byKey(const ValueKey('explain-chk_pa1_u2.q5')), findsNothing);
+    await app.dispose(tester);
+  });
 }

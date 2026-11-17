@@ -499,12 +499,21 @@ class AssessmentQuestion {
     this.answer = 0,
     this.choicesEs = true,
     this.accepted = const [],
+    this.dialogueTurnId,
+    this.explainAr = '',
   });
 
   final String id;
   final String type;
   final String skill;
   final String canDoId;
+
+  /// When set, [audioEs] is this dialogue turn's sentence.
+  final String? dialogueTurnId;
+
+  /// Shown on the result screen after a wrong answer (never during the
+  /// checkpoint).
+  final String explainAr;
   final String promptAr;
   final String? stimulusEs;
   final String? stimulusAr;

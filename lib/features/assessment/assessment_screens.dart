@@ -744,6 +744,15 @@ class _AnswerRow extends StatelessWidget {
               const SizedBox(height: 2),
             ],
             text(answer.expected, color: ok),
+            if (!answer.isCorrect && (question?.explainAr ?? '').isNotEmpty)
+              Padding(
+                padding: const EdgeInsets.only(top: 6),
+                child: Text(
+                  question!.explainAr,
+                  key: ValueKey('explain-${answer.questionId}'),
+                  style: t.textTheme.bodySmall!.copyWith(height: 1.6),
+                ),
+              ),
             if (Spelling.labelAr(answer.spelling).isNotEmpty)
               Padding(
                 padding: const EdgeInsets.only(top: 4),

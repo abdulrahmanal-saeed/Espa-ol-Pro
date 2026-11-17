@@ -159,6 +159,18 @@ from `activity_attempts` rows with `context = 'listening'` whose
 | `type` | `prompt_ar`, `accepted` | the answer evaluator; missing accents = meaning right, spelling recorded apart |
 | `dictation` | `audio_es` | as `type`, against `audio_es` |
 
+Optional on any question:
+
+- `dialogue_turn`: the id of a dialogue turn (content ≥ 1.1.1). The question
+  plays exactly that sentence (it becomes `audio_es`). The dialogue must
+  belong to the checkpoint's unit (or level for a level assessment), and the
+  question must measure listening.
+- `explain_ar`: shown on the result screen after a wrong answer, never
+  during the checkpoint. Every grammar question has one.
+
+Changing a checkpoint's questions requires bumping its `version`; results
+taken against an earlier version are shown as recorded, with a note.
+
 Validation: unique ids; `version ≥ 1`; title and intro present; known source;
 a `unit` checkpoint names an available unit of its level, one per unit; a
 `level` assessment names no unit; each can-do has Arabic text, lessons inside
