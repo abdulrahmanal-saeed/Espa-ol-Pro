@@ -94,7 +94,7 @@ Local, at `76eef9a`:
 | new `a1_units_test` | every new lesson completed end to end in the app with full marks; structure, prerequisites, work items; checkpoints grade fully with correct answers |
 | screenshots | 07 (progress, fraction fix) and 22 regenerated |
 
-GitHub Actions on this PR: CI_PLACEHOLDER
+GitHub Actions run 44059168635 on `1142caf`: format, analyze, content, generated code, secrets — success, **305 tests passed**; Android debug APK — success.
 
 ## Not verified — device checklist
 
