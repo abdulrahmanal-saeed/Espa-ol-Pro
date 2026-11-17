@@ -1,6 +1,54 @@
 # ChatGPT → Implementer: Independent Engineering Review
 
 owner: ChatGPT
+review_status: CHANGES_REQUESTED
+review_id: REVIEW-012
+updated_at_utc: 2026-11-17T14:27:36.548Z
+reviewed_application_sha: 45a685faf31e8b790283fd74d5b53dce1a549d47
+reviewed_pull_request: https://github.com/abdulrahmanal-saeed/Espa-ol-Pro/pull/12
+responding_to_handoff: PHASE3-001
+project_acceptance: NOT_RELEASE_READY_DEVICE_AND_NATIVE_SPANISH_QA_PENDING
+
+## REVIEW-012 — A2-U1 draft PR #12 (independent review)
+
+**Decision: CHANGES_REQUESTED.** PR #12 is open and draft. Independently inspected the GitHub PR diff, new A2-U1 lessons/dialogues/assessment, path expansion, lesson tests and assessment rendering code at head `45a685faf31e8b790283fd74d5b53dce1a549d47`. Both GitHub Actions jobs completed successfully on this SHA in run [44101524879](https://github.com/abdulrahmanal-saeed/Espa-ol-Pro/actions/runs/44101524879). Read CI logs: Flutter analyzer clean; **328 tests passed**; Android debug APK built and uploaded. This verifies automated CI/build, **not** Android device behavior or native Spanish QA. The PR introduces 5 A2 lessons, 3 dialogues, a 12-question checkpoint, and additions to the verb reference; A2-U2 onward and the A2 level assessment remain planned.
+
+### P1 — All multiple-choice assessment answers are the first displayed option (also affects existing A1)
+
+**Paths:** `assets/content/v1/assessments/a2.json`; `lib/features/assessment/assessment_screens.dart` (assessment question choice rendering, around lines 444–453); `lib/core/assessment/assessment_engine.dart` (answer text comparison); `assets/content/v1/assessments/a1.json` (preexisting scope).
+
+**Verified:** All ten choice questions in A2-U1 checkpoint have `"answer": 0`. `assessment_screens.dart` displays `q.choices[i]` in source order, with no shuffle. In contrast, lesson and dialogue choice exercises explicitly shuffle. Every inspected A1 unit checkpoint and A1 level assessment also has answer index 0. Consequently, repeatedly selecting the first displayed answer yields correct answers on all these multiple-choice questions without comprehension; the checkpoint/level scores are not reliable evidence of mastery.
+
+**Required fix:** Randomize displayed options once per question/assessment attempt (or otherwise eliminate predictable correctness), retaining the same stable display order across rebuilds, listening and navigation, and preserving mapping to the original correct **answer text**. Do not mutate content source lists in place or change persisted answer semantics. Add a deterministic widget regression showing different valid option positions across seeded attempts, correct grading after shuffle, stable options across rebuilds, and no correct-first shortcut. Regression-test both A2 and existing A1 assessments. Update brittle tests that select by fixed index.
+
+### P2 — A2 dialogue uses a tense that is not yet formally taught
+
+**Path:** `assets/content/v1/dialogues/a2.json`, `dlg_a2_reclamacion.t7`.
+
+**Verified:** `Sí, hay un error: le cobramos el servicio dos veces.` is rendered into Arabic as a past action (حصّلنا منك...). `cobramos` is orthographically the same in the present and simple preterite for *nosotros*. The handoff explicitly says preterite is introduced in A2-U2, not this unit. This is not necessarily ungrammatical Spanish, but pedagogically ambiguous for a learner who has not studied the preterite.
+
+**Required fix:** Rewrite this line in a clearly taught construction (e.g., `Sí, hay un error: la factura tiene el mismo servicio dos veces.` with matching Arabic/English translations), or introduce and explain the tense intentionally; keep the dialogue questions and target vocabulary coherent. Have a qualified Spanish reviewer validate register, naturalness, and translations.
+
+### P3 — Progression gate is a product decision, not an implementation defect
+
+**Paths:** `assets/content/v1/units/a2_u1.json`, `lib/features/path/path_screen.dart`, `test/verbs_and_level_test.dart`.
+
+**Verified:** The A2 first lesson requires the last A1 lesson; the A1 level assessment is accessible when A1 lessons are complete but is **not** required to start A2. The path expansion fix makes the test discoverable (according to current code/test), but it does not impose a pass threshold.
+
+**Request:** Keep that behavior unchanged until the owner decides. If owner wants stricter progression, propose an optional diagnostic/pass gate or a clear recommendation UI with retake support, rather than silently changing learning policy. A device test should check path expansion and assessment visibility after A1 completion and subsequent A2 progress.
+
+### Additional testing and acceptance boundaries
+
+- The 5 new `test/a2_units_test.dart` checks include a UI-driven happy path, exact prerequisites and answerability, but do not exercise the first-option exploit, incorrect-answer feedback, or real-device TTS.
+- Test on Android with Spanish TTS installed: A2 dialogues and checkpoint listening, path navigation, Arabic RTL/Spanish LTR, TTS unavailability, app restart/persistence, and access to the A1 assessment.
+- No qualified native Spanish content review has been supplied. Keep `author_reviewed`, not `native_reviewed`, and do not call A2 complete or a CEFR-certified level.
+- No merge, deployment, forced push, purchase, or edit to implementer-owned files has been performed.
+
+**Next handoff:** Implement the P1 assessment option fix with regression tests, address or document the P2 language change, rerun full format/analyze/content/test/debug APK CI at a fresh SHA, update only `AI_BRIDGE/CLAUDE_STATUS.md` with a new `handoff_id` and exact new commit SHA, and request independent re-review. PR stays draft until reviewed. The owner's decision governs merge and the A1→A2 gate.
+
+---
+
+owner: ChatGPT
 review_status: APPROVED_WITH_RELEASE_GATES
 review_id: REVIEW-011
 updated_at_utc: 2026-11-17T11:20:00Z
@@ -8,6 +56,16 @@ reviewed_application_sha: 9f868767330b74099824e17da0e58d2c62c69571
 reviewed_pr7_application_sha: 9f868767330b74099824e17da0e58d2c62c69571
 reviewed_pull_requests: https://github.com/abdulrahmanal-saeed/Espa-ol-Pro/pull/7 ; https://github.com/abdulrahmanal-saeed/Espa-ol-Pro/pull/8 ; https://github.com/abdulrahmanal-saeed/Espa-ol-Pro/pull/9 ; https://github.com/abdulrahmanal-saeed/Espa-ol-Pro/pull/10 ; https://github.com/abdulrahmanal-saeed/Espa-ol-Pro/pull/11
 project_acceptance: RELEASE_NOT_VERIFIED_DEVICE_AND_SPANISH_QA_PENDING
+
+## REVIEW-011 follow-up — merged stack on main (2026-11-17)
+
+**New repository state, not a repeat application-code review.** GitHub issue/PR records show #7, #8, #9, #10 and #11 all closed, and main history contains their sequential merge commits, ending at `05dcc6db48dd4ffd3437676cb183945100371a55` (PR #11). The main implementer status PHASE1-014 claims owner authorization and local green tests; these are implementer claims, not independently verifiable owner consent or local execution. No open PR was returned by the GitHub PR search. Previously inspected handoffs and application fixes remain covered by REVIEW-011 and REVIEW-010.
+
+**Independent verification:** GitHub compare from reviewed P3 application SHA `9f868767330b74099824e17da0e58d2c62c69571` to main is ahead 38 commits and contains the previously reviewed A1 content, assessments, verb reference, tests, and bridge/docs changes. GitHub Actions for the five pre-merge PR heads were independently green in REVIEW-011 (275 tests on #7; 323 on #11; APK builds passed). The commit-specific workflow-run query for final main merge `05dcc6d` returned **no runs**, so **post-merge main CI is not verified**. This is not evidence of a failure or of success. No new P0/P1/P2/P3 code finding is established solely by these merge records; do not claim the merged release is device-tested or Spanish-language reviewed.
+
+**Decision:** prior correction-scope engineering approval stands; **main integration/release acceptance pending** a confirmed green CI run at final main SHA, Android device tests and native Spanish linguistic QA. Merging is a historical fact, not a release approval. No further merges, deploys, or changes to implementer files were made.
+
+---
 
 ## REVIEW-011 — New PR #7 P2/P3 fixes; stack revalidation
 
