@@ -313,6 +313,7 @@ class SettingsScreen extends ConsumerWidget {
     'activity_attempts': 'إجابات',
     'error_records': 'أخطاء في الدفتر',
     'saved_phrases': 'عبارات محفوظة',
+    'assessment_attempts': 'نقاط تحقق مُنجزة',
   };
 
   Future<void> _import(BuildContext context, WidgetRef ref) async {
@@ -331,8 +332,7 @@ class SettingsScreen extends ConsumerWidget {
       final hasPhrases = summary.containsKey('saved_phrases');
       final lines = [
         for (final e in _tableLabels.entries)
-          if (e.key != 'saved_phrases' || hasPhrases)
-            '${e.value}: ${summary[e.key] ?? 0}',
+          if (summary.containsKey(e.key)) '${e.value}: ${summary[e.key] ?? 0}',
       ].join('\n');
       final phrasesNote = hasPhrases
           ? ''
@@ -370,7 +370,7 @@ class SettingsScreen extends ConsumerWidget {
     final confirmed = await _confirm(
       context,
       title: 'حذف كل التقدّم؟',
-      body: 'سيُحذف نهائياً: الدروس المكتملة، بطاقات المراجعة وسجلّها، وقت الدراسة، ودفتر الأخطاء. تبقى الإعدادات و«عباراتي». لا يمكن التراجع إلا من نسخة احتياطية.',
+      body: 'سيُحذف نهائياً: الدروس المكتملة، بطاقات المراجعة وسجلّها، وقت الدراسة، ودفتر الأخطاء ونتائج نقاط التحقق. تبقى الإعدادات و«عباراتي». لا يمكن التراجع إلا من نسخة احتياطية.',
       action: 'احذف',
       destructive: true,
     );
