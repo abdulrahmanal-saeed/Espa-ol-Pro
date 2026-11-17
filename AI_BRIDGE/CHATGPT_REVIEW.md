@@ -3,7 +3,7 @@
 owner: ChatGPT
 review_status: APPROVED
 review_id: REVIEW-007
-updated_at_utc: 2026-11-16T22:22:26.292Z
+updated_at_utc: 2026-11-17T03:43:52.934Z
 reviewed_application_sha: ce1155c195314cee40578747d53fce780078308a
 reviewed_pr3_application_sha: 7b94f64902bb32cc2a59f213612b03798bed0b63
 reviewed_pr3_head_sha: 732b08504840923d04739fccb40f1a2a5ac0cf62
@@ -12,6 +12,17 @@ reviewed_pull_requests: https://github.com/abdulrahmanal-saeed/Espa-ol-Pro/pull/
 pr3_review_status: APPROVED
 pr4_review_status: APPROVED
 project_acceptance: PHASE_1_1_CODE_APPROVED__DEVICE_ACCEPTANCE_PENDING_OWNER
+
+## Post-merge verification (2026-11-17) — approved code now on main
+
+This is a **status/evidence addendum to REVIEW-007, not a new code review**. The reviewed application commits are unchanged; the only file difference in the comparison of PR #4 approved head `997412337bf3017d57c7aaae5e035a0ae85e7a41` to current `main` is this reviewer-owned report.
+
+- **PR #3 MERGED** into main on 2026-11-17 03:30:20 UTC, merge commit `a4af15fa1c9743a9e21e55b04662a9e473b208d3`. Source PR: https://github.com/abdulrahmanal-saeed/Espa-ol-Pro/pull/3. Its head `732b085` was approved in REVIEW-006/007.
+- **PR #4 MERGED** into main on 2026-11-17 03:36:12 UTC, merge commit `af693b492e7eb82544c556422ceda74531b5c257`. Source PR: https://github.com/abdulrahmanal-saeed/Espa-ol-Pro/pull/4. Its head `9974123`, app SHA `ce1155c`, was approved in REVIEW-007; PR #4 was retargeted to main after PR #3 merged.
+- **Post-merge CI verified successful on exact main merge SHA `af693b4`**: https://github.com/abdulrahmanal-saeed/Espa-ol-Pro/actions/runs/44011374422. Inspected both job logs: formatter, analyzer, content validator, generated code check, secrets scan and **169 tests passed**, and Android debug APK built and uploaded as artifact `espanol-pro-debug-apk` (artifact ID 14295994672). The prior PR #3 merge CI is also green: https://github.com/abdulrahmanal-saeed/Espa-ol-Pro/actions/runs/44010681368.
+- No open PRs were listed at this check. `AI_BRIDGE/CLAUDE_STATUS.md` on main now identifies Codex as implementer but still describes PR #4 as awaiting review; Codex should update its **own** bridge status and phase docs to reflect merge and actual next milestone. Do **not** edit the reviewer-owned report.
+- **Outstanding acceptance:** Native device tests for the *new Phase 1.1 features* remain unverified: fresh v3→v4 app update/data preservation, saved phrases and icon/splash on-device, permission prompt/denial, actual daily delivery, cold-start tap, reboot/timezone behavior and cancellation. Reference `docs/REVIEW_HANDOFF.md` §7. This does not reverse engineering approval, but Phase 1.1 should not be declared fully device-accepted without owner evidence.
+- Product completion: only Pre-A1 and the first A1 unit are currently implemented; full A1–C2, further teaching functionality, and independent Spanish language QA remain future roadmap items. Do not end project monitoring based on these merges.
 
 ## Review decision
 
