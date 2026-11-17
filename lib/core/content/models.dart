@@ -258,7 +258,11 @@ class ContentPack {
     required this.levels,
     required this.sources,
     this.dialogues = const [],
+    this.assessments = const [],
   }) {
+    for (final a in assessments) {
+      _assessments[a.id] = a;
+    }
     for (final d in dialogues) {
       _dialogues[d.id] = d;
     }
@@ -287,6 +291,19 @@ class ContentPack {
   final List<Dialogue> dialogues;
   final Map<String, Dialogue> _dialogues = {};
   Dialogue? dialogue(String id) => _dialogues[id];
+
+  /// Unit checkpoints and level assessments, in authored order.
+  final List<Assessment> assessments;
+  final Map<String, Assessment> _assessments = {};
+  Assessment? assessment(String id) => _assessments[id];
+
+  /// The checkpoint for [unitId], if one is authored.
+  Assessment? checkpointFor(String unitId) {
+    for (final a in assessments) {
+      if (a.kind == 'unit' && a.unitId == unitId) return a;
+    }
+    return null;
+  }
 
   final Map<String, Unit> _units = {};
   final Map<String, Lesson> _lessons = {};
@@ -439,6 +456,125 @@ class Dialogue {
   DialogueTurn? turn(String id) {
     for (final t in turns) {
       if (t.id == id) return t;
+    }
+    return null;
+  }
+}
+
+// ---------------------------------------------------------------------------
+// Assessments (Phase 1.2B). Definitions are authored JSON; results live in
+// SQLite (schema v5).
+// ---------------------------------------------------------------------------
+
+/// A learner-facing capability ("أستطيع …") that assessments give evidence
+/// for. Its state is computed from checkpoint answers only (see
+/// `CanDoEvidence`), never from lessons opened or completed.
+class CanDo {
+  const CanDo({required this.id, required this.ar, required this.lessonIds});
+
+  final String id;
+  final String ar;
+
+  /// Lessons to revisit when the evidence is weak.
+  final List<String> lessonIds;
+}
+
+/// One objectively scored assessment question.
+///
+/// `choice`: [promptAr], [choices], [answer]; optional [stimulusEs] (shown)
+/// or [audioEs] (played, never shown); [choicesEs].
+/// `type`: [promptAr] and optional [stimulusAr]; [accepted] Spanish answers.
+/// `dictation`: [audioEs] is played; the learner types it.
+class AssessmentQuestion {
+  const AssessmentQuestion({
+    required this.id,
+    required this.type,
+    required this.skill,
+    required this.canDoId,
+    this.promptAr = '',
+    this.stimulusEs,
+    this.stimulusAr,
+    this.audioEs,
+    this.choices = const [],
+    this.answer = 0,
+    this.choicesEs = true,
+    this.accepted = const [],
+  });
+
+  final String id;
+  final String type;
+  final String skill;
+  final String canDoId;
+  final String promptAr;
+  final String? stimulusEs;
+  final String? stimulusAr;
+  final String? audioEs;
+  final List<String> choices;
+  final int answer;
+  final bool choicesEs;
+  final List<String> accepted;
+
+  static const types = {'choice', 'type', 'dictation'};
+
+  /// Skills an assessment can objectively measure. Speaking is deliberately
+  /// absent: the app has no valid way to score it.
+  static const measuredSkills = {
+    'vocabulary',
+    'reading',
+    'listening',
+    'writing',
+    'grammar',
+  };
+
+  /// The canonical correct answer, for the results screen.
+  String get correctAnswer => switch (type) {
+    'choice' => choices[answer],
+    'dictation' => audioEs ?? '',
+    _ => accepted.isEmpty ? '' : accepted.first,
+  };
+}
+
+class Assessment {
+  const Assessment({
+    required this.id,
+    required this.version,
+    required this.kind,
+    required this.levelId,
+    required this.unitId,
+    required this.titleAr,
+    required this.introAr,
+    required this.canDos,
+    required this.questions,
+    required this.sourceId,
+  });
+
+  final String id;
+
+  /// Bump whenever questions change; stored with every attempt.
+  final int version;
+
+  /// `unit` checkpoint or `level` assessment.
+  final String kind;
+  final String levelId;
+
+  /// Set for unit checkpoints.
+  final String? unitId;
+  final String titleAr;
+  final String introAr;
+  final List<CanDo> canDos;
+  final List<AssessmentQuestion> questions;
+  final String sourceId;
+
+  CanDo? canDo(String id) {
+    for (final c in canDos) {
+      if (c.id == id) return c;
+    }
+    return null;
+  }
+
+  AssessmentQuestion? question(String id) {
+    for (final q in questions) {
+      if (q.id == id) return q;
     }
     return null;
   }

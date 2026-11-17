@@ -29,7 +29,9 @@ Future<void> main(List<String> args) async {
     '$acts activities ($graded graded), ${pack.allGrammar.length} grammar notes, '
     '${pack.dialogues.length} dialogues '
     '(${pack.dialogues.fold<int>(0, (n, d) => n + d.turns.length)} turns, '
-    '${pack.dialogues.fold<int>(0, (n, d) => n + d.questions.length)} questions).',
+    '${pack.dialogues.fold<int>(0, (n, d) => n + d.questions.length)} questions), '
+    '${pack.assessments.length} assessments '
+    '(${pack.assessments.fold<int>(0, (n, a) => n + a.questions.length)} questions).',
   );
   if (issues.isEmpty) {
     stdout.writeln('OK — no issues found.');

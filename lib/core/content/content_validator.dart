@@ -323,7 +323,128 @@ class ContentValidator {
       }
     }
     _validateDialogues(pack, sourceIds, grammarIds, err);
+    _validateAssessments(pack, sourceIds, err);
     return issues;
+  }
+
+  /// Assessments: objective, answerable, and tied to real lessons.
+  void _validateAssessments(
+    ContentPack pack,
+    Set<String> sourceIds,
+    void Function(String, String) err,
+  ) {
+    final ids = <String>{};
+    final questionIds = <String>{};
+    final checkpointUnits = <String>{};
+    for (final a in pack.assessments) {
+      final w = 'assessment:${a.id}';
+      if (!ids.add(a.id)) err(w, 'duplicate assessment id');
+      if (a.version < 1) err(w, 'version must be ≥ 1');
+      if (a.titleAr.trim().isEmpty || a.introAr.trim().isEmpty) {
+        err(w, 'needs title_ar and intro_ar');
+      }
+      if (!sourceIds.contains(a.sourceId)) {
+        err(w, 'unknown content source "${a.sourceId}"');
+      }
+      final level = pack.level(a.levelId);
+      if (level == null) err(w, 'unknown level "${a.levelId}"');
+      switch (a.kind) {
+        case 'unit':
+          final unit = a.unitId == null ? null : pack.unit(a.unitId!);
+          if (unit == null) {
+            err(w, 'unit checkpoint needs a known "unit"');
+          } else {
+            if (unit.levelId != a.levelId) {
+              err(w, 'unit "${unit.id}" is not in level "${a.levelId}"');
+            }
+            if (!unit.isAvailable) err(w, 'unit "${unit.id}" has no lessons');
+            if (!checkpointUnits.add(unit.id)) {
+              err(w, 'second checkpoint for unit "${unit.id}"');
+            }
+          }
+        case 'level':
+          if (a.unitId != null) err(w, 'a level assessment has no "unit"');
+        default:
+          err(w, 'kind must be "unit" or "level"');
+      }
+
+      // Can-do statements: real lessons, in scope, each with evidence.
+      final canDoIds = <String>{};
+      for (final c in a.canDos) {
+        final cw = '$w/${c.id}';
+        if (!canDoIds.add(c.id)) err(cw, 'duplicate can-do id');
+        if (!_arabic.hasMatch(c.ar)) err(cw, 'can-do needs Arabic text');
+        if (c.lessonIds.isEmpty) err(cw, 'can-do needs lessons to revisit');
+        for (final l in c.lessonIds) {
+          final lesson = pack.lesson(l);
+          if (lesson == null) {
+            err(cw, 'unknown lesson "$l"');
+          } else if (a.kind == 'unit' && lesson.unitId != a.unitId) {
+            err(cw, 'lesson "$l" is outside unit "${a.unitId}"');
+          } else if (lesson.levelId != a.levelId && a.kind == 'level') {
+            err(cw, 'lesson "$l" is outside level "${a.levelId}"');
+          }
+        }
+        final evidence = a.questions.where((q) => q.canDoId == c.id).length;
+        if (evidence < 2) {
+          err(cw, 'needs at least 2 questions as evidence, has $evidence');
+        }
+      }
+
+      if (a.questions.length < 8) err(w, 'needs at least 8 questions');
+      final skillsUsed = <String>{};
+      for (final q in a.questions) {
+        final qw = '$w/${q.id}';
+        if (!questionIds.add(q.id)) err(qw, 'duplicate question id');
+        if (!AssessmentQuestion.types.contains(q.type)) {
+          err(qw, 'unknown question type "${q.type}"');
+          continue;
+        }
+        if (!AssessmentQuestion.measuredSkills.contains(q.skill)) {
+          err(qw, 'skill "${q.skill}" cannot be measured objectively');
+        }
+        skillsUsed.add(q.skill);
+        if (!canDoIds.contains(q.canDoId)) {
+          err(qw, 'unknown can-do "${q.canDoId}"');
+        }
+        void spanish(String? text, String field) {
+          if (text == null) return;
+          if (text.trim().isEmpty) err(qw, '$field is empty');
+          if (_arabic.hasMatch(text)) err(qw, '$field contains Arabic script');
+          _checkPunctuation(text, qw, err);
+        }
+
+        spanish(q.stimulusEs, 'stimulus_es');
+        spanish(q.audioEs, 'audio_es');
+        switch (q.type) {
+          case 'choice':
+            if (q.promptAr.trim().isEmpty) err(qw, 'choice needs prompt_ar');
+            if (q.choices.length < 2) err(qw, 'choice needs ≥ 2 choices');
+            if (q.choices.toSet().length != q.choices.length) {
+              err(qw, 'choices must be distinct');
+            }
+            if (q.answer < 0 || q.answer >= q.choices.length) {
+              err(qw, 'answer must be a valid index');
+            }
+            if (q.choicesEs) {
+              for (final c in q.choices) {
+                spanish(c, 'choice');
+              }
+            }
+          case 'type':
+            if (q.promptAr.trim().isEmpty) err(qw, 'type needs prompt_ar');
+            if (q.accepted.isEmpty) err(qw, 'type needs accepted answers');
+            for (final x in q.accepted) {
+              spanish(x, 'accepted');
+            }
+          case 'dictation':
+            if (q.audioEs == null) err(qw, 'dictation needs audio_es');
+        }
+      }
+      if (skillsUsed.length < 3) {
+        err(w, 'needs at least 3 different skills, has ${skillsUsed.length}');
+      }
+    }
   }
 
   /// Listening library: every reference must resolve, and a dialogue may only
