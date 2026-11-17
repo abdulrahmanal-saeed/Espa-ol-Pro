@@ -3,6 +3,107 @@
 owner: Claude Code
 implementer: Claude Code
 handoff_status: READY_FOR_REVIEW
+handoff_id: PHASE3-002
+updated_at_utc: 2026-11-17T19:30:00Z
+review_requested_for_sha: e3e948d
+branch: claude/amazing-hypatia-7mt4rs
+pull_request: https://github.com/abdulrahmanal-saeed/Espa-ol-Pro/pull/12
+last_review_acknowledged: REVIEW-012
+project_status: A2_U1_IN_REVIEW__REVIEW_012_FIXES_READY__DEVICE_AND_NATIVE_QA_PENDING
+
+## REVIEW-012 — findings and fixes (code SHA `e3e948d`)
+
+### P1 — assessment options always had the answer first → fixed
+
+**Engine** (`lib/core/assessment/assessment_engine.dart`):
+
+- `attemptSeed(startedAt)` gives the attempt's seed.
+- `displayedChoices(q, seed)` returns a shuffled copy of `q.choices`:
+  - it is seeded by the attempt and the question id (`stableHash`);
+  - the content list is never mutated.
+
+**Screen** (`assessment_screens.dart`):
+
+- The options are shown in that order.
+- The order is fixed for the whole attempt. It survives rebuilds, selection,
+  next/back and listening, because the seed is `_startedAt`.
+- A new attempt usually gets a different order.
+
+**Grading is unchanged.** It still compares the chosen **text** with
+`choices[answer]`, so stored answers and results mean the same as before.
+This applies to every checkpoint and level assessment: Pre-A1, A1 and A2.
+
+**New `test/assessment_order_test.dart`:**
+
+- every shipped choice question shows a permutation of its options, stable
+  for one seed, with content unchanged;
+- the correct option takes more than one position across seeds;
+- "always the first option" fails at least one choice on **every** shipped
+  assessment, and is right on fewer than half of all choices for a fixed
+  seed (content order made that 100%);
+- answering by text still grades fully correct;
+- widget, `chk_a2_u1`:
+  - the screen shows exactly `displayedChoices(q, attemptSeed(start))`;
+  - the same order holds after selecting, next and back;
+  - three attempts at different times do not all share one order.
+
+**Brittle tests:** `assessment_flow_test` and the screenshot test no longer
+tap `assessment-option-${q.answer}`. They tap the option by its text
+(`tapOption`).
+
+### P2 — ambiguous `cobramos` → rewritten
+
+`dlg_a2_reclamacion.t7` now reads: «Sí, hay un error: la factura tiene el
+servicio dos veces.» It uses only taught constructions.
+
+- The Arabic and English are updated: "الخدمة مذكورة في الفاتورة مرّتين".
+- Question q3's correct option now reads "الخدمة مذكورة مرّتين".
+- `cobrar` is removed from the dialogue's vocabulary list.
+- The line still passes `difficulty_test`.
+
+The other uses of cobrar in the unit are in the present ("me cobran", "el
+técnico cobra"). Native review is still pending.
+
+### P3 — progression gate → unchanged, as requested
+
+A2 still requires only the last A1 lesson. It does not require the A1 level
+assessment. The path change only keeps the level assessment visible. A
+pass gate stays the owner's decision.
+
+## Verification (local, Flutter 3.50.0)
+
+| Check | Result |
+|---|---|
+| format | 0 changed |
+| `flutter analyze --fatal-infos` | No issues |
+| content validator | OK |
+| `flutter test` | **333 passed** (328 + 5 in `assessment_order_test`) |
+| `flutter test test_screenshots` | see below |
+
+**Screenshots:** `07_progress`, `21_checkpoint_question` and
+`22_checkpoint_result` were regenerated.
+
+- 07: progress now lists A2 (0 / 5). This came from the A2-U1 commit, which
+  had not refreshed the goldens.
+- 21: the correct option "perro" is no longer first.
+- 22: the result screen.
+
+## Still not done or claimed
+
+- Device checks: checkpoint option order, path expansion after A1, and A2
+  dialogue TTS.
+- Native Spanish review of A2-U1.
+- A2-U2 onward, and the A2 level assessment.
+
+I will not merge; merging is the owner's decision.
+
+---
+
+# Previous handoff (PHASE3-001)
+
+owner: Claude Code
+implementer: Claude Code
+handoff_status: SUPERSEDED
 handoff_id: PHASE3-001
 updated_at_utc: 2026-11-17T18:00:00Z
 review_requested_for_sha: 2d2700b
