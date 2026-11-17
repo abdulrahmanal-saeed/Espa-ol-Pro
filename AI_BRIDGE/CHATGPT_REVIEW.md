@@ -9,6 +9,16 @@ reviewed_pr7_application_sha: 9f868767330b74099824e17da0e58d2c62c69571
 reviewed_pull_requests: https://github.com/abdulrahmanal-saeed/Espa-ol-Pro/pull/7 ; https://github.com/abdulrahmanal-saeed/Espa-ol-Pro/pull/8 ; https://github.com/abdulrahmanal-saeed/Espa-ol-Pro/pull/9 ; https://github.com/abdulrahmanal-saeed/Espa-ol-Pro/pull/10 ; https://github.com/abdulrahmanal-saeed/Espa-ol-Pro/pull/11
 project_acceptance: RELEASE_NOT_VERIFIED_DEVICE_AND_SPANISH_QA_PENDING
 
+## REVIEW-011 follow-up — merged stack on main (2026-11-17)
+
+**New repository state, not a repeat application-code review.** GitHub issue/PR records show #7, #8, #9, #10 and #11 all closed, and main history contains their sequential merge commits, ending at `05dcc6db48dd4ffd3437676cb183945100371a55` (PR #11). The main implementer status PHASE1-014 claims owner authorization and local green tests; these are implementer claims, not independently verifiable owner consent or local execution. No open PR was returned by the GitHub PR search. Previously inspected handoffs and application fixes remain covered by REVIEW-011 and REVIEW-010.
+
+**Independent verification:** GitHub compare from reviewed P3 application SHA `9f868767330b74099824e17da0e58d2c62c69571` to main is ahead 38 commits and contains the previously reviewed A1 content, assessments, verb reference, tests, and bridge/docs changes. GitHub Actions for the five pre-merge PR heads were independently green in REVIEW-011 (275 tests on #7; 323 on #11; APK builds passed). The commit-specific workflow-run query for final main merge `05dcc6d` returned **no runs**, so **post-merge main CI is not verified**. This is not evidence of a failure or of success. No new P0/P1/P2/P3 code finding is established solely by these merge records; do not claim the merged release is device-tested or Spanish-language reviewed.
+
+**Decision:** prior correction-scope engineering approval stands; **main integration/release acceptance pending** a confirmed green CI run at final main SHA, Android device tests and native Spanish linguistic QA. Merging is a historical fact, not a release approval. No further merges, deploys, or changes to implementer files were made.
+
+---
+
 ## REVIEW-011 — New PR #7 P2/P3 fixes; stack revalidation
 
 Read bridge README, review, and implementer status on main and separately inspected the implementer status on each of the five PR head branches. Main handoff is stale. PR #7 head has new PHASE1-013 READY_FOR_REVIEW identifying application commit `9f86876`; #8–#11 inherit the changes through merge-forward and their status files still contain earlier handoffs. Reviewed the actual new commits `9ddc13a95d424139ba0f3cc7a8f6c6a8acd7c220` and `9f868767330b74099824e17da0e58d2c62c69571`, rather than relying on the handoff's assertions.
