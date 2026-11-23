@@ -16,10 +16,13 @@ content, FSRS spaced repetition, no accounts, no ads, no tracking.
 
 ## What works today
 
-- 62 original lessons (9 Pre-A1, 23 A1, 25 A2, 5 B1), 527 vocabulary items,
-  1095 graded exercises, 70 grammar notes, 34 dialogues, 17 checkpoints and
-  level tests, a 55-verb conjugation reference (present, past and, from B1,
-  the conditional) — plus the full Pre-A1 → C2 curriculum map.
+- 68 original lessons (9 Pre-A1, 23 A1, 25 A2, 11 B1), 574 vocabulary items,
+  1212 graded exercises, 76 grammar notes, 38 dialogues, 18 checkpoints and
+  level tests, a 61-verb conjugation reference (present, past, and from B1
+  the imperfect and the conditional) — plus the full Pre-A1 → C2 curriculum
+  map.
+- From B1, missing written accents count as mistakes, and selected reading
+  and listening instructions are in Spanish first (Arabic one tap away).
 - B1 opens only after passing the A2 level test (every can-do at ≥ 75 %);
   the path, the lesson and the home screen explain this in Arabic.
 - Lesson engine with 11 exercise types (meaning choice, listening, dictation,

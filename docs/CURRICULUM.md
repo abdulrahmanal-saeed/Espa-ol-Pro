@@ -48,7 +48,8 @@ Pre-A1 is a preparatory stage, not a DELE level.
 | | Simple work conversations (5 lessons) | ✅ available (content 1.9.0) |
 | | **A2 level assessment** (25 questions, all five units) | ✅ available (content 1.10.0) |
 | **B1** | Opinion and reasoning (5 lessons, connectors and the conditional) | ✅ available (content 1.11.0) |
-| | Narration · Solving client problems · Professional correspondence | planned |
+| | Narration and experiences (6 lessons, imperfecto vs indefinido, with a longer reading and listening lesson) | ✅ available (content 1.13.0) |
+| | Solving client problems · Professional correspondence | planned |
 | **B2** | Meetings · Presentations · Job interviews · Discovery and negotiation · Explaining technical services | planned |
 | **C1** | Persuasion · Precise professional writing · Advanced listening and accents | planned |
 | **C2** | Precision and nuance · Professional and academic discourse | planned |
@@ -123,6 +124,12 @@ no lessons and are never counted as progress.
 | 60 | What I would like | 8 | regular conditional (infinitive + ía): me gustaría, nos gustaría, preferiría, sería, estaría bien; debería / deberías; ¿Le importaría…? |
 | 61 | Advice and proposals | 8 | irregular conditional (podría, tendría, haría); podríamos, tendríamos que; yo en tu lugar…; sería mejor + infinitive; el consejo, la solución |
 | 62 | Arguing in a meeting | 8 | en primer / segundo lugar, por ejemplo, el argumento, a largo plazo, lo importante es…, en conclusión; convencer |
+| 63 | Before and now (B1-U2) | 8 | regular imperfect for habits: trabajaba, vivía; antes, siempre, normalmente, todos los días, a menudo, ya no |
+| 64 | What it was like | 8 | ser / ir / ver in the imperfect (era, éramos, iba, veía); había, estaba, tenía; de joven |
+| 65 | What happened and what it was like | 8 | background (imperfecto) vs event (indefinido): mientras, de repente, en ese momento, sonó, eran las…, hacía calor, llovía |
+| 66 | My professional experience | 8 | mi primer trabajo, el puesto, me encargaba de…, hace dos años, durante, al principio, con el tiempo, aprendí mucho |
+| 67 | A problem in the project | 8 | resulta que, tuvimos que, conseguimos, el retraso, a tiempo, por suerte / por desgracia, hubo vs había |
+| 68 | Reading and listening: a success story | 7 | a ~150-word text with four questions and a 12-turn listening; el reto, el éxito, superar, los resultados, mejorar, orgulloso, contento |
 
 A1 is complete in content: 23 lessons over 6 units, closed by six unit
 checkpoints and the A1 level assessment `lvl_a1`, which opens only when every
@@ -190,9 +197,17 @@ Owner decisions after B1-U1 (content 1.12.0):
   extended reading text and a longer listening. B1-U1 gets them
   retroactively in a follow-up PR.
 
-Totals (content 1.11.0, from the validator): 62 lessons, 527 items,
-1754 activities (1095 graded), 70 grammar notes, 34 dialogues, 17 assessments,
-55 verbs.
+B1-U2 (lessons 63–68, content 1.13.0) teaches the imperfect: habits, then
+description with ser / ir / ver, then the contrast with the indefinido. It
+applies that to a professional story and to a project incident. Lesson 68 is
+the first longer reading and listening lesson: one ~150-word text with four
+questions, and a 12-turn dialogue. It is also the first content with
+Spanish-first instructions. The verb reference now shows the imperfect of
+every verb.
+
+Totals (content 1.13.0, from the validator): 68 lessons, 574 items,
+1930 activities (1212 graded), 76 grammar notes, 38 dialogues, 18 assessments,
+61 verbs.
 
 ## Lesson shape
 
@@ -295,6 +310,16 @@ sentences) closes A2-U5.
 
 Checkpoint `chk_b1_u1` (12 questions, 3 can-dos, 5 skills, three dialogue
 sentences) closes B1-U1.
+
+| Id | Level | Built on | Situation |
+|---|---|---|---|
+| `dlg_b1_antes` | B1 | lessons 63–64 | Karim describes his old job in Cairo |
+| `dlg_b1_manana` | B1 | lesson 65 | A difficult morning before a client meeting |
+| `dlg_b1_entrevista` | B1 | lessons 66–67 | A job interview: experience and a problem solved |
+| `dlg_b1_historia` | B1 | lesson 68 | Longer listening (12 turns): how the team overcame a customer-service problem |
+
+Checkpoint `chk_b1_u2` (12 questions, 3 can-dos, 5 skills, three dialogue
+sentences, two Spanish-first prompts) closes B1-U2.
 
 Checkpoints `chk_a1_u4` and `chk_a1_u5` close the food and travel units.
 Checkpoints `chk_a1_u2` and `chk_a1_u3` (10 questions, 3 can-dos each) close

@@ -3,6 +3,120 @@
 owner: Claude Code
 implementer: Claude Code
 handoff_status: READY_FOR_REVIEW
+handoff_id: PHASE4-004
+updated_at_utc: 2026-11-23T13:00:00Z
+review_requested_for_sha: a442f82 (B1-U2 application code and content; built on PR #19 head `c941190`)
+branch: claude/hopeful-knuth-wbn3n3 (once PR #19 is merged; see "Branch")
+pull_request: to be opened after PR #19 merges
+last_review_acknowledged: REVIEW-019
+project_status: B1_U2_READY__AFTER_PR19__DEVICE_AND_NATIVE_QA_PENDING
+
+## Branch
+
+The owner asked for the next B1 unit while PR #19 was open. This session can
+only push to `claude/hopeful-knuth-wbn3n3`, which is #19's head. So B1-U2 is
+built locally on top of #19, including its REVIEW-019 P3 fixes. It will be
+pushed as its own PR once #19 merges, so #19 does not grow.
+
+## B1-U2 «السرد والتجارب» (content 1.13.0)
+
+| Lesson | Items | Focus |
+|---|---|---|
+| `b1_u2_l1` Antes y ahora | 8 | regular imperfect for habits: trabajaba, vivía, antes, siempre, normalmente, todos los días, a menudo, ya no |
+| `b1_u2_l2` Cómo era | 8 | ser / ir / ver in the imperfect (era, éramos, iba, veía), había, estaba, tenía, de joven |
+| `b1_u2_l3` Lo que pasó y cómo era | 8 | background vs event: mientras, de repente, en ese momento, sonó, me di cuenta de…, eran las…, hacía calor, llovía |
+| `b1_u2_l4` Mi experiencia profesional | 8 | mi primer trabajo, el puesto, me encargaba de…, hace dos años, durante, al principio, con el tiempo, aprendí mucho |
+| `b1_u2_l5` Un problema en el proyecto | 8 | resulta que, tuvimos que, conseguimos, el retraso, a tiempo, por suerte / por desgracia, la lección; hubo vs había |
+| `b1_u2_l6` Lectura y escucha | 7 | **longer reading and listening** (owner decision): one ~150-word text with four questions, and the 12-turn `dlg_b1_historia` |
+
+**Every lesson:**
+
+- all ten activity types;
+- `explain_ar` on every fill and grammar choice;
+- a `work` item;
+- prerequisites chain from `b1_u1_l5`;
+- two FSRS cards per item, tested in the app for all six lessons.
+
+**Distractors.**
+
+- Every fill offers the target form, an infinitive and a participle, so the
+  imperfect / indefinido choice is never forced between two forms that could
+  both be right.
+- The aspect contrast is tested only with unambiguous rules: the time and
+  age in the past (eran / tenía, not fueron / tuve), de repente + an
+  indefinido, and hace + a span + an indefinido.
+
+**No grammar before its unit.** There is no subjunctive anywhere in the
+unit; a test scans every Spanish string for it.
+
+**Spanish-first prompts** (first content to use them):
+
+- reading and listening choices in every lesson;
+- two checkpoint questions;
+- four dialogue questions.
+
+The Arabic `prompt_ar` stays on all of them.
+
+**Dialogues.** Four, all at 100 % known words right after their lessons:
+`dlg_b1_antes`, `dlg_b1_manana`, `dlg_b1_entrevista`, and
+`dlg_b1_historia` (12 turns, 6 questions). The estimator first flagged six
+forms; they are now taught in item examples.
+
+**Checkpoint `chk_b1_u2`:**
+
+- 12 questions, 3 can-dos (4 questions each);
+- the can-dos cover all six lessons;
+- grammar 3, listening 3, writing 3, reading 2, vocabulary 1;
+- 3 dialogue sentences;
+- typed answers graded with strict accents.
+
+**Verbs (61):**
+
+- the imperfect for every verb: ser, ir and ver by hand, the rest
+  machine-checked;
+- new verbs: ver, sonar, encargar, conseguir, superar, mejorar.
+
+**Engine.** The evaluator now recognises the imperfect endings. «Antes
+trabajo en un banco» against «trabajaba» is diagnosed as a form mistake,
+not as a different word.
+
+## Verification (local, Flutter 3.50.0)
+
+| Check | Result |
+|---|---|
+| format | 0 changed |
+| `flutter analyze --fatal-infos` | No issues |
+| validator | OK — 68 lessons, 574 items, 1930 activities (1212 graded), 76 grammar notes, 38 dialogues (251 turns, 195 questions), 18 assessments (223 questions), 61 verbs |
+| `flutter test` | **465 passed** (453 on #19 + 12 in `b1_u2_narration_test`) |
+| screenshots | 07, 22 and 25 regenerated; new 26 (Spanish-first prompt on the long reading) |
+
+Two B1-U1 assertions had pinned "only B1-U1 is available" and "no verb has
+an imperfect". They now check what stays true: B1-U1 is first and
+available, and no subjunctive yet.
+
+## Questions for ChatGPT
+
+1. The long reading has some forms not yet taught (propuso, sabíamos,
+   querían, frecuentes). Following your REVIEW-019 guidance, the reading
+   threshold is a soft authoring target. Is that density right for a
+   lesson-6 reading?
+2. Should the four reading questions repeat the full text on each screen, as
+   now, or should we add a "read the text, then answer N questions"
+   exercise type?
+
+## Next step
+
+1. After the owner merges #19: push B1-U2 as its own PR.
+2. Then the longer reading and listening lesson for B1-U1.
+3. Then B1-U3 (subjunctive), B1-U4, and `lvl_b1` with the B2 gate.
+
+---
+
+# Previous handoff (PHASE4-003, PR #19)
+
+owner: Claude Code
+implementer: Claude Code
+handoff_status: READY_FOR_REVIEW
 handoff_id: PHASE4-003
 updated_at_utc: 2026-11-23T12:00:00Z
 review_requested_for_sha: 17acbc5 (REVIEW-019 P3 fixes on top of c456fc8)
