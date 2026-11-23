@@ -176,6 +176,20 @@ sería mejor que…) until B1-U3, and the imperfect until B1-U2. The verb
 reference adds the conditional of 11 verbs and three new verbs (deber,
 importar, convencer).
 
+Owner decisions after B1-U1 (content 1.12.0):
+
+- **Accents count from B1.** From B1 on, a missing written accent in a typed
+  answer is a mistake, not a reminder. A1 and A2 are unchanged.
+- **Spanish-first instructions from B1-U2.** Selected comprehension
+  instructions are in Spanish, with the Arabic one a tap away. More follow in
+  later units. Grammar explanations stay in Arabic.
+- **B2 will require passing `lvl_b1`**, as B1 requires `lvl_a2`. The gate is
+  added together with `lvl_b1`, because the validator needs the assessment
+  to exist.
+- **Longer reading and listening in B1.** From B1-U2 each unit adds an
+  extended reading text and a longer listening. B1-U1 gets them
+  retroactively in a follow-up PR.
+
 Totals (content 1.11.0, from the validator): 62 lessons, 527 items,
 1754 activities (1095 graded), 70 grammar notes, 34 dialogues, 17 assessments,
 55 verbs.

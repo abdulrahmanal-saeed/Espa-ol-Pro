@@ -3,6 +3,150 @@
 owner: Claude Code
 implementer: Claude Code
 handoff_status: READY_FOR_REVIEW
+handoff_id: PHASE4-003
+updated_at_utc: 2026-11-23T12:00:00Z
+review_requested_for_sha: c456fc8 (application code; this handoff is the docs commit on top)
+branch: claude/hopeful-knuth-wbn3n3
+pull_request: see the open PR from this branch (base `main`, draft)
+last_review_acknowledged: REVIEW-017
+project_status: B1_U1_MERGED__STRICT_ACCENTS_AND_SPANISH_PROMPTS_IN_REVIEW__DEVICE_AND_NATIVE_QA_PENDING
+
+## Since PHASE4-002
+
+- **PR #18 merged.** The owner explicitly approved the merge after
+  exact-head CI was green on `58c9818`
+  ([run 45156335009](https://github.com/abdulrahmanal-saeed/Espa-ol-Pro/actions/runs/45156335009),
+  440 tests, APK). Merge commit: `e901531`.
+- **Not yet re-reviewed.** Your re-review of PHASE4-002 (the REVIEW-017 P2
+  and P3 fixes, `4933ca3`) was not recorded before the merge. Please include
+  it in this review. Any finding goes into a follow-up PR.
+
+## Owner decisions (2026-11-23)
+
+1. **Strict accents from B1.** Approved within REVIEW-017's boundaries.
+   Built here.
+2. **Spanish-first prompts.** Approved. The mechanism is built here; content
+   starts using it in B1-U2, as REVIEW-017 recommended.
+3. **B2 requires passing `lvl_b1`**, as B1 requires `lvl_a2`. Not built yet:
+   the validator needs `lvl_b1` to exist. `requires_pass: "lvl_b1"` lands on
+   B2 in the same PR as `lvl_b1`.
+4. **Longer reading and listening in B1.** From B1-U2, every unit gets an
+   extended reading text and a longer listening. B1-U1 gets them in a
+   follow-up PR. The design is below, and I would like your view.
+
+## 1. Strict accents (content flag `strict_accents`)
+
+- **Content.** `strict_accents: true` on B1, B2, C1 and C2. The validator
+  keeps the flag on for every later level once it starts.
+- **Evaluator.** `evaluateAnswer(…, strictAccents)` now has a strict mode.
+  In strict mode, an answer that differs only in written accents is
+  incorrect. The issue stays `AnswerIssue.accents`, and the explanation
+  becomes «من مستوى B1 تُحسب علامات النبر: الصحيح «…»». Exact answers, ñ
+  and meaning-bearing accents behave as before at every level.
+- **Where it applies** (from the level of the content):
+  - lesson typing, typed fill, dictation and replies
+    (`TypeExercise.strictAccents`, set by `ExerciseBuilder`);
+  - practice runs (from the item's level);
+  - dialogue dictation (from the dialogue's level);
+  - checkpoints and level tests (`gradeAssessment(…, strictAccents)` from
+    the assessment's level; the stored outcome is still `missing_accents`,
+    now with `is_correct = false`, and the result screen says
+    «علامات النبر ناقصة — تُحسب خطأ من مستوى B1»);
+  - production review cards of B1+ items (a wrong typed answer can only be
+    rated Again, as before).
+- **Unchanged.** Receptive cards and multiple choice are not affected,
+  since nothing is typed there. A1 and A2 grading is unchanged. Stored
+  attempts are not regraded. There is no schema change.
+
+## 2. Spanish-first prompts (content flag `spanish_prompts`)
+
+- **Content.** `spanish_prompts: true` on B1 to C2.
+- **Where `prompt_es` is allowed:** lesson `choice` and `respond`
+  activities, checkpoint questions, and dialogue `choice` questions.
+- **Validator.** It rejects `prompt_es` on a level without the flag, on any
+  other type, with Arabic script, or with unbalanced ¿ ? / ¡ !.
+  `prompt_ar` stays required.
+- **Builder.** It passes `promptEs` on only when the level allows it, so A2
+  stays Arabic even if such content slipped in.
+- **UI.** `BilingualPrompt` shows the Spanish first, and «عرض بالعربية»
+  toggles the Arabic. It is used by every exercise view and by checkpoint
+  questions.
+- **Generated exercises.** Their instructions ("اكتب بالإسبانية"…) stay
+  Arabic in this PR: "selected comprehension instructions first", as you
+  recommended. A Spanish table for them can follow in a later unit.
+- **No shipped content uses `prompt_es` yet.** Tests use an edited B1-U1
+  fixture. B1-U2 will be the first content to use it.
+
+## 3. Proposed design: longer reading and listening (for your review)
+
+- Each B1 unit gets a sixth lesson, «قراءة واستماع» (extended practice):
+  - one reading text of about 120–180 words, with 4–5 comprehension
+    questions;
+  - one longer listening of about 10–12 turns, with 5–6 questions;
+  - a short production task.
+- It sits after lesson 5 and before the checkpoint, so the checkpoint opens
+  after it.
+- The difficulty estimator still applies: ≥ 95 % known words. The
+  ≤ 10 words per sentence limit stays for listening. For reading I propose
+  ≤ 14, a separate threshold.
+- Alternative: no new lesson, just longer `choice` reading stimuli and a
+  fourth dialogue per unit. The sixth lesson is cleaner for progress and
+  FSRS, because it adds only a few items.
+
+## Verification (local, Flutter 3.50.0)
+
+| Check | Result |
+|---|---|
+| format | 0 changed |
+| `flutter analyze --fatal-infos` | No issues |
+| validator | OK (content 1.12.0; counts unchanged from 1.11.0) |
+| `flutter test` | **451 (440 + 11) passed** |
+| CI | reported in the PR thread |
+
+New test: `b1_accents_prompts_test` (11). It covers:
+
+- the level flags;
+- the evaluator in both modes, with ñ and meaning accents everywhere;
+- builder strictness for B1 and A2 lessons, practice and dialogue
+  dictation;
+- checkpoint grading and labels, B1 against A2;
+- the validator for the flags;
+- `prompt_es` validation and builder behaviour;
+- widget tests:
+  - the lesson shows the Spanish prompt and toggles the Arabic;
+  - a B1 lesson marks a missing accent wrong and stores it;
+  - the same slip in A2 is accepted;
+  - a B1 production review card without accents allows only Again.
+
+One existing assertion changed: the content version (1.11.0 → 1.12.0).
+
+## Questions for ChatGPT
+
+1. Strict mode also rejects a missing accent on interrogatives (¿Cómo…?)
+   from B1 on. Agreed?
+2. The design for longer reading and listening (section 3): a sixth lesson
+   or longer stimuli? Is a separate reading threshold of ≤ 14 words per
+   sentence right?
+
+## Next step
+
+After review and the owner's merge:
+
+1. the extended reading and listening for B1-U1;
+2. B1-U2 (indefinido vs imperfecto, the first `prompt_es` content);
+3. B1-U3;
+4. B1-U4;
+5. `lvl_b1`, with the B2 gate.
+
+I will not merge without the owner.
+
+---
+
+# Previous handoff (PHASE4-002, merged in PR #18 → `e901531`)
+
+owner: Claude Code
+implementer: Claude Code
+handoff_status: READY_FOR_REVIEW
 handoff_id: PHASE4-002
 updated_at_utc: 2026-11-23T11:00:00Z
 review_requested_for_sha: 4933ca3 (application code; this handoff is the docs commit on top)

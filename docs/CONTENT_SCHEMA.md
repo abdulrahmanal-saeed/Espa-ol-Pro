@@ -19,6 +19,8 @@ units/<unit_id>.json     grammar notes + lessons of one *available* unit
     "code": "A1", "title_ar", "description_ar", "can_do_ar": ["…"],
     "preparatory": false,                   // true only for pre_a1
     "requires_pass": "lvl_a2",              // optional (content ≥ 1.11.0)
+    "strict_accents": true,                 // optional (content ≥ 1.12.0)
+    "spanish_prompts": true,                // optional (content ≥ 1.12.0)
     "units": [{ "id", "title_ar", "description_ar", "objectives_ar": ["…"],
                 "status": "available|planned" }]
   }]
@@ -38,6 +40,22 @@ The gate is derived from stored attempts: no extra learner state. Restore
 rejects a backup whose attempt at a gating assessment (known version) is
 partial, before anything is deleted (REVIEW-017 P2). Validation: the id is
 an assessment, of kind `level`, of an earlier level.
+
+`strict_accents` (B1–C2): a typed answer whose only difference is written
+accents (á é í ó ú ü) is **wrong**, with the correct form and an Arabic
+explanation. This covers lesson typing, dictation and replies, practice,
+dialogue dictation, checkpoints and level tests (outcome still stored as
+`missing_accents`), and production review cards. Without the flag (Pre-A1
+to A2) the answer is accepted with a reminder. ñ and meaning-bearing accents
+(sí/si, está/esta…) are wrong at every level. Stored attempts are never
+regraded.
+
+`spanish_prompts` (B1–C2): `choice` and `respond` activities, checkpoint
+questions and dialogue `choice` questions may add `prompt_es`. It is shown
+first, with «عرض بالعربية» revealing `prompt_ar`, which stays required.
+Validation: `prompt_es` only where the level has the flag, only on those
+types, no Arabic script, balanced ¿ ? / ¡ !. Both flags, once on, must stay
+on for every later level.
 
 ## units/<unit_id>.json
 
