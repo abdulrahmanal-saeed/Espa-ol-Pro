@@ -9,6 +9,7 @@ import '../../core/db/database.dart';
 import '../../core/learning/progress_repository.dart';
 import '../../core/providers.dart';
 import '../../core/widgets/common.dart';
+import 'level_gate_card.dart';
 
 const skillNamesAr = {
   'vocabulary': 'المفردات',
@@ -186,6 +187,16 @@ class _AssessmentScreenState extends ConsumerState<AssessmentScreen> {
               'التحدث غير مُقاس هنا: لا توجد في التطبيق وسيلة موثوقة لتقييمه.',
               style: t.textTheme.bodySmall!.copyWith(height: 1.7),
             ),
+            for (final opened in levelsOpenedBy(pack, a.id)) ...[
+              const SizedBox(height: 12),
+              Text(
+                'النجاح في هذا الاختبار يفتح مستوى ${opened.code}: أجب صحيحاً '
+                'عن $passPercent٪ على الأقل من أسئلة كل قدرة «أستطيع». '
+                'المحاولة الناجحة تفتحه نهائياً.',
+                key: ValueKey('assessment-opens-${opened.id}'),
+                style: t.textTheme.bodyMedium!.copyWith(height: 1.7),
+              ),
+            ],
             if (!open) ...[
               const SizedBox(height: 16),
               Text(
@@ -699,6 +710,12 @@ class AssessmentResultScreen extends ConsumerWidget {
                   ),
                 ),
               ),
+              for (final opened in levelsOpenedBy(pack, a.id))
+                _GateOutcome(
+                  level: opened,
+                  passedNow: CanDoEvidence.passed(run),
+                  open: ref.watch(levelGatesProvider).isOpen(opened.id),
+                ),
               if (stale)
                 Padding(
                   padding: const EdgeInsets.only(top: 8),
@@ -761,6 +778,79 @@ class AssessmentResultScreen extends ConsumerWidget {
             child: const Text('تم'),
           ),
         ),
+      ),
+    );
+  }
+}
+
+/// What this attempt means for a level it gates (B1 after `lvl_a2`).
+class _GateOutcome extends StatelessWidget {
+  const _GateOutcome({
+    required this.level,
+    required this.passedNow,
+    required this.open,
+  });
+  final Level level;
+  final bool passedNow;
+
+  /// Whether the level is open now (this attempt or an earlier pass).
+  final bool open;
+
+  @override
+  Widget build(BuildContext context) {
+    final t = Theme.of(context);
+    final (key, text, ok) = passedNow
+        ? (
+            'gate-opened-${level.id}',
+            'نجحت في كل القدرات: فُتح مستوى ${level.code} (${level.titleAr}). '
+                'يبقى مفتوحاً حتى لو أعدت الاختبار لاحقاً.',
+            true,
+          )
+        : open
+        ? (
+            'gate-still-open-${level.id}',
+            'لم تنجح في كل القدرات هذه المرة، لكن مستوى ${level.code} يبقى '
+                'مفتوحاً لأنك نجحت في محاولة سابقة.',
+            true,
+          )
+        : (
+            'gate-still-locked-${level.id}',
+            'مستوى ${level.code} ما زال مقفلاً: يلزم $passPercent٪ على الأقل '
+                'في كل قدرة «أستطيع». راجع الدروس المقترحة أدناه ثم أعد '
+                'الاختبار.',
+            false,
+          );
+    final colors = AppColors.of(context);
+    return Container(
+      key: ValueKey(key),
+      margin: const EdgeInsets.only(top: 12),
+      padding: const EdgeInsets.all(12),
+      decoration: BoxDecoration(
+        color: ok ? colors.successContainer : t.colorScheme.errorContainer,
+        borderRadius: BorderRadius.circular(12),
+      ),
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Icon(
+            ok ? Icons.lock_open_rounded : Icons.lock_outline_rounded,
+            color: ok
+                ? colors.onSuccessContainer
+                : t.colorScheme.onErrorContainer,
+          ),
+          const SizedBox(width: 10),
+          Expanded(
+            child: Text(
+              text,
+              style: TextStyle(
+                height: 1.6,
+                color: ok
+                    ? colors.onSuccessContainer
+                    : t.colorScheme.onErrorContainer,
+              ),
+            ),
+          ),
+        ],
       ),
     );
   }

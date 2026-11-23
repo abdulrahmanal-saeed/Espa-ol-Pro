@@ -9,6 +9,7 @@ import '../../core/learning/progress_repository.dart';
 import '../../core/providers.dart';
 import '../../core/widgets/common.dart';
 import '../assessment/assessment_screens.dart';
+import '../assessment/level_gate_card.dart';
 
 class PathScreen extends ConsumerWidget {
   const PathScreen({super.key});
@@ -21,7 +22,12 @@ class PathScreen extends ConsumerWidget {
       body: AsyncView(
         value: ref.watch(lessonProgressProvider),
         builder: (progress) {
-          final next = ProgressRepository.nextLesson(pack, progress);
+          final gates = ref.watch(levelGatesProvider);
+          final next = ProgressRepository.nextLesson(
+            pack,
+            progress,
+            gates: gates,
+          );
           // With nothing left to do, open the furthest level with lessons:
           // that is where its level assessment waits.
           final focus =
@@ -87,6 +93,8 @@ class _LevelSection extends ConsumerWidget {
         .where((l) => ProgressRepository.isCompleted(progress[l.id]))
         .length;
     final hasContent = lessons.isNotEmpty;
+    final gateId = ref.watch(levelGatesProvider).requiredAssessment(level.id);
+    final gate = gateId == null || !hasContent ? null : pack.assessment(gateId);
     return Padding(
       padding: const EdgeInsets.only(bottom: 12),
       child: Card(
@@ -128,11 +136,15 @@ class _LevelSection extends ConsumerWidget {
               style: const TextStyle(fontWeight: FontWeight.w700, height: 1.4),
             ),
             subtitle: Text(
-              hasContent
+              gate != null
+                  ? 'مقفل · ${levelGateShortAr(level, gate)}'
+                  : hasContent
                   ? '$done من ${lessons.length} درساً متاحاً'
                   : 'خريطة المنهج جاهزة — الدروس قيد الإعداد',
             ),
             children: [
+              if (gate != null) LevelGateCard(level: level),
+              if (gate != null) const SizedBox(height: 10),
               Align(
                 alignment: AlignmentDirectional.centerStart,
                 child: Text(
@@ -195,6 +207,8 @@ class _UnitBlock extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final t = Theme.of(context);
     final pack = ref.watch(contentProvider);
+    final gates = ref.watch(levelGatesProvider);
+    final gateId = gates.requiredAssessment(unit.levelId);
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
@@ -233,16 +247,37 @@ class _UnitBlock extends ConsumerWidget {
           _LessonTile(
             lesson: lesson,
             data: progress[lesson.id],
-            unlocked: ProgressRepository.isUnlocked(lesson, progress),
+            unlocked: ProgressRepository.isUnlocked(
+              lesson,
+              progress,
+              gates: gates,
+            ),
             isNext: lesson.id == nextLessonId,
             onLocked: () {
+              final messenger = ScaffoldMessenger.of(context)
+                ..hideCurrentSnackBar();
+              final test = gateId == null ? null : pack.assessment(gateId);
+              if (test != null) {
+                messenger.showSnackBar(
+                  SnackBar(
+                    content: Text(
+                      levelGateShortAr(pack.level(unit.levelId)!, test),
+                    ),
+                    action: SnackBarAction(
+                      label: 'الاختبار',
+                      onPressed: () => context.push('/assessment/${test.id}'),
+                    ),
+                  ),
+                );
+                return;
+              }
               final missing = lesson.prerequisites
                   .where((id) => !ProgressRepository.isCompleted(progress[id]))
                   .map((id) => pack.lesson(id)?.titleAr ?? id)
                   .join('، ');
-              ScaffoldMessenger.of(context)
-                ..hideCurrentSnackBar()
-                ..showSnackBar(SnackBar(content: Text('أكمل أولاً: $missing')));
+              messenger.showSnackBar(
+                SnackBar(content: Text('أكمل أولاً: $missing')),
+              );
             },
           ),
         if (pack.checkpointFor(unit.id) != null)

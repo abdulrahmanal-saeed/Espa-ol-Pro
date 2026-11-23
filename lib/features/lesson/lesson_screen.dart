@@ -8,6 +8,7 @@ import '../../core/learning/exercises.dart';
 import '../../core/learning/progress_repository.dart';
 import '../../core/providers.dart';
 import '../../core/widgets/common.dart';
+import '../assessment/level_gate_card.dart';
 import 'exercise_runner.dart';
 
 enum _Phase { intro, running, saving, done }
@@ -80,7 +81,19 @@ class _LessonScreenState extends ConsumerState<LessonScreen> {
       );
     }
     final progress = ref.watch(lessonProgressProvider).value ?? const {};
-    final unlocked = ProgressRepository.isUnlocked(lesson, progress);
+    final gates = ref.watch(levelGatesProvider);
+    // Until stored attempts load, a gated level cannot be judged: wait
+    // rather than flash a lock.
+    if (_phase == _Phase.intro &&
+        pack.level(lesson.levelId)?.requiresPass != null &&
+        ref.watch(assessmentRecordsProvider).isLoading) {
+      return const Scaffold(body: Center(child: CircularProgressIndicator()));
+    }
+    final unlocked = ProgressRepository.isUnlocked(
+      lesson,
+      progress,
+      gates: gates,
+    );
 
     return switch (_phase) {
       _Phase.intro => _Intro(
@@ -88,6 +101,7 @@ class _LessonScreenState extends ConsumerState<LessonScreen> {
         unit: pack.unit(lesson.unitId)!,
         level: pack.level(lesson.levelId)!,
         unlocked: unlocked,
+        levelLocked: !gates.isOpen(lesson.levelId),
         completed: ProgressRepository.isCompleted(progress[lesson.id]),
         missingPrerequisites: [
           for (final id in lesson.prerequisites)
@@ -134,6 +148,7 @@ class _Intro extends StatelessWidget {
     required this.unit,
     required this.level,
     required this.unlocked,
+    required this.levelLocked,
     required this.completed,
     required this.missingPrerequisites,
     required this.onStart,
@@ -143,6 +158,9 @@ class _Intro extends StatelessWidget {
   final Unit unit;
   final Level level;
   final bool unlocked;
+
+  /// The whole level waits for a level assessment (see [LevelGates]).
+  final bool levelLocked;
   final bool completed;
   final List<String> missingPrerequisites;
   final VoidCallback onStart;
@@ -249,7 +267,8 @@ class _Intro extends StatelessWidget {
               ),
             ),
           ],
-          if (!unlocked) ...[
+          if (levelLocked) LevelGateCard(level: level),
+          if (!unlocked && missingPrerequisites.isNotEmpty) ...[
             const SizedBox(height: 16),
             Container(
               padding: const EdgeInsets.all(14),

@@ -37,18 +37,46 @@ void main() {
   group('lesson progress', () {
     test('only the first lesson is unlocked for a new learner', () async {
       final map = await repo.lessonProgressMap();
-      expect(ProgressRepository.isUnlocked(l(0), map), isTrue);
+      expect(
+        ProgressRepository.isUnlocked(
+          l(0),
+          map,
+          gates: LevelGates.from(pack, const []),
+        ),
+        isTrue,
+      );
       for (final lesson in pack.orderedLessons.skip(1)) {
-        expect(ProgressRepository.isUnlocked(lesson, map), isFalse);
+        expect(
+          ProgressRepository.isUnlocked(
+            lesson,
+            map,
+            gates: LevelGates.from(pack, const []),
+          ),
+          isFalse,
+        );
       }
-      expect(ProgressRepository.nextLesson(pack, map)!.id, l(0).id);
+      expect(
+        ProgressRepository.nextLesson(
+          pack,
+          map,
+          gates: LevelGates.from(pack, const []),
+        )!.id,
+        l(0).id,
+      );
     });
 
     test('starting a lesson does not unlock the next one', () async {
       await repo.markStarted(l(0).id);
       final map = await repo.lessonProgressMap();
       expect(map[l(0).id]!.status, 'started');
-      expect(ProgressRepository.isUnlocked(l(1), map), isFalse);
+      expect(
+        ProgressRepository.isUnlocked(
+          l(1),
+          map,
+          gates: LevelGates.from(pack, const []),
+        ),
+        isFalse,
+      );
     });
 
     test('completing a lesson unlocks exactly the next one', () async {
@@ -57,9 +85,30 @@ void main() {
       expect(outcome.newCards, l(0).items.length * 2);
       final map = await repo.lessonProgressMap();
       expect(ProgressRepository.isCompleted(map[l(0).id]), isTrue);
-      expect(ProgressRepository.isUnlocked(l(1), map), isTrue);
-      expect(ProgressRepository.isUnlocked(l(2), map), isFalse);
-      expect(ProgressRepository.nextLesson(pack, map)!.id, l(1).id);
+      expect(
+        ProgressRepository.isUnlocked(
+          l(1),
+          map,
+          gates: LevelGates.from(pack, const []),
+        ),
+        isTrue,
+      );
+      expect(
+        ProgressRepository.isUnlocked(
+          l(2),
+          map,
+          gates: LevelGates.from(pack, const []),
+        ),
+        isFalse,
+      );
+      expect(
+        ProgressRepository.nextLesson(
+          pack,
+          map,
+          gates: LevelGates.from(pack, const []),
+        )!.id,
+        l(1).id,
+      );
       expect(map[l(0).id]!.contentVersion, pack.version);
     });
 
@@ -94,7 +143,11 @@ void main() {
         await complete(lesson);
       }
       expect(
-        ProgressRepository.nextLesson(pack, await repo.lessonProgressMap()),
+        ProgressRepository.nextLesson(
+          pack,
+          await repo.lessonProgressMap(),
+          gates: LevelGates.from(pack, const []),
+        ),
         isNull,
       );
       expect((await reviews.allCards()).length, pack.allItems.length * 2);

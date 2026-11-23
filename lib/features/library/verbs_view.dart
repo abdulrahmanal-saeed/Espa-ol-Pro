@@ -8,7 +8,8 @@ import '../../core/providers.dart';
 import '../../core/widgets/common.dart';
 import '../lesson/exercise_widgets.dart';
 
-/// Present-tense conjugation reference for the verbs taught so far.
+/// Conjugation reference for the verbs taught so far: the present, and
+/// every optional tense a verb has (see [Verb.optionalTenses]).
 class VerbsView extends ConsumerWidget {
   const VerbsView({super.key});
 
@@ -30,7 +31,8 @@ class VerbsView extends ConsumerWidget {
       padding: const EdgeInsets.fromLTRB(16, 12, 16, 24),
       children: [
         Text(
-          'تصريف المضارع للأفعال التي تتعلّمها. vosotros يُستعمل في إسبانيا '
+          'تصريف الأفعال التي تتعلّمها: المضارع، ثم الأزمنة الأخرى حين تصل '
+          'إليها. vosotros يُستعمل في إسبانيا '
           'للجمع غير الرسمي؛ وفي أمريكا اللاتينية يُستعمل ustedes لكل الجمع.',
           style: t.textTheme.bodySmall!.copyWith(height: 1.7),
         ),
@@ -73,19 +75,22 @@ class VerbsView extends ConsumerWidget {
                         form: v.forms[p] ?? '',
                         formKey: 'verb-form-${v.id}-$p',
                       ),
-                    if (v.preterite.isNotEmpty) ...[
-                      const SizedBox(height: 6),
-                      _TenseHeader(
-                        'الماضي البسيط · pretérito indefinido',
-                        key: ValueKey('verb-past-${v.id}'),
-                      ),
-                      for (final p in Verb.persons)
-                        _FormRow(
-                          person: p,
-                          form: v.preterite[p] ?? '',
-                          formKey: 'verb-past-${v.id}-$p',
+                    // The past, then (from B1) the imperfect, conditional
+                    // and present subjunctive: only the tenses a verb has.
+                    for (final tense in Verb.optionalTenses)
+                      if (tense.forms(v).isNotEmpty) ...[
+                        const SizedBox(height: 6),
+                        _TenseHeader(
+                          tense.labelAr,
+                          key: ValueKey('${tense.uiKey}-${v.id}'),
                         ),
-                    ],
+                        for (final p in Verb.persons)
+                          _FormRow(
+                            person: p,
+                            form: tense.forms(v)[p] ?? '',
+                            formKey: '${tense.uiKey}-${v.id}-$p',
+                          ),
+                      ],
                     if (v.noteAr.isNotEmpty) ...[
                       const SizedBox(height: 8),
                       Text(v.noteAr, style: const TextStyle(height: 1.7)),

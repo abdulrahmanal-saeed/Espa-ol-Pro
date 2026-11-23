@@ -9,6 +9,12 @@ typedef ContentReader = Future<String> Function(String relativePath);
 List<String> _strings(dynamic v) =>
     (v as List? ?? const []).map((e) => e.toString()).toList();
 
+/// A person → form map of the verb reference; empty when absent.
+Map<String, String> _forms(dynamic v) => {
+  for (final e in ((v as Map?) ?? const {}).entries)
+    e.key as String: e.value as String,
+};
+
 List<Example> _examples(dynamic v) => (v as List? ?? const [])
     .map((e) => Example.fromJson((e as Map).cast<String, dynamic>()))
     .toList();
@@ -81,6 +87,7 @@ Future<ContentPack> parseContentPack(ContentReader read) async {
         canDoAr: _strings(lj['can_do_ar']),
         isPreparatory: lj['preparatory'] as bool? ?? false,
         units: units,
+        requiresPass: lj['requires_pass'] as String?,
       ),
     );
   }
@@ -124,6 +131,12 @@ Future<ContentPack> parseContentPack(ContentReader read) async {
               e.key as String: e.value as String,
           },
           preteriteRegular: j['preterite_regular'] as bool?,
+          imperfect: _forms(j['imperfect']),
+          imperfectRegular: j['imperfect_regular'] as bool?,
+          conditional: _forms(j['conditional']),
+          conditionalRegular: j['conditional_regular'] as bool?,
+          subjunctive: _forms(j['subjunctive']),
+          subjunctiveRegular: j['subjunctive_regular'] as bool?,
           noteAr: j['note_ar'] as String? ?? '',
           examples: [
             for (final e in j['examples'] as List? ?? const [])

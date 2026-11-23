@@ -227,6 +227,16 @@ abstract final class CanDoEvidence {
     return correct >= threshold * relevant.length;
   }
 
+  /// Whether [attempt] is a pass: it holds answers and **every** can-do it
+  /// measures is [met]. The can-dos come from the stored answers, so an
+  /// attempt keeps its verdict after the assessment's questions change.
+  /// Used by level gates (B1 opens after passing `lvl_a2`).
+  static bool passed(AttemptRecord attempt) {
+    if (attempt.answers.isEmpty) return false;
+    final canDos = {for (final a in attempt.answers) a.canDoId};
+    return canDos.every((c) => met(c, attempt));
+  }
+
   /// [attempts] are the attempts at the assessment that defines [canDoId].
   static CanDoState state(String canDoId, List<AttemptRecord> attempts) {
     final covering =

@@ -7,6 +7,7 @@ import '../../core/learning/daily_planner.dart';
 import '../../core/learning/progress_repository.dart';
 import '../../core/providers.dart';
 import '../../core/widgets/common.dart';
+import '../assessment/level_gate_card.dart';
 import '../library/vocab_sheet.dart';
 
 const _kindIcons = {
@@ -64,7 +65,19 @@ class HomeScreen extends ConsumerWidget {
             now.toLocal().month,
             now.toLocal().day,
           ).toUtc().millisecondsSinceEpoch;
-          final next = ProgressRepository.nextLesson(pack, progress);
+          final gates = ref.watch(levelGatesProvider);
+          final next = ProgressRepository.nextLesson(
+            pack,
+            progress,
+            gates: gates,
+          );
+          // The next lesson exists but its level waits for a level test.
+          final gated = next == null
+              ? ProgressRepository.gatedLesson(pack, progress, gates: gates)
+              : null;
+          final gateTest = gated == null
+              ? null
+              : pack.assessment(gates.requiredAssessment(gated.levelId)!);
           final completed = pack.orderedLessons
               .where((l) => ProgressRepository.isCompleted(progress[l.id]))
               .toList();
@@ -209,6 +222,8 @@ class HomeScreen extends ConsumerWidget {
                             ? () => context.push('/review')
                             : next != null
                             ? () => context.push('/lesson/${next.id}')
+                            : gateTest != null
+                            ? () => context.push('/assessment/${gateTest.id}')
                             : () => context.go('/practice'),
                         icon: const Icon(Icons.play_arrow_rounded),
                         label: Text(
@@ -218,6 +233,8 @@ class HomeScreen extends ConsumerWidget {
                               ? (completed.isEmpty
                                     ? 'ابدأ درسك الأول'
                                     : 'تابع التعلّم')
+                              : gateTest != null
+                              ? 'خُض «${gateTest.titleAr}»'
                               : 'تدرّب على ما تعلّمته',
                         ),
                       ),
@@ -225,6 +242,9 @@ class HomeScreen extends ConsumerWidget {
                   ],
                 ),
               ),
+
+              if (gated != null)
+                LevelGateCard(level: pack.level(gated.levelId)!),
 
               // ---- today's plan -----------------------------------------
               const SectionTitle('خطة اليوم'),

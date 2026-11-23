@@ -123,7 +123,14 @@ void main() {
     test('lesson 38 opens only after the last A2-U1 lesson', () {
       final first = pack.lesson('a2_u2_l1')!;
       final before = <String, LessonProgressData>{};
-      expect(ProgressRepository.isUnlocked(first, before), isFalse);
+      expect(
+        ProgressRepository.isUnlocked(
+          first,
+          before,
+          gates: LevelGates.from(pack, const []),
+        ),
+        isFalse,
+      );
       final done = {
         for (final l in pack.orderedLessons.takeWhile((l) => l.id != first.id))
           l.id: LessonProgressData(
@@ -136,8 +143,22 @@ void main() {
             contentVersion: pack.version,
           ),
       };
-      expect(ProgressRepository.isUnlocked(first, done), isTrue);
-      expect(ProgressRepository.nextLesson(pack, done)?.id, first.id);
+      expect(
+        ProgressRepository.isUnlocked(
+          first,
+          done,
+          gates: LevelGates.from(pack, const []),
+        ),
+        isTrue,
+      );
+      expect(
+        ProgressRepository.nextLesson(
+          pack,
+          done,
+          gates: LevelGates.from(pack, const []),
+        )?.id,
+        first.id,
+      );
     });
   });
 
