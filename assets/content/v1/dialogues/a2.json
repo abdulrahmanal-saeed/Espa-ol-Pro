@@ -514,6 +514,496 @@
     }
    ],
    "source": "original-v1"
+  },
+  {
+   "id": "dlg_a2_finde",
+   "level": "a2",
+   "unit": "a2_u2",
+   "lessons": [
+    "a2_u2_l1",
+    "a2_u2_l2"
+   ],
+   "title_es": "El fin de semana",
+   "title_ar": "عطلة نهاية الأسبوع",
+   "scenario_ar": "صباح الاثنين في المكتب: لوثيا وعمر يتحدّثان عن عطلتهما.",
+   "objectives_ar": [
+    "فهم أحداث منتهية في الماضي",
+    "فهم ترتيب الأحداث",
+    "التمييز بين ما فعله كل شخص"
+   ],
+   "speakers": [
+    {
+     "id": "lucia",
+     "name": "Lucía",
+     "role_ar": "زميلة"
+    },
+    {
+     "id": "omar",
+     "name": "Omar",
+     "role_ar": "زميل"
+    }
+   ],
+   "turns": [
+    {
+     "id": "dlg_a2_finde.t1",
+     "speaker": "lucia",
+     "es": "Hola, Omar. ¿Saliste el fin de semana?",
+     "ar": "أهلاً عمر. هل خرجتَ في عطلة نهاية الأسبوع؟",
+     "en": "Hi, Omar. Did you go out at the weekend?"
+    },
+    {
+     "id": "dlg_a2_finde.t2",
+     "speaker": "omar",
+     "es": "Sí, el sábado salí con mi familia. Primero comimos en un restaurante.",
+     "ar": "نعم، يوم السبت خرجتُ مع عائلتي. أولاً أكلنا في مطعم.",
+     "en": "Yes, on Saturday I went out with my family. First we ate at a restaurant."
+    },
+    {
+     "id": "dlg_a2_finde.t3",
+     "speaker": "lucia",
+     "es": "¿Y después?",
+     "ar": "وبعد ذلك؟",
+     "en": "And then?"
+    },
+    {
+     "id": "dlg_a2_finde.t4",
+     "speaker": "omar",
+     "es": "Después visitamos a mis padres y al final volvimos a casa.",
+     "ar": "بعد ذلك زرنا والديّ، وفي النهاية رجعنا إلى البيت.",
+     "en": "Then we visited my parents and in the end we went back home."
+    },
+    {
+     "id": "dlg_a2_finde.t5",
+     "speaker": "omar",
+     "es": "¿Y tú, Lucía?",
+     "ar": "وأنتِ يا لوثيا؟",
+     "en": "And you, Lucía?"
+    },
+    {
+     "id": "dlg_a2_finde.t6",
+     "speaker": "lucia",
+     "es": "Yo trabajé el sábado y el domingo descansé en casa.",
+     "ar": "أنا عملتُ يوم السبت، ويوم الأحد استرحتُ في البيت.",
+     "en": "I worked on Saturday and on Sunday I rested at home."
+    },
+    {
+     "id": "dlg_a2_finde.t7",
+     "speaker": "omar",
+     "es": "¿Trabajaste el sábado?",
+     "ar": "هل عملتِ يوم السبت؟",
+     "en": "You worked on Saturday?"
+    },
+    {
+     "id": "dlg_a2_finde.t8",
+     "speaker": "lucia",
+     "es": "Sí, terminé un informe para el lunes.",
+     "ar": "نعم، أنهيتُ تقريراً ليوم الاثنين.",
+     "en": "Yes, I finished a report for Monday."
+    }
+   ],
+   "items": [
+    "fin_de_semana",
+    "sali",
+    "primero",
+    "comimos",
+    "despues",
+    "al_final",
+    "trabaje",
+    "descanse",
+    "termine",
+    "familia",
+    "padres"
+   ],
+   "grammar": [
+    "g_pret_ar",
+    "g_pret_er_ir",
+    "g_sequence"
+   ],
+   "questions": [
+    {
+     "type": "choice",
+     "prompt_ar": "مع من خرج عمر يوم السبت؟",
+     "choices": [
+      "مع عائلته",
+      "مع أصدقائه",
+      "مع لوثيا"
+     ],
+     "answer": 0,
+     "choices_es": false,
+     "turn": "dlg_a2_finde.t2",
+     "id": "dlg_a2_finde.q1",
+     "skill": "listening"
+    },
+    {
+     "type": "choice",
+     "prompt_ar": "ماذا فعلوا في النهاية؟",
+     "choices": [
+      "رجعوا إلى البيت",
+      "زاروا والديه",
+      "أكلوا في مطعم"
+     ],
+     "answer": 0,
+     "choices_es": false,
+     "turn": "dlg_a2_finde.t4",
+     "id": "dlg_a2_finde.q2",
+     "skill": "listening"
+    },
+    {
+     "type": "choice",
+     "prompt_ar": "ماذا فعلت لوثيا يوم الأحد؟",
+     "choices": [
+      "استراحت في البيت",
+      "عملت",
+      "خرجت مع عائلتها"
+     ],
+     "answer": 0,
+     "choices_es": false,
+     "turn": "dlg_a2_finde.t6",
+     "id": "dlg_a2_finde.q3",
+     "skill": "listening"
+    },
+    {
+     "type": "speaker",
+     "turn": "dlg_a2_finde.t7",
+     "id": "dlg_a2_finde.q4",
+     "skill": "listening"
+    },
+    {
+     "type": "dictation",
+     "turn": "dlg_a2_finde.t6",
+     "id": "dlg_a2_finde.q5",
+     "skill": "listening"
+    }
+   ],
+   "source": "original-v1"
+  },
+  {
+   "id": "dlg_a2_jornada",
+   "level": "a2",
+   "unit": "a2_u2",
+   "lessons": [
+    "a2_u2_l3"
+   ],
+   "title_es": "¿Qué tal el día?",
+   "title_ar": "كيف كان اليوم؟",
+   "scenario_ar": "في آخر اليوم، المديرة لاورا تسأل كريم عمّا أنجزه.",
+   "objectives_ar": [
+    "فهم مهام انتهت ومهام لم تنتهِ",
+    "فهم ya وtodavía no",
+    "فهم الوقت في تحديث عمل"
+   ],
+   "speakers": [
+    {
+     "id": "laura",
+     "name": "Laura",
+     "role_ar": "مديرة الفريق"
+    },
+    {
+     "id": "karim",
+     "name": "Karim",
+     "role_ar": "موظف"
+    }
+   ],
+   "turns": [
+    {
+     "id": "dlg_a2_jornada.t1",
+     "speaker": "laura",
+     "es": "Hola, Karim. ¿Terminaste el informe?",
+     "ar": "أهلاً كريم. هل أنهيتَ التقرير؟",
+     "en": "Hi, Karim. Did you finish the report?"
+    },
+    {
+     "id": "dlg_a2_jornada.t2",
+     "speaker": "karim",
+     "es": "Todavía no. Esta mañana llegué tarde a la oficina.",
+     "ar": "ليس بعد. هذا الصباح وصلتُ متأخراً إلى المكتب.",
+     "en": "Not yet. This morning I got to the office late."
+    },
+    {
+     "id": "dlg_a2_jornada.t3",
+     "speaker": "laura",
+     "es": "¿Y la presentación para el cliente?",
+     "ar": "والعرض التقديمي للعميل؟",
+     "en": "And the presentation for the client?"
+    },
+    {
+     "id": "dlg_a2_jornada.t4",
+     "speaker": "karim",
+     "es": "Ya la preparé. También revisé el contrato.",
+     "ar": "أعددتُه بالفعل. وراجعتُ العقد أيضاً.",
+     "en": "I've already prepared it. I also checked the contract."
+    },
+    {
+     "id": "dlg_a2_jornada.t5",
+     "speaker": "laura",
+     "es": "Muy bien. ¿Enviaste la factura?",
+     "ar": "ممتاز. هل أرسلتَ الفاتورة؟",
+     "en": "Very good. Did you send the invoice?"
+    },
+    {
+     "id": "dlg_a2_jornada.t6",
+     "speaker": "karim",
+     "es": "Sí, la envié a las doce.",
+     "ar": "نعم، أرسلتُها في الثانية عشرة.",
+     "en": "Yes, I sent it at twelve."
+    },
+    {
+     "id": "dlg_a2_jornada.t7",
+     "speaker": "laura",
+     "es": "Perfecto. Nos vemos mañana.",
+     "ar": "ممتاز. نراك غداً.",
+     "en": "Perfect. See you tomorrow."
+    }
+   ],
+   "items": [
+    "termine",
+    "todavia_no",
+    "esta_manana",
+    "llegue",
+    "ya",
+    "prepare",
+    "revise",
+    "envie",
+    "perfecto",
+    "nos_vemos"
+   ],
+   "grammar": [
+    "g_pret_spelling",
+    "g_ya_todavia"
+   ],
+   "questions": [
+    {
+     "type": "choice",
+     "prompt_ar": "ماذا حدث هذا الصباح؟",
+     "choices": [
+      "وصل كريم متأخراً",
+      "وصل كريم مبكراً",
+      "لم يأتِ كريم"
+     ],
+     "answer": 0,
+     "choices_es": false,
+     "turn": "dlg_a2_jornada.t2",
+     "id": "dlg_a2_jornada.q1",
+     "skill": "listening"
+    },
+    {
+     "type": "choice",
+     "prompt_ar": "ماذا فعل كريم أيضاً؟",
+     "choices": [
+      "راجع العقد",
+      "أرسل العقد",
+      "أنهى التقرير"
+     ],
+     "answer": 0,
+     "choices_es": false,
+     "turn": "dlg_a2_jornada.t4",
+     "id": "dlg_a2_jornada.q2",
+     "skill": "listening"
+    },
+    {
+     "type": "choice",
+     "prompt_ar": "متى أرسل الفاتورة؟",
+     "choices": [
+      "في الثانية عشرة",
+      "في العاشرة",
+      "لم يرسلها بعد"
+     ],
+     "answer": 0,
+     "choices_es": false,
+     "turn": "dlg_a2_jornada.t6",
+     "id": "dlg_a2_jornada.q3",
+     "skill": "listening"
+    },
+    {
+     "type": "speaker",
+     "turn": "dlg_a2_jornada.t5",
+     "id": "dlg_a2_jornada.q4",
+     "skill": "listening"
+    },
+    {
+     "type": "dictation",
+     "turn": "dlg_a2_jornada.t4",
+     "id": "dlg_a2_jornada.q5",
+     "skill": "listening"
+    }
+   ],
+   "source": "original-v1"
+  },
+  {
+   "id": "dlg_a2_viaje",
+   "level": "a2",
+   "unit": "a2_u2",
+   "lessons": [
+    "a2_u2_l4",
+    "a2_u2_l5"
+   ],
+   "title_es": "El viaje a Bogotá",
+   "title_ar": "الرحلة إلى بوغوتا",
+   "scenario_ar": "آنا رجعت من رحلة عمل، ومديرها بيدرو يسألها عن الرحلة وعن مشكلة العميل.",
+   "objectives_ar": [
+    "فهم وصف رحلة بالأفعال الشاذّة",
+    "فهم مشكلة عميل وحلّها",
+    "فهم ترتيب ما حدث"
+   ],
+   "speakers": [
+    {
+     "id": "pedro",
+     "name": "Pedro",
+     "role_ar": "المدير"
+    },
+    {
+     "id": "ana",
+     "name": "Ana",
+     "role_ar": "مسؤولة المبيعات"
+    }
+   ],
+   "turns": [
+    {
+     "id": "dlg_a2_viaje.t1",
+     "speaker": "pedro",
+     "es": "Hola, Ana. ¿Cómo fue el viaje?",
+     "ar": "أهلاً آنا. كيف كانت الرحلة؟",
+     "en": "Hi, Ana. How was the trip?"
+    },
+    {
+     "id": "dlg_a2_viaje.t2",
+     "speaker": "ana",
+     "es": "Fue muy bueno, pero el vuelo llegó tarde.",
+     "ar": "كانت جيدة جداً، لكن الرحلة الجوية وصلت متأخرة.",
+     "en": "It was very good, but the flight arrived late."
+    },
+    {
+     "id": "dlg_a2_viaje.t3",
+     "speaker": "pedro",
+     "es": "¿Y qué hiciste en Bogotá?",
+     "ar": "وماذا فعلتِ في بوغوتا؟",
+     "en": "And what did you do in Bogotá?"
+    },
+    {
+     "id": "dlg_a2_viaje.t4",
+     "speaker": "ana",
+     "es": "El martes hice la presentación para el cliente.",
+     "ar": "يوم الثلاثاء قدّمتُ العرض للعميل.",
+     "en": "On Tuesday I gave the presentation to the client."
+    },
+    {
+     "id": "dlg_a2_viaje.t5",
+     "speaker": "pedro",
+     "es": "¿Qué pasó con el pedido del cliente?",
+     "ar": "ماذا حدث مع طلب العميل؟",
+     "en": "What happened with the client's order?"
+    },
+    {
+     "id": "dlg_a2_viaje.t6",
+     "speaker": "ana",
+     "es": "El cliente se quejó, pero le expliqué el problema.",
+     "ar": "اشتكى العميل، لكنني شرحتُ له المشكلة.",
+     "en": "The client complained, but I explained the problem to him."
+    },
+    {
+     "id": "dlg_a2_viaje.t7",
+     "speaker": "pedro",
+     "es": "¿Y ahora?",
+     "ar": "والآن؟",
+     "en": "And now?"
+    },
+    {
+     "id": "dlg_a2_viaje.t8",
+     "speaker": "ana",
+     "es": "Al día siguiente le escribí un correo de seguimiento. Ahora todo funciona bien.",
+     "ar": "في اليوم التالي كتبتُ له بريد متابعة. الآن كل شيء يعمل جيداً.",
+     "en": "The next day I wrote him a follow-up email. Now everything works fine."
+    }
+   ],
+   "items": [
+    "fue",
+    "vuelo",
+    "hice",
+    "que_paso",
+    "pedido",
+    "se_quejo",
+    "explique",
+    "problema",
+    "al_dia_siguiente",
+    "le_escribi",
+    "seguimiento",
+    "ahora_funciona"
+   ],
+   "grammar": [
+    "g_pret_irregular",
+    "g_past_vs_present"
+   ],
+   "questions": [
+    {
+     "type": "choice",
+     "prompt_ar": "ما المشكلة في الرحلة؟",
+     "choices": [
+      "الرحلة الجوية وصلت متأخرة",
+      "الفندق كان سيئاً",
+      "ضاع جواز السفر"
+     ],
+     "answer": 0,
+     "choices_es": false,
+     "turn": "dlg_a2_viaje.t2",
+     "id": "dlg_a2_viaje.q1",
+     "skill": "listening"
+    },
+    {
+     "type": "choice",
+     "prompt_ar": "ماذا فعلت آنا يوم الثلاثاء؟",
+     "choices": [
+      "قدّمت العرض للعميل",
+      "زارت المدينة",
+      "رجعت إلى مدريد"
+     ],
+     "answer": 0,
+     "choices_es": false,
+     "turn": "dlg_a2_viaje.t4",
+     "id": "dlg_a2_viaje.q2",
+     "skill": "listening"
+    },
+    {
+     "type": "choice",
+     "prompt_ar": "ماذا فعل العميل؟",
+     "choices": [
+      "اشتكى",
+      "ألغى الطلب",
+      "دفع الفاتورة"
+     ],
+     "answer": 0,
+     "choices_es": false,
+     "turn": "dlg_a2_viaje.t6",
+     "id": "dlg_a2_viaje.q3",
+     "skill": "listening"
+    },
+    {
+     "type": "choice",
+     "prompt_ar": "ماذا فعلت آنا في اليوم التالي؟",
+     "choices": [
+      "كتبت بريد متابعة",
+      "اتصلت بالعميل",
+      "سافرت"
+     ],
+     "answer": 0,
+     "choices_es": false,
+     "turn": "dlg_a2_viaje.t8",
+     "id": "dlg_a2_viaje.q4",
+     "skill": "listening"
+    },
+    {
+     "type": "speaker",
+     "turn": "dlg_a2_viaje.t5",
+     "id": "dlg_a2_viaje.q5",
+     "skill": "listening"
+    },
+    {
+     "type": "dictation",
+     "turn": "dlg_a2_viaje.t2",
+     "id": "dlg_a2_viaje.q6",
+     "skill": "listening"
+    }
+   ],
+   "source": "original-v1"
   }
  ]
 }

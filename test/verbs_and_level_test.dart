@@ -137,7 +137,18 @@ void main() {
           reason: p,
         );
       }
-      expect(find.text('hablamos'), findsOneWidget);
+      // Present and past tables (content ≥ 1.6.0). nosotros is the same
+      // form in both tenses, so it appears twice.
+      for (final p in Verb.persons) {
+        expect(
+          find.byKey(ValueKey('verb-past-hablar-$p')),
+          findsOneWidget,
+          reason: p,
+        );
+      }
+      expect(find.text('hablé'), findsOneWidget);
+      expect(find.text('habló'), findsOneWidget);
+      expect(find.text('hablamos'), findsNWidgets(2));
       await tester.tapSettled(
         find.descendant(
           of: find.byKey(const ValueKey('verb-hablar')),

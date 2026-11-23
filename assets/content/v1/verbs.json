@@ -14,7 +14,8 @@
     "ellos": "son"
    },
    "lessons": [
-    "pa1_u3_l3"
+    "pa1_u3_l3",
+    "a2_u2_l4"
    ],
    "examples": [
     {
@@ -22,7 +23,15 @@
      "ar": "أنا مصري. نحن فريق صغير."
     }
    ],
-   "note_ar": "للهوية والمهنة والجنسية والصفة الدائمة. للمكان استعمل estar."
+   "note_ar": "للهوية والمهنة والجنسية والصفة الدائمة. للمكان استعمل estar.",
+   "preterite": {
+    "yo": "fui",
+    "tu": "fuiste",
+    "el": "fue",
+    "nosotros": "fuimos",
+    "vosotros": "fuisteis",
+    "ellos": "fueron"
+   }
   },
   {
    "id": "estar",
@@ -46,7 +55,15 @@
      "ar": "أنا في المكتب. أين حضراتكم؟"
     }
    ],
-   "note_ar": "للمكان والحال الآن. انتبه للعلامات: estás، está، están."
+   "note_ar": "للمكان والحال الآن. انتبه للعلامات: estás، está، están.",
+   "preterite": {
+    "yo": "estuve",
+    "tu": "estuviste",
+    "el": "estuvo",
+    "nosotros": "estuvimos",
+    "vosotros": "estuvisteis",
+    "ellos": "estuvieron"
+   }
   },
   {
    "id": "tener",
@@ -63,7 +80,8 @@
    },
    "lessons": [
     "a1_u2_l1",
-    "a2_u1_l2"
+    "a2_u1_l2",
+    "a2_u2_l4"
    ],
    "examples": [
     {
@@ -71,7 +89,15 @@
      "ar": "عمري ثلاثون سنة. عندنا اجتماع."
     }
    ],
-   "note_ar": "شاذّ: tengo، وتغيّر e ← ie في tienes / tiene / tienen. ويُستعمل للعمر."
+   "note_ar": "شاذّ: tengo، وتغيّر e ← ie في tienes / tiene / tienen. ويُستعمل للعمر.",
+   "preterite": {
+    "yo": "tuve",
+    "tu": "tuviste",
+    "el": "tuvo",
+    "nosotros": "tuvimos",
+    "vosotros": "tuvisteis",
+    "ellos": "tuvieron"
+   }
   },
   {
    "id": "ir",
@@ -87,7 +113,8 @@
     "ellos": "van"
    },
    "lessons": [
-    "a1_u5_l3"
+    "a1_u5_l3",
+    "a2_u2_l4"
    ],
    "examples": [
     {
@@ -95,7 +122,15 @@
      "ar": "أذهب إلى المكتب. سنرسل التقرير."
     }
    ],
-   "note_ar": "شاذّ تماماً. ir a + مصدر = المستقبل القريب."
+   "note_ar": "شاذّ تماماً. ir a + مصدر = المستقبل القريب.",
+   "preterite": {
+    "yo": "fui",
+    "tu": "fuiste",
+    "el": "fue",
+    "nosotros": "fuimos",
+    "vosotros": "fuisteis",
+    "ellos": "fueron"
+   }
   },
   {
    "id": "querer",
@@ -119,7 +154,15 @@
      "ar": "أريد قهوة. ماذا تريدون حضراتكم؟"
     }
    ],
-   "note_ar": "تغيّر الجذر e ← ie إلا مع nosotros وvosotros."
+   "note_ar": "تغيّر الجذر e ← ie إلا مع nosotros وvosotros.",
+   "preterite": {
+    "yo": "quise",
+    "tu": "quisiste",
+    "el": "quiso",
+    "nosotros": "quisimos",
+    "vosotros": "quisisteis",
+    "ellos": "quisieron"
+   }
   },
   {
    "id": "poder",
@@ -144,7 +187,15 @@
      "ar": "هل أستطيع الدفع بالبطاقة؟"
     }
    ],
-   "note_ar": "تغيّر الجذر o ← ue إلا مع nosotros وvosotros."
+   "note_ar": "تغيّر الجذر o ← ue إلا مع nosotros وvosotros.",
+   "preterite": {
+    "yo": "pude",
+    "tu": "pudiste",
+    "el": "pudo",
+    "nosotros": "pudimos",
+    "vosotros": "pudisteis",
+    "ellos": "pudieron"
+   }
   },
   {
    "id": "hablar",
@@ -160,7 +211,8 @@
     "ellos": "hablan"
    },
    "lessons": [
-    "a1_u1_l1"
+    "a1_u1_l1",
+    "a2_u2_l1"
    ],
    "examples": [
     {
@@ -168,7 +220,15 @@
      "ar": "نتكلم العربية والإنجليزية."
     }
    ],
-   "note_ar": "النموذج المنتظم لأفعال ‎-ar."
+   "note_ar": "النموذج المنتظم لأفعال ‎-ar.",
+   "preterite": {
+    "yo": "hablé",
+    "tu": "hablaste",
+    "el": "habló",
+    "nosotros": "hablamos",
+    "vosotros": "hablasteis",
+    "ellos": "hablaron"
+   }
   },
   {
    "id": "trabajar",
@@ -184,14 +244,23 @@
     "ellos": "trabajan"
    },
    "lessons": [
-    "a1_u1_l2"
+    "a1_u1_l2",
+    "a2_u2_l1"
    ],
    "examples": [
     {
      "es": "Trabajan en una empresa de tecnología.",
      "ar": "يعملون في شركة تقنية."
     }
-   ]
+   ],
+   "preterite": {
+    "yo": "trabajé",
+    "tu": "trabajaste",
+    "el": "trabajó",
+    "nosotros": "trabajamos",
+    "vosotros": "trabajasteis",
+    "ellos": "trabajaron"
+   }
   },
   {
    "id": "llegar",
@@ -207,14 +276,23 @@
     "ellos": "llegan"
    },
    "lessons": [
-    "a1_u3_l3"
+    "a1_u3_l3",
+    "a2_u2_l3"
    ],
    "examples": [
     {
      "es": "Llego a la oficina a las ocho.",
      "ar": "أصل إلى المكتب في الثامنة."
     }
-   ]
+   ],
+   "preterite": {
+    "yo": "llegué",
+    "tu": "llegaste",
+    "el": "llegó",
+    "nosotros": "llegamos",
+    "vosotros": "llegasteis",
+    "ellos": "llegaron"
+   }
   },
   {
    "id": "terminar",
@@ -230,14 +308,23 @@
     "ellos": "terminan"
    },
    "lessons": [
-    "a1_u3_l3"
+    "a1_u3_l3",
+    "a2_u2_l1"
    ],
    "examples": [
     {
      "es": "Terminamos el proyecto el viernes.",
      "ar": "ننهي المشروع يوم الجمعة."
     }
-   ]
+   ],
+   "preterite": {
+    "yo": "terminé",
+    "tu": "terminaste",
+    "el": "terminó",
+    "nosotros": "terminamos",
+    "vosotros": "terminasteis",
+    "ellos": "terminaron"
+   }
   },
   {
    "id": "necesitar",
@@ -260,7 +347,15 @@
      "es": "Necesitamos una factura.",
      "ar": "نحتاج فاتورة."
     }
-   ]
+   ],
+   "preterite": {
+    "yo": "necesité",
+    "tu": "necesitaste",
+    "el": "necesitó",
+    "nosotros": "necesitamos",
+    "vosotros": "necesitasteis",
+    "ellos": "necesitaron"
+   }
   },
   {
    "id": "llamar",
@@ -276,14 +371,23 @@
     "ellos": "llaman"
    },
    "lessons": [
-    "a1_u6_l4"
+    "a1_u6_l4",
+    "a2_u2_l1"
    ],
    "examples": [
     {
      "es": "Llamo al cliente más tarde.",
      "ar": "أتصل بالعميل لاحقاً."
     }
-   ]
+   ],
+   "preterite": {
+    "yo": "llamé",
+    "tu": "llamaste",
+    "el": "llamó",
+    "nosotros": "llamamos",
+    "vosotros": "llamasteis",
+    "ellos": "llamaron"
+   }
   },
   {
    "id": "revisar",
@@ -299,14 +403,23 @@
     "ellos": "revisan"
    },
    "lessons": [
-    "a1_u6_l3"
+    "a1_u6_l3",
+    "a2_u2_l3"
    ],
    "examples": [
     {
      "es": "Reviso los correos por la mañana.",
      "ar": "أراجع البريد صباحاً."
     }
-   ]
+   ],
+   "preterite": {
+    "yo": "revisé",
+    "tu": "revisaste",
+    "el": "revisó",
+    "nosotros": "revisamos",
+    "vosotros": "revisasteis",
+    "ellos": "revisaron"
+   }
   },
   {
    "id": "comer",
@@ -322,7 +435,8 @@
     "ellos": "comen"
    },
    "lessons": [
-    "a1_u3_l3"
+    "a1_u3_l3",
+    "a2_u2_l2"
    ],
    "examples": [
     {
@@ -330,7 +444,15 @@
      "ar": "نتغدّى في الثانية."
     }
    ],
-   "note_ar": "النموذج المنتظم لأفعال ‎-er."
+   "note_ar": "النموذج المنتظم لأفعال ‎-er.",
+   "preterite": {
+    "yo": "comí",
+    "tu": "comiste",
+    "el": "comió",
+    "nosotros": "comimos",
+    "vosotros": "comisteis",
+    "ellos": "comieron"
+   }
   },
   {
    "id": "vivir",
@@ -354,7 +476,15 @@
      "ar": "والداي يعيشان في القاهرة."
     }
    ],
-   "note_ar": "النموذج المنتظم لأفعال ‎-ir."
+   "note_ar": "النموذج المنتظم لأفعال ‎-ir.",
+   "preterite": {
+    "yo": "viví",
+    "tu": "viviste",
+    "el": "vivió",
+    "nosotros": "vivimos",
+    "vosotros": "vivisteis",
+    "ellos": "vivieron"
+   }
   },
   {
    "id": "enviar",
@@ -370,7 +500,8 @@
     "ellos": "envían"
    },
    "lessons": [
-    "a1_u6_l3"
+    "a1_u6_l3",
+    "a2_u2_l3"
    ],
    "examples": [
     {
@@ -378,7 +509,16 @@
      "ar": "أرسل التقرير اليوم."
     }
    ],
-   "note_ar": "النهايات منتظمة، لكن تُضاف علامة على í في المفرد ومع ellos: envío، envías، envía، envían."
+   "note_ar": "النهايات منتظمة، لكن تُضاف علامة على í في المفرد ومع ellos: envío، envías، envía، envían.",
+   "preterite": {
+    "yo": "envié",
+    "tu": "enviaste",
+    "el": "envió",
+    "nosotros": "enviamos",
+    "vosotros": "enviasteis",
+    "ellos": "enviaron"
+   },
+   "preterite_regular": true
   },
   {
    "id": "abrir",
@@ -401,7 +541,15 @@
      "es": "El banco abre a las nueve.",
      "ar": "يفتح البنك في التاسعة."
     }
-   ]
+   ],
+   "preterite": {
+    "yo": "abrí",
+    "tu": "abriste",
+    "el": "abrió",
+    "nosotros": "abrimos",
+    "vosotros": "abristeis",
+    "ellos": "abrieron"
+   }
   },
   {
    "id": "sacar",
@@ -424,7 +572,15 @@
      "es": "Saco dinero en el cajero.",
      "ar": "أسحب نقوداً من الصرّاف."
     }
-   ]
+   ],
+   "preterite": {
+    "yo": "saqué",
+    "tu": "sacaste",
+    "el": "sacó",
+    "nosotros": "sacamos",
+    "vosotros": "sacasteis",
+    "ellos": "sacaron"
+   }
   },
   {
    "id": "arreglar",
@@ -447,7 +603,15 @@
      "es": "El técnico arregla el ordenador.",
      "ar": "الفنّي يصلح الحاسوب."
     }
-   ]
+   ],
+   "preterite": {
+    "yo": "arreglé",
+    "tu": "arreglaste",
+    "el": "arregló",
+    "nosotros": "arreglamos",
+    "vosotros": "arreglasteis",
+    "ellos": "arreglaron"
+   }
   },
   {
    "id": "cobrar",
@@ -470,7 +634,15 @@
      "es": "¿Cuánto cobra usted?",
      "ar": "كم تتقاضى؟"
     }
-   ]
+   ],
+   "preterite": {
+    "yo": "cobré",
+    "tu": "cobraste",
+    "el": "cobró",
+    "nosotros": "cobramos",
+    "vosotros": "cobrasteis",
+    "ellos": "cobraron"
+   }
   },
   {
    "id": "devolver",
@@ -494,7 +666,16 @@
      "ar": "نعيد لك المال."
     }
    ],
-   "note_ar": "o ← ue في كل الصيغ عدا nosotros وvosotros، مثل poder."
+   "note_ar": "o ← ue في كل الصيغ عدا nosotros وvosotros، مثل poder.",
+   "preterite": {
+    "yo": "devolví",
+    "tu": "devolviste",
+    "el": "devolvió",
+    "nosotros": "devolvimos",
+    "vosotros": "devolvisteis",
+    "ellos": "devolvieron"
+   },
+   "preterite_regular": true
   },
   {
    "id": "comprobar",
@@ -518,7 +699,334 @@
      "ar": "أتحقّق منه حالاً."
     }
    ],
-   "note_ar": "o ← ue في كل الصيغ عدا nosotros وvosotros، مثل poder."
+   "note_ar": "o ← ue في كل الصيغ عدا nosotros وvosotros، مثل poder.",
+   "preterite": {
+    "yo": "comprobé",
+    "tu": "comprobaste",
+    "el": "comprobó",
+    "nosotros": "comprobamos",
+    "vosotros": "comprobasteis",
+    "ellos": "comprobaron"
+   },
+   "preterite_regular": true
+  },
+  {
+   "id": "hacer",
+   "infinitive": "hacer",
+   "ar": "يفعل / يصنع",
+   "regular": false,
+   "present": {
+    "yo": "hago",
+    "tu": "haces",
+    "el": "hace",
+    "nosotros": "hacemos",
+    "vosotros": "hacéis",
+    "ellos": "hacen"
+   },
+   "lessons": [
+    "a2_u2_l4"
+   ],
+   "examples": [
+    {
+     "es": "¿Qué hiciste ayer?",
+     "ar": "ماذا فعلتَ أمس؟"
+    }
+   ],
+   "note_ar": "شاذّ في الزمنين: hago في المضارع، وhice / hizo في الماضي (بلا علامة نبر).",
+   "preterite": {
+    "yo": "hice",
+    "tu": "hiciste",
+    "el": "hizo",
+    "nosotros": "hicimos",
+    "vosotros": "hicisteis",
+    "ellos": "hicieron"
+   }
+  },
+  {
+   "id": "salir",
+   "infinitive": "salir",
+   "ar": "يخرج",
+   "regular": false,
+   "present": {
+    "yo": "salgo",
+    "tu": "sales",
+    "el": "sale",
+    "nosotros": "salimos",
+    "vosotros": "salís",
+    "ellos": "salen"
+   },
+   "lessons": [
+    "a2_u2_l2"
+   ],
+   "examples": [
+    {
+     "es": "El sábado salí con mi familia.",
+     "ar": "يوم السبت خرجتُ مع عائلتي."
+    }
+   ],
+   "note_ar": "شاذّ مع yo في المضارع (salgo)، ومنتظم في الماضي: salí.",
+   "preterite": {
+    "yo": "salí",
+    "tu": "saliste",
+    "el": "salió",
+    "nosotros": "salimos",
+    "vosotros": "salisteis",
+    "ellos": "salieron"
+   },
+   "preterite_regular": true
+  },
+  {
+   "id": "volver",
+   "infinitive": "volver",
+   "ar": "يرجع",
+   "regular": false,
+   "present": {
+    "yo": "vuelvo",
+    "tu": "vuelves",
+    "el": "vuelve",
+    "nosotros": "volvemos",
+    "vosotros": "volvéis",
+    "ellos": "vuelven"
+   },
+   "lessons": [
+    "a2_u2_l2"
+   ],
+   "examples": [
+    {
+     "es": "Volví a casa a las diez.",
+     "ar": "رجعتُ إلى البيت في العاشرة."
+    }
+   ],
+   "note_ar": "o ← ue في المضارع، ومنتظم في الماضي: volví.",
+   "preterite": {
+    "yo": "volví",
+    "tu": "volviste",
+    "el": "volvió",
+    "nosotros": "volvimos",
+    "vosotros": "volvisteis",
+    "ellos": "volvieron"
+   },
+   "preterite_regular": true
+  },
+  {
+   "id": "visitar",
+   "infinitive": "visitar",
+   "ar": "يزور",
+   "regular": true,
+   "present": {
+    "yo": "visito",
+    "tu": "visitas",
+    "el": "visita",
+    "nosotros": "visitamos",
+    "vosotros": "visitáis",
+    "ellos": "visitan"
+   },
+   "lessons": [
+    "a2_u2_l2"
+   ],
+   "examples": [
+    {
+     "es": "Visité a mis padres.",
+     "ar": "زرتُ والديّ."
+    }
+   ],
+   "preterite": {
+    "yo": "visité",
+    "tu": "visitaste",
+    "el": "visitó",
+    "nosotros": "visitamos",
+    "vosotros": "visitasteis",
+    "ellos": "visitaron"
+   }
+  },
+  {
+   "id": "descansar",
+   "infinitive": "descansar",
+   "ar": "يستريح",
+   "regular": true,
+   "present": {
+    "yo": "descanso",
+    "tu": "descansas",
+    "el": "descansa",
+    "nosotros": "descansamos",
+    "vosotros": "descansáis",
+    "ellos": "descansan"
+   },
+   "lessons": [
+    "a2_u2_l2"
+   ],
+   "examples": [
+    {
+     "es": "El domingo descansé.",
+     "ar": "يوم الأحد استرحتُ."
+    }
+   ],
+   "preterite": {
+    "yo": "descansé",
+    "tu": "descansaste",
+    "el": "descansó",
+    "nosotros": "descansamos",
+    "vosotros": "descansasteis",
+    "ellos": "descansaron"
+   }
+  },
+  {
+   "id": "preparar",
+   "infinitive": "preparar",
+   "ar": "يُعدّ / يحضّر",
+   "regular": true,
+   "present": {
+    "yo": "preparo",
+    "tu": "preparas",
+    "el": "prepara",
+    "nosotros": "preparamos",
+    "vosotros": "preparáis",
+    "ellos": "preparan"
+   },
+   "lessons": [
+    "a2_u2_l3"
+   ],
+   "examples": [
+    {
+     "es": "Preparé la presentación.",
+     "ar": "أعددتُ العرض التقديمي."
+    }
+   ],
+   "preterite": {
+    "yo": "preparé",
+    "tu": "preparaste",
+    "el": "preparó",
+    "nosotros": "preparamos",
+    "vosotros": "preparasteis",
+    "ellos": "prepararon"
+   }
+  },
+  {
+   "id": "empezar",
+   "infinitive": "empezar",
+   "ar": "يبدأ",
+   "regular": false,
+   "present": {
+    "yo": "empiezo",
+    "tu": "empiezas",
+    "el": "empieza",
+    "nosotros": "empezamos",
+    "vosotros": "empezáis",
+    "ellos": "empiezan"
+   },
+   "lessons": [
+    "a2_u2_l3"
+   ],
+   "examples": [
+    {
+     "es": "Empecé a las nueve.",
+     "ar": "بدأتُ في التاسعة."
+    }
+   ],
+   "note_ar": "e ← ie في المضارع (empiezo). في الماضي منتظم، مع z ← c عند yo: empecé.",
+   "preterite": {
+    "yo": "empecé",
+    "tu": "empezaste",
+    "el": "empezó",
+    "nosotros": "empezamos",
+    "vosotros": "empezasteis",
+    "ellos": "empezaron"
+   },
+   "preterite_regular": true
+  },
+  {
+   "id": "explicar",
+   "infinitive": "explicar",
+   "ar": "يشرح",
+   "regular": true,
+   "present": {
+    "yo": "explico",
+    "tu": "explicas",
+    "el": "explica",
+    "nosotros": "explicamos",
+    "vosotros": "explicáis",
+    "ellos": "explican"
+   },
+   "lessons": [
+    "a2_u2_l5"
+   ],
+   "examples": [
+    {
+     "es": "Le expliqué el problema.",
+     "ar": "شرحتُ له المشكلة."
+    }
+   ],
+   "note_ar": "منتظم؛ في الماضي c ← qu عند yo: expliqué.",
+   "preterite": {
+    "yo": "expliqué",
+    "tu": "explicaste",
+    "el": "explicó",
+    "nosotros": "explicamos",
+    "vosotros": "explicasteis",
+    "ellos": "explicaron"
+   }
+  },
+  {
+   "id": "escribir",
+   "infinitive": "escribir",
+   "ar": "يكتب",
+   "regular": true,
+   "present": {
+    "yo": "escribo",
+    "tu": "escribes",
+    "el": "escribe",
+    "nosotros": "escribimos",
+    "vosotros": "escribís",
+    "ellos": "escriben"
+   },
+   "lessons": [
+    "a2_u2_l5"
+   ],
+   "examples": [
+    {
+     "es": "Le escribí un correo.",
+     "ar": "كتبتُ له بريداً."
+    }
+   ],
+   "preterite": {
+    "yo": "escribí",
+    "tu": "escribiste",
+    "el": "escribió",
+    "nosotros": "escribimos",
+    "vosotros": "escribisteis",
+    "ellos": "escribieron"
+   }
+  },
+  {
+   "id": "solucionar",
+   "infinitive": "solucionar",
+   "ar": "يحلّ",
+   "regular": true,
+   "present": {
+    "yo": "soluciono",
+    "tu": "solucionas",
+    "el": "soluciona",
+    "nosotros": "solucionamos",
+    "vosotros": "solucionáis",
+    "ellos": "solucionan"
+   },
+   "lessons": [
+    "a2_u2_l5"
+   ],
+   "examples": [
+    {
+     "es": "Solucioné el problema.",
+     "ar": "حللتُ المشكلة."
+    }
+   ],
+   "preterite": {
+    "yo": "solucioné",
+    "tu": "solucionaste",
+    "el": "solucionó",
+    "nosotros": "solucionamos",
+    "vosotros": "solucionasteis",
+    "ellos": "solucionaron"
+   }
   }
  ],
  "note_ar": "vosotros يُستعمل في إسبانيا للجمع غير الرسمي؛ وفي أمريكا اللاتينية يُستعمل ustedes لكل الجمع."

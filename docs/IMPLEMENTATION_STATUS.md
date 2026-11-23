@@ -144,6 +144,16 @@ detect it.
 | Path: a completed level stays expanded until its level assessment has been taken once, so starting A2 does not hide the A1 level assessment | `verbs_and_level_test` |
 | Checkpoint options (every unit checkpoint and level assessment, Pre-A1 to A2) are shown in a per-attempt shuffled order, stable within the attempt; grading by option text is unchanged (REVIEW-012 P1) | `assessment_order_test`, `assessment_flow_test` |
 
+## A2-U2 the past — what happened? (PR in review)
+
+| Area | Evidence |
+|---|---|
+| 5 lessons (38–42) after `a2_u1_l5`: -ar past, -er/-ir past + sequencing, yo spelling changes + ya/todavía no, irregular ir/ser·hacer·tener, past vs present in a client report; 46 items, 8 grammar notes; content 1.6.0 | `a2_u2_past_test`, `a2_units_test` (every lesson completed in the app) |
+| 3 dialogues, each within difficulty limits right after its lessons | `a2_u2_past_test`, `difficulty_test` |
+| Checkpoint `chk_a2_u2`: 12 questions, 3 can-dos, 5 skills, shuffled options, scores persist across reopen and retry | `a2_u2_past_test`, `assessment_order_test` |
+| Verb reference: optional, backward-compatible past tense; all 32 verbs (10 new) with six past forms; regular pasts machine-checked including saqué / llegué / empecé; past table in Library → الأفعال | `a2_u2_past_test`, `verbs_and_level_test` |
+| Evaluator: a missing final é/ó accent in words of 5+ letters (habló, trabajé, envió) is a different form, not a slip; short words unchanged (café) | `a2_u2_past_test`, `answer_evaluator_test` |
+
 ## Android build and runtime
 
 - The [code commit's CI run](https://github.com/abdulrahmanal-saeed/Espa-ol-Pro/actions/runs/43900871431)
@@ -175,7 +185,7 @@ detect it.
   pronunciation assessment. Listen-and-repeat is self-practice and never scored.
 - CEFR level estimates and the A1 level assessment (unit checkpoints exist; they are practice evidence, not certification).
 - Verb conjugation reference, stories.
-- Interview coach, work missions, A2-U2 to A2-U5, the A2 level assessment, and all B1–C2 lessons.
+- Interview coach, work missions, A2-U3 to A2-U5, the A2 level assessment, and all B1–C2 lessons.
 - Cloud sync. AI usage budget controls (nothing to budget yet).
 - Native-speaker review of content.
 

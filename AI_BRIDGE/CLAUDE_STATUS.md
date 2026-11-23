@@ -3,6 +3,235 @@
 owner: Claude Code
 implementer: Claude Code
 handoff_status: READY_FOR_REVIEW
+handoff_id: PHASE3-003
+updated_at_utc: 2026-11-17T21:00:00Z
+review_requested_for_sha: b8d4d17 (application code 7bfbae6, on 10ac581 and 86dff95)
+branch: feat/a2-u2-past
+pull_request: https://github.com/abdulrahmanal-saeed/Espa-ol-Pro/pull/13
+last_review_acknowledged: REVIEW-014
+project_status: A2_U1_MERGED__A2_U2_IN_REVIEW__DEVICE_AND_NATIVE_QA_PENDING
+
+## REVIEW-014 acknowledged, and PR #12 merged
+
+REVIEW-014 approved PR #12 head `3196441` (CI run 44105207452: 333 tests,
+APK). The owner then explicitly authorized the merge. Before merging I
+checked the following:
+
+- **Head:** still `3196441`.
+- **Mergeability:** `mergeable_state: clean`.
+- **CI:** both check runs successful on that exact head.
+- **REVIEW-012 fixes present:** the `displayedChoices` shuffle in
+  `assessment_screens.dart`, and no `cobramos` left in `dialogues/a2.json`.
+
+The PR was marked ready and merged with a normal merge commit. No
+force-push was used.
+
+| | |
+|---|---|
+| Merge commit | **`004e54d`** (`004e54d66f955b6d4b3b9b3ff9f84e11c7b6f15f`) |
+| On main | `units/a2_u1.json`, `dialogues/a2.json`, `assessments/a2.json`, `a2_units_test`, `assessment_order_test`; content 1.5.0 |
+
+The REVIEW-014 release gates still stand: device QA and native Spanish QA
+for A2-U1.
+
+## PR #13: A2-U2 "The past — what happened?" (content 1.6.0)
+
+Branch `feat/a2-u2-past`, created from `004e54d`. **Not to be merged without
+owner authorization for this PR.**
+
+### Commits
+
+| SHA | Change |
+|---|---|
+| `86dff95` | `answer_evaluator.dart`: final é/ó accent rule, past-tense endings in the verb-form diagnosis |
+| `10ac581` | `models.dart`, `content_parser.dart`, `content_validator.dart`, `verbs_view.dart`: optional past tense |
+| `7bfbae6` | Content 1.6.0 and tests |
+| `b8d4d17` | Docs and screenshots |
+
+`10ac581` was also verified on its own in a separate worktree, without the
+A2-U2 data.
+
+### Lessons 38–42
+
+The lesson breakdown is as specified. One refinement: the **-ar** past comes
+first (38). **-er/-ir** follow in 39. The **yo spelling changes** come in 40.
+**Irregular forms first appear in 41**: no lesson before 41 practises or
+assesses ir/ser, hacer or tener in the past.
+
+| Lesson | Content |
+|---|---|
+| `a2_u2_l1` Ayer trabajé mucho | trabajé / trabajó / hablé / llamé / terminé, ¿Hablaste…?; ayer, anoche, el lunes pasado |
+| `a2_u2_l2` Mi último fin de semana | salí, volví, comimos, visité, descansé; primero, después, luego, al final; a reading story |
+| `a2_u2_l3` Un día de trabajo | llegué, empecé, revisé, envié, preparé, terminamos; esta mañana; ya / todavía no; a work-update email |
+| `a2_u2_l4` Mi último viaje | fui, fue, fuimos, hice, hizo, tuve; el viaje, el vuelo, el año pasado; a travel narrative |
+| `a2_u2_l5` ¿Qué pasó con el cliente? | ¿Qué pasó?, se quejó, expliqué, solucioné, le escribí, al día siguiente, por eso, el seguimiento, ahora todo funciona |
+
+**Every lesson has:**
+
+- **Practice and production:** listen-choose, listen-pick, type, order,
+  dictation, fill, a situational reply, reading or listening comprehension,
+  and listen-and-repeat.
+- **Feedback:** `explain_ar` on every fill and grammar choice.
+- **Work and review:** work-tagged items, and FSRS cards (2 per item).
+
+**8 grammar notes:**
+
+- `g_pret_ar` and `g_pret_er_ir` (the regular past);
+- `g_past_markers` (time words for the past);
+- `g_sequence` (ordering events);
+- `g_pret_spelling` (yo spelling changes);
+- `g_ya_todavia` (ya / todavía no; also notes the Spain vs Latin America
+  preference for the perfect);
+- `g_pret_irregular` (ir/ser, hacer, tener, estar);
+- `g_past_vs_present`.
+
+### Dialogues and checkpoint
+
+**Dialogues:**
+
+| Dialogue | Lessons | Situation |
+|---|---|---|
+| `dlg_a2_finde` | 38–39 | The weekend |
+| `dlg_a2_jornada` | 40 | A workday update |
+| `dlg_a2_viaje` | 41–42 | A trip, then a client complaint |
+
+- All three are rated "very easy" or "appropriate" right after their
+  lessons, with no new grammar.
+- They have 5–6 questions each, including speaker and dictation questions.
+
+**Checkpoint `chk_a2_u2`:**
+
+- 12 questions covering 3 can-dos and 5 skills: grammar 4, listening 3,
+  reading 2, writing 3, vocabulary 1.
+- 3 questions play dialogue sentences.
+- The options are shuffled per attempt (the REVIEW-012 fix).
+- The typed questions (volví, envié, fui) reject a missing final accent.
+
+### Engineering changes
+
+**Verb reference:**
+
+- `Verb.preterite` and `Verb.preteriteRegular` are added. The latter defaults
+  to `regular`; its JSON key is `preterite_regular`.
+- `Verb.regularPreterite` applies the -ar and -er/-ir endings, plus the yo
+  spelling changes -car → qué, -gar → gué, -zar → cé.
+- **Validator:** when past forms are given, all six persons are required and
+  must be Spanish-only with known keys. A regular past must match the rule
+  exactly.
+- **Backward compatibility:** files without past forms still validate. A test
+  removes every `preterite` key to prove it.
+- **Data:**
+  - all 32 verbs now have past forms, 10 of them new verbs;
+  - 7 irregular pasts are entered by hand: ser, ir, estar, tener, querer,
+    poder, hacer;
+  - 6 verbs are irregular in the present but regular in the past: enviar,
+    devolver, comprobar, salir, volver, empezar.
+- **Library:** a "pretérito indefinido" table appears under the present
+  table, with audio per form and keys `verb-past-<id>-<person>`. The present
+  keys are unchanged.
+
+**Evaluator — `isFinalStressPair`:**
+
+- In a word of **5 or more** letters, a missing or extra final é/ó is now
+  `accentMeaning`, not "accents only". Examples: hablo/habló,
+  trabaje/trabajé, envio/envió. The feedback says the accent changes tense
+  or person.
+- Short words keep the lenient rule (café/cafe, fue/fué).
+- Past endings are added to the inflection set, so "hablaste" for "hablé" is
+  diagnosed as `grammarForm`.
+- Every A2-U2 typed past form ending in é/ó is tested to reject its
+  unaccented twin.
+
+### Tests
+
+New `test/a2_u2_past_test.dart`, 19 tests:
+
+- curriculum and order;
+- activity coverage per lesson;
+- grammar before assessment;
+- unlocking after `a2_u1_l5`;
+- `regularPreterite` and all verb forms;
+- backward compatibility;
+- 4 validator negatives;
+- verb table with audio;
+- 4 evaluator tests;
+- dialogue difficulty;
+- checkpoint skills and feedback;
+- grading of wrong form and missing accent;
+- shuffle;
+- persistence across a DB reopen and a retry;
+- FSRS cards for a completed lesson, with earlier progress unchanged.
+
+**Changed tests:**
+
+- `a2_units_test`: both A2 units are available and every lesson of both is
+  completed through the UI.
+- `verbs_and_level_test`: the verb table shows both tenses. "hablamos" now
+  appears twice, because nosotros has the same form in the present and the
+  past.
+
+### Verification
+
+| Check | Result |
+|---|---|
+| format | 0 changed |
+| `flutter analyze --fatal-infos` | No issues |
+| content validator | OK: 42 lessons, 352 items, 699 graded activities, 22 dialogues, 12 assessments, 32 verbs |
+| `flutter test` | **353 passed** (333 on main + 20) |
+| screenshots | 07, 22, 23 regenerated (A2 progress 0/10; verb table with past) |
+| debug APK | **built by PR CI only**; this environment has no Android SDK |
+
+## Known engineering issues
+
+1. **Accent rule is broad.** It fires for any 5+ letter word with a final
+   é/ó, not only verbs. Today's content has no such non-verb, and a word
+   like bebé/bebe is also a real meaning difference. If a future noun such
+   as "puré" needs lenience, it would need a word list.
+2. **-í pasts stay lenient.** comí/comi and salí/sali are still accepted
+   with an accent reminder, because the unaccented forms are not other
+   words.
+3. **No lemmatisation in the difficulty estimator.** Past forms count as
+   known only if they appear in taught items or examples. I added a few
+   examples (¿Trabajaste…?, ¿Saliste…?, ¿Enviaste…?) for that.
+4. **A2-U1 test data:** the A2-U1 tests are unchanged.
+
+## Questions for ChatGPT
+
+1. Is the 5-letter final-é/ó rule the right trade-off, or should it be
+   limited to forms listed in the verb reference?
+2. Should `ya` + pretérito carry a stronger Spain-vs-LatAm note, or is the
+   current one enough at A2?
+3. Should lesson 41 also practise `estar` in the past (estuve)? It is only
+   in the grammar note and the reference.
+
+## Not done or claimed
+
+- Device QA.
+- Native Spanish QA. Everything stays `author_reviewed`.
+- A2-U3 to A2-U5 and the A2 level assessment.
+- The A1→A2 policy is unchanged.
+
+## Proposed next step
+
+A2-U3 "Plans and future":
+
+- ir a + infinitive at A2 depth;
+- quedar / quedar con for arranging meetings;
+- the present for scheduled events;
+- time expressions for the future.
+
+It would be built the same way: about 5 lessons, 3 dialogues and
+`chk_a2_u3`.
+
+I will not merge PR #13; the owner decides.
+
+---
+
+# Previous handoff (PHASE3-002)
+
+owner: Claude Code
+implementer: Claude Code
+handoff_status: MERGED_AS_004e54d
 handoff_id: PHASE3-002
 updated_at_utc: 2026-11-17T19:30:00Z
 review_requested_for_sha: e3e948d

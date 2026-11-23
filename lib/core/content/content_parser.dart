@@ -119,6 +119,11 @@ Future<ContentPack> parseContentPack(ContentReader read) async {
             for (final e in ((j['present'] as Map?) ?? const {}).entries)
               e.key as String: e.value as String,
           },
+          preterite: {
+            for (final e in ((j['preterite'] as Map?) ?? const {}).entries)
+              e.key as String: e.value as String,
+          },
+          preteriteRegular: j['preterite_regular'] as bool?,
           noteAr: j['note_ar'] as String? ?? '',
           examples: [
             for (final e in j['examples'] as List? ?? const [])
