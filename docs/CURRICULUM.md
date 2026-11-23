@@ -44,7 +44,8 @@ Pre-A1 is a preparatory stage, not a DELE level.
 | **A2** | Services and everyday transactions (5 lessons) | ✅ available (content 1.5.0) |
 | | The past — what happened? (5 lessons, pretérito indefinido) | ✅ available (content 1.6.0) |
 | | Plans and the future (5 lessons) | ✅ available (content 1.7.0) |
-| | Preferences and comparison · Simple work conversations | planned |
+| | Preferences and comparison (5 lessons) | ✅ available (content 1.8.0) |
+| | Simple work conversations | planned |
 | **B1** | Opinion and reasoning · Narration · Solving client problems · Professional correspondence | planned |
 | **B2** | Meetings · Presentations · Job interviews · Discovery and negotiation · Explaining technical services | planned |
 | **C1** | Persuasion · Precise professional writing · Advanced listening and accents | planned |
@@ -105,6 +106,11 @@ no lessons and are never counted as progress.
 | 45 | Shall we meet on Monday? | 9 | quedar; ¿Te / Le viene bien…?; cambiar, confirmar, la videollamada; propongo |
 | 46 | The week's schedule | 9 | present for timetables (sale, empieza, termina); la feria, el plazo, antes de, hasta las |
 | 47 | The project plan | 9 | la fase, la entrega, el presupuesto; si + present for future conditions; le mando… |
+| 48 | I like… (A2-U4) | 9 | gustar / encantar with me, te, le; gusta vs gustan; a mí también / tampoco |
+| 49 | Which do you prefer? | 9 | preferir (e→ie); ¿Cuál?; ese / esa; colours and agreement |
+| 50 | Faster, cheaper | 9 | más / menos … que, tan … como; mejor, peor; rápido, lento, grande, pequeño |
+| 51 | In my opinion | 9 | creo que, en mi opinión, me parece; agreeing and disagreeing politely; la ventaja |
+| 52 | Two offers | 9 | la oferta, el proveedor, la calidad; el más barato, la mejor opción; recomiendo… aunque… |
 
 A1 is complete in content: 23 lessons over 6 units, closed by six unit
 checkpoints and the A1 level assessment `lvl_a1`, which opens only when every
@@ -127,9 +133,13 @@ A2-U3 (lessons 43–47, content 1.7.0) moves from intentions (ir a) to
 invitations, arranging and confirming meetings, timetables in the present, and
 a project plan with si + present.
 
-Totals (content 1.7.0, from the validator): 47 lessons, 397 items,
-1298 activities (799 graded), 55 grammar notes, 25 dialogues, 13 assessments,
-39 verbs.
+A2-U4 (lessons 48–52, content 1.8.0) covers likes (gustar), choosing
+(preferir), comparison, polite opinions, and a recommendation between two
+supplier offers.
+
+Totals (content 1.8.0, from the validator): 52 lessons, 442 items,
+1453 activities (899 graded), 60 grammar notes, 28 dialogues, 14 assessments,
+45 verbs.
 
 ## Lesson shape
 
@@ -205,6 +215,15 @@ sentences) closes A2-U2.
 
 Checkpoint `chk_a2_u3` (12 questions, 3 can-dos, 5 skills, three dialogue
 sentences) closes A2-U3.
+
+| Id | Level | Built on | Situation |
+|---|---|---|---|
+| `dlg_a2_gustos` | A2 | lessons 48–49 | Choosing a team phone and its colour |
+| `dlg_a2_portatiles` | A2 | lesson 50 | Comparing two laptops in a shop |
+| `dlg_a2_ofertas` | A2 | lessons 51–52 | Opinions on two supplier offers; a recommendation |
+
+Checkpoint `chk_a2_u4` (12 questions, 3 can-dos, 5 skills, three dialogue
+sentences) closes A2-U4.
 
 Checkpoints `chk_a1_u4` and `chk_a1_u5` close the food and travel units.
 Checkpoints `chk_a1_u2` and `chk_a1_u3` (10 questions, 3 can-dos each) close

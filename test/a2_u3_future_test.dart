@@ -54,11 +54,10 @@ void main() {
         expect(unit.lessons[i].prerequisites, [unit.lessons[i - 1].id]);
       }
       final a2 = pack.levels.firstWhere((l) => l.id == 'a2');
-      expect(a2.units.where((u) => u.isAvailable).map((u) => u.id), [
-        'a2_u1',
-        'a2_u2',
-        'a2_u3',
-      ]);
+      expect(
+        a2.units.where((u) => u.isAvailable).map((u) => u.id),
+        containsAllInOrder(['a2_u1', 'a2_u2', 'a2_u3']),
+      );
       for (final u in a2.units.where((u) => !u.isAvailable)) {
         expect(pack.unit(u.id)?.lessons ?? const [], isEmpty, reason: u.id);
       }

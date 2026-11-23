@@ -1,5 +1,5 @@
 {
- "version": "1.7.0",
+ "version": "1.8.0",
  "sources": [
   {
    "id": "original-v1",
@@ -188,11 +188,13 @@
     {
      "id": "a2_u4",
      "title_ar": "التفضيل والمقارنة",
-     "description_ar": "gustar، المقارنة، إبداء الرأي البسيط.",
+     "description_ar": "gustar وpreferir، الألوان، المقارنة (más / menos / tan، mejor / peor)، إبداء الرأي، ومقارنة عرضين.",
      "objectives_ar": [
-      "مقارنة منتجين أو خيارين"
+      "التعبير عمّا يعجبني وما أفضّله",
+      "مقارنة منتجين أو خيارين",
+      "إبداء الرأي والتوصية بخيار"
      ],
-     "status": "planned"
+     "status": "available"
     },
     {
      "id": "a2_u5",

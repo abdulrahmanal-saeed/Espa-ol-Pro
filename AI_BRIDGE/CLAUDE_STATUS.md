@@ -3,6 +3,116 @@
 owner: Claude Code
 implementer: Claude Code
 handoff_status: READY_FOR_REVIEW
+handoff_id: PHASE3-005
+updated_at_utc: 2026-11-23T14:00:00Z
+review_requested_for_sha: (see the latest PR #15 head; application code bb1f2e6, 4508d99 and the distractor fix)
+branch: feat/a2-u4-preferences
+pull_request: https://github.com/abdulrahmanal-saeed/Espa-ol-Pro/pull/15 (stacked on #14, base feat/a2-u3-future)
+also_awaiting_review: PHASE3-004 / PR #14 (A2-U3)
+last_review_acknowledged: REVIEW-015
+project_status: A2_U3_AND_U4_IN_REVIEW__DEVICE_AND_NATIVE_QA_PENDING
+
+## Stack
+
+1. Review #14 (A2-U3, handoff PHASE3-004) first. Its head is `4b272b2`
+   and CI is green: 368 tests, APK built.
+2. This PR adds only the A2-U4 commits on top.
+3. Merge #14 first, then retarget this PR to `main`.
+
+## Codex findings on PR #15: fixed
+
+**`4508d99`:** "¿Qué prefieres?" is valid Spanish, so `Qué` is no longer a
+distractor. It is now an accepted alternative.
+
+**Same pattern across A2-U4:** I checked every fill-in for distractors that
+are also valid Spanish and fixed two:
+
+- "Cree que…" is now pinned with "Yo ___".
+- "porque es más cara" was replaced by the distractors para / de.
+
+**A2-U3 (#14) got the same check** in `941c18b`. This branch includes it.
+
+## PR #15: A2-U4 "Preferences and comparison" (content 1.8.0, `bb1f2e6`)
+
+**Lessons 48–52**, starting after `a2_u3_l5`:
+
+| Lesson | Content |
+|---|---|
+| `a2_u4_l1` Me gusta… | me gusta / me gustan, ¿Te gusta…?, le gusta (a + person + le), me encanta, no me gusta nada, a mí también / tampoco, trabajar en equipo |
+| `a2_u4_l2` ¿Cuál prefieres? | prefiero (e→ie), ¿Cuál prefieres? vs ¿Qué?, ese / esa, el modelo, el color; negro / blanco / azul, with agreement |
+| `a2_u4_l3` Más rápido, más barato | más / menos … que, tan … como, mejor que, peor; rápido, lento, grande, pequeño |
+| `a2_u4_l4` En mi opinión | creo que, en mi opinión, me parece / parecen, estoy de acuerdo / no…, tienes razón, depende, interesante, la ventaja |
+| `a2_u4_l5` Dos ofertas | la oferta, el proveedor, el precio, la calidad, la desventaja, el más barato, la mejor opción, recomiendo, aunque |
+
+**Every lesson includes:**
+- listen-choose, listen-pick, typing, ordering, dictation, fill-in, matching;
+- a situational reply, a reading and a listening choice, and listen-and-repeat;
+- `explain_ar` on every fill and every grammar choice;
+- work items and FSRS cards.
+
+**Dialogues.** There are three, each rated "very easy" or "appropriate" right
+after its lessons:
+- `dlg_a2_gustos`: choosing a team phone;
+- `dlg_a2_portatiles`: comparing two laptops;
+- `dlg_a2_ofertas`: two supplier offers and a recommendation.
+
+To keep them there, I replaced a few untaught words (diferencia, entre, aun
+así). I also added examples that teach the forms the dialogues need:
+colores, parecen, barata.
+
+**Checkpoint `chk_a2_u4`:**
+- 12 questions covering 3 can-dos;
+- grammar 5, listening 3, reading 2, writing 2, vocabulary 1;
+- 3 questions play dialogue sentences;
+- options are shuffled.
+
+**Verbs:** 6 new, 45 in total.
+- **preferir:** entered by hand (prefiero; prefirió, prefirieron).
+- **creer:** regular in the present, irregular past entered by hand (creyó).
+- **parecer:** parezco; regular in the past.
+- **recomendar:** e→ie; regular in the past.
+- **gustar and encantar:** checked by machine.
+
+### Answer evaluation (existing engine, now tested on this content)
+
+- "Me gusta los idiomas" is diagnosed as a wrong verb form, with the correct
+  form `gustan`.
+- "a mi también" is an accent-meaning error: mí is a pronoun, mi means
+  "my". A missing accent only on también is accepted with a reminder.
+- "la más buena opción" and "más rápido como" are rejected.
+
+### Verification
+
+| Check | Result |
+|---|---|
+| format | 0 changed |
+| `flutter analyze --fatal-infos` | No issues |
+| content validator | OK: 52 lessons, 442 items, 899 graded, 28 dialogues, 14 assessments, 45 verbs |
+| `flutter test` | **379 passed** (368 + 10 in `a2_u4_preferences_test` + completing A2-U4 in `a2_units_test`) |
+| screenshots | 07 and 22 regenerated |
+
+## Questions for ChatGPT
+
+1. The unit says "el móvil" (Spain). The Latin American "el celular" is not
+   mentioned yet. Should it get a note?
+2. Lesson 51 avoids "no creo que" + subjunctive and points to B1. Is that
+   right for A2?
+
+## Proposed next step
+
+1. **A2-U5 "Simple work conversations"**, the last A2 unit: messages, emails
+   and follow-up, combining the tenses taught so far.
+2. **Then the A2 level assessment `lvl_a2`**, in the same model as `lvl_a1`.
+
+I will not merge #14 or #15. That is the owner's decision.
+
+---
+
+# Previous handoff (PHASE3-004, still awaiting review)
+
+owner: Claude Code
+implementer: Claude Code
+handoff_status: READY_FOR_REVIEW
 handoff_id: PHASE3-004
 updated_at_utc: 2026-11-23T12:00:00Z
 review_requested_for_sha: 941c18b (application code 941c18b, 0a2b18b, a6c1ad9 and 7330136)
