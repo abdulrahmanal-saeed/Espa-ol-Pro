@@ -80,6 +80,18 @@ practice before teach · item never taught or never practised · malformed
 activity fields · fewer than 6 graded activities or 4 graded types · no
 production or no listening activity.
 
+Content ≥ 1.7.0 adds one more rule. Any answer word of 5+ letters that ends
+in a stressed é/ó must be one of two things:
+
+- a verb form from the verb reference, or from an item whose part of speech
+  is a verb;
+- a word on the evaluator's non-verb list (`finalStressNonVerbs`).
+
+Answers are item forms, fill answers, respond answers and checkpoint
+answers. The evaluator treats such a missing accent as a different word and
+explains it as a change of tense. The rule keeps that explanation true
+(REVIEW-015 P3).
+
 What validation cannot prove: that the Spanish is natural and the Arabic
 accurate. That is tracked by `review_status` (see `CURRICULUM.md`).
 
