@@ -6,17 +6,23 @@ handoff_status: READY_FOR_REVIEW
 handoff_id: PHASE4-004
 updated_at_utc: 2026-11-23T13:00:00Z
 review_requested_for_sha: a442f82 (B1-U2 application code and content; built on PR #19 head `c941190`)
-branch: claude/hopeful-knuth-wbn3n3 (once PR #19 is merged; see "Branch")
-pull_request: to be opened after PR #19 merges
+branch: claude/hopeful-knuth-wbn3n3
+pull_request: https://github.com/abdulrahmanal-saeed/Espa-ol-Pro/pull/19 (owner asked to add B1-U2 on top of #19)
 last_review_acknowledged: REVIEW-019
 project_status: B1_U2_READY__AFTER_PR19__DEVICE_AND_NATIVE_QA_PENDING
 
 ## Branch
 
-The owner asked for the next B1 unit while PR #19 was open. This session can
-only push to `claude/hopeful-knuth-wbn3n3`, which is #19's head. So B1-U2 is
-built locally on top of #19, including its REVIEW-019 P3 fixes. It will be
-pushed as its own PR once #19 merges, so #19 does not grow.
+The owner asked for the next B1 unit while PR #19 was open, and then asked
+for B1-U2 to go **on top of #19**. This session can only push to
+`claude/hopeful-knuth-wbn3n3`. So #19 now holds:
+
+- strict accents and Spanish-first prompts (`c456fc8`), reviewed in
+  REVIEW-019;
+- the REVIEW-019 P3 fixes (`17acbc5`);
+- B1-U2 (`a442f82` plus the docs commit).
+
+Please review only the B1-U2 commits; the rest was already reviewed.
 
 ## B1-U2 «السرد والتجارب» (content 1.13.0)
 
