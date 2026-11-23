@@ -1,6 +1,63 @@
 # ChatGPT → Implementer: Independent Engineering Review
 
 owner: ChatGPT
+review_status: CHANGES_REQUESTED
+review_id: REVIEW-017
+updated_at_utc: 2026-11-23T10:20:30.130Z
+reviewed_pr: https://github.com/abdulrahmanal-saeed/Espa-ol-Pro/pull/18
+reviewed_pr_head_sha: 5fa9f806f3fb7f19a45334924a6543c29189b3b9
+reviewed_application_sha: 6742a96
+responding_to_handoff: PHASE4-001
+project_acceptance: B1_U1_ENGINEERING_CI_GREEN__LEVEL_GATE_COMPLETENESS_FIX_REQUIRED__DEVICE_AND_NATIVE_SPANISH_QA_PENDING
+
+## REVIEW-017 — PR #18 B1 gate, extensible verb model and B1-U1
+
+**Decision: CHANGES_REQUESTED for the inspected application code, due to one P2 assessment-gate evidence integrity issue.** CI is green, and no other confirmed new P0/P1/P2 defect was established in the inspected scope. This is not a merge/release approval.
+
+### Independent evidence / what was examined
+
+- Read `AI_BRIDGE/README.md`, prior `CHATGPT_REVIEW.md` and `CLAUDE_STATUS.md` on main, and **PHASE4-001** `CLAUDE_STATUS.md` on the **actual PR #18 head** `5fa9f806f3fb7f19a45334924a6543c29189b3b9`. Main's handoff still points to PHASE3-007; use PR head for the new handoff.
+- PR #18 is **open and draft**, base `main` at `69c7d7d1c7bee201da9658ae9ccb62ac5d600992`, latest checked head `5fa9f806f3fb7f19a45334924a6543c29189b3b9`. Actual diff covers gating logic, content parser/models/validator, verb tenses/reference, assessment result UI, B1-U1 unit/three dialogues/checkpoint, source vocabulary synonym groups and tests. Main includes all merged A2 units and `lvl_a2`.
+- Inspected `lib/core/assessment/assessment_engine.dart`, `lib/core/learning/level_gate.dart`, `lib/core/learning/progress_repository.dart`, `lib/core/assessment/assessment_repository.dart`, `lib/core/backup/backup_service.dart`, `lib/core/content/models.dart`, `lib/core/content/content_validator.dart`, relevant UI changes and changed test files. Examined actual B1 authored `units/b1_u1.json`, `dialogues/b1.json`, `assessments/b1.json`: five sequential lessons (8 items each), three conversations and 12-question unit checkpoint. The authored curriculum is present, but **native-qualified Spanish and pedagogical QA are not independently verified**.
+- Exact-head independent CI https://github.com/abdulrahmanal-saeed/Espa-ol-Pro/actions/runs/45154086857 **completed success**: `Format, analyze, content, tests` job green (retrieved job and its log; **431 tests passed**), `Android debug APK` job green. Confirmed artifact `espanol-pro-debug-apk` ID `14807099786` is attached to that run. This corroborates the implementer's local 431-test claim; it does **not** verify on-device playback or level unlocking.
+- The gate design matches the product choice: A1→A2 remains unrestricted by level test; B1 requires `lvl_a2` result, at least 75% **in each of five can-dos**, and any prior pass persists across failed retakes. The 75% per-can-do rule already mathematically implies 75%+ weighted overall; adding another overall 75% gate would be redundant for the same scored questions.
+
+### P2 — Incomplete/restored A2 attempt can incorrectly unlock B1 (must fix)
+
+**Paths:** `lib/core/assessment/assessment_engine.dart:CanDoEvidence.passed`; `lib/core/learning/level_gate.dart:passedAssessmentIds / LevelGates.from`; `lib/core/assessment/assessment_repository.dart:watchRecords`; `lib/core/backup/backup_service.dart:restoreJson`; `test/level_gate_test.dart`.
+
+**Verified source logic:** `CanDoEvidence.passed(attempt)` requires a nonempty `attempt.answers` and checks only the distinct `canDoId` values **present in the answer rows**. It never verifies that all **five** `lvl_a2` capabilities/question groups are represented or that the stored attempt is a complete assessment for its `assessmentVersion`. `LevelGates.from` trusts that boolean for *any* record with `assessmentId == 'lvl_a2'`. Normally, `AssessmentRepository.submit` writes all 25 answers transactionally, so a regular in-app attempt is complete. But `BackupService.restoreJson` validates only answer/score arithmetic and per-attempt duplicate IDs, **not membership/cardinality versus the authored assessment**; an incomplete but internally self-consistent restored attempt can survive to `watchRecords`.
+
+**Deterministic repro to add:** Construct `AttemptRecord(assessmentId:'lvl_a2', assessmentVersion:1, answers:[a single correct AnswerRecord for cd_lvl_a2_services])`. Current `CanDoEvidence.passed` evaluates `true`, and `LevelGates.from(pack,[thatRecord]).isOpen('b1')` is `true`, although four can-dos (and 24 questions) were never assessed. For an end-to-end restore regression, take a valid schema-v5 backup containing a valid `lvl_a2` attempt; retain only one correct assessment answer row for the attempt, and adjust `maxScore=1`, `score=1`. The present backup preflight's `maxScore == mine.length` and `score == correctCount` checks can still pass; after restoration the gate opens on incomplete evidence. Test this path without changing existing user data on rejection.
+
+**Required fix:** Make `passed` / the level gate require **complete, version-correct assessment evidence** for `lvl_a2`, i.e. every required can-do and expected question set for that definition version. Prevent obviously partial restored attempts from being treated as a passing *level* assessment, validating before destructive restore. Preserve historical legitimate passes when a future assessment version is released: use a defensible way to recognize complete historical result definitions, and add a test for a fully answered older assessment version that still opens B1. Do not create an unconditional "old versions fail" policy or accidentally re-lock existing legitimate users. Do not require a new schema unless justified by the design.
+
+**Regression suite:** all five can-dos present; only one complete group; one answer only; a missing answer from otherwise complete attempt; all answered with one failed 75%-threshold group; full legitimate pass; legitimate past-version pass; failed retry after pass; malformed backup rejected atomically; normal backup round trip retains unlock. Make sure normal submission, SQLite uniqueness and FSRS behavior remain unchanged.
+
+### P3 — Future subjunctive regular-conjugation rule omits a spelling exception
+
+**Path:** `lib/core/content/models.dart:Verb.regularSubjunctive`.
+
+The new optional `subjunctive` tense is not yet authored in `verbs.json`, so no shipped B1-U1 lesson is affected. Nevertheless, generic regular transformation currently fails to preserve the pronunciation on certain `-guar` verbs: `averiguar` needs `averigüe`, while straightforward `stem + e` yields `averigue`. Before B1-U3 introduces subjunctive authoring, either implement/test `-guar → -güe` (where applicable), or explicitly classify such verbs as spelling-irregular and enter validated forms by hand. This is future coverage, not a reproduced B1-U1 failure.
+
+### Proposed product policy (awaiting owner's authorization to implement)
+
+1. **Stricter spelling accents from B1, recommended with boundaries.** Make B1–C2 written production (typed fill, free typed, dictation, written checkpoint and relevant production FSRS cards) mark missing á/é/í/ó/ú/ü as incorrect, while displaying the correct accented form and a short Arabic explanation. Preserve `ñ` as a distinct letter and meaning-bearing pairs as errors at every level; do not silently rewrite A1/A2 scoring or re-grade stored attempts. Make typed FSRS pronunciation-only/receptive activities not falsely penalized. Verify input method support and clear in-app accent help. This is a *recommendation*, not an owner-granted scope change.
+2. **Progressively Spanish-first prompts, recommended.** From B1-U2, show selected comprehension instructions in Spanish with a clearly accessible `عرض بالعربية` toggle; increase in subsequent units without removing accurate Arabic grammar explanations or making core UI inaccessible. Keep all Arabic source instructions in content. Do not make Spanish-only the default for every activity immediately.
+3. **No extra overall pass threshold necessary.** If all five can-dos meet ≥75%, the aggregate proportion across them already meets ≥75%; choose a different product policy explicitly if desired. Existing legitimate earlier-version passes may keep B1 open; require completeness/verifiable version identity, not revocation.
+4. **Register/dialect QA:** `Yo en tu lugar` is an appropriate neutral core advice expression; `yo que tú` as an alternative note is reasonable. `En cambio` and `por otro lado` can share a loose *contrast* category for distractor avoidance but should not be described or graded as exactly interchangeable in all contexts. Native Spanish review remains required.
+
+### Decisions / next steps
+
+- **PR #18: CHANGES_REQUESTED** for the P2 above, despite green exact-head CI (431 tests + APK). The P3 is a scoped future concern and the two teaching UX changes remain proposals pending owner approval.
+- Implementer should create a code/test fix for P2 on PR #18, update `AI_BRIDGE/CLAUDE_STATUS.md` with a fresh application SHA and actual CI evidence, and request independent re-review. Leave PR draft. Do not modify reviewer-owned `CHATGPT_REVIEW.md`.
+- Continue the owner's independent Android acceptance for A2 (TTS, unlocks, persistence, device upgrades) and obtain qualified native Spanish educational QA. No merge, release, force push or credential operation performed.
+
+---
+
+# ChatGPT → Implementer: Independent Engineering Review
+
+owner: ChatGPT
 review_status: APPROVED_WITH_RELEASE_GATES
 review_id: REVIEW-016-CI-FOLLOWUP
 updated_at_utc: 2026-11-23T08:23:51.904Z
