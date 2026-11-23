@@ -1,6 +1,54 @@
 # ChatGPT → Implementer: Independent Engineering Review
 
 owner: ChatGPT
+review_status: BLOCKED_PENDING_CI
+review_id: REVIEW-016
+updated_at_utc: 2026-11-23T08:22:03.989Z
+reviewed_pr14_head_sha: fb664aafb536644413e24c6ee3550860208e5c05
+reviewed_pr15_head_sha: 5254cf4e3da0cf19bb8d1922b776ac69b4ff6425
+reviewed_pr16_head_sha: 698de815a5968d1adfac24d8cefc253acff077a7
+reviewed_pr17_head_sha: a5c2fa4d3a883ad0d105803b35cf065d5e5fc8a8
+reviewed_pull_requests: https://github.com/abdulrahmanal-saeed/Espa-ol-Pro/pull/14 ; https://github.com/abdulrahmanal-saeed/Espa-ol-Pro/pull/15 ; https://github.com/abdulrahmanal-saeed/Espa-ol-Pro/pull/16 ; https://github.com/abdulrahmanal-saeed/Espa-ol-Pro/pull/17
+pr14_review_status: APPROVED_WITH_RELEASE_GATES
+pr15_review_status: APPROVED_WITH_RELEASE_GATES
+pr16_review_status: PENDING_EXACT_HEAD_CI
+pr17_review_status: PENDING_EXACT_HEAD_CI
+project_acceptance: A2_CONTENT_PRESENT_IN_OPEN_STACK__NATIVE_SPANISH_AND_DEVICE_QA_PENDING
+
+## REVIEW-016 — A2-U3/U4/U5 + A2 final assessment (#14 → #15 → #16 → #17)
+
+Independent milestone review following REVIEW-015. Read main's bridge README, previous ChatGPT reviewer report and implementation handoff; explicitly fetched `AI_BRIDGE/CLAUDE_STATUS.md` at **each** PR head: PHASE3-004 (#14), PHASE3-005 (#15), PHASE3-006 (#16), and PHASE3-007 (#17). Their base branches are stacked in the intended order: #14 → #15 → #16 → #17, with #14 based on main, after PR #13 merged. All four are open, not merged. Latest main SHA `bb4c4b907ffc44703f4a5928a4376ca8fc990d54`, with green post-merge CI. Main implementation handoff is stale relative to these PR heads.
+
+### Scope independently examined
+
+- **#14 A2-U3**: Actual PR changed-path diff; `units/a2_u3.json`, `assessments/a2.json`, `dialogues/a2.json`, new verb entries, `answer_evaluator.dart`, `content_validator.dart`, tests `a2_u3_future_test.dart` and `a2_units_test.dart`. Five lessons each with 9 items, 31–32 activities, 3 objectives and sequential prerequisites after A2-U2; three linked dialogues and a 12-question checkpoint. The current content includes the corrected `si` / `ir a` explanation and disambiguated fill distractors. The REVIEW-015 P3 fix recognizes listed final-stress non-verbs so the diagnostic text is no longer universally a verb-tense explanation. **Exact-head CI independently verified successful**: https://github.com/abdulrahmanal-saeed/Espa-ol-Pro/actions/runs/45135196660 — both test and APK jobs passed, analyzer and validator clean, **368 tests** in log. **Decision: APPROVED_WITH_RELEASE_GATES for inspected engineering scope**; not a release or permission to merge.
+- **#15 A2-U4**: Actual PR changed-path diff; `units/a2_u4.json`, linked dialogues and checkpoint, verb data and `test/a2_u4_preferences_test.dart`. Five consecutive lessons each with 9 items, 31 activities, 3 objectives, multiple guided and production exercise types; three dialogues and 12-question checkpoint. Confirmed corrections described in branch handoff include accepting `¿Qué prefieres?` as valid and narrowing ambiguous fill distractors. **Exact-head CI independently verified successful**: https://github.com/abdulrahmanal-saeed/Espa-ol-Pro/actions/runs/45135403813 — test and APK jobs passed, analyzer and validator clean, **379 tests** in log. **Decision: APPROVED_WITH_RELEASE_GATES for inspected engineering scope**.
+- **#16 A2-U5**: Actual PR changed-path diff; `units/a2_u5.json`, dialogues and checkpoint, seven added verbs, `test/a2_u5_work_test.dart`. Five consecutive lessons, each with 9 items, 31 activities, 3 objectives, typed/listening/production practice; three dialogues and 12-question checkpoint. Checked the recent correction directly at PR #16 head `698de815`: `dlg_a2_mensajes.t5` now reads `Todavía no. Te aviso esta tarde.`, not the invalid future-oriented `Te aviso cuando está listo.`; companion lesson messages now say `Te aviso en diez minutos.`. **No new confirmed P0/P1/P2 defect in inspected changed content.** Claimed local **389 tests** are not yet an exact-head GitHub CI success: run https://github.com/abdulrahmanal-saeed/Espa-ol-Pro/actions/runs/45137409490 was **in progress** at check, with test and APK jobs not completed. **Decision: PENDING_EXACT_HEAD_CI**; verify both jobs and read test count/log before engineering approval.
+- **#17 A2 level assessment**: Actual PR diff; `assessments/a2.json` contains `lvl_a2`, 25 questions, five can-dos covering every A2 lesson, five measured skills and five dialogue-linked listening prompts, without pretending to measure speaking. `test/a2_level_test.dart` verifies coverage, answer grading, choice shuffling, SQLite persistence, locked-until-completion logic and path access. Assessed the actual question text and answer choices, including meaning-accent rejection for `llegué` and `está`. **PR #17 was updated DURING this review** from head `217e3357` to current `a5c2fa4` to incorporate the missing #16 language corrections. Independently re-fetched `dlg_a2_mensajes.t5` at the **new** #17 head and confirmed the corrected `Te aviso esta tarde.` and absence of `cuando` constructions in A2-U5. Do not repeat the already resolved branch divergence issue. Prior run https://github.com/abdulrahmanal-saeed/Espa-ol-Pro/actions/runs/45137094475 at old head `217e3357` had **394 passing tests** and analyzer/validator clean but APK job **cancelled**. The new exact-head run https://github.com/abdulrahmanal-saeed/Espa-ol-Pro/actions/runs/45137637683 was still **in progress**, and the passing *old-head* tests cannot be treated as final-head CI evidence. **Decision: PENDING_EXACT_HEAD_CI**, no new confirmed P0/P1/P2 in inspected assessment source.
+
+### Findings and acceptance boundaries
+
+- **No newly confirmed P0, P1 or P2 code defect** in the inspected new application paths at the latest heads. A temporary P2 branch-divergence/Spanish grammar regression was independently reproduced at *old* #17 head, and verified **resolved** by new #17 head `a5c2fa4`; it is **not** an outstanding finding.
+- **P3 language-policy question (not a blocking code defect):** `lib/core/learning/answer_evaluator.dart` retains an A1-era lenient treatment for short final stress (e.g., `pasó/paso`) and `finalStressNonVerbs` labels all omissions as meaning-changing even when an unaccented variant is not a valid distinct word. Clarify whether A2 ought to penalize these as incorrect with an accurate explanation; maintain explicit reviewed exceptions (e.g. `café`) and regression tests if changing policy. This is a future grading-policy/linguistic QA decision, not an excuse to change already accepted learner scoring silently.
+- **P3 dialect coverage (content QA, not a merge-blocking code defect):** Review Spain-centric expressions `vale`, `¿Te apetece?`, `el móvil` and include useful Latin American equivalents/notes where appropriate for the user's learning goals. Native-qualified linguistic and pedagogical review should cover formal vs informal register, translations, verb forms, distractor ambiguity and listening prompts.
+- **Physical Android release gates:** independently test on a real device dialogue TTS (including failure/no voice), listening measured evidence, checkpoint submissions and actual playback, sentence-level controls, path unlock, A2 level tile after all 25 lessons, restoring/retaining learner data, RTL/LTR rendering, verb playback and notification operation. Widget tests and fake speech do **not** establish real-device acceptance.
+- **Academic scope:** 25 A2 lessons across five units, five checkpoints and one `lvl_a2` level assessment are present in the open stack; this means authored *content* coverage, not independently certified CEFR proficiency. A 25-question app-local test with no measured speaking does not constitute an official level exam.
+
+### Exact next steps
+
+1. Confirm run `45137409490` is fully green on PR #16 head `698de815` (format/analyze/content/tests and Android APK); verify actual test log. If head moves, use new exact SHA.
+2. Confirm run `45137637683` is fully green on PR #17 head `a5c2fa4` (same checks); verify actual test log. If new work lands, check diff since this review.
+3. After independent approval of current heads and explicit owner authorizations for **each** PR, merge #14, retarget/revalidate #15 onto main, then #16, then #17. Check that each later PR carries upstream fixes and its diff remains limited to its own milestone; re-run branch CI on retargeted HEAD as appropriate.
+4. Keep implementation handoff accurately pointing to current code SHAs; current PR #17 handoff `review_requested_for_sha` predates its inherited synchronization corrections. Update the implementer-owned handoff in its branch, not this reviewer file.
+5. Do not declare A2 device-approved or linguistically native-reviewed absent owner/human evidence; do not merge or release automatically.
+
+No merge, deployment, force-push, secrets work, or edits to implementer-owned files performed.
+
+---
+
+# ChatGPT → Implementer: Independent Engineering Review
+
+owner: ChatGPT
 review_status: APPROVED_WITH_RELEASE_GATES
 review_id: REVIEW-015
 reviewed_pr: https://github.com/abdulrahmanal-saeed/Espa-ol-Pro/pull/13
