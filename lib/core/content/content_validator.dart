@@ -325,7 +325,67 @@ class ContentValidator {
     _validateDialogues(pack, sourceIds, grammarIds, err);
     _validateAssessments(pack, sourceIds, err);
     _validateVerbs(pack, err);
+    _validateFinalStressWords(pack, err);
     return issues;
+  }
+
+  /// Every answer word of 5+ letters ending in a stressed é / ó must be a verb
+  /// form (from the verb reference, or an item marked as a verb) or a listed
+  /// non-verb ([finalStressNonVerbs]). The evaluator treats a missing final
+  /// accent there as a different word and explains it as a change of tense,
+  /// which is only true for verbs (REVIEW-015 P3).
+  void _validateFinalStressWords(
+    ContentPack pack,
+    void Function(String, String) err,
+  ) {
+    final verbForms = <String>{
+      for (final v in pack.verbs) ...[...v.forms.values, ...v.preterite.values],
+      for (final l in pack.orderedLessons)
+        for (final i in l.items)
+          if (i.pos.contains('فعل')) ...normalizeAnswer(i.es).split(' '),
+    }.map(normalizeAnswer).toSet();
+
+    void check(String where, String text) {
+      for (final w in normalizeAnswer(text).split(' ')) {
+        if (w.length < 5) continue;
+        final last = w[w.length - 1];
+        if (last != 'é' && last != 'ó') continue;
+        if (verbForms.contains(w) || finalStressNonVerbs.contains(w)) continue;
+        err(
+          where,
+          '"$w" ends in a stressed é/ó but is neither a verb form in the '
+          'reference nor in finalStressNonVerbs',
+        );
+      }
+    }
+
+    for (final l in pack.orderedLessons) {
+      for (final i in l.items) {
+        for (final f in [i.es, ...i.alt]) {
+          check('item:${i.id}', f);
+        }
+      }
+      for (final a in l.activities) {
+        final d = a.data;
+        if (a.type == 'fill') {
+          for (final f in [d['answer'], ...(d['alt'] as List? ?? const [])]) {
+            check('activity:${a.id}', '$f');
+          }
+        }
+        if (a.type == 'respond') {
+          for (final f in d['accepted'] as List? ?? const []) {
+            check('activity:${a.id}', '$f');
+          }
+        }
+      }
+    }
+    for (final a in pack.assessments) {
+      for (final q in a.questions) {
+        for (final f in q.accepted) {
+          check('question:${q.id}', f);
+        }
+      }
+    }
   }
 
   /// Verb reference: complete, Spanish-only, tied to real lessons, and every

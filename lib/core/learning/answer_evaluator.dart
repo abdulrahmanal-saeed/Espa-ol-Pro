@@ -137,7 +137,9 @@ class AnswerResult {
     AnswerIssue.none => '',
     AnswerIssue.accents => 'المعنى صحيح، لكن انتبه لعلامات النبر: $bestMatch',
     AnswerIssue.accentMeaning =>
-      isFinalStressPair(typedWord ?? '', expectedWord ?? '')
+      isFinalStressPair(typedWord ?? '', expectedWord ?? '') &&
+              !finalStressNonVerbs.contains(expectedWord) &&
+              !finalStressNonVerbs.contains(typedWord)
           ? 'علامة النبر في آخر الفعل تغيّر الزمن أو الشخص: «$expectedWord» ليست «$typedWord».'
           : 'علامة النبر هنا تغيّر المعنى: «$expectedWord» ليست «$typedWord».',
     AnswerIssue.enye => 'ñ حرف مستقل وليس n بعلامة: «$expectedWord».',
@@ -212,6 +214,23 @@ AnswerResult evaluateAnswer(String input, List<String> accepted) {
   }
   return _diagnose(typed, best);
 }
+
+/// Words of five letters or more ending in a stressed é / ó that are not
+/// verb forms (REVIEW-015 P3). A missing accent still changes the word
+/// (bebé ≠ bebe), but the explanation must not talk about tense. The content
+/// validator requires every such word in an answer to be a verb form from
+/// the reference or listed here, so new content cannot slip past this.
+const finalStressNonVerbs = {
+  'bebé',
+  'canapé',
+  'carné',
+  'chalé',
+  'cliché',
+  'comité',
+  'consomé',
+  'dominó',
+  'puré',
+};
 
 /// Whether [a] and [b] differ only by a written accent on a final é / ó, in
 /// a word of five letters or more: habló / hablo, trabajé / trabaje,
