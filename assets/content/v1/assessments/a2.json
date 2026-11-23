@@ -1112,15 +1112,15 @@
      "type": "choice",
      "skill": "grammar",
      "can_do": "cd_lvl_a2_services",
-     "prompt_ar": "اختر الكلمة المناسبة للفراغ",
+     "prompt_ar": "تطلب من السيد أن يوقّع هو هنا. اختر الكلمة المناسبة للفراغ",
      "stimulus_es": "Señor, ¿___ firmar aquí, por favor?",
      "choices": [
       "puede",
-      "puedo",
-      "pueden"
+      "poder",
+      "podido"
      ],
      "answer": 0,
-     "explain_ar": "usted (señor) ← puede (poder: o ← ue)."
+     "explain_ar": "تطلب من السيد (usted) أن يوقّع ← ¿Puede firmar…? (poder: o ← ue)."
     },
     {
      "id": "lvl_a2.q2",

@@ -397,10 +397,10 @@
      "ar": "سيدي، هل يمكنك التوقيع هنا من فضلك؟",
      "options": [
       "puede",
-      "puedo",
-      "pueden"
+      "poder",
+      "podido"
      ],
-     "explain_ar": "usted يأخذ صيغة الغائب المفرد: puede."
+     "explain_ar": "تطلب من السيد (usted) أن يوقّع: puede. poder مصدر، وpodido ليس صيغة تُستعمل هنا."
     },
     {
      "type": "match",
