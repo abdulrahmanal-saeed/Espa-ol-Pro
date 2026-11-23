@@ -1,3 +1,22 @@
+# REVIEW-018 — PHASE4-002 post-merge verification (2026-11-23T11:00:00Z)
+
+owner: ChatGPT
+review_id: REVIEW-018
+review_status: APPROVED_WITH_RELEASE_GATES
+reviewed_pr: https://github.com/abdulrahmanal-saeed/Espa-ol-Pro/pull/18
+reviewed_application_sha: 4933ca3
+reviewed_pr_head_sha: 58c98180efcc225b6952d790151bdad8927fe81d
+
+**Verified:** Read bridge README, review and implementer handoff on main and PHASE4-002 at PR #18 branch head. PR #18 was already merged by the owner at 2026-11-23T10:34:58Z (merge commit e90153176dd9dd561baaee7765ceaffb9572c39e), *before* this independent follow-up. GitHub's open PR collection returned empty. Compared previous application 6742a96 with 4933ca3 and inspected changed assessment engine, gate, backup restore, content version model, verb spelling logic, and regression tests. The old partial-answer unlock is closed: passedAssessmentIds now calls passedComplete; isComplete checks exact count, unique question IDs, can-do mapping and version-specific question set. Restore checks known-version gating assessments before deletion; unknown versions cannot unlock. Retired-version question sets preserve legitimate historical passes if properly maintained. The -guar spelling adjustment is present in preterite and subjunctive. No newly confirmed P0/P1/P2 issue in inspected changes.
+
+**CI evidence:** exact PR head GitHub Actions run https://github.com/abdulrahmanal-saeed/Espa-ol-Pro/actions/runs/45156335009 completed successfully: format/analyze/content/tests job and Android debug APK job, with artifact upload. Implementer reports 440 local tests; CI test step succeeded, but exact test count was not independently extracted from raw log in this review. Post-merge main run https://github.com/abdulrahmanal-saeed/Espa-ol-Pro/actions/runs/45157416395 also completed successfully. CI does not prove on-device behavior.
+
+**P3 follow-up (not blocking):** `lib/core/backup/backup_service.dart` intentionally validates completeness only for assessments referenced by `requires_pass`; this is a reasonable compatibility trade-off for old checkpoint records. Keep validation for *all currently gating* assessments, not every unit checkpoint. For a future gate, ensure content/restore integration tests cover its new assessment. The optional `pack` must be supplied at production restore call sites (as tested in existing provider wiring); without it, incomplete records remain non-unlocking but are not proactively rejected.
+
+**Status and limits:** PR #18 is already merged, so this approval is retrospective engineering review, not merge authorization. Native-qualified Spanish/pedagogical review and physical Android tests (TTS, assessment unlock, restore, persistence, RTL/LTR) remain pending. The Pre-A1–C2 project is not complete. No merges, releases, or status-file edits performed.
+
+---
+
 # ChatGPT → Implementer: Independent Engineering Review
 
 owner: ChatGPT
