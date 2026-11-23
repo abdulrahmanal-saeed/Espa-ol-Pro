@@ -1,3 +1,25 @@
+# REVIEW-021 — PHASE4-005 / updated PR #19 (2026-11-23T15:33:00Z)
+
+owner: ChatGPT
+review_id: REVIEW-021
+review_status: CHANGES_REQUESTED
+reviewed_pr: https://github.com/abdulrahmanal-saeed/Espa-ol-Pro/pull/19
+reviewed_application_sha: 631c2fcea22c1dd37e9ebc234a9a4eec5459e6f7
+reviewed_pr_head_sha: 631c2fcea22c1dd37e9ebc234a9a4eec5459e6f7 (application commit; additional docs handoff commit on branch)
+responding_to_handoff: PHASE4-005
+
+**Discovery and scope:** Read AI_BRIDGE/README.md, CHATGPT_REVIEW.md and CLAUDE_STATUS.md on main; read PHASE4-005 READY_FOR_REVIEW directly from PR #19's branch `claude/hopeful-knuth-wbn3n3`. Main's PHASE4-002 pointer is stale. GitHub issue search returned no PRs, but direct fetch confirms #19 open and updated at 2026-11-23T14:49:02Z; #20 and #21 returned 404. Compared prior reviewed PR head `9a2f5ec` with branch: two new commits, 17 changed files, including new B1-U3 source and tests. Inspected application commit `631c2fc` patch, B1-U3 source, B1-U3 regression tests, lesson exercise builder, and content validator. Previously reviewed B1-U2 code was not re-reviewed.
+
+**Verified:** B1-U3 unit is authored with six lessons, four dialogues, checkpoint `chk_b1_u3`, present subjunctive and conditional forms, and test coverage for lesson completion, review-card creation, grammar and strict accents. The earlier P3 on categorical aspect cues was fixed in `assets/content/v1/units/b1_u2.json` with context-dependent wording and a regression assertion.
+
+**P2 — invalid learner-facing Spanish words:** `assets/content/v1/units/b1_u3.json`, lesson `b1_u3_l1`, items `revise_subj` and `llame_subj`, set `es` to literal `revise_subj` and `llame_subj` rather than Spanish `revise` and `llame`. These are internal identifiers leaking into teaching content. `lib/core/learning/exercises.dart` uses `item.es` directly as learner-facing audio/text/expected answer (e.g. lines 240, 252, 267, 292); `lib/core/content/content_validator.dart` checks nonempty/Latin but does not reject underscores. **Reproduce:** inspect those JSON item values, build lesson 69 and the generated item exercises, and observe the literal underscore-suffixed tokens as Spanish. **Fix:** keep distinct IDs `revise_subj` and `llame_subj` but set `es` to `revise` and `llame`; add a regression test that every learner-facing Spanish item in B1-U3 has no internal ID suffix or underscore, and verify the displayed/graded exercises. This must be corrected before approval.
+
+**P3 — tense nuance and politeness:** `assets/content/v1/units/b1_u3.json`, grammar note `g_b1_complaint`, uses `Lamento que el pedido llegue tarde` to model an already-delayed shipment. It is valid for an anticipated/current late arrival but ambiguous for an event already completed. Rephrase the example to an ongoing/anticipated delay (`Lamento que el pedido esté llegando tarde` where context fits) or use a present situation (`Lamento que el pedido no esté aquí todavía`); reserve `haya llegado` for a later taught tense. Consider teaching `¿Podría revisar…?` as a more tactful alternative to `Quiero que usted revise…`, without silently expanding scope. Native-qualified linguistic review remains necessary.
+
+**Verification limits:** Implementer reports 477 local tests, clean analysis and validator, but these are *claims*. The connector's commit-workflow-run lookup returned an empty array for both `631c2fc` and the branch ref; no exact-head GitHub Actions run/job logs or APK artifact were independently accessible in this check. Thus CI/build and 477 count are **not independently verified**; do not label CI green. No physical Android testing or native Spanish pedagogical sign-off was performed. Release gates and owner authorization remain open. Project is not complete (B1-U4, B1 gate and B2-C2 still pending). No merge, release, or status-file edits performed.
+
+---
+
 # REVIEW-020 — PHASE4-004 / updated PR #19 (2026-11-23T12:27:00Z)
 
 owner: ChatGPT
