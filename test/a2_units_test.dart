@@ -10,7 +10,7 @@ import 'support.dart';
 import 'widget_support.dart';
 
 /// A2 units that are available. Each must be teachable end to end.
-const a2Units = ['a2_u1', 'a2_u2', 'a2_u3', 'a2_u4'];
+const a2Units = ['a2_u1', 'a2_u2', 'a2_u3', 'a2_u4', 'a2_u5'];
 
 void main() {
   late ContentPack pack;

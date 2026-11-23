@@ -1,0 +1,1850 @@
+{
+ "unit": "a2_u5",
+ "grammar": [
+  {
+   "id": "g_email_formal",
+   "title_ar": "بنية البريد الرسمي",
+   "body_ar": "1. التحية: Estimado señor Ruiz: / Estimada señora Gil: (بنقطتين بعد الاسم)\n2. السبب: Le escribo para… — أكتب إليك من أجل…\n3. المرفق: Adjunto el presupuesto. — أرفق عرض السعر.\n4. الختام: Quedo a la espera de su respuesta. — في انتظار ردّك.\n5. التوقيع: Un saludo, / Saludos cordiales,\n\nفي البريد الرسمي نستعمل usted (le، su) لا tú.",
+   "examples": [
+    {
+     "es": "Estimada señora Gil: le escribo para confirmar la reunión.",
+     "ar": "السيدة خيل المحترمة: أكتب إليك لتأكيد الاجتماع."
+    },
+    {
+     "es": "Adjunto el archivo con la propuesta.",
+     "ar": "أرفق الملف الذي فيه الاقتراح."
+    }
+   ]
+  },
+  {
+   "id": "g_registers",
+   "title_ar": "tú أم usted في الرسائل",
+   "body_ar": "مع زميل قريب: tú — ¿Puedes enviarme el archivo? · Perdona. · Te aviso. · Un abrazo.\nمع عميل أو مدير لا تعرفه: usted — ¿Puede enviarme el archivo? · Perdone. · Le aviso. · Un saludo.\n\nالرسائل السريعة قصيرة: Llego tarde. · Ya está. · Sin problema.",
+   "examples": [
+    {
+     "es": "Perdona, llego tarde. Te aviso cuando salgo.",
+     "ar": "آسف، سأتأخر. أُعلمك عندما أخرج."
+    },
+    {
+     "es": "Perdone, ¿puede enviarme la factura?",
+     "ar": "عذراً، هل يمكنك إرسال الفاتورة لي؟"
+    }
+   ]
+  },
+  {
+   "id": "g_new_client",
+   "title_ar": "عميل جديد: مع usted",
+   "body_ar": "¿En qué puedo ayudarle? · ¿Me da su nombre / su correo electrónico?\n¿Cómo se escribe? — كيف يُكتب؟ (لتهجئة الاسم)\nLe paso con mi compañera. — أحوّلك إلى زميلتي.\nme interesa مثل gustar: Me interesa el servicio. · Me interesan los precios.",
+   "examples": [
+    {
+     "es": "¿Le interesa nuestro catálogo?",
+     "ar": "هل يهمّك الكتالوج الخاص بنا؟"
+    },
+    {
+     "es": "Con mucho gusto le envío la información.",
+     "ar": "بكل سرور أرسل لك المعلومات."
+    }
+   ]
+  },
+  {
+   "id": "g_follow_up",
+   "title_ar": "المتابعة: الأزمنة معاً",
+   "body_ar": "ما حدث ← الماضي: Como hablamos la semana pasada… · ¿Pudo revisar la propuesta?\nالوضع الآن ← الحاضر: El contrato está pendiente.\nالخطوة التالية ← ir a أو الحاضر: El próximo paso es firmar. · Vamos a enviar el contrato.\n\nrecordar o ← ue: Le recuerdo que la reunión es el lunes.",
+   "examples": [
+    {
+     "es": "Como hablamos ayer, le envío la propuesta.",
+     "ar": "كما تحدّثنا أمس، أرسل لك الاقتراح."
+    },
+    {
+     "es": "Le recuerdo que el pago está pendiente.",
+     "ar": "أذكّرك بأن الدفع ما زال معلّقاً."
+    }
+   ]
+  },
+  {
+   "id": "g_meeting_close",
+   "title_ar": "تلخيص اجتماع وإنهاؤه",
+   "body_ar": "En resumen… — باختصار…\nAcordamos… — اتفقنا على… (acordamos للحاضر والماضي معاً؛ السياق يحدّد)\nPor último… — أخيراً…\nEntonces… — إذن…\n\nالختام: Gracias por su tiempo. · Seguimos en contacto. · Hasta pronto.",
+   "examples": [
+    {
+     "es": "En resumen, acordamos una nueva fecha.",
+     "ar": "باختصار، اتفقنا على تاريخ جديد."
+    },
+    {
+     "es": "Por último, le envío el contrato mañana.",
+     "ar": "أخيراً، أرسل لك العقد غداً."
+    }
+   ]
+  }
+ ],
+ "lessons": [
+  {
+   "id": "a2_u5_l1",
+   "title_ar": "بريد رسمي",
+   "title_es": "Un correo formal",
+   "objectives_ar": [
+    "بنية البريد الرسمي بالإسبانية",
+    "Le escribo para… وAdjunto…",
+    "الختام المناسب"
+   ],
+   "prerequisites": [
+    "a2_u4_l5"
+   ],
+   "minutes": 16,
+   "work_relevance_ar": "كتابة بريد رسمي لعميل أو مورّد.",
+   "source": "original-v1",
+   "grammar": [
+    "g_email_formal"
+   ],
+   "items": [
+    {
+     "id": "estimado",
+     "es": "estimado",
+     "ar": "المحترم / عزيزي (في الرسائل)",
+     "en": "dear (formal)",
+     "pos": "صفة",
+     "examples": [
+      {
+       "es": "Estimado señor García:",
+       "ar": "السيد غارثيا المحترم:"
+      }
+     ],
+     "note_ar": "مع امرأة: estimada. بعد الاسم نقطتان (:) لا فاصلة.",
+     "work": true
+    },
+    {
+     "id": "le_escribo_para",
+     "es": "le escribo para…",
+     "ar": "أكتب إليك من أجل…",
+     "en": "I'm writing to…",
+     "pos": "تعبير",
+     "examples": [
+      {
+       "es": "Le escribo para confirmar la reunión.",
+       "ar": "أكتب إليك لتأكيد الاجتماع."
+      }
+     ],
+     "work": true
+    },
+    {
+     "id": "el_asunto",
+     "es": "el asunto",
+     "ar": "الموضوع (في البريد)",
+     "en": "subject (of an email)",
+     "pos": "اسم",
+     "examples": [
+      {
+       "es": "Asunto: reunión del lunes.",
+       "ar": "الموضوع: اجتماع الاثنين."
+      }
+     ],
+     "work": true
+    },
+    {
+     "id": "adjunto",
+     "es": "adjunto…",
+     "ar": "أرفق…",
+     "en": "please find attached…",
+     "pos": "فعل",
+     "examples": [
+      {
+       "es": "Adjunto el presupuesto.",
+       "ar": "أرفق عرض السعر."
+      }
+     ],
+     "work": true,
+     "connections": [
+      {
+       "type": "grammar",
+       "ar": "من adjuntar (يُرفق): adjunto = أُرفق (أنا)."
+      }
+     ]
+    },
+    {
+     "id": "el_archivo",
+     "es": "el archivo",
+     "ar": "الملف",
+     "en": "file",
+     "pos": "اسم",
+     "examples": [
+      {
+       "es": "El archivo está en el correo.",
+       "ar": "الملف في البريد."
+      }
+     ],
+     "work": true
+    },
+    {
+     "id": "la_respuesta",
+     "es": "la respuesta",
+     "ar": "الردّ",
+     "en": "reply, answer",
+     "pos": "اسم",
+     "examples": [
+      {
+       "es": "Gracias por su respuesta.",
+       "ar": "شكراً على ردّك."
+      }
+     ]
+    },
+    {
+     "id": "quedo_a_la_espera",
+     "es": "quedo a la espera de su respuesta",
+     "ar": "في انتظار ردّك",
+     "en": "I look forward to your reply",
+     "pos": "تعبير",
+     "examples": [
+      {
+       "es": "Quedo a la espera de su respuesta. Un saludo.",
+       "ar": "في انتظار ردّك. مع التحية."
+      }
+     ],
+     "work": true
+    },
+    {
+     "id": "un_saludo",
+     "es": "un saludo",
+     "ar": "مع التحية",
+     "en": "regards",
+     "pos": "تعبير",
+     "examples": [
+      {
+       "es": "Un saludo, Karim",
+       "ar": "مع التحية، كريم"
+      }
+     ],
+     "work": true
+    },
+    {
+     "id": "saludos_cordiales",
+     "es": "saludos cordiales",
+     "ar": "مع خالص التحيات",
+     "en": "kind regards",
+     "pos": "تعبير",
+     "examples": [
+      {
+       "es": "Saludos cordiales, Ana Gil",
+       "ar": "مع خالص التحيات، آنا خيل"
+      }
+     ],
+     "note_ar": "أكثر رسمية من un saludo."
+    }
+   ],
+   "activities": [
+    {
+     "type": "teach",
+     "item": "estimado"
+    },
+    {
+     "type": "teach",
+     "item": "le_escribo_para"
+    },
+    {
+     "type": "mcq_meaning",
+     "item": "estimado"
+    },
+    {
+     "type": "listen_choose",
+     "item": "le_escribo_para"
+    },
+    {
+     "type": "note",
+     "title_ar": "بنية البريد الرسمي",
+     "body_ar": "Estimado/a + الاسم:\nLe escribo para…\nAdjunto…\nQuedo a la espera de su respuesta.\nUn saludo, / Saludos cordiales,",
+     "examples": [
+      {
+       "es": "Adjunto el archivo con la propuesta.",
+       "ar": "أرفق الملف الذي فيه الاقتراح."
+      }
+     ]
+    },
+    {
+     "type": "teach",
+     "item": "el_asunto"
+    },
+    {
+     "type": "teach",
+     "item": "adjunto"
+    },
+    {
+     "type": "teach",
+     "item": "el_archivo"
+    },
+    {
+     "type": "mcq_reverse",
+     "item": "el_asunto"
+    },
+    {
+     "type": "listen_pick_es",
+     "item": "adjunto"
+    },
+    {
+     "type": "mcq_meaning",
+     "item": "el_archivo"
+    },
+    {
+     "type": "teach",
+     "item": "la_respuesta"
+    },
+    {
+     "type": "teach",
+     "item": "quedo_a_la_espera"
+    },
+    {
+     "type": "teach",
+     "item": "un_saludo"
+    },
+    {
+     "type": "teach",
+     "item": "saludos_cordiales"
+    },
+    {
+     "type": "mcq_meaning",
+     "item": "quedo_a_la_espera"
+    },
+    {
+     "type": "listen_choose",
+     "item": "la_respuesta"
+    },
+    {
+     "type": "mcq_reverse",
+     "item": "un_saludo"
+    },
+    {
+     "type": "listen_pick_es",
+     "item": "saludos_cordiales"
+    },
+    {
+     "type": "choice",
+     "prompt_ar": "أيّ بداية مناسبة لبريد رسمي إلى عميلة؟",
+     "choices": [
+      "Estimada señora Gil:",
+      "Hola, guapa:",
+      "¿Qué tal, Gil?"
+     ],
+     "answer": 0,
+     "skill": "reading",
+     "choices_es": true,
+     "explain_ar": "في البريد الرسمي: Estimado / Estimada + الاسم، ثم نقطتان."
+    },
+    {
+     "type": "fill",
+     "es": "Le ___ para confirmar la reunión del lunes.",
+     "answer": "escribo",
+     "ar": "أكتب إليك لتأكيد اجتماع الاثنين.",
+     "options": [
+      "escribo",
+      "escribir",
+      "escrito"
+     ],
+     "explain_ar": "مع yo في الحاضر: escribo."
+    },
+    {
+     "type": "fill",
+     "es": "___ el presupuesto en este correo.",
+     "answer": "Adjunto",
+     "ar": "أرفق عرض السعر في هذا البريد.",
+     "options": [
+      "Adjunto",
+      "Adjuntar",
+      "Adjuntado"
+     ],
+     "explain_ar": "مع yo: adjunto (أُرفق)."
+    },
+    {
+     "type": "match",
+     "items": [
+      "el_asunto",
+      "el_archivo",
+      "la_respuesta",
+      "un_saludo"
+     ]
+    },
+    {
+     "type": "type_es",
+     "item": "el_archivo"
+    },
+    {
+     "type": "type_es",
+     "item": "un_saludo"
+    },
+    {
+     "type": "order",
+     "es": "Le escribo para confirmar la reunión del lunes.",
+     "ar": "أكتب إليك لتأكيد اجتماع الاثنين."
+    },
+    {
+     "type": "dictation",
+     "es": "Adjunto el presupuesto. Quedo a la espera de su respuesta.",
+     "ar": "أرفق عرض السعر. في انتظار ردّك."
+    },
+    {
+     "type": "choice",
+     "prompt_ar": "لماذا تكتب آنا البريد؟",
+     "choices": [
+      "لإرسال عرض السعر",
+      "لإلغاء الاجتماع",
+      "للشكوى من فاتورة"
+     ],
+     "answer": 0,
+     "skill": "reading",
+     "choices_es": false,
+     "stimulus_es": "Asunto: presupuesto. Estimado señor Ruiz: le escribo para enviarle el presupuesto del proyecto. Adjunto el archivo. Quedo a la espera de su respuesta. Saludos cordiales, Ana Gil"
+    },
+    {
+     "type": "choice",
+     "prompt_ar": "استمع: ماذا يقول في آخر البريد؟",
+     "choices": [
+      "في انتظار ردّك",
+      "أرفق الملف",
+      "أكتب لتأكيد الاجتماع"
+     ],
+     "answer": 0,
+     "skill": "listening",
+     "choices_es": false,
+     "audio_es": "Quedo a la espera de su respuesta."
+    },
+    {
+     "type": "respond",
+     "prompt_ar": "اكتب أول جملة في بريد إلى عميل: «أكتب إليك لتأكيد الاجتماع».",
+     "accepted": [
+      "Le escribo para confirmar la reunión",
+      "Le escribo para confirmar la reunión del lunes"
+     ],
+     "audio_es": "Le escribo para confirmar la reunión."
+    },
+    {
+     "type": "speak",
+     "es": "Estimado señor Ruiz: le escribo para confirmar la reunión. Adjunto el presupuesto. Un saludo.",
+     "ar": "السيد رويث المحترم: أكتب إليك لتأكيد الاجتماع. أرفق عرض السعر. مع التحية."
+    }
+   ]
+  },
+  {
+   "id": "a2_u5_l2",
+   "title_ar": "رسائل سريعة",
+   "title_es": "Mensajes rápidos",
+   "objectives_ar": [
+    "رسائل قصيرة مع الزملاء",
+    "tú أم usted في الرسائل",
+    "عبارات سريعة: ya está، sin problema"
+   ],
+   "prerequisites": [
+    "a2_u5_l1"
+   ],
+   "minutes": 15,
+   "work_relevance_ar": "رسائل العمل اليومية مع الفريق.",
+   "source": "original-v1",
+   "grammar": [
+    "g_registers"
+   ],
+   "items": [
+    {
+     "id": "puedes",
+     "es": "¿Puedes…?",
+     "ar": "هل يمكنك…؟",
+     "en": "Can you…?",
+     "pos": "سؤال",
+     "examples": [
+      {
+       "es": "¿Puedes enviarme el archivo?",
+       "ar": "هل يمكنك أن ترسل لي الملف؟"
+      }
+     ],
+     "work": true,
+     "connections": [
+      {
+       "type": "usage",
+       "ar": "مع زميل: ¿Puedes…? · مع عميل: ¿Puede…? (A2-U1)."
+      }
+     ]
+    },
+    {
+     "id": "perdona",
+     "es": "perdona",
+     "ar": "آسف / عذراً (لزميل)",
+     "en": "sorry (informal)",
+     "pos": "تعبير",
+     "examples": [
+      {
+       "es": "Perdona, no puedo hablar ahora.",
+       "ar": "عذراً، لا أستطيع الكلام الآن."
+      }
+     ],
+     "connections": [
+      {
+       "type": "usage",
+       "ar": "perdona مع tú، وperdone مع usted (A1)."
+      }
+     ]
+    },
+    {
+     "id": "llego_tarde",
+     "es": "llego tarde",
+     "ar": "سأتأخر / أصل متأخراً",
+     "en": "I'm running late",
+     "pos": "تعبير",
+     "examples": [
+      {
+       "es": "Perdona, llego tarde a la reunión.",
+       "ar": "آسف، سأتأخر عن الاجتماع."
+      }
+     ],
+     "work": true,
+     "connections": [
+      {
+       "type": "grammar",
+       "ar": "الحاضر لحدث قريب جداً: llego tarde = سأصل متأخراً."
+      }
+     ]
+    },
+    {
+     "id": "te_aviso",
+     "es": "te aviso",
+     "ar": "أُعلمك / أخبرك",
+     "en": "I'll let you know",
+     "pos": "تعبير",
+     "examples": [
+      {
+       "es": "Si hay un cambio, te aviso.",
+       "ar": "إذا حدث تغيير، أُعلمك."
+      }
+     ],
+     "note_ar": "مع usted: le aviso.",
+     "work": true
+    },
+    {
+     "id": "sin_problema",
+     "es": "sin problema",
+     "ar": "لا مشكلة",
+     "en": "no problem",
+     "pos": "تعبير",
+     "examples": [
+      {
+       "es": "¿Puedes llamar al cliente? — Sin problema.",
+       "ar": "هل يمكنك الاتصال بالعميل؟ — لا مشكلة."
+      }
+     ]
+    },
+    {
+     "id": "gracias_por",
+     "es": "gracias por…",
+     "ar": "شكراً على…",
+     "en": "thanks for…",
+     "pos": "تعبير",
+     "examples": [
+      {
+       "es": "Gracias por la información.",
+       "ar": "شكراً على المعلومات."
+      }
+     ],
+     "work": true
+    },
+    {
+     "id": "ya_esta",
+     "es": "ya está",
+     "ar": "تمّ / جاهز",
+     "en": "done",
+     "pos": "تعبير",
+     "examples": [
+      {
+       "es": "¿El informe? Ya está.",
+       "ar": "التقرير؟ تمّ."
+      }
+     ]
+    },
+    {
+     "id": "ahora_voy",
+     "es": "ahora voy",
+     "ar": "قادم الآن",
+     "en": "I'm coming",
+     "pos": "تعبير",
+     "examples": [
+      {
+       "es": "¿Dónde estás? — Ahora voy.",
+       "ar": "أين أنت؟ — قادم الآن."
+      }
+     ]
+    },
+    {
+     "id": "un_abrazo",
+     "es": "un abrazo",
+     "ar": "مع المودة (لزميل قريب)",
+     "en": "best (informal sign-off)",
+     "pos": "تعبير",
+     "examples": [
+      {
+       "es": "Gracias por todo. Un abrazo, Lucía",
+       "ar": "شكراً على كل شيء. مع المودة، لوثيا"
+      }
+     ],
+     "note_ar": "غير رسمي؛ لا تستعمله مع عميل جديد."
+    }
+   ],
+   "activities": [
+    {
+     "type": "teach",
+     "item": "puedes"
+    },
+    {
+     "type": "teach",
+     "item": "perdona"
+    },
+    {
+     "type": "mcq_meaning",
+     "item": "puedes"
+    },
+    {
+     "type": "listen_choose",
+     "item": "perdona"
+    },
+    {
+     "type": "note",
+     "title_ar": "tú أم usted في الرسائل",
+     "body_ar": "زميل: ¿Puedes…? · Perdona. · Te aviso. · Un abrazo.\nعميل: ¿Puede…? · Perdone. · Le aviso. · Un saludo.",
+     "examples": [
+      {
+       "es": "Perdone, ¿puede enviarme la factura?",
+       "ar": "عذراً، هل يمكنك إرسال الفاتورة لي؟"
+      }
+     ]
+    },
+    {
+     "type": "teach",
+     "item": "llego_tarde"
+    },
+    {
+     "type": "teach",
+     "item": "te_aviso"
+    },
+    {
+     "type": "teach",
+     "item": "sin_problema"
+    },
+    {
+     "type": "mcq_reverse",
+     "item": "llego_tarde"
+    },
+    {
+     "type": "listen_pick_es",
+     "item": "te_aviso"
+    },
+    {
+     "type": "mcq_meaning",
+     "item": "sin_problema"
+    },
+    {
+     "type": "teach",
+     "item": "gracias_por"
+    },
+    {
+     "type": "teach",
+     "item": "ya_esta"
+    },
+    {
+     "type": "teach",
+     "item": "ahora_voy"
+    },
+    {
+     "type": "teach",
+     "item": "un_abrazo"
+    },
+    {
+     "type": "mcq_meaning",
+     "item": "gracias_por"
+    },
+    {
+     "type": "listen_choose",
+     "item": "ya_esta"
+    },
+    {
+     "type": "mcq_reverse",
+     "item": "ahora_voy"
+    },
+    {
+     "type": "listen_pick_es",
+     "item": "un_abrazo"
+    },
+    {
+     "type": "choice",
+     "prompt_ar": "رسالة إلى عميل لا تعرفه. أيّ جملة مناسبة؟",
+     "choices": [
+      "Perdone, ¿puede enviarme la factura?",
+      "Perdona, ¿puedes enviarme la factura? Un abrazo.",
+      "Oye, mándame la factura."
+     ],
+     "answer": 0,
+     "skill": "reading",
+     "choices_es": true,
+     "explain_ar": "مع عميل لا تعرفه: usted (perdone، puede) ولا تستعمل un abrazo."
+    },
+    {
+     "type": "fill",
+     "es": "Lucía, ¿___ enviarme el archivo?",
+     "answer": "puedes",
+     "ar": "لوثيا، هل يمكنك أن ترسلي لي الملف؟",
+     "options": [
+      "puedes",
+      "poder",
+      "podido"
+     ],
+     "explain_ar": "مع زميلة (tú): ¿Puedes…?"
+    },
+    {
+     "type": "fill",
+     "es": "Si hay un cambio, te ___.",
+     "answer": "aviso",
+     "ar": "إذا حدث تغيير، أُعلمك.",
+     "options": [
+      "aviso",
+      "avisar",
+      "avisado"
+     ],
+     "explain_ar": "مع yo في الحاضر: te aviso."
+    },
+    {
+     "type": "match",
+     "items": [
+      "sin_problema",
+      "ya_esta",
+      "ahora_voy",
+      "un_abrazo"
+     ]
+    },
+    {
+     "type": "type_es",
+     "item": "llego_tarde"
+    },
+    {
+     "type": "type_es",
+     "item": "sin_problema"
+    },
+    {
+     "type": "order",
+     "es": "Perdona, llego tarde a la reunión.",
+     "ar": "آسف، سأتأخر عن الاجتماع."
+    },
+    {
+     "type": "dictation",
+     "es": "¿Puedes enviarme el archivo? Gracias por todo.",
+     "ar": "هل يمكنك أن ترسل لي الملف؟ شكراً على كل شيء."
+    },
+    {
+     "type": "choice",
+     "prompt_ar": "لماذا يكتب عمر؟",
+     "choices": [
+      "سيتأخر عن الاجتماع",
+      "أرسل الملف",
+      "لا يستطيع الحضور أبداً"
+     ],
+     "answer": 0,
+     "skill": "reading",
+     "choices_es": false,
+     "stimulus_es": "Omar: Perdona, Lucía, llego tarde a la reunión. Hay mucho tráfico. Te aviso cuando llego. Un abrazo."
+    },
+    {
+     "type": "choice",
+     "prompt_ar": "استمع: ماذا يقول زميلك عن التقرير؟",
+     "choices": [
+      "إنه جاهز",
+      "سيتأخر",
+      "لم يبدأ بعد"
+     ],
+     "answer": 0,
+     "skill": "listening",
+     "choices_es": false,
+     "audio_es": "¿El informe? Ya está."
+    },
+    {
+     "type": "respond",
+     "prompt_ar": "زميلة تكتب: «¿Puedes llamar al cliente?». ردّ: لا مشكلة.",
+     "accepted": [
+      "Sin problema",
+      "Sí, sin problema",
+      "Vale, sin problema"
+     ],
+     "audio_es": "¿Puedes llamar al cliente?"
+    },
+    {
+     "type": "speak",
+     "es": "Perdona, llego tarde. Te aviso cuando llego. Un abrazo.",
+     "ar": "آسف، سأتأخر. أُعلمك عندما أصل. مع المودة."
+    }
+   ]
+  },
+  {
+   "id": "a2_u5_l3",
+   "title_ar": "عميل جديد",
+   "title_es": "Un cliente nuevo",
+   "objectives_ar": [
+    "استقبال طلب عميل جديد",
+    "طلب الاسم والبريد وتهجئته",
+    "التحويل إلى زميل"
+   ],
+   "prerequisites": [
+    "a2_u5_l2"
+   ],
+   "minutes": 16,
+   "work_relevance_ar": "الرد على عميل محتمل بالهاتف أو في الاستقبال.",
+   "source": "original-v1",
+   "grammar": [
+    "g_new_client"
+   ],
+   "items": [
+    {
+     "id": "me_interesa",
+     "es": "me interesa…",
+     "ar": "يهمّني… / أنا مهتم بـ…",
+     "en": "I'm interested in…",
+     "pos": "تعبير",
+     "examples": [
+      {
+       "es": "Me interesa su servicio.",
+       "ar": "أنا مهتم بخدمتكم."
+      },
+      {
+       "es": "Me interesa su servicio de mantenimiento.",
+       "ar": "أنا مهتم بخدمة الصيانة لديكم."
+      }
+     ],
+     "work": true,
+     "connections": [
+      {
+       "type": "grammar",
+       "ar": "مثل gustar: me interesa + مفرد، me interesan + جمع."
+      }
+     ]
+    },
+    {
+     "id": "el_servicio",
+     "es": "el servicio",
+     "ar": "الخدمة",
+     "en": "service",
+     "pos": "اسم",
+     "examples": [
+      {
+       "es": "El servicio es rápido.",
+       "ar": "الخدمة سريعة."
+      }
+     ],
+     "work": true
+    },
+    {
+     "id": "la_informacion",
+     "es": "la información",
+     "ar": "المعلومات",
+     "en": "information",
+     "pos": "اسم",
+     "examples": [
+      {
+       "es": "Le envío la información hoy.",
+       "ar": "أرسل لك المعلومات اليوم."
+      }
+     ],
+     "work": true,
+     "connections": [
+      {
+       "type": "grammar",
+       "ar": "مفرد دائماً: la información (لا las informaciones)."
+      }
+     ]
+    },
+    {
+     "id": "el_catalogo",
+     "es": "el catálogo",
+     "ar": "الكتالوج",
+     "en": "catalogue",
+     "pos": "اسم",
+     "examples": [
+      {
+       "es": "Adjunto nuestro catálogo.",
+       "ar": "أرفق الكتالوج الخاص بنا."
+      }
+     ],
+     "work": true
+    },
+    {
+     "id": "me_da",
+     "es": "¿Me da su…?",
+     "ar": "هل تعطيني…؟",
+     "en": "Could you give me your…?",
+     "pos": "سؤال",
+     "examples": [
+      {
+       "es": "¿Me da su nombre, por favor?",
+       "ar": "هل تعطيني اسمك من فضلك؟"
+      }
+     ],
+     "work": true,
+     "connections": [
+      {
+       "type": "grammar",
+       "ar": "dar شاذّ: doy, das, da. مع usted: ¿Me da…?"
+      }
+     ]
+    },
+    {
+     "id": "correo_electronico",
+     "es": "el correo electrónico",
+     "ar": "البريد الإلكتروني",
+     "en": "email address / email",
+     "pos": "اسم",
+     "examples": [
+      {
+       "es": "¿Me da su correo electrónico?",
+       "ar": "هل تعطيني بريدك الإلكتروني؟"
+      }
+     ],
+     "work": true,
+     "connections": [
+      {
+       "type": "usage",
+       "ar": "el correo (A1) وحدها تعني البريد أيضاً."
+      }
+     ]
+    },
+    {
+     "id": "como_se_escribe",
+     "es": "¿Cómo se escribe?",
+     "ar": "كيف يُكتب؟",
+     "en": "How do you spell it?",
+     "pos": "سؤال",
+     "examples": [
+      {
+       "es": "¿Su apellido? ¿Cómo se escribe?",
+       "ar": "اسم عائلتك؟ كيف يُكتب؟"
+      }
+     ],
+     "work": true
+    },
+    {
+     "id": "le_paso_con",
+     "es": "le paso con…",
+     "ar": "أحوّلك إلى…",
+     "en": "I'll put you through to…",
+     "pos": "تعبير",
+     "examples": [
+      {
+       "es": "Un momento, le paso con mi compañera.",
+       "ar": "لحظة، أحوّلك إلى زميلتي."
+      }
+     ],
+     "work": true
+    },
+    {
+     "id": "con_mucho_gusto",
+     "es": "con mucho gusto",
+     "ar": "بكل سرور",
+     "en": "with pleasure",
+     "pos": "تعبير",
+     "examples": [
+      {
+       "es": "Con mucho gusto le envío el catálogo.",
+       "ar": "بكل سرور أرسل لك الكتالوج."
+      }
+     ],
+     "connections": [
+      {
+       "type": "usage",
+       "ar": "قارن: mucho gusto (Pre-A1) = تشرّفنا."
+      }
+     ]
+    }
+   ],
+   "activities": [
+    {
+     "type": "teach",
+     "item": "me_interesa"
+    },
+    {
+     "type": "teach",
+     "item": "el_servicio"
+    },
+    {
+     "type": "mcq_meaning",
+     "item": "me_interesa"
+    },
+    {
+     "type": "listen_choose",
+     "item": "el_servicio"
+    },
+    {
+     "type": "note",
+     "title_ar": "عميل جديد: مع usted",
+     "body_ar": "¿En qué puedo ayudarle? · ¿Me da su nombre? · ¿Cómo se escribe?\nLe paso con… · me interesa (مثل gustar)",
+     "examples": [
+      {
+       "es": "¿Le interesa nuestro catálogo?",
+       "ar": "هل يهمّك الكتالوج الخاص بنا؟"
+      }
+     ]
+    },
+    {
+     "type": "teach",
+     "item": "la_informacion"
+    },
+    {
+     "type": "teach",
+     "item": "el_catalogo"
+    },
+    {
+     "type": "teach",
+     "item": "me_da"
+    },
+    {
+     "type": "teach",
+     "item": "correo_electronico"
+    },
+    {
+     "type": "mcq_reverse",
+     "item": "la_informacion"
+    },
+    {
+     "type": "listen_pick_es",
+     "item": "el_catalogo"
+    },
+    {
+     "type": "mcq_meaning",
+     "item": "me_da"
+    },
+    {
+     "type": "listen_choose",
+     "item": "correo_electronico"
+    },
+    {
+     "type": "teach",
+     "item": "como_se_escribe"
+    },
+    {
+     "type": "teach",
+     "item": "le_paso_con"
+    },
+    {
+     "type": "teach",
+     "item": "con_mucho_gusto"
+    },
+    {
+     "type": "mcq_meaning",
+     "item": "como_se_escribe"
+    },
+    {
+     "type": "listen_pick_es",
+     "item": "le_paso_con"
+    },
+    {
+     "type": "mcq_reverse",
+     "item": "con_mucho_gusto"
+    },
+    {
+     "type": "choice",
+     "prompt_ar": "«أنا مهتم بالأسعار»:",
+     "choices": [
+      "Me interesan los precios.",
+      "Me interesa los precios.",
+      "Yo intereso los precios."
+     ],
+     "answer": 0,
+     "skill": "grammar",
+     "choices_es": true,
+     "explain_ar": "مثل gustar: los precios جمع ← interesan، والشخص قبل الفعل (me)."
+    },
+    {
+     "type": "fill",
+     "es": "¿Me ___ su correo electrónico, por favor?",
+     "answer": "da",
+     "ar": "هل تعطيني بريدك الإلكتروني من فضلك؟",
+     "options": [
+      "da",
+      "dar",
+      "dado"
+     ],
+     "explain_ar": "مع usted: ¿Me da…? (dar شاذّ)."
+    },
+    {
+     "type": "fill",
+     "es": "Un momento, le ___ con mi compañera.",
+     "answer": "paso",
+     "ar": "لحظة، أحوّلك إلى زميلتي.",
+     "options": [
+      "paso",
+      "pasar",
+      "pasado"
+     ],
+     "explain_ar": "مع yo في الحاضر: le paso con…"
+    },
+    {
+     "type": "match",
+     "items": [
+      "el_servicio",
+      "la_informacion",
+      "el_catalogo",
+      "correo_electronico"
+     ]
+    },
+    {
+     "type": "type_es",
+     "item": "la_informacion"
+    },
+    {
+     "type": "type_es",
+     "item": "el_catalogo"
+    },
+    {
+     "type": "order",
+     "es": "Con mucho gusto le envío la información.",
+     "ar": "بكل سرور أرسل لك المعلومات."
+    },
+    {
+     "type": "dictation",
+     "es": "¿Me da su nombre? ¿Cómo se escribe?",
+     "ar": "هل تعطيني اسمك؟ كيف يُكتب؟"
+    },
+    {
+     "type": "choice",
+     "prompt_ar": "ماذا يريد العميل؟",
+     "choices": [
+      "معلومات عن الخدمة والأسعار",
+      "شكوى من فاتورة",
+      "إلغاء طلب"
+     ],
+     "answer": 0,
+     "skill": "reading",
+     "choices_es": false,
+     "stimulus_es": "Buenos días. Me llamo Pablo Díaz. Me interesa su servicio de mantenimiento. ¿Me puede enviar el catálogo y los precios? Mi correo electrónico es pablo.diaz@correo.es"
+    },
+    {
+     "type": "choice",
+     "prompt_ar": "استمع: ماذا تقول الموظفة؟",
+     "choices": [
+      "ستحوّله إلى زميلتها",
+      "ستتصل لاحقاً",
+      "ستُرسل الكتالوج"
+     ],
+     "answer": 0,
+     "skill": "listening",
+     "choices_es": false,
+     "audio_es": "Un momento, le paso con mi compañera."
+    },
+    {
+     "type": "respond",
+     "prompt_ar": "عميل جديد يقول: «Me interesa su catálogo». ردّ: بكل سرور، هل تعطيني بريدك الإلكتروني؟",
+     "accepted": [
+      "Con mucho gusto, ¿me da su correo electrónico?",
+      "Con mucho gusto. ¿Me da su correo electrónico?",
+      "Con mucho gusto, ¿me da su correo?"
+     ],
+     "audio_es": "Me interesa su catálogo."
+    },
+    {
+     "type": "speak",
+     "es": "Con mucho gusto le envío el catálogo. ¿Me da su correo electrónico?",
+     "ar": "بكل سرور أرسل لك الكتالوج. هل تعطيني بريدك الإلكتروني؟"
+    }
+   ]
+  },
+  {
+   "id": "a2_u5_l4",
+   "title_ar": "المتابعة",
+   "title_es": "El seguimiento",
+   "objectives_ar": [
+    "رسالة متابعة: ما حدث، وما المعلّق، وما التالي",
+    "¿Pudo…? وle recuerdo que…",
+    "الجمع بين الماضي والحاضر والمستقبل"
+   ],
+   "prerequisites": [
+    "a2_u5_l3"
+   ],
+   "minutes": 17,
+   "work_relevance_ar": "متابعة عرض أو عقد مع عميل بعد اجتماع.",
+   "source": "original-v1",
+   "grammar": [
+    "g_follow_up"
+   ],
+   "items": [
+    {
+     "id": "como_hablamos",
+     "es": "como hablamos…",
+     "ar": "كما تحدّثنا…",
+     "en": "as we discussed…",
+     "pos": "تعبير",
+     "examples": [
+      {
+       "es": "Como hablamos ayer, le envío la propuesta.",
+       "ar": "كما تحدّثنا أمس، أرسل لك الاقتراح."
+      }
+     ],
+     "work": true,
+     "connections": [
+      {
+       "type": "grammar",
+       "ar": "como (بلا علامة) = كما؛ ¿cómo? (بعلامة) = كيف؟"
+      }
+     ]
+    },
+    {
+     "id": "la_semana_pasada",
+     "es": "la semana pasada",
+     "ar": "الأسبوع الماضي",
+     "en": "last week",
+     "pos": "تعبير",
+     "examples": [
+      {
+       "es": "La semana pasada hablamos del proyecto.",
+       "ar": "الأسبوع الماضي تحدّثنا عن المشروع."
+      }
+     ]
+    },
+    {
+     "id": "la_propuesta",
+     "es": "la propuesta",
+     "ar": "الاقتراح / العرض المقترح",
+     "en": "proposal",
+     "pos": "اسم",
+     "examples": [
+      {
+       "es": "Adjunto la propuesta.",
+       "ar": "أرفق الاقتراح."
+      }
+     ],
+     "work": true
+    },
+    {
+     "id": "pudo",
+     "es": "¿Pudo…?",
+     "ar": "هل تمكّنتَ (حضرتك) من…؟",
+     "en": "Were you able to…?",
+     "pos": "سؤال",
+     "examples": [
+      {
+       "es": "¿Pudo revisar la propuesta?",
+       "ar": "هل تمكّنتَ من مراجعة الاقتراح؟"
+      }
+     ],
+     "work": true,
+     "connections": [
+      {
+       "type": "grammar",
+       "ar": "poder شاذّ في الماضي: pude, pudiste, pudo."
+      }
+     ]
+    },
+    {
+     "id": "le_recuerdo",
+     "es": "le recuerdo que…",
+     "ar": "أذكّرك بأنّ…",
+     "en": "may I remind you that…",
+     "pos": "تعبير",
+     "examples": [
+      {
+       "es": "Le recuerdo que la reunión es el lunes.",
+       "ar": "أذكّرك بأن الاجتماع يوم الاثنين."
+      }
+     ],
+     "work": true,
+     "connections": [
+      {
+       "type": "grammar",
+       "ar": "recordar o ← ue: recuerdo، recuerda."
+      }
+     ]
+    },
+    {
+     "id": "pendiente",
+     "es": "pendiente",
+     "ar": "معلّق / لم يُنجز بعد",
+     "en": "pending",
+     "pos": "صفة",
+     "examples": [
+      {
+       "es": "El pago está pendiente.",
+       "ar": "الدفع ما زال معلّقاً."
+      }
+     ],
+     "work": true
+    },
+    {
+     "id": "quedamos_en",
+     "es": "quedamos en…",
+     "ar": "اتفقنا على…",
+     "en": "we agreed to…",
+     "pos": "تعبير",
+     "examples": [
+      {
+       "es": "Quedamos en hablar el lunes.",
+       "ar": "اتفقنا على أن نتحدث يوم الاثنين."
+      }
+     ],
+     "work": true,
+     "connections": [
+      {
+       "type": "usage",
+       "ar": "quedar en + مصدر = يتّفق على. قارن ¿Quedamos…? (A2-U3) = هل نلتقي؟"
+      }
+     ]
+    },
+    {
+     "id": "proximo_paso",
+     "es": "el próximo paso",
+     "ar": "الخطوة التالية",
+     "en": "the next step",
+     "pos": "تعبير",
+     "examples": [
+      {
+       "es": "El próximo paso es firmar el contrato.",
+       "ar": "الخطوة التالية هي توقيع العقد."
+      }
+     ],
+     "work": true
+    },
+    {
+     "id": "cualquier_duda",
+     "es": "cualquier duda",
+     "ar": "أيّ استفسار",
+     "en": "any question",
+     "pos": "تعبير",
+     "examples": [
+      {
+       "es": "Si tiene cualquier duda, me llama.",
+       "ar": "إذا كان عندك أيّ استفسار، اتصل بي."
+      }
+     ],
+     "work": true
+    }
+   ],
+   "activities": [
+    {
+     "type": "teach",
+     "item": "como_hablamos"
+    },
+    {
+     "type": "teach",
+     "item": "la_semana_pasada"
+    },
+    {
+     "type": "mcq_meaning",
+     "item": "como_hablamos"
+    },
+    {
+     "type": "listen_choose",
+     "item": "la_semana_pasada"
+    },
+    {
+     "type": "note",
+     "title_ar": "المتابعة: الأزمنة معاً",
+     "body_ar": "ما حدث: Como hablamos… · ¿Pudo revisar…?\nالآن: Está pendiente.\nالتالي: El próximo paso es… · Vamos a…",
+     "examples": [
+      {
+       "es": "Le recuerdo que el pago está pendiente.",
+       "ar": "أذكّرك بأن الدفع ما زال معلّقاً."
+      }
+     ]
+    },
+    {
+     "type": "teach",
+     "item": "la_propuesta"
+    },
+    {
+     "type": "teach",
+     "item": "pudo"
+    },
+    {
+     "type": "mcq_reverse",
+     "item": "la_propuesta"
+    },
+    {
+     "type": "listen_pick_es",
+     "item": "pudo"
+    },
+    {
+     "type": "teach",
+     "item": "le_recuerdo"
+    },
+    {
+     "type": "teach",
+     "item": "pendiente"
+    },
+    {
+     "type": "teach",
+     "item": "quedamos_en"
+    },
+    {
+     "type": "mcq_meaning",
+     "item": "le_recuerdo"
+    },
+    {
+     "type": "listen_choose",
+     "item": "pendiente"
+    },
+    {
+     "type": "mcq_reverse",
+     "item": "quedamos_en"
+    },
+    {
+     "type": "teach",
+     "item": "proximo_paso"
+    },
+    {
+     "type": "teach",
+     "item": "cualquier_duda"
+    },
+    {
+     "type": "mcq_meaning",
+     "item": "proximo_paso"
+    },
+    {
+     "type": "listen_pick_es",
+     "item": "cualquier_duda"
+    },
+    {
+     "type": "choice",
+     "prompt_ar": "أيّ جملة تصف ما حدث الأسبوع الماضي؟",
+     "choices": [
+      "La semana pasada hablamos del proyecto.",
+      "La semana pasada vamos a hablar del proyecto.",
+      "La semana pasada hablar del proyecto."
+     ],
+     "answer": 0,
+     "skill": "grammar",
+     "choices_es": true,
+     "explain_ar": "la semana pasada ← الماضي: hablamos. ir a للمستقبل، والمصدر وحده لا يكفي."
+    },
+    {
+     "type": "fill",
+     "es": "Señor Ruiz, ¿___ revisar la propuesta?",
+     "answer": "pudo",
+     "ar": "سيد رويث، هل تمكّنتَ من مراجعة الاقتراح؟",
+     "options": [
+      "pudo",
+      "poder",
+      "podido"
+     ],
+     "explain_ar": "usted في الماضي: ¿pudo…? (poder شاذّ)."
+    },
+    {
+     "type": "fill",
+     "es": "Le ___ que la reunión es el lunes.",
+     "answer": "recuerdo",
+     "ar": "أذكّرك بأن الاجتماع يوم الاثنين.",
+     "options": [
+      "recuerdo",
+      "recordar",
+      "recordado"
+     ],
+     "explain_ar": "مع yo: recuerdo (o ← ue)."
+    },
+    {
+     "type": "match",
+     "items": [
+      "la_propuesta",
+      "pendiente",
+      "proximo_paso",
+      "cualquier_duda"
+     ]
+    },
+    {
+     "type": "type_es",
+     "item": "la_propuesta"
+    },
+    {
+     "type": "type_es",
+     "item": "pendiente"
+    },
+    {
+     "type": "order",
+     "es": "Como hablamos ayer, le envío la propuesta.",
+     "ar": "كما تحدّثنا أمس، أرسل لك الاقتراح."
+    },
+    {
+     "type": "dictation",
+     "es": "El próximo paso es firmar el contrato.",
+     "ar": "الخطوة التالية هي توقيع العقد."
+    },
+    {
+     "type": "choice",
+     "prompt_ar": "ما الذي ما زال معلّقاً؟",
+     "choices": [
+      "توقيع العقد",
+      "الاقتراح",
+      "الاجتماع"
+     ],
+     "answer": 0,
+     "skill": "reading",
+     "choices_es": false,
+     "stimulus_es": "Estimado señor Ruiz: como hablamos la semana pasada, le envío la propuesta final. Le recuerdo que la firma del contrato está pendiente. El próximo paso es una videollamada el lunes. Si tiene cualquier duda, me llama. Un saludo, Ana"
+    },
+    {
+     "type": "choice",
+     "prompt_ar": "استمع: ماذا تسأل؟",
+     "choices": [
+      "هل تمكّنتَ من مراجعة الاقتراح؟",
+      "هل تريد اقتراحاً جديداً؟",
+      "متى الاجتماع؟"
+     ],
+     "answer": 0,
+     "skill": "listening",
+     "choices_es": false,
+     "audio_es": "¿Pudo revisar la propuesta?"
+    },
+    {
+     "type": "respond",
+     "prompt_ar": "اكتب جملة متابعة لعميل: «كما تحدّثنا أمس، أرسل لك الاقتراح».",
+     "accepted": [
+      "Como hablamos ayer, le envío la propuesta",
+      "Como hablamos ayer, le mando la propuesta"
+     ],
+     "audio_es": "Como hablamos ayer, le envío la propuesta."
+    },
+    {
+     "type": "speak",
+     "es": "Como hablamos la semana pasada, le envío la propuesta. El próximo paso es firmar el contrato.",
+     "ar": "كما تحدّثنا الأسبوع الماضي، أرسل لك الاقتراح. الخطوة التالية هي توقيع العقد."
+    }
+   ]
+  },
+  {
+   "id": "a2_u5_l5",
+   "title_ar": "إنهاء الاجتماع",
+   "title_es": "Cerrar la reunión",
+   "objectives_ar": [
+    "تلخيص اجتماع بـ en resumen وacordamos",
+    "إنهاء اجتماع بأدب",
+    "الخطوات التالية"
+   ],
+   "prerequisites": [
+    "a2_u5_l4"
+   ],
+   "minutes": 17,
+   "work_relevance_ar": "تلخيص اجتماع مع عميل وإنهاؤه باتفاق واضح.",
+   "source": "original-v1",
+   "grammar": [
+    "g_meeting_close"
+   ],
+   "items": [
+    {
+     "id": "en_resumen",
+     "es": "en resumen",
+     "ar": "باختصار",
+     "en": "in short, to sum up",
+     "pos": "تعبير",
+     "examples": [
+      {
+       "es": "En resumen, el proyecto va bien.",
+       "ar": "باختصار، المشروع يسير جيداً."
+      }
+     ],
+     "work": true
+    },
+    {
+     "id": "acordamos",
+     "es": "acordamos…",
+     "ar": "اتفقنا على… / نتّفق على…",
+     "en": "we agreed / we agree…",
+     "pos": "فعل",
+     "examples": [
+      {
+       "es": "Acordamos una nueva fecha.",
+       "ar": "اتفقنا على تاريخ جديد."
+      }
+     ],
+     "work": true,
+     "connections": [
+      {
+       "type": "grammar",
+       "ar": "acordar: acordamos للحاضر والماضي معاً؛ السياق يحدّد."
+      }
+     ]
+    },
+    {
+     "id": "el_acuerdo",
+     "es": "el acuerdo",
+     "ar": "الاتفاق",
+     "en": "agreement",
+     "pos": "اسم",
+     "examples": [
+      {
+       "es": "Tenemos un acuerdo.",
+       "ar": "عندنا اتفاق."
+      }
+     ],
+     "work": true
+    },
+    {
+     "id": "el_contrato",
+     "es": "el contrato",
+     "ar": "العقد",
+     "en": "contract",
+     "pos": "اسم",
+     "examples": [
+      {
+       "es": "Le envío el contrato mañana.",
+       "ar": "أرسل لك العقد غداً."
+      }
+     ],
+     "work": true
+    },
+    {
+     "id": "entonces",
+     "es": "entonces",
+     "ar": "إذن",
+     "en": "so, then",
+     "pos": "ظرف",
+     "examples": [
+      {
+       "es": "Entonces, ¿quedamos el lunes?",
+       "ar": "إذن، هل نلتقي يوم الاثنين؟"
+      }
+     ]
+    },
+    {
+     "id": "por_ultimo",
+     "es": "por último",
+     "ar": "أخيراً",
+     "en": "finally, lastly",
+     "pos": "تعبير",
+     "examples": [
+      {
+       "es": "Por último, le envío el contrato mañana.",
+       "ar": "أخيراً، أرسل لك العقد غداً."
+      }
+     ]
+    },
+    {
+     "id": "gracias_tiempo",
+     "es": "gracias por su tiempo",
+     "ar": "شكراً على وقتك",
+     "en": "thank you for your time",
+     "pos": "تعبير",
+     "examples": [
+      {
+       "es": "Gracias por su tiempo, señora Gil.",
+       "ar": "شكراً على وقتك يا سيدة خيل."
+      }
+     ],
+     "work": true
+    },
+    {
+     "id": "seguimos_en_contacto",
+     "es": "seguimos en contacto",
+     "ar": "نبقى على تواصل",
+     "en": "let's keep in touch",
+     "pos": "تعبير",
+     "examples": [
+      {
+       "es": "Muy bien, seguimos en contacto.",
+       "ar": "حسناً، نبقى على تواصل."
+      }
+     ],
+     "work": true,
+     "connections": [
+      {
+       "type": "grammar",
+       "ar": "seguir e ← i: sigo, sigue, seguimos."
+      }
+     ]
+    },
+    {
+     "id": "hasta_pronto",
+     "es": "hasta pronto",
+     "ar": "إلى اللقاء قريباً",
+     "en": "see you soon",
+     "pos": "تعبير",
+     "examples": [
+      {
+       "es": "Gracias por todo. Hasta pronto.",
+       "ar": "شكراً على كل شيء. إلى اللقاء قريباً."
+      }
+     ]
+    }
+   ],
+   "activities": [
+    {
+     "type": "teach",
+     "item": "en_resumen"
+    },
+    {
+     "type": "teach",
+     "item": "acordamos"
+    },
+    {
+     "type": "mcq_meaning",
+     "item": "en_resumen"
+    },
+    {
+     "type": "listen_choose",
+     "item": "acordamos"
+    },
+    {
+     "type": "note",
+     "title_ar": "تلخيص اجتماع وإنهاؤه",
+     "body_ar": "En resumen… · Acordamos… · Por último… · Entonces…\nGracias por su tiempo. · Seguimos en contacto. · Hasta pronto.",
+     "examples": [
+      {
+       "es": "En resumen, acordamos una nueva fecha.",
+       "ar": "باختصار، اتفقنا على تاريخ جديد."
+      }
+     ]
+    },
+    {
+     "type": "teach",
+     "item": "el_acuerdo"
+    },
+    {
+     "type": "teach",
+     "item": "el_contrato"
+    },
+    {
+     "type": "teach",
+     "item": "entonces"
+    },
+    {
+     "type": "teach",
+     "item": "por_ultimo"
+    },
+    {
+     "type": "mcq_reverse",
+     "item": "el_acuerdo"
+    },
+    {
+     "type": "listen_pick_es",
+     "item": "el_contrato"
+    },
+    {
+     "type": "mcq_meaning",
+     "item": "entonces"
+    },
+    {
+     "type": "listen_choose",
+     "item": "por_ultimo"
+    },
+    {
+     "type": "teach",
+     "item": "gracias_tiempo"
+    },
+    {
+     "type": "teach",
+     "item": "seguimos_en_contacto"
+    },
+    {
+     "type": "teach",
+     "item": "hasta_pronto"
+    },
+    {
+     "type": "mcq_meaning",
+     "item": "gracias_tiempo"
+    },
+    {
+     "type": "listen_pick_es",
+     "item": "seguimos_en_contacto"
+    },
+    {
+     "type": "mcq_reverse",
+     "item": "hasta_pronto"
+    },
+    {
+     "type": "choice",
+     "prompt_ar": "أيّ ترتيب مناسب لإنهاء اجتماع مع عميل؟",
+     "choices": [
+      "En resumen… Por último… Gracias por su tiempo.",
+      "Gracias por su tiempo. En resumen… Hola.",
+      "Por último… Hola… En resumen…"
+     ],
+     "answer": 0,
+     "skill": "reading",
+     "choices_es": true,
+     "explain_ar": "تلخيص (en resumen)، ثم آخر نقطة (por último)، ثم الشكر والوداع."
+    },
+    {
+     "type": "fill",
+     "es": "En resumen, ___ una nueva fecha para la entrega.",
+     "answer": "acordamos",
+     "ar": "باختصار، اتفقنا على تاريخ جديد للتسليم.",
+     "options": [
+      "acordamos",
+      "acordar",
+      "acordado"
+     ],
+     "explain_ar": "nosotros: acordamos (وهي صيغة الماضي أيضاً)."
+    },
+    {
+     "type": "fill",
+     "es": "Muy bien, ___ en contacto.",
+     "answer": "seguimos",
+     "ar": "حسناً، نبقى على تواصل.",
+     "options": [
+      "seguimos",
+      "seguir",
+      "seguido"
+     ],
+     "explain_ar": "nosotros: seguimos (seguir e ← i)."
+    },
+    {
+     "type": "match",
+     "items": [
+      "el_acuerdo",
+      "el_contrato",
+      "por_ultimo",
+      "hasta_pronto"
+     ]
+    },
+    {
+     "type": "type_es",
+     "item": "el_contrato"
+    },
+    {
+     "type": "type_es",
+     "item": "entonces"
+    },
+    {
+     "type": "order",
+     "es": "En resumen, acordamos una nueva fecha.",
+     "ar": "باختصار، اتفقنا على تاريخ جديد."
+    },
+    {
+     "type": "dictation",
+     "es": "Gracias por su tiempo. Seguimos en contacto.",
+     "ar": "شكراً على وقتك. نبقى على تواصل."
+    },
+    {
+     "type": "choice",
+     "prompt_ar": "على ماذا اتفقوا؟",
+     "choices": [
+      "على تاريخ تسليم جديد",
+      "على سعر جديد",
+      "على إلغاء العقد"
+     ],
+     "answer": 0,
+     "skill": "reading",
+     "choices_es": false,
+     "stimulus_es": "Resumen de la reunión: el cliente revisó la propuesta. Acordamos una nueva fecha de entrega: el quince. Por último, Ana va a enviar el contrato mañana."
+    },
+    {
+     "type": "choice",
+     "prompt_ar": "استمع: ماذا يقول العميل في النهاية؟",
+     "choices": [
+      "شكراً على وقتك، نبقى على تواصل",
+      "باختصار، الخطة جيدة",
+      "أرسل العقد غداً"
+     ],
+     "answer": 0,
+     "skill": "listening",
+     "choices_es": false,
+     "audio_es": "Gracias por su tiempo. Seguimos en contacto."
+    },
+    {
+     "type": "respond",
+     "prompt_ar": "في نهاية الاجتماع قل للعميل: شكراً على وقتك. نبقى على تواصل.",
+     "accepted": [
+      "Gracias por su tiempo. Seguimos en contacto",
+      "Gracias por su tiempo, seguimos en contacto"
+     ],
+     "audio_es": "Bueno, creo que es todo por hoy."
+    },
+    {
+     "type": "speak",
+     "es": "En resumen, acordamos una nueva fecha. Por último, le envío el contrato mañana. Gracias por su tiempo.",
+     "ar": "باختصار، اتفقنا على تاريخ جديد. أخيراً، أرسل لك العقد غداً. شكراً على وقتك."
+    }
+   ]
+  }
+ ]
+}

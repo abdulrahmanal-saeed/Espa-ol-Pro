@@ -1933,6 +1933,459 @@
     }
    ],
    "source": "original-v1"
+  },
+  {
+   "id": "dlg_a2_mensajes",
+   "level": "a2",
+   "unit": "a2_u5",
+   "lessons": [
+    "a2_u5_l1",
+    "a2_u5_l2"
+   ],
+   "title_es": "Mensajes de voz",
+   "title_ar": "رسائل صوتية",
+   "scenario_ar": "عمر ولوثيا يتبادلان رسائل صوتية قصيرة قبل اجتماع مع عميل.",
+   "objectives_ar": [
+    "فهم رسائل عمل قصيرة",
+    "فهم tú بين الزملاء",
+    "فهم ما هو جاهز وما ليس جاهزاً"
+   ],
+   "speakers": [
+    {
+     "id": "omar",
+     "name": "Omar",
+     "role_ar": "زميل"
+    },
+    {
+     "id": "lucia",
+     "name": "Lucía",
+     "role_ar": "زميلة"
+    }
+   ],
+   "turns": [
+    {
+     "id": "dlg_a2_mensajes.t1",
+     "speaker": "omar",
+     "es": "Lucía, perdona, llego tarde a la reunión.",
+     "ar": "لوثيا، آسف، سأتأخر عن الاجتماع.",
+     "en": "Lucía, sorry, I'm running late for the meeting."
+    },
+    {
+     "id": "dlg_a2_mensajes.t2",
+     "speaker": "lucia",
+     "es": "Sin problema. ¿Puedes enviarme el archivo del cliente?",
+     "ar": "لا مشكلة. هل يمكنك أن ترسل لي ملف العميل؟",
+     "en": "No problem. Can you send me the client's file?"
+    },
+    {
+     "id": "dlg_a2_mensajes.t3",
+     "speaker": "omar",
+     "es": "Ya está. Lo envié esta mañana.",
+     "ar": "تمّ. أرسلتُه هذا الصباح.",
+     "en": "Done. I sent it this morning."
+    },
+    {
+     "id": "dlg_a2_mensajes.t4",
+     "speaker": "lucia",
+     "es": "Gracias. ¿Y el presupuesto?",
+     "ar": "شكراً. وعرض السعر؟",
+     "en": "Thanks. And the quote?"
+    },
+    {
+     "id": "dlg_a2_mensajes.t5",
+     "speaker": "omar",
+     "es": "Todavía no. Te aviso cuando está listo.",
+     "ar": "ليس بعد. أُعلمك عندما يكون جاهزاً.",
+     "en": "Not yet. I'll let you know when it's ready."
+    },
+    {
+     "id": "dlg_a2_mensajes.t6",
+     "speaker": "lucia",
+     "es": "Vale. Un abrazo.",
+     "ar": "حسناً. مع المودة.",
+     "en": "OK. Best."
+    }
+   ],
+   "items": [
+    "perdona",
+    "llego_tarde",
+    "sin_problema",
+    "puedes",
+    "el_archivo",
+    "ya_esta",
+    "todavia_no",
+    "te_aviso",
+    "vale",
+    "un_abrazo"
+   ],
+   "grammar": [
+    "g_registers"
+   ],
+   "questions": [
+    {
+     "type": "choice",
+     "prompt_ar": "ما مشكلة عمر؟",
+     "choices": [
+      "سيتأخر عن الاجتماع",
+      "لا يجد الملف",
+      "لا يستطيع الحضور"
+     ],
+     "answer": 0,
+     "choices_es": false,
+     "turn": "dlg_a2_mensajes.t1",
+     "id": "dlg_a2_mensajes.q1",
+     "skill": "listening"
+    },
+    {
+     "type": "choice",
+     "prompt_ar": "متى أرسل عمر الملف؟",
+     "choices": [
+      "هذا الصباح",
+      "أمس",
+      "لم يرسله بعد"
+     ],
+     "answer": 0,
+     "choices_es": false,
+     "turn": "dlg_a2_mensajes.t3",
+     "id": "dlg_a2_mensajes.q2",
+     "skill": "listening"
+    },
+    {
+     "type": "choice",
+     "prompt_ar": "هل عرض السعر جاهز؟",
+     "choices": [
+      "ليس بعد",
+      "نعم",
+      "أُرسل أمس"
+     ],
+     "answer": 0,
+     "choices_es": false,
+     "turn": "dlg_a2_mensajes.t5",
+     "id": "dlg_a2_mensajes.q3",
+     "skill": "listening"
+    },
+    {
+     "type": "speaker",
+     "turn": "dlg_a2_mensajes.t2",
+     "id": "dlg_a2_mensajes.q4",
+     "skill": "listening"
+    },
+    {
+     "type": "dictation",
+     "turn": "dlg_a2_mensajes.t1",
+     "id": "dlg_a2_mensajes.q5",
+     "skill": "listening"
+    }
+   ],
+   "source": "original-v1"
+  },
+  {
+   "id": "dlg_a2_cliente_nuevo",
+   "level": "a2",
+   "unit": "a2_u5",
+   "lessons": [
+    "a2_u5_l3"
+   ],
+   "title_es": "Un cliente nuevo",
+   "title_ar": "عميل جديد",
+   "scenario_ar": "عميل محتمل يتصل بالشركة ويسأل عن خدمة الصيانة.",
+   "objectives_ar": [
+    "فهم طلب عميل جديد",
+    "فهم طلب الاسم والبريد",
+    "فهم التحويل إلى زميل"
+   ],
+   "speakers": [
+    {
+     "id": "sara",
+     "name": "Sara",
+     "role_ar": "موظفة الاستقبال"
+    },
+    {
+     "id": "pablo",
+     "name": "Pablo Díaz",
+     "role_ar": "عميل محتمل"
+    }
+   ],
+   "turns": [
+    {
+     "id": "dlg_a2_cliente_nuevo.t1",
+     "speaker": "sara",
+     "es": "Buenos días, ¿en qué puedo ayudarle?",
+     "ar": "صباح الخير، كيف يمكنني مساعدتك؟",
+     "en": "Good morning, how can I help you?"
+    },
+    {
+     "id": "dlg_a2_cliente_nuevo.t2",
+     "speaker": "pablo",
+     "es": "Buenos días. Me interesa su servicio de mantenimiento.",
+     "ar": "صباح الخير. أنا مهتم بخدمة الصيانة لديكم.",
+     "en": "Good morning. I'm interested in your maintenance service."
+    },
+    {
+     "id": "dlg_a2_cliente_nuevo.t3",
+     "speaker": "sara",
+     "es": "Con mucho gusto. ¿Me da su nombre, por favor?",
+     "ar": "بكل سرور. هل تعطيني اسمك من فضلك؟",
+     "en": "With pleasure. Could you give me your name, please?"
+    },
+    {
+     "id": "dlg_a2_cliente_nuevo.t4",
+     "speaker": "pablo",
+     "es": "Me llamo Pablo Díaz.",
+     "ar": "اسمي بابلو دياث.",
+     "en": "My name is Pablo Díaz."
+    },
+    {
+     "id": "dlg_a2_cliente_nuevo.t5",
+     "speaker": "sara",
+     "es": "Gracias, señor Díaz. ¿Me da su correo electrónico?",
+     "ar": "شكراً يا سيد دياث. هل تعطيني بريدك الإلكتروني؟",
+     "en": "Thank you, Mr Díaz. Could you give me your email?"
+    },
+    {
+     "id": "dlg_a2_cliente_nuevo.t6",
+     "speaker": "pablo",
+     "es": "Sí, claro. Le envío un mensaje con mi correo.",
+     "ar": "نعم، بالطبع. أرسل لك رسالة فيها بريدي.",
+     "en": "Yes, of course. I'll send you a message with my email."
+    },
+    {
+     "id": "dlg_a2_cliente_nuevo.t7",
+     "speaker": "sara",
+     "es": "Gracias. Un momento, le paso con mi compañera.",
+     "ar": "شكراً. لحظة، أحوّلك إلى زميلتي.",
+     "en": "Thank you. One moment, I'll put you through to my colleague."
+    }
+   ],
+   "items": [
+    "en_que_puedo_ayudarle",
+    "me_interesa",
+    "el_servicio",
+    "con_mucho_gusto",
+    "me_da",
+    "correo_electronico",
+    "mensaje",
+    "un_momento",
+    "le_paso_con"
+   ],
+   "grammar": [
+    "g_new_client"
+   ],
+   "questions": [
+    {
+     "type": "choice",
+     "prompt_ar": "بماذا يهتم بابلو؟",
+     "choices": [
+      "خدمة الصيانة",
+      "الكتالوج فقط",
+      "وظيفة في الشركة"
+     ],
+     "answer": 0,
+     "choices_es": false,
+     "turn": "dlg_a2_cliente_nuevo.t2",
+     "id": "dlg_a2_cliente_nuevo.q1",
+     "skill": "listening"
+    },
+    {
+     "type": "choice",
+     "prompt_ar": "ماذا تطلب سارة أولاً؟",
+     "choices": [
+      "اسمه",
+      "بريده الإلكتروني",
+      "رقم هاتفه"
+     ],
+     "answer": 0,
+     "choices_es": false,
+     "turn": "dlg_a2_cliente_nuevo.t3",
+     "id": "dlg_a2_cliente_nuevo.q2",
+     "skill": "listening"
+    },
+    {
+     "type": "choice",
+     "prompt_ar": "ماذا تفعل سارة في النهاية؟",
+     "choices": [
+      "تحوّله إلى زميلتها",
+      "تُنهي المكالمة",
+      "تُرسل الكتالوج"
+     ],
+     "answer": 0,
+     "choices_es": false,
+     "turn": "dlg_a2_cliente_nuevo.t7",
+     "id": "dlg_a2_cliente_nuevo.q3",
+     "skill": "listening"
+    },
+    {
+     "type": "speaker",
+     "turn": "dlg_a2_cliente_nuevo.t5",
+     "id": "dlg_a2_cliente_nuevo.q4",
+     "skill": "listening"
+    },
+    {
+     "type": "dictation",
+     "turn": "dlg_a2_cliente_nuevo.t3",
+     "id": "dlg_a2_cliente_nuevo.q5",
+     "skill": "listening"
+    }
+   ],
+   "source": "original-v1"
+  },
+  {
+   "id": "dlg_a2_seguimiento",
+   "level": "a2",
+   "unit": "a2_u5",
+   "lessons": [
+    "a2_u5_l4",
+    "a2_u5_l5"
+   ],
+   "title_es": "La reunión de seguimiento",
+   "title_ar": "اجتماع المتابعة",
+   "scenario_ar": "آنا تتابع مع العميل السيد رويث الاقتراح الذي أرسلته، وتنهي الاجتماع باتفاق.",
+   "objectives_ar": [
+    "فهم المتابعة بالأزمنة الثلاثة",
+    "فهم ما هو معلّق والخطوة التالية",
+    "فهم تلخيص الاجتماع وإنهائه"
+   ],
+   "speakers": [
+    {
+     "id": "ana",
+     "name": "Ana",
+     "role_ar": "مسؤولة المبيعات"
+    },
+    {
+     "id": "ruiz",
+     "name": "Sr. Ruiz",
+     "role_ar": "عميل"
+    }
+   ],
+   "turns": [
+    {
+     "id": "dlg_a2_seguimiento.t1",
+     "speaker": "ana",
+     "es": "Como hablamos la semana pasada, le envié la propuesta.",
+     "ar": "كما تحدّثنا الأسبوع الماضي، أرسلتُ لك الاقتراح.",
+     "en": "As we discussed last week, I sent you the proposal."
+    },
+    {
+     "id": "dlg_a2_seguimiento.t2",
+     "speaker": "ruiz",
+     "es": "Sí, la revisé. Me parece muy interesante.",
+     "ar": "نعم، راجعتُه. يبدو لي مثيراً للاهتمام جداً.",
+     "en": "Yes, I reviewed it. I find it very interesting."
+    },
+    {
+     "id": "dlg_a2_seguimiento.t3",
+     "speaker": "ana",
+     "es": "Perfecto. Le recuerdo que el contrato está pendiente.",
+     "ar": "ممتاز. أذكّرك بأن العقد ما زال معلّقاً.",
+     "en": "Perfect. May I remind you that the contract is pending."
+    },
+    {
+     "id": "dlg_a2_seguimiento.t4",
+     "speaker": "ruiz",
+     "es": "¿Y cuál es el próximo paso?",
+     "ar": "وما الخطوة التالية؟",
+     "en": "And what's the next step?"
+    },
+    {
+     "id": "dlg_a2_seguimiento.t5",
+     "speaker": "ana",
+     "es": "Le envío el contrato mañana para firmar.",
+     "ar": "أرسل لك العقد غداً للتوقيع.",
+     "en": "I'll send you the contract tomorrow to sign."
+    },
+    {
+     "id": "dlg_a2_seguimiento.t6",
+     "speaker": "ruiz",
+     "es": "De acuerdo. Entonces, en resumen, acordamos firmar esta semana.",
+     "ar": "موافق. إذن، باختصار، اتفقنا على التوقيع هذا الأسبوع.",
+     "en": "Agreed. So, in short, we agreed to sign this week."
+    },
+    {
+     "id": "dlg_a2_seguimiento.t7",
+     "speaker": "ana",
+     "es": "Muy bien. Gracias por su tiempo. Seguimos en contacto.",
+     "ar": "ممتاز. شكراً على وقتك. نبقى على تواصل.",
+     "en": "Very good. Thank you for your time. Let's keep in touch."
+    }
+   ],
+   "items": [
+    "como_hablamos",
+    "la_semana_pasada",
+    "la_propuesta",
+    "revise",
+    "me_parece",
+    "interesante",
+    "le_recuerdo",
+    "el_contrato",
+    "pendiente",
+    "proximo_paso",
+    "entonces",
+    "en_resumen",
+    "acordamos",
+    "gracias_tiempo",
+    "seguimos_en_contacto"
+   ],
+   "grammar": [
+    "g_follow_up",
+    "g_meeting_close"
+   ],
+   "questions": [
+    {
+     "type": "choice",
+     "prompt_ar": "ماذا أرسلت آنا الأسبوع الماضي؟",
+     "choices": [
+      "الاقتراح",
+      "العقد",
+      "الفاتورة"
+     ],
+     "answer": 0,
+     "choices_es": false,
+     "turn": "dlg_a2_seguimiento.t1",
+     "id": "dlg_a2_seguimiento.q1",
+     "skill": "listening"
+    },
+    {
+     "type": "choice",
+     "prompt_ar": "ما الذي ما زال معلّقاً؟",
+     "choices": [
+      "العقد",
+      "الاقتراح",
+      "الدفع"
+     ],
+     "answer": 0,
+     "choices_es": false,
+     "turn": "dlg_a2_seguimiento.t3",
+     "id": "dlg_a2_seguimiento.q2",
+     "skill": "listening"
+    },
+    {
+     "type": "choice",
+     "prompt_ar": "على ماذا اتفقا؟",
+     "choices": [
+      "التوقيع هذا الأسبوع",
+      "اجتماع جديد",
+      "تغيير السعر"
+     ],
+     "answer": 0,
+     "choices_es": false,
+     "turn": "dlg_a2_seguimiento.t6",
+     "id": "dlg_a2_seguimiento.q3",
+     "skill": "listening"
+    },
+    {
+     "type": "speaker",
+     "turn": "dlg_a2_seguimiento.t4",
+     "id": "dlg_a2_seguimiento.q4",
+     "skill": "listening"
+    },
+    {
+     "type": "dictation",
+     "turn": "dlg_a2_seguimiento.t7",
+     "id": "dlg_a2_seguimiento.q5",
+     "skill": "listening"
+    }
+   ],
+   "source": "original-v1"
   }
  ]
 }
