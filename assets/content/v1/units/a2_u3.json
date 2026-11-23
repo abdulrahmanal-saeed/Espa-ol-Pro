@@ -1,0 +1,1899 @@
+{
+ "unit": "a2_u3",
+ "grammar": [
+  {
+   "id": "g_ir_a_full",
+   "title_ar": "ir a + مصدر مع كل الأشخاص",
+   "body_ar": "للخطة والنيّة في المستقبل:\nvoy a · vas a · va a · vamos a · van a + المصدر\nMañana voy a llamar al cliente. — غداً سأتصل بالعميل.\n¿Qué vas a hacer? — ماذا ستفعل؟\n\nقارن الأزمنة الثلاثة:\nAyer fui a la oficina (الماضي) · Hoy trabajo en casa (الحاضر) · Mañana voy a ir al cliente (المستقبل).\nلا تنسَ a: voy a llamar، وليس voy llamar.",
+   "examples": [
+    {
+     "es": "Mañana vamos a visitar al cliente.",
+     "ar": "غداً سنزور العميل."
+    },
+    {
+     "es": "Los clientes van a venir el jueves.",
+     "ar": "العملاء سيأتون يوم الخميس."
+    }
+   ]
+  },
+  {
+   "id": "g_future_markers",
+   "title_ar": "كلمات الزمن المستقبل",
+   "body_ar": "mañana — غداً\nesta tarde — اليوم بعد الظهر\nel próximo lunes — الاثنين القادم\nla semana que viene — الأسبوع القادم\ndentro de dos semanas — بعد أسبوعين (من الآن)\npronto — قريباً\n\nقارن: hace dos semanas (قبل أسبوعين، للماضي) ↔ dentro de dos semanas (بعد أسبوعين).",
+   "examples": [
+    {
+     "es": "La semana que viene vamos a Madrid.",
+     "ar": "الأسبوع القادم سنذهب إلى مدريد."
+    },
+    {
+     "es": "El proyecto termina dentro de dos semanas.",
+     "ar": "ينتهي المشروع بعد أسبوعين."
+    }
+   ]
+  },
+  {
+   "id": "g_pensar",
+   "title_ar": "pensar + مصدر: النيّة",
+   "body_ar": "pensar يتغيّر جذره e ← ie (إلا مع nosotros):\npienso · piensas · piensa · pensamos · piensan\n\npensar + مصدر = ينوي: Pienso visitar a mis padres. — أنوي زيارة والديّ.\nوpensar en = يفكّر في: Pienso en el proyecto.",
+   "examples": [
+    {
+     "es": "¿Qué piensas hacer el sábado?",
+     "ar": "ماذا تنوي أن تفعل يوم السبت؟"
+    },
+    {
+     "es": "Pensamos abrir una oficina en México.",
+     "ar": "ننوي فتح مكتب في المكسيك."
+    }
+   ]
+  },
+  {
+   "id": "g_invitations",
+   "title_ar": "الدعوة والقبول والاعتذار",
+   "body_ar": "الدعوة: ¿Quieres venir? · ¿Te apetece un café? (شائعة في إسبانيا)\nالقبول: ¡Me encantaría! · Vale. · Sí, claro.\nالاعتذار بأدب: Lo siento, no puedo. Tengo planes. ¿Otro día?\n\nمع شخص تخاطبه بـ usted: ¿Quiere venir? · ¿Le apetece…?",
+   "examples": [
+    {
+     "es": "¿Te apetece comer con nosotros?",
+     "ar": "هل ترغب في أن تأكل معنا؟"
+    },
+    {
+     "es": "Me encantaría, pero hoy no puedo.",
+     "ar": "يسعدني ذلك، لكن اليوم لا أستطيع."
+    }
+   ]
+  },
+  {
+   "id": "g_quedar",
+   "title_ar": "quedar: الاتفاق على موعد",
+   "body_ar": "quedar = يتّفق على موعد / يلتقي (منتظم):\n¿Quedamos el lunes? — هل نلتقي يوم الاثنين؟\n¿Cuándo quedamos? · ¿A qué hora quedamos?\nquedar con alguien = يلتقي بشخص: Quedo con un cliente a las diez.\n\nهل يناسبك؟ ¿Te viene bien…? (tú) · ¿Le viene bien…? (usted). الفعل يتّفق مع الموعد: ¿Te vienen bien las diez?",
+   "examples": [
+    {
+     "es": "¿Quedamos mañana a las diez?",
+     "ar": "هل نلتقي غداً في العاشرة؟"
+    },
+    {
+     "es": "¿Le viene bien el martes?",
+     "ar": "هل يناسبك (حضرتك) يوم الثلاثاء؟"
+    }
+   ]
+  },
+  {
+   "id": "g_present_schedule",
+   "title_ar": "الحاضر للجداول والمواعيد الثابتة",
+   "body_ar": "لحدث مجدول (قطار، رحلة، اجتماع، معرض، مهلة) نستعمل الحاضر حتى لو كان في المستقبل:\nEl vuelo sale mañana a las siete. — الرحلة تنطلق غداً في السابعة.\nLa reunión empieza a las diez. — يبدأ الاجتماع في العاشرة.\n\nوللنيّة الشخصية: voy a + مصدر (Voy a preparar la presentación).\nempezar في الحاضر e ← ie: empieza؛ وفي الماضي empecé.",
+   "examples": [
+    {
+     "es": "La feria termina el domingo.",
+     "ar": "ينتهي المعرض يوم الأحد."
+    },
+    {
+     "es": "El tren sale a las ocho y media.",
+     "ar": "ينطلق القطار في الثامنة والنصف."
+    }
+   ]
+  },
+  {
+   "id": "g_si_presente",
+   "title_ar": "si + الحاضر: شرط في المستقبل",
+   "body_ar": "بعد si نستعمل الحاضر، ثم الحاضر أو ir a:\nSi todo va bien, terminamos a finales de mes. — إذا سار كل شيء على ما يرام، ننتهي في نهاية الشهر.\nSi hay un problema, le voy a llamar. — إذا حدثت مشكلة، سأتصل بك.\n\nلا يأتي المستقبل البسيط بعد si: Si todo va bien (وليس si todo irá bien).\nأما ir a فممكن، لأن ir في الحاضر: Si vas a salir, llámame. — إذا كنتَ ستخرج، اتصل بي.",
+   "examples": [
+    {
+     "es": "Si todo va bien, la entrega es a finales de mes.",
+     "ar": "إذا سار كل شيء على ما يرام، التسليم في نهاية الشهر."
+    },
+    {
+     "es": "Si tienes tiempo, quedamos el viernes.",
+     "ar": "إذا كان عندك وقت، نلتقي يوم الجمعة."
+    }
+   ]
+  }
+ ],
+ "lessons": [
+  {
+   "id": "a2_u3_l1",
+   "title_ar": "ماذا ستفعل؟",
+   "title_es": "¿Qué vas a hacer?",
+   "objectives_ar": [
+    "ir a + مصدر مع كل الأشخاص",
+    "كلمات الزمن المستقبل: esta tarde، la semana que viene، dentro de",
+    "التمييز بين الماضي والحاضر والمستقبل"
+   ],
+   "prerequisites": [
+    "a2_u2_l5"
+   ],
+   "minutes": 16,
+   "work_relevance_ar": "إخبار فريقك بخطة اليوم والأسبوع.",
+   "source": "original-v1",
+   "grammar": [
+    "g_ir_a_full",
+    "g_future_markers"
+   ],
+   "items": [
+    {
+     "id": "que_vas_a_hacer",
+     "es": "¿Qué vas a hacer?",
+     "ar": "ماذا ستفعل؟",
+     "en": "What are you going to do?",
+     "pos": "سؤال",
+     "examples": [
+      {
+       "es": "¿Qué vas a hacer mañana?",
+       "ar": "ماذا ستفعل غداً؟"
+      }
+     ],
+     "connections": [
+      {
+       "type": "grammar",
+       "ar": "قارن: ¿Qué hiciste? (ماذا فعلتَ؟) ↔ ¿Qué vas a hacer? (ماذا ستفعل؟)."
+      }
+     ]
+    },
+    {
+     "id": "va_a",
+     "es": "va a…",
+     "ar": "سوف (هو / هي / حضرتك)…",
+     "en": "he / she / you (formal) is going to…",
+     "pos": "تعبير",
+     "examples": [
+      {
+       "es": "Laura va a llamar al cliente.",
+       "ar": "لاورا ستتصل بالعميل."
+      }
+     ],
+     "work": true
+    },
+    {
+     "id": "vamos_a",
+     "es": "vamos a…",
+     "ar": "سوف (نحن)…",
+     "en": "we are going to…",
+     "pos": "تعبير",
+     "examples": [
+      {
+       "es": "Vamos a preparar la reunión.",
+       "ar": "سنحضّر للاجتماع."
+      }
+     ],
+     "work": true,
+     "connections": [
+      {
+       "type": "usage",
+       "ar": "¡Vamos! وحدها = «هيا بنا»."
+      }
+     ]
+    },
+    {
+     "id": "van_a",
+     "es": "van a…",
+     "ar": "سوف (هم / حضراتكم)…",
+     "en": "they / you (plural) are going to…",
+     "pos": "تعبير",
+     "examples": [
+      {
+       "es": "Los clientes van a venir el jueves.",
+       "ar": "العملاء سيأتون يوم الخميس."
+      }
+     ]
+    },
+    {
+     "id": "esta_tarde",
+     "es": "esta tarde",
+     "ar": "اليوم بعد الظهر",
+     "en": "this afternoon",
+     "pos": "تعبير",
+     "examples": [
+      {
+       "es": "Esta tarde voy a revisar el contrato.",
+       "ar": "اليوم بعد الظهر سأراجع العقد."
+      }
+     ]
+    },
+    {
+     "id": "semana_que_viene",
+     "es": "la semana que viene",
+     "ar": "الأسبوع القادم",
+     "en": "next week",
+     "pos": "تعبير",
+     "examples": [
+      {
+       "es": "La semana que viene vamos a Madrid.",
+       "ar": "الأسبوع القادم سنذهب إلى مدريد."
+      }
+     ],
+     "note_ar": "وكذلك: la próxima semana."
+    },
+    {
+     "id": "proximo_lunes",
+     "es": "el próximo lunes",
+     "ar": "الاثنين القادم",
+     "en": "next Monday",
+     "pos": "تعبير",
+     "examples": [
+      {
+       "es": "El próximo lunes voy a empezar un proyecto nuevo.",
+       "ar": "الاثنين القادم سأبدأ مشروعاً جديداً."
+      }
+     ],
+     "connections": [
+      {
+       "type": "grammar",
+       "ar": "قارن: el lunes pasado (الماضي) ↔ el próximo lunes (القادم)."
+      }
+     ]
+    },
+    {
+     "id": "pronto",
+     "es": "pronto",
+     "ar": "قريباً",
+     "en": "soon",
+     "pos": "ظرف",
+     "examples": [
+      {
+       "es": "Nos vemos pronto.",
+       "ar": "نراك قريباً."
+      }
+     ]
+    },
+    {
+     "id": "dentro_de",
+     "es": "dentro de dos semanas",
+     "ar": "بعد أسبوعين (من الآن)",
+     "en": "in two weeks",
+     "pos": "تعبير",
+     "examples": [
+      {
+       "es": "El proyecto termina dentro de dos semanas.",
+       "ar": "ينتهي المشروع بعد أسبوعين."
+      }
+     ],
+     "note_ar": "dentro de + مدّة = بعد (من الآن): dentro de un mes، dentro de tres días.",
+     "work": true
+    }
+   ],
+   "activities": [
+    {
+     "type": "teach",
+     "item": "que_vas_a_hacer"
+    },
+    {
+     "type": "mcq_meaning",
+     "item": "que_vas_a_hacer"
+    },
+    {
+     "type": "note",
+     "title_ar": "ir a + مصدر مع كل الأشخاص",
+     "body_ar": "voy a · vas a · va a · vamos a · van a + المصدر\n\nAyer fui a la oficina (الماضي) · Mañana voy a trabajar en casa (المستقبل).",
+     "examples": [
+      {
+       "es": "Mañana vamos a visitar al cliente.",
+       "ar": "غداً سنزور العميل."
+      }
+     ]
+    },
+    {
+     "type": "teach",
+     "item": "va_a"
+    },
+    {
+     "type": "teach",
+     "item": "vamos_a"
+    },
+    {
+     "type": "teach",
+     "item": "van_a"
+    },
+    {
+     "type": "listen_choose",
+     "item": "vamos_a"
+    },
+    {
+     "type": "mcq_reverse",
+     "item": "va_a"
+    },
+    {
+     "type": "mcq_meaning",
+     "item": "van_a"
+    },
+    {
+     "type": "choice",
+     "prompt_ar": "أيّ جملة صحيحة؟",
+     "choices": [
+      "Mañana voy a llamar al cliente.",
+      "Mañana voy llamar al cliente.",
+      "Mañana voy a llamo al cliente."
+     ],
+     "answer": 0,
+     "skill": "grammar",
+     "choices_es": true,
+     "explain_ar": "ir a + المصدر: voy a llamar. لا تحذف a، ولا تصرّف الفعل الثاني."
+    },
+    {
+     "type": "teach",
+     "item": "esta_tarde"
+    },
+    {
+     "type": "teach",
+     "item": "semana_que_viene"
+    },
+    {
+     "type": "teach",
+     "item": "proximo_lunes"
+    },
+    {
+     "type": "mcq_meaning",
+     "item": "semana_que_viene"
+    },
+    {
+     "type": "listen_pick_es",
+     "item": "esta_tarde"
+    },
+    {
+     "type": "mcq_reverse",
+     "item": "proximo_lunes"
+    },
+    {
+     "type": "teach",
+     "item": "pronto"
+    },
+    {
+     "type": "teach",
+     "item": "dentro_de"
+    },
+    {
+     "type": "listen_choose",
+     "item": "dentro_de"
+    },
+    {
+     "type": "mcq_meaning",
+     "item": "pronto"
+    },
+    {
+     "type": "fill",
+     "es": "Mañana nosotros ___ a visitar al cliente.",
+     "answer": "vamos",
+     "ar": "غداً سنزور العميل.",
+     "options": [
+      "vamos",
+      "van",
+      "voy"
+     ],
+     "explain_ar": "مع nosotros: vamos a + مصدر."
+    },
+    {
+     "type": "fill",
+     "es": "Ayer fui a la oficina y mañana ___ a trabajar en casa.",
+     "answer": "voy",
+     "ar": "أمس ذهبتُ إلى المكتب وغداً سأعمل من البيت.",
+     "options": [
+      "voy",
+      "fui",
+      "ir"
+     ],
+     "explain_ar": "mañana ← المستقبل: voy a + مصدر. fui للماضي."
+    },
+    {
+     "type": "match",
+     "items": [
+      "esta_tarde",
+      "pronto",
+      "semana_que_viene",
+      "dentro_de"
+     ]
+    },
+    {
+     "type": "type_es",
+     "item": "semana_que_viene"
+    },
+    {
+     "type": "type_es",
+     "item": "pronto"
+    },
+    {
+     "type": "order",
+     "es": "La semana que viene vamos a visitar al cliente.",
+     "ar": "الأسبوع القادم سنزور العميل."
+    },
+    {
+     "type": "dictation",
+     "es": "Dentro de dos semanas van a abrir la oficina nueva.",
+     "ar": "بعد أسبوعين سيفتحون المكتب الجديد."
+    },
+    {
+     "type": "choice",
+     "prompt_ar": "ماذا سيحدث يوم الأربعاء؟",
+     "choices": [
+      "اجتماع مع الفريق",
+      "زيارة عميل",
+      "تحضير التقرير"
+     ],
+     "answer": 0,
+     "skill": "reading",
+     "choices_es": false,
+     "stimulus_es": "Plan de la semana: el lunes Ana va a visitar a un cliente. El miércoles vamos a tener una reunión con el equipo. El viernes Pedro y Lucía van a preparar el informe."
+    },
+    {
+     "type": "choice",
+     "prompt_ar": "استمع: ماذا يسأل؟",
+     "choices": [
+      "ماذا ستفعل في عطلة نهاية الأسبوع؟",
+      "ماذا فعلتَ في عطلة نهاية الأسبوع؟",
+      "هل تعمل في عطلة نهاية الأسبوع؟"
+     ],
+     "answer": 0,
+     "skill": "listening",
+     "choices_es": false,
+     "audio_es": "¿Qué vas a hacer el fin de semana?"
+    },
+    {
+     "type": "respond",
+     "prompt_ar": "زميل يسأل: «¿Qué vas a hacer esta tarde?». قل: سأراجع العقد.",
+     "accepted": [
+      "Voy a revisar el contrato",
+      "Esta tarde voy a revisar el contrato",
+      "Voy a revisar el contrato esta tarde"
+     ],
+     "audio_es": "¿Qué vas a hacer esta tarde?"
+    },
+    {
+     "type": "speak",
+     "es": "Esta tarde voy a revisar el contrato y la semana que viene vamos a visitar al cliente.",
+     "ar": "اليوم بعد الظهر سأراجع العقد، والأسبوع القادم سنزور العميل."
+    }
+   ]
+  },
+  {
+   "id": "a2_u3_l2",
+   "title_ar": "دعوات وخطط",
+   "title_es": "¿Quieres venir?",
+   "objectives_ar": [
+    "الدعوة بـ ¿Quieres…? و¿Te apetece…?",
+    "القبول والاعتذار بأدب",
+    "pensar + مصدر للنيّة"
+   ],
+   "prerequisites": [
+    "a2_u3_l1"
+   ],
+   "minutes": 16,
+   "work_relevance_ar": "دعوة زميل أو عميل إلى غداء عمل، والاعتذار بأدب.",
+   "source": "original-v1",
+   "grammar": [
+    "g_pensar",
+    "g_invitations"
+   ],
+   "items": [
+    {
+     "id": "quieres_venir",
+     "es": "¿Quieres venir?",
+     "ar": "هل تريد أن تأتي؟",
+     "en": "Do you want to come?",
+     "pos": "سؤال",
+     "examples": [
+      {
+       "es": "Vamos a comer. ¿Quieres venir?",
+       "ar": "سنذهب لنأكل. هل تريد أن تأتي؟"
+      }
+     ]
+    },
+    {
+     "id": "te_apetece",
+     "es": "¿Te apetece…?",
+     "ar": "هل ترغب في…؟",
+     "en": "Do you fancy…?",
+     "pos": "سؤال",
+     "examples": [
+      {
+       "es": "¿Te apetece un café?",
+       "ar": "هل ترغب في قهوة؟"
+      }
+     ],
+     "note_ar": "شائعة في إسبانيا؛ في أمريكا اللاتينية يُقال أكثر: ¿Quieres…? أو ¿Te gustaría…?"
+    },
+    {
+     "id": "me_encantaria",
+     "es": "me encantaría",
+     "ar": "يسعدني ذلك كثيراً",
+     "en": "I'd love to",
+     "pos": "تعبير",
+     "examples": [
+      {
+       "es": "¡Me encantaría! ¿A qué hora?",
+       "ar": "يسعدني ذلك! في أي ساعة؟"
+      }
+     ],
+     "work": true
+    },
+    {
+     "id": "vale",
+     "es": "vale",
+     "ar": "حسناً / موافق",
+     "en": "OK",
+     "pos": "تعبير",
+     "examples": [
+      {
+       "es": "¿A las dos? — Vale, perfecto.",
+       "ar": "في الثانية؟ — حسناً، ممتاز."
+      }
+     ],
+     "note_ar": "شائعة جداً في إسبانيا. في أمريكا اللاتينية: está bien أو de acuerdo."
+    },
+    {
+     "id": "no_puedo",
+     "es": "no puedo",
+     "ar": "لا أستطيع",
+     "en": "I can't",
+     "pos": "تعبير",
+     "examples": [
+      {
+       "es": "Lo siento, hoy no puedo.",
+       "ar": "آسف، اليوم لا أستطيع."
+      }
+     ]
+    },
+    {
+     "id": "otro_dia",
+     "es": "otro día",
+     "ar": "يوماً آخر",
+     "en": "another day",
+     "pos": "تعبير",
+     "examples": [
+      {
+       "es": "¿Lo dejamos para otro día?",
+       "ar": "هل نؤجّله ليوم آخر؟"
+      }
+     ]
+    },
+    {
+     "id": "tengo_planes",
+     "es": "tengo planes",
+     "ar": "عندي ارتباط",
+     "en": "I have plans",
+     "pos": "تعبير",
+     "examples": [
+      {
+       "es": "El sábado tengo planes.",
+       "ar": "يوم السبت عندي ارتباط."
+      }
+     ]
+    },
+    {
+     "id": "pienso",
+     "es": "pienso…",
+     "ar": "أنوي… / أفكّر في…",
+     "en": "I'm planning to… / I think…",
+     "pos": "فعل",
+     "examples": [
+      {
+       "es": "Pienso visitar a mis padres.",
+       "ar": "أنوي زيارة والديّ."
+      },
+      {
+       "es": "¿Qué piensas hacer el sábado?",
+       "ar": "ماذا تنوي أن تفعل يوم السبت؟"
+      }
+     ],
+     "connections": [
+      {
+       "type": "grammar",
+       "ar": "pensar e ← ie: pienso, piensas, piensa. pensar + مصدر = ينوي."
+      }
+     ]
+    },
+    {
+     "id": "comida_trabajo",
+     "es": "la comida de trabajo",
+     "ar": "غداء العمل",
+     "en": "business lunch",
+     "pos": "اسم",
+     "examples": [
+      {
+       "es": "El jueves tenemos una comida de trabajo con el cliente.",
+       "ar": "يوم الخميس عندنا غداء عمل مع العميل."
+      }
+     ],
+     "note_ar": "في إسبانيا la comida = وجبة الظهر الرئيسية.",
+     "work": true
+    }
+   ],
+   "activities": [
+    {
+     "type": "teach",
+     "item": "quieres_venir"
+    },
+    {
+     "type": "teach",
+     "item": "te_apetece"
+    },
+    {
+     "type": "mcq_meaning",
+     "item": "quieres_venir"
+    },
+    {
+     "type": "listen_choose",
+     "item": "te_apetece"
+    },
+    {
+     "type": "note",
+     "title_ar": "الدعوة والقبول والاعتذار",
+     "body_ar": "دعوة: ¿Quieres venir? · ¿Te apetece…?\nقبول: ¡Me encantaría! · Vale.\nاعتذار: Lo siento, no puedo. Tengo planes. ¿Otro día?",
+     "examples": [
+      {
+       "es": "Me encantaría, pero hoy no puedo.",
+       "ar": "يسعدني ذلك، لكن اليوم لا أستطيع."
+      }
+     ]
+    },
+    {
+     "type": "teach",
+     "item": "me_encantaria"
+    },
+    {
+     "type": "teach",
+     "item": "vale"
+    },
+    {
+     "type": "teach",
+     "item": "no_puedo"
+    },
+    {
+     "type": "teach",
+     "item": "otro_dia"
+    },
+    {
+     "type": "teach",
+     "item": "tengo_planes"
+    },
+    {
+     "type": "mcq_meaning",
+     "item": "me_encantaria"
+    },
+    {
+     "type": "listen_pick_es",
+     "item": "no_puedo"
+    },
+    {
+     "type": "mcq_reverse",
+     "item": "otro_dia"
+    },
+    {
+     "type": "listen_choose",
+     "item": "tengo_planes"
+    },
+    {
+     "type": "mcq_meaning",
+     "item": "vale"
+    },
+    {
+     "type": "choice",
+     "prompt_ar": "صديق يدعوك: «¿Te apetece ir al cine el viernes?». أيّ ردّ مهذّب للاعتذار؟",
+     "choices": [
+      "Me encantaría, pero no puedo. ¿Otro día?",
+      "No.",
+      "No me apetece nada."
+     ],
+     "answer": 0,
+     "skill": "reading",
+     "choices_es": true,
+     "explain_ar": "الاعتذار المهذّب: شكر أو ترحيب (me encantaría)، ثم no puedo، ثم اقتراح يوم آخر."
+    },
+    {
+     "type": "note",
+     "title_ar": "pensar + مصدر",
+     "body_ar": "pienso · piensas · piensa · pensamos · piensan + المصدر = ينوي.",
+     "examples": [
+      {
+       "es": "Pensamos abrir una oficina en México.",
+       "ar": "ننوي فتح مكتب في المكسيك."
+      }
+     ]
+    },
+    {
+     "type": "teach",
+     "item": "pienso"
+    },
+    {
+     "type": "teach",
+     "item": "comida_trabajo"
+    },
+    {
+     "type": "mcq_meaning",
+     "item": "pienso"
+    },
+    {
+     "type": "listen_pick_es",
+     "item": "comida_trabajo"
+    },
+    {
+     "type": "fill",
+     "es": "Este fin de semana yo ___ visitar a mis padres.",
+     "answer": "pienso",
+     "ar": "في عطلة نهاية الأسبوع هذه أنوي زيارة والديّ.",
+     "options": [
+      "pienso",
+      "pensar",
+      "piensa"
+     ],
+     "explain_ar": "مع yo: pienso (e ← ie) + مصدر."
+    },
+    {
+     "type": "fill",
+     "es": "Lo siento, el sábado no ___. Tengo planes.",
+     "answer": "puedo",
+     "ar": "آسف، يوم السبت لا أستطيع. عندي ارتباط.",
+     "options": [
+      "puedo",
+      "poder",
+      "podido"
+     ],
+     "explain_ar": "مع yo: no puedo. poder مصدر، وpodido ليس صيغة تُستعمل هنا."
+    },
+    {
+     "type": "match",
+     "items": [
+      "me_encantaria",
+      "no_puedo",
+      "otro_dia",
+      "tengo_planes"
+     ]
+    },
+    {
+     "type": "type_es",
+     "item": "no_puedo"
+    },
+    {
+     "type": "type_es",
+     "item": "otro_dia"
+    },
+    {
+     "type": "order",
+     "es": "Me encantaría, pero hoy no puedo.",
+     "ar": "يسعدني ذلك، لكن اليوم لا أستطيع."
+    },
+    {
+     "type": "dictation",
+     "es": "¿Te apetece un café después de la reunión?",
+     "ar": "هل ترغب في قهوة بعد الاجتماع؟"
+    },
+    {
+     "type": "choice",
+     "prompt_ar": "لكم شخص ستحجز لوثيا طاولة؟",
+     "choices": [
+      "ستة",
+      "أربعة",
+      "ثمانية"
+     ],
+     "answer": 0,
+     "skill": "reading",
+     "choices_es": false,
+     "stimulus_es": "Hola, Karim: el jueves vamos a comer en un restaurante nuevo con el equipo. ¿Quieres venir? Pienso reservar una mesa para seis. Lucía"
+    },
+    {
+     "type": "choice",
+     "prompt_ar": "استمع: هل يقبل الدعوة؟",
+     "choices": [
+      "لا، عنده ارتباط يوم السبت",
+      "نعم، يقبل",
+      "لا يعرف بعد"
+     ],
+     "answer": 0,
+     "skill": "listening",
+     "choices_es": false,
+     "audio_es": "Me encantaría, pero el sábado tengo planes."
+    },
+    {
+     "type": "respond",
+     "prompt_ar": "زميل يسأل: «¿Quieres venir a la comida de trabajo?». قل: يسعدني ذلك كثيراً!",
+     "accepted": [
+      "Me encantaría",
+      "Sí, me encantaría",
+      "Sí, claro, me encantaría"
+     ],
+     "audio_es": "¿Quieres venir a la comida de trabajo?"
+    },
+    {
+     "type": "speak",
+     "es": "¿Te apetece comer con nosotros el viernes? Pienso reservar una mesa.",
+     "ar": "هل ترغب في أن تأكل معنا يوم الجمعة؟ أنوي حجز طاولة."
+    }
+   ]
+  },
+  {
+   "id": "a2_u3_l3",
+   "title_ar": "نلتقي يوم الاثنين",
+   "title_es": "¿Quedamos el lunes?",
+   "objectives_ar": [
+    "اقتراح موعد بـ ¿Quedamos…?",
+    "تغيير الموعد بأدب بـ ¿Te viene bien…?",
+    "تأكيد اجتماع أو مكالمة فيديو"
+   ],
+   "prerequisites": [
+    "a2_u3_l2"
+   ],
+   "minutes": 16,
+   "work_relevance_ar": "ترتيب اجتماع مع عميل أو زميل وتأكيده.",
+   "source": "original-v1",
+   "grammar": [
+    "g_quedar"
+   ],
+   "items": [
+    {
+     "id": "quedamos",
+     "es": "¿Quedamos…?",
+     "ar": "هل نلتقي…؟ / هل نتّفق على…؟",
+     "en": "Shall we meet…?",
+     "pos": "سؤال",
+     "examples": [
+      {
+       "es": "¿Quedamos el lunes a las diez?",
+       "ar": "هل نلتقي يوم الاثنين في العاشرة؟"
+      }
+     ],
+     "work": true,
+     "connections": [
+      {
+       "type": "grammar",
+       "ar": "quedar = يتّفق على موعد / يلتقي. quedar con + شخص."
+      }
+     ]
+    },
+    {
+     "id": "cuando_quedamos",
+     "es": "¿Cuándo quedamos?",
+     "ar": "متى نلتقي؟",
+     "en": "When shall we meet?",
+     "pos": "سؤال",
+     "examples": [
+      {
+       "es": "¿Cuándo quedamos para hablar del proyecto?",
+       "ar": "متى نلتقي لنتحدث عن المشروع؟"
+      }
+     ]
+    },
+    {
+     "id": "te_viene_bien",
+     "es": "¿Te viene bien…?",
+     "ar": "هل يناسبك…؟",
+     "en": "Does … suit you?",
+     "pos": "سؤال",
+     "examples": [
+      {
+       "es": "¿Te viene bien el martes?",
+       "ar": "هل يناسبك الثلاثاء؟"
+      },
+      {
+       "es": "¿Le viene bien a las once?",
+       "ar": "هل يناسبك (حضرتك) في الحادية عشرة؟"
+      }
+     ],
+     "work": true,
+     "connections": [
+      {
+       "type": "usage",
+       "ar": "مع usted: ¿Le viene bien…? (قريبة من ¿Le va bien…? في A1)."
+      }
+     ]
+    },
+    {
+     "id": "mejor",
+     "es": "mejor",
+     "ar": "الأفضل / من الأفضل",
+     "en": "better",
+     "pos": "ظرف",
+     "examples": [
+      {
+       "es": "Mejor el jueves, ¿vale?",
+       "ar": "الخميس أفضل، حسناً؟"
+      }
+     ]
+    },
+    {
+     "id": "cambiar",
+     "es": "cambiar",
+     "ar": "يغيّر (مصدر)",
+     "en": "to change",
+     "pos": "فعل",
+     "examples": [
+      {
+       "es": "¿Podemos cambiar la reunión?",
+       "ar": "هل يمكننا تغيير موعد الاجتماع؟"
+      }
+     ],
+     "work": true
+    },
+    {
+     "id": "confirmar",
+     "es": "confirmar",
+     "ar": "يؤكّد (مصدر)",
+     "en": "to confirm",
+     "pos": "فعل",
+     "examples": [
+      {
+       "es": "Te confirmo la hora mañana.",
+       "ar": "أؤكّد لك الساعة غداً."
+      },
+      {
+       "es": "Le confirmo la reunión por correo.",
+       "ar": "أؤكّد لك الاجتماع بالبريد."
+      }
+     ],
+     "work": true
+    },
+    {
+     "id": "videollamada",
+     "es": "la videollamada",
+     "ar": "مكالمة الفيديو",
+     "en": "video call",
+     "pos": "اسم",
+     "examples": [
+      {
+       "es": "Hacemos una videollamada a las cuatro.",
+       "ar": "نجري مكالمة فيديو في الرابعة."
+      }
+     ],
+     "work": true
+    },
+    {
+     "id": "primera_hora",
+     "es": "a primera hora",
+     "ar": "في أول الصباح / أول الدوام",
+     "en": "first thing",
+     "pos": "تعبير",
+     "examples": [
+      {
+       "es": "Te llamo mañana a primera hora.",
+       "ar": "أتصل بك غداً في أول الصباح."
+      }
+     ]
+    },
+    {
+     "id": "propongo",
+     "es": "propongo…",
+     "ar": "أقترح…",
+     "en": "I suggest…",
+     "pos": "فعل",
+     "examples": [
+      {
+       "es": "Propongo el jueves a las diez.",
+       "ar": "أقترح الخميس في العاشرة."
+      }
+     ],
+     "work": true,
+     "connections": [
+      {
+       "type": "grammar",
+       "ar": "proponer شاذّ مع yo: propongo (مثل tengo)."
+      }
+     ]
+    }
+   ],
+   "activities": [
+    {
+     "type": "teach",
+     "item": "quedamos"
+    },
+    {
+     "type": "teach",
+     "item": "cuando_quedamos"
+    },
+    {
+     "type": "mcq_meaning",
+     "item": "quedamos"
+    },
+    {
+     "type": "listen_choose",
+     "item": "cuando_quedamos"
+    },
+    {
+     "type": "note",
+     "title_ar": "quedar: الاتفاق على موعد",
+     "body_ar": "¿Quedamos el lunes? · ¿Cuándo quedamos? · ¿A qué hora quedamos?\nهل يناسبك؟ ¿Te viene bien…? (tú) · ¿Le viene bien…? (usted)",
+     "examples": [
+      {
+       "es": "¿Le viene bien el martes?",
+       "ar": "هل يناسبك (حضرتك) يوم الثلاثاء؟"
+      }
+     ]
+    },
+    {
+     "type": "teach",
+     "item": "te_viene_bien"
+    },
+    {
+     "type": "teach",
+     "item": "mejor"
+    },
+    {
+     "type": "mcq_meaning",
+     "item": "te_viene_bien"
+    },
+    {
+     "type": "listen_pick_es",
+     "item": "mejor"
+    },
+    {
+     "type": "teach",
+     "item": "cambiar"
+    },
+    {
+     "type": "teach",
+     "item": "confirmar"
+    },
+    {
+     "type": "teach",
+     "item": "videollamada"
+    },
+    {
+     "type": "mcq_reverse",
+     "item": "cambiar"
+    },
+    {
+     "type": "listen_choose",
+     "item": "confirmar"
+    },
+    {
+     "type": "mcq_meaning",
+     "item": "videollamada"
+    },
+    {
+     "type": "teach",
+     "item": "primera_hora"
+    },
+    {
+     "type": "teach",
+     "item": "propongo"
+    },
+    {
+     "type": "mcq_meaning",
+     "item": "primera_hora"
+    },
+    {
+     "type": "listen_pick_es",
+     "item": "propongo"
+    },
+    {
+     "type": "fill",
+     "es": "Entonces, ¿___ el martes a las once?",
+     "answer": "quedamos",
+     "ar": "إذن، هل نلتقي الثلاثاء في الحادية عشرة؟",
+     "options": [
+      "quedamos",
+      "quedar",
+      "quedado"
+     ],
+     "explain_ar": "اقتراح لنا (nosotros) في الحاضر: ¿Quedamos…?"
+    },
+    {
+     "type": "fill",
+     "es": "¿Te ___ bien el viernes?",
+     "answer": "viene",
+     "ar": "هل يناسبك يوم الجمعة؟",
+     "options": [
+      "viene",
+      "vienes",
+      "vas"
+     ],
+     "explain_ar": "¿Te viene bien…? — الفعل يتّفق مع الموعد (el viernes)، لا مع tú."
+    },
+    {
+     "type": "choice",
+     "prompt_ar": "عميل يقترح الاثنين لكنك مشغول. أيّ ردّ مناسب؟",
+     "choices": [
+      "Lo siento, el lunes no puedo. ¿Le viene bien el martes?",
+      "Sí, el lunes no puedo.",
+      "El lunes voy a ocupado."
+     ],
+     "answer": 0,
+     "skill": "reading",
+     "choices_es": true,
+     "explain_ar": "اعتذر (lo siento, no puedo) ثم اقترح بديلاً بـ ¿Le viene bien…?"
+    },
+    {
+     "type": "match",
+     "items": [
+      "cambiar",
+      "confirmar",
+      "videollamada",
+      "primera_hora"
+     ]
+    },
+    {
+     "type": "type_es",
+     "item": "confirmar"
+    },
+    {
+     "type": "type_es",
+     "item": "videollamada"
+    },
+    {
+     "type": "order",
+     "es": "¿Te viene bien una videollamada a las cuatro?",
+     "ar": "هل تناسبك مكالمة فيديو في الرابعة؟"
+    },
+    {
+     "type": "dictation",
+     "es": "Te confirmo la reunión mañana a primera hora.",
+     "ar": "أؤكّد لك الاجتماع غداً في أول الصباح."
+    },
+    {
+     "type": "choice",
+     "prompt_ar": "ماذا يقترح عمر؟",
+     "choices": [
+      "الجمعة في أول الصباح أو مكالمة فيديو الخميس",
+      "الخميس صباحاً",
+      "إلغاء الاجتماع"
+     ],
+     "answer": 0,
+     "skill": "reading",
+     "choices_es": false,
+     "stimulus_es": "Hola, Marta: ¿podemos cambiar la reunión del jueves? Propongo el viernes a primera hora, o una videollamada el jueves por la tarde. ¿Qué te viene mejor? Omar"
+    },
+    {
+     "type": "choice",
+     "prompt_ar": "استمع: متى يقترح اللقاء؟",
+     "choices": [
+      "غداً في أول الصباح",
+      "اليوم بعد الظهر",
+      "الأسبوع القادم"
+     ],
+     "answer": 0,
+     "skill": "listening",
+     "choices_es": false,
+     "audio_es": "¿Quedamos mañana a primera hora?"
+    },
+    {
+     "type": "respond",
+     "prompt_ar": "زميل يسأل: «¿Cuándo quedamos?». اقترح الخميس في العاشرة.",
+     "accepted": [
+      "Propongo el jueves a las diez",
+      "El jueves a las diez",
+      "¿Quedamos el jueves a las diez?",
+      "¿El jueves a las diez?",
+      "Mejor el jueves a las diez",
+      "¿Te viene bien el jueves a las diez?"
+     ],
+     "audio_es": "¿Cuándo quedamos?"
+    },
+    {
+     "type": "speak",
+     "es": "¿Quedamos el jueves a las diez? Si no te viene bien, podemos cambiar la hora.",
+     "ar": "هل نلتقي الخميس في العاشرة؟ إذا لم يناسبك، يمكننا تغيير الساعة."
+    }
+   ]
+  },
+  {
+   "id": "a2_u3_l4",
+   "title_ar": "جدول الأسبوع",
+   "title_es": "La agenda de la semana",
+   "objectives_ar": [
+    "الحاضر للجداول والمواعيد الثابتة",
+    "قراءة جدول معرض أو رحلة",
+    "المهلة والتاريخ: antes de، hasta las"
+   ],
+   "prerequisites": [
+    "a2_u3_l3"
+   ],
+   "minutes": 16,
+   "work_relevance_ar": "قراءة جدول معرض أو رحلة عمل ومعرفة المواعيد النهائية.",
+   "source": "original-v1",
+   "grammar": [
+    "g_present_schedule"
+   ],
+   "items": [
+    {
+     "id": "sale",
+     "es": "sale",
+     "ar": "يغادر / ينطلق",
+     "en": "leaves, departs",
+     "pos": "فعل",
+     "examples": [
+      {
+       "es": "El tren sale a las ocho.",
+       "ar": "ينطلق القطار في الثامنة."
+      }
+     ],
+     "connections": [
+      {
+       "type": "grammar",
+       "ar": "salir: salgo (أنا) · sale (هو). وفي الماضي salí (A2-U2)."
+      }
+     ]
+    },
+    {
+     "id": "empieza",
+     "es": "empieza",
+     "ar": "يبدأ",
+     "en": "starts",
+     "pos": "فعل",
+     "examples": [
+      {
+       "es": "La reunión empieza a las diez.",
+       "ar": "يبدأ الاجتماع في العاشرة."
+      }
+     ],
+     "work": true,
+     "connections": [
+      {
+       "type": "grammar",
+       "ar": "empezar e ← ie في الحاضر: empieza؛ وفي الماضي empecé."
+      }
+     ]
+    },
+    {
+     "id": "termina",
+     "es": "termina",
+     "ar": "ينتهي",
+     "en": "ends, finishes",
+     "pos": "فعل",
+     "examples": [
+      {
+       "es": "La reunión termina a las once.",
+       "ar": "ينتهي الاجتماع في الحادية عشرة."
+      }
+     ]
+    },
+    {
+     "id": "feria",
+     "es": "la feria",
+     "ar": "المعرض (التجاري)",
+     "en": "trade fair",
+     "pos": "اسم",
+     "examples": [
+      {
+       "es": "Vamos a la feria de Madrid.",
+       "ar": "سنذهب إلى معرض مدريد."
+      }
+     ],
+     "work": true
+    },
+    {
+     "id": "horario",
+     "es": "el horario",
+     "ar": "الجدول / مواعيد الدوام",
+     "en": "timetable, opening hours",
+     "pos": "اسم",
+     "examples": [
+      {
+       "es": "¿Cuál es el horario de la feria?",
+       "ar": "ما مواعيد المعرض؟"
+      }
+     ]
+    },
+    {
+     "id": "fecha",
+     "es": "la fecha",
+     "ar": "التاريخ (اليوم والشهر)",
+     "en": "date",
+     "pos": "اسم",
+     "examples": [
+      {
+       "es": "¿Cuál es la fecha de la reunión?",
+       "ar": "ما تاريخ الاجتماع؟"
+      }
+     ],
+     "work": true
+    },
+    {
+     "id": "plazo",
+     "es": "el plazo",
+     "ar": "المهلة / الموعد النهائي",
+     "en": "deadline",
+     "pos": "اسم",
+     "examples": [
+      {
+       "es": "El plazo termina el viernes.",
+       "ar": "تنتهي المهلة يوم الجمعة."
+      }
+     ],
+     "work": true
+    },
+    {
+     "id": "antes_de",
+     "es": "antes de…",
+     "ar": "قبل…",
+     "en": "before…",
+     "pos": "تعبير",
+     "examples": [
+      {
+       "es": "Tengo que enviar el informe antes del viernes.",
+       "ar": "يجب أن أرسل التقرير قبل الجمعة."
+      }
+     ],
+     "note_ar": "antes de + el = antes del."
+    },
+    {
+     "id": "hasta_las",
+     "es": "hasta las…",
+     "ar": "حتى الساعة…",
+     "en": "until … o'clock",
+     "pos": "تعبير",
+     "examples": [
+      {
+       "es": "Trabajo hasta las seis.",
+       "ar": "أعمل حتى السادسة."
+      }
+     ],
+     "connections": [
+      {
+       "type": "usage",
+       "ar": "hasta luego / hasta mañana (Pre-A1) من الكلمة نفسها: hasta = حتى."
+      }
+     ]
+    }
+   ],
+   "activities": [
+    {
+     "type": "teach",
+     "item": "sale"
+    },
+    {
+     "type": "teach",
+     "item": "empieza"
+    },
+    {
+     "type": "teach",
+     "item": "termina"
+    },
+    {
+     "type": "mcq_meaning",
+     "item": "empieza"
+    },
+    {
+     "type": "listen_choose",
+     "item": "sale"
+    },
+    {
+     "type": "mcq_reverse",
+     "item": "termina"
+    },
+    {
+     "type": "note",
+     "title_ar": "الحاضر للجداول",
+     "body_ar": "للحدث المجدول نستعمل الحاضر حتى في المستقبل:\nEl vuelo sale mañana a las siete.\nوللنيّة الشخصية: voy a + مصدر.",
+     "examples": [
+      {
+       "es": "La feria termina el domingo.",
+       "ar": "ينتهي المعرض يوم الأحد."
+      }
+     ]
+    },
+    {
+     "type": "teach",
+     "item": "feria"
+    },
+    {
+     "type": "teach",
+     "item": "horario"
+    },
+    {
+     "type": "teach",
+     "item": "fecha"
+    },
+    {
+     "type": "teach",
+     "item": "plazo"
+    },
+    {
+     "type": "mcq_meaning",
+     "item": "plazo"
+    },
+    {
+     "type": "listen_pick_es",
+     "item": "feria"
+    },
+    {
+     "type": "mcq_reverse",
+     "item": "horario"
+    },
+    {
+     "type": "listen_choose",
+     "item": "fecha"
+    },
+    {
+     "type": "choice",
+     "prompt_ar": "كيف تقول «تنتهي المهلة يوم الجمعة» (في المستقبل)؟",
+     "choices": [
+      "El plazo termina el viernes.",
+      "El plazo terminó el viernes.",
+      "El plazo termino el viernes."
+     ],
+     "answer": 0,
+     "skill": "grammar",
+     "choices_es": true,
+     "explain_ar": "حدث مجدول في المستقبل ← الحاضر: termina. terminó للماضي، وtermino = أُنهي (أنا)."
+    },
+    {
+     "type": "teach",
+     "item": "antes_de"
+    },
+    {
+     "type": "teach",
+     "item": "hasta_las"
+    },
+    {
+     "type": "mcq_meaning",
+     "item": "antes_de"
+    },
+    {
+     "type": "listen_pick_es",
+     "item": "hasta_las"
+    },
+    {
+     "type": "fill",
+     "es": "El vuelo ___ mañana a las siete.",
+     "answer": "sale",
+     "ar": "تنطلق الرحلة غداً في السابعة.",
+     "options": [
+      "sale",
+      "salió",
+      "salgo"
+     ],
+     "explain_ar": "رحلة مجدولة ← الحاضر: sale. salió للماضي، salgo = أخرج (أنا)."
+    },
+    {
+     "type": "fill",
+     "es": "La reunión ___ a las diez y termina a las once.",
+     "answer": "empieza",
+     "ar": "يبدأ الاجتماع في العاشرة وينتهي في الحادية عشرة.",
+     "options": [
+      "empieza",
+      "empezar",
+      "empiezo"
+     ],
+     "explain_ar": "الاجتماع (هو) في الحاضر: empieza (e ← ie). empiezo = أبدأ (أنا)."
+    },
+    {
+     "type": "match",
+     "items": [
+      "feria",
+      "horario",
+      "fecha",
+      "plazo"
+     ]
+    },
+    {
+     "type": "type_es",
+     "item": "plazo"
+    },
+    {
+     "type": "type_es",
+     "item": "fecha"
+    },
+    {
+     "type": "order",
+     "es": "Tengo que enviar la presentación antes del viernes.",
+     "ar": "يجب أن أرسل العرض التقديمي قبل الجمعة."
+    },
+    {
+     "type": "dictation",
+     "es": "La feria empieza el lunes y termina el jueves.",
+     "ar": "يبدأ المعرض يوم الاثنين وينتهي يوم الخميس."
+    },
+    {
+     "type": "choice",
+     "prompt_ar": "متى ينتهي المعرض؟",
+     "choices": [
+      "الخميس في السادسة",
+      "الاثنين في العاشرة",
+      "الجمعة في السادسة"
+     ],
+     "answer": 0,
+     "skill": "reading",
+     "choices_es": false,
+     "stimulus_es": "Feria de Tecnología de Madrid: empieza el lunes a las diez y termina el jueves a las seis. Horario: de diez a seis."
+    },
+    {
+     "type": "choice",
+     "prompt_ar": "استمع: متى ينطلق القطار؟",
+     "choices": [
+      "في الثامنة والنصف",
+      "في الثامنة إلا ربعاً",
+      "في التاسعة والنصف"
+     ],
+     "answer": 0,
+     "skill": "listening",
+     "choices_es": false,
+     "audio_es": "El tren sale a las ocho y media."
+    },
+    {
+     "type": "respond",
+     "prompt_ar": "زميل يسأل: «¿Cuándo termina el plazo?». قل: المهلة تنتهي يوم الجمعة.",
+     "accepted": [
+      "El plazo termina el viernes",
+      "Termina el viernes",
+      "El viernes"
+     ],
+     "audio_es": "¿Cuándo termina el plazo?"
+    },
+    {
+     "type": "speak",
+     "es": "El vuelo sale a las siete, la feria empieza a las diez y el plazo termina el viernes.",
+     "ar": "الرحلة تنطلق في السابعة، والمعرض يبدأ في العاشرة، والمهلة تنتهي يوم الجمعة."
+    }
+   ]
+  },
+  {
+   "id": "a2_u3_l5",
+   "title_ar": "خطة مشروع",
+   "title_es": "El plan del proyecto",
+   "objectives_ar": [
+    "عرض خطة مشروع بمراحل",
+    "si + الحاضر لشرط في المستقبل",
+    "الالتزام بموعد تسليم ومتابعة"
+   ],
+   "prerequisites": [
+    "a2_u3_l4"
+   ],
+   "minutes": 17,
+   "work_relevance_ar": "تقديم خطة عمل لعميل: المراحل، والتسليم، وعرض السعر.",
+   "source": "original-v1",
+   "grammar": [
+    "g_si_presente"
+   ],
+   "items": [
+    {
+     "id": "plan",
+     "es": "el plan",
+     "ar": "الخطة",
+     "en": "the plan",
+     "pos": "اسم",
+     "examples": [
+      {
+       "es": "¿Cuál es el plan del proyecto?",
+       "ar": "ما خطة المشروع؟"
+      }
+     ],
+     "work": true
+    },
+    {
+     "id": "objetivo",
+     "es": "el objetivo",
+     "ar": "الهدف",
+     "en": "objective, goal",
+     "pos": "اسم",
+     "examples": [
+      {
+       "es": "¿Cuál es el objetivo del proyecto?",
+       "ar": "ما هدف المشروع؟"
+      }
+     ],
+     "work": true
+    },
+    {
+     "id": "fase",
+     "es": "la fase",
+     "ar": "المرحلة",
+     "en": "phase, stage",
+     "pos": "اسم",
+     "examples": [
+      {
+       "es": "La primera fase empieza el lunes.",
+       "ar": "تبدأ المرحلة الأولى يوم الاثنين."
+      }
+     ],
+     "work": true
+    },
+    {
+     "id": "entrega",
+     "es": "la entrega",
+     "ar": "التسليم",
+     "en": "delivery, hand-over",
+     "pos": "اسم",
+     "examples": [
+      {
+       "es": "La entrega es a finales de mes.",
+       "ar": "التسليم في نهاية الشهر."
+      }
+     ],
+     "work": true,
+     "connections": [
+      {
+       "type": "grammar",
+       "ar": "من entregar (يسلّم)."
+      }
+     ]
+    },
+    {
+     "id": "presupuesto",
+     "es": "el presupuesto",
+     "ar": "عرض السعر / الميزانية",
+     "en": "quote, budget",
+     "pos": "اسم",
+     "examples": [
+      {
+       "es": "Le envío el presupuesto mañana.",
+       "ar": "أرسل لك عرض السعر غداً."
+      }
+     ],
+     "work": true,
+     "connections": [
+      {
+       "type": "usage",
+       "ar": "تعني الميزانية، وأيضاً عرض السعر الذي تقدّمه لعميل."
+      }
+     ]
+    },
+    {
+     "id": "le_mando",
+     "es": "le mando…",
+     "ar": "أرسل لك / لحضرتك…",
+     "en": "I'll send you…",
+     "pos": "تعبير",
+     "examples": [
+      {
+       "es": "Le mando el plan esta tarde.",
+       "ar": "أرسل لك الخطة اليوم بعد الظهر."
+      }
+     ],
+     "work": true,
+     "connections": [
+      {
+       "type": "usage",
+       "ar": "mandar = enviar، وهي أكثر شيوعاً في الكلام."
+      }
+     ]
+    },
+    {
+     "id": "si_todo_va_bien",
+     "es": "si todo va bien",
+     "ar": "إذا سار كل شيء على ما يرام",
+     "en": "if all goes well",
+     "pos": "تعبير",
+     "examples": [
+      {
+       "es": "Si todo va bien, terminamos dentro de dos semanas.",
+       "ar": "إذا سار كل شيء على ما يرام، ننتهي بعد أسبوعين."
+      }
+     ],
+     "connections": [
+      {
+       "type": "grammar",
+       "ar": "si + الحاضر لشرط في المستقبل."
+      }
+     ]
+    },
+    {
+     "id": "a_finales_de_mes",
+     "es": "a finales de mes",
+     "ar": "في نهاية الشهر",
+     "en": "at the end of the month",
+     "pos": "تعبير",
+     "examples": [
+      {
+       "es": "La entrega es a finales de mes.",
+       "ar": "التسليم في نهاية الشهر."
+      }
+     ],
+     "alt": [
+      "a finales del mes"
+     ]
+    },
+    {
+     "id": "proxima_reunion",
+     "es": "la próxima reunión",
+     "ar": "الاجتماع القادم",
+     "en": "the next meeting",
+     "pos": "اسم",
+     "examples": [
+      {
+       "es": "En la próxima reunión vamos a revisar la primera fase.",
+       "ar": "في الاجتماع القادم سنراجع المرحلة الأولى."
+      }
+     ],
+     "work": true
+    }
+   ],
+   "activities": [
+    {
+     "type": "teach",
+     "item": "plan"
+    },
+    {
+     "type": "teach",
+     "item": "objetivo"
+    },
+    {
+     "type": "mcq_meaning",
+     "item": "objetivo"
+    },
+    {
+     "type": "listen_choose",
+     "item": "plan"
+    },
+    {
+     "type": "teach",
+     "item": "fase"
+    },
+    {
+     "type": "teach",
+     "item": "entrega"
+    },
+    {
+     "type": "teach",
+     "item": "presupuesto"
+    },
+    {
+     "type": "mcq_reverse",
+     "item": "fase"
+    },
+    {
+     "type": "listen_pick_es",
+     "item": "entrega"
+    },
+    {
+     "type": "mcq_meaning",
+     "item": "presupuesto"
+    },
+    {
+     "type": "note",
+     "title_ar": "si + الحاضر",
+     "body_ar": "Si todo va bien, terminamos a finales de mes.\nSi hay un problema, le voy a llamar.\nبعد si الحاضر، وليس المستقبل البسيط (irá، terminaremos).\nوir a ممكنة: Si vas a salir, llámame.",
+     "examples": [
+      {
+       "es": "Si tienes tiempo, quedamos el viernes.",
+       "ar": "إذا كان عندك وقت، نلتقي يوم الجمعة."
+      }
+     ]
+    },
+    {
+     "type": "teach",
+     "item": "si_todo_va_bien"
+    },
+    {
+     "type": "teach",
+     "item": "a_finales_de_mes"
+    },
+    {
+     "type": "mcq_meaning",
+     "item": "si_todo_va_bien"
+    },
+    {
+     "type": "listen_choose",
+     "item": "a_finales_de_mes"
+    },
+    {
+     "type": "choice",
+     "prompt_ar": "أيّ جملة صحيحة؟",
+     "choices": [
+      "Si todo va bien, la entrega es a finales de mes.",
+      "Si todo irá bien, la entrega es a finales de mes.",
+      "Si todo ir bien, la entrega es a finales de mes."
+     ],
+     "answer": 0,
+     "skill": "grammar",
+     "choices_es": true,
+     "explain_ar": "بعد si يأتي الحاضر (va)، لا المستقبل البسيط (irá)، ولا المصدر (ir)."
+    },
+    {
+     "type": "teach",
+     "item": "le_mando"
+    },
+    {
+     "type": "teach",
+     "item": "proxima_reunion"
+    },
+    {
+     "type": "mcq_meaning",
+     "item": "le_mando"
+    },
+    {
+     "type": "listen_pick_es",
+     "item": "proxima_reunion"
+    },
+    {
+     "type": "fill",
+     "es": "Si todo ___ bien, terminamos a finales de mes.",
+     "answer": "va",
+     "ar": "إذا سار كل شيء على ما يرام، ننتهي في نهاية الشهر.",
+     "options": [
+      "va",
+      "irá",
+      "ir"
+     ],
+     "explain_ar": "بعد si نستعمل الحاضر: va، لا المستقبل البسيط irá."
+    },
+    {
+     "type": "fill",
+     "es": "Primero vamos a terminar la primera fase y luego ___ a empezar la segunda.",
+     "answer": "vamos",
+     "ar": "أولاً سننهي المرحلة الأولى ثم سنبدأ الثانية.",
+     "options": [
+      "vamos",
+      "ir",
+      "yendo"
+     ],
+     "explain_ar": "nosotros + ir a: vamos a empezar."
+    },
+    {
+     "type": "match",
+     "items": [
+      "plan",
+      "objetivo",
+      "fase",
+      "presupuesto"
+     ]
+    },
+    {
+     "type": "type_es",
+     "item": "presupuesto"
+    },
+    {
+     "type": "type_es",
+     "item": "entrega"
+    },
+    {
+     "type": "order",
+     "es": "Si todo va bien, la entrega es a finales de mes.",
+     "ar": "إذا سار كل شيء على ما يرام، التسليم في نهاية الشهر."
+    },
+    {
+     "type": "dictation",
+     "es": "En la próxima reunión vamos a revisar la primera fase.",
+     "ar": "في الاجتماع القادم سنراجع المرحلة الأولى."
+    },
+    {
+     "type": "choice",
+     "prompt_ar": "متى التسليم؟",
+     "choices": [
+      "في نهاية الشهر",
+      "بعد أسبوعين",
+      "الشهر القادم"
+     ],
+     "answer": 0,
+     "skill": "reading",
+     "choices_es": false,
+     "stimulus_es": "Plan del proyecto: la primera fase empieza el lunes y termina dentro de dos semanas. La entrega es a finales de mes. Si todo va bien, la segunda fase empieza el mes que viene. Le mando el presupuesto mañana."
+    },
+    {
+     "type": "choice",
+     "prompt_ar": "استمع: ماذا سيرسل؟",
+     "choices": [
+      "عرض السعر",
+      "الخطة",
+      "الفاتورة"
+     ],
+     "answer": 0,
+     "skill": "listening",
+     "choices_es": false,
+     "audio_es": "Le mando el presupuesto esta tarde."
+    },
+    {
+     "type": "respond",
+     "prompt_ar": "العميل يسأل: «¿Cuándo es la entrega?». قل: في نهاية الشهر، إذا سار كل شيء على ما يرام.",
+     "accepted": [
+      "A finales de mes, si todo va bien",
+      "Si todo va bien, a finales de mes",
+      "La entrega es a finales de mes, si todo va bien",
+      "Si todo va bien, la entrega es a finales de mes",
+      "Si todo va bien, es a finales de mes",
+      "A finales del mes, si todo va bien",
+      "Si todo va bien, a finales del mes"
+     ],
+     "audio_es": "¿Cuándo es la entrega?"
+    },
+    {
+     "type": "speak",
+     "es": "La primera fase empieza el lunes. Si todo va bien, la entrega es a finales de mes. Le mando el plan esta tarde.",
+     "ar": "تبدأ المرحلة الأولى يوم الاثنين. إذا سار كل شيء على ما يرام، التسليم في نهاية الشهر. أرسل لك الخطة اليوم بعد الظهر."
+    }
+   ]
+  }
+ ]
+}

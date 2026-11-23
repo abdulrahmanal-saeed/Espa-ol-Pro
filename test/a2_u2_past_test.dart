@@ -57,12 +57,12 @@ void main() {
       for (var i = 1; i < unit.lessons.length; i++) {
         expect(unit.lessons[i].prerequisites, [unit.lessons[i - 1].id]);
       }
-      // A2-U3 onwards stays planned.
+      // A2-U2 directly follows A2-U1 among the available units.
       final a2 = pack.levels.firstWhere((l) => l.id == 'a2');
-      expect(a2.units.where((u) => u.isAvailable).map((u) => u.id), [
-        'a2_u1',
-        'a2_u2',
-      ]);
+      expect(
+        a2.units.where((u) => u.isAvailable).map((u) => u.id),
+        containsAllInOrder(['a2_u1', 'a2_u2']),
+      );
     });
 
     test('every lesson practises listening, typing, ordering, dictation, '
@@ -197,7 +197,19 @@ void main() {
           v.remove('preterite_regular');
         }
       });
-      expect(issues, isEmpty, reason: issues.join('\n'));
+      // The verb file itself is valid without past forms.
+      expect(
+        issues.where((i) => i.contains('verb:')),
+        isEmpty,
+        reason: issues.join('\n'),
+      );
+      // Only the REVIEW-015 P3 rule notices: answers such as "terminó" are
+      // no longer backed by a verb form in the reference.
+      expect(
+        issues.every((i) => i.contains('ends in a stressed é/ó')),
+        isTrue,
+        reason: issues.join('\n'),
+      );
     });
 
     test(

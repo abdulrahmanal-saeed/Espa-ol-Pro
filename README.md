@@ -16,9 +16,9 @@ content, FSRS spaced repetition, no accounts, no ads, no tracking.
 
 ## What works today
 
-- 42 original lessons (9 Pre-A1, 23 A1, 10 A2), 352 vocabulary items, 699 graded
-  exercises, 48 grammar notes, 22 dialogues, 12 checkpoints and level tests,
-  a 32-verb conjugation reference (present and past) — plus the full
+- 47 original lessons (9 Pre-A1, 23 A1, 15 A2), 397 vocabulary items, 799 graded
+  exercises, 55 grammar notes, 25 dialogues, 13 checkpoints and level tests,
+  a 39-verb conjugation reference (present and past) — plus the full
   Pre-A1 → C2 curriculum map.
 - Lesson engine with 11 exercise types (meaning choice, listening, dictation,
   fill-in, sentence ordering, matching, typed translation, situational reply,

@@ -1004,6 +1004,481 @@
     }
    ],
    "source": "original-v1"
+  },
+  {
+   "id": "dlg_a2_invitacion",
+   "level": "a2",
+   "unit": "a2_u3",
+   "lessons": [
+    "a2_u3_l1",
+    "a2_u3_l2"
+   ],
+   "title_es": "¿Quieres venir?",
+   "title_ar": "هل تريد أن تأتي؟",
+   "scenario_ar": "لوثيا تدعو زميلها عمر إلى غداء مع الفريق يوم الجمعة.",
+   "objectives_ar": [
+    "فهم الخطط بـ ir a",
+    "فهم دعوة واعتذار مهذّب",
+    "فهم اقتراح بديل"
+   ],
+   "speakers": [
+    {
+     "id": "lucia",
+     "name": "Lucía",
+     "role_ar": "زميلة"
+    },
+    {
+     "id": "omar",
+     "name": "Omar",
+     "role_ar": "زميل"
+    }
+   ],
+   "turns": [
+    {
+     "id": "dlg_a2_invitacion.t1",
+     "speaker": "lucia",
+     "es": "Omar, ¿qué vas a hacer el viernes por la tarde?",
+     "ar": "عمر، ماذا ستفعل يوم الجمعة بعد الظهر؟",
+     "en": "Omar, what are you doing on Friday afternoon?"
+    },
+    {
+     "id": "dlg_a2_invitacion.t2",
+     "speaker": "omar",
+     "es": "Voy a terminar el informe. ¿Y tú?",
+     "ar": "سأنهي التقرير. وأنتِ؟",
+     "en": "I'm going to finish the report. And you?"
+    },
+    {
+     "id": "dlg_a2_invitacion.t3",
+     "speaker": "lucia",
+     "es": "Vamos a comer con el equipo. ¿Quieres venir?",
+     "ar": "سنأكل مع الفريق. هل تريد أن تأتي؟",
+     "en": "We're going to eat with the team. Do you want to come?"
+    },
+    {
+     "id": "dlg_a2_invitacion.t4",
+     "speaker": "omar",
+     "es": "Me encantaría, pero el viernes no puedo. Tengo planes con mi familia.",
+     "ar": "يسعدني ذلك، لكن يوم الجمعة لا أستطيع. عندي ارتباط مع عائلتي.",
+     "en": "I'd love to, but I can't on Friday. I have plans with my family."
+    },
+    {
+     "id": "dlg_a2_invitacion.t5",
+     "speaker": "lucia",
+     "es": "Vale. ¿Otro día?",
+     "ar": "حسناً. يوماً آخر؟",
+     "en": "OK. Another day?"
+    },
+    {
+     "id": "dlg_a2_invitacion.t6",
+     "speaker": "omar",
+     "es": "Sí, claro. ¿Te apetece un café el lunes?",
+     "ar": "نعم، بالطبع. هل ترغبين في قهوة يوم الاثنين؟",
+     "en": "Yes, of course. Do you fancy a coffee on Monday?"
+    },
+    {
+     "id": "dlg_a2_invitacion.t7",
+     "speaker": "lucia",
+     "es": "Perfecto. Nos vemos el lunes.",
+     "ar": "ممتاز. نراك يوم الاثنين.",
+     "en": "Perfect. See you on Monday."
+    }
+   ],
+   "items": [
+    "que_vas_a_hacer",
+    "vamos_a",
+    "quieres_venir",
+    "me_encantaria",
+    "no_puedo",
+    "tengo_planes",
+    "vale",
+    "otro_dia",
+    "te_apetece",
+    "perfecto",
+    "nos_vemos"
+   ],
+   "grammar": [
+    "g_ir_a_full",
+    "g_invitations"
+   ],
+   "questions": [
+    {
+     "type": "choice",
+     "prompt_ar": "ماذا سيفعل عمر يوم الجمعة؟",
+     "choices": [
+      "سينهي التقرير",
+      "سيأكل مع الفريق",
+      "سيسافر"
+     ],
+     "answer": 0,
+     "choices_es": false,
+     "turn": "dlg_a2_invitacion.t2",
+     "id": "dlg_a2_invitacion.q1",
+     "skill": "listening"
+    },
+    {
+     "type": "choice",
+     "prompt_ar": "لماذا لا يستطيع عمر الذهاب؟",
+     "choices": [
+      "عنده ارتباط مع عائلته",
+      "عنده اجتماع",
+      "هو مريض"
+     ],
+     "answer": 0,
+     "choices_es": false,
+     "turn": "dlg_a2_invitacion.t4",
+     "id": "dlg_a2_invitacion.q2",
+     "skill": "listening"
+    },
+    {
+     "type": "choice",
+     "prompt_ar": "ماذا يقترح عمر؟",
+     "choices": [
+      "قهوة يوم الاثنين",
+      "غداء يوم الجمعة",
+      "عشاء يوم السبت"
+     ],
+     "answer": 0,
+     "choices_es": false,
+     "turn": "dlg_a2_invitacion.t6",
+     "id": "dlg_a2_invitacion.q3",
+     "skill": "listening"
+    },
+    {
+     "type": "speaker",
+     "turn": "dlg_a2_invitacion.t3",
+     "id": "dlg_a2_invitacion.q4",
+     "skill": "listening"
+    },
+    {
+     "type": "dictation",
+     "turn": "dlg_a2_invitacion.t5",
+     "id": "dlg_a2_invitacion.q5",
+     "skill": "listening"
+    }
+   ],
+   "source": "original-v1"
+  },
+  {
+   "id": "dlg_a2_cita_cliente",
+   "level": "a2",
+   "unit": "a2_u3",
+   "lessons": [
+    "a2_u3_l3"
+   ],
+   "title_es": "Una cita con la clienta",
+   "title_ar": "موعد مع العميلة",
+   "scenario_ar": "عمر يتصل بالعميلة السيدة رويث ليرتّبا موعد عرض المشروع.",
+   "objectives_ar": [
+    "فهم اقتراح موعد وتغييره",
+    "فهم سبب الاعتذار",
+    "فهم الموعد المؤكَّد"
+   ],
+   "speakers": [
+    {
+     "id": "omar",
+     "name": "Omar",
+     "role_ar": "مسؤول المبيعات"
+    },
+    {
+     "id": "marta",
+     "name": "Marta Ruiz",
+     "role_ar": "عميلة"
+    }
+   ],
+   "turns": [
+    {
+     "id": "dlg_a2_cita_cliente.t1",
+     "speaker": "omar",
+     "es": "Buenos días, señora Ruiz. ¿Cuándo quedamos para la presentación?",
+     "ar": "صباح الخير يا سيدة رويث. متى نلتقي من أجل العرض؟",
+     "en": "Good morning, Mrs Ruiz. When shall we meet for the presentation?"
+    },
+    {
+     "id": "dlg_a2_cita_cliente.t2",
+     "speaker": "marta",
+     "es": "¿Le viene bien el martes a las once?",
+     "ar": "هل يناسبك الثلاثاء في الحادية عشرة؟",
+     "en": "Does Tuesday at eleven suit you?"
+    },
+    {
+     "id": "dlg_a2_cita_cliente.t3",
+     "speaker": "omar",
+     "es": "Lo siento, el martes no puedo. ¿Mejor el jueves a primera hora?",
+     "ar": "آسف، يوم الثلاثاء لا أستطيع. هل الخميس في أول الصباح أفضل؟",
+     "en": "Sorry, I can't on Tuesday. Is Thursday first thing better?"
+    },
+    {
+     "id": "dlg_a2_cita_cliente.t4",
+     "speaker": "marta",
+     "es": "El jueves estoy en Barcelona. ¿Hacemos una videollamada?",
+     "ar": "يوم الخميس أكون في برشلونة. هل نجري مكالمة فيديو؟",
+     "en": "On Thursday I'm in Barcelona. Shall we do a video call?"
+    },
+    {
+     "id": "dlg_a2_cita_cliente.t5",
+     "speaker": "omar",
+     "es": "Perfecto. Propongo el jueves a las nueve.",
+     "ar": "ممتاز. أقترح الخميس في التاسعة.",
+     "en": "Perfect. I suggest Thursday at nine."
+    },
+    {
+     "id": "dlg_a2_cita_cliente.t6",
+     "speaker": "marta",
+     "es": "De acuerdo. Le confirmo la hora mañana.",
+     "ar": "موافقة. أؤكّد لك الساعة غداً.",
+     "en": "Agreed. I'll confirm the time tomorrow."
+    }
+   ],
+   "items": [
+    "cuando_quedamos",
+    "te_viene_bien",
+    "lo_siento",
+    "no_puedo",
+    "mejor",
+    "primera_hora",
+    "videollamada",
+    "propongo",
+    "de_acuerdo",
+    "confirmar"
+   ],
+   "grammar": [
+    "g_quedar"
+   ],
+   "questions": [
+    {
+     "type": "choice",
+     "prompt_ar": "ماذا تقترح السيدة رويث أولاً؟",
+     "choices": [
+      "الثلاثاء في الحادية عشرة",
+      "الخميس في التاسعة",
+      "الاثنين"
+     ],
+     "answer": 0,
+     "choices_es": false,
+     "turn": "dlg_a2_cita_cliente.t2",
+     "id": "dlg_a2_cita_cliente.q1",
+     "skill": "listening"
+    },
+    {
+     "type": "choice",
+     "prompt_ar": "لماذا لا تستطيع اللقاء يوم الخميس؟",
+     "choices": [
+      "ستكون في برشلونة",
+      "عندها اجتماع",
+      "هي مريضة"
+     ],
+     "answer": 0,
+     "choices_es": false,
+     "turn": "dlg_a2_cita_cliente.t4",
+     "id": "dlg_a2_cita_cliente.q2",
+     "skill": "listening"
+    },
+    {
+     "type": "choice",
+     "prompt_ar": "متى ستكون مكالمة الفيديو؟",
+     "choices": [
+      "الخميس في التاسعة",
+      "الثلاثاء في الحادية عشرة",
+      "الجمعة في أول الصباح"
+     ],
+     "answer": 0,
+     "choices_es": false,
+     "turn": "dlg_a2_cita_cliente.t5",
+     "id": "dlg_a2_cita_cliente.q3",
+     "skill": "listening"
+    },
+    {
+     "type": "speaker",
+     "turn": "dlg_a2_cita_cliente.t4",
+     "id": "dlg_a2_cita_cliente.q4",
+     "skill": "listening"
+    },
+    {
+     "type": "dictation",
+     "turn": "dlg_a2_cita_cliente.t6",
+     "id": "dlg_a2_cita_cliente.q5",
+     "skill": "listening"
+    }
+   ],
+   "source": "original-v1"
+  },
+  {
+   "id": "dlg_a2_proyecto",
+   "level": "a2",
+   "unit": "a2_u3",
+   "lessons": [
+    "a2_u3_l4",
+    "a2_u3_l5"
+   ],
+   "title_es": "El plan del proyecto",
+   "title_ar": "خطة المشروع",
+   "scenario_ar": "آنا، مديرة المشروع، تشرح الخطة والمواعيد للعميل السيد خيل.",
+   "objectives_ar": [
+    "فهم مراحل خطة ومواعيدها",
+    "فهم شرط بـ si",
+    "فهم ما سيحدث في الاجتماع القادم"
+   ],
+   "speakers": [
+    {
+     "id": "pedro",
+     "name": "Pedro Gil",
+     "role_ar": "عميل"
+    },
+    {
+     "id": "ana",
+     "name": "Ana",
+     "role_ar": "مديرة المشروع"
+    }
+   ],
+   "turns": [
+    {
+     "id": "dlg_a2_proyecto.t1",
+     "speaker": "pedro",
+     "es": "¿Cuál es el plan del proyecto?",
+     "ar": "ما خطة المشروع؟",
+     "en": "What's the project plan?"
+    },
+    {
+     "id": "dlg_a2_proyecto.t2",
+     "speaker": "ana",
+     "es": "La primera fase empieza el lunes y termina dentro de dos semanas.",
+     "ar": "تبدأ المرحلة الأولى يوم الاثنين وتنتهي بعد أسبوعين.",
+     "en": "The first phase starts on Monday and ends in two weeks."
+    },
+    {
+     "id": "dlg_a2_proyecto.t3",
+     "speaker": "pedro",
+     "es": "¿Y cuándo es la entrega?",
+     "ar": "ومتى التسليم؟",
+     "en": "And when is the delivery?"
+    },
+    {
+     "id": "dlg_a2_proyecto.t4",
+     "speaker": "ana",
+     "es": "Si todo va bien, a finales de mes.",
+     "ar": "إذا سار كل شيء على ما يرام، في نهاية الشهر.",
+     "en": "If all goes well, at the end of the month."
+    },
+    {
+     "id": "dlg_a2_proyecto.t5",
+     "speaker": "pedro",
+     "es": "¿Y el presupuesto?",
+     "ar": "وعرض السعر؟",
+     "en": "And the quote?"
+    },
+    {
+     "id": "dlg_a2_proyecto.t6",
+     "speaker": "ana",
+     "es": "Le mando el presupuesto esta tarde.",
+     "ar": "أرسل لك عرض السعر اليوم بعد الظهر.",
+     "en": "I'll send you the quote this afternoon."
+    },
+    {
+     "id": "dlg_a2_proyecto.t7",
+     "speaker": "pedro",
+     "es": "Perfecto. ¿Cuándo es la próxima reunión?",
+     "ar": "ممتاز. متى الاجتماع القادم؟",
+     "en": "Perfect. When is the next meeting?"
+    },
+    {
+     "id": "dlg_a2_proyecto.t8",
+     "speaker": "ana",
+     "es": "El viernes a las diez. Vamos a revisar la primera fase.",
+     "ar": "يوم الجمعة في العاشرة. سنراجع المرحلة الأولى.",
+     "en": "On Friday at ten. We're going to review the first phase."
+    }
+   ],
+   "items": [
+    "plan",
+    "fase",
+    "empieza",
+    "termina",
+    "dentro_de",
+    "entrega",
+    "si_todo_va_bien",
+    "a_finales_de_mes",
+    "presupuesto",
+    "le_mando",
+    "esta_tarde",
+    "proxima_reunion",
+    "vamos_a"
+   ],
+   "grammar": [
+    "g_present_schedule",
+    "g_si_presente"
+   ],
+   "questions": [
+    {
+     "type": "choice",
+     "prompt_ar": "متى تبدأ المرحلة الأولى؟",
+     "choices": [
+      "يوم الاثنين",
+      "يوم الجمعة",
+      "بعد أسبوعين"
+     ],
+     "answer": 0,
+     "choices_es": false,
+     "turn": "dlg_a2_proyecto.t2",
+     "id": "dlg_a2_proyecto.q1",
+     "skill": "listening"
+    },
+    {
+     "type": "choice",
+     "prompt_ar": "متى التسليم؟",
+     "choices": [
+      "في نهاية الشهر",
+      "بعد أسبوعين",
+      "يوم الجمعة"
+     ],
+     "answer": 0,
+     "choices_es": false,
+     "turn": "dlg_a2_proyecto.t4",
+     "id": "dlg_a2_proyecto.q2",
+     "skill": "listening"
+    },
+    {
+     "type": "choice",
+     "prompt_ar": "متى سترسل آنا عرض السعر؟",
+     "choices": [
+      "اليوم بعد الظهر",
+      "غداً",
+      "يوم الجمعة"
+     ],
+     "answer": 0,
+     "choices_es": false,
+     "turn": "dlg_a2_proyecto.t6",
+     "id": "dlg_a2_proyecto.q3",
+     "skill": "listening"
+    },
+    {
+     "type": "choice",
+     "prompt_ar": "ماذا سيفعلون في الاجتماع القادم؟",
+     "choices": [
+      "سيراجعون المرحلة الأولى",
+      "سيوقّعون العقد",
+      "سيدفعون الفاتورة"
+     ],
+     "answer": 0,
+     "choices_es": false,
+     "turn": "dlg_a2_proyecto.t8",
+     "id": "dlg_a2_proyecto.q4",
+     "skill": "listening"
+    },
+    {
+     "type": "speaker",
+     "turn": "dlg_a2_proyecto.t7",
+     "id": "dlg_a2_proyecto.q5",
+     "skill": "listening"
+    },
+    {
+     "type": "dictation",
+     "turn": "dlg_a2_proyecto.t4",
+     "id": "dlg_a2_proyecto.q6",
+     "skill": "listening"
+    }
+   ],
+   "source": "original-v1"
   }
  ]
 }

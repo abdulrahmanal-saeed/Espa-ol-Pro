@@ -144,7 +144,7 @@ detect it.
 | Path: a completed level stays expanded until its level assessment has been taken once, so starting A2 does not hide the A1 level assessment | `verbs_and_level_test` |
 | Checkpoint options (every unit checkpoint and level assessment, Pre-A1 to A2) are shown in a per-attempt shuffled order, stable within the attempt; grading by option text is unchanged (REVIEW-012 P1) | `assessment_order_test`, `assessment_flow_test` |
 
-## A2-U2 the past — what happened? (PR in review)
+## A2-U2 the past — what happened? (merged, PR #13 `bb4c4b9`)
 
 | Area | Evidence |
 |---|---|
@@ -153,6 +153,15 @@ detect it.
 | Checkpoint `chk_a2_u2`: 12 questions, 3 can-dos, 5 skills, shuffled options, scores persist across reopen and retry | `a2_u2_past_test`, `assessment_order_test` |
 | Verb reference: optional, backward-compatible past tense; all 32 verbs (10 new) with six past forms; regular pasts machine-checked including saqué / llegué / empecé; past table in Library → الأفعال | `a2_u2_past_test`, `verbs_and_level_test` |
 | Evaluator: a missing final é/ó accent in words of 5+ letters (habló, trabajé, envió) is a different form, not a slip; short words unchanged (café) | `a2_u2_past_test`, `answer_evaluator_test` |
+
+## A2-U3 plans and the future (PR in review)
+
+| Area | Evidence |
+|---|---|
+| 5 lessons (43–47) after `a2_u2_l5`: ir a with every person, invitations and pensar + infinitive, quedar and confirming meetings, present for timetables, project plan with si + present; 45 items, 7 grammar notes; content 1.7.0 | `a2_u3_future_test`, `a2_units_test` (every lesson completed in the app) |
+| 3 dialogues within difficulty limits right after their lessons; checkpoint `chk_a2_u3` (12 questions, 5 skills, shuffled, persisted) | `a2_u3_future_test`, `assessment_order_test` |
+| 7 new verbs (pensar, proponer by hand; quedar, cambiar, confirmar, mandar, pasar machine-checked) — 39 verbs | `a2_u3_future_test` |
+| REVIEW-015 P3: the tense explanation only for verbs; non-verb list; validator rule on all answer words ending in a stressed é/ó | `a2_u3_future_test` (4 negative content cases) |
 
 ## Android build and runtime
 
@@ -185,7 +194,7 @@ detect it.
   pronunciation assessment. Listen-and-repeat is self-practice and never scored.
 - CEFR level estimates and the A1 level assessment (unit checkpoints exist; they are practice evidence, not certification).
 - Verb conjugation reference, stories.
-- Interview coach, work missions, A2-U3 to A2-U5, the A2 level assessment, and all B1–C2 lessons.
+- Interview coach, work missions, A2-U4 and A2-U5, the A2 level assessment, and all B1–C2 lessons.
 - Cloud sync. AI usage budget controls (nothing to budget yet).
 - Native-speaker review of content.
 

@@ -43,7 +43,8 @@ Pre-A1 is a preparatory stage, not a DELE level.
 | | **A1 level assessment** (24 questions, all six units) | ✅ available |
 | **A2** | Services and everyday transactions (5 lessons) | ✅ available (content 1.5.0) |
 | | The past — what happened? (5 lessons, pretérito indefinido) | ✅ available (content 1.6.0) |
-| | Plans and future · Preferences and comparison · Simple work conversations | planned |
+| | Plans and the future (5 lessons) | ✅ available (content 1.7.0) |
+| | Preferences and comparison · Simple work conversations | planned |
 | **B1** | Opinion and reasoning · Narration · Solving client problems · Professional correspondence | planned |
 | **B2** | Meetings · Presentations · Job interviews · Discovery and negotiation · Explaining technical services | planned |
 | **C1** | Persuasion · Precise professional writing · Advanced listening and accents | planned |
@@ -99,6 +100,11 @@ no lessons and are never counted as progress.
 | 40 | A workday in the past | 9 | yo spelling changes (llegué, empecé); envié, revisé, preparé; ya / todavía no; a work update |
 | 41 | My last trip | 9 | irregular fui / fue (ir and ser), hice / hizo, tuve; el viaje, el vuelo; a travel narrative |
 | 42 | What happened with the client? | 9 | ¿Qué pasó?; se quejó, expliqué, solucioné; past for events vs present for the current state; follow-up |
+| 43 | What are you going to do? (A2-U3) | 9 | ir a + infinitive, all persons; esta tarde, la semana que viene, el próximo lunes, dentro de |
+| 44 | Do you want to come? | 9 | ¿Quieres venir? / ¿Te apetece…?; me encantaría, no puedo, otro día; pensar (e→ie) + infinitive |
+| 45 | Shall we meet on Monday? | 9 | quedar; ¿Te / Le viene bien…?; cambiar, confirmar, la videollamada; propongo |
+| 46 | The week's schedule | 9 | present for timetables (sale, empieza, termina); la feria, el plazo, antes de, hasta las |
+| 47 | The project plan | 9 | la fase, la entrega, el presupuesto; si + present for future conditions; le mando… |
 
 A1 is complete in content: 23 lessons over 6 units, closed by six unit
 checkpoints and the A1 level assessment `lvl_a1`, which opens only when every
@@ -117,9 +123,13 @@ client report contrasting past events with the present state. Lesson 41 is
 the first place irregular past forms are practised or assessed. The verb
 reference now shows the past of all 32 verbs.
 
-Totals (content 1.6.0, from the validator): 42 lessons, 352 items,
-1142 activities (699 graded), 48 grammar notes, 22 dialogues, 12 assessments,
-32 verbs.
+A2-U3 (lessons 43–47, content 1.7.0) moves from intentions (ir a) to
+invitations, arranging and confirming meetings, timetables in the present, and
+a project plan with si + present.
+
+Totals (content 1.7.0, from the validator): 47 lessons, 397 items,
+1298 activities (799 graded), 55 grammar notes, 25 dialogues, 13 assessments,
+39 verbs.
 
 ## Lesson shape
 
@@ -186,6 +196,15 @@ sentences) closes A2-U1.
 
 Checkpoint `chk_a2_u2` (12 questions, 3 can-dos, 5 skills, three dialogue
 sentences) closes A2-U2.
+
+| Id | Level | Built on | Situation |
+|---|---|---|---|
+| `dlg_a2_invitacion` | A2 | lessons 43–44 | An invitation to a team lunch, politely declined |
+| `dlg_a2_cita_cliente` | A2 | lesson 45 | Arranging a presentation with a client; a video call instead |
+| `dlg_a2_proyecto` | A2 | lessons 46–47 | Explaining a project plan, delivery and quote |
+
+Checkpoint `chk_a2_u3` (12 questions, 3 can-dos, 5 skills, three dialogue
+sentences) closes A2-U3.
 
 Checkpoints `chk_a1_u4` and `chk_a1_u5` close the food and travel units.
 Checkpoints `chk_a1_u2` and `chk_a1_u3` (10 questions, 3 can-dos each) close
