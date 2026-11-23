@@ -1,8 +1,8 @@
 # ChatGPT → Implementer: Independent Engineering Review
 
 owner: ChatGPT
-review_status: BLOCKED_PENDING_CI
-review_id: REVIEW-016
+review_status: APPROVED_WITH_RELEASE_GATES
+review_id: REVIEW-016-CI-FOLLOWUP
 updated_at_utc: 2026-11-23T08:23:51.904Z
 reviewed_pr14_head_sha: fb664aafb536644413e24c6ee3550860208e5c05
 reviewed_pr15_head_sha: 5254cf4e3da0cf19bb8d1922b776ac69b4ff6425
@@ -12,8 +12,19 @@ reviewed_pull_requests: https://github.com/abdulrahmanal-saeed/Espa-ol-Pro/pull/
 pr14_review_status: APPROVED_WITH_RELEASE_GATES
 pr15_review_status: APPROVED_WITH_RELEASE_GATES
 pr16_review_status: APPROVED_WITH_RELEASE_GATES
-pr17_review_status: PENDING_EXACT_HEAD_CI
-project_acceptance: A2_CONTENT_PRESENT_IN_OPEN_STACK__NATIVE_SPANISH_AND_DEVICE_QA_PENDING
+pr17_review_status: APPROVED_WITH_RELEASE_GATES
+project_acceptance: A2_CONTENT_ENGINEERING_CI_GREEN__STACK_REBASE_NATIVE_SPANISH_DEVICE_QA_PENDING
+
+## REVIEW-016 CI follow-up — 2026-11-23 08:55 UTC
+
+**New independently verified evidence; no unchanged application SHA re-reviewed.**
+
+- **PR #17 exact-head CI unblocked:** head remains `4c2f3b56d7060ae7bcebaea8123430a1879c88e9`, matching REVIEW-016. [GitHub Actions run 45137924949](https://github.com/abdulrahmanal-saeed/Espa-ol-Pro/actions/runs/45137924949) is now **completed / success**. Fetched both jobs: `Format, analyze, content, tests` and `Android debug APK` each completed successfully; the test job's raw log ends with **394 tests passed**. The successful APK build and artifact-upload steps are verified CI evidence, not physical device acceptance. **#17 now APPROVED_WITH_RELEASE_GATES** for its previously inspected engineering scope; no new P0/P1/P2 findings.
+- **PR #14 was merged since REVIEW-016:** GitHub PR metadata independently confirms `state: closed`, `merged: true`, merge commit `29b84e04f4ec9bd0ab8a2fbc52edbcc66fb1391d`. This is a status change, not a new code review. PRs #15, #16, #17 remain open with previously reviewed exact heads `5254cf4e`, `698de815`, `4c2f3b56`; their bases still point to predecessor feature branches. Retarget/rebase and verify diff and CI as needed before any subsequent owner-authorized merge.
+- Explicitly re-read implementer handoffs on PR heads `feat/a2-u4-preferences`, `feat/a2-u5-work`, and `feat/a2-level-test` (PHASE3-005/006/007, READY_FOR_REVIEW); these are unchanged milestone claims, not independent release evidence. The merged #14 branch's PHASE3-004 was also read. The main bridge handoff is not a reliable pointer to the newer stack.
+- **Outstanding release gates:** owner authorization for each remaining merge; stack retarget/revalidation; native-qualified Spanish linguistic/pedagogical QA; physical Android testing of speech, progress/persistence, assessment flow and RTL/LTR. The wider Pre-A1–C2 project is not complete. No release confirmation requested at this stage.
+
+No files other than this reviewer report were modified; no merge or deployment performed.
 
 ## REVIEW-016 — A2-U3/U4/U5 + A2 final assessment (#14 → #15 → #16 → #17)
 
