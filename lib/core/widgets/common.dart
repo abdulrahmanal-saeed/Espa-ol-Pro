@@ -238,3 +238,52 @@ String formatInterval(DateTime now, DateTime due) {
 /// "a / b" that reads left to right inside Arabic text. Without the isolate
 /// (U+2066 … U+2069) an RTL paragraph shows "8 / 10" as "10 / 8".
 String fraction(int a, int b) => '\u2066$a / $b\u2069';
+
+/// An instruction in Spanish first (levels with `spanish_prompts`), with the
+/// Arabic one a tap away; just the Arabic one when [es] is null.
+class BilingualPrompt extends StatefulWidget {
+  const BilingualPrompt({super.key, required this.ar, this.es, this.style});
+  final String ar;
+  final String? es;
+  final TextStyle? style;
+
+  @override
+  State<BilingualPrompt> createState() => _BilingualPromptState();
+}
+
+class _BilingualPromptState extends State<BilingualPrompt> {
+  bool _showAr = false;
+
+  @override
+  Widget build(BuildContext context) {
+    final es = widget.es;
+    final style =
+        widget.style ??
+        Theme.of(context).textTheme.titleMedium!
+            .copyWith(fontWeight: FontWeight.w700, height: 1.5);
+    if (es == null) return Text(widget.ar, style: style);
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.stretch,
+      children: [
+        EsText(es, key: const ValueKey('prompt-es'), style: style),
+        Align(
+          alignment: AlignmentDirectional.centerStart,
+          child: TextButton.icon(
+            key: const ValueKey('prompt-show-ar'),
+            style: TextButton.styleFrom(padding: EdgeInsets.zero),
+            onPressed: () => setState(() => _showAr = !_showAr),
+            icon: const Icon(Icons.translate_rounded, size: 18),
+            label: Text(_showAr ? 'إخفاء العربية' : 'عرض بالعربية'),
+          ),
+        ),
+        if (_showAr)
+          Text(
+            widget.ar,
+            key: const ValueKey('prompt-ar'),
+            style: Theme.of(context).textTheme.bodyMedium!
+                .copyWith(height: 1.6),
+          ),
+      ],
+    );
+  }
+}

@@ -135,7 +135,10 @@ class AnswerResult {
   /// say.
   String get explanationAr => switch (issue) {
     AnswerIssue.none => '',
-    AnswerIssue.accents => 'المعنى صحيح، لكن انتبه لعلامات النبر: $bestMatch',
+    AnswerIssue.accents =>
+      verdict == AnswerVerdict.incorrect
+          ? 'من مستوى B1 تُحسب علامات النبر: الصحيح «$bestMatch».'
+          : 'المعنى صحيح، لكن انتبه لعلامات النبر: $bestMatch',
     AnswerIssue.accentMeaning =>
       isFinalStressPair(typedWord ?? '', expectedWord ?? '') &&
               !finalStressNonVerbs.contains(expectedWord) &&
@@ -171,7 +174,18 @@ String stripAccents(String s) {
   return b.toString();
 }
 
-AnswerResult evaluateAnswer(String input, List<String> accepted) {
+/// Grades [input] against [accepted].
+///
+/// With [strictAccents] (B1 and above, see `Level.strictAccents`), an
+/// answer whose only difference is written accents is **incorrect**, with
+/// the same [AnswerIssue.accents] diagnosis and the correct form. Without
+/// it (Pre-A1 to A2) it is accepted with a reminder. ñ and meaning-bearing
+/// accents are wrong either way.
+AnswerResult evaluateAnswer(
+  String input,
+  List<String> accepted, {
+  bool strictAccents = false,
+}) {
   assert(accepted.isNotEmpty);
   final typed = normalizeAnswer(input);
   for (final a in accepted) {
@@ -187,7 +201,9 @@ AnswerResult evaluateAnswer(String input, List<String> accepted) {
     final pair = _meaningAccentDifference(typed, norm);
     if (pair == null) {
       return AnswerResult(
-        AnswerVerdict.correctMissingAccents,
+        strictAccents
+            ? AnswerVerdict.incorrect
+            : AnswerVerdict.correctMissingAccents,
         a,
         issue: AnswerIssue.accents,
       );

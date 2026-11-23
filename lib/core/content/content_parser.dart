@@ -88,6 +88,8 @@ Future<ContentPack> parseContentPack(ContentReader read) async {
         isPreparatory: lj['preparatory'] as bool? ?? false,
         units: units,
         requiresPass: lj['requires_pass'] as String?,
+        strictAccents: lj['strict_accents'] as bool? ?? false,
+        spanishPrompts: lj['spanish_prompts'] as bool? ?? false,
       ),
     );
   }
@@ -278,6 +280,7 @@ DialogueQuestion _question(String dialogueId, int i, Map<String, dynamic> j) =>
       turnId: j['turn'] as String?,
       choicesEs: j['choices_es'] as bool? ?? true,
       explainAr: j['explain_ar'] as String? ?? '',
+      promptEs: j['prompt_es'] as String?,
     );
 
 Assessment _assessment(Map<String, dynamic> j, Map<String, String> turns) {
@@ -328,6 +331,7 @@ AssessmentQuestion _assessmentQuestion(
   id: j['id'] as String? ?? '$assessmentId.q${i + 1}',
   dialogueTurnId: j['dialogue_turn'] as String?,
   explainAr: j['explain_ar'] as String? ?? '',
+  promptEs: j['prompt_es'] as String?,
   type: j['type'] as String? ?? '',
   skill: j['skill'] as String? ?? '',
   canDoId: j['can_do'] as String? ?? '',

@@ -199,6 +199,13 @@ class ContentValidator {
             String str(String k) => (a.data[k] as String? ?? '').trim();
             List list(String k) => a.data[k] as List? ?? const [];
 
+            final promptEs = a.data['prompt_es'];
+            if (promptEs != null) {
+              if (a.type != 'choice' && a.type != 'respond') {
+                err(aw, 'prompt_es is only for choice and respond');
+              }
+              _checkPromptEs(promptEs, level, aw, err);
+            }
             switch (a.type) {
               case 'teach':
                 final id = a.itemId;
@@ -323,11 +330,51 @@ class ContentValidator {
       }
     }
     _validateLevelGates(pack, err);
+    _validateLevelPolicies(pack, err);
     _validateDialogues(pack, sourceIds, grammarIds, err);
     _validateAssessments(pack, sourceIds, err);
     _validateVerbs(pack, err);
     _validateFinalStressWords(pack, err);
     return issues;
+  }
+
+  /// A Spanish instruction: only where its level allows it, Spanish only,
+  /// with balanced ¿ ? / ¡ !. The Arabic `prompt_ar` stays required.
+  void _checkPromptEs(
+    Object? raw,
+    Level? level,
+    String where,
+    void Function(String, String) err,
+  ) {
+    if (raw is! String || raw.trim().isEmpty) {
+      err(where, 'prompt_es must be a non-empty string');
+      return;
+    }
+    if (level == null || !level.spanishPrompts) {
+      err(where, 'prompt_es needs a level with spanish_prompts');
+    }
+    if (_arabic.hasMatch(raw)) err(where, 'prompt_es contains Arabic script');
+    _checkPunctuation(raw, where, err);
+  }
+
+  /// `strict_accents` and `spanish_prompts` only ever switch on: once a level
+  /// has one, every later level has it too.
+  void _validateLevelPolicies(
+    ContentPack pack,
+    void Function(String, String) err,
+  ) {
+    for (final (name, of) in <(String, bool Function(Level))>[
+      ('strict_accents', (l) => l.strictAccents),
+      ('spanish_prompts', (l) => l.spanishPrompts),
+    ]) {
+      var on = false;
+      for (final l in pack.levels) {
+        if (on && !of(l)) {
+          err('level:${l.id}', '$name must stay on after it starts');
+        }
+        on = on || of(l);
+      }
+    }
   }
 
   /// `requires_pass` must name the level assessment of an EARLIER level, so
@@ -568,6 +615,9 @@ class ContentValidator {
       for (final q in a.questions) {
         final qw = '$w/${q.id}';
         if (!questionIds.add(q.id)) err(qw, 'duplicate question id');
+        if (q.promptEs != null) {
+          _checkPromptEs(q.promptEs, level, qw, err);
+        }
         final turnId = q.dialogueTurnId;
         if (turnId != null) {
           final d = pack.dialogues
@@ -733,6 +783,10 @@ class ContentValidator {
       for (final q in d.questions) {
         final qw = '$w/${q.id}';
         if (!questionIds.add(q.id)) err(qw, 'duplicate question id');
+        if (q.promptEs != null) {
+          if (q.type != 'choice') err(qw, 'prompt_es is only for choice');
+          _checkPromptEs(q.promptEs, pack.level(d.levelId), qw, err);
+        }
         if (!DialogueQuestion.types.contains(q.type)) {
           err(qw, 'unknown question type "${q.type}"');
           continue;

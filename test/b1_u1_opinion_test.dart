@@ -77,7 +77,7 @@ void main() {
         expect(u.isAvailable, isFalse, reason: u.id);
         expect(u.lessons, isEmpty, reason: u.id);
       }
-      expect(pack.version, '1.11.0');
+      expect(pack.version, '1.12.0');
       expect(ContentValidator().validate(pack), isEmpty);
     });
 

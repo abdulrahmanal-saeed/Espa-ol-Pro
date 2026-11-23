@@ -44,13 +44,11 @@ const connectionIcons = {
   'usage': Icons.lightbulb_outline_rounded,
 };
 
-Widget _prompt(BuildContext context, String text) => Padding(
+/// The exercise instruction: Spanish first with the Arabic a tap away when
+/// [es] is set (levels with `spanish_prompts`), otherwise Arabic.
+Widget _prompt(BuildContext context, String text, [String? es]) => Padding(
   padding: const EdgeInsets.only(bottom: 16),
-  child: Text(
-    text,
-    style: Theme.of(context).textTheme.titleMedium!
-        .copyWith(fontWeight: FontWeight.w700, height: 1.5),
-  ),
+  child: BilingualPrompt(ar: text, es: es),
 );
 
 class _AutoPlay extends ConsumerStatefulWidget {
@@ -457,7 +455,7 @@ class _ChoiceViewState extends State<ChoiceView> {
         body: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            _prompt(context, ex.promptAr),
+            _prompt(context, ex.promptAr, ex.promptEs),
             if (ex.audioEs != null) _AudioPanel(ex.audioEs!),
             if (ex.stimulusEs != null)
               Card(
@@ -617,7 +615,11 @@ class _TypeViewState extends State<TypeView> {
   void _submit() {
     if (_submitted || _controller.text.trim().isEmpty) return;
     final ex = widget.ex;
-    final result = evaluateAnswer(_controller.text, ex.accepted);
+    final result = evaluateAnswer(
+      _controller.text,
+      ex.accepted,
+      strictAccents: ex.strictAccents,
+    );
     setState(() => _submitted = true);
     _focus.unfocus();
     widget.onSubmit(
@@ -639,7 +641,7 @@ class _TypeViewState extends State<TypeView> {
         body: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            _prompt(context, ex.promptAr),
+            _prompt(context, ex.promptAr, ex.promptEs),
             if (ex.audioEs != null) _AudioPanel(ex.audioEs!),
             if (ex.stimulusAr != null)
               Card(
@@ -757,7 +759,7 @@ class _OrderViewState extends State<OrderView> {
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
-          _prompt(context, ex.promptAr),
+          _prompt(context, ex.promptAr, ex.promptEs),
           Card(
             child: Padding(
               padding: const EdgeInsets.all(16),
@@ -899,7 +901,7 @@ class _MatchViewState extends State<MatchView> {
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
-          _prompt(context, ex.promptAr),
+          _prompt(context, ex.promptAr, ex.promptEs),
           Row(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -946,7 +948,7 @@ class SpeakView extends StatelessWidget {
         body: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            _prompt(context, ex.promptAr),
+            _prompt(context, ex.promptAr, ex.promptEs),
             Card(
               child: Padding(
                 padding: const EdgeInsets.all(22),

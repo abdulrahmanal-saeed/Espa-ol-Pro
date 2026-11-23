@@ -182,7 +182,13 @@ class _ReviewScreenState extends ConsumerState<ReviewScreen> {
 
   void _checkTyped(VocabItem item) {
     if (_controller.text.trim().isEmpty) return;
-    final result = evaluateAnswer(_controller.text, item.acceptedAnswers);
+    // Production cards of B1+ items grade written accents strictly.
+    final result = evaluateAnswer(
+      _controller.text,
+      item.acceptedAnswers,
+      strictAccents:
+          ref.read(contentProvider).level(item.levelId)?.strictAccents ?? false,
+    );
     setState(() {
       _typed = result;
       _revealed = true;
