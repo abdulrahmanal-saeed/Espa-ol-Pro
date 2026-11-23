@@ -1162,6 +1162,672 @@
     }
    ],
    "source": "original-v1"
+  },
+  {
+   "id": "dlg_b1_pedido_urgente",
+   "level": "b1",
+   "unit": "b1_u3",
+   "lessons": [
+    "b1_u3_l1",
+    "b1_u3_l2"
+   ],
+   "title_es": "Un pedido urgente",
+   "title_ar": "طلب عاجل",
+   "scenario_ar": "آنا تتصل بالمورّد السيد رويث لتطلب إرسال طلب عاجل.",
+   "objectives_ar": [
+    "فهم طلب بـ le pido que",
+    "فهم التمنّي بـ espero que",
+    "فهم الموعد المطلوب"
+   ],
+   "speakers": [
+    {
+     "id": "ana",
+     "name": "Ana",
+     "role_ar": "مسؤولة المشتريات"
+    },
+    {
+     "id": "ruiz",
+     "name": "Sr. Ruiz",
+     "role_ar": "المورّد"
+    }
+   ],
+   "turns": [
+    {
+     "id": "dlg_b1_pedido_urgente.t1",
+     "speaker": "ana",
+     "es": "Buenos días, señor Ruiz. Le llamo por el pedido.",
+     "ar": "صباح الخير سيد رويث. أتصل بك بخصوص الطلب.",
+     "en": "Good morning, Mr Ruiz. I'm calling about the order."
+    },
+    {
+     "id": "dlg_b1_pedido_urgente.t2",
+     "speaker": "ruiz",
+     "es": "Buenos días. ¿En qué puedo ayudarle?",
+     "ar": "صباح الخير. كيف أستطيع مساعدتك؟",
+     "en": "Good morning. How can I help you?"
+    },
+    {
+     "id": "dlg_b1_pedido_urgente.t3",
+     "speaker": "ana",
+     "es": "Necesito que me envíe el pedido hoy mismo.",
+     "ar": "أحتاج أن ترسل لي الطلب اليوم نفسه.",
+     "en": "I need you to send me the order today."
+    },
+    {
+     "id": "dlg_b1_pedido_urgente.t4",
+     "speaker": "ruiz",
+     "es": "Es difícil, pero vamos a intentarlo.",
+     "ar": "الأمر صعب، لكننا سنحاول.",
+     "en": "It's difficult, but we'll try."
+    },
+    {
+     "id": "dlg_b1_pedido_urgente.t5",
+     "speaker": "ana",
+     "es": "Gracias. Le pido que me llame para confirmar.",
+     "ar": "شكراً. أطلب منك أن تتصل بي للتأكيد.",
+     "en": "Thanks. Please call me to confirm."
+    },
+    {
+     "id": "dlg_b1_pedido_urgente.t6",
+     "speaker": "ruiz",
+     "es": "Claro. Espero que llegue mañana por la mañana.",
+     "ar": "طبعاً. أتمنى أن يصل غداً صباحاً.",
+     "en": "Of course. I hope it arrives tomorrow morning."
+    },
+    {
+     "id": "dlg_b1_pedido_urgente.t7",
+     "speaker": "ana",
+     "es": "Ojalá. El cliente viene a las diez.",
+     "ar": "يا ليت. العميل يأتي في العاشرة.",
+     "en": "I hope so. The client is coming at ten."
+    }
+   ],
+   "items": [
+    "necesito_que",
+    "hoy_mismo",
+    "le_pido_que",
+    "llame_subj",
+    "espero_que",
+    "ojala"
+   ],
+   "grammar": [
+    "g_b1_subj_intro",
+    "g_b1_subj_irregular"
+   ],
+   "questions": [
+    {
+     "type": "choice",
+     "prompt_ar": "ماذا تحتاج آنا؟",
+     "choices": [
+      "أن يُرسل الطلب اليوم",
+      "أن يُلغى الطلب",
+      "خصماً على الطلب"
+     ],
+     "answer": 0,
+     "choices_es": false,
+     "prompt_es": "¿Qué necesita Ana?",
+     "turn": "dlg_b1_pedido_urgente.t3",
+     "id": "dlg_b1_pedido_urgente.q1",
+     "skill": "listening"
+    },
+    {
+     "type": "choice",
+     "prompt_ar": "ماذا تطلب آنا من السيد رويث؟",
+     "choices": [
+      "أن يتصل بها للتأكيد",
+      "أن يكتب لها بريداً",
+      "أن يزور المكتب"
+     ],
+     "answer": 0,
+     "choices_es": false,
+     "turn": "dlg_b1_pedido_urgente.t5",
+     "id": "dlg_b1_pedido_urgente.q2",
+     "skill": "listening"
+    },
+    {
+     "type": "choice",
+     "prompt_ar": "متى يأتي العميل؟",
+     "choices": [
+      "في العاشرة",
+      "في الثامنة",
+      "بعد الظهر"
+     ],
+     "answer": 0,
+     "choices_es": false,
+     "turn": "dlg_b1_pedido_urgente.t7",
+     "id": "dlg_b1_pedido_urgente.q3",
+     "skill": "listening"
+    },
+    {
+     "type": "speaker",
+     "turn": "dlg_b1_pedido_urgente.t4",
+     "id": "dlg_b1_pedido_urgente.q4",
+     "skill": "listening"
+    },
+    {
+     "type": "dictation",
+     "turn": "dlg_b1_pedido_urgente.t3",
+     "id": "dlg_b1_pedido_urgente.q5",
+     "skill": "listening"
+    }
+   ],
+   "source": "original-v1"
+  },
+  {
+   "id": "dlg_b1_soporte",
+   "level": "b1",
+   "unit": "b1_u3",
+   "lessons": [
+    "b1_u3_l3"
+   ],
+   "title_es": "El soporte técnico",
+   "title_ar": "الدعم الفني",
+   "scenario_ar": "كريم لا يستطيع الدخول إلى نظام الشركة ويتصل بالدعم الفني.",
+   "objectives_ar": [
+    "فهم النصيحة بـ le recomiendo que",
+    "فهم es mejor que",
+    "فهم no creo que"
+   ],
+   "speakers": [
+    {
+     "id": "karim",
+     "name": "Karim",
+     "role_ar": "موظف"
+    },
+    {
+     "id": "soporte",
+     "name": "Lucía",
+     "role_ar": "الدعم الفني"
+    }
+   ],
+   "turns": [
+    {
+     "id": "dlg_b1_soporte.t1",
+     "speaker": "karim",
+     "es": "Hola, no puedo entrar en el sistema.",
+     "ar": "مرحباً، لا أستطيع الدخول إلى النظام.",
+     "en": "Hi, I can't get into the system."
+    },
+    {
+     "id": "dlg_b1_soporte.t2",
+     "speaker": "soporte",
+     "es": "Le recomiendo que reinicie el ordenador.",
+     "ar": "أنصحك أن تعيد تشغيل الحاسوب.",
+     "en": "I recommend you restart the computer."
+    },
+    {
+     "id": "dlg_b1_soporte.t3",
+     "speaker": "karim",
+     "es": "Ya lo hice, pero no funciona.",
+     "ar": "فعلتُ ذلك، لكنه لا يعمل.",
+     "en": "I already did, but it doesn't work."
+    },
+    {
+     "id": "dlg_b1_soporte.t4",
+     "speaker": "soporte",
+     "es": "Entonces es mejor que pruebe otra contraseña.",
+     "ar": "إذن من الأفضل أن تجرّب كلمة مرور أخرى.",
+     "en": "Then it's better you try another password."
+    },
+    {
+     "id": "dlg_b1_soporte.t5",
+     "speaker": "karim",
+     "es": "¿Es un problema grave?",
+     "ar": "هل هي مشكلة خطيرة؟",
+     "en": "Is it a serious problem?"
+    },
+    {
+     "id": "dlg_b1_soporte.t6",
+     "speaker": "soporte",
+     "es": "No creo que sea grave. Pruebe de nuevo, por favor.",
+     "ar": "لا أظن أنها خطيرة. جرّب مرة أخرى من فضلك.",
+     "en": "I don't think it's serious. Try again, please."
+    },
+    {
+     "id": "dlg_b1_soporte.t7",
+     "speaker": "karim",
+     "es": "Ahora sí funciona. ¡Gracias!",
+     "ar": "الآن يعمل. شكراً!",
+     "en": "Now it works. Thanks!"
+    }
+   ],
+   "items": [
+    "le_recomiendo_que",
+    "reinicie",
+    "es_mejor_que",
+    "pruebe",
+    "no_creo_que"
+   ],
+   "grammar": [
+    "g_b1_subj_advice"
+   ],
+   "questions": [
+    {
+     "type": "choice",
+     "prompt_ar": "ما مشكلة كريم؟",
+     "choices": [
+      "لا يستطيع الدخول إلى النظام",
+      "حاسوبه مكسور",
+      "نسي اجتماعاً"
+     ],
+     "answer": 0,
+     "choices_es": false,
+     "turn": "dlg_b1_soporte.t1",
+     "id": "dlg_b1_soporte.q1",
+     "skill": "listening"
+    },
+    {
+     "type": "choice",
+     "prompt_ar": "بماذا تنصح لوثيا أولاً؟",
+     "choices": [
+      "إعادة تشغيل الحاسوب",
+      "الاتصال بالمدير",
+      "شراء حاسوب جديد"
+     ],
+     "answer": 0,
+     "choices_es": false,
+     "prompt_es": "¿Qué le recomienda Lucía primero?",
+     "turn": "dlg_b1_soporte.t2",
+     "id": "dlg_b1_soporte.q2",
+     "skill": "listening"
+    },
+    {
+     "type": "choice",
+     "prompt_ar": "هل المشكلة خطيرة برأي لوثيا؟",
+     "choices": [
+      "لا",
+      "نعم",
+      "لا تعرف"
+     ],
+     "answer": 0,
+     "choices_es": false,
+     "turn": "dlg_b1_soporte.t6",
+     "id": "dlg_b1_soporte.q3",
+     "skill": "listening"
+    },
+    {
+     "type": "speaker",
+     "turn": "dlg_b1_soporte.t3",
+     "id": "dlg_b1_soporte.q4",
+     "skill": "listening"
+    },
+    {
+     "type": "dictation",
+     "turn": "dlg_b1_soporte.t2",
+     "id": "dlg_b1_soporte.q5",
+     "skill": "listening"
+    }
+   ],
+   "source": "original-v1"
+  },
+  {
+   "id": "dlg_b1_queja",
+   "level": "b1",
+   "unit": "b1_u3",
+   "lessons": [
+    "b1_u3_l4",
+    "b1_u3_l5"
+   ],
+   "title_es": "Una queja por teléfono",
+   "title_ar": "شكوى بالهاتف",
+   "scenario_ar": "السيدة خيل غاضبة لأن طلبها وصل متأخراً، وآنا من خدمة العملاء تتعامل معها.",
+   "objectives_ar": [
+    "فهم الشكوى والتفهّم",
+    "فهم الوعد بالحلّ",
+    "فهم البديلين المقترحين"
+   ],
+   "speakers": [
+    {
+     "id": "gil",
+     "name": "Sra. Gil",
+     "role_ar": "عميلة"
+    },
+    {
+     "id": "ana",
+     "name": "Ana",
+     "role_ar": "خدمة العملاء"
+    }
+   ],
+   "turns": [
+    {
+     "id": "dlg_b1_queja.t1",
+     "speaker": "gil",
+     "es": "Buenos días. Tengo una queja: el pedido llegó tarde.",
+     "ar": "صباح الخير. عندي شكوى: الطلب وصل متأخراً.",
+     "en": "Good morning. I have a complaint: the order arrived late."
+    },
+    {
+     "id": "dlg_b1_queja.t2",
+     "speaker": "ana",
+     "es": "Lamento que el pedido llegue tarde. Entiendo su situación.",
+     "ar": "يؤسفني أن يصل الطلب متأخراً. أتفهّم وضعك.",
+     "en": "I'm sorry the order arrived late. I understand your situation."
+    },
+    {
+     "id": "dlg_b1_queja.t3",
+     "speaker": "gil",
+     "es": "Estoy muy molesta. Lo necesitaba el lunes.",
+     "ar": "أنا منزعجة جداً. كنتُ أحتاجه يوم الاثنين.",
+     "en": "I'm very upset. I needed it on Monday."
+    },
+    {
+     "id": "dlg_b1_queja.t4",
+     "speaker": "ana",
+     "es": "Tiene usted razón. No se preocupe.",
+     "ar": "معك حق. لا تقلقي.",
+     "en": "You're right. Don't worry."
+    },
+    {
+     "id": "dlg_b1_queja.t5",
+     "speaker": "ana",
+     "es": "Le propongo dos alternativas.",
+     "ar": "أقترح عليك بديلين.",
+     "en": "I propose two alternatives."
+    },
+    {
+     "id": "dlg_b1_queja.t6",
+     "speaker": "gil",
+     "es": "¿Cuáles?",
+     "ar": "ما هما؟",
+     "en": "Which ones?"
+    },
+    {
+     "id": "dlg_b1_queja.t7",
+     "speaker": "ana",
+     "es": "Un descuento del veinte por ciento o el reembolso.",
+     "ar": "خصم بنسبة عشرين في المئة أو استرداد المبلغ.",
+     "en": "A twenty percent discount or a refund."
+    },
+    {
+     "id": "dlg_b1_queja.t8",
+     "speaker": "gil",
+     "es": "Prefiero el descuento.",
+     "ar": "أفضّل الخصم.",
+     "en": "I prefer the discount."
+    },
+    {
+     "id": "dlg_b1_queja.t9",
+     "speaker": "ana",
+     "es": "Perfecto. Le prometo que lo solucionamos hoy.",
+     "ar": "ممتاز. أعدك بأننا نحلّها اليوم.",
+     "en": "Perfect. I promise we'll sort it out today."
+    }
+   ],
+   "items": [
+    "la_queja",
+    "lamento_que",
+    "entiendo_su_situacion",
+    "molesto",
+    "tiene_razon_usted",
+    "no_se_preocupe",
+    "la_alternativa",
+    "el_descuento",
+    "el_reembolso",
+    "le_prometo_que"
+   ],
+   "grammar": [
+    "g_b1_complaint",
+    "g_b1_solutions"
+   ],
+   "questions": [
+    {
+     "type": "choice",
+     "prompt_ar": "ما شكوى السيدة خيل؟",
+     "choices": [
+      "الطلب وصل متأخراً",
+      "الطلب وصل تالفاً",
+      "الفاتورة خطأ"
+     ],
+     "answer": 0,
+     "choices_es": false,
+     "turn": "dlg_b1_queja.t1",
+     "id": "dlg_b1_queja.q1",
+     "skill": "listening"
+    },
+    {
+     "type": "choice",
+     "prompt_ar": "ما البديلان؟",
+     "choices": [
+      "خصم أو استرداد المبلغ",
+      "طلب جديد أو فني",
+      "اتصال أو بريد"
+     ],
+     "answer": 0,
+     "choices_es": false,
+     "prompt_es": "¿Cuáles son las dos alternativas?",
+     "turn": "dlg_b1_queja.t7",
+     "id": "dlg_b1_queja.q2",
+     "skill": "listening"
+    },
+    {
+     "type": "choice",
+     "prompt_ar": "ماذا تختار السيدة خيل؟",
+     "choices": [
+      "الخصم",
+      "استرداد المبلغ",
+      "لا شيء"
+     ],
+     "answer": 0,
+     "choices_es": false,
+     "turn": "dlg_b1_queja.t8",
+     "id": "dlg_b1_queja.q3",
+     "skill": "listening"
+    },
+    {
+     "type": "speaker",
+     "turn": "dlg_b1_queja.t3",
+     "id": "dlg_b1_queja.q4",
+     "skill": "listening"
+    },
+    {
+     "type": "dictation",
+     "turn": "dlg_b1_queja.t9",
+     "id": "dlg_b1_queja.q5",
+     "skill": "listening"
+    }
+   ],
+   "source": "original-v1"
+  },
+  {
+   "id": "dlg_b1_impresora",
+   "level": "b1",
+   "unit": "b1_u3",
+   "lessons": [
+    "b1_u3_l6"
+   ],
+   "title_es": "La impresora dañada",
+   "title_ar": "الطابعة التالفة",
+   "scenario_ar": "استماع أطول: السيد مارتن يتصل لأن الطابعة وصلت تالفة، وآنا تعرض الحلّ وتؤكده.",
+   "objectives_ar": [
+    "متابعة مكالمة من اثنتي عشرة جملة",
+    "فهم المشكلة والحلّ",
+    "فهم ما يجب فعله بعد المكالمة"
+   ],
+   "speakers": [
+    {
+     "id": "martin",
+     "name": "Sr. Martín",
+     "role_ar": "عميل"
+    },
+    {
+     "id": "ana",
+     "name": "Ana",
+     "role_ar": "خدمة العملاء"
+    }
+   ],
+   "turns": [
+    {
+     "id": "dlg_b1_impresora.t1",
+     "speaker": "martin",
+     "es": "Hola. El envío llegó ayer, pero llegó dañado.",
+     "ar": "مرحباً. وصلت الشحنة أمس، لكنها وصلت تالفة.",
+     "en": "Hello. The shipment arrived yesterday, but it arrived damaged."
+    },
+    {
+     "id": "dlg_b1_impresora.t2",
+     "speaker": "ana",
+     "es": "Lo siento mucho. ¿Qué producto es?",
+     "ar": "آسفة جداً. ما المنتج؟",
+     "en": "I'm very sorry. Which product is it?"
+    },
+    {
+     "id": "dlg_b1_impresora.t3",
+     "speaker": "martin",
+     "es": "Una impresora. No funciona.",
+     "ar": "طابعة. لا تعمل.",
+     "en": "A printer. It doesn't work."
+    },
+    {
+     "id": "dlg_b1_impresora.t4",
+     "speaker": "ana",
+     "es": "Entiendo su situación. ¿Tiene garantía?",
+     "ar": "أتفهّم وضعك. هل عليها ضمان؟",
+     "en": "I understand. Does it have a warranty?"
+    },
+    {
+     "id": "dlg_b1_impresora.t5",
+     "speaker": "martin",
+     "es": "Sí, dos años de garantía.",
+     "ar": "نعم، ضمان لمدة سنتين.",
+     "en": "Yes, a two-year warranty."
+    },
+    {
+     "id": "dlg_b1_impresora.t6",
+     "speaker": "ana",
+     "es": "Entonces le propongo que la reemplacemos sin coste.",
+     "ar": "إذن أقترح عليك أن نستبدلها بلا تكلفة.",
+     "en": "Then I suggest we replace it free of charge."
+    },
+    {
+     "id": "dlg_b1_impresora.t7",
+     "speaker": "martin",
+     "es": "Perfecto. ¿Cuándo llega la nueva?",
+     "ar": "ممتاز. متى تصل الجديدة؟",
+     "en": "Perfect. When does the new one arrive?"
+    },
+    {
+     "id": "dlg_b1_impresora.t8",
+     "speaker": "ana",
+     "es": "Se la enviamos de inmediato. Llega mañana.",
+     "ar": "نرسلها لك فوراً. تصل غداً.",
+     "en": "We'll send it right away. It arrives tomorrow."
+    },
+    {
+     "id": "dlg_b1_impresora.t9",
+     "speaker": "martin",
+     "es": "¿Y la impresora dañada?",
+     "ar": "والطابعة التالفة؟",
+     "en": "And the damaged printer?"
+    },
+    {
+     "id": "dlg_b1_impresora.t10",
+     "speaker": "ana",
+     "es": "Nuestro técnico la recoge mañana.",
+     "ar": "فنيّنا يأخذها غداً.",
+     "en": "Our technician will pick it up tomorrow."
+    },
+    {
+     "id": "dlg_b1_impresora.t11",
+     "speaker": "ana",
+     "es": "Le pido que me lo confirme por escrito.",
+     "ar": "أطلب منك أن تؤكد لي ذلك كتابةً.",
+     "en": "Please confirm it to me in writing."
+    },
+    {
+     "id": "dlg_b1_impresora.t12",
+     "speaker": "martin",
+     "es": "De acuerdo. Muchas gracias por la solución.",
+     "ar": "موافق. شكراً جزيلاً على الحلّ.",
+     "en": "Agreed. Thank you very much for the solution."
+    }
+   ],
+   "items": [
+    "el_envio",
+    "danado",
+    "la_garantia",
+    "le_propongo_que",
+    "reemplazar",
+    "sin_coste",
+    "de_inmediato",
+    "por_escrito",
+    "la_solucion"
+   ],
+   "grammar": [
+    "g_b1_case"
+   ],
+   "questions": [
+    {
+     "type": "choice",
+     "prompt_ar": "ما المشكلة؟",
+     "choices": [
+      "الشحنة وصلت تالفة",
+      "الشحنة لم تصل",
+      "الطابعة غالية"
+     ],
+     "answer": 0,
+     "choices_es": false,
+     "prompt_es": "¿Cuál es el problema?",
+     "turn": "dlg_b1_impresora.t1",
+     "id": "dlg_b1_impresora.q1",
+     "skill": "listening"
+    },
+    {
+     "type": "choice",
+     "prompt_ar": "كم مدة الضمان؟",
+     "choices": [
+      "سنتان",
+      "سنة",
+      "ثلاث سنوات"
+     ],
+     "answer": 0,
+     "choices_es": false,
+     "turn": "dlg_b1_impresora.t5",
+     "id": "dlg_b1_impresora.q2",
+     "skill": "listening"
+    },
+    {
+     "type": "choice",
+     "prompt_ar": "ما الحلّ؟",
+     "choices": [
+      "استبدال الطابعة بلا تكلفة",
+      "خصم على الطلب القادم",
+      "تصليح الطابعة"
+     ],
+     "answer": 0,
+     "choices_es": false,
+     "prompt_es": "¿Qué solución propone Ana?",
+     "turn": "dlg_b1_impresora.t6",
+     "id": "dlg_b1_impresora.q3",
+     "skill": "listening"
+    },
+    {
+     "type": "choice",
+     "prompt_ar": "متى تصل الطابعة الجديدة؟",
+     "choices": [
+      "غداً",
+      "اليوم",
+      "بعد أسبوع"
+     ],
+     "answer": 0,
+     "choices_es": false,
+     "turn": "dlg_b1_impresora.t8",
+     "id": "dlg_b1_impresora.q4",
+     "skill": "listening"
+    },
+    {
+     "type": "speaker",
+     "turn": "dlg_b1_impresora.t9",
+     "id": "dlg_b1_impresora.q5",
+     "skill": "listening"
+    },
+    {
+     "type": "dictation",
+     "turn": "dlg_b1_impresora.t11",
+     "id": "dlg_b1_impresora.q6",
+     "skill": "listening"
+    }
+   ],
+   "source": "original-v1"
   }
  ]
 }

@@ -249,8 +249,6 @@ void main() {
       expect(byId['convencer']!.forms['yo'], 'convenzo');
       expect(byId['deber']!.forms, Verb.regularPresent('deber'));
       expect(byId['importar']!.preterite, Verb.regularPreterite('importar'));
-      // The subjunctive arrives with its unit (B1-U3).
-      expect(pack.verbs.where((v) => v.subjunctive.isNotEmpty), isEmpty);
     });
 
     testWidgets('the library shows the conditional after the past, keeping '
@@ -286,11 +284,6 @@ void main() {
             )
             .data,
         'podría',
-      );
-      // No tense that has not been taught yet.
-      expect(
-        find.byKey(const ValueKey('verb-subjunctive-poder')),
-        findsNothing,
       );
       await app.dispose(tester);
     });

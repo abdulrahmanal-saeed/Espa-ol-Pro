@@ -38,11 +38,8 @@ void main() {
         expect(unit().lessons[i].prerequisites, [unit().lessons[i - 1].id]);
       }
       final b1 = pack.levels.firstWhere((l) => l.id == 'b1');
-      expect(b1.units.where((u) => u.isAvailable).map((u) => u.id), [
-        'b1_u1',
-        'b1_u2',
-      ]);
-      expect(pack.version, '1.13.0');
+      expect(b1.units.map((u) => u.id).take(2), ['b1_u1', 'b1_u2']);
+      expect(b1.units[1].isAvailable, isTrue);
       expect(ContentValidator().validate(pack), isEmpty);
     });
 
@@ -108,6 +105,16 @@ void main() {
         expect(banned.hasMatch(e.value.toLowerCase()), isFalse, reason: e.key);
       }
     });
+  });
+
+  test('aspect cues are taught as common patterns, not absolute rules '
+      '(REVIEW-020 P3)', () {
+    final note = unit().grammar.firstWhere((g) => g.id == 'g_b1_past_contrast');
+    expect(note.bodyAr, isNot(contains('قواعد ثابتة')));
+    expect(note.bodyAr, contains('أنماط شائعة'));
+    expect(note.bodyAr, contains('السياق'));
+    // A habitual counter-example is part of the note.
+    expect(note.bodyAr, contains('sonaba'));
   });
 
   group('longer reading and listening (lesson 6)', () {
@@ -203,8 +210,6 @@ void main() {
         expect(byId['hacer']!.imperfect['el'], 'hacía');
         expect(byId['conseguir']!.forms['yo'], 'consigo');
         expect(byId['sonar']!.preterite['el'], 'sonó');
-        // The subjunctive arrives with B1-U3.
-        expect(pack.verbs.where((v) => v.subjunctive.isNotEmpty), isEmpty);
       },
     );
 
