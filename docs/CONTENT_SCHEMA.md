@@ -27,10 +27,17 @@ units/<unit_id>.json     grammar notes + lessons of one *available* unit
 
 `requires_pass` names the level assessment of an EARLIER level that must be
 passed once before any lesson of this level opens (B1 → `lvl_a2`). An
-attempt passes when every can-do it measures is met (`CanDoEvidence`,
-threshold 0.75). The gate is derived from stored attempts: no extra learner
-state. Validation: the id is an assessment, of kind `level`, of an earlier
-level.
+attempt opens the level only when it is **complete** and passes:
+
+- complete: it answers exactly the questions of the assessment at the
+  attempt's version (the current one, or one listed in `retired_versions`),
+  once each, with the defined can-do on every answer;
+- passes: every can-do is met (`CanDoEvidence`, threshold 0.75).
+
+The gate is derived from stored attempts: no extra learner state. Restore
+rejects a backup whose attempt at a gating assessment (known version) is
+partial, before anything is deleted (REVIEW-017 P2). Validation: the id is
+an assessment, of kind `level`, of an earlier level.
 
 ## units/<unit_id>.json
 
@@ -190,6 +197,19 @@ Optional on any question:
 
 Changing a checkpoint's questions requires bumping its `version`; results
 taken against an earlier version are shown as recorded, with a note.
+
+A level assessment named by `requires_pass` must also keep its old question
+sets, so a complete pass at an older version keeps the level open:
+
+```jsonc
+"version": 2,
+"retired_versions": [
+  { "version": 1, "questions": { "lvl_a2.q1": "cd_lvl_a2_services", … } }
+]
+```
+
+Validation: each retired version is ≥ 1 and below `version`, with at least
+one question, and question and can-do ids are not empty.
 
 Validation: unique ids; `version ≥ 1`; title and intro present; known source;
 a `unit` checkpoint names an available unit of its level, one per unit; a

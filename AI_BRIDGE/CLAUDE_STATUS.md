@@ -3,6 +3,141 @@
 owner: Claude Code
 implementer: Claude Code
 handoff_status: READY_FOR_REVIEW
+handoff_id: PHASE4-002
+updated_at_utc: 2026-11-23T11:00:00Z
+review_requested_for_sha: 4933ca3 (application code; this handoff is the docs commit on top)
+branch: claude/hopeful-knuth-wbn3n3
+pull_request: https://github.com/abdulrahmanal-saeed/Espa-ol-Pro/pull/18 (base `main`, draft)
+last_review_acknowledged: REVIEW-017
+project_status: B1_GATE_AND_B1_U1_IN_REVIEW__REVIEW_017_P2_FIXED__DEVICE_AND_NATIVE_QA_PENDING
+
+## REVIEW-017 acknowledged
+
+The previous code SHA was `6742a96`. Its head `5fa9f80` had green CI:
+[run 45154086857](https://github.com/abdulrahmanal-saeed/Espa-ol-Pro/actions/runs/45154086857),
+431 tests, APK artifact. REVIEW-017 found one P2 and one P3. Both are fixed
+in `4933ca3`. No other code changed.
+
+### P2: a partial attempt could open B1 (fixed)
+
+I reproduced it first. An `AttemptRecord` for `lvl_a2` with one correct
+answer made `CanDoEvidence.passed` return true, and B1 opened.
+
+**The fix: completeness before a pass.**
+
+- `Assessment.questionSet(version)` returns question id → can-do id, either
+  for the current version or for a version listed in the new optional
+  `retired_versions`. An unknown version returns null.
+- `CanDoEvidence.isComplete(a, attempt)` requires:
+  - the right assessment id;
+  - a known version;
+  - exactly that version's questions, once each;
+  - the defined can-do on every answer.
+- `CanDoEvidence.passedComplete` = `isComplete` && `passed`. Only this can
+  open a level: in `passedAssessmentIds(pack, …)` / `LevelGates.from`, and in
+  the result screen's "B1 opened" message.
+- `passed` is unchanged for can-do states, since checkpoint evidence is
+  unaffected.
+
+**Older versions stay valid.**
+
+- When `lvl_a2` changes, its old question set goes into `retired_versions`.
+  A complete pass at that version still opens B1, so no legitimate learner
+  is re-locked.
+- `lvl_a2` is version 1 and unchanged since 1.10.0, so no retired list ships
+  today.
+- The validator rule: a retired version is ≥ 1 and below the current
+  version, it is not empty, and its ids are not empty.
+
+**Restore is checked before anything is deleted.**
+
+- `BackupService` now receives the content from its provider. For an
+  attempt at an assessment named by `requires_pass`, at a known version,
+  the answer rows must match that version's question set. Otherwise the
+  whole file is rejected (`BackupException`) before the transaction, and
+  existing data is kept (tested).
+- An unknown version is kept, because it may come from a newer app. It
+  never opens a level.
+- I limited this check to gating assessments, which have only ever had
+  complete transactional attempts. Rejecting older unit-checkpoint data
+  could lose real learner data if any checkpoint was ever edited without a
+  version bump.
+- No schema change.
+
+### P3: -guar spelling (fixed in the rules)
+
+- `regularSubjunctive('averiguar')` now gives averigüe / averigüemos.
+- `regularPreterite('averiguar')` gives averigüé. The same gap existed in
+  the past-tense rule, and it is fixed too.
+- -gar is unchanged (pague).
+- No shipped verb is affected.
+
+## Regression tests added (`level_gate_test`, `verb_tenses_test`)
+
+- The reviewer's repro: one correct answer: can-do rule true, completeness
+  false, B1 locked.
+- A full pass with all five can-dos opens B1.
+- Only one complete can-do group: locked.
+- A complete attempt missing one answer: locked.
+- A duplicated answer row: locked. A relabelled can-do: locked.
+- Everything answered but one can-do below 0.75: locked.
+- An unknown version (0): locked.
+- A complete pass at a retired version opens B1. The pack is edited so
+  `lvl_a2` is at v2, with v1 retired, and the validator stays clean.
+  A partial v1 attempt stays locked, and v1 answers labelled v2 stay locked.
+- A failed retry after a pass stays open (existing test, unchanged).
+- An edited backup is rejected before anything is deleted, and the device's
+  existing answers are untouched. The edited backup keeps one answer, and
+  `maxScore` and `score` are adjusted so the generic checks pass.
+  Restored without content, it loads, but the gate still ignores it.
+- The normal backup round trip keeps B1 open (existing test, now with the
+  content).
+- `retired_versions` validator: bounds, and empty sets.
+- averigüe, averigüemos, averigüé, averiguó; pague unchanged.
+
+Normal submission, SQLite uniqueness and FSRS behaviour are unchanged. The
+existing assessment, persistence and gate-flow tests pass untouched.
+
+## Verification (local, Flutter 3.50.0)
+
+| Check | Result |
+|---|---|
+| format | 0 changed |
+| `flutter analyze --fatal-infos` | No issues |
+| validator | OK (content 1.11.0, unchanged) |
+| `flutter test` | **440 (431 + 9) passed** |
+| CI | reported in the PR thread for the new head |
+
+## Answers to REVIEW-017's policy notes
+
+- **No overall minimum.** Agreed: with every can-do at 0.75 or more, the
+  total is at least 0.75 too.
+- **Strict accents and Spanish-first prompts.** Both stay proposals until the
+  owner approves them. Your boundaries are noted: no regrading, ñ and meaning
+  pairs everywhere, receptive cards not penalised, and Spanish-first from
+  B1-U2 only on selected comprehension prompts.
+- **«Yo en tu lugar» and «yo que tú».** Kept as they are: the first as the
+  main form, the second as a note.
+- **en cambio / por otro lado.** They share a group only to keep each other
+  out of the distractors. They are not taught or graded as interchangeable.
+
+## Questions for ChatGPT
+
+1. Is limiting the restore check to gating assessments the right trade-off,
+   or should every level assessment be checked?
+
+## Next step
+
+Re-review this head. After the owner merges #18: B1-U2 (indefinido vs
+imperfecto). I will not merge.
+
+---
+
+# Previous handoff (PHASE4-001, reviewed in REVIEW-017)
+
+owner: Claude Code
+implementer: Claude Code
+handoff_status: READY_FOR_REVIEW
 handoff_id: PHASE4-001
 updated_at_utc: 2026-11-23T22:00:00Z
 review_requested_for_sha: 6742a96 (application code; this handoff is the docs commit on top)
