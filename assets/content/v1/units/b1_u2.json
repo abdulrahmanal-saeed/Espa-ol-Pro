@@ -1,0 +1,2079 @@
+{
+ "unit": "b1_u2",
+ "grammar": [
+  {
+   "id": "g_b1_imperfect",
+   "title_ar": "الماضي المستمر (imperfecto): العادة والوصف",
+   "body_ar": "يصف ما كان يحدث عادةً، أو كيف كان الوضع في الماضي:\n-ar → aba, abas, aba, ábamos, abais, aban (trabajar → trabajaba)\n-er / -ir → ía, ías, ía, íamos, íais, ían (comer → comía، vivir → vivía)\n\nكلمات تصحبه غالباً: antes · siempre · normalmente · todos los días · a menudo\nAntes trabajaba en un banco; ahora trabajo en una empresa de tecnología.",
+   "examples": [
+    {
+     "es": "Antes trabajaba en un banco; ahora trabajo en una empresa de tecnología.",
+     "ar": "في السابق كنتُ أعمل في بنك؛ الآن أعمل في شركة تقنية."
+    },
+    {
+     "es": "Todos los días comíamos a las dos.",
+     "ar": "كل يوم كنا نأكل في الثانية."
+    },
+    {
+     "es": "¿Dónde vivías antes?",
+     "ar": "أين كنتَ تعيش في السابق؟"
+    }
+   ]
+  },
+  {
+   "id": "g_b1_imperfect_irregular",
+   "title_ar": "ser وir وver في imperfecto",
+   "body_ar": "ثلاثة أفعال فقط شاذّة في imperfecto:\nser → era, eras, era, éramos, erais, eran\nir → iba, ibas, iba, íbamos, ibais, iban\nver → veía, veías, veía, veíamos, veíais, veían\n\nوالباقي منتظم: estar → estaba، tener → tenía، hay → había.\nللوصف: La oficina era pequeña y había mucho trabajo.",
+   "examples": [
+    {
+     "es": "La oficina era pequeña y había mucho trabajo.",
+     "ar": "كان المكتب صغيراً وكان هناك عمل كثير."
+    },
+    {
+     "es": "Éramos pocos, pero estábamos contentos.",
+     "ar": "كنا قليلين، لكننا كنا راضين."
+    },
+    {
+     "es": "¿Ibas a la oficina en metro?",
+     "ar": "هل كنتَ تذهب إلى المكتب بالمترو؟"
+    }
+   ]
+  },
+  {
+   "id": "g_b1_past_contrast",
+   "title_ar": "indefinido أم imperfecto؟",
+   "body_ar": "indefinido = حدث مكتمل (ماذا حدث؟): llegó · sonó · empecé hace dos años.\nimperfecto = الخلفية والوصف (كيف كان الوضع؟): era · había · hacía calor · trabajaba.\n\nفي القصة: الخلفية بـ imperfecto، والحدث الذي يقطعها بـ indefinido:\nMientras trabajaba, sonó el teléfono.\n\nقواعد ثابتة:\n• الساعة والعمر في الماضي ← imperfecto: eran las diez · tenía treinta años.\n• de repente وhace + مدة ← indefinido: de repente sonó · empecé hace dos años.",
+   "examples": [
+    {
+     "es": "Mientras trabajaba, sonó el teléfono.",
+     "ar": "بينما كنتُ أعمل، رنّ الهاتف."
+    },
+    {
+     "es": "Eran las diez y hacía calor. De repente, llegó el cliente.",
+     "ar": "كانت الساعة العاشرة والجو حار. فجأة، وصل العميل."
+    },
+    {
+     "es": "Mientras preparaba la reunión, el cliente ya estaba en la puerta.",
+     "ar": "بينما كنتُ أحضّر الاجتماع، كان العميل عند الباب بالفعل."
+    }
+   ]
+  },
+  {
+   "id": "g_b1_career_story",
+   "title_ar": "تجربتي المهنية: الحدث والمهمة",
+   "body_ar": "الحدث والمدة المنتهية ← indefinido:\nEmpecé hace dos años. · Trabajé allí durante tres años.\nالمهام المعتادة والوصف ← imperfecto:\nMe encargaba de los clientes. · El equipo era pequeño.\nالترتيب: al principio… ← con el tiempo… ← al final…",
+   "examples": [
+    {
+     "es": "Trabajé en un hotel durante dos años. Me encargaba de las reservas.",
+     "ar": "عملتُ في فندق لمدة سنتين. كنتُ مسؤولاً عن الحجوزات."
+    },
+    {
+     "es": "Al principio era difícil, pero con el tiempo aprendí mucho.",
+     "ar": "في البداية كان صعباً، لكن مع الوقت تعلّمتُ كثيراً."
+    },
+    {
+     "es": "¿Cuál fue su primer trabajo? ¿Y de qué se encargaba?",
+     "ar": "ما كان أول عمل لك؟ وعن ماذا كنتَ مسؤولاً؟"
+    }
+   ]
+  },
+  {
+   "id": "g_b1_incident",
+   "title_ar": "حكاية مشكلة في العمل",
+   "body_ar": "1. الخلفية (imperfecto): Era viernes y teníamos mucho trabajo.\n2. المشكلة (indefinido): De repente, hubo un retraso.\n3. ما فعلتموه (indefinido): Tuvimos que cambiar el plan.\n4. النتيجة: Por suerte, conseguimos terminar a tiempo.\n\nhubo (حدث مرة) ≠ había (وصف أو وجود).",
+   "examples": [
+    {
+     "es": "Era viernes y teníamos mucho trabajo. De repente, hubo un problema.",
+     "ar": "كان يوم جمعة وكان عندنا عمل كثير. فجأة، حدثت مشكلة."
+    },
+    {
+     "es": "Tuvimos que cambiar el plan, pero conseguimos terminar a tiempo.",
+     "ar": "اضطررنا إلى تغيير الخطة، لكننا تمكّنّا من الانتهاء في الوقت المحدّد."
+    },
+    {
+     "es": "¿Y qué hizo usted? ¿Hubo algún problema?",
+     "ar": "وماذا فعلتَ (حضرتك)؟ هل حدثت أي مشكلة؟"
+    }
+   ]
+  },
+  {
+   "id": "g_b1_story",
+   "title_ar": "قصة كاملة",
+   "body_ar": "خلفية (imperfecto) ← أحداث (indefinido) ← نتيجة.\nأدوات الترتيب: al principio · primero · después · de repente · al final · con el tiempo\nفي آخر القصة: Fue un reto… · Fue un éxito… · Aprendimos que…",
+   "examples": [
+    {
+     "es": "Al principio el equipo era pequeño y el reto era grande.",
+     "ar": "في البداية كان الفريق صغيراً وكان التحدّي كبيراً."
+    },
+    {
+     "es": "Al final superamos el reto juntos y el proyecto fue un éxito.",
+     "ar": "في النهاية تجاوزنا التحدّي معاً وكان المشروع نجاحاً."
+    },
+    {
+     "es": "¿Y funcionó? — Al principio no, pero los resultados mejoraron mucho.",
+     "ar": "وهل نجح؟ — في البداية لا، لكن النتائج تحسّنت كثيراً."
+    }
+   ]
+  }
+ ],
+ "lessons": [
+  {
+   "id": "b1_u2_l1",
+   "title_ar": "في السابق والآن",
+   "title_es": "Antes y ahora",
+   "objectives_ar": [
+    "تصريف imperfecto المنتظم",
+    "وصف العادات في الماضي",
+    "المقارنة بين الماضي والحاضر"
+   ],
+   "prerequisites": [
+    "b1_u1_l5"
+   ],
+   "minutes": 18,
+   "work_relevance_ar": "وصف عملك السابق في مقابلة أو تعارف مهني.",
+   "source": "original-v1",
+   "grammar": [
+    "g_b1_imperfect"
+   ],
+   "items": [
+    {
+     "id": "antes",
+     "es": "antes",
+     "ar": "في السابق / قبل ذلك",
+     "en": "before, previously",
+     "pos": "ظرف",
+     "examples": [
+      {
+       "es": "Antes trabajaba en Alejandría.",
+       "ar": "في السابق كنتُ أعمل في الإسكندرية."
+      },
+      {
+       "es": "Karim, ¿dónde trabajabas antes?",
+       "ar": "كريم، أين كنتَ تعمل في السابق؟"
+      }
+     ]
+    },
+    {
+     "id": "trabajaba",
+     "es": "trabajaba",
+     "ar": "كنتُ أعمل / كان يعمل",
+     "en": "I / he used to work",
+     "pos": "فعل",
+     "examples": [
+      {
+       "es": "Trabajaba en un banco en El Cairo.",
+       "ar": "كنتُ أعمل في بنك في القاهرة."
+      }
+     ],
+     "note_ar": "-ar ← -aba: trabajaba، hablaba، llegaba. الصيغة نفسها لـ yo ولـ él / usted.",
+     "work": true
+    },
+    {
+     "id": "vivia",
+     "es": "vivía",
+     "ar": "كنتُ أعيش / كان يعيش",
+     "en": "I / he used to live",
+     "pos": "فعل",
+     "examples": [
+      {
+       "es": "De joven, vivía con mis padres.",
+       "ar": "في شبابي كنتُ أعيش مع والديّ."
+      }
+     ],
+     "note_ar": "-er / -ir ← -ía: vivía، comía. على í نبر دائماً."
+    },
+    {
+     "id": "normalmente",
+     "es": "normalmente",
+     "ar": "عادةً",
+     "en": "usually",
+     "pos": "ظرف",
+     "examples": [
+      {
+       "es": "Normalmente llegaba a las ocho.",
+       "ar": "عادةً كنتُ أصل في الثامنة."
+      }
+     ],
+     "connections": [
+      {
+       "type": "cognate",
+       "ar": "تشبه normally بالإنجليزية: -mente = -ly."
+      }
+     ]
+    },
+    {
+     "id": "siempre",
+     "es": "siempre",
+     "ar": "دائماً",
+     "en": "always",
+     "pos": "ظرف",
+     "examples": [
+      {
+       "es": "Siempre comíamos juntos.",
+       "ar": "كنا نأكل معاً دائماً."
+      },
+      {
+       "es": "Sí, siempre iba en metro.",
+       "ar": "نعم، كنتُ أذهب بالمترو دائماً."
+      }
+     ]
+    },
+    {
+     "id": "todos_los_dias",
+     "es": "todos los días",
+     "ar": "كل يوم",
+     "en": "every day",
+     "pos": "تعبير",
+     "examples": [
+      {
+       "es": "Todos los días hablaba con clientes.",
+       "ar": "كل يوم كنتُ أتحدث مع عملاء."
+      }
+     ],
+     "work": true
+    },
+    {
+     "id": "a_menudo",
+     "es": "a menudo",
+     "ar": "كثيراً / غالباً",
+     "en": "often",
+     "pos": "تعبير",
+     "examples": [
+      {
+       "es": "A menudo viajábamos a Madrid.",
+       "ar": "كثيراً ما كنا نسافر إلى مدريد."
+      }
+     ]
+    },
+    {
+     "id": "ya_no",
+     "es": "ya no",
+     "ar": "لم يعد…",
+     "en": "no longer",
+     "pos": "تعبير",
+     "examples": [
+      {
+       "es": "Ahora vivo en Madrid y ya no trabajo en un banco.",
+       "ar": "الآن أعيش في مدريد ولم أعد أعمل في بنك."
+      }
+     ],
+     "work": true
+    }
+   ],
+   "activities": [
+    {
+     "type": "teach",
+     "item": "antes"
+    },
+    {
+     "type": "teach",
+     "item": "trabajaba"
+    },
+    {
+     "type": "mcq_meaning",
+     "item": "antes"
+    },
+    {
+     "type": "listen_choose",
+     "item": "trabajaba"
+    },
+    {
+     "type": "note",
+     "title_ar": "imperfecto المنتظم",
+     "body_ar": "-ar: trabajaba, trabajabas, trabajaba, trabajábamos, trabajabais, trabajaban\n-er / -ir: vivía, vivías, vivía, vivíamos, vivíais, vivían\nللعادة والوصف في الماضي: Antes trabajaba en un banco.",
+     "examples": [
+      {
+       "es": "Normalmente llegaba a las ocho y comía a las dos.",
+       "ar": "عادةً كنتُ أصل في الثامنة وآكل في الثانية."
+      }
+     ]
+    },
+    {
+     "type": "teach",
+     "item": "vivia"
+    },
+    {
+     "type": "teach",
+     "item": "normalmente"
+    },
+    {
+     "type": "teach",
+     "item": "siempre"
+    },
+    {
+     "type": "mcq_reverse",
+     "item": "vivia"
+    },
+    {
+     "type": "listen_pick_es",
+     "item": "normalmente"
+    },
+    {
+     "type": "mcq_meaning",
+     "item": "siempre"
+    },
+    {
+     "type": "teach",
+     "item": "todos_los_dias"
+    },
+    {
+     "type": "teach",
+     "item": "a_menudo"
+    },
+    {
+     "type": "teach",
+     "item": "ya_no"
+    },
+    {
+     "type": "mcq_meaning",
+     "item": "ya_no"
+    },
+    {
+     "type": "listen_choose",
+     "item": "todos_los_dias"
+    },
+    {
+     "type": "mcq_reverse",
+     "item": "a_menudo"
+    },
+    {
+     "type": "listen_pick_es",
+     "item": "siempre"
+    },
+    {
+     "type": "choice",
+     "prompt_ar": "أكمل (كنتُ أعمل):",
+     "choices": [
+      "trabajaba",
+      "trabajar",
+      "trabajado"
+     ],
+     "answer": 0,
+     "skill": "grammar",
+     "choices_es": true,
+     "stimulus_es": "Antes yo ___ en un banco.",
+     "explain_ar": "عادة أو وضع في الماضي ← imperfecto: trabajar ← trabajaba."
+    },
+    {
+     "type": "fill",
+     "es": "De joven, ___ con mis padres.",
+     "answer": "vivía",
+     "ar": "في شبابي كنتُ أعيش مع والديّ.",
+     "options": [
+      "vivía",
+      "vivir",
+      "vivido"
+     ],
+     "explain_ar": "-ir في imperfecto: viv + ía ← vivía (وضع ممتد في الماضي)."
+    },
+    {
+     "type": "fill",
+     "es": "Normalmente nosotros ___ a las dos.",
+     "answer": "comíamos",
+     "ar": "عادةً كنا نأكل في الثانية.",
+     "options": [
+      "comíamos",
+      "comer",
+      "comido"
+     ],
+     "explain_ar": "عادة مع nosotros: com + íamos ← comíamos."
+    },
+    {
+     "type": "match",
+     "items": [
+      "antes",
+      "siempre",
+      "todos_los_dias",
+      "ya_no"
+     ]
+    },
+    {
+     "type": "type_es",
+     "item": "trabajaba"
+    },
+    {
+     "type": "type_es",
+     "item": "siempre"
+    },
+    {
+     "type": "order",
+     "es": "Ya no trabajo en el banco.",
+     "ar": "لم أعد أعمل في البنك."
+    },
+    {
+     "type": "dictation",
+     "es": "Antes trabajaba en un banco. Ahora trabajo en una empresa.",
+     "ar": "في السابق كنتُ أعمل في بنك. الآن أعمل في شركة."
+    },
+    {
+     "type": "choice",
+     "prompt_ar": "أين كان كريم يعمل في السابق؟",
+     "choices": [
+      "في بنك",
+      "في فندق",
+      "في مدرسة"
+     ],
+     "answer": 0,
+     "skill": "reading",
+     "choices_es": false,
+     "prompt_es": "¿Dónde trabajaba Karim antes?",
+     "stimulus_es": "Karim: «Antes vivía en El Cairo y trabajaba en un banco. Todos los días llegaba a las ocho. Ahora vivo en Madrid y ya no trabajo en un banco.»"
+    },
+    {
+     "type": "choice",
+     "prompt_ar": "استمع: ماذا كانوا يفعلون كثيراً؟",
+     "choices": [
+      "يسافرون إلى مدريد للعمل",
+      "يعملون من البيت",
+      "يدرسون الإسبانية"
+     ],
+     "answer": 0,
+     "skill": "listening",
+     "choices_es": false,
+     "prompt_es": "¿Qué hacían a menudo?",
+     "audio_es": "A menudo viajábamos a Madrid por trabajo."
+    },
+    {
+     "type": "respond",
+     "prompt_ar": "اكتب: «في السابق كنتُ أعمل في بنك».",
+     "accepted": [
+      "Antes trabajaba en un banco.",
+      "Antes yo trabajaba en un banco."
+     ],
+     "audio_es": "Antes trabajaba en un banco."
+    },
+    {
+     "type": "speak",
+     "es": "Antes vivía en El Cairo. Ahora vivo en Madrid.",
+     "ar": "في السابق كنتُ أعيش في القاهرة. الآن أعيش في مدريد."
+    }
+   ]
+  },
+  {
+   "id": "b1_u2_l2",
+   "title_ar": "كيف كان؟",
+   "title_es": "Cómo era",
+   "objectives_ar": [
+    "ser وir وver في imperfecto",
+    "وصف مكان وأشخاص في الماضي",
+    "había وestaba وtenía"
+   ],
+   "prerequisites": [
+    "b1_u2_l1"
+   ],
+   "minutes": 18,
+   "work_relevance_ar": "وصف بيئة عمل سابقة وفريق سابق.",
+   "source": "original-v1",
+   "grammar": [
+    "g_b1_imperfect_irregular"
+   ],
+   "items": [
+    {
+     "id": "era",
+     "es": "era",
+     "ar": "كان (يكون) — من ser",
+     "en": "was (ser)",
+     "pos": "فعل",
+     "examples": [
+      {
+       "es": "La oficina era muy pequeña.",
+       "ar": "كان المكتب صغيراً جداً."
+      },
+      {
+       "es": "¿Y cómo era el trabajo?",
+       "ar": "وكيف كان العمل؟"
+      }
+     ]
+    },
+    {
+     "id": "eramos",
+     "es": "éramos",
+     "ar": "كنّا",
+     "en": "we were",
+     "pos": "فعل",
+     "examples": [
+      {
+       "es": "Éramos cinco en el equipo.",
+       "ar": "كنا خمسة في الفريق."
+      }
+     ]
+    },
+    {
+     "id": "iba",
+     "es": "iba",
+     "ar": "كنتُ أذهب / كان يذهب",
+     "en": "I / he used to go",
+     "pos": "فعل",
+     "examples": [
+      {
+       "es": "Iba al trabajo en metro.",
+       "ar": "كنتُ أذهب إلى العمل بالمترو."
+      },
+      {
+       "es": "¿Ibas a la oficina todos los días?",
+       "ar": "هل كنتَ تذهب إلى المكتب كل يوم؟"
+      }
+     ],
+     "note_ar": "ir: iba, ibas, iba, íbamos, ibais, iban."
+    },
+    {
+     "id": "habia",
+     "es": "había",
+     "ar": "كان هناك / كان يوجد",
+     "en": "there was / there were",
+     "pos": "فعل",
+     "examples": [
+      {
+       "es": "Era interesante, pero había mucho trabajo.",
+       "ar": "كان ممتعاً، لكن كان هناك عمل كثير."
+      }
+     ],
+     "note_ar": "ماضي hay، ولا يتغيّر: había un problema · había dos problemas.",
+     "work": true
+    },
+    {
+     "id": "estaba",
+     "es": "estaba",
+     "ar": "كان (حالة أو مكان) — من estar",
+     "en": "was (estar)",
+     "pos": "فعل",
+     "examples": [
+      {
+       "es": "El jefe estaba muy ocupado.",
+       "ar": "كان المدير مشغولاً جداً."
+      }
+     ]
+    },
+    {
+     "id": "tenia",
+     "es": "tenía",
+     "ar": "كان عندي / كان لديه",
+     "en": "I / he had",
+     "pos": "فعل",
+     "examples": [
+      {
+       "es": "Tenía veinticinco años.",
+       "ar": "كان عمري خمسة وعشرين عاماً."
+      }
+     ],
+     "note_ar": "العمر في الماضي دائماً بـ imperfecto: tenía treinta años."
+    },
+    {
+     "id": "veia",
+     "es": "veía",
+     "ar": "كنتُ أرى / كان يرى",
+     "en": "I / he used to see",
+     "pos": "فعل",
+     "examples": [
+      {
+       "es": "Veía a los clientes cada semana.",
+       "ar": "كنتُ أرى العملاء كل أسبوع."
+      }
+     ]
+    },
+    {
+     "id": "de_joven",
+     "es": "de joven",
+     "ar": "في شبابي / وأنا صغير",
+     "en": "when I was young",
+     "pos": "تعبير",
+     "examples": [
+      {
+       "es": "De joven, iba a la playa en verano.",
+       "ar": "في شبابي كنتُ أذهب إلى الشاطئ في الصيف."
+      }
+     ]
+    }
+   ],
+   "activities": [
+    {
+     "type": "teach",
+     "item": "era"
+    },
+    {
+     "type": "teach",
+     "item": "eramos"
+    },
+    {
+     "type": "mcq_meaning",
+     "item": "era"
+    },
+    {
+     "type": "listen_choose",
+     "item": "eramos"
+    },
+    {
+     "type": "note",
+     "title_ar": "ثلاثة أفعال شاذّة فقط",
+     "body_ar": "ser: era, eras, era, éramos, erais, eran\nir: iba, ibas, iba, íbamos, ibais, iban\nver: veía, veías, veía, veíamos, veíais, veían\nوالباقي منتظم: estaba، tenía، había.",
+     "examples": [
+      {
+       "es": "La oficina era pequeña y había mucho trabajo.",
+       "ar": "كان المكتب صغيراً وكان هناك عمل كثير."
+      }
+     ]
+    },
+    {
+     "type": "teach",
+     "item": "iba"
+    },
+    {
+     "type": "teach",
+     "item": "habia"
+    },
+    {
+     "type": "teach",
+     "item": "estaba"
+    },
+    {
+     "type": "mcq_reverse",
+     "item": "iba"
+    },
+    {
+     "type": "listen_pick_es",
+     "item": "habia"
+    },
+    {
+     "type": "mcq_meaning",
+     "item": "estaba"
+    },
+    {
+     "type": "teach",
+     "item": "tenia"
+    },
+    {
+     "type": "teach",
+     "item": "veia"
+    },
+    {
+     "type": "teach",
+     "item": "de_joven"
+    },
+    {
+     "type": "mcq_meaning",
+     "item": "de_joven"
+    },
+    {
+     "type": "listen_choose",
+     "item": "tenia"
+    },
+    {
+     "type": "mcq_reverse",
+     "item": "veia"
+    },
+    {
+     "type": "listen_pick_es",
+     "item": "estaba"
+    },
+    {
+     "type": "choice",
+     "prompt_ar": "«كان عمري خمسة وعشرين عاماً»:",
+     "choices": [
+      "Tenía veinticinco años.",
+      "Tuve veinticinco años.",
+      "Tener veinticinco años."
+     ],
+     "answer": 0,
+     "skill": "grammar",
+     "choices_es": true,
+     "explain_ar": "العمر في الماضي وصف (خلفية) ← imperfecto: tenía، لا tuve."
+    },
+    {
+     "type": "fill",
+     "es": "La oficina ___ muy pequeña.",
+     "answer": "era",
+     "ar": "كان المكتب صغيراً جداً.",
+     "options": [
+      "era",
+      "ser",
+      "sido"
+     ],
+     "explain_ar": "وصف في الماضي بـ ser ← era (شاذّ)."
+    },
+    {
+     "type": "fill",
+     "es": "En la oficina ___ mucho trabajo.",
+     "answer": "había",
+     "ar": "كان هناك عمل كثير في المكتب.",
+     "options": [
+      "había",
+      "haber",
+      "habido"
+     ],
+     "explain_ar": "ماضي hay للوصف: había (لا يتغيّر مع الجمع)."
+    },
+    {
+     "type": "match",
+     "items": [
+      "era",
+      "iba",
+      "habia",
+      "de_joven"
+     ]
+    },
+    {
+     "type": "type_es",
+     "item": "habia"
+    },
+    {
+     "type": "type_es",
+     "item": "estaba"
+    },
+    {
+     "type": "order",
+     "es": "La oficina era muy pequeña.",
+     "ar": "كان المكتب صغيراً جداً."
+    },
+    {
+     "type": "dictation",
+     "es": "Éramos cinco en el equipo y había mucho trabajo.",
+     "ar": "كنا خمسة في الفريق وكان هناك عمل كثير."
+    },
+    {
+     "type": "choice",
+     "prompt_ar": "كيف كان مدير لوثيا؟",
+     "choices": [
+      "مشغولاً لكنه لطيف",
+      "غاضباً دائماً",
+      "غائباً دائماً"
+     ],
+     "answer": 0,
+     "skill": "reading",
+     "choices_es": false,
+     "prompt_es": "¿Cómo era el jefe de Lucía?",
+     "stimulus_es": "Lucía: «Mi primera oficina era pequeña. Éramos cinco y había mucho trabajo. Iba en metro todos los días. Mi jefe estaba siempre ocupado, pero era muy amable.»"
+    },
+    {
+     "type": "choice",
+     "prompt_ar": "استمع: كم كان عمره؟",
+     "choices": [
+      "خمسة وعشرون عاماً",
+      "خمسة عشر عاماً",
+      "خمسة وثلاثون عاماً"
+     ],
+     "answer": 0,
+     "skill": "listening",
+     "choices_es": false,
+     "prompt_es": "¿Cuántos años tenía?",
+     "audio_es": "Tenía veinticinco años y vivía con mis padres."
+    },
+    {
+     "type": "respond",
+     "prompt_ar": "صف مكتبك القديم: «كان المكتب صغيراً».",
+     "accepted": [
+      "La oficina era pequeña.",
+      "La oficina era muy pequeña."
+     ],
+     "audio_es": "La oficina era pequeña."
+    },
+    {
+     "type": "speak",
+     "es": "De joven, iba al trabajo en metro. La oficina era pequeña.",
+     "ar": "في شبابي كنتُ أذهب إلى العمل بالمترو. كان المكتب صغيراً."
+    }
+   ]
+  },
+  {
+   "id": "b1_u2_l3",
+   "title_ar": "ماذا حدث، وكيف كان الوضع؟",
+   "title_es": "Lo que pasó y cómo era",
+   "objectives_ar": [
+    "الخلفية بـ imperfecto والحدث بـ indefinido",
+    "mientras وde repente",
+    "الساعة والطقس في الماضي"
+   ],
+   "prerequisites": [
+    "b1_u2_l2"
+   ],
+   "minutes": 20,
+   "work_relevance_ar": "رواية ما حدث في يوم عمل بالترتيب الصحيح.",
+   "source": "original-v1",
+   "grammar": [
+    "g_b1_past_contrast"
+   ],
+   "items": [
+    {
+     "id": "mientras",
+     "es": "mientras",
+     "ar": "بينما",
+     "en": "while",
+     "pos": "أداة ربط",
+     "examples": [
+      {
+       "es": "Mientras trabajaba, sonó el teléfono.",
+       "ar": "بينما كنتُ أعمل، رنّ الهاتف."
+      },
+      {
+       "es": "Mientras preparaba la reunión, sonó el teléfono.",
+       "ar": "بينما كنتُ أحضّر الاجتماع، رنّ الهاتف."
+      }
+     ]
+    },
+    {
+     "id": "de_repente",
+     "es": "de repente",
+     "ar": "فجأة",
+     "en": "suddenly",
+     "pos": "تعبير",
+     "examples": [
+      {
+       "es": "De repente, llamó el director.",
+       "ar": "فجأة، اتصل المدير."
+      }
+     ]
+    },
+    {
+     "id": "en_ese_momento",
+     "es": "en ese momento",
+     "ar": "في تلك اللحظة",
+     "en": "at that moment",
+     "pos": "تعبير",
+     "examples": [
+      {
+       "es": "En ese momento llegó el cliente.",
+       "ar": "في تلك اللحظة وصل العميل."
+      }
+     ]
+    },
+    {
+     "id": "sono",
+     "es": "sonó",
+     "ar": "رنّ",
+     "en": "rang",
+     "pos": "فعل",
+     "examples": [
+      {
+       "es": "Sonó el teléfono a las nueve.",
+       "ar": "رنّ الهاتف في التاسعة."
+      }
+     ],
+     "note_ar": "من sonar (o ← ue في المضارع: suena). في الماضي منتظم: sonó."
+    },
+    {
+     "id": "me_di_cuenta",
+     "es": "me di cuenta de…",
+     "ar": "انتبهتُ إلى… / أدركتُ…",
+     "en": "I realised…",
+     "pos": "تعبير",
+     "examples": [
+      {
+       "es": "En ese momento me di cuenta del problema.",
+       "ar": "في تلك اللحظة انتبهتُ إلى المشكلة."
+      },
+      {
+       "es": "Me di cuenta de que la sala no estaba lista.",
+       "ar": "انتبهتُ إلى أن القاعة لم تكن جاهزة."
+      }
+     ],
+     "work": true
+    },
+    {
+     "id": "eran_las",
+     "es": "eran las…",
+     "ar": "كانت الساعة…",
+     "en": "it was … o'clock",
+     "pos": "تعبير",
+     "examples": [
+      {
+       "es": "Eran las nueve y llovía mucho.",
+       "ar": "كانت الساعة التاسعة وكانت تمطر كثيراً."
+      }
+     ],
+     "note_ar": "الساعة في الماضي دائماً بـ imperfecto: era la una · eran las dos."
+    },
+    {
+     "id": "hacia_calor",
+     "es": "hacía calor",
+     "ar": "كان الجو حاراً",
+     "en": "it was hot",
+     "pos": "تعبير",
+     "examples": [
+      {
+       "es": "Hacía mucho calor en la oficina.",
+       "ar": "كان الجو حاراً جداً في المكتب."
+      }
+     ]
+    },
+    {
+     "id": "llovia",
+     "es": "llovía",
+     "ar": "كانت تمطر",
+     "en": "it was raining",
+     "pos": "فعل",
+     "examples": [
+      {
+       "es": "Llovía y el tren llegó tarde.",
+       "ar": "كانت تمطر ووصل القطار متأخراً."
+      }
+     ]
+    }
+   ],
+   "activities": [
+    {
+     "type": "teach",
+     "item": "mientras"
+    },
+    {
+     "type": "teach",
+     "item": "de_repente"
+    },
+    {
+     "type": "mcq_meaning",
+     "item": "mientras"
+    },
+    {
+     "type": "listen_choose",
+     "item": "de_repente"
+    },
+    {
+     "type": "note",
+     "title_ar": "الخلفية والحدث",
+     "body_ar": "الخلفية والوصف ← imperfecto: Eran las nueve. Llovía. Trabajaba.\nالحدث المكتمل ← indefinido: Sonó el teléfono. Llegó el cliente.\nمعاً: Mientras trabajaba, sonó el teléfono.",
+     "examples": [
+      {
+       "es": "Eran las diez y hacía calor. De repente, llegó el cliente.",
+       "ar": "كانت الساعة العاشرة والجو حار. فجأة، وصل العميل."
+      }
+     ]
+    },
+    {
+     "type": "teach",
+     "item": "en_ese_momento"
+    },
+    {
+     "type": "teach",
+     "item": "sono"
+    },
+    {
+     "type": "teach",
+     "item": "me_di_cuenta"
+    },
+    {
+     "type": "mcq_reverse",
+     "item": "en_ese_momento"
+    },
+    {
+     "type": "listen_pick_es",
+     "item": "sono"
+    },
+    {
+     "type": "mcq_meaning",
+     "item": "me_di_cuenta"
+    },
+    {
+     "type": "teach",
+     "item": "eran_las"
+    },
+    {
+     "type": "teach",
+     "item": "hacia_calor"
+    },
+    {
+     "type": "teach",
+     "item": "llovia"
+    },
+    {
+     "type": "mcq_meaning",
+     "item": "hacia_calor"
+    },
+    {
+     "type": "listen_choose",
+     "item": "eran_las"
+    },
+    {
+     "type": "mcq_reverse",
+     "item": "llovia"
+    },
+    {
+     "type": "choice",
+     "prompt_ar": "اختر الكلمة المناسبة:",
+     "choices": [
+      "Eran",
+      "Fueron",
+      "Son"
+     ],
+     "answer": 0,
+     "skill": "grammar",
+     "choices_es": true,
+     "stimulus_es": "___ las diez cuando llegó el cliente.",
+     "explain_ar": "الساعة في الماضي خلفية ← imperfecto: eran las diez."
+    },
+    {
+     "type": "fill",
+     "es": "Mientras ___, sonó el teléfono.",
+     "answer": "trabajaba",
+     "ar": "بينما كنتُ أعمل، رنّ الهاتف.",
+     "options": [
+      "trabajaba",
+      "trabajar",
+      "trabajado"
+     ],
+     "explain_ar": "الخلفية التي قطعها الحدث ← imperfecto: trabajaba."
+    },
+    {
+     "type": "fill",
+     "es": "De repente, ___ el teléfono.",
+     "answer": "sonó",
+     "ar": "فجأة، رنّ الهاتف.",
+     "options": [
+      "sonó",
+      "sonar",
+      "sonado"
+     ],
+     "explain_ar": "de repente + حدث مكتمل ← indefinido: sonó."
+    },
+    {
+     "type": "match",
+     "items": [
+      "mientras",
+      "de_repente",
+      "en_ese_momento",
+      "llovia"
+     ]
+    },
+    {
+     "type": "type_es",
+     "item": "hacia_calor"
+    },
+    {
+     "type": "type_es",
+     "item": "mientras"
+    },
+    {
+     "type": "order",
+     "es": "Mientras trabajaba, sonó el teléfono.",
+     "ar": "بينما كنتُ أعمل، رنّ الهاتف."
+    },
+    {
+     "type": "dictation",
+     "es": "Eran las diez y hacía calor. De repente, llegó el cliente.",
+     "ar": "كانت الساعة العاشرة والجو حار. فجأة، وصل العميل."
+    },
+    {
+     "type": "choice",
+     "prompt_ar": "ماذا اكتشف بابلو عندما وصل العميل؟",
+     "choices": [
+      "أن القاعة لم تكن جاهزة",
+      "أن الاجتماع أُلغي",
+      "أن العميل تأخّر"
+     ],
+     "answer": 0,
+     "skill": "reading",
+     "choices_es": false,
+     "prompt_es": "¿De qué se dio cuenta Pablo?",
+     "stimulus_es": "Informe de Pablo: «Era lunes y llovía. Eran las nueve y todos estábamos en la oficina. Mientras preparaba la reunión, sonó el teléfono: el cliente ya estaba en la puerta. En ese momento me di cuenta de que la sala no estaba lista.»"
+    },
+    {
+     "type": "choice",
+     "prompt_ar": "استمع: ماذا حدث فجأة؟",
+     "choices": [
+      "تعطّل المكيّف",
+      "انقطع الهاتف",
+      "وصل المدير"
+     ],
+     "answer": 0,
+     "skill": "listening",
+     "choices_es": false,
+     "prompt_es": "¿Qué pasó de repente?",
+     "audio_es": "Hacía mucho calor y, de repente, se rompió el aire acondicionado."
+    },
+    {
+     "type": "respond",
+     "prompt_ar": "اكتب: «كانت الساعة العاشرة عندما وصل العميل».",
+     "accepted": [
+      "Eran las diez cuando llegó el cliente.",
+      "Eran las diez cuando el cliente llegó."
+     ],
+     "audio_es": "Eran las diez cuando llegó el cliente."
+    },
+    {
+     "type": "speak",
+     "es": "Mientras trabajaba, sonó el teléfono. Era mi jefe.",
+     "ar": "بينما كنتُ أعمل، رنّ الهاتف. كان مديري."
+    }
+   ]
+  },
+  {
+   "id": "b1_u2_l4",
+   "title_ar": "تجربتي المهنية",
+   "title_es": "Mi experiencia profesional",
+   "objectives_ar": [
+    "رواية مسيرة عمل",
+    "hace وdurante مع indefinido",
+    "المهام المعتادة بـ imperfecto"
+   ],
+   "prerequisites": [
+    "b1_u2_l3"
+   ],
+   "minutes": 20,
+   "work_relevance_ar": "الحديث عن خبرتك في مقابلة عمل.",
+   "source": "original-v1",
+   "grammar": [
+    "g_b1_career_story"
+   ],
+   "items": [
+    {
+     "id": "mi_primer_trabajo",
+     "es": "mi primer trabajo",
+     "ar": "أول عمل لي",
+     "en": "my first job",
+     "pos": "تعبير",
+     "examples": [
+      {
+       "es": "Mi primer trabajo fue en un hotel.",
+       "ar": "كان أول عمل لي في فندق."
+      }
+     ],
+     "note_ar": "primero ← primer قبل اسم مذكّر: mi primer trabajo.",
+     "work": true
+    },
+    {
+     "id": "el_puesto",
+     "es": "el puesto",
+     "ar": "المنصب / الوظيفة",
+     "en": "position, post",
+     "pos": "اسم",
+     "examples": [
+      {
+       "es": "Era un puesto de ventas.",
+       "ar": "كان منصباً في المبيعات."
+      }
+     ],
+     "work": true
+    },
+    {
+     "id": "me_encargaba",
+     "es": "me encargaba de…",
+     "ar": "كنتُ مسؤولاً عن…",
+     "en": "I was in charge of…",
+     "pos": "تعبير",
+     "examples": [
+      {
+       "es": "Me encargaba de las reservas y de los clientes.",
+       "ar": "كنتُ مسؤولاً عن الحجوزات وعن العملاء."
+      }
+     ],
+     "work": true,
+     "connections": [
+      {
+       "type": "grammar",
+       "ar": "encargarse de: imperfecto لأنها مهمة متكرّرة، لا حدث واحد."
+      }
+     ]
+    },
+    {
+     "id": "hace_dos_anos",
+     "es": "hace dos años",
+     "ar": "منذ سنتين",
+     "en": "two years ago",
+     "pos": "تعبير",
+     "examples": [
+      {
+       "es": "Empecé en la empresa hace dos años.",
+       "ar": "بدأتُ في الشركة منذ سنتين."
+      }
+     ],
+     "note_ar": "hace + مدة = منذ، مع حدث مكتمل: empecé hace tres meses."
+    },
+    {
+     "id": "durante",
+     "es": "durante",
+     "ar": "طوال / لمدة",
+     "en": "for, during",
+     "pos": "حرف جر",
+     "examples": [
+      {
+       "es": "Trabajé allí durante dos años.",
+       "ar": "عملتُ هناك لمدة سنتين."
+      }
+     ],
+     "note_ar": "مدة محدّدة ومنتهية ← indefinido: trabajé durante dos años."
+    },
+    {
+     "id": "al_principio",
+     "es": "al principio",
+     "ar": "في البداية",
+     "en": "at first",
+     "pos": "تعبير",
+     "examples": [
+      {
+       "es": "Al principio, todo era nuevo para mí.",
+       "ar": "في البداية، كان كل شيء جديداً عليّ."
+      }
+     ]
+    },
+    {
+     "id": "con_el_tiempo",
+     "es": "con el tiempo",
+     "ar": "مع الوقت",
+     "en": "over time",
+     "pos": "تعبير",
+     "examples": [
+      {
+       "es": "Con el tiempo, aprendí mucho.",
+       "ar": "مع الوقت، تعلّمتُ كثيراً."
+      }
+     ]
+    },
+    {
+     "id": "aprendi_mucho",
+     "es": "aprendí mucho",
+     "ar": "تعلّمتُ كثيراً",
+     "en": "I learned a lot",
+     "pos": "تعبير",
+     "examples": [
+      {
+       "es": "En ese puesto aprendí mucho.",
+       "ar": "في ذلك المنصب تعلّمتُ كثيراً."
+      }
+     ],
+     "work": true
+    }
+   ],
+   "activities": [
+    {
+     "type": "teach",
+     "item": "mi_primer_trabajo"
+    },
+    {
+     "type": "teach",
+     "item": "el_puesto"
+    },
+    {
+     "type": "mcq_meaning",
+     "item": "mi_primer_trabajo"
+    },
+    {
+     "type": "listen_choose",
+     "item": "el_puesto"
+    },
+    {
+     "type": "note",
+     "title_ar": "الحدث أم المهمة؟",
+     "body_ar": "الحدث والمدة المنتهية ← indefinido: Empecé hace dos años.\nالمهمة المعتادة ← imperfecto: Me encargaba de los clientes.",
+     "examples": [
+      {
+       "es": "Trabajé en un hotel durante dos años. Me encargaba de las reservas.",
+       "ar": "عملتُ في فندق لمدة سنتين. كنتُ مسؤولاً عن الحجوزات."
+      }
+     ]
+    },
+    {
+     "type": "teach",
+     "item": "me_encargaba"
+    },
+    {
+     "type": "teach",
+     "item": "hace_dos_anos"
+    },
+    {
+     "type": "teach",
+     "item": "durante"
+    },
+    {
+     "type": "mcq_reverse",
+     "item": "me_encargaba"
+    },
+    {
+     "type": "listen_pick_es",
+     "item": "hace_dos_anos"
+    },
+    {
+     "type": "mcq_meaning",
+     "item": "durante"
+    },
+    {
+     "type": "teach",
+     "item": "al_principio"
+    },
+    {
+     "type": "teach",
+     "item": "con_el_tiempo"
+    },
+    {
+     "type": "teach",
+     "item": "aprendi_mucho"
+    },
+    {
+     "type": "mcq_meaning",
+     "item": "al_principio"
+    },
+    {
+     "type": "listen_choose",
+     "item": "con_el_tiempo"
+    },
+    {
+     "type": "mcq_reverse",
+     "item": "aprendi_mucho"
+    },
+    {
+     "type": "choice",
+     "prompt_ar": "«بدأتُ في الشركة منذ سنتين»:",
+     "choices": [
+      "Empecé en la empresa hace dos años.",
+      "Empezaba en la empresa hace dos años.",
+      "Empezar en la empresa hace dos años."
+     ],
+     "answer": 0,
+     "skill": "grammar",
+     "choices_es": true,
+     "explain_ar": "hace + مدة مع حدث مكتمل ← indefinido: empecé."
+    },
+    {
+     "type": "fill",
+     "es": "En ese puesto, me ___ de los clientes nuevos.",
+     "answer": "encargaba",
+     "ar": "في ذلك المنصب، كنتُ مسؤولاً عن العملاء الجدد.",
+     "options": [
+      "encargaba",
+      "encargar",
+      "encargado"
+     ],
+     "explain_ar": "مهمة متكرّرة في الماضي ← imperfecto: me encargaba."
+    },
+    {
+     "type": "fill",
+     "es": "Trabajé allí ___ tres años.",
+     "answer": "durante",
+     "ar": "عملتُ هناك لمدة ثلاث سنوات.",
+     "options": [
+      "durante",
+      "desde",
+      "mientras"
+     ],
+     "explain_ar": "مدة منتهية: durante + المدة. desde تحتاج تاريخاً بدأ منه."
+    },
+    {
+     "type": "match",
+     "items": [
+      "mi_primer_trabajo",
+      "el_puesto",
+      "al_principio",
+      "con_el_tiempo"
+     ]
+    },
+    {
+     "type": "type_es",
+     "item": "el_puesto"
+    },
+    {
+     "type": "type_es",
+     "item": "durante"
+    },
+    {
+     "type": "order",
+     "es": "Me encargaba de los clientes nuevos.",
+     "ar": "كنتُ مسؤولاً عن العملاء الجدد."
+    },
+    {
+     "type": "dictation",
+     "es": "Trabajé en un hotel durante dos años. Me encargaba de las reservas.",
+     "ar": "عملتُ في فندق لمدة سنتين. كنتُ مسؤولاً عن الحجوزات."
+    },
+    {
+     "type": "choice",
+     "prompt_ar": "بماذا كانت سارة مسؤولة في البداية؟",
+     "choices": [
+      "الفواتير",
+      "المبيعات",
+      "العملاء الجدد"
+     ],
+     "answer": 0,
+     "skill": "reading",
+     "choices_es": false,
+     "prompt_es": "¿De qué se encargaba Sara al principio?",
+     "stimulus_es": "Entrevista. Sara: «Mi primer trabajo fue en una empresa de tecnología. Empecé hace cinco años. Al principio me encargaba de las facturas. Con el tiempo, cambié de puesto y ahora trabajo en ventas.»"
+    },
+    {
+     "type": "choice",
+     "prompt_ar": "استمع: كم سنة عمل هناك؟",
+     "choices": [
+      "ثلاث سنوات",
+      "سنتين",
+      "خمس سنوات"
+     ],
+     "answer": 0,
+     "skill": "listening",
+     "choices_es": false,
+     "prompt_es": "¿Cuántos años trabajó allí?",
+     "audio_es": "Trabajé allí durante tres años y aprendí mucho."
+    },
+    {
+     "type": "respond",
+     "prompt_ar": "في مقابلة عمل: «بدأتُ في الشركة منذ سنتين».",
+     "accepted": [
+      "Empecé en la empresa hace dos años.",
+      "Empecé hace dos años en la empresa.",
+      "Empecé a trabajar en la empresa hace dos años."
+     ],
+     "audio_es": "Empecé en la empresa hace dos años."
+    },
+    {
+     "type": "speak",
+     "es": "Mi primer trabajo fue en un hotel. Al principio era difícil, pero aprendí mucho.",
+     "ar": "كان أول عمل لي في فندق. في البداية كان صعباً، لكنني تعلّمتُ كثيراً."
+    }
+   ]
+  },
+  {
+   "id": "b1_u2_l5",
+   "title_ar": "مشكلة في المشروع",
+   "title_es": "Un problema en el proyecto",
+   "objectives_ar": [
+    "رواية مشكلة وحلّها",
+    "hubo مقابل había",
+    "por suerte وpor desgracia"
+   ],
+   "prerequisites": [
+    "b1_u2_l4"
+   ],
+   "minutes": 20,
+   "work_relevance_ar": "شرح ما حدث في مشروع متأخّر لعميل أو مدير.",
+   "source": "original-v1",
+   "grammar": [
+    "g_b1_incident"
+   ],
+   "items": [
+    {
+     "id": "por_suerte",
+     "es": "por suerte",
+     "ar": "لحسن الحظ",
+     "en": "luckily",
+     "pos": "تعبير",
+     "examples": [
+      {
+       "es": "Por suerte, el cliente estaba contento.",
+       "ar": "لحسن الحظ، كان العميل راضياً."
+      }
+     ]
+    },
+    {
+     "id": "por_desgracia",
+     "es": "por desgracia",
+     "ar": "للأسف",
+     "en": "unfortunately",
+     "pos": "تعبير",
+     "examples": [
+      {
+       "es": "Por desgracia, el pedido llegó tarde.",
+       "ar": "للأسف، وصل الطلب متأخراً."
+      },
+      {
+       "es": "Por desgracia, hubo muchos errores.",
+       "ar": "للأسف، حدثت أخطاء كثيرة."
+      }
+     ]
+    },
+    {
+     "id": "resulta_que",
+     "es": "resulta que…",
+     "ar": "تبيّن أنّ… / المشكلة أنّ…",
+     "en": "it turns out that…",
+     "pos": "تعبير",
+     "examples": [
+      {
+       "es": "Resulta que el proveedor tenía un problema.",
+       "ar": "تبيّن أن المورّد كانت لديه مشكلة."
+      }
+     ],
+     "work": true
+    },
+    {
+     "id": "tuvimos_que",
+     "es": "tuvimos que…",
+     "ar": "اضطررنا إلى…",
+     "en": "we had to…",
+     "pos": "تعبير",
+     "examples": [
+      {
+       "es": "Tuvimos que cambiar el plan.",
+       "ar": "اضطررنا إلى تغيير الخطة."
+      }
+     ],
+     "work": true
+    },
+    {
+     "id": "conseguimos",
+     "es": "conseguimos…",
+     "ar": "تمكّنّا من…",
+     "en": "we managed to…",
+     "pos": "فعل",
+     "examples": [
+      {
+       "es": "Al final conseguimos terminar a tiempo.",
+       "ar": "في النهاية تمكّنّا من الانتهاء في الوقت المحدّد."
+      }
+     ],
+     "work": true
+    },
+    {
+     "id": "el_retraso",
+     "es": "el retraso",
+     "ar": "التأخير",
+     "en": "delay",
+     "pos": "اسم",
+     "examples": [
+      {
+       "es": "Hubo un retraso de dos días.",
+       "ar": "حدث تأخير يومين."
+      },
+      {
+       "es": "Una vez hubo un retraso grande.",
+       "ar": "مرةً حدث تأخير كبير."
+      }
+     ],
+     "note_ar": "Hubo un retraso (حدث مرة) ≠ Había mucho trabajo (وصف)."
+    },
+    {
+     "id": "a_tiempo",
+     "es": "a tiempo",
+     "ar": "في الوقت المحدّد",
+     "en": "on time",
+     "pos": "تعبير",
+     "examples": [
+      {
+       "es": "Entregamos el proyecto a tiempo.",
+       "ar": "سلّمنا المشروع في الوقت المحدّد."
+      }
+     ]
+    },
+    {
+     "id": "la_leccion",
+     "es": "la lección",
+     "ar": "الدرس (المستفاد)",
+     "en": "lesson",
+     "pos": "اسم",
+     "examples": [
+      {
+       "es": "Aprendimos la lección.",
+       "ar": "تعلّمنا الدرس."
+      }
+     ]
+    }
+   ],
+   "activities": [
+    {
+     "type": "teach",
+     "item": "por_suerte"
+    },
+    {
+     "type": "teach",
+     "item": "por_desgracia"
+    },
+    {
+     "type": "mcq_meaning",
+     "item": "por_suerte"
+    },
+    {
+     "type": "listen_choose",
+     "item": "por_desgracia"
+    },
+    {
+     "type": "note",
+     "title_ar": "حكاية مشكلة",
+     "body_ar": "الخلفية (imperfecto): Era viernes y teníamos mucho trabajo.\nالمشكلة (indefinido): Hubo un retraso.\nالحلّ: Tuvimos que cambiar el plan.\nالنتيجة: Por suerte, conseguimos terminar a tiempo.",
+     "examples": [
+      {
+       "es": "Era viernes y teníamos mucho trabajo. De repente, hubo un problema.",
+       "ar": "كان يوم جمعة وكان عندنا عمل كثير. فجأة، حدثت مشكلة."
+      }
+     ]
+    },
+    {
+     "type": "teach",
+     "item": "resulta_que"
+    },
+    {
+     "type": "teach",
+     "item": "tuvimos_que"
+    },
+    {
+     "type": "teach",
+     "item": "conseguimos"
+    },
+    {
+     "type": "mcq_reverse",
+     "item": "resulta_que"
+    },
+    {
+     "type": "listen_pick_es",
+     "item": "tuvimos_que"
+    },
+    {
+     "type": "mcq_meaning",
+     "item": "conseguimos"
+    },
+    {
+     "type": "teach",
+     "item": "el_retraso"
+    },
+    {
+     "type": "teach",
+     "item": "a_tiempo"
+    },
+    {
+     "type": "teach",
+     "item": "la_leccion"
+    },
+    {
+     "type": "mcq_meaning",
+     "item": "a_tiempo"
+    },
+    {
+     "type": "listen_choose",
+     "item": "el_retraso"
+    },
+    {
+     "type": "mcq_reverse",
+     "item": "la_leccion"
+    },
+    {
+     "type": "choice",
+     "prompt_ar": "«اضطررنا إلى تغيير الخطة»:",
+     "choices": [
+      "Tuvimos que cambiar el plan.",
+      "Tuvimos cambiar el plan.",
+      "Teníamos que cambiado el plan."
+     ],
+     "answer": 0,
+     "skill": "grammar",
+     "choices_es": true,
+     "explain_ar": "tener que + مصدر؛ وحدث مكتمل ← tuvimos que cambiar."
+    },
+    {
+     "type": "fill",
+     "es": "Por suerte, ___ terminar a tiempo.",
+     "answer": "conseguimos",
+     "ar": "لحسن الحظ، تمكّنّا من الانتهاء في الوقت المحدّد.",
+     "options": [
+      "conseguimos",
+      "conseguir",
+      "conseguido"
+     ],
+     "explain_ar": "نتيجة مكتملة مع nosotros ← conseguimos، وبعدها مصدر."
+    },
+    {
+     "type": "fill",
+     "es": "Resulta que el proveedor ___ un problema.",
+     "answer": "tenía",
+     "ar": "تبيّن أن المورّد كانت لديه مشكلة.",
+     "options": [
+      "tenía",
+      "tener",
+      "tenido"
+     ],
+     "explain_ar": "وصف الوضع (خلفية) ← imperfecto: tenía."
+    },
+    {
+     "type": "match",
+     "items": [
+      "por_suerte",
+      "por_desgracia",
+      "el_retraso",
+      "a_tiempo"
+     ]
+    },
+    {
+     "type": "type_es",
+     "item": "el_retraso"
+    },
+    {
+     "type": "type_es",
+     "item": "la_leccion"
+    },
+    {
+     "type": "order",
+     "es": "Tuvimos que cambiar el plan.",
+     "ar": "اضطررنا إلى تغيير الخطة."
+    },
+    {
+     "type": "dictation",
+     "es": "Por desgracia, hubo un retraso. Por suerte, conseguimos terminar a tiempo.",
+     "ar": "للأسف حدث تأخير. لحسن الحظ تمكّنّا من الانتهاء في الوقت المحدّد."
+    },
+    {
+     "type": "choice",
+     "prompt_ar": "لماذا تأخّر الطلب؟",
+     "choices": [
+      "تعطّلت الشاحنة",
+      "لم يكن الطلب جاهزاً",
+      "العميل غيّر العنوان"
+     ],
+     "answer": 0,
+     "skill": "reading",
+     "choices_es": false,
+     "prompt_es": "¿Por qué llegó tarde el pedido?",
+     "stimulus_es": "Correo de Ana: «Le escribo para explicarle qué pasó. Era viernes y el pedido estaba listo. Resulta que el camión tuvo una avería. Tuvimos que buscar otro transporte y, por suerte, el pedido llegó el lunes.»"
+    },
+    {
+     "type": "choice",
+     "prompt_ar": "استمع: كم كان التأخير؟",
+     "choices": [
+      "يومين",
+      "أسبوعاً",
+      "ساعتين"
+     ],
+     "answer": 0,
+     "skill": "listening",
+     "choices_es": false,
+     "prompt_es": "¿De cuánto fue el retraso?",
+     "audio_es": "Por desgracia, hubo un retraso de dos días."
+    },
+    {
+     "type": "respond",
+     "prompt_ar": "اختم قصة المشكلة: «لحسن الحظ، تمكّنّا من الانتهاء في الوقت المحدّد».",
+     "accepted": [
+      "Por suerte, conseguimos terminar a tiempo."
+     ],
+     "audio_es": "Por suerte, conseguimos terminar a tiempo."
+    },
+    {
+     "type": "speak",
+     "es": "Resulta que hubo un retraso. Tuvimos que cambiar el plan, pero conseguimos terminar a tiempo.",
+     "ar": "تبيّن أنه حدث تأخير. اضطررنا إلى تغيير الخطة، لكننا تمكّنّا من الانتهاء في الوقت المحدّد."
+    }
+   ]
+  },
+  {
+   "id": "b1_u2_l6",
+   "title_ar": "قراءة واستماع: قصة نجاح",
+   "title_es": "Lectura y escucha: una historia de éxito",
+   "objectives_ar": [
+    "فهم نص طويل عن تجربة عمل",
+    "فهم حوار أطول من اثنتي عشرة جملة",
+    "تلخيص قصة"
+   ],
+   "prerequisites": [
+    "b1_u2_l5"
+   ],
+   "minutes": 25,
+   "work_relevance_ar": "قراءة تقرير أو قصة نجاح وفهم تفاصيلها.",
+   "source": "original-v1",
+   "grammar": [
+    "g_b1_story"
+   ],
+   "items": [
+    {
+     "id": "el_reto",
+     "es": "el reto",
+     "ar": "التحدّي",
+     "en": "challenge",
+     "pos": "اسم",
+     "examples": [
+      {
+       "es": "Fue un reto muy grande.",
+       "ar": "كان تحدّياً كبيراً جداً."
+      },
+      {
+       "es": "¿Y qué hicieron? — Primero, cambiamos el plan.",
+       "ar": "وماذا فعلتم؟ — أولاً، غيّرنا الخطة."
+      }
+     ],
+     "work": true
+    },
+    {
+     "id": "el_exito",
+     "es": "el éxito",
+     "ar": "النجاح",
+     "en": "success",
+     "pos": "اسم",
+     "examples": [
+      {
+       "es": "El proyecto fue un éxito.",
+       "ar": "كان المشروع نجاحاً."
+      }
+     ],
+     "connections": [
+      {
+       "type": "false_friend",
+       "ar": "éxito = نجاح، لا «مخرج» (exit بالإنجليزية = la salida)."
+      }
+     ]
+    },
+    {
+     "id": "superar",
+     "es": "superar",
+     "ar": "يتجاوز / يتغلّب على",
+     "en": "to overcome",
+     "pos": "فعل",
+     "examples": [
+      {
+       "es": "Fue un reto grande, pero lo superamos juntos.",
+       "ar": "كان تحدّياً كبيراً، لكننا تجاوزناه معاً."
+      }
+     ]
+    },
+    {
+     "id": "los_resultados",
+     "es": "los resultados",
+     "ar": "النتائج",
+     "en": "results",
+     "pos": "اسم",
+     "examples": [
+      {
+       "es": "Con el tiempo, los resultados mejoraron mucho.",
+       "ar": "مع الوقت، تحسّنت النتائج كثيراً."
+      }
+     ],
+     "work": true
+    },
+    {
+     "id": "mejorar",
+     "es": "mejorar",
+     "ar": "يحسّن / يتحسّن",
+     "en": "to improve",
+     "pos": "فعل",
+     "examples": [
+      {
+       "es": "Queremos mejorar el servicio.",
+       "ar": "نريد أن نحسّن الخدمة."
+      }
+     ]
+    },
+    {
+     "id": "orgulloso",
+     "es": "orgulloso",
+     "ar": "فخور",
+     "en": "proud",
+     "pos": "صفة",
+     "examples": [
+      {
+       "es": "Estoy muy orgulloso de mi equipo.",
+       "ar": "أنا فخور جداً بفريقي."
+      }
+     ],
+     "note_ar": "مؤنّث: orgullosa. orgulloso de + اسم.",
+     "alt": [
+      "orgullosa"
+     ]
+    },
+    {
+     "id": "contento",
+     "es": "contento",
+     "ar": "راضٍ / سعيد",
+     "en": "happy, satisfied",
+     "pos": "صفة",
+     "examples": [
+      {
+       "es": "¿Y los clientes estaban contentos?",
+       "ar": "وهل كان العملاء راضين؟"
+      },
+      {
+       "es": "Los clientes esperaban mucho tiempo.",
+       "ar": "كان العملاء ينتظرون وقتاً طويلاً."
+      }
+     ],
+     "alt": [
+      "contenta"
+     ]
+    }
+   ],
+   "activities": [
+    {
+     "type": "teach",
+     "item": "el_reto"
+    },
+    {
+     "type": "teach",
+     "item": "el_exito"
+    },
+    {
+     "type": "mcq_meaning",
+     "item": "el_reto"
+    },
+    {
+     "type": "listen_choose",
+     "item": "el_exito"
+    },
+    {
+     "type": "note",
+     "title_ar": "قصة كاملة",
+     "body_ar": "خلفية (imperfecto) ← أحداث (indefinido) ← نتيجة.\nal principio · primero · después · de repente · al final · con el tiempo",
+     "examples": [
+      {
+       "es": "Al final superamos el reto juntos y el proyecto fue un éxito.",
+       "ar": "في النهاية تجاوزنا التحدّي معاً وكان المشروع نجاحاً."
+      }
+     ]
+    },
+    {
+     "type": "teach",
+     "item": "superar"
+    },
+    {
+     "type": "teach",
+     "item": "los_resultados"
+    },
+    {
+     "type": "teach",
+     "item": "mejorar"
+    },
+    {
+     "type": "mcq_reverse",
+     "item": "superar"
+    },
+    {
+     "type": "listen_pick_es",
+     "item": "los_resultados"
+    },
+    {
+     "type": "mcq_meaning",
+     "item": "mejorar"
+    },
+    {
+     "type": "teach",
+     "item": "orgulloso"
+    },
+    {
+     "type": "teach",
+     "item": "contento"
+    },
+    {
+     "type": "mcq_meaning",
+     "item": "orgulloso"
+    },
+    {
+     "type": "mcq_reverse",
+     "item": "contento"
+    },
+    {
+     "type": "choice",
+     "prompt_ar": "اقرأ النص: ما كانت مشكلة الشركة قبل ثلاث سنوات؟",
+     "choices": [
+      "العملاء ينتظرون كثيراً وغير راضين",
+      "الأسعار مرتفعة جداً",
+      "الفريق كبير جداً"
+     ],
+     "answer": 0,
+     "skill": "reading",
+     "choices_es": false,
+     "prompt_es": "Lee el texto: ¿qué problema tenía la empresa?",
+     "stimulus_es": "Hace tres años, nuestra empresa tenía un problema: los clientes esperaban mucho tiempo y no estaban contentos. Éramos un equipo pequeño y siempre teníamos mucho trabajo. Al principio, no sabíamos qué hacer. Entonces, la directora propuso un plan nuevo. Primero, cambiamos el horario de atención al cliente. Después, preparamos respuestas para las preguntas más frecuentes. Por desgracia, durante el primer mes hubo muchos errores y algunos compañeros querían volver al sistema antiguo. Sin embargo, con el tiempo los resultados mejoraron. Al final del año, los clientes esperaban la mitad del tiempo y estaban mucho más contentos. Fue un reto muy grande, pero lo superamos juntos. Hoy estoy muy orgulloso de mi equipo: aprendimos que un buen plan necesita tiempo y paciencia."
+    },
+    {
+     "type": "choice",
+     "prompt_ar": "ماذا فعلوا أولاً؟",
+     "choices": [
+      "غيّروا دوام خدمة العملاء",
+      "وظّفوا موظفين جدداً",
+      "عادوا إلى النظام القديم"
+     ],
+     "answer": 0,
+     "skill": "reading",
+     "choices_es": false,
+     "prompt_es": "¿Qué hicieron primero?",
+     "stimulus_es": "Hace tres años, nuestra empresa tenía un problema: los clientes esperaban mucho tiempo y no estaban contentos. Éramos un equipo pequeño y siempre teníamos mucho trabajo. Al principio, no sabíamos qué hacer. Entonces, la directora propuso un plan nuevo. Primero, cambiamos el horario de atención al cliente. Después, preparamos respuestas para las preguntas más frecuentes. Por desgracia, durante el primer mes hubo muchos errores y algunos compañeros querían volver al sistema antiguo. Sin embargo, con el tiempo los resultados mejoraron. Al final del año, los clientes esperaban la mitad del tiempo y estaban mucho más contentos. Fue un reto muy grande, pero lo superamos juntos. Hoy estoy muy orgulloso de mi equipo: aprendimos que un buen plan necesita tiempo y paciencia."
+    },
+    {
+     "type": "choice",
+     "prompt_ar": "ماذا حدث في الشهر الأول؟",
+     "choices": [
+      "أخطاء كثيرة",
+      "تحسّنت النتائج فوراً",
+      "استقالت المديرة"
+     ],
+     "answer": 0,
+     "skill": "reading",
+     "choices_es": false,
+     "prompt_es": "¿Qué pasó durante el primer mes?",
+     "stimulus_es": "Hace tres años, nuestra empresa tenía un problema: los clientes esperaban mucho tiempo y no estaban contentos. Éramos un equipo pequeño y siempre teníamos mucho trabajo. Al principio, no sabíamos qué hacer. Entonces, la directora propuso un plan nuevo. Primero, cambiamos el horario de atención al cliente. Después, preparamos respuestas para las preguntas más frecuentes. Por desgracia, durante el primer mes hubo muchos errores y algunos compañeros querían volver al sistema antiguo. Sin embargo, con el tiempo los resultados mejoraron. Al final del año, los clientes esperaban la mitad del tiempo y estaban mucho más contentos. Fue un reto muy grande, pero lo superamos juntos. Hoy estoy muy orgulloso de mi equipo: aprendimos que un buen plan necesita tiempo y paciencia."
+    },
+    {
+     "type": "choice",
+     "prompt_ar": "ماذا تعلّم الفريق؟",
+     "choices": [
+      "الخطة الجيدة تحتاج وقتاً وصبراً",
+      "العملاء لا ينتظرون أبداً",
+      "النظام القديم أفضل"
+     ],
+     "answer": 0,
+     "skill": "reading",
+     "choices_es": false,
+     "prompt_es": "¿Qué aprendió el equipo?",
+     "stimulus_es": "Hace tres años, nuestra empresa tenía un problema: los clientes esperaban mucho tiempo y no estaban contentos. Éramos un equipo pequeño y siempre teníamos mucho trabajo. Al principio, no sabíamos qué hacer. Entonces, la directora propuso un plan nuevo. Primero, cambiamos el horario de atención al cliente. Después, preparamos respuestas para las preguntas más frecuentes. Por desgracia, durante el primer mes hubo muchos errores y algunos compañeros querían volver al sistema antiguo. Sin embargo, con el tiempo los resultados mejoraron. Al final del año, los clientes esperaban la mitad del tiempo y estaban mucho más contentos. Fue un reto muy grande, pero lo superamos juntos. Hoy estoy muy orgulloso de mi equipo: aprendimos que un buen plan necesita tiempo y paciencia."
+    },
+    {
+     "type": "fill",
+     "es": "Al final, ___ el reto juntos.",
+     "answer": "superamos",
+     "ar": "في النهاية، تجاوزنا التحدّي معاً.",
+     "options": [
+      "superamos",
+      "superar",
+      "superado"
+     ],
+     "explain_ar": "حدث مكتمل مع nosotros ← superamos (al final يدلّ على النهاية)."
+    },
+    {
+     "type": "match",
+     "items": [
+      "el_reto",
+      "el_exito",
+      "los_resultados",
+      "contento"
+     ]
+    },
+    {
+     "type": "type_es",
+     "item": "el_exito"
+    },
+    {
+     "type": "type_es",
+     "item": "el_reto"
+    },
+    {
+     "type": "order",
+     "es": "Estoy orgulloso del equipo.",
+     "ar": "أنا فخور بالفريق."
+    },
+    {
+     "type": "dictation",
+     "es": "El proyecto fue un éxito y estoy orgulloso del equipo.",
+     "ar": "كان المشروع نجاحاً وأنا فخور بالفريق."
+    },
+    {
+     "type": "choice",
+     "prompt_ar": "استمع: ماذا تغيّر في نهاية السنة؟",
+     "choices": [
+      "صار العملاء ينتظرون نصف الوقت",
+      "صار العملاء ينتظرون ضعف الوقت",
+      "لم يتغيّر شيء"
+     ],
+     "answer": 0,
+     "skill": "listening",
+     "choices_es": false,
+     "prompt_es": "¿Qué cambió al final del año?",
+     "audio_es": "Al final del año, los clientes esperaban la mitad del tiempo."
+    },
+    {
+     "type": "choice",
+     "prompt_ar": "استمع: كيف تجاوزوا التحدّي؟",
+     "choices": [
+      "معاً",
+      "كلٌّ وحده",
+      "بمساعدة شركة أخرى"
+     ],
+     "answer": 0,
+     "skill": "listening",
+     "choices_es": false,
+     "prompt_es": "¿Cómo superaron el reto?",
+     "audio_es": "Fue un reto muy grande, pero lo superamos juntos."
+    },
+    {
+     "type": "respond",
+     "prompt_ar": "لخّص القصة: «كان تحدّياً كبيراً، لكننا تجاوزناه».",
+     "accepted": [
+      "Fue un reto muy grande, pero lo superamos.",
+      "Fue un reto grande, pero lo superamos."
+     ],
+     "audio_es": "Fue un reto muy grande, pero lo superamos."
+    },
+    {
+     "type": "speak",
+     "es": "Fue un reto muy grande, pero lo superamos juntos. Hoy estoy orgulloso de mi equipo.",
+     "ar": "كان تحدّياً كبيراً جداً، لكننا تجاوزناه معاً. اليوم أنا فخور بفريقي."
+    }
+   ]
+  }
+ ]
+}

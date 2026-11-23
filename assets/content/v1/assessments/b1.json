@@ -209,6 +209,214 @@
     }
    ],
    "source": "original-v1"
+  },
+  {
+   "id": "chk_b1_u2",
+   "version": 1,
+   "kind": "unit",
+   "level": "b1",
+   "unit": "b1_u2",
+   "title_ar": "نقطة تحقق: السرد والتجارب",
+   "intro_ar": "نقطة تحقق قصيرة. لا تلميحات ولا إظهار للإجابات قبل النهاية، ولا إعادة للأسئلة. من مستوى B1 تُحسب علامات النبر في الإجابات المكتوبة. النتيجة دليل على ما تستطيعه الآن، وليست شهادة مستوى.",
+   "can_do": [
+    {
+     "id": "cd_b1_u2_habits",
+     "ar": "أصف العادات والأوضاع في الماضي بالـ imperfecto",
+     "lessons": [
+      "b1_u2_l1",
+      "b1_u2_l2"
+     ]
+    },
+    {
+     "id": "cd_b1_u2_story",
+     "ar": "أحكي ما حدث: الخلفية بالـ imperfecto والأحداث بالـ indefinido",
+     "lessons": [
+      "b1_u2_l3",
+      "b1_u2_l5",
+      "b1_u2_l6"
+     ]
+    },
+    {
+     "id": "cd_b1_u2_career",
+     "ar": "أحكي تجربتي المهنية بالتفصيل",
+     "lessons": [
+      "b1_u2_l4"
+     ]
+    }
+   ],
+   "questions": [
+    {
+     "id": "chk_b1_u2.q1",
+     "type": "choice",
+     "skill": "grammar",
+     "can_do": "cd_b1_u2_habits",
+     "prompt_ar": "اختر الكلمة المناسبة (عادة في الماضي):",
+     "stimulus_es": "Antes yo ___ en un banco.",
+     "choices": [
+      "trabajaba",
+      "trabajar",
+      "trabajado"
+     ],
+     "answer": 0,
+     "explain_ar": "عادة أو وضع في الماضي ← imperfecto: trabajaba."
+    },
+    {
+     "id": "chk_b1_u2.q2",
+     "type": "choice",
+     "skill": "reading",
+     "can_do": "cd_b1_u2_habits",
+     "prompt_ar": "كيف كانت لوثيا تذهب إلى الجامعة؟",
+     "prompt_es": "¿Cómo iba Lucía a la universidad?",
+     "stimulus_es": "Lucía: «De joven, vivía en Sevilla. Todos los días iba a la universidad en bicicleta.»",
+     "choices": [
+      "بالدراجة",
+      "بالمترو",
+      "بالسيارة"
+     ],
+     "answer": 0,
+     "choices_es": false
+    },
+    {
+     "id": "chk_b1_u2.q3",
+     "type": "choice",
+     "skill": "listening",
+     "can_do": "cd_b1_u2_habits",
+     "prompt_ar": "استمع إلى جملة من حوار «في السابق والآن»: متى كان كريم يصل عادةً؟",
+     "dialogue_turn": "dlg_b1_antes.t6",
+     "choices": [
+      "في الثامنة",
+      "في التاسعة",
+      "في العاشرة"
+     ],
+     "answer": 0,
+     "choices_es": false
+    },
+    {
+     "id": "chk_b1_u2.q4",
+     "type": "type",
+     "skill": "writing",
+     "can_do": "cd_b1_u2_habits",
+     "prompt_ar": "اكتب بالإسبانية (انتبه لعلامات النبر)",
+     "stimulus_ar": "كان هناك عمل كثير.",
+     "accepted": [
+      "había mucho trabajo"
+     ]
+    },
+    {
+     "id": "chk_b1_u2.q5",
+     "type": "choice",
+     "skill": "grammar",
+     "can_do": "cd_b1_u2_story",
+     "prompt_ar": "اختر الكلمة المناسبة:",
+     "stimulus_es": "___ las diez cuando llegó el cliente.",
+     "choices": [
+      "Eran",
+      "Fueron",
+      "Son"
+     ],
+     "answer": 0,
+     "explain_ar": "الساعة في الماضي خلفية ← imperfecto: eran las diez."
+    },
+    {
+     "id": "chk_b1_u2.q6",
+     "type": "choice",
+     "skill": "listening",
+     "can_do": "cd_b1_u2_story",
+     "prompt_ar": "استمع إلى جملة من حوار «صباح صعب»: ماذا حدث؟",
+     "dialogue_turn": "dlg_b1_manana.t4",
+     "choices": [
+      "رنّ الهاتف بينما كان يحضّر الاجتماع",
+      "وصل المدير متأخراً",
+      "انقطعت الكهرباء"
+     ],
+     "answer": 0,
+     "choices_es": false
+    },
+    {
+     "id": "chk_b1_u2.q7",
+     "type": "choice",
+     "skill": "vocabulary",
+     "can_do": "cd_b1_u2_story",
+     "prompt_ar": "ما معنى العبارة؟",
+     "stimulus_es": "de repente",
+     "choices": [
+      "فجأة",
+      "في البداية",
+      "مع الوقت"
+     ],
+     "answer": 0,
+     "choices_es": false
+    },
+    {
+     "id": "chk_b1_u2.q8",
+     "type": "type",
+     "skill": "writing",
+     "can_do": "cd_b1_u2_story",
+     "prompt_ar": "اكتب بالإسبانية",
+     "stimulus_ar": "لحسن الحظ",
+     "accepted": [
+      "por suerte"
+     ]
+    },
+    {
+     "id": "chk_b1_u2.q9",
+     "type": "choice",
+     "skill": "grammar",
+     "can_do": "cd_b1_u2_career",
+     "prompt_ar": "«بدأتُ في الشركة منذ سنتين»:",
+     "choices": [
+      "Empecé en la empresa hace dos años.",
+      "Empezaba en la empresa hace dos años.",
+      "Empezar en la empresa hace dos años."
+     ],
+     "answer": 0,
+     "choices_es": true,
+     "explain_ar": "hace + مدة مع حدث مكتمل ← indefinido: empecé."
+    },
+    {
+     "id": "chk_b1_u2.q10",
+     "type": "choice",
+     "skill": "listening",
+     "can_do": "cd_b1_u2_career",
+     "prompt_ar": "استمع إلى جملة من حوار «مقابلة عمل»: عن ماذا كانت سارة مسؤولة؟",
+     "dialogue_turn": "dlg_b1_entrevista.t4",
+     "choices": [
+      "الحجوزات والعملاء",
+      "الفواتير",
+      "المبيعات"
+     ],
+     "answer": 0,
+     "choices_es": false
+    },
+    {
+     "id": "chk_b1_u2.q11",
+     "type": "choice",
+     "skill": "reading",
+     "can_do": "cd_b1_u2_career",
+     "prompt_ar": "كم سنة عمل كريم في البنك؟",
+     "prompt_es": "¿Cuántos años trabajó Karim en el banco?",
+     "stimulus_es": "Currículum de Karim: «Trabajé en un banco durante cuatro años. Me encargaba de las cuentas de empresas. Con el tiempo, aprendí mucho sobre ventas.»",
+     "choices": [
+      "أربع سنوات",
+      "سنتين",
+      "ست سنوات"
+     ],
+     "answer": 0,
+     "choices_es": false
+    },
+    {
+     "id": "chk_b1_u2.q12",
+     "type": "type",
+     "skill": "writing",
+     "can_do": "cd_b1_u2_career",
+     "prompt_ar": "اكتب بالإسبانية",
+     "stimulus_ar": "أول عمل لي",
+     "accepted": [
+      "mi primer trabajo"
+     ]
+    }
+   ],
+   "source": "original-v1"
   }
  ]
 }

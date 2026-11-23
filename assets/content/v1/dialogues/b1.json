@@ -475,6 +475,693 @@
     }
    ],
    "source": "original-v1"
+  },
+  {
+   "id": "dlg_b1_antes",
+   "level": "b1",
+   "unit": "b1_u2",
+   "lessons": [
+    "b1_u2_l1",
+    "b1_u2_l2"
+   ],
+   "title_es": "Antes y ahora",
+   "title_ar": "في السابق والآن",
+   "scenario_ar": "مارتا تسأل كريم عن عمله السابق في القاهرة.",
+   "objectives_ar": [
+    "فهم العادات في الماضي",
+    "فهم الوصف بـ era وhabía",
+    "المقارنة مع الحاضر"
+   ],
+   "speakers": [
+    {
+     "id": "marta",
+     "name": "Marta",
+     "role_ar": "زميلة في العمل"
+    },
+    {
+     "id": "karim",
+     "name": "Karim",
+     "role_ar": "زميل جديد"
+    }
+   ],
+   "turns": [
+    {
+     "id": "dlg_b1_antes.t1",
+     "speaker": "marta",
+     "es": "Karim, ¿dónde trabajabas antes?",
+     "ar": "كريم، أين كنتَ تعمل في السابق؟",
+     "en": "Karim, where did you work before?"
+    },
+    {
+     "id": "dlg_b1_antes.t2",
+     "speaker": "karim",
+     "es": "Trabajaba en un banco en El Cairo.",
+     "ar": "كنتُ أعمل في بنك في القاهرة.",
+     "en": "I worked at a bank in Cairo."
+    },
+    {
+     "id": "dlg_b1_antes.t3",
+     "speaker": "marta",
+     "es": "¿Y cómo era el trabajo?",
+     "ar": "وكيف كان العمل؟",
+     "en": "And what was the job like?"
+    },
+    {
+     "id": "dlg_b1_antes.t4",
+     "speaker": "karim",
+     "es": "Era interesante, pero había mucho trabajo.",
+     "ar": "كان ممتعاً، لكن كان هناك عمل كثير.",
+     "en": "It was interesting, but there was a lot of work."
+    },
+    {
+     "id": "dlg_b1_antes.t5",
+     "speaker": "marta",
+     "es": "¿Ibas a la oficina todos los días?",
+     "ar": "هل كنتَ تذهب إلى المكتب كل يوم؟",
+     "en": "Did you go to the office every day?"
+    },
+    {
+     "id": "dlg_b1_antes.t6",
+     "speaker": "karim",
+     "es": "Sí, siempre iba en metro. Normalmente llegaba a las ocho.",
+     "ar": "نعم، كنتُ أذهب بالمترو دائماً. عادةً كنتُ أصل في الثامنة.",
+     "en": "Yes, I always went by metro. I usually arrived at eight."
+    },
+    {
+     "id": "dlg_b1_antes.t7",
+     "speaker": "marta",
+     "es": "¿Y ahora?",
+     "ar": "والآن؟",
+     "en": "And now?"
+    },
+    {
+     "id": "dlg_b1_antes.t8",
+     "speaker": "karim",
+     "es": "Ahora vivo en Madrid y ya no trabajo en un banco.",
+     "ar": "الآن أعيش في مدريد ولم أعد أعمل في بنك.",
+     "en": "Now I live in Madrid and no longer work at a bank."
+    }
+   ],
+   "items": [
+    "antes",
+    "trabajaba",
+    "era",
+    "habia",
+    "iba",
+    "siempre",
+    "normalmente",
+    "todos_los_dias",
+    "ya_no"
+   ],
+   "grammar": [
+    "g_b1_imperfect",
+    "g_b1_imperfect_irregular"
+   ],
+   "questions": [
+    {
+     "type": "choice",
+     "prompt_ar": "أين كان كريم يعمل؟",
+     "choices": [
+      "في بنك في القاهرة",
+      "في فندق في مدريد",
+      "في مكتب في الإسكندرية"
+     ],
+     "answer": 0,
+     "choices_es": false,
+     "turn": "dlg_b1_antes.t2",
+     "id": "dlg_b1_antes.q1",
+     "skill": "listening"
+    },
+    {
+     "type": "choice",
+     "prompt_ar": "كيف كان العمل؟",
+     "choices": [
+      "ممتعاً لكنه كثير",
+      "مملاً وسهلاً",
+      "قليلاً جداً"
+     ],
+     "answer": 0,
+     "choices_es": false,
+     "turn": "dlg_b1_antes.t4",
+     "id": "dlg_b1_antes.q2",
+     "skill": "listening"
+    },
+    {
+     "type": "choice",
+     "prompt_ar": "كيف كان كريم يذهب إلى العمل؟",
+     "choices": [
+      "بالمترو",
+      "بالسيارة",
+      "سيراً على الأقدام"
+     ],
+     "answer": 0,
+     "choices_es": false,
+     "prompt_es": "¿Cómo iba Karim al trabajo?",
+     "turn": "dlg_b1_antes.t6",
+     "id": "dlg_b1_antes.q3",
+     "skill": "listening"
+    },
+    {
+     "type": "speaker",
+     "turn": "dlg_b1_antes.t5",
+     "id": "dlg_b1_antes.q4",
+     "skill": "listening"
+    },
+    {
+     "type": "dictation",
+     "turn": "dlg_b1_antes.t8",
+     "id": "dlg_b1_antes.q5",
+     "skill": "listening"
+    }
+   ],
+   "source": "original-v1"
+  },
+  {
+   "id": "dlg_b1_manana",
+   "level": "b1",
+   "unit": "b1_u2",
+   "lessons": [
+    "b1_u2_l3"
+   ],
+   "title_es": "Una mañana complicada",
+   "title_ar": "صباح صعب",
+   "scenario_ar": "بابلو يحكي لآنا ما حدث صباح اليوم قبل اجتماع مهمّ.",
+   "objectives_ar": [
+    "فهم الخلفية والحدث",
+    "فهم mientras وen ese momento",
+    "فهم الساعة والطقس في الماضي"
+   ],
+   "speakers": [
+    {
+     "id": "ana",
+     "name": "Ana",
+     "role_ar": "مديرة الفريق"
+    },
+    {
+     "id": "pablo",
+     "name": "Pablo",
+     "role_ar": "مندوب مبيعات"
+    }
+   ],
+   "turns": [
+    {
+     "id": "dlg_b1_manana.t1",
+     "speaker": "ana",
+     "es": "Pablo, ¿qué pasó esta mañana?",
+     "ar": "بابلو، ماذا حدث صباح اليوم؟",
+     "en": "Pablo, what happened this morning?"
+    },
+    {
+     "id": "dlg_b1_manana.t2",
+     "speaker": "pablo",
+     "es": "Eran las nueve y llovía mucho.",
+     "ar": "كانت الساعة التاسعة وكانت تمطر كثيراً.",
+     "en": "It was nine and it was raining a lot."
+    },
+    {
+     "id": "dlg_b1_manana.t3",
+     "speaker": "ana",
+     "es": "¿Y entonces?",
+     "ar": "وبعدها؟",
+     "en": "And then?"
+    },
+    {
+     "id": "dlg_b1_manana.t4",
+     "speaker": "pablo",
+     "es": "Mientras preparaba la reunión, sonó el teléfono.",
+     "ar": "بينما كنتُ أحضّر الاجتماع، رنّ الهاتف.",
+     "en": "While I was preparing the meeting, the phone rang."
+    },
+    {
+     "id": "dlg_b1_manana.t5",
+     "speaker": "ana",
+     "es": "¿Quién era?",
+     "ar": "مَن كان؟",
+     "en": "Who was it?"
+    },
+    {
+     "id": "dlg_b1_manana.t6",
+     "speaker": "pablo",
+     "es": "Era el cliente. Ya estaba en la puerta.",
+     "ar": "كان العميل. كان عند الباب بالفعل.",
+     "en": "It was the client. He was already at the door."
+    },
+    {
+     "id": "dlg_b1_manana.t7",
+     "speaker": "ana",
+     "es": "¿Y la sala estaba lista?",
+     "ar": "وهل كانت القاعة جاهزة؟",
+     "en": "And was the room ready?"
+    },
+    {
+     "id": "dlg_b1_manana.t8",
+     "speaker": "pablo",
+     "es": "No. En ese momento me di cuenta del problema.",
+     "ar": "لا. في تلك اللحظة انتبهتُ إلى المشكلة.",
+     "en": "No. At that moment I realised the problem."
+    }
+   ],
+   "items": [
+    "eran_las",
+    "llovia",
+    "mientras",
+    "sono",
+    "en_ese_momento",
+    "me_di_cuenta"
+   ],
+   "grammar": [
+    "g_b1_past_contrast"
+   ],
+   "questions": [
+    {
+     "type": "choice",
+     "prompt_ar": "كيف كان الطقس؟",
+     "choices": [
+      "كانت تمطر كثيراً",
+      "كان حاراً جداً",
+      "كان مشمساً"
+     ],
+     "answer": 0,
+     "choices_es": false,
+     "turn": "dlg_b1_manana.t2",
+     "id": "dlg_b1_manana.q1",
+     "skill": "listening"
+    },
+    {
+     "type": "choice",
+     "prompt_ar": "ماذا حدث بينما كان بابلو يحضّر الاجتماع؟",
+     "choices": [
+      "رنّ الهاتف",
+      "وصل المدير",
+      "انقطعت الكهرباء"
+     ],
+     "answer": 0,
+     "choices_es": false,
+     "prompt_es": "¿Qué pasó mientras Pablo preparaba la reunión?",
+     "turn": "dlg_b1_manana.t4",
+     "id": "dlg_b1_manana.q2",
+     "skill": "listening"
+    },
+    {
+     "type": "choice",
+     "prompt_ar": "مَن كان على الهاتف؟",
+     "choices": [
+      "العميل",
+      "المدير",
+      "آنا"
+     ],
+     "answer": 0,
+     "choices_es": false,
+     "turn": "dlg_b1_manana.t6",
+     "id": "dlg_b1_manana.q3",
+     "skill": "listening"
+    },
+    {
+     "type": "speaker",
+     "turn": "dlg_b1_manana.t5",
+     "id": "dlg_b1_manana.q4",
+     "skill": "listening"
+    },
+    {
+     "type": "dictation",
+     "turn": "dlg_b1_manana.t2",
+     "id": "dlg_b1_manana.q5",
+     "skill": "listening"
+    }
+   ],
+   "source": "original-v1"
+  },
+  {
+   "id": "dlg_b1_entrevista",
+   "level": "b1",
+   "unit": "b1_u2",
+   "lessons": [
+    "b1_u2_l4",
+    "b1_u2_l5"
+   ],
+   "title_es": "Una entrevista de trabajo",
+   "title_ar": "مقابلة عمل",
+   "scenario_ar": "السيد خيل يجري مقابلة مع سارة عن خبرتها السابقة.",
+   "objectives_ar": [
+    "فهم مسيرة عمل",
+    "فهم المهام والمدة",
+    "فهم قصة مشكلة وحلّها"
+   ],
+   "speakers": [
+    {
+     "id": "gil",
+     "name": "Sr. Gil",
+     "role_ar": "مدير الموارد البشرية"
+    },
+    {
+     "id": "sara",
+     "name": "Sara",
+     "role_ar": "مرشّحة للوظيفة"
+    }
+   ],
+   "turns": [
+    {
+     "id": "dlg_b1_entrevista.t1",
+     "speaker": "gil",
+     "es": "¿Cuál fue su primer trabajo?",
+     "ar": "ما كان أول عمل لك؟",
+     "en": "What was your first job?"
+    },
+    {
+     "id": "dlg_b1_entrevista.t2",
+     "speaker": "sara",
+     "es": "Mi primer trabajo fue en un hotel.",
+     "ar": "كان أول عمل لي في فندق.",
+     "en": "My first job was at a hotel."
+    },
+    {
+     "id": "dlg_b1_entrevista.t3",
+     "speaker": "gil",
+     "es": "¿Y de qué se encargaba?",
+     "ar": "وعن ماذا كنتِ مسؤولة؟",
+     "en": "And what were you in charge of?"
+    },
+    {
+     "id": "dlg_b1_entrevista.t4",
+     "speaker": "sara",
+     "es": "Me encargaba de las reservas y de los clientes.",
+     "ar": "كنتُ مسؤولة عن الحجوزات وعن العملاء.",
+     "en": "I was in charge of bookings and clients."
+    },
+    {
+     "id": "dlg_b1_entrevista.t5",
+     "speaker": "gil",
+     "es": "¿Cuánto tiempo trabajó allí?",
+     "ar": "كم من الوقت عملتِ هناك؟",
+     "en": "How long did you work there?"
+    },
+    {
+     "id": "dlg_b1_entrevista.t6",
+     "speaker": "sara",
+     "es": "Trabajé allí durante dos años.",
+     "ar": "عملتُ هناك لمدة سنتين.",
+     "en": "I worked there for two years."
+    },
+    {
+     "id": "dlg_b1_entrevista.t7",
+     "speaker": "gil",
+     "es": "¿Hubo algún problema?",
+     "ar": "هل حدثت أي مشكلة؟",
+     "en": "Was there any problem?"
+    },
+    {
+     "id": "dlg_b1_entrevista.t8",
+     "speaker": "sara",
+     "es": "Sí. Una vez hubo un retraso grande.",
+     "ar": "نعم. مرةً حدث تأخير كبير.",
+     "en": "Yes. Once there was a big delay."
+    },
+    {
+     "id": "dlg_b1_entrevista.t9",
+     "speaker": "gil",
+     "es": "¿Y qué hizo usted?",
+     "ar": "وماذا فعلتِ؟",
+     "en": "And what did you do?"
+    },
+    {
+     "id": "dlg_b1_entrevista.t10",
+     "speaker": "sara",
+     "es": "Tuvimos que cambiar el plan, pero conseguimos terminar a tiempo.",
+     "ar": "اضطررنا إلى تغيير الخطة، لكننا تمكّنّا من الانتهاء في الوقت المحدّد.",
+     "en": "We had to change the plan, but we managed to finish on time."
+    }
+   ],
+   "items": [
+    "mi_primer_trabajo",
+    "me_encargaba",
+    "durante",
+    "el_retraso",
+    "tuvimos_que",
+    "conseguimos",
+    "a_tiempo"
+   ],
+   "grammar": [
+    "g_b1_career_story",
+    "g_b1_incident"
+   ],
+   "questions": [
+    {
+     "type": "choice",
+     "prompt_ar": "أين كان أول عمل لسارة؟",
+     "choices": [
+      "في فندق",
+      "في بنك",
+      "في شركة تقنية"
+     ],
+     "answer": 0,
+     "choices_es": false,
+     "turn": "dlg_b1_entrevista.t2",
+     "id": "dlg_b1_entrevista.q1",
+     "skill": "listening"
+    },
+    {
+     "type": "choice",
+     "prompt_ar": "كم عملت سارة هناك؟",
+     "choices": [
+      "سنتين",
+      "ثلاث سنوات",
+      "سنة واحدة"
+     ],
+     "answer": 0,
+     "choices_es": false,
+     "prompt_es": "¿Cuánto tiempo trabajó Sara allí?",
+     "turn": "dlg_b1_entrevista.t6",
+     "id": "dlg_b1_entrevista.q2",
+     "skill": "listening"
+    },
+    {
+     "type": "choice",
+     "prompt_ar": "ماذا فعلوا عندما حدث التأخير؟",
+     "choices": [
+      "غيّروا الخطة",
+      "ألغوا الحجز",
+      "اتصلوا بالمدير"
+     ],
+     "answer": 0,
+     "choices_es": false,
+     "turn": "dlg_b1_entrevista.t10",
+     "id": "dlg_b1_entrevista.q3",
+     "skill": "listening"
+    },
+    {
+     "type": "speaker",
+     "turn": "dlg_b1_entrevista.t5",
+     "id": "dlg_b1_entrevista.q4",
+     "skill": "listening"
+    },
+    {
+     "type": "dictation",
+     "turn": "dlg_b1_entrevista.t6",
+     "id": "dlg_b1_entrevista.q5",
+     "skill": "listening"
+    }
+   ],
+   "source": "original-v1"
+  },
+  {
+   "id": "dlg_b1_historia",
+   "level": "b1",
+   "unit": "b1_u2",
+   "lessons": [
+    "b1_u2_l6"
+   ],
+   "title_es": "Una historia de éxito",
+   "title_ar": "قصة نجاح",
+   "scenario_ar": "استماع أطول: المديرة مارتا تحكي لكريم كيف تغلّب الفريق على مشكلة كبيرة مع العملاء.",
+   "objectives_ar": [
+    "متابعة حوار من اثنتي عشرة جملة",
+    "فهم ترتيب الأحداث",
+    "فهم النتيجة"
+   ],
+   "speakers": [
+    {
+     "id": "karim",
+     "name": "Karim",
+     "role_ar": "موظف جديد"
+    },
+    {
+     "id": "marta",
+     "name": "Marta",
+     "role_ar": "المديرة"
+    }
+   ],
+   "turns": [
+    {
+     "id": "dlg_b1_historia.t1",
+     "speaker": "karim",
+     "es": "Marta, ¿cómo era el equipo hace tres años?",
+     "ar": "مارتا، كيف كان الفريق قبل ثلاث سنوات؟",
+     "en": "Marta, what was the team like three years ago?"
+    },
+    {
+     "id": "dlg_b1_historia.t2",
+     "speaker": "marta",
+     "es": "Éramos pocos y siempre teníamos mucho trabajo.",
+     "ar": "كنا قليلين وكان عندنا دائماً عمل كثير.",
+     "en": "We were few and always had a lot of work."
+    },
+    {
+     "id": "dlg_b1_historia.t3",
+     "speaker": "karim",
+     "es": "¿Y los clientes estaban contentos?",
+     "ar": "وهل كان العملاء راضين؟",
+     "en": "And were the clients happy?"
+    },
+    {
+     "id": "dlg_b1_historia.t4",
+     "speaker": "marta",
+     "es": "No. Esperaban mucho tiempo y había muchos problemas.",
+     "ar": "لا. كانوا ينتظرون وقتاً طويلاً وكانت هناك مشكلات كثيرة.",
+     "en": "No. They waited a long time and there were many problems."
+    },
+    {
+     "id": "dlg_b1_historia.t5",
+     "speaker": "karim",
+     "es": "¿Y qué hicieron?",
+     "ar": "وماذا فعلتم؟",
+     "en": "And what did you do?"
+    },
+    {
+     "id": "dlg_b1_historia.t6",
+     "speaker": "marta",
+     "es": "Primero, cambiamos el horario de atención al cliente.",
+     "ar": "أولاً، غيّرنا دوام خدمة العملاء.",
+     "en": "First, we changed the customer service hours."
+    },
+    {
+     "id": "dlg_b1_historia.t7",
+     "speaker": "karim",
+     "es": "¿Y funcionó?",
+     "ar": "وهل نجح ذلك؟",
+     "en": "And did it work?"
+    },
+    {
+     "id": "dlg_b1_historia.t8",
+     "speaker": "marta",
+     "es": "Al principio no. Por desgracia, hubo muchos errores.",
+     "ar": "في البداية لا. للأسف، حدثت أخطاء كثيرة.",
+     "en": "At first, no. Unfortunately, there were many errors."
+    },
+    {
+     "id": "dlg_b1_historia.t9",
+     "speaker": "karim",
+     "es": "¿Y después?",
+     "ar": "وبعد ذلك؟",
+     "en": "And afterwards?"
+    },
+    {
+     "id": "dlg_b1_historia.t10",
+     "speaker": "marta",
+     "es": "Con el tiempo, los resultados mejoraron mucho.",
+     "ar": "مع الوقت، تحسّنت النتائج كثيراً.",
+     "en": "Over time, the results improved a lot."
+    },
+    {
+     "id": "dlg_b1_historia.t11",
+     "speaker": "karim",
+     "es": "Entonces fue un éxito.",
+     "ar": "إذن كان نجاحاً.",
+     "en": "So it was a success."
+    },
+    {
+     "id": "dlg_b1_historia.t12",
+     "speaker": "marta",
+     "es": "Sí. Fue un reto grande, pero lo superamos juntos.",
+     "ar": "نعم. كان تحدّياً كبيراً، لكننا تجاوزناه معاً.",
+     "en": "Yes. It was a big challenge, but we overcame it together."
+    }
+   ],
+   "items": [
+    "contento",
+    "los_resultados",
+    "el_exito",
+    "el_reto",
+    "superar",
+    "al_principio",
+    "con_el_tiempo",
+    "por_desgracia"
+   ],
+   "grammar": [
+    "g_b1_story"
+   ],
+   "questions": [
+    {
+     "type": "choice",
+     "prompt_ar": "كيف كان الفريق قبل ثلاث سنوات؟",
+     "choices": [
+      "قليل العدد وكثير العمل",
+      "كبيراً جداً",
+      "بلا عمل"
+     ],
+     "answer": 0,
+     "choices_es": false,
+     "prompt_es": "¿Cómo era el equipo hace tres años?",
+     "turn": "dlg_b1_historia.t2",
+     "id": "dlg_b1_historia.q1",
+     "skill": "listening"
+    },
+    {
+     "type": "choice",
+     "prompt_ar": "لماذا لم يكن العملاء راضين؟",
+     "choices": [
+      "كانوا ينتظرون كثيراً",
+      "الأسعار عالية",
+      "المنتج سيئ"
+     ],
+     "answer": 0,
+     "choices_es": false,
+     "turn": "dlg_b1_historia.t4",
+     "id": "dlg_b1_historia.q2",
+     "skill": "listening"
+    },
+    {
+     "type": "choice",
+     "prompt_ar": "ماذا غيّروا أولاً؟",
+     "choices": [
+      "دوام خدمة العملاء",
+      "الأسعار",
+      "المكتب"
+     ],
+     "answer": 0,
+     "choices_es": false,
+     "prompt_es": "¿Qué cambiaron primero?",
+     "turn": "dlg_b1_historia.t6",
+     "id": "dlg_b1_historia.q3",
+     "skill": "listening"
+    },
+    {
+     "type": "choice",
+     "prompt_ar": "ماذا حدث في البداية؟",
+     "choices": [
+      "أخطاء كثيرة",
+      "نجاح فوري",
+      "لم يحدث شيء"
+     ],
+     "answer": 0,
+     "choices_es": false,
+     "turn": "dlg_b1_historia.t8",
+     "id": "dlg_b1_historia.q4",
+     "skill": "listening"
+    },
+    {
+     "type": "speaker",
+     "turn": "dlg_b1_historia.t11",
+     "id": "dlg_b1_historia.q5",
+     "skill": "listening"
+    },
+    {
+     "type": "dictation",
+     "turn": "dlg_b1_historia.t12",
+     "id": "dlg_b1_historia.q6",
+     "skill": "listening"
+    }
+   ],
+   "source": "original-v1"
   }
  ]
 }

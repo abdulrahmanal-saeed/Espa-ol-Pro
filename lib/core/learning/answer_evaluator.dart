@@ -87,6 +87,17 @@ const _endings = {
   'ieron',
   'asteis',
   'isteis',
+  // Pretérito imperfecto (B1-U2), accents stripped: trabajaba, comía.
+  'aba',
+  'abas',
+  'abamos',
+  'abais',
+  'aban',
+  'ia',
+  'ias',
+  'iamos',
+  'iais',
+  'ian',
 };
 
 bool _isInflection(String a, String b) {

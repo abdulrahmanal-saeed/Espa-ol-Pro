@@ -1,5 +1,5 @@
 {
- "version": "1.12.0",
+ "version": "1.13.0",
  "sources": [
   {
    "id": "original-v1",
@@ -240,11 +240,13 @@
     {
      "id": "b1_u2",
      "title_ar": "السرد والتجارب",
-     "description_ar": "التباين بين indefinido و imperfecto.",
+     "description_ar": "الماضي المستمر (imperfecto) للعادة والوصف، والتباين مع indefinido، وحكاية تجربة مهنية ومشكلة في مشروع، مع درس قراءة واستماع أطول.",
      "objectives_ar": [
+      "وصف العادات والأوضاع في الماضي",
+      "رواية قصة بالخلفية والأحداث",
       "سرد تجربة مهنية بالتفصيل"
      ],
-     "status": "planned"
+     "status": "available"
     },
     {
      "id": "b1_u3",

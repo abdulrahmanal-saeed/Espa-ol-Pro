@@ -71,13 +71,12 @@ void main() {
         expect(unit.lessons[i].prerequisites, [unit.lessons[i - 1].id]);
       }
       final b1 = pack.levels.firstWhere((l) => l.id == 'b1');
-      expect(b1.units.where((u) => u.isAvailable).map((u) => u.id), ['b1_u1']);
-      // Later B1 units stay planned, with no lessons.
-      for (final u in b1.units.skip(1)) {
-        expect(u.isAvailable, isFalse, reason: u.id);
+      expect(b1.units.first.id, 'b1_u1');
+      expect(b1.units.first.isAvailable, isTrue);
+      // Planned B1 units have no lessons.
+      for (final u in b1.units.where((u) => !u.isAvailable)) {
         expect(u.lessons, isEmpty, reason: u.id);
       }
-      expect(pack.version, '1.12.0');
       expect(ContentValidator().validate(pack), isEmpty);
     });
 
@@ -250,8 +249,7 @@ void main() {
       expect(byId['convencer']!.forms['yo'], 'convenzo');
       expect(byId['deber']!.forms, Verb.regularPresent('deber'));
       expect(byId['importar']!.preterite, Verb.regularPreterite('importar'));
-      // Imperfect and subjunctive arrive with their units (B1-U2, B1-U3).
-      expect(pack.verbs.where((v) => v.imperfect.isNotEmpty), isEmpty);
+      // The subjunctive arrives with its unit (B1-U3).
       expect(pack.verbs.where((v) => v.subjunctive.isNotEmpty), isEmpty);
     });
 
@@ -290,7 +288,10 @@ void main() {
         'podría',
       );
       // No tense that has not been taught yet.
-      expect(find.byKey(const ValueKey('verb-imperfect-poder')), findsNothing);
+      expect(
+        find.byKey(const ValueKey('verb-subjunctive-poder')),
+        findsNothing,
+      );
       await app.dispose(tester);
     });
   });
