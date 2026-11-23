@@ -18,11 +18,19 @@ units/<unit_id>.json     grammar notes + lessons of one *available* unit
     "id": "pre_a1|a1|a2|b1|b2|c1|c2",       // exactly these, in this order
     "code": "A1", "title_ar", "description_ar", "can_do_ar": ["…"],
     "preparatory": false,                   // true only for pre_a1
+    "requires_pass": "lvl_a2",              // optional (content ≥ 1.11.0)
     "units": [{ "id", "title_ar", "description_ar", "objectives_ar": ["…"],
                 "status": "available|planned" }]
   }]
 }
 ```
+
+`requires_pass` names the level assessment of an EARLIER level that must be
+passed once before any lesson of this level opens (B1 → `lvl_a2`). An
+attempt passes when every can-do it measures is met (`CanDoEvidence`,
+threshold 0.75). The gate is derived from stored attempts: no extra learner
+state. Validation: the id is an assessment, of kind `level`, of an earlier
+level.
 
 ## units/<unit_id>.json
 
@@ -217,6 +225,25 @@ Content ≥ 1.6.0 may add the pretérito indefinido:
 Both keys are optional, so older files keep loading. When `preterite` is
 given, all six persons are required. A regular past must equal the rules,
 including the yo spelling changes (-car → qué, -gar → gué, -zar → cé).
+
+Content ≥ 1.11.0 may add the B1 tenses, each optional and complete when
+given, each with a `<tense>_regular` override that defaults to `regular`:
+
+```jsonc
+  "imperfect":   { "yo": "hablaba", … },   // -aba… / -ía…
+  "conditional": { "yo": "hablaría", … },  // infinitive + -ía…
+  "subjunctive": { "yo": "hable", … },     // swapped vowel; -car → que,
+                                           // -gar → gue, -zar → ce, -ger → ja
+  "conditional_regular": true              // e.g. ser: irregular present,
+                                           // regular conditional (sería)
+```
+
+A regular form must equal its rule exactly (`Verb.regularImperfect`,
+`regularConditional`, `regularSubjunctive`). The library shows each tense a
+verb has after the present and the past (`verb-imperfect-…`,
+`verb-conditional-…`, `verb-subjunctive-…`; `verb-form-…` and
+`verb-past-…` are unchanged). A tense is added to the file only with the
+unit that teaches it.
 
 Validation: unique ids; Arabic gloss; all six persons present, no Arabic
 script, no unknown person keys; **a regular verb's six forms must equal the

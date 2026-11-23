@@ -163,7 +163,7 @@ detect it.
 | 7 new verbs (pensar, proponer by hand; quedar, cambiar, confirmar, mandar, pasar machine-checked) — 39 verbs | `a2_u3_future_test` |
 | REVIEW-015 P3: the tense explanation only for verbs; non-verb list; validator rule on all answer words ending in a stressed é/ó | `a2_u3_future_test` (4 negative content cases) |
 
-## A2-U4 preferences and comparison (PR in review, stacked on A2-U3)
+## A2-U4 preferences and comparison (merged, PR #15)
 
 | Area | Evidence |
 |---|---|
@@ -171,7 +171,7 @@ detect it.
 | 3 dialogues within difficulty limits; checkpoint `chk_a2_u4` (12 questions, 5 skills, shuffled, persisted) | `a2_u4_preferences_test` |
 | 6 new verbs (preferir, creer, parecer, recomendar by hand; gustar, encantar machine-checked) — 45 verbs | `a2_u4_preferences_test` |
 
-## A2-U5 simple work conversations (PR in review, stacked on A2-U4)
+## A2-U5 simple work conversations (merged, PR #16)
 
 | Area | Evidence |
 |---|---|
@@ -179,13 +179,26 @@ detect it.
 | 3 dialogues within difficulty limits (the estimator flagged a spelled-out name and three untaught forms; they were rewritten); checkpoint `chk_a2_u5` (12 questions, 5 skills, shuffled, persisted) | `a2_u5_work_test` |
 | 7 new verbs (dar, seguir, recordar, acordar by hand; adjuntar, avisar, interesar machine-checked) — 52 verbs | `a2_u5_work_test` |
 
-## A2 level assessment (PR in review, stacked on A2-U5)
+## A2 level assessment (merged, PR #17 → `69c7d7d`)
 
 | Area | Evidence |
 |---|---|
 | `lvl_a2`: 25 questions, five can-dos (one per A2 unit, covering every A2 lesson), five skills, no speaking, five dialogue sentences, explanations on every grammar question; content 1.10.0 | `a2_level_test` |
 | Locked until every A2 lesson is completed; tile at the end of A2 on the path; start enabled and no-certification note shown | `a2_level_test` (widget) |
 | Options shuffled per attempt; results persist across a database reopen; a missing meaning accent (llegué, está) is wrong | `a2_level_test` |
+
+## Phase 4 — B1 gate and B1-U1 opinion and reasoning (PR in review)
+
+| Area | Evidence |
+|---|---|
+| B1 gate (owner decision): B1 lessons stay locked until `lvl_a2` is passed once. Pass = every can-do of the attempt met at `CanDoEvidence.threshold` (0.75). Any pass opens B1; a later failed retry does not re-lock. A1 → A2 unchanged | `level_gate_test` (rule, failed retry, older version, other assessments) |
+| Gate is `requires_pass` in `curriculum.json`, validated (level assessment of an earlier level); derived from stored attempts — no new learner state; survives backup and restore | `level_gate_test` (validator on broken copies, backup round trip) |
+| Arabic explanation and a button to the test on the path (level card, locked lesson tiles), the lesson intro and home; the test's intro and result say what it opens | `b1_gate_flow_test` (locked → pass on screen → unlocked; failing attempt stays locked; failed retry after a pass stays open; A1 → A2 still open) |
+| Verb model: optional imperfect, conditional and present subjunctive with `<tense>_regular`; regular forms rule-checked; shown in Library after the past; files without them still validate | `verb_tenses_test`, `b1_u1_opinion_test` (library widget) |
+| 5 lessons (58–62) after `a2_u5_l5`: opinion and reasons, connectors, regular and irregular conditional, advice, a structured argument; 40 items, 5 grammar notes; content 1.11.0 | `b1_u1_opinion_test` (every lesson completed in the app, 2 FSRS cards per item) |
+| 3 dialogues at 100 % known words right after their lessons; checkpoint `chk_b1_u1` (12 questions, 3 can-dos, 5 skills, 3 dialogue sentences, shuffled, persisted) | `b1_u1_opinion_test` |
+| Conditional for 11 verbs; deber, importar (machine-checked), convencer (by hand) — 55 verbs | `b1_u1_opinion_test` |
+| No subjunctive triggers or imperfect forms in B1-U1 (they arrive in B1-U3 / B1-U2); near-synonym groups keep valid answers out of the distractors | `b1_u1_opinion_test` |
 
 ## Android build and runtime
 
@@ -218,7 +231,7 @@ detect it.
   pronunciation assessment. Listen-and-repeat is self-practice and never scored.
 - CEFR level estimates and the A1 level assessment (unit checkpoints exist; they are practice evidence, not certification).
 - Verb conjugation reference, stories.
-- Interview coach, work missions, and all B1–C2 lessons.
+- Interview coach, work missions, and B1-U2 onward (B1-U2–U4, `lvl_b1`, B2–C2).
 - Cloud sync. AI usage budget controls (nothing to budget yet).
 - Native-speaker review of content.
 
@@ -236,8 +249,8 @@ detect it.
 5. Review queue is capped at 60 cards per session.
 6. Curriculum entities are in JSON, not SQL tables (deliberate — DATABASE.md).
 7. Lesson attempts still store accepted-with-accent-reminder answers as
-   correct (only checkpoints store the outcome). Stricter accent rules for
-   higher levels are planned with A2.
+   correct (only checkpoints store the outcome). Stricter accent rules from
+   B1 on are proposed in PHASE4-001 and not built yet.
 8. A final flush started while the review screen is being closed is not
    awaited (dispose cannot wait). It is normally preceded by the lifecycle
    flush when the app leaves the foreground, which is the reliable path
