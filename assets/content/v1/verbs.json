@@ -114,7 +114,8 @@
    },
    "lessons": [
     "a1_u5_l3",
-    "a2_u2_l4"
+    "a2_u2_l4",
+    "a2_u3_l1"
    ],
    "examples": [
     {
@@ -309,7 +310,8 @@
    },
    "lessons": [
     "a1_u3_l3",
-    "a2_u2_l1"
+    "a2_u2_l1",
+    "a2_u3_l4"
    ],
    "examples": [
     {
@@ -756,7 +758,8 @@
     "ellos": "salen"
    },
    "lessons": [
-    "a2_u2_l2"
+    "a2_u2_l2",
+    "a2_u3_l4"
    ],
    "examples": [
     {
@@ -915,7 +918,8 @@
     "ellos": "empiezan"
    },
    "lessons": [
-    "a2_u2_l3"
+    "a2_u2_l3",
+    "a2_u3_l4"
    ],
    "examples": [
     {
@@ -1027,6 +1031,227 @@
     "vosotros": "solucionasteis",
     "ellos": "solucionaron"
    }
+  },
+  {
+   "id": "pasar",
+   "infinitive": "pasar",
+   "ar": "يحدث / يمرّ",
+   "regular": true,
+   "present": {
+    "yo": "paso",
+    "tu": "pasas",
+    "el": "pasa",
+    "nosotros": "pasamos",
+    "vosotros": "pasáis",
+    "ellos": "pasan"
+   },
+   "preterite": {
+    "yo": "pasé",
+    "tu": "pasaste",
+    "el": "pasó",
+    "nosotros": "pasamos",
+    "vosotros": "pasasteis",
+    "ellos": "pasaron"
+   },
+   "lessons": [
+    "a2_u2_l5"
+   ],
+   "examples": [
+    {
+     "es": "¿Qué pasó con el pedido?",
+     "ar": "ماذا حدث مع الطلب؟"
+    }
+   ]
+  },
+  {
+   "id": "pensar",
+   "infinitive": "pensar",
+   "ar": "يفكّر / ينوي",
+   "regular": false,
+   "present": {
+    "yo": "pienso",
+    "tu": "piensas",
+    "el": "piensa",
+    "nosotros": "pensamos",
+    "vosotros": "pensáis",
+    "ellos": "piensan"
+   },
+   "preterite": {
+    "yo": "pensé",
+    "tu": "pensaste",
+    "el": "pensó",
+    "nosotros": "pensamos",
+    "vosotros": "pensasteis",
+    "ellos": "pensaron"
+   },
+   "lessons": [
+    "a2_u3_l2"
+   ],
+   "examples": [
+    {
+     "es": "Pienso visitar a mis padres.",
+     "ar": "أنوي زيارة والديّ."
+    }
+   ],
+   "preterite_regular": true,
+   "note_ar": "e ← ie في المضارع (إلا nosotros وvosotros). pensar + مصدر = ينوي. منتظم في الماضي: pensé."
+  },
+  {
+   "id": "quedar",
+   "infinitive": "quedar",
+   "ar": "يتّفق على موعد / يلتقي",
+   "regular": true,
+   "present": {
+    "yo": "quedo",
+    "tu": "quedas",
+    "el": "queda",
+    "nosotros": "quedamos",
+    "vosotros": "quedáis",
+    "ellos": "quedan"
+   },
+   "preterite": {
+    "yo": "quedé",
+    "tu": "quedaste",
+    "el": "quedó",
+    "nosotros": "quedamos",
+    "vosotros": "quedasteis",
+    "ellos": "quedaron"
+   },
+   "lessons": [
+    "a2_u3_l3"
+   ],
+   "examples": [
+    {
+     "es": "¿Quedamos el lunes?",
+     "ar": "هل نلتقي يوم الاثنين؟"
+    }
+   ]
+  },
+  {
+   "id": "cambiar",
+   "infinitive": "cambiar",
+   "ar": "يغيّر",
+   "regular": true,
+   "present": {
+    "yo": "cambio",
+    "tu": "cambias",
+    "el": "cambia",
+    "nosotros": "cambiamos",
+    "vosotros": "cambiáis",
+    "ellos": "cambian"
+   },
+   "preterite": {
+    "yo": "cambié",
+    "tu": "cambiaste",
+    "el": "cambió",
+    "nosotros": "cambiamos",
+    "vosotros": "cambiasteis",
+    "ellos": "cambiaron"
+   },
+   "lessons": [
+    "a2_u3_l3"
+   ],
+   "examples": [
+    {
+     "es": "¿Podemos cambiar la reunión?",
+     "ar": "هل يمكننا تغيير موعد الاجتماع؟"
+    }
+   ]
+  },
+  {
+   "id": "confirmar",
+   "infinitive": "confirmar",
+   "ar": "يؤكّد",
+   "regular": true,
+   "present": {
+    "yo": "confirmo",
+    "tu": "confirmas",
+    "el": "confirma",
+    "nosotros": "confirmamos",
+    "vosotros": "confirmáis",
+    "ellos": "confirman"
+   },
+   "preterite": {
+    "yo": "confirmé",
+    "tu": "confirmaste",
+    "el": "confirmó",
+    "nosotros": "confirmamos",
+    "vosotros": "confirmasteis",
+    "ellos": "confirmaron"
+   },
+   "lessons": [
+    "a2_u3_l3"
+   ],
+   "examples": [
+    {
+     "es": "Le confirmo la hora mañana.",
+     "ar": "أؤكّد لك الساعة غداً."
+    }
+   ]
+  },
+  {
+   "id": "proponer",
+   "infinitive": "proponer",
+   "ar": "يقترح",
+   "regular": false,
+   "present": {
+    "yo": "propongo",
+    "tu": "propones",
+    "el": "propone",
+    "nosotros": "proponemos",
+    "vosotros": "proponéis",
+    "ellos": "proponen"
+   },
+   "preterite": {
+    "yo": "propuse",
+    "tu": "propusiste",
+    "el": "propuso",
+    "nosotros": "propusimos",
+    "vosotros": "propusisteis",
+    "ellos": "propusieron"
+   },
+   "lessons": [
+    "a2_u3_l3"
+   ],
+   "examples": [
+    {
+     "es": "Propongo el jueves a las diez.",
+     "ar": "أقترح الخميس في العاشرة."
+    }
+   ],
+   "note_ar": "مثل poner: propongo مع yo، وفي الماضي propuse / propuso (بلا علامة نبر)."
+  },
+  {
+   "id": "mandar",
+   "infinitive": "mandar",
+   "ar": "يرسل",
+   "regular": true,
+   "present": {
+    "yo": "mando",
+    "tu": "mandas",
+    "el": "manda",
+    "nosotros": "mandamos",
+    "vosotros": "mandáis",
+    "ellos": "mandan"
+   },
+   "preterite": {
+    "yo": "mandé",
+    "tu": "mandaste",
+    "el": "mandó",
+    "nosotros": "mandamos",
+    "vosotros": "mandasteis",
+    "ellos": "mandaron"
+   },
+   "lessons": [
+    "a2_u3_l5"
+   ],
+   "examples": [
+    {
+     "es": "Le mando el plan esta tarde.",
+     "ar": "أرسل لك الخطة اليوم بعد الظهر."
+    }
+   ],
+   "note_ar": "mandar = enviar في معنى «يرسل»، وهو أكثر شيوعاً في الكلام."
   }
  ],
  "note_ar": "vosotros يُستعمل في إسبانيا للجمع غير الرسمي؛ وفي أمريكا اللاتينية يُستعمل ustedes لكل الجمع."

@@ -414,6 +414,215 @@
     }
    ],
    "source": "original-v1"
+  },
+  {
+   "id": "chk_a2_u3",
+   "version": 1,
+   "kind": "unit",
+   "level": "a2",
+   "unit": "a2_u3",
+   "title_ar": "نقطة تحقق: الخطط والمستقبل",
+   "intro_ar": "نقطة تحقق قصيرة. لا تلميحات ولا إظهار للإجابات قبل النهاية، ولا إعادة للأسئلة. النتيجة دليل على ما تستطيعه الآن، وليست شهادة مستوى.",
+   "can_do": [
+    {
+     "id": "cd_a2_u3_plans",
+     "ar": "أتحدث عن خططي، وأدعو شخصاً أو أعتذر بأدب",
+     "lessons": [
+      "a2_u3_l1",
+      "a2_u3_l2"
+     ]
+    },
+    {
+     "id": "cd_a2_u3_meeting",
+     "ar": "أرتّب موعد اجتماع وأغيّره وأؤكّده",
+     "lessons": [
+      "a2_u3_l3"
+     ]
+    },
+    {
+     "id": "cd_a2_u3_project",
+     "ar": "أفهم جدولاً وأشرح خطة مشروع ومواعيدها",
+     "lessons": [
+      "a2_u3_l4",
+      "a2_u3_l5"
+     ]
+    }
+   ],
+   "questions": [
+    {
+     "id": "chk_a2_u3.q1",
+     "type": "choice",
+     "skill": "grammar",
+     "can_do": "cd_a2_u3_plans",
+     "prompt_ar": "اختر الكلمة المناسبة للفراغ",
+     "stimulus_es": "Mañana nosotros ___ a visitar al cliente.",
+     "choices": [
+      "vamos",
+      "van",
+      "fuimos"
+     ],
+     "answer": 0,
+     "explain_ar": "mañana ← المستقبل، ومع nosotros: vamos a + مصدر."
+    },
+    {
+     "id": "chk_a2_u3.q2",
+     "type": "choice",
+     "skill": "listening",
+     "can_do": "cd_a2_u3_plans",
+     "prompt_ar": "استمع إلى جملة من حوار «هل تريد أن تأتي؟»: لماذا لا يستطيع عمر الذهاب؟",
+     "dialogue_turn": "dlg_a2_invitacion.t4",
+     "choices": [
+      "عنده ارتباط مع عائلته",
+      "عنده اجتماع",
+      "يجب أن ينهي التقرير"
+     ],
+     "answer": 0,
+     "choices_es": false
+    },
+    {
+     "id": "chk_a2_u3.q3",
+     "type": "choice",
+     "skill": "reading",
+     "can_do": "cd_a2_u3_plans",
+     "prompt_ar": "صديق يدعوك ولا تستطيع الذهاب. أيّ ردّ مهذّب؟",
+     "choices": [
+      "Me encantaría, pero no puedo. ¿Otro día?",
+      "No quiero.",
+      "No, gracias. Adiós."
+     ],
+     "answer": 0,
+     "choices_es": true
+    },
+    {
+     "id": "chk_a2_u3.q4",
+     "type": "type",
+     "skill": "writing",
+     "can_do": "cd_a2_u3_plans",
+     "prompt_ar": "اكتب بالإسبانية (لقبول دعوة)",
+     "stimulus_ar": "يسعدني ذلك كثيراً",
+     "accepted": [
+      "me encantaría"
+     ]
+    },
+    {
+     "id": "chk_a2_u3.q5",
+     "type": "choice",
+     "skill": "grammar",
+     "can_do": "cd_a2_u3_meeting",
+     "prompt_ar": "اختر الكلمة المناسبة للفراغ",
+     "stimulus_es": "¿Te ___ bien el viernes?",
+     "choices": [
+      "viene",
+      "vienes",
+      "vas"
+     ],
+     "answer": 0,
+     "explain_ar": "¿Te viene bien…? — الفعل يتّفق مع الموعد (el viernes)، لا مع tú."
+    },
+    {
+     "id": "chk_a2_u3.q6",
+     "type": "choice",
+     "skill": "listening",
+     "can_do": "cd_a2_u3_meeting",
+     "prompt_ar": "استمع إلى جملة من حوار «موعد مع العميلة»: لماذا تقترح مكالمة فيديو؟",
+     "dialogue_turn": "dlg_a2_cita_cliente.t4",
+     "choices": [
+      "لأنها ستكون في برشلونة",
+      "لأنها مريضة",
+      "لأن المكتب مغلق"
+     ],
+     "answer": 0,
+     "choices_es": false
+    },
+    {
+     "id": "chk_a2_u3.q7",
+     "type": "choice",
+     "skill": "vocabulary",
+     "can_do": "cd_a2_u3_meeting",
+     "prompt_ar": "ما معنى العبارة؟",
+     "stimulus_es": "a primera hora",
+     "choices": [
+      "في أول الصباح",
+      "في آخر اليوم",
+      "بعد ساعة"
+     ],
+     "answer": 0,
+     "choices_es": false
+    },
+    {
+     "id": "chk_a2_u3.q8",
+     "type": "type",
+     "skill": "writing",
+     "can_do": "cd_a2_u3_meeting",
+     "prompt_ar": "اكتب بالإسبانية",
+     "stimulus_ar": "مكالمة الفيديو",
+     "accepted": [
+      "la videollamada",
+      "videollamada"
+     ]
+    },
+    {
+     "id": "chk_a2_u3.q9",
+     "type": "choice",
+     "skill": "grammar",
+     "can_do": "cd_a2_u3_project",
+     "prompt_ar": "اختر الكلمة المناسبة للفراغ",
+     "stimulus_es": "El vuelo ___ mañana a las siete.",
+     "choices": [
+      "sale",
+      "salió",
+      "salgo"
+     ],
+     "answer": 0,
+     "explain_ar": "رحلة مجدولة في المستقبل ← الحاضر: sale."
+    },
+    {
+     "id": "chk_a2_u3.q10",
+     "type": "choice",
+     "skill": "grammar",
+     "can_do": "cd_a2_u3_project",
+     "prompt_ar": "اختر الكلمة المناسبة للفراغ",
+     "stimulus_es": "Si todo ___ bien, la entrega es a finales de mes.",
+     "choices": [
+      "va",
+      "fue",
+      "vamos"
+     ],
+     "answer": 0,
+     "explain_ar": "بعد si لشرط في المستقبل: الحاضر (va)."
+    },
+    {
+     "id": "chk_a2_u3.q11",
+     "type": "choice",
+     "skill": "listening",
+     "can_do": "cd_a2_u3_project",
+     "prompt_ar": "استمع إلى جملة من حوار «خطة المشروع»: متى سترسل آنا عرض السعر؟",
+     "dialogue_turn": "dlg_a2_proyecto.t6",
+     "choices": [
+      "اليوم بعد الظهر",
+      "غداً",
+      "يوم الجمعة"
+     ],
+     "answer": 0,
+     "choices_es": false
+    },
+    {
+     "id": "chk_a2_u3.q12",
+     "type": "choice",
+     "skill": "reading",
+     "can_do": "cd_a2_u3_project",
+     "prompt_ar": "متى تنتهي مهلة إرسال العرض التقديمي؟",
+     "stimulus_es": "Feria de Tecnología de Madrid: empieza el lunes a las diez y termina el jueves a las seis. El plazo para enviar la presentación termina el viernes.",
+     "choices": [
+      "يوم الجمعة",
+      "يوم الخميس",
+      "يوم الاثنين"
+     ],
+     "answer": 0,
+     "choices_es": false
+    }
+   ],
+   "source": "original-v1"
   }
  ]
 }
