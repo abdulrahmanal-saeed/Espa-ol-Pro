@@ -1,3 +1,25 @@
+# REVIEW-020 — PHASE4-004 / updated PR #19 (2026-11-23T12:27:00Z)
+
+owner: ChatGPT
+review_id: REVIEW-020
+review_status: APPROVED_WITH_RELEASE_GATES
+reviewed_pr: https://github.com/abdulrahmanal-saeed/Espa-ol-Pro/pull/19
+reviewed_application_sha: a442f82bd4d57bb5817f8922bd48a2be66188356
+reviewed_pr_head_sha: 9a2f5ec11c548ffb9bd0b955a843cafff827f9fe
+responding_to_handoff: PHASE4-004
+
+**Independent discovery:** Read the three bridge files on main and the newer READY_FOR_REVIEW PHASE4-004 handoff directly from PR #19's current head branch, which supersedes main's stale PHASE4-002. GitHub's generic open-PR issue search returned an empty collection and is not reliable evidence of exhaustive PR coverage; the known #19 branch was inspected directly. REVIEW-019 previously covered application c456fc8; this review does not repeat it. Compared its commit with the new head and examined the new application commit a442f82 patch, B1-U2 source JSON, assessment/dialogue data, answer evaluator, regression tests, and follow-up P3 fixes. The new head includes both the earlier 17acbc5 P3 fixes and B1-U2 content 1.13.0. This is an updated existing PR, not a separately opened PR.
+
+**Verified source:** B1-U2 has six sequential lessons, including an extended reading/listening lesson, four linked dialogues, a 12-question three-can-do checkpoint, first authored Spanish-first prompts, and imperfect forms in the verb reference. The code adds imperfect endings to typed-answer grammar-form diagnostics. The BilingualPrompt didUpdateWidget reset for changing Spanish/Arabic prompts is present; the assessment validator now excludes dictation prompt_es. The new test/b1_u2_narration_test.dart covers lesson sequence, exercise categories, longer stimuli, dialogues, checkpoint, imperfect verb forms, evaluator and persistence/review behavior. These are source/test inspections, not independent native-speaker approval of the curriculum.
+
+**Independent CI:** Exact PR branch head 9a2f5ec GitHub Actions run [45167356133](https://github.com/abdulrahmanal-saeed/Espa-ol-Pro/actions/runs/45167356133) completed **success**. Both jobs passed: format/analyze/content/tests and Android debug APK, including artifact upload. Retrieved raw test-job log; it explicitly ends **465 tests passed** and analyzer **No issues found**. The implementer's local 465-test statement is thus corroborated by CI, but no physical Android device was exercised by this reviewer.
+
+**Findings:** No newly confirmed P0/P1/P2 implementation defect in the inspected scope. **P3 — overly categorical aspect teaching:** `assets/content/v1/units/b1_u2.json`, grammar note `g_b1_past_contrast`, says `de repente` and `hace + duration` imply indefinido as fixed rules. They are useful heuristics for the supplied examples but not universally sufficient to determine tense without context (e.g., habitual narratives or ongoing states). Fix: label them as common patterns for completed events, not absolute tense rules; add a content regression assertion and obtain native-qualified review of explanatory examples. **P3 — future pedagogy/UX:** lesson 6's four reading questions each repeat the same ~150-word `stimulus_es` in `assets/content/v1/units/b1_u2.json`; consider a shared persistent reading passage or dedicated multi-question reading screen to avoid repetitive scrolling on small Android devices. This is not evidence of broken grading; test with actual device and accessibility before changing UI.
+
+**Claims and gates:** The handoff's 100% dialogue known-word coverage and zero premature subjunctive are assertions supported by authored automated tests, not independent human linguistic evaluation. The reading includes some untaught forms per the implementer's own note; treat the word-count threshold as soft and validate comprehensibility with learners. Native Spanish/pedagogical QA, physical Android testing (TTS, keyboard accents, RTL/LTR, reading-scroll UX, FSRS and persistence), and explicit owner authorization for merge/release remain pending. B1-U3/U4 and lvl_b1/B2 gate are not complete; do not mark project complete. No merge or deployment performed. Only this reviewer report was updated.
+
+---
+
 # REVIEW-019 — PHASE4-003 PR #19 (2026-11-23T11:24:25Z)
 
 owner: ChatGPT
