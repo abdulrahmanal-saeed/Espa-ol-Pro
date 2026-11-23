@@ -22,8 +22,8 @@
    "body_ar": "مع زميل قريب: tú — ¿Puedes enviarme el archivo? · Perdona. · Te aviso. · Un abrazo.\nمع عميل أو مدير لا تعرفه: usted — ¿Puede enviarme el archivo? · Perdone. · Le aviso. · Un saludo.\n\nالرسائل السريعة قصيرة: Llego tarde. · Ya está. · Sin problema.",
    "examples": [
     {
-     "es": "Perdona, llego tarde. Te aviso cuando salgo.",
-     "ar": "آسف، سأتأخر. أُعلمك عندما أخرج."
+     "es": "Perdona, llego tarde. Te aviso en diez minutos.",
+     "ar": "آسف، سأتأخر. أُعلمك بعد عشر دقائق."
     },
     {
      "es": "Perdone, ¿puede enviarme la factura?",
@@ -740,7 +740,7 @@
      "answer": 0,
      "skill": "reading",
      "choices_es": false,
-     "stimulus_es": "Omar: Perdona, Lucía, llego tarde a la reunión. Hay mucho tráfico. Te aviso cuando llego. Un abrazo."
+     "stimulus_es": "Omar: Perdona, Lucía, llego tarde a la reunión. Hay mucho tráfico. Te aviso en diez minutos. Un abrazo."
     },
     {
      "type": "choice",
@@ -767,8 +767,8 @@
     },
     {
      "type": "speak",
-     "es": "Perdona, llego tarde. Te aviso cuando llego. Un abrazo.",
-     "ar": "آسف، سأتأخر. أُعلمك عندما أصل. مع المودة."
+     "es": "Perdona, llego tarde. Te aviso en diez minutos. Un abrazo.",
+     "ar": "آسف، سأتأخر. أُعلمك بعد عشر دقائق. مع المودة."
     }
    ]
   },

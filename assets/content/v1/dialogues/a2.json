@@ -1994,9 +1994,9 @@
     {
      "id": "dlg_a2_mensajes.t5",
      "speaker": "omar",
-     "es": "Todavía no. Te aviso cuando está listo.",
-     "ar": "ليس بعد. أُعلمك عندما يكون جاهزاً.",
-     "en": "Not yet. I'll let you know when it's ready."
+     "es": "Todavía no. Te aviso esta tarde.",
+     "ar": "ليس بعد. أُعلمك اليوم بعد الظهر.",
+     "en": "Not yet. I'll let you know this afternoon."
     },
     {
      "id": "dlg_a2_mensajes.t6",
