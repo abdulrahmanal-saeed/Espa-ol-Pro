@@ -25,6 +25,16 @@ all its content:
 None of it is "accepted" until it has been reviewed, checked on a device and
 checked by a native speaker.
 
+## Codex finding on #17: fixed
+
+«Señor, ¿puedo firmar aquí?» is a valid request for permission, so `puedo`
+was a wrong distractor in `lvl_a2.q1`.
+
+- The prompt now states the intent: asking the gentleman to sign.
+- The distractors are now poder and podido.
+- The same fill in `a2_u1_l1`, already merged with #12, is fixed the same
+  way.
+
 ## PR #17: A2 level assessment `lvl_a2` (content 1.10.0, `54d4a2d`)
 
 **No app code changed.** The level-assessment logic built for `lvl_a1`
