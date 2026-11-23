@@ -5,7 +5,7 @@ implementer: Claude Code
 handoff_status: READY_FOR_REVIEW
 handoff_id: PHASE3-004
 updated_at_utc: 2026-11-23T12:00:00Z
-review_requested_for_sha: ab33be8 (application code a6c1ad9 on 7330136)
+review_requested_for_sha: 0a2b18b (application code 0a2b18b, a6c1ad9 and 7330136)
 branch: feat/a2-u3-future
 pull_request: https://github.com/abdulrahmanal-saeed/Espa-ol-Pro/pull/14
 last_review_acknowledged: REVIEW-015
@@ -43,6 +43,18 @@ It was merged with a normal merge as **`bb4c4b9`**
 - **One scoped test.** The A2-U2 compatibility test now asserts that the
   verb file is valid without past forms. The only remaining issues are the
   new rule's: "terminó" loses its source once the past forms are removed.
+
+## Codex review on PR #14: fixed in `0a2b18b`
+
+The Codex bot raised a P2 that I checked and agree with. The A2-U3 note
+taught that `ir a` cannot follow conditional `si`, but RAE gives "Si vas a
+salir, ponte el abrigo" as valid. What `si` excludes is the simple future.
+
+- The notes now say that, with an `ir a` example.
+- The distractors in the lesson choice, the fill and `chk_a2_u3.q10` were
+  `fue` / `va a ir`. They are now `irá` / `ir`, which are unambiguously
+  wrong.
+- The thread is answered and resolved. 368 tests still pass.
 
 ## PR #14: A2-U3 "Plans and the future" (content 1.7.0, `a6c1ad9`)
 
