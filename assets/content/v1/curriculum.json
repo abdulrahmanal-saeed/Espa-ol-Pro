@@ -1,5 +1,5 @@
 {
- "version": "1.11.0",
+ "version": "1.14.0",
  "sources": [
   {
    "id": "original-v1",
@@ -223,6 +223,8 @@
     "أكتب مراسلات مهنية واضحة"
    ],
    "requires_pass": "lvl_a2",
+   "strict_accents": true,
+   "spanish_prompts": true,
    "units": [
     {
      "id": "b1_u1",
@@ -238,21 +240,24 @@
     {
      "id": "b1_u2",
      "title_ar": "السرد والتجارب",
-     "description_ar": "التباين بين indefinido و imperfecto.",
+     "description_ar": "الماضي المستمر (imperfecto) للعادة والوصف، والتباين مع indefinido، وحكاية تجربة مهنية ومشكلة في مشروع، مع درس قراءة واستماع أطول.",
      "objectives_ar": [
+      "وصف العادات والأوضاع في الماضي",
+      "رواية قصة بالخلفية والأحداث",
       "سرد تجربة مهنية بالتفصيل"
      ],
-     "status": "planned"
+     "status": "available"
     },
     {
      "id": "b1_u3",
      "title_ar": "حل المشكلات مع العملاء",
-     "description_ar": "مدخل إلى subjuntivo في الطلب والنصح.",
+     "description_ar": "مدخل إلى subjuntivo في الطلب والتمنّي والنصيحة والرأي المنفي، ثم التعامل مع شكوى عميل واقتراح حلول، مع درس قراءة واستماع أطول.",
      "objectives_ar": [
-      "معالجة شكوى عميل",
-      "اقتراح حلول"
+      "طلب شيء من الآخرين وتمنّيه بالـ subjuntivo",
+      "النصح بأدب",
+      "معالجة شكوى عميل واقتراح حلول"
      ],
-     "status": "planned"
+     "status": "available"
     },
     {
      "id": "b1_u4",
@@ -276,6 +281,8 @@
     "أجتاز مقابلة عمل بالإسبانية",
     "أتفاوض وأعالج الاعتراضات"
    ],
+   "strict_accents": true,
+   "spanish_prompts": true,
    "units": [
     {
      "id": "b2_u1",
@@ -335,6 +342,8 @@
     "أكتب نصوصاً مهنية دقيقة الأسلوب",
     "أفهم حديثاً مطوّلاً وإن لم يكن منظّماً"
    ],
+   "strict_accents": true,
+   "spanish_prompts": true,
    "units": [
     {
      "id": "c1_u1",
@@ -374,6 +383,8 @@
     "أعبّر بدقة وأميّز الفروق الدقيقة في المعنى",
     "أفهم عملياً كل ما أسمع وأقرأ"
    ],
+   "strict_accents": true,
+   "spanish_prompts": true,
    "units": [
     {
      "id": "c2_u1",

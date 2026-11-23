@@ -84,7 +84,12 @@ class _AssessmentScreenState extends ConsumerState<AssessmentScreen> {
       _submitError = null;
     });
     try {
-      final graded = gradeAssessment(a, _answers);
+      final graded = gradeAssessment(
+        a,
+        _answers,
+        strictAccents:
+            ref.read(contentProvider).level(a.levelId)?.strictAccents ?? false,
+      );
       final id = await ref
           .read(assessmentRepositoryProvider)
           .submit(
@@ -392,8 +397,9 @@ class _AssessmentQuestionViewState
     return ListView(
       padding: const EdgeInsets.fromLTRB(20, 12, 20, 24),
       children: [
-        Text(
-          q.type == 'dictation' ? 'استمع واكتب ما تسمعه' : q.promptAr,
+        BilingualPrompt(
+          ar: q.type == 'dictation' ? 'استمع واكتب ما تسمعه' : q.promptAr,
+          es: q.type == 'dictation' ? null : q.promptEs,
           style: t.textTheme.titleMedium!.copyWith(
             fontWeight: FontWeight.w700,
             height: 1.5,
@@ -923,14 +929,20 @@ class _AnswerRow extends StatelessWidget {
                   style: t.textTheme.bodySmall!.copyWith(height: 1.6),
                 ),
               ),
-            if (Spelling.labelAr(answer.spelling).isNotEmpty)
+            if (Spelling.labelAr(
+              answer.spelling,
+              correct: answer.isCorrect,
+            ).isNotEmpty)
               Padding(
                 padding: const EdgeInsets.only(top: 4),
                 child: Text(
                   answer.isCorrect
                       // A wrong answer is already shown above, struck out.
-                      ? '${Spelling.labelAr(answer.spelling)}: ${answer.userAnswer}'
-                      : Spelling.labelAr(answer.spelling),
+                      ? '${Spelling.labelAr(answer.spelling, correct: answer.isCorrect)}: ${answer.userAnswer}'
+                      : Spelling.labelAr(
+                          answer.spelling,
+                          correct: answer.isCorrect,
+                        ),
                   key: ValueKey(
                     answer.spelling == Spelling.missingAccents
                         ? 'accent-note-${answer.questionId}'

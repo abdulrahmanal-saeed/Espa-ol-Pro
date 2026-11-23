@@ -199,6 +199,13 @@ class ContentValidator {
             String str(String k) => (a.data[k] as String? ?? '').trim();
             List list(String k) => a.data[k] as List? ?? const [];
 
+            final promptEs = a.data['prompt_es'];
+            if (promptEs != null) {
+              if (a.type != 'choice' && a.type != 'respond') {
+                err(aw, 'prompt_es is only for choice and respond');
+              }
+              _checkPromptEs(promptEs, level, aw, err);
+            }
             switch (a.type) {
               case 'teach':
                 final id = a.itemId;
@@ -323,11 +330,137 @@ class ContentValidator {
       }
     }
     _validateLevelGates(pack, err);
+    _validateLevelPolicies(pack, err);
+    _validateNoInternalIds(pack, err);
     _validateDialogues(pack, sourceIds, grammarIds, err);
     _validateAssessments(pack, sourceIds, err);
     _validateVerbs(pack, err);
     _validateFinalStressWords(pack, err);
     return issues;
+  }
+
+  /// Learner-facing Spanish never contains an underscore: an id such as
+  /// `revise_subj` leaking into `es`, an answer or an option would be shown,
+  /// spoken and graded as Spanish (REVIEW-021 P2). The fill blank `___` is
+  /// the only exception.
+  void _validateNoInternalIds(
+    ContentPack pack,
+    void Function(String, String) err,
+  ) {
+    void check(String where, Object? text) {
+      if (text is String && text.replaceAll('___', '').contains('_')) {
+        err(where, 'Spanish text "$text" contains "_" (an internal id?)');
+      }
+    }
+
+    void checkAll(String where, Object? list) {
+      for (final t in list as List? ?? const []) {
+        check(where, t);
+      }
+    }
+
+    for (final l in pack.orderedLessons) {
+      for (final i in l.items) {
+        check('item:${i.id}', i.es);
+        checkAll('item:${i.id}', i.alt);
+        for (final e in i.examples) {
+          check('item:${i.id}', e.es);
+        }
+      }
+      for (final a in l.activities) {
+        final d = a.data;
+        final w = 'activity:${a.id}';
+        for (final k in [
+          'es',
+          'answer',
+          'stimulus_es',
+          'audio_es',
+          'prompt_es',
+        ]) {
+          check(w, d[k]);
+        }
+        checkAll(w, d['alt']);
+        checkAll(w, d['options']);
+        checkAll(w, d['accepted']);
+        if (d['choices_es'] as bool? ?? true) checkAll(w, d['choices']);
+        for (final e in d['examples'] as List? ?? const []) {
+          check(w, (e as Map)['es']);
+        }
+      }
+    }
+    for (final u in pack.levels.expand((l) => l.units)) {
+      for (final g in u.grammar) {
+        for (final e in g.examples) {
+          check('grammar:${g.id}', e.es);
+        }
+      }
+    }
+    for (final d in pack.dialogues) {
+      for (final t in d.turns) {
+        check('dialogue:${d.id}/${t.id}', t.es);
+      }
+      for (final q in d.questions) {
+        if (q.choicesEs) checkAll('dialogue:${d.id}/${q.id}', q.choices);
+        check('dialogue:${d.id}/${q.id}', q.promptEs);
+      }
+    }
+    for (final a in pack.assessments) {
+      for (final q in a.questions) {
+        final w = 'assessment:${a.id}/${q.id}';
+        check(w, q.stimulusEs);
+        check(w, q.audioEs);
+        check(w, q.promptEs);
+        checkAll(w, q.accepted);
+        if (q.choicesEs) checkAll(w, q.choices);
+      }
+    }
+    for (final v in pack.verbs) {
+      for (final f in v.allForms) {
+        check('verb:${v.id}', f);
+      }
+      for (final e in v.examples) {
+        check('verb:${v.id}', e.es);
+      }
+    }
+  }
+
+  /// A Spanish instruction: only where its level allows it, Spanish only,
+  /// with balanced ¿ ? / ¡ !. The Arabic `prompt_ar` stays required.
+  void _checkPromptEs(
+    Object? raw,
+    Level? level,
+    String where,
+    void Function(String, String) err,
+  ) {
+    if (raw is! String || raw.trim().isEmpty) {
+      err(where, 'prompt_es must be a non-empty string');
+      return;
+    }
+    if (level == null || !level.spanishPrompts) {
+      err(where, 'prompt_es needs a level with spanish_prompts');
+    }
+    if (_arabic.hasMatch(raw)) err(where, 'prompt_es contains Arabic script');
+    _checkPunctuation(raw, where, err);
+  }
+
+  /// `strict_accents` and `spanish_prompts` only ever switch on: once a level
+  /// has one, every later level has it too.
+  void _validateLevelPolicies(
+    ContentPack pack,
+    void Function(String, String) err,
+  ) {
+    for (final (name, of) in <(String, bool Function(Level))>[
+      ('strict_accents', (l) => l.strictAccents),
+      ('spanish_prompts', (l) => l.spanishPrompts),
+    ]) {
+      var on = false;
+      for (final l in pack.levels) {
+        if (on && !of(l)) {
+          err('level:${l.id}', '$name must stay on after it starts');
+        }
+        on = on || of(l);
+      }
+    }
   }
 
   /// `requires_pass` must name the level assessment of an EARLIER level, so
@@ -568,6 +701,14 @@ class ContentValidator {
       for (final q in a.questions) {
         final qw = '$w/${q.id}';
         if (!questionIds.add(q.id)) err(qw, 'duplicate question id');
+        if (q.promptEs != null) {
+          // A dictation shows a fixed instruction, never prompt_ar or
+          // prompt_es (REVIEW-019 P3).
+          if (q.type == 'dictation') {
+            err(qw, 'prompt_es is not shown on a dictation question');
+          }
+          _checkPromptEs(q.promptEs, level, qw, err);
+        }
         final turnId = q.dialogueTurnId;
         if (turnId != null) {
           final d = pack.dialogues
@@ -733,6 +874,10 @@ class ContentValidator {
       for (final q in d.questions) {
         final qw = '$w/${q.id}';
         if (!questionIds.add(q.id)) err(qw, 'duplicate question id');
+        if (q.promptEs != null) {
+          if (q.type != 'choice') err(qw, 'prompt_es is only for choice');
+          _checkPromptEs(q.promptEs, pack.level(d.levelId), qw, err);
+        }
         if (!DialogueQuestion.types.contains(q.type)) {
           err(qw, 'unknown question type "${q.type}"');
           continue;

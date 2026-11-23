@@ -29,11 +29,16 @@ sealed class Exercise extends LessonStep {
     required this.promptAr,
     required this.expected,
     this.itemId,
+    this.promptEs,
   });
 
   final String type;
   final String skill;
   final String promptAr;
+
+  /// Spanish instruction shown first, with [promptAr] a tap away (authored
+  /// `prompt_es` at levels with `spanish_prompts`). Null: Arabic only.
+  final String? promptEs;
 
   /// Canonical correct answer, stored with the attempt.
   final String expected;
@@ -51,6 +56,7 @@ class ChoiceExercise extends Exercise {
     required super.promptAr,
     required super.expected,
     super.itemId,
+    super.promptEs,
     required this.options,
     required this.correctIndex,
     required this.optionsAreSpanish,
@@ -79,13 +85,18 @@ class TypeExercise extends Exercise {
     required super.promptAr,
     required super.expected,
     super.itemId,
+    super.promptEs,
     required this.accepted,
     this.stimulusAr,
     this.templateEs,
     this.audioEs,
+    this.strictAccents = false,
   });
 
   final List<String> accepted;
+
+  /// Missing written accents make the answer wrong (B1 and above).
+  final bool strictAccents;
   final String? stimulusAr;
 
   /// Sentence with a `___` blank (fill-in-the-blank).
@@ -175,20 +186,35 @@ class ExerciseBuilder {
   List<LessonStep> buildLesson(Lesson lesson) {
     final pool = pack.itemsUpTo(lesson);
     return [
-      for (final a in lesson.activities) _build(a, lesson.items, pool, ''),
+      for (final a in lesson.activities)
+        _build(a, lesson.items, pool, '', lesson.levelId),
     ];
   }
+
+  /// Whether typed answers at [levelId] are graded with strict accents.
+  bool strictAccentsAt(String levelId) =>
+      pack.level(levelId)?.strictAccents ?? false;
+
+  /// The Spanish instruction to show at [levelId], if authored and allowed.
+  String? _promptEs(Object? raw, String levelId) =>
+      raw is String &&
+          raw.trim().isNotEmpty &&
+          (pack.level(levelId)?.spanishPrompts ?? false)
+      ? raw
+      : null;
 
   LessonStep _build(
     ActivitySpec a,
     List<VocabItem> near,
     List<VocabItem> pool,
     String salt,
+    String levelId,
   ) {
     final rnd = Random(stableHash('${a.id}|$salt'));
     final d = a.data;
     final item = a.itemId == null ? null : pack.item(a.itemId!);
     String s(String k) => d[k] as String? ?? '';
+    final strict = strictAccentsAt(levelId);
 
     switch (a.type) {
       case 'teach':
@@ -267,6 +293,7 @@ class ExerciseBuilder {
           itemId: item.id,
           stimulusAr: item.ar,
           accepted: item.acceptedAnswers,
+          strictAccents: strict,
         );
       case 'dictation':
         final es = item?.es ?? s('es');
@@ -279,6 +306,7 @@ class ExerciseBuilder {
           itemId: item?.id,
           audioEs: es,
           accepted: [es, ...?item?.alt],
+          strictAccents: strict,
         );
       case 'speak':
         return SpeakExercise(
@@ -316,6 +344,7 @@ class ExerciseBuilder {
           stimulusAr: s('ar'),
           templateEs: s('es'),
           accepted: [answer, ...(d['alt'] as List? ?? const []).cast<String>()],
+          strictAccents: strict,
         );
       case 'order':
         final answer = tokenize(s('es'));
@@ -361,6 +390,7 @@ class ExerciseBuilder {
           type: a.type,
           skill: d['skill'] as String? ?? 'reading',
           promptAr: s('prompt_ar'),
+          promptEs: _promptEs(d['prompt_es'], levelId),
           expected: correct,
           stimulusEs: d['stimulus_es'] as String?,
           audioEs: d['audio_es'] as String?,
@@ -380,6 +410,8 @@ class ExerciseBuilder {
           stimulusAr: s('prompt_ar'),
           audioEs: d['audio_es'] as String?,
           accepted: accepted,
+          strictAccents: strict,
+          promptEs: _promptEs(d['prompt_es'], levelId),
         );
     }
     throw StateError('Unhandled activity type ${a.type}');
@@ -437,6 +469,7 @@ class ExerciseBuilder {
               promptAr: turn == null
                   ? q.promptAr
                   : '${q.promptAr}\n(استمع إلى الجملة)',
+              promptEs: _promptEs(q.promptEs, d.levelId),
               expected: correct,
               audioEs: turn?.es,
               options: options,
@@ -474,6 +507,7 @@ class ExerciseBuilder {
               expected: turn!.es,
               audioEs: turn.es,
               accepted: [turn.es],
+              strictAccents: strictAccentsAt(d.levelId),
             ),
           );
       }
@@ -506,7 +540,10 @@ class ExerciseBuilder {
         data: {'type': type, 'item': item.id},
       );
       final lesson = pack.lesson(item.lessonId);
-      out.add(_build(spec, lesson?.items ?? const [], pool, salt) as Exercise);
+      out.add(
+        _build(spec, lesson?.items ?? const [], pool, salt, item.levelId)
+            as Exercise,
+      );
     }
     return out;
   }

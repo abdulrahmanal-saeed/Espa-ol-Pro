@@ -77,6 +77,8 @@ class Level {
     required this.isPreparatory,
     required this.units,
     this.requiresPass,
+    this.strictAccents = false,
+    this.spanishPrompts = false,
   });
 
   final String id;
@@ -91,6 +93,17 @@ class Level {
   /// lesson of this level opens (`requires_pass`, content ≥ 1.11.0). Null
   /// when the level only needs its lesson prerequisites.
   final String? requiresPass;
+
+  /// From this level on, a typed answer with a missing or wrong written
+  /// accent (á é í ó ú ü) is wrong, not a reminder (`strict_accents`,
+  /// content ≥ 1.12.0; owner decision after PHASE4-001). ñ and accents that
+  /// change the meaning are wrong at every level.
+  final bool strictAccents;
+
+  /// Authored activities of this level may give a Spanish instruction
+  /// (`prompt_es`), shown first with the Arabic one a tap away
+  /// (`spanish_prompts`, content ≥ 1.12.0).
+  final bool spanishPrompts;
 
   Iterable<Lesson> get lessons => units.expand((u) => u.lessons);
 }
@@ -683,12 +696,16 @@ class DialogueQuestion {
     this.turnId,
     this.choicesEs = true,
     this.explainAr = '',
+    this.promptEs,
   });
 
   final String id;
   final String type;
   final String skill;
   final String promptAr;
+
+  /// Optional Spanish instruction (levels with `spanish_prompts`).
+  final String? promptEs;
   final List<String> choices;
   final int answer;
   final String? turnId;
@@ -791,7 +808,11 @@ class AssessmentQuestion {
     this.accepted = const [],
     this.dialogueTurnId,
     this.explainAr = '',
+    this.promptEs,
   });
+
+  /// Optional Spanish instruction (levels with `spanish_prompts`).
+  final String? promptEs;
 
   final String id;
   final String type;

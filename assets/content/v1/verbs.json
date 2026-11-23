@@ -32,6 +32,14 @@
     "vosotros": "fuisteis",
     "ellos": "fueron"
    },
+   "imperfect": {
+    "yo": "era",
+    "tu": "eras",
+    "el": "era",
+    "nosotros": "éramos",
+    "vosotros": "erais",
+    "ellos": "eran"
+   },
    "conditional": {
     "yo": "sería",
     "tu": "serías",
@@ -40,7 +48,15 @@
     "vosotros": "seríais",
     "ellos": "serían"
    },
-   "conditional_regular": true
+   "conditional_regular": true,
+   "subjunctive": {
+    "yo": "sea",
+    "tu": "seas",
+    "el": "sea",
+    "nosotros": "seamos",
+    "vosotros": "seáis",
+    "ellos": "sean"
+   }
   },
   {
    "id": "estar",
@@ -73,6 +89,15 @@
     "vosotros": "estuvisteis",
     "ellos": "estuvieron"
    },
+   "imperfect": {
+    "yo": "estaba",
+    "tu": "estabas",
+    "el": "estaba",
+    "nosotros": "estábamos",
+    "vosotros": "estabais",
+    "ellos": "estaban"
+   },
+   "imperfect_regular": true,
    "conditional": {
     "yo": "estaría",
     "tu": "estarías",
@@ -81,7 +106,15 @@
     "vosotros": "estaríais",
     "ellos": "estarían"
    },
-   "conditional_regular": true
+   "conditional_regular": true,
+   "subjunctive": {
+    "yo": "esté",
+    "tu": "estés",
+    "el": "esté",
+    "nosotros": "estemos",
+    "vosotros": "estéis",
+    "ellos": "estén"
+   }
   },
   {
    "id": "tener",
@@ -116,6 +149,15 @@
     "vosotros": "tuvisteis",
     "ellos": "tuvieron"
    },
+   "imperfect": {
+    "yo": "tenía",
+    "tu": "tenías",
+    "el": "tenía",
+    "nosotros": "teníamos",
+    "vosotros": "teníais",
+    "ellos": "tenían"
+   },
+   "imperfect_regular": true,
    "conditional": {
     "yo": "tendría",
     "tu": "tendrías",
@@ -123,6 +165,14 @@
     "nosotros": "tendríamos",
     "vosotros": "tendríais",
     "ellos": "tendrían"
+   },
+   "subjunctive": {
+    "yo": "tenga",
+    "tu": "tengas",
+    "el": "tenga",
+    "nosotros": "tengamos",
+    "vosotros": "tengáis",
+    "ellos": "tengan"
    }
   },
   {
@@ -157,6 +207,31 @@
     "nosotros": "fuimos",
     "vosotros": "fuisteis",
     "ellos": "fueron"
+   },
+   "imperfect": {
+    "yo": "iba",
+    "tu": "ibas",
+    "el": "iba",
+    "nosotros": "íbamos",
+    "vosotros": "ibais",
+    "ellos": "iban"
+   },
+   "conditional": {
+    "yo": "iría",
+    "tu": "irías",
+    "el": "iría",
+    "nosotros": "iríamos",
+    "vosotros": "iríais",
+    "ellos": "irían"
+   },
+   "conditional_regular": true,
+   "subjunctive": {
+    "yo": "vaya",
+    "tu": "vayas",
+    "el": "vaya",
+    "nosotros": "vayamos",
+    "vosotros": "vayáis",
+    "ellos": "vayan"
    }
   },
   {
@@ -190,6 +265,15 @@
     "vosotros": "quisisteis",
     "ellos": "quisieron"
    },
+   "imperfect": {
+    "yo": "quería",
+    "tu": "querías",
+    "el": "quería",
+    "nosotros": "queríamos",
+    "vosotros": "queríais",
+    "ellos": "querían"
+   },
+   "imperfect_regular": true,
    "conditional": {
     "yo": "querría",
     "tu": "querrías",
@@ -197,6 +281,14 @@
     "nosotros": "querríamos",
     "vosotros": "querríais",
     "ellos": "querrían"
+   },
+   "subjunctive": {
+    "yo": "quiera",
+    "tu": "quieras",
+    "el": "quiera",
+    "nosotros": "queramos",
+    "vosotros": "queráis",
+    "ellos": "quieran"
    }
   },
   {
@@ -232,6 +324,15 @@
     "vosotros": "pudisteis",
     "ellos": "pudieron"
    },
+   "imperfect": {
+    "yo": "podía",
+    "tu": "podías",
+    "el": "podía",
+    "nosotros": "podíamos",
+    "vosotros": "podíais",
+    "ellos": "podían"
+   },
+   "imperfect_regular": true,
    "conditional": {
     "yo": "podría",
     "tu": "podrías",
@@ -239,6 +340,14 @@
     "nosotros": "podríamos",
     "vosotros": "podríais",
     "ellos": "podrían"
+   },
+   "subjunctive": {
+    "yo": "pueda",
+    "tu": "puedas",
+    "el": "pueda",
+    "nosotros": "podamos",
+    "vosotros": "podáis",
+    "ellos": "puedan"
    }
   },
   {
@@ -273,6 +382,14 @@
     "vosotros": "hablasteis",
     "ellos": "hablaron"
    },
+   "imperfect": {
+    "yo": "hablaba",
+    "tu": "hablabas",
+    "el": "hablaba",
+    "nosotros": "hablábamos",
+    "vosotros": "hablabais",
+    "ellos": "hablaban"
+   },
    "conditional": {
     "yo": "hablaría",
     "tu": "hablarías",
@@ -280,6 +397,14 @@
     "nosotros": "hablaríamos",
     "vosotros": "hablaríais",
     "ellos": "hablarían"
+   },
+   "subjunctive": {
+    "yo": "hable",
+    "tu": "hables",
+    "el": "hable",
+    "nosotros": "hablemos",
+    "vosotros": "habléis",
+    "ellos": "hablen"
    }
   },
   {
@@ -312,6 +437,30 @@
     "nosotros": "trabajamos",
     "vosotros": "trabajasteis",
     "ellos": "trabajaron"
+   },
+   "imperfect": {
+    "yo": "trabajaba",
+    "tu": "trabajabas",
+    "el": "trabajaba",
+    "nosotros": "trabajábamos",
+    "vosotros": "trabajabais",
+    "ellos": "trabajaban"
+   },
+   "conditional": {
+    "yo": "trabajaría",
+    "tu": "trabajarías",
+    "el": "trabajaría",
+    "nosotros": "trabajaríamos",
+    "vosotros": "trabajaríais",
+    "ellos": "trabajarían"
+   },
+   "subjunctive": {
+    "yo": "trabaje",
+    "tu": "trabajes",
+    "el": "trabaje",
+    "nosotros": "trabajemos",
+    "vosotros": "trabajéis",
+    "ellos": "trabajen"
    }
   },
   {
@@ -344,6 +493,30 @@
     "nosotros": "llegamos",
     "vosotros": "llegasteis",
     "ellos": "llegaron"
+   },
+   "imperfect": {
+    "yo": "llegaba",
+    "tu": "llegabas",
+    "el": "llegaba",
+    "nosotros": "llegábamos",
+    "vosotros": "llegabais",
+    "ellos": "llegaban"
+   },
+   "conditional": {
+    "yo": "llegaría",
+    "tu": "llegarías",
+    "el": "llegaría",
+    "nosotros": "llegaríamos",
+    "vosotros": "llegaríais",
+    "ellos": "llegarían"
+   },
+   "subjunctive": {
+    "yo": "llegue",
+    "tu": "llegues",
+    "el": "llegue",
+    "nosotros": "lleguemos",
+    "vosotros": "lleguéis",
+    "ellos": "lleguen"
    }
   },
   {
@@ -377,6 +550,30 @@
     "nosotros": "terminamos",
     "vosotros": "terminasteis",
     "ellos": "terminaron"
+   },
+   "imperfect": {
+    "yo": "terminaba",
+    "tu": "terminabas",
+    "el": "terminaba",
+    "nosotros": "terminábamos",
+    "vosotros": "terminabais",
+    "ellos": "terminaban"
+   },
+   "conditional": {
+    "yo": "terminaría",
+    "tu": "terminarías",
+    "el": "terminaría",
+    "nosotros": "terminaríamos",
+    "vosotros": "terminaríais",
+    "ellos": "terminarían"
+   },
+   "subjunctive": {
+    "yo": "termine",
+    "tu": "termines",
+    "el": "termine",
+    "nosotros": "terminemos",
+    "vosotros": "terminéis",
+    "ellos": "terminen"
    }
   },
   {
@@ -409,6 +606,14 @@
     "vosotros": "necesitasteis",
     "ellos": "necesitaron"
    },
+   "imperfect": {
+    "yo": "necesitaba",
+    "tu": "necesitabas",
+    "el": "necesitaba",
+    "nosotros": "necesitábamos",
+    "vosotros": "necesitabais",
+    "ellos": "necesitaban"
+   },
    "conditional": {
     "yo": "necesitaría",
     "tu": "necesitarías",
@@ -416,6 +621,14 @@
     "nosotros": "necesitaríamos",
     "vosotros": "necesitaríais",
     "ellos": "necesitarían"
+   },
+   "subjunctive": {
+    "yo": "necesite",
+    "tu": "necesites",
+    "el": "necesite",
+    "nosotros": "necesitemos",
+    "vosotros": "necesitéis",
+    "ellos": "necesiten"
    }
   },
   {
@@ -449,6 +662,14 @@
     "vosotros": "llamasteis",
     "ellos": "llamaron"
    },
+   "imperfect": {
+    "yo": "llamaba",
+    "tu": "llamabas",
+    "el": "llamaba",
+    "nosotros": "llamábamos",
+    "vosotros": "llamabais",
+    "ellos": "llamaban"
+   },
    "conditional": {
     "yo": "llamaría",
     "tu": "llamarías",
@@ -456,6 +677,14 @@
     "nosotros": "llamaríamos",
     "vosotros": "llamaríais",
     "ellos": "llamarían"
+   },
+   "subjunctive": {
+    "yo": "llame",
+    "tu": "llames",
+    "el": "llame",
+    "nosotros": "llamemos",
+    "vosotros": "llaméis",
+    "ellos": "llamen"
    }
   },
   {
@@ -488,6 +717,30 @@
     "nosotros": "revisamos",
     "vosotros": "revisasteis",
     "ellos": "revisaron"
+   },
+   "imperfect": {
+    "yo": "revisaba",
+    "tu": "revisabas",
+    "el": "revisaba",
+    "nosotros": "revisábamos",
+    "vosotros": "revisabais",
+    "ellos": "revisaban"
+   },
+   "conditional": {
+    "yo": "revisaría",
+    "tu": "revisarías",
+    "el": "revisaría",
+    "nosotros": "revisaríamos",
+    "vosotros": "revisaríais",
+    "ellos": "revisarían"
+   },
+   "subjunctive": {
+    "yo": "revise",
+    "tu": "revises",
+    "el": "revise",
+    "nosotros": "revisemos",
+    "vosotros": "reviséis",
+    "ellos": "revisen"
    }
   },
   {
@@ -521,6 +774,30 @@
     "nosotros": "comimos",
     "vosotros": "comisteis",
     "ellos": "comieron"
+   },
+   "imperfect": {
+    "yo": "comía",
+    "tu": "comías",
+    "el": "comía",
+    "nosotros": "comíamos",
+    "vosotros": "comíais",
+    "ellos": "comían"
+   },
+   "conditional": {
+    "yo": "comería",
+    "tu": "comerías",
+    "el": "comería",
+    "nosotros": "comeríamos",
+    "vosotros": "comeríais",
+    "ellos": "comerían"
+   },
+   "subjunctive": {
+    "yo": "coma",
+    "tu": "comas",
+    "el": "coma",
+    "nosotros": "comamos",
+    "vosotros": "comáis",
+    "ellos": "coman"
    }
   },
   {
@@ -553,6 +830,30 @@
     "nosotros": "vivimos",
     "vosotros": "vivisteis",
     "ellos": "vivieron"
+   },
+   "imperfect": {
+    "yo": "vivía",
+    "tu": "vivías",
+    "el": "vivía",
+    "nosotros": "vivíamos",
+    "vosotros": "vivíais",
+    "ellos": "vivían"
+   },
+   "conditional": {
+    "yo": "viviría",
+    "tu": "vivirías",
+    "el": "viviría",
+    "nosotros": "viviríamos",
+    "vosotros": "viviríais",
+    "ellos": "vivirían"
+   },
+   "subjunctive": {
+    "yo": "viva",
+    "tu": "vivas",
+    "el": "viva",
+    "nosotros": "vivamos",
+    "vosotros": "viváis",
+    "ellos": "vivan"
    }
   },
   {
@@ -587,7 +888,33 @@
     "vosotros": "enviasteis",
     "ellos": "enviaron"
    },
-   "preterite_regular": true
+   "preterite_regular": true,
+   "imperfect": {
+    "yo": "enviaba",
+    "tu": "enviabas",
+    "el": "enviaba",
+    "nosotros": "enviábamos",
+    "vosotros": "enviabais",
+    "ellos": "enviaban"
+   },
+   "imperfect_regular": true,
+   "conditional": {
+    "yo": "enviaría",
+    "tu": "enviarías",
+    "el": "enviaría",
+    "nosotros": "enviaríamos",
+    "vosotros": "enviaríais",
+    "ellos": "enviarían"
+   },
+   "conditional_regular": true,
+   "subjunctive": {
+    "yo": "envíe",
+    "tu": "envíes",
+    "el": "envíe",
+    "nosotros": "enviemos",
+    "vosotros": "enviéis",
+    "ellos": "envíen"
+   }
   },
   {
    "id": "abrir",
@@ -618,6 +945,30 @@
     "nosotros": "abrimos",
     "vosotros": "abristeis",
     "ellos": "abrieron"
+   },
+   "imperfect": {
+    "yo": "abría",
+    "tu": "abrías",
+    "el": "abría",
+    "nosotros": "abríamos",
+    "vosotros": "abríais",
+    "ellos": "abrían"
+   },
+   "conditional": {
+    "yo": "abriría",
+    "tu": "abrirías",
+    "el": "abriría",
+    "nosotros": "abriríamos",
+    "vosotros": "abriríais",
+    "ellos": "abrirían"
+   },
+   "subjunctive": {
+    "yo": "abra",
+    "tu": "abras",
+    "el": "abra",
+    "nosotros": "abramos",
+    "vosotros": "abráis",
+    "ellos": "abran"
    }
   },
   {
@@ -649,6 +1000,30 @@
     "nosotros": "sacamos",
     "vosotros": "sacasteis",
     "ellos": "sacaron"
+   },
+   "imperfect": {
+    "yo": "sacaba",
+    "tu": "sacabas",
+    "el": "sacaba",
+    "nosotros": "sacábamos",
+    "vosotros": "sacabais",
+    "ellos": "sacaban"
+   },
+   "conditional": {
+    "yo": "sacaría",
+    "tu": "sacarías",
+    "el": "sacaría",
+    "nosotros": "sacaríamos",
+    "vosotros": "sacaríais",
+    "ellos": "sacarían"
+   },
+   "subjunctive": {
+    "yo": "saque",
+    "tu": "saques",
+    "el": "saque",
+    "nosotros": "saquemos",
+    "vosotros": "saquéis",
+    "ellos": "saquen"
    }
   },
   {
@@ -680,6 +1055,30 @@
     "nosotros": "arreglamos",
     "vosotros": "arreglasteis",
     "ellos": "arreglaron"
+   },
+   "imperfect": {
+    "yo": "arreglaba",
+    "tu": "arreglabas",
+    "el": "arreglaba",
+    "nosotros": "arreglábamos",
+    "vosotros": "arreglabais",
+    "ellos": "arreglaban"
+   },
+   "conditional": {
+    "yo": "arreglaría",
+    "tu": "arreglarías",
+    "el": "arreglaría",
+    "nosotros": "arreglaríamos",
+    "vosotros": "arreglaríais",
+    "ellos": "arreglarían"
+   },
+   "subjunctive": {
+    "yo": "arregle",
+    "tu": "arregles",
+    "el": "arregle",
+    "nosotros": "arreglemos",
+    "vosotros": "arregléis",
+    "ellos": "arreglen"
    }
   },
   {
@@ -711,6 +1110,30 @@
     "nosotros": "cobramos",
     "vosotros": "cobrasteis",
     "ellos": "cobraron"
+   },
+   "imperfect": {
+    "yo": "cobraba",
+    "tu": "cobrabas",
+    "el": "cobraba",
+    "nosotros": "cobrábamos",
+    "vosotros": "cobrabais",
+    "ellos": "cobraban"
+   },
+   "conditional": {
+    "yo": "cobraría",
+    "tu": "cobrarías",
+    "el": "cobraría",
+    "nosotros": "cobraríamos",
+    "vosotros": "cobraríais",
+    "ellos": "cobrarían"
+   },
+   "subjunctive": {
+    "yo": "cobre",
+    "tu": "cobres",
+    "el": "cobre",
+    "nosotros": "cobremos",
+    "vosotros": "cobréis",
+    "ellos": "cobren"
    }
   },
   {
@@ -744,7 +1167,33 @@
     "vosotros": "devolvisteis",
     "ellos": "devolvieron"
    },
-   "preterite_regular": true
+   "preterite_regular": true,
+   "imperfect": {
+    "yo": "devolvía",
+    "tu": "devolvías",
+    "el": "devolvía",
+    "nosotros": "devolvíamos",
+    "vosotros": "devolvíais",
+    "ellos": "devolvían"
+   },
+   "imperfect_regular": true,
+   "conditional": {
+    "yo": "devolvería",
+    "tu": "devolverías",
+    "el": "devolvería",
+    "nosotros": "devolveríamos",
+    "vosotros": "devolveríais",
+    "ellos": "devolverían"
+   },
+   "conditional_regular": true,
+   "subjunctive": {
+    "yo": "devuelva",
+    "tu": "devuelvas",
+    "el": "devuelva",
+    "nosotros": "devolvamos",
+    "vosotros": "devolváis",
+    "ellos": "devuelvan"
+   }
   },
   {
    "id": "comprobar",
@@ -777,7 +1226,33 @@
     "vosotros": "comprobasteis",
     "ellos": "comprobaron"
    },
-   "preterite_regular": true
+   "preterite_regular": true,
+   "imperfect": {
+    "yo": "comprobaba",
+    "tu": "comprobabas",
+    "el": "comprobaba",
+    "nosotros": "comprobábamos",
+    "vosotros": "comprobabais",
+    "ellos": "comprobaban"
+   },
+   "imperfect_regular": true,
+   "conditional": {
+    "yo": "comprobaría",
+    "tu": "comprobarías",
+    "el": "comprobaría",
+    "nosotros": "comprobaríamos",
+    "vosotros": "comprobaríais",
+    "ellos": "comprobarían"
+   },
+   "conditional_regular": true,
+   "subjunctive": {
+    "yo": "compruebe",
+    "tu": "compruebes",
+    "el": "compruebe",
+    "nosotros": "comprobemos",
+    "vosotros": "comprobéis",
+    "ellos": "comprueben"
+   }
   },
   {
    "id": "hacer",
@@ -810,6 +1285,15 @@
     "vosotros": "hicisteis",
     "ellos": "hicieron"
    },
+   "imperfect": {
+    "yo": "hacía",
+    "tu": "hacías",
+    "el": "hacía",
+    "nosotros": "hacíamos",
+    "vosotros": "hacíais",
+    "ellos": "hacían"
+   },
+   "imperfect_regular": true,
    "conditional": {
     "yo": "haría",
     "tu": "harías",
@@ -817,6 +1301,14 @@
     "nosotros": "haríamos",
     "vosotros": "haríais",
     "ellos": "harían"
+   },
+   "subjunctive": {
+    "yo": "haga",
+    "tu": "hagas",
+    "el": "haga",
+    "nosotros": "hagamos",
+    "vosotros": "hagáis",
+    "ellos": "hagan"
    }
   },
   {
@@ -851,7 +1343,32 @@
     "vosotros": "salisteis",
     "ellos": "salieron"
    },
-   "preterite_regular": true
+   "preterite_regular": true,
+   "imperfect": {
+    "yo": "salía",
+    "tu": "salías",
+    "el": "salía",
+    "nosotros": "salíamos",
+    "vosotros": "salíais",
+    "ellos": "salían"
+   },
+   "imperfect_regular": true,
+   "conditional": {
+    "yo": "saldría",
+    "tu": "saldrías",
+    "el": "saldría",
+    "nosotros": "saldríamos",
+    "vosotros": "saldríais",
+    "ellos": "saldrían"
+   },
+   "subjunctive": {
+    "yo": "salga",
+    "tu": "salgas",
+    "el": "salga",
+    "nosotros": "salgamos",
+    "vosotros": "salgáis",
+    "ellos": "salgan"
+   }
   },
   {
    "id": "volver",
@@ -884,7 +1401,33 @@
     "vosotros": "volvisteis",
     "ellos": "volvieron"
    },
-   "preterite_regular": true
+   "preterite_regular": true,
+   "imperfect": {
+    "yo": "volvía",
+    "tu": "volvías",
+    "el": "volvía",
+    "nosotros": "volvíamos",
+    "vosotros": "volvíais",
+    "ellos": "volvían"
+   },
+   "imperfect_regular": true,
+   "conditional": {
+    "yo": "volvería",
+    "tu": "volverías",
+    "el": "volvería",
+    "nosotros": "volveríamos",
+    "vosotros": "volveríais",
+    "ellos": "volverían"
+   },
+   "conditional_regular": true,
+   "subjunctive": {
+    "yo": "vuelva",
+    "tu": "vuelvas",
+    "el": "vuelva",
+    "nosotros": "volvamos",
+    "vosotros": "volváis",
+    "ellos": "vuelvan"
+   }
   },
   {
    "id": "visitar",
@@ -915,6 +1458,30 @@
     "nosotros": "visitamos",
     "vosotros": "visitasteis",
     "ellos": "visitaron"
+   },
+   "imperfect": {
+    "yo": "visitaba",
+    "tu": "visitabas",
+    "el": "visitaba",
+    "nosotros": "visitábamos",
+    "vosotros": "visitabais",
+    "ellos": "visitaban"
+   },
+   "conditional": {
+    "yo": "visitaría",
+    "tu": "visitarías",
+    "el": "visitaría",
+    "nosotros": "visitaríamos",
+    "vosotros": "visitaríais",
+    "ellos": "visitarían"
+   },
+   "subjunctive": {
+    "yo": "visite",
+    "tu": "visites",
+    "el": "visite",
+    "nosotros": "visitemos",
+    "vosotros": "visitéis",
+    "ellos": "visiten"
    }
   },
   {
@@ -946,6 +1513,30 @@
     "nosotros": "descansamos",
     "vosotros": "descansasteis",
     "ellos": "descansaron"
+   },
+   "imperfect": {
+    "yo": "descansaba",
+    "tu": "descansabas",
+    "el": "descansaba",
+    "nosotros": "descansábamos",
+    "vosotros": "descansabais",
+    "ellos": "descansaban"
+   },
+   "conditional": {
+    "yo": "descansaría",
+    "tu": "descansarías",
+    "el": "descansaría",
+    "nosotros": "descansaríamos",
+    "vosotros": "descansaríais",
+    "ellos": "descansarían"
+   },
+   "subjunctive": {
+    "yo": "descanse",
+    "tu": "descanses",
+    "el": "descanse",
+    "nosotros": "descansemos",
+    "vosotros": "descanséis",
+    "ellos": "descansen"
    }
   },
   {
@@ -977,6 +1568,30 @@
     "nosotros": "preparamos",
     "vosotros": "preparasteis",
     "ellos": "prepararon"
+   },
+   "imperfect": {
+    "yo": "preparaba",
+    "tu": "preparabas",
+    "el": "preparaba",
+    "nosotros": "preparábamos",
+    "vosotros": "preparabais",
+    "ellos": "preparaban"
+   },
+   "conditional": {
+    "yo": "prepararía",
+    "tu": "prepararías",
+    "el": "prepararía",
+    "nosotros": "prepararíamos",
+    "vosotros": "prepararíais",
+    "ellos": "prepararían"
+   },
+   "subjunctive": {
+    "yo": "prepare",
+    "tu": "prepares",
+    "el": "prepare",
+    "nosotros": "preparemos",
+    "vosotros": "preparéis",
+    "ellos": "preparen"
    }
   },
   {
@@ -1011,7 +1626,33 @@
     "vosotros": "empezasteis",
     "ellos": "empezaron"
    },
-   "preterite_regular": true
+   "preterite_regular": true,
+   "imperfect": {
+    "yo": "empezaba",
+    "tu": "empezabas",
+    "el": "empezaba",
+    "nosotros": "empezábamos",
+    "vosotros": "empezabais",
+    "ellos": "empezaban"
+   },
+   "imperfect_regular": true,
+   "conditional": {
+    "yo": "empezaría",
+    "tu": "empezarías",
+    "el": "empezaría",
+    "nosotros": "empezaríamos",
+    "vosotros": "empezaríais",
+    "ellos": "empezarían"
+   },
+   "conditional_regular": true,
+   "subjunctive": {
+    "yo": "empiece",
+    "tu": "empieces",
+    "el": "empiece",
+    "nosotros": "empecemos",
+    "vosotros": "empecéis",
+    "ellos": "empiecen"
+   }
   },
   {
    "id": "explicar",
@@ -1043,6 +1684,30 @@
     "nosotros": "explicamos",
     "vosotros": "explicasteis",
     "ellos": "explicaron"
+   },
+   "imperfect": {
+    "yo": "explicaba",
+    "tu": "explicabas",
+    "el": "explicaba",
+    "nosotros": "explicábamos",
+    "vosotros": "explicabais",
+    "ellos": "explicaban"
+   },
+   "conditional": {
+    "yo": "explicaría",
+    "tu": "explicarías",
+    "el": "explicaría",
+    "nosotros": "explicaríamos",
+    "vosotros": "explicaríais",
+    "ellos": "explicarían"
+   },
+   "subjunctive": {
+    "yo": "explique",
+    "tu": "expliques",
+    "el": "explique",
+    "nosotros": "expliquemos",
+    "vosotros": "expliquéis",
+    "ellos": "expliquen"
    }
   },
   {
@@ -1075,6 +1740,30 @@
     "nosotros": "escribimos",
     "vosotros": "escribisteis",
     "ellos": "escribieron"
+   },
+   "imperfect": {
+    "yo": "escribía",
+    "tu": "escribías",
+    "el": "escribía",
+    "nosotros": "escribíamos",
+    "vosotros": "escribíais",
+    "ellos": "escribían"
+   },
+   "conditional": {
+    "yo": "escribiría",
+    "tu": "escribirías",
+    "el": "escribiría",
+    "nosotros": "escribiríamos",
+    "vosotros": "escribiríais",
+    "ellos": "escribirían"
+   },
+   "subjunctive": {
+    "yo": "escriba",
+    "tu": "escribas",
+    "el": "escriba",
+    "nosotros": "escribamos",
+    "vosotros": "escribáis",
+    "ellos": "escriban"
    }
   },
   {
@@ -1106,6 +1795,30 @@
     "nosotros": "solucionamos",
     "vosotros": "solucionasteis",
     "ellos": "solucionaron"
+   },
+   "imperfect": {
+    "yo": "solucionaba",
+    "tu": "solucionabas",
+    "el": "solucionaba",
+    "nosotros": "solucionábamos",
+    "vosotros": "solucionabais",
+    "ellos": "solucionaban"
+   },
+   "conditional": {
+    "yo": "solucionaría",
+    "tu": "solucionarías",
+    "el": "solucionaría",
+    "nosotros": "solucionaríamos",
+    "vosotros": "solucionaríais",
+    "ellos": "solucionarían"
+   },
+   "subjunctive": {
+    "yo": "solucione",
+    "tu": "soluciones",
+    "el": "solucione",
+    "nosotros": "solucionemos",
+    "vosotros": "solucionéis",
+    "ellos": "solucionen"
    }
   },
   {
@@ -1128,6 +1841,30 @@
     "nosotros": "pasamos",
     "vosotros": "pasasteis",
     "ellos": "pasaron"
+   },
+   "imperfect": {
+    "yo": "pasaba",
+    "tu": "pasabas",
+    "el": "pasaba",
+    "nosotros": "pasábamos",
+    "vosotros": "pasabais",
+    "ellos": "pasaban"
+   },
+   "conditional": {
+    "yo": "pasaría",
+    "tu": "pasarías",
+    "el": "pasaría",
+    "nosotros": "pasaríamos",
+    "vosotros": "pasaríais",
+    "ellos": "pasarían"
+   },
+   "subjunctive": {
+    "yo": "pase",
+    "tu": "pases",
+    "el": "pase",
+    "nosotros": "pasemos",
+    "vosotros": "paséis",
+    "ellos": "pasen"
    },
    "lessons": [
     "a2_u2_l5",
@@ -1171,6 +1908,32 @@
     }
    ],
    "preterite_regular": true,
+   "imperfect": {
+    "yo": "pensaba",
+    "tu": "pensabas",
+    "el": "pensaba",
+    "nosotros": "pensábamos",
+    "vosotros": "pensabais",
+    "ellos": "pensaban"
+   },
+   "imperfect_regular": true,
+   "conditional": {
+    "yo": "pensaría",
+    "tu": "pensarías",
+    "el": "pensaría",
+    "nosotros": "pensaríamos",
+    "vosotros": "pensaríais",
+    "ellos": "pensarían"
+   },
+   "conditional_regular": true,
+   "subjunctive": {
+    "yo": "piense",
+    "tu": "pienses",
+    "el": "piense",
+    "nosotros": "pensemos",
+    "vosotros": "penséis",
+    "ellos": "piensen"
+   },
    "note_ar": "e ← ie في المضارع (إلا nosotros وvosotros). pensar + مصدر = ينوي. منتظم في الماضي: pensé."
   },
   {
@@ -1193,6 +1956,30 @@
     "nosotros": "quedamos",
     "vosotros": "quedasteis",
     "ellos": "quedaron"
+   },
+   "imperfect": {
+    "yo": "quedaba",
+    "tu": "quedabas",
+    "el": "quedaba",
+    "nosotros": "quedábamos",
+    "vosotros": "quedabais",
+    "ellos": "quedaban"
+   },
+   "conditional": {
+    "yo": "quedaría",
+    "tu": "quedarías",
+    "el": "quedaría",
+    "nosotros": "quedaríamos",
+    "vosotros": "quedaríais",
+    "ellos": "quedarían"
+   },
+   "subjunctive": {
+    "yo": "quede",
+    "tu": "quedes",
+    "el": "quede",
+    "nosotros": "quedemos",
+    "vosotros": "quedéis",
+    "ellos": "queden"
    },
    "lessons": [
     "a2_u3_l3"
@@ -1225,6 +2012,30 @@
     "vosotros": "cambiasteis",
     "ellos": "cambiaron"
    },
+   "imperfect": {
+    "yo": "cambiaba",
+    "tu": "cambiabas",
+    "el": "cambiaba",
+    "nosotros": "cambiábamos",
+    "vosotros": "cambiabais",
+    "ellos": "cambiaban"
+   },
+   "conditional": {
+    "yo": "cambiaría",
+    "tu": "cambiarías",
+    "el": "cambiaría",
+    "nosotros": "cambiaríamos",
+    "vosotros": "cambiaríais",
+    "ellos": "cambiarían"
+   },
+   "subjunctive": {
+    "yo": "cambie",
+    "tu": "cambies",
+    "el": "cambie",
+    "nosotros": "cambiemos",
+    "vosotros": "cambiéis",
+    "ellos": "cambien"
+   },
    "lessons": [
     "a2_u3_l3"
    ],
@@ -1256,6 +2067,30 @@
     "vosotros": "confirmasteis",
     "ellos": "confirmaron"
    },
+   "imperfect": {
+    "yo": "confirmaba",
+    "tu": "confirmabas",
+    "el": "confirmaba",
+    "nosotros": "confirmábamos",
+    "vosotros": "confirmabais",
+    "ellos": "confirmaban"
+   },
+   "conditional": {
+    "yo": "confirmaría",
+    "tu": "confirmarías",
+    "el": "confirmaría",
+    "nosotros": "confirmaríamos",
+    "vosotros": "confirmaríais",
+    "ellos": "confirmarían"
+   },
+   "subjunctive": {
+    "yo": "confirme",
+    "tu": "confirmes",
+    "el": "confirme",
+    "nosotros": "confirmemos",
+    "vosotros": "confirméis",
+    "ellos": "confirmen"
+   },
    "lessons": [
     "a2_u3_l3"
    ],
@@ -1286,6 +2121,31 @@
     "nosotros": "propusimos",
     "vosotros": "propusisteis",
     "ellos": "propusieron"
+   },
+   "imperfect": {
+    "yo": "proponía",
+    "tu": "proponías",
+    "el": "proponía",
+    "nosotros": "proponíamos",
+    "vosotros": "proponíais",
+    "ellos": "proponían"
+   },
+   "imperfect_regular": true,
+   "conditional": {
+    "yo": "propondría",
+    "tu": "propondrías",
+    "el": "propondría",
+    "nosotros": "propondríamos",
+    "vosotros": "propondríais",
+    "ellos": "propondrían"
+   },
+   "subjunctive": {
+    "yo": "proponga",
+    "tu": "propongas",
+    "el": "proponga",
+    "nosotros": "propongamos",
+    "vosotros": "propongáis",
+    "ellos": "propongan"
    },
    "lessons": [
     "a2_u3_l3"
@@ -1319,6 +2179,30 @@
     "vosotros": "mandasteis",
     "ellos": "mandaron"
    },
+   "imperfect": {
+    "yo": "mandaba",
+    "tu": "mandabas",
+    "el": "mandaba",
+    "nosotros": "mandábamos",
+    "vosotros": "mandabais",
+    "ellos": "mandaban"
+   },
+   "conditional": {
+    "yo": "mandaría",
+    "tu": "mandarías",
+    "el": "mandaría",
+    "nosotros": "mandaríamos",
+    "vosotros": "mandaríais",
+    "ellos": "mandarían"
+   },
+   "subjunctive": {
+    "yo": "mande",
+    "tu": "mandes",
+    "el": "mande",
+    "nosotros": "mandemos",
+    "vosotros": "mandéis",
+    "ellos": "manden"
+   },
    "lessons": [
     "a2_u3_l5"
    ],
@@ -1351,6 +2235,14 @@
     "vosotros": "gustasteis",
     "ellos": "gustaron"
    },
+   "imperfect": {
+    "yo": "gustaba",
+    "tu": "gustabas",
+    "el": "gustaba",
+    "nosotros": "gustábamos",
+    "vosotros": "gustabais",
+    "ellos": "gustaban"
+   },
    "conditional": {
     "yo": "gustaría",
     "tu": "gustarías",
@@ -1358,6 +2250,14 @@
     "nosotros": "gustaríamos",
     "vosotros": "gustaríais",
     "ellos": "gustarían"
+   },
+   "subjunctive": {
+    "yo": "guste",
+    "tu": "gustes",
+    "el": "guste",
+    "nosotros": "gustemos",
+    "vosotros": "gustéis",
+    "ellos": "gusten"
    },
    "lessons": [
     "a2_u4_l1"
@@ -1390,6 +2290,30 @@
     "nosotros": "encantamos",
     "vosotros": "encantasteis",
     "ellos": "encantaron"
+   },
+   "imperfect": {
+    "yo": "encantaba",
+    "tu": "encantabas",
+    "el": "encantaba",
+    "nosotros": "encantábamos",
+    "vosotros": "encantabais",
+    "ellos": "encantaban"
+   },
+   "conditional": {
+    "yo": "encantaría",
+    "tu": "encantarías",
+    "el": "encantaría",
+    "nosotros": "encantaríamos",
+    "vosotros": "encantaríais",
+    "ellos": "encantarían"
+   },
+   "subjunctive": {
+    "yo": "encante",
+    "tu": "encantes",
+    "el": "encante",
+    "nosotros": "encantemos",
+    "vosotros": "encantéis",
+    "ellos": "encanten"
    },
    "lessons": [
     "a2_u4_l1"
@@ -1433,6 +2357,15 @@
     }
    ],
    "preterite_regular": false,
+   "imperfect": {
+    "yo": "prefería",
+    "tu": "preferías",
+    "el": "prefería",
+    "nosotros": "preferíamos",
+    "vosotros": "preferíais",
+    "ellos": "preferían"
+   },
+   "imperfect_regular": true,
    "conditional": {
     "yo": "preferiría",
     "tu": "preferirías",
@@ -1442,6 +2375,14 @@
     "ellos": "preferirían"
    },
    "conditional_regular": true,
+   "subjunctive": {
+    "yo": "prefiera",
+    "tu": "prefieras",
+    "el": "prefiera",
+    "nosotros": "prefiramos",
+    "vosotros": "prefiráis",
+    "ellos": "prefieran"
+   },
    "note_ar": "e ← ie في المضارع، وe ← i في الماضي مع él / ellos: prefirió، prefirieron."
   },
   {
@@ -1475,6 +2416,30 @@
     }
    ],
    "preterite_regular": false,
+   "imperfect": {
+    "yo": "creía",
+    "tu": "creías",
+    "el": "creía",
+    "nosotros": "creíamos",
+    "vosotros": "creíais",
+    "ellos": "creían"
+   },
+   "conditional": {
+    "yo": "creería",
+    "tu": "creerías",
+    "el": "creería",
+    "nosotros": "creeríamos",
+    "vosotros": "creeríais",
+    "ellos": "creerían"
+   },
+   "subjunctive": {
+    "yo": "crea",
+    "tu": "creas",
+    "el": "crea",
+    "nosotros": "creamos",
+    "vosotros": "creáis",
+    "ellos": "crean"
+   },
    "note_ar": "منتظم في المضارع. في الماضي: creyó، creyeron (y)، وعلامة على í."
   },
   {
@@ -1508,6 +2473,32 @@
     }
    ],
    "preterite_regular": true,
+   "imperfect": {
+    "yo": "parecía",
+    "tu": "parecías",
+    "el": "parecía",
+    "nosotros": "parecíamos",
+    "vosotros": "parecíais",
+    "ellos": "parecían"
+   },
+   "imperfect_regular": true,
+   "conditional": {
+    "yo": "parecería",
+    "tu": "parecerías",
+    "el": "parecería",
+    "nosotros": "pareceríamos",
+    "vosotros": "pareceríais",
+    "ellos": "parecerían"
+   },
+   "conditional_regular": true,
+   "subjunctive": {
+    "yo": "parezca",
+    "tu": "parezcas",
+    "el": "parezca",
+    "nosotros": "parezcamos",
+    "vosotros": "parezcáis",
+    "ellos": "parezcan"
+   },
    "note_ar": "parezco مع yo. وme parece / me parecen مثل gustar."
   },
   {
@@ -1541,6 +2532,32 @@
     }
    ],
    "preterite_regular": true,
+   "imperfect": {
+    "yo": "recomendaba",
+    "tu": "recomendabas",
+    "el": "recomendaba",
+    "nosotros": "recomendábamos",
+    "vosotros": "recomendabais",
+    "ellos": "recomendaban"
+   },
+   "imperfect_regular": true,
+   "conditional": {
+    "yo": "recomendaría",
+    "tu": "recomendarías",
+    "el": "recomendaría",
+    "nosotros": "recomendaríamos",
+    "vosotros": "recomendaríais",
+    "ellos": "recomendarían"
+   },
+   "conditional_regular": true,
+   "subjunctive": {
+    "yo": "recomiende",
+    "tu": "recomiendes",
+    "el": "recomiende",
+    "nosotros": "recomendemos",
+    "vosotros": "recomendéis",
+    "ellos": "recomienden"
+   },
    "note_ar": "e ← ie في المضارع، ومنتظم في الماضي."
   },
   {
@@ -1563,6 +2580,30 @@
     "nosotros": "adjuntamos",
     "vosotros": "adjuntasteis",
     "ellos": "adjuntaron"
+   },
+   "imperfect": {
+    "yo": "adjuntaba",
+    "tu": "adjuntabas",
+    "el": "adjuntaba",
+    "nosotros": "adjuntábamos",
+    "vosotros": "adjuntabais",
+    "ellos": "adjuntaban"
+   },
+   "conditional": {
+    "yo": "adjuntaría",
+    "tu": "adjuntarías",
+    "el": "adjuntaría",
+    "nosotros": "adjuntaríamos",
+    "vosotros": "adjuntaríais",
+    "ellos": "adjuntarían"
+   },
+   "subjunctive": {
+    "yo": "adjunte",
+    "tu": "adjuntes",
+    "el": "adjunte",
+    "nosotros": "adjuntemos",
+    "vosotros": "adjuntéis",
+    "ellos": "adjunten"
    },
    "lessons": [
     "a2_u5_l1"
@@ -1595,6 +2636,30 @@
     "vosotros": "avisasteis",
     "ellos": "avisaron"
    },
+   "imperfect": {
+    "yo": "avisaba",
+    "tu": "avisabas",
+    "el": "avisaba",
+    "nosotros": "avisábamos",
+    "vosotros": "avisabais",
+    "ellos": "avisaban"
+   },
+   "conditional": {
+    "yo": "avisaría",
+    "tu": "avisarías",
+    "el": "avisaría",
+    "nosotros": "avisaríamos",
+    "vosotros": "avisaríais",
+    "ellos": "avisarían"
+   },
+   "subjunctive": {
+    "yo": "avise",
+    "tu": "avises",
+    "el": "avise",
+    "nosotros": "avisemos",
+    "vosotros": "aviséis",
+    "ellos": "avisen"
+   },
    "lessons": [
     "a2_u5_l2"
    ],
@@ -1625,6 +2690,32 @@
     "nosotros": "dimos",
     "vosotros": "disteis",
     "ellos": "dieron"
+   },
+   "imperfect": {
+    "yo": "daba",
+    "tu": "dabas",
+    "el": "daba",
+    "nosotros": "dábamos",
+    "vosotros": "dabais",
+    "ellos": "daban"
+   },
+   "imperfect_regular": true,
+   "conditional": {
+    "yo": "daría",
+    "tu": "darías",
+    "el": "daría",
+    "nosotros": "daríamos",
+    "vosotros": "daríais",
+    "ellos": "darían"
+   },
+   "conditional_regular": true,
+   "subjunctive": {
+    "yo": "dé",
+    "tu": "des",
+    "el": "dé",
+    "nosotros": "demos",
+    "vosotros": "deis",
+    "ellos": "den"
    },
    "lessons": [
     "a2_u5_l3"
@@ -1657,6 +2748,30 @@
     "nosotros": "interesamos",
     "vosotros": "interesasteis",
     "ellos": "interesaron"
+   },
+   "imperfect": {
+    "yo": "interesaba",
+    "tu": "interesabas",
+    "el": "interesaba",
+    "nosotros": "interesábamos",
+    "vosotros": "interesabais",
+    "ellos": "interesaban"
+   },
+   "conditional": {
+    "yo": "interesaría",
+    "tu": "interesarías",
+    "el": "interesaría",
+    "nosotros": "interesaríamos",
+    "vosotros": "interesaríais",
+    "ellos": "interesarían"
+   },
+   "subjunctive": {
+    "yo": "interese",
+    "tu": "intereses",
+    "el": "interese",
+    "nosotros": "interesemos",
+    "vosotros": "intereséis",
+    "ellos": "interesen"
    },
    "lessons": [
     "a2_u5_l3"
@@ -1700,6 +2815,32 @@
     }
    ],
    "preterite_regular": true,
+   "imperfect": {
+    "yo": "recordaba",
+    "tu": "recordabas",
+    "el": "recordaba",
+    "nosotros": "recordábamos",
+    "vosotros": "recordabais",
+    "ellos": "recordaban"
+   },
+   "imperfect_regular": true,
+   "conditional": {
+    "yo": "recordaría",
+    "tu": "recordarías",
+    "el": "recordaría",
+    "nosotros": "recordaríamos",
+    "vosotros": "recordaríais",
+    "ellos": "recordarían"
+   },
+   "conditional_regular": true,
+   "subjunctive": {
+    "yo": "recuerde",
+    "tu": "recuerdes",
+    "el": "recuerde",
+    "nosotros": "recordemos",
+    "vosotros": "recordéis",
+    "ellos": "recuerden"
+   },
    "note_ar": "o ← ue في المضارع، ومنتظم في الماضي."
   },
   {
@@ -1733,6 +2874,32 @@
     }
    ],
    "preterite_regular": true,
+   "imperfect": {
+    "yo": "acordaba",
+    "tu": "acordabas",
+    "el": "acordaba",
+    "nosotros": "acordábamos",
+    "vosotros": "acordabais",
+    "ellos": "acordaban"
+   },
+   "imperfect_regular": true,
+   "conditional": {
+    "yo": "acordaría",
+    "tu": "acordarías",
+    "el": "acordaría",
+    "nosotros": "acordaríamos",
+    "vosotros": "acordaríais",
+    "ellos": "acordarían"
+   },
+   "conditional_regular": true,
+   "subjunctive": {
+    "yo": "acuerde",
+    "tu": "acuerdes",
+    "el": "acuerde",
+    "nosotros": "acordemos",
+    "vosotros": "acordéis",
+    "ellos": "acuerden"
+   },
    "note_ar": "o ← ue في المضارع، ومنتظم في الماضي. acordamos = نتّفق / اتفقنا."
   },
   {
@@ -1766,6 +2933,32 @@
     }
    ],
    "preterite_regular": false,
+   "imperfect": {
+    "yo": "seguía",
+    "tu": "seguías",
+    "el": "seguía",
+    "nosotros": "seguíamos",
+    "vosotros": "seguíais",
+    "ellos": "seguían"
+   },
+   "imperfect_regular": true,
+   "conditional": {
+    "yo": "seguiría",
+    "tu": "seguirías",
+    "el": "seguiría",
+    "nosotros": "seguiríamos",
+    "vosotros": "seguiríais",
+    "ellos": "seguirían"
+   },
+   "conditional_regular": true,
+   "subjunctive": {
+    "yo": "siga",
+    "tu": "sigas",
+    "el": "siga",
+    "nosotros": "sigamos",
+    "vosotros": "sigáis",
+    "ellos": "sigan"
+   },
    "note_ar": "e ← i في المضارع (sigo)، وفي الماضي مع él / ellos: siguió، siguieron."
   },
   {
@@ -1789,6 +2982,14 @@
     "vosotros": "debisteis",
     "ellos": "debieron"
    },
+   "imperfect": {
+    "yo": "debía",
+    "tu": "debías",
+    "el": "debía",
+    "nosotros": "debíamos",
+    "vosotros": "debíais",
+    "ellos": "debían"
+   },
    "conditional": {
     "yo": "debería",
     "tu": "deberías",
@@ -1796,6 +2997,14 @@
     "nosotros": "deberíamos",
     "vosotros": "deberíais",
     "ellos": "deberían"
+   },
+   "subjunctive": {
+    "yo": "deba",
+    "tu": "debas",
+    "el": "deba",
+    "nosotros": "debamos",
+    "vosotros": "debáis",
+    "ellos": "deban"
    },
    "note_ar": "للنصيحة نستعمل الشرطي غالباً: deberías (ينبغي أن)، فهو ألطف من debes (يجب أن). بعده مصدر.",
    "examples": [
@@ -1833,6 +3042,14 @@
     "vosotros": "importasteis",
     "ellos": "importaron"
    },
+   "imperfect": {
+    "yo": "importaba",
+    "tu": "importabas",
+    "el": "importaba",
+    "nosotros": "importábamos",
+    "vosotros": "importabais",
+    "ellos": "importaban"
+   },
    "conditional": {
     "yo": "importaría",
     "tu": "importarías",
@@ -1840,6 +3057,14 @@
     "nosotros": "importaríamos",
     "vosotros": "importaríais",
     "ellos": "importarían"
+   },
+   "subjunctive": {
+    "yo": "importe",
+    "tu": "importes",
+    "el": "importe",
+    "nosotros": "importemos",
+    "vosotros": "importéis",
+    "ellos": "importen"
    },
    "note_ar": "يُستعمل مثل gustar: ¿Le importa…? (هل يهمّك / هل تمانع؟) و¿Le importaría…? للطلب المهذّب.",
    "examples": [
@@ -1874,6 +3099,15 @@
     "ellos": "convencieron"
    },
    "preterite_regular": true,
+   "imperfect": {
+    "yo": "convencía",
+    "tu": "convencías",
+    "el": "convencía",
+    "nosotros": "convencíamos",
+    "vosotros": "convencíais",
+    "ellos": "convencían"
+   },
+   "imperfect_regular": true,
    "conditional": {
     "yo": "convencería",
     "tu": "convencerías",
@@ -1883,6 +3117,14 @@
     "ellos": "convencerían"
    },
    "conditional_regular": true,
+   "subjunctive": {
+    "yo": "convenza",
+    "tu": "convenzas",
+    "el": "convenza",
+    "nosotros": "convenzamos",
+    "vosotros": "convenzáis",
+    "ellos": "convenzan"
+   },
    "note_ar": "yo convenzo: تتغيّر c إلى z أمام o لتبقى بصوت «ث». الباقي منتظم.",
    "examples": [
     {
@@ -1892,6 +3134,743 @@
    ],
    "lessons": [
     "b1_u1_l5"
+   ]
+  },
+  {
+   "id": "ver",
+   "infinitive": "ver",
+   "ar": "يرى",
+   "regular": false,
+   "present": {
+    "yo": "veo",
+    "tu": "ves",
+    "el": "ve",
+    "nosotros": "vemos",
+    "vosotros": "veis",
+    "ellos": "ven"
+   },
+   "preterite": {
+    "yo": "vi",
+    "tu": "viste",
+    "el": "vio",
+    "nosotros": "vimos",
+    "vosotros": "visteis",
+    "ellos": "vieron"
+   },
+   "imperfect": {
+    "yo": "veía",
+    "tu": "veías",
+    "el": "veía",
+    "nosotros": "veíamos",
+    "vosotros": "veíais",
+    "ellos": "veían"
+   },
+   "conditional": {
+    "yo": "vería",
+    "tu": "verías",
+    "el": "vería",
+    "nosotros": "veríamos",
+    "vosotros": "veríais",
+    "ellos": "verían"
+   },
+   "conditional_regular": true,
+   "subjunctive": {
+    "yo": "vea",
+    "tu": "veas",
+    "el": "vea",
+    "nosotros": "veamos",
+    "vosotros": "veáis",
+    "ellos": "vean"
+   },
+   "note_ar": "شاذّ في imperfecto: veía (يبقى حرف e). vi وvio بلا نبر.",
+   "examples": [
+    {
+     "es": "Veía a los clientes cada semana.",
+     "ar": "كنتُ أرى العملاء كل أسبوع."
+    }
+   ],
+   "lessons": [
+    "b1_u2_l2"
+   ]
+  },
+  {
+   "id": "sonar",
+   "infinitive": "sonar",
+   "ar": "يرنّ",
+   "regular": false,
+   "present": {
+    "yo": "sueno",
+    "tu": "suenas",
+    "el": "suena",
+    "nosotros": "sonamos",
+    "vosotros": "sonáis",
+    "ellos": "suenan"
+   },
+   "preterite": {
+    "yo": "soné",
+    "tu": "sonaste",
+    "el": "sonó",
+    "nosotros": "sonamos",
+    "vosotros": "sonasteis",
+    "ellos": "sonaron"
+   },
+   "preterite_regular": true,
+   "imperfect": {
+    "yo": "sonaba",
+    "tu": "sonabas",
+    "el": "sonaba",
+    "nosotros": "sonábamos",
+    "vosotros": "sonabais",
+    "ellos": "sonaban"
+   },
+   "imperfect_regular": true,
+   "conditional": {
+    "yo": "sonaría",
+    "tu": "sonarías",
+    "el": "sonaría",
+    "nosotros": "sonaríamos",
+    "vosotros": "sonaríais",
+    "ellos": "sonarían"
+   },
+   "conditional_regular": true,
+   "subjunctive": {
+    "yo": "suene",
+    "tu": "suenes",
+    "el": "suene",
+    "nosotros": "sonemos",
+    "vosotros": "sonéis",
+    "ellos": "suenen"
+   },
+   "note_ar": "o ← ue في المضارع (suena)؛ منتظم في الماضي: sonó.",
+   "examples": [
+    {
+     "es": "De repente, sonó el teléfono.",
+     "ar": "فجأة، رنّ الهاتف."
+    }
+   ],
+   "lessons": [
+    "b1_u2_l3"
+   ]
+  },
+  {
+   "id": "encargar",
+   "infinitive": "encargar",
+   "ar": "يكلّف / يطلب (encargarse de: يتولّى)",
+   "regular": true,
+   "present": {
+    "yo": "encargo",
+    "tu": "encargas",
+    "el": "encarga",
+    "nosotros": "encargamos",
+    "vosotros": "encargáis",
+    "ellos": "encargan"
+   },
+   "preterite": {
+    "yo": "encargué",
+    "tu": "encargaste",
+    "el": "encargó",
+    "nosotros": "encargamos",
+    "vosotros": "encargasteis",
+    "ellos": "encargaron"
+   },
+   "imperfect": {
+    "yo": "encargaba",
+    "tu": "encargabas",
+    "el": "encargaba",
+    "nosotros": "encargábamos",
+    "vosotros": "encargabais",
+    "ellos": "encargaban"
+   },
+   "conditional": {
+    "yo": "encargaría",
+    "tu": "encargarías",
+    "el": "encargaría",
+    "nosotros": "encargaríamos",
+    "vosotros": "encargaríais",
+    "ellos": "encargarían"
+   },
+   "subjunctive": {
+    "yo": "encargue",
+    "tu": "encargues",
+    "el": "encargue",
+    "nosotros": "encarguemos",
+    "vosotros": "encarguéis",
+    "ellos": "encarguen"
+   },
+   "note_ar": "me encargo de… = أتولّى… · me encargaba de… = كنتُ مسؤولاً عن…",
+   "examples": [
+    {
+     "es": "Me encargaba de las reservas.",
+     "ar": "كنتُ مسؤولاً عن الحجوزات."
+    }
+   ],
+   "lessons": [
+    "b1_u2_l4"
+   ]
+  },
+  {
+   "id": "conseguir",
+   "infinitive": "conseguir",
+   "ar": "يحصل على / يتمكّن من",
+   "regular": false,
+   "present": {
+    "yo": "consigo",
+    "tu": "consigues",
+    "el": "consigue",
+    "nosotros": "conseguimos",
+    "vosotros": "conseguís",
+    "ellos": "consiguen"
+   },
+   "preterite": {
+    "yo": "conseguí",
+    "tu": "conseguiste",
+    "el": "consiguió",
+    "nosotros": "conseguimos",
+    "vosotros": "conseguisteis",
+    "ellos": "consiguieron"
+   },
+   "imperfect": {
+    "yo": "conseguía",
+    "tu": "conseguías",
+    "el": "conseguía",
+    "nosotros": "conseguíamos",
+    "vosotros": "conseguíais",
+    "ellos": "conseguían"
+   },
+   "imperfect_regular": true,
+   "conditional": {
+    "yo": "conseguiría",
+    "tu": "conseguirías",
+    "el": "conseguiría",
+    "nosotros": "conseguiríamos",
+    "vosotros": "conseguiríais",
+    "ellos": "conseguirían"
+   },
+   "conditional_regular": true,
+   "subjunctive": {
+    "yo": "consiga",
+    "tu": "consigas",
+    "el": "consiga",
+    "nosotros": "consigamos",
+    "vosotros": "consigáis",
+    "ellos": "consigan"
+   },
+   "note_ar": "مثل seguir: e ← i (consigo، consiguió). conseguir + مصدر = يتمكّن من.",
+   "examples": [
+    {
+     "es": "Conseguimos terminar a tiempo.",
+     "ar": "تمكّنّا من الانتهاء في الوقت المحدّد."
+    }
+   ],
+   "lessons": [
+    "b1_u2_l5"
+   ]
+  },
+  {
+   "id": "superar",
+   "infinitive": "superar",
+   "ar": "يتجاوز / يتغلّب على",
+   "regular": true,
+   "present": {
+    "yo": "supero",
+    "tu": "superas",
+    "el": "supera",
+    "nosotros": "superamos",
+    "vosotros": "superáis",
+    "ellos": "superan"
+   },
+   "preterite": {
+    "yo": "superé",
+    "tu": "superaste",
+    "el": "superó",
+    "nosotros": "superamos",
+    "vosotros": "superasteis",
+    "ellos": "superaron"
+   },
+   "imperfect": {
+    "yo": "superaba",
+    "tu": "superabas",
+    "el": "superaba",
+    "nosotros": "superábamos",
+    "vosotros": "superabais",
+    "ellos": "superaban"
+   },
+   "conditional": {
+    "yo": "superaría",
+    "tu": "superarías",
+    "el": "superaría",
+    "nosotros": "superaríamos",
+    "vosotros": "superaríais",
+    "ellos": "superarían"
+   },
+   "subjunctive": {
+    "yo": "supere",
+    "tu": "superes",
+    "el": "supere",
+    "nosotros": "superemos",
+    "vosotros": "superéis",
+    "ellos": "superen"
+   },
+   "note_ar": "superamos للحاضر والماضي معاً؛ السياق يحدّد.",
+   "examples": [
+    {
+     "es": "Lo superamos juntos.",
+     "ar": "تجاوزناه معاً."
+    }
+   ],
+   "lessons": [
+    "b1_u2_l6"
+   ]
+  },
+  {
+   "id": "mejorar",
+   "infinitive": "mejorar",
+   "ar": "يحسّن / يتحسّن",
+   "regular": true,
+   "present": {
+    "yo": "mejoro",
+    "tu": "mejoras",
+    "el": "mejora",
+    "nosotros": "mejoramos",
+    "vosotros": "mejoráis",
+    "ellos": "mejoran"
+   },
+   "preterite": {
+    "yo": "mejoré",
+    "tu": "mejoraste",
+    "el": "mejoró",
+    "nosotros": "mejoramos",
+    "vosotros": "mejorasteis",
+    "ellos": "mejoraron"
+   },
+   "imperfect": {
+    "yo": "mejoraba",
+    "tu": "mejorabas",
+    "el": "mejoraba",
+    "nosotros": "mejorábamos",
+    "vosotros": "mejorabais",
+    "ellos": "mejoraban"
+   },
+   "conditional": {
+    "yo": "mejoraría",
+    "tu": "mejorarías",
+    "el": "mejoraría",
+    "nosotros": "mejoraríamos",
+    "vosotros": "mejoraríais",
+    "ellos": "mejorarían"
+   },
+   "subjunctive": {
+    "yo": "mejore",
+    "tu": "mejores",
+    "el": "mejore",
+    "nosotros": "mejoremos",
+    "vosotros": "mejoréis",
+    "ellos": "mejoren"
+   },
+   "note_ar": "من mejor: الشيء يتحسّن (mejora) أو نحسّنه (lo mejoramos).",
+   "examples": [
+    {
+     "es": "Los resultados mejoraron mucho.",
+     "ar": "تحسّنت النتائج كثيراً."
+    }
+   ],
+   "lessons": [
+    "b1_u2_l6"
+   ]
+  },
+  {
+   "id": "contestar",
+   "infinitive": "contestar",
+   "ar": "يجيب / يردّ",
+   "regular": true,
+   "present": {
+    "yo": "contesto",
+    "tu": "contestas",
+    "el": "contesta",
+    "nosotros": "contestamos",
+    "vosotros": "contestáis",
+    "ellos": "contestan"
+   },
+   "preterite": {
+    "yo": "contesté",
+    "tu": "contestaste",
+    "el": "contestó",
+    "nosotros": "contestamos",
+    "vosotros": "contestasteis",
+    "ellos": "contestaron"
+   },
+   "imperfect": {
+    "yo": "contestaba",
+    "tu": "contestabas",
+    "el": "contestaba",
+    "nosotros": "contestábamos",
+    "vosotros": "contestabais",
+    "ellos": "contestaban"
+   },
+   "conditional": {
+    "yo": "contestaría",
+    "tu": "contestarías",
+    "el": "contestaría",
+    "nosotros": "contestaríamos",
+    "vosotros": "contestaríais",
+    "ellos": "contestarían"
+   },
+   "subjunctive": {
+    "yo": "conteste",
+    "tu": "contestes",
+    "el": "conteste",
+    "nosotros": "contestemos",
+    "vosotros": "contestéis",
+    "ellos": "contesten"
+   },
+   "note_ar": "contestar el correo / el teléfono = يردّ على البريد / الهاتف.",
+   "examples": [
+    {
+     "es": "Le pido que conteste el correo hoy.",
+     "ar": "أطلب منك أن تردّ على البريد اليوم."
+    }
+   ],
+   "lessons": [
+    "b1_u3_l1"
+   ]
+  },
+  {
+   "id": "reiniciar",
+   "infinitive": "reiniciar",
+   "ar": "يعيد التشغيل",
+   "regular": true,
+   "present": {
+    "yo": "reinicio",
+    "tu": "reinicias",
+    "el": "reinicia",
+    "nosotros": "reiniciamos",
+    "vosotros": "reiniciáis",
+    "ellos": "reinician"
+   },
+   "preterite": {
+    "yo": "reinicié",
+    "tu": "reiniciaste",
+    "el": "reinició",
+    "nosotros": "reiniciamos",
+    "vosotros": "reiniciasteis",
+    "ellos": "reiniciaron"
+   },
+   "imperfect": {
+    "yo": "reiniciaba",
+    "tu": "reiniciabas",
+    "el": "reiniciaba",
+    "nosotros": "reiniciábamos",
+    "vosotros": "reiniciabais",
+    "ellos": "reiniciaban"
+   },
+   "conditional": {
+    "yo": "reiniciaría",
+    "tu": "reiniciarías",
+    "el": "reiniciaría",
+    "nosotros": "reiniciaríamos",
+    "vosotros": "reiniciaríais",
+    "ellos": "reiniciarían"
+   },
+   "subjunctive": {
+    "yo": "reinicie",
+    "tu": "reinicies",
+    "el": "reinicie",
+    "nosotros": "reiniciemos",
+    "vosotros": "reiniciéis",
+    "ellos": "reinicien"
+   },
+   "note_ar": "منتظم؛ النبر على i في reinicio لا يُكتب.",
+   "examples": [
+    {
+     "es": "Le recomiendo que reinicie el ordenador.",
+     "ar": "أنصحك أن تعيد تشغيل الحاسوب."
+    }
+   ],
+   "lessons": [
+    "b1_u3_l3"
+   ]
+  },
+  {
+   "id": "aconsejar",
+   "infinitive": "aconsejar",
+   "ar": "ينصح",
+   "regular": true,
+   "present": {
+    "yo": "aconsejo",
+    "tu": "aconsejas",
+    "el": "aconseja",
+    "nosotros": "aconsejamos",
+    "vosotros": "aconsejáis",
+    "ellos": "aconsejan"
+   },
+   "preterite": {
+    "yo": "aconsejé",
+    "tu": "aconsejaste",
+    "el": "aconsejó",
+    "nosotros": "aconsejamos",
+    "vosotros": "aconsejasteis",
+    "ellos": "aconsejaron"
+   },
+   "imperfect": {
+    "yo": "aconsejaba",
+    "tu": "aconsejabas",
+    "el": "aconsejaba",
+    "nosotros": "aconsejábamos",
+    "vosotros": "aconsejabais",
+    "ellos": "aconsejaban"
+   },
+   "conditional": {
+    "yo": "aconsejaría",
+    "tu": "aconsejarías",
+    "el": "aconsejaría",
+    "nosotros": "aconsejaríamos",
+    "vosotros": "aconsejaríais",
+    "ellos": "aconsejarían"
+   },
+   "subjunctive": {
+    "yo": "aconseje",
+    "tu": "aconsejes",
+    "el": "aconseje",
+    "nosotros": "aconsejemos",
+    "vosotros": "aconsejéis",
+    "ellos": "aconsejen"
+   },
+   "note_ar": "aconsejar que + subjuntivo.",
+   "examples": [
+    {
+     "es": "Te aconsejo que hables con tu jefe.",
+     "ar": "أنصحك أن تتحدث مع مديرك."
+    }
+   ],
+   "lessons": [
+    "b1_u3_l3"
+   ]
+  },
+  {
+   "id": "lamentar",
+   "infinitive": "lamentar",
+   "ar": "يأسف",
+   "regular": true,
+   "present": {
+    "yo": "lamento",
+    "tu": "lamentas",
+    "el": "lamenta",
+    "nosotros": "lamentamos",
+    "vosotros": "lamentáis",
+    "ellos": "lamentan"
+   },
+   "preterite": {
+    "yo": "lamenté",
+    "tu": "lamentaste",
+    "el": "lamentó",
+    "nosotros": "lamentamos",
+    "vosotros": "lamentasteis",
+    "ellos": "lamentaron"
+   },
+   "imperfect": {
+    "yo": "lamentaba",
+    "tu": "lamentabas",
+    "el": "lamentaba",
+    "nosotros": "lamentábamos",
+    "vosotros": "lamentabais",
+    "ellos": "lamentaban"
+   },
+   "conditional": {
+    "yo": "lamentaría",
+    "tu": "lamentarías",
+    "el": "lamentaría",
+    "nosotros": "lamentaríamos",
+    "vosotros": "lamentaríais",
+    "ellos": "lamentarían"
+   },
+   "subjunctive": {
+    "yo": "lamente",
+    "tu": "lamentes",
+    "el": "lamente",
+    "nosotros": "lamentemos",
+    "vosotros": "lamentéis",
+    "ellos": "lamenten"
+   },
+   "note_ar": "lamento que + subjuntivo.",
+   "examples": [
+    {
+     "es": "Lamento que el pedido esté retrasado.",
+     "ar": "يؤسفني أن الطلب متأخر."
+    }
+   ],
+   "lessons": [
+    "b1_u3_l4"
+   ]
+  },
+  {
+   "id": "prometer",
+   "infinitive": "prometer",
+   "ar": "يعد",
+   "regular": true,
+   "present": {
+    "yo": "prometo",
+    "tu": "prometes",
+    "el": "promete",
+    "nosotros": "prometemos",
+    "vosotros": "prometéis",
+    "ellos": "prometen"
+   },
+   "preterite": {
+    "yo": "prometí",
+    "tu": "prometiste",
+    "el": "prometió",
+    "nosotros": "prometimos",
+    "vosotros": "prometisteis",
+    "ellos": "prometieron"
+   },
+   "imperfect": {
+    "yo": "prometía",
+    "tu": "prometías",
+    "el": "prometía",
+    "nosotros": "prometíamos",
+    "vosotros": "prometíais",
+    "ellos": "prometían"
+   },
+   "conditional": {
+    "yo": "prometería",
+    "tu": "prometerías",
+    "el": "prometería",
+    "nosotros": "prometeríamos",
+    "vosotros": "prometeríais",
+    "ellos": "prometerían"
+   },
+   "subjunctive": {
+    "yo": "prometa",
+    "tu": "prometas",
+    "el": "prometa",
+    "nosotros": "prometamos",
+    "vosotros": "prometáis",
+    "ellos": "prometan"
+   },
+   "note_ar": "le prometo que + indicativo (وعد بحقيقة).",
+   "examples": [
+    {
+     "es": "Le prometo que lo solucionamos hoy.",
+     "ar": "أعدك بأننا نحلّها اليوم."
+    }
+   ],
+   "lessons": [
+    "b1_u3_l4"
+   ]
+  },
+  {
+   "id": "reemplazar",
+   "infinitive": "reemplazar",
+   "ar": "يستبدل",
+   "regular": true,
+   "present": {
+    "yo": "reemplazo",
+    "tu": "reemplazas",
+    "el": "reemplaza",
+    "nosotros": "reemplazamos",
+    "vosotros": "reemplazáis",
+    "ellos": "reemplazan"
+   },
+   "preterite": {
+    "yo": "reemplacé",
+    "tu": "reemplazaste",
+    "el": "reemplazó",
+    "nosotros": "reemplazamos",
+    "vosotros": "reemplazasteis",
+    "ellos": "reemplazaron"
+   },
+   "imperfect": {
+    "yo": "reemplazaba",
+    "tu": "reemplazabas",
+    "el": "reemplazaba",
+    "nosotros": "reemplazábamos",
+    "vosotros": "reemplazabais",
+    "ellos": "reemplazaban"
+   },
+   "conditional": {
+    "yo": "reemplazaría",
+    "tu": "reemplazarías",
+    "el": "reemplazaría",
+    "nosotros": "reemplazaríamos",
+    "vosotros": "reemplazaríais",
+    "ellos": "reemplazarían"
+   },
+   "subjunctive": {
+    "yo": "reemplace",
+    "tu": "reemplaces",
+    "el": "reemplace",
+    "nosotros": "reemplacemos",
+    "vosotros": "reemplacéis",
+    "ellos": "reemplacen"
+   },
+   "note_ar": "z ← c قبل e: reemplacé، reemplace.",
+   "examples": [
+    {
+     "es": "Le propongo que la reemplacemos sin coste.",
+     "ar": "أقترح عليك أن نستبدلها بلا تكلفة."
+    }
+   ],
+   "lessons": [
+    "b1_u3_l6"
+   ]
+  },
+  {
+   "id": "probar",
+   "infinitive": "probar",
+   "ar": "يجرّب",
+   "regular": false,
+   "present": {
+    "yo": "pruebo",
+    "tu": "pruebas",
+    "el": "prueba",
+    "nosotros": "probamos",
+    "vosotros": "probáis",
+    "ellos": "prueban"
+   },
+   "preterite": {
+    "yo": "probé",
+    "tu": "probaste",
+    "el": "probó",
+    "nosotros": "probamos",
+    "vosotros": "probasteis",
+    "ellos": "probaron"
+   },
+   "imperfect": {
+    "yo": "probaba",
+    "tu": "probabas",
+    "el": "probaba",
+    "nosotros": "probábamos",
+    "vosotros": "probabais",
+    "ellos": "probaban"
+   },
+   "conditional": {
+    "yo": "probaría",
+    "tu": "probarías",
+    "el": "probaría",
+    "nosotros": "probaríamos",
+    "vosotros": "probaríais",
+    "ellos": "probarían"
+   },
+   "subjunctive": {
+    "yo": "pruebe",
+    "tu": "pruebes",
+    "el": "pruebe",
+    "nosotros": "probemos",
+    "vosotros": "probéis",
+    "ellos": "prueben"
+   },
+   "preterite_regular": true,
+   "imperfect_regular": true,
+   "conditional_regular": true,
+   "note_ar": "o ← ue (pruebo، pruebe) إلا مع nosotros و vosotros.",
+   "examples": [
+    {
+     "es": "Es mejor que pruebe otra contraseña.",
+     "ar": "من الأفضل أن تجرّب كلمة مرور أخرى."
+    }
+   ],
+   "lessons": [
+    "b1_u3_l3"
    ]
   }
  ],

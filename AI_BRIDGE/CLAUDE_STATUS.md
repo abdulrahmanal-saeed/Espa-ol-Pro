@@ -3,6 +3,434 @@
 owner: Claude Code
 implementer: Claude Code
 handoff_status: READY_FOR_REVIEW
+handoff_id: PHASE4-005
+updated_at_utc: 2026-11-23T15:30:00Z
+review_requested_for_sha: 2fd7ae8 (REVIEW-021 fixes on top of 631c2fc)
+branch: claude/hopeful-knuth-wbn3n3
+pull_request: https://github.com/abdulrahmanal-saeed/Espa-ol-Pro/pull/19 (the owner asked to keep stacking B1 units on #19)
+last_review_acknowledged: REVIEW-021
+project_status: B1_U1_MERGED__B1_U2_U3_IN_PR19__DEVICE_AND_NATIVE_QA_PENDING
+
+## Update: REVIEW-021 fixed (`2fd7ae8`)
+
+REVIEW-021 requested changes for one P2 and noted two P3s. All three are
+fixed in `2fd7ae8`.
+
+**P2: internal IDs leaked into the Spanish.** This was confirmed, and it
+reached further than reported. When I renamed the colliding IDs, the same
+replacement also changed:
+
+- the Spanish of `revise_subj` and `llame_subj`;
+- the lesson 69 fill answer and its options;
+- one option of the grammar choice.
+
+The items now teach «revise» and «llame» again, and the IDs stay distinct.
+The validator now rejects `_` in any learner-facing Spanish, with the fill
+blank `___` as the only exception. That covers items, examples, activity
+texts, answers, options, dialogue turns and choices, assessment fields, and
+verb forms and examples. Tests:
+
+- a broken copy with the leak is rejected;
+- every built B1-U3 exercise (expected text, options, audio, accepted
+  answers) is free of IDs.
+
+**P3: tense.** The complaint now models an ongoing delay: «Lamento que el
+pedido esté retrasado». The dialogue, the examples, the checkpoint (`q12`)
+and the `lamentar` example were updated to match. The remaining «llegue
+tarde» choice now has a future context: «El pedido sale mañana. Lamento que
+___ tarde.»
+
+**P3: politeness.** `quiero_que` now notes «¿Podría revisar el informe?»
+(taught in B1-U1) as the softer option with clients. No new grammar was
+added.
+
+**CI.** Exact-head run
+[45198251572](https://github.com/abdulrahmanal-saeed/Espa-ol-Pro/actions/runs/45198251572)
+on `4205cf1` (before this fix) was green. The new head gets its own run.
+
+Local: format and analyze clean, validator OK, **480 tests passed**
+(477 + 3).
+
+## REVIEW-020 acknowledged
+
+REVIEW-020 approved B1-U2 (`a442f82`), with green CI on `9a2f5ec`
+(465 tests). It raised two P3s:
+
+- **Aspect cues (fixed).** `g_b1_past_contrast` no longer calls
+  «de repente» and «hace + مدة» fixed rules. They are now "common patterns
+  (context always decides)", and the note includes a habitual
+  counter-example: «de repente, sonaba el teléfono». A regression test checks
+  the wording.
+- **Reading repeated on each screen (deferred, as you advised).** I'll
+  propose a shared-passage screen only after a device test.
+
+## B1-U3 «حل المشكلات مع العملاء» (content 1.14.0)
+
+| Lesson | Items | Focus |
+|---|---|---|
+| `b1_u3_l1` Quiero que… | 8 | quiero / necesito / le pido que + regular subjunctive (revise, envíe, llame, conteste); same subject → infinitive; hoy mismo |
+| `b1_u3_l2` Espero que… | 8 | irregular subjunctive (tenga, haga, pueda, sea, esté, vaya); espero que, ojalá |
+| `b1_u3_l3` Le recomiendo que… | 8 | recomendar / aconsejar que; es mejor / importante / necesario que; **no creo que** (promised in B1-U1) |
+| `b1_u3_l4` La queja de un cliente | 8 | la queja, molesto, lamento que (+ subjunctive), le prometo que (+ indicative), no se preocupe, el reembolso |
+| `b1_u3_l5` Proponer soluciones | 8 | le propongo que (+ subjunctive), ¿Qué le parece si…? (+ indicative), en lugar de + infinitive, la alternativa, el descuento, sin coste |
+| `b1_u3_l6` Lectura y escucha | 7 | a ~170-word complaint and answer with four questions, and the 12-turn `dlg_b1_impresora` |
+
+**Every lesson:**
+
+- all ten activity types;
+- `explain_ar` on every fill and grammar choice;
+- a `work` item;
+- the prerequisite chain continues from `b1_u2_l6`;
+- two FSRS cards per item, tested in the app.
+
+**Distractors.** The indicative is offered next to the subjunctive only
+after a trigger that makes the subjunctive obligatory: quiero que,
+necesito que, le pido que, espero que, no creo que, lamento que,
+le propongo que. The opposite traps are tested too: si (+ indicative),
+le prometo que (+ indicative), en lugar de (+ infinitive).
+
+**IDs.** `revise`, `envie` and `llame` already existed as the past forms
+(revisé, envié, llamé), so the subjunctive items are `revise_subj`,
+`envie_subj` and `llame_subj`.
+
+**Dialogues.** Four, all at 100 % known words. The estimator first flagged
+seven forms; they are now taught in item examples.
+
+**Checkpoint `chk_b1_u3`:**
+
+- 12 questions, 3 can-dos covering all six lessons;
+- five skills;
+- three dialogue sentences;
+- two Spanish-first prompts;
+- typed answers graded with strict accents (esté, not este).
+
+**Verbs (68):**
+
+- the present subjunctive for every verb: 26 irregular verbs by hand, the
+  rest machine-checked;
+- the conditional completed for the 41 verbs that lacked it (saldría and
+  propondría by hand);
+- new: contestar, reiniciar, aconsejar, lamentar, prometer, reemplazar
+  and probar (pruebe / probemos);
+- every verb now has all five tenses (tested).
+
+## Verification (local, Flutter 3.50.0)
+
+| Check | Result |
+|---|---|
+| format / analyze | clean |
+| validator | OK — 74 lessons, 621 items, 2106 activities (1329 graded), 82 grammar notes, 42 dialogues (286 turns, 216 questions), 19 assessments (235 questions), 68 verbs |
+| `flutter test` | **477 passed** (465 + 11 in `b1_u3_customers_test` + 1 REVIEW-020 regression) |
+| screenshots | regenerated (content version) |
+
+## Questions for ChatGPT
+
+1. «lamento que el pedido llegue tarde» uses the present subjunctive for a
+   delay that already happened. «haya llegado» is more precise, but the
+   perfect subjunctive has not been taught. Is the present acceptable at
+   this stage, or should the example be rephrased?
+2. «Quiero que usted revise…» is formal and direct. Should lesson 69 also
+   teach «¿Podría…?» as the softer option in the same context?
+
+## Next step
+
+1. B1-U4 «المراسلات المهنية» (professional correspondence).
+2. Then `lvl_b1` with the B2 gate, and the longer reading and listening
+   lesson for B1-U1.
+
+I will not merge without the owner.
+
+---
+
+# Previous handoff (PHASE4-004, B1-U2 on PR #19)
+
+owner: Claude Code
+implementer: Claude Code
+handoff_status: READY_FOR_REVIEW
+handoff_id: PHASE4-004
+updated_at_utc: 2026-11-23T13:00:00Z
+review_requested_for_sha: a442f82 (B1-U2 application code and content; built on PR #19 head `c941190`)
+branch: claude/hopeful-knuth-wbn3n3
+pull_request: https://github.com/abdulrahmanal-saeed/Espa-ol-Pro/pull/19 (owner asked to add B1-U2 on top of #19)
+last_review_acknowledged: REVIEW-019
+project_status: B1_U2_READY__AFTER_PR19__DEVICE_AND_NATIVE_QA_PENDING
+
+## Branch
+
+The owner asked for the next B1 unit while PR #19 was open, and then asked
+for B1-U2 to go **on top of #19**. This session can only push to
+`claude/hopeful-knuth-wbn3n3`. So #19 now holds:
+
+- strict accents and Spanish-first prompts (`c456fc8`), reviewed in
+  REVIEW-019;
+- the REVIEW-019 P3 fixes (`17acbc5`);
+- B1-U2 (`a442f82` plus the docs commit).
+
+Please review only the B1-U2 commits; the rest was already reviewed.
+
+## B1-U2 «السرد والتجارب» (content 1.13.0)
+
+| Lesson | Items | Focus |
+|---|---|---|
+| `b1_u2_l1` Antes y ahora | 8 | regular imperfect for habits: trabajaba, vivía, antes, siempre, normalmente, todos los días, a menudo, ya no |
+| `b1_u2_l2` Cómo era | 8 | ser / ir / ver in the imperfect (era, éramos, iba, veía), había, estaba, tenía, de joven |
+| `b1_u2_l3` Lo que pasó y cómo era | 8 | background vs event: mientras, de repente, en ese momento, sonó, me di cuenta de…, eran las…, hacía calor, llovía |
+| `b1_u2_l4` Mi experiencia profesional | 8 | mi primer trabajo, el puesto, me encargaba de…, hace dos años, durante, al principio, con el tiempo, aprendí mucho |
+| `b1_u2_l5` Un problema en el proyecto | 8 | resulta que, tuvimos que, conseguimos, el retraso, a tiempo, por suerte / por desgracia, la lección; hubo vs había |
+| `b1_u2_l6` Lectura y escucha | 7 | **longer reading and listening** (owner decision): one ~150-word text with four questions, and the 12-turn `dlg_b1_historia` |
+
+**Every lesson:**
+
+- all ten activity types;
+- `explain_ar` on every fill and grammar choice;
+- a `work` item;
+- prerequisites chain from `b1_u1_l5`;
+- two FSRS cards per item, tested in the app for all six lessons.
+
+**Distractors.**
+
+- Every fill offers the target form, an infinitive and a participle, so the
+  imperfect / indefinido choice is never forced between two forms that could
+  both be right.
+- The aspect contrast is tested only with unambiguous rules: the time and
+  age in the past (eran / tenía, not fueron / tuve), de repente + an
+  indefinido, and hace + a span + an indefinido.
+
+**No grammar before its unit.** There is no subjunctive anywhere in the
+unit; a test scans every Spanish string for it.
+
+**Spanish-first prompts** (first content to use them):
+
+- reading and listening choices in every lesson;
+- two checkpoint questions;
+- four dialogue questions.
+
+The Arabic `prompt_ar` stays on all of them.
+
+**Dialogues.** Four, all at 100 % known words right after their lessons:
+`dlg_b1_antes`, `dlg_b1_manana`, `dlg_b1_entrevista`, and
+`dlg_b1_historia` (12 turns, 6 questions). The estimator first flagged six
+forms; they are now taught in item examples.
+
+**Checkpoint `chk_b1_u2`:**
+
+- 12 questions, 3 can-dos (4 questions each);
+- the can-dos cover all six lessons;
+- grammar 3, listening 3, writing 3, reading 2, vocabulary 1;
+- 3 dialogue sentences;
+- typed answers graded with strict accents.
+
+**Verbs (61):**
+
+- the imperfect for every verb: ser, ir and ver by hand, the rest
+  machine-checked;
+- new verbs: ver, sonar, encargar, conseguir, superar, mejorar.
+
+**Engine.** The evaluator now recognises the imperfect endings. «Antes
+trabajo en un banco» against «trabajaba» is diagnosed as a form mistake,
+not as a different word.
+
+## Verification (local, Flutter 3.50.0)
+
+| Check | Result |
+|---|---|
+| format | 0 changed |
+| `flutter analyze --fatal-infos` | No issues |
+| validator | OK — 68 lessons, 574 items, 1930 activities (1212 graded), 76 grammar notes, 38 dialogues (251 turns, 195 questions), 18 assessments (223 questions), 61 verbs |
+| `flutter test` | **465 passed** (453 on #19 + 12 in `b1_u2_narration_test`) |
+| screenshots | 07, 22 and 25 regenerated; new 26 (Spanish-first prompt on the long reading) |
+
+Two B1-U1 assertions had pinned "only B1-U1 is available" and "no verb has
+an imperfect". They now check what stays true: B1-U1 is first and
+available, and no subjunctive yet.
+
+## Questions for ChatGPT
+
+1. The long reading has some forms not yet taught (propuso, sabíamos,
+   querían, frecuentes). Following your REVIEW-019 guidance, the reading
+   threshold is a soft authoring target. Is that density right for a
+   lesson-6 reading?
+2. Should the four reading questions repeat the full text on each screen, as
+   now, or should we add a "read the text, then answer N questions"
+   exercise type?
+
+## Next step
+
+1. After the owner merges #19: push B1-U2 as its own PR.
+2. Then the longer reading and listening lesson for B1-U1.
+3. Then B1-U3 (subjunctive), B1-U4, and `lvl_b1` with the B2 gate.
+
+---
+
+# Previous handoff (PHASE4-003, PR #19)
+
+owner: Claude Code
+implementer: Claude Code
+handoff_status: READY_FOR_REVIEW
+handoff_id: PHASE4-003
+updated_at_utc: 2026-11-23T12:00:00Z
+review_requested_for_sha: 17acbc5 (REVIEW-019 P3 fixes on top of c456fc8)
+branch: claude/hopeful-knuth-wbn3n3
+pull_request: https://github.com/abdulrahmanal-saeed/Espa-ol-Pro/pull/19 (base `main`, draft)
+last_review_acknowledged: REVIEW-019 (and REVIEW-018)
+project_status: B1_U1_MERGED__STRICT_ACCENTS_AND_SPANISH_PROMPTS_IN_REVIEW__DEVICE_AND_NATIVE_QA_PENDING
+
+## Update: REVIEW-019 P3s fixed (`17acbc5`)
+
+REVIEW-019 approved `c456fc8` with release gates, and noted two P3s. Both
+are fixed in `17acbc5`; no other code changed.
+
+1. **Arabic reveal carried over.** `BilingualPrompt` now resets its Arabic
+   reveal in `didUpdateWidget` when its text changes. Regression widget
+   test: reveal the Arabic, rebuild the same place with the next prompt,
+   and the Arabic is hidden again.
+2. **`prompt_es` on dictation.** The validator now rejects `prompt_es` on
+   a dictation checkpoint question, whose screen shows a fixed
+   instruction. Test on an edited copy.
+
+Local: format and analyze clean, validator OK, **453 tests passed**
+(451 + 2).
+
+REVIEW-018 is acknowledged: it retrospectively approved PHASE4-002 /
+`4933ca3`. Its note is kept: when a future gate (`lvl_b1` for B2) lands,
+add restore tests for that assessment.
+
+## Since PHASE4-002
+
+- **PR #18 merged.** The owner explicitly approved the merge after
+  exact-head CI was green on `58c9818`
+  ([run 45156335009](https://github.com/abdulrahmanal-saeed/Espa-ol-Pro/actions/runs/45156335009),
+  440 tests, APK). Merge commit: `e901531`.
+- **Not yet re-reviewed.** Your re-review of PHASE4-002 (the REVIEW-017 P2
+  and P3 fixes, `4933ca3`) was not recorded before the merge. Please include
+  it in this review. Any finding goes into a follow-up PR.
+
+## Owner decisions (2026-11-23)
+
+1. **Strict accents from B1.** Approved within REVIEW-017's boundaries.
+   Built here.
+2. **Spanish-first prompts.** Approved. The mechanism is built here; content
+   starts using it in B1-U2, as REVIEW-017 recommended.
+3. **B2 requires passing `lvl_b1`**, as B1 requires `lvl_a2`. Not built yet:
+   the validator needs `lvl_b1` to exist. `requires_pass: "lvl_b1"` lands on
+   B2 in the same PR as `lvl_b1`.
+4. **Longer reading and listening in B1.** From B1-U2, every unit gets an
+   extended reading text and a longer listening. B1-U1 gets them in a
+   follow-up PR. The design is below, and I would like your view.
+
+## 1. Strict accents (content flag `strict_accents`)
+
+- **Content.** `strict_accents: true` on B1, B2, C1 and C2. The validator
+  keeps the flag on for every later level once it starts.
+- **Evaluator.** `evaluateAnswer(…, strictAccents)` now has a strict mode.
+  In strict mode, an answer that differs only in written accents is
+  incorrect. The issue stays `AnswerIssue.accents`, and the explanation
+  becomes «من مستوى B1 تُحسب علامات النبر: الصحيح «…»». Exact answers, ñ
+  and meaning-bearing accents behave as before at every level.
+- **Where it applies** (from the level of the content):
+  - lesson typing, typed fill, dictation and replies
+    (`TypeExercise.strictAccents`, set by `ExerciseBuilder`);
+  - practice runs (from the item's level);
+  - dialogue dictation (from the dialogue's level);
+  - checkpoints and level tests (`gradeAssessment(…, strictAccents)` from
+    the assessment's level; the stored outcome is still `missing_accents`,
+    now with `is_correct = false`, and the result screen says
+    «علامات النبر ناقصة — تُحسب خطأ من مستوى B1»);
+  - production review cards of B1+ items (a wrong typed answer can only be
+    rated Again, as before).
+- **Unchanged.** Receptive cards and multiple choice are not affected,
+  since nothing is typed there. A1 and A2 grading is unchanged. Stored
+  attempts are not regraded. There is no schema change.
+
+## 2. Spanish-first prompts (content flag `spanish_prompts`)
+
+- **Content.** `spanish_prompts: true` on B1 to C2.
+- **Where `prompt_es` is allowed:** lesson `choice` and `respond`
+  activities, checkpoint questions, and dialogue `choice` questions.
+- **Validator.** It rejects `prompt_es` on a level without the flag, on any
+  other type, with Arabic script, or with unbalanced ¿ ? / ¡ !.
+  `prompt_ar` stays required.
+- **Builder.** It passes `promptEs` on only when the level allows it, so A2
+  stays Arabic even if such content slipped in.
+- **UI.** `BilingualPrompt` shows the Spanish first, and «عرض بالعربية»
+  toggles the Arabic. It is used by every exercise view and by checkpoint
+  questions.
+- **Generated exercises.** Their instructions ("اكتب بالإسبانية"…) stay
+  Arabic in this PR: "selected comprehension instructions first", as you
+  recommended. A Spanish table for them can follow in a later unit.
+- **No shipped content uses `prompt_es` yet.** Tests use an edited B1-U1
+  fixture. B1-U2 will be the first content to use it.
+
+## 3. Proposed design: longer reading and listening (for your review)
+
+- Each B1 unit gets a sixth lesson, «قراءة واستماع» (extended practice):
+  - one reading text of about 120–180 words, with 4–5 comprehension
+    questions;
+  - one longer listening of about 10–12 turns, with 5–6 questions;
+  - a short production task.
+- It sits after lesson 5 and before the checkpoint, so the checkpoint opens
+  after it.
+- The difficulty estimator still applies: ≥ 95 % known words. The
+  ≤ 10 words per sentence limit stays for listening. For reading I propose
+  ≤ 14, a separate threshold.
+- Alternative: no new lesson, just longer `choice` reading stimuli and a
+  fourth dialogue per unit. The sixth lesson is cleaner for progress and
+  FSRS, because it adds only a few items.
+
+## Verification (local, Flutter 3.50.0)
+
+| Check | Result |
+|---|---|
+| format | 0 changed |
+| `flutter analyze --fatal-infos` | No issues |
+| validator | OK (content 1.12.0; counts unchanged from 1.11.0) |
+| `flutter test` | **451 (440 + 11) passed** |
+| CI | reported in the PR thread |
+
+New test: `b1_accents_prompts_test` (11). It covers:
+
+- the level flags;
+- the evaluator in both modes, with ñ and meaning accents everywhere;
+- builder strictness for B1 and A2 lessons, practice and dialogue
+  dictation;
+- checkpoint grading and labels, B1 against A2;
+- the validator for the flags;
+- `prompt_es` validation and builder behaviour;
+- widget tests:
+  - the lesson shows the Spanish prompt and toggles the Arabic;
+  - a B1 lesson marks a missing accent wrong and stores it;
+  - the same slip in A2 is accepted;
+  - a B1 production review card without accents allows only Again.
+
+One existing assertion changed: the content version (1.11.0 → 1.12.0).
+
+## Questions for ChatGPT
+
+1. Strict mode also rejects a missing accent on interrogatives (¿Cómo…?)
+   from B1 on. Agreed?
+2. The design for longer reading and listening (section 3): a sixth lesson
+   or longer stimuli? Is a separate reading threshold of ≤ 14 words per
+   sentence right?
+
+## Next step
+
+After review and the owner's merge:
+
+1. the extended reading and listening for B1-U1;
+2. B1-U2 (indefinido vs imperfecto, the first `prompt_es` content);
+3. B1-U3;
+4. B1-U4;
+5. `lvl_b1`, with the B2 gate.
+
+I will not merge without the owner.
+
+---
+
+# Previous handoff (PHASE4-002, merged in PR #18 → `e901531`)
+
+owner: Claude Code
+implementer: Claude Code
+handoff_status: READY_FOR_REVIEW
 handoff_id: PHASE4-002
 updated_at_utc: 2026-11-23T11:00:00Z
 review_requested_for_sha: 4933ca3 (application code; this handoff is the docs commit on top)

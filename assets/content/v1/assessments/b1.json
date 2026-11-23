@@ -209,6 +209,425 @@
     }
    ],
    "source": "original-v1"
+  },
+  {
+   "id": "chk_b1_u2",
+   "version": 1,
+   "kind": "unit",
+   "level": "b1",
+   "unit": "b1_u2",
+   "title_ar": "نقطة تحقق: السرد والتجارب",
+   "intro_ar": "نقطة تحقق قصيرة. لا تلميحات ولا إظهار للإجابات قبل النهاية، ولا إعادة للأسئلة. من مستوى B1 تُحسب علامات النبر في الإجابات المكتوبة. النتيجة دليل على ما تستطيعه الآن، وليست شهادة مستوى.",
+   "can_do": [
+    {
+     "id": "cd_b1_u2_habits",
+     "ar": "أصف العادات والأوضاع في الماضي بالـ imperfecto",
+     "lessons": [
+      "b1_u2_l1",
+      "b1_u2_l2"
+     ]
+    },
+    {
+     "id": "cd_b1_u2_story",
+     "ar": "أحكي ما حدث: الخلفية بالـ imperfecto والأحداث بالـ indefinido",
+     "lessons": [
+      "b1_u2_l3",
+      "b1_u2_l5",
+      "b1_u2_l6"
+     ]
+    },
+    {
+     "id": "cd_b1_u2_career",
+     "ar": "أحكي تجربتي المهنية بالتفصيل",
+     "lessons": [
+      "b1_u2_l4"
+     ]
+    }
+   ],
+   "questions": [
+    {
+     "id": "chk_b1_u2.q1",
+     "type": "choice",
+     "skill": "grammar",
+     "can_do": "cd_b1_u2_habits",
+     "prompt_ar": "اختر الكلمة المناسبة (عادة في الماضي):",
+     "stimulus_es": "Antes yo ___ en un banco.",
+     "choices": [
+      "trabajaba",
+      "trabajar",
+      "trabajado"
+     ],
+     "answer": 0,
+     "explain_ar": "عادة أو وضع في الماضي ← imperfecto: trabajaba."
+    },
+    {
+     "id": "chk_b1_u2.q2",
+     "type": "choice",
+     "skill": "reading",
+     "can_do": "cd_b1_u2_habits",
+     "prompt_ar": "كيف كانت لوثيا تذهب إلى الجامعة؟",
+     "prompt_es": "¿Cómo iba Lucía a la universidad?",
+     "stimulus_es": "Lucía: «De joven, vivía en Sevilla. Todos los días iba a la universidad en bicicleta.»",
+     "choices": [
+      "بالدراجة",
+      "بالمترو",
+      "بالسيارة"
+     ],
+     "answer": 0,
+     "choices_es": false
+    },
+    {
+     "id": "chk_b1_u2.q3",
+     "type": "choice",
+     "skill": "listening",
+     "can_do": "cd_b1_u2_habits",
+     "prompt_ar": "استمع إلى جملة من حوار «في السابق والآن»: متى كان كريم يصل عادةً؟",
+     "dialogue_turn": "dlg_b1_antes.t6",
+     "choices": [
+      "في الثامنة",
+      "في التاسعة",
+      "في العاشرة"
+     ],
+     "answer": 0,
+     "choices_es": false
+    },
+    {
+     "id": "chk_b1_u2.q4",
+     "type": "type",
+     "skill": "writing",
+     "can_do": "cd_b1_u2_habits",
+     "prompt_ar": "اكتب بالإسبانية (انتبه لعلامات النبر)",
+     "stimulus_ar": "كان هناك عمل كثير.",
+     "accepted": [
+      "había mucho trabajo"
+     ]
+    },
+    {
+     "id": "chk_b1_u2.q5",
+     "type": "choice",
+     "skill": "grammar",
+     "can_do": "cd_b1_u2_story",
+     "prompt_ar": "اختر الكلمة المناسبة:",
+     "stimulus_es": "___ las diez cuando llegó el cliente.",
+     "choices": [
+      "Eran",
+      "Fueron",
+      "Son"
+     ],
+     "answer": 0,
+     "explain_ar": "الساعة في الماضي خلفية ← imperfecto: eran las diez."
+    },
+    {
+     "id": "chk_b1_u2.q6",
+     "type": "choice",
+     "skill": "listening",
+     "can_do": "cd_b1_u2_story",
+     "prompt_ar": "استمع إلى جملة من حوار «صباح صعب»: ماذا حدث؟",
+     "dialogue_turn": "dlg_b1_manana.t4",
+     "choices": [
+      "رنّ الهاتف بينما كان يحضّر الاجتماع",
+      "وصل المدير متأخراً",
+      "انقطعت الكهرباء"
+     ],
+     "answer": 0,
+     "choices_es": false
+    },
+    {
+     "id": "chk_b1_u2.q7",
+     "type": "choice",
+     "skill": "vocabulary",
+     "can_do": "cd_b1_u2_story",
+     "prompt_ar": "ما معنى العبارة؟",
+     "stimulus_es": "de repente",
+     "choices": [
+      "فجأة",
+      "في البداية",
+      "مع الوقت"
+     ],
+     "answer": 0,
+     "choices_es": false
+    },
+    {
+     "id": "chk_b1_u2.q8",
+     "type": "type",
+     "skill": "writing",
+     "can_do": "cd_b1_u2_story",
+     "prompt_ar": "اكتب بالإسبانية",
+     "stimulus_ar": "لحسن الحظ",
+     "accepted": [
+      "por suerte"
+     ]
+    },
+    {
+     "id": "chk_b1_u2.q9",
+     "type": "choice",
+     "skill": "grammar",
+     "can_do": "cd_b1_u2_career",
+     "prompt_ar": "«بدأتُ في الشركة منذ سنتين»:",
+     "choices": [
+      "Empecé en la empresa hace dos años.",
+      "Empezaba en la empresa hace dos años.",
+      "Empezar en la empresa hace dos años."
+     ],
+     "answer": 0,
+     "choices_es": true,
+     "explain_ar": "hace + مدة مع حدث مكتمل ← indefinido: empecé."
+    },
+    {
+     "id": "chk_b1_u2.q10",
+     "type": "choice",
+     "skill": "listening",
+     "can_do": "cd_b1_u2_career",
+     "prompt_ar": "استمع إلى جملة من حوار «مقابلة عمل»: عن ماذا كانت سارة مسؤولة؟",
+     "dialogue_turn": "dlg_b1_entrevista.t4",
+     "choices": [
+      "الحجوزات والعملاء",
+      "الفواتير",
+      "المبيعات"
+     ],
+     "answer": 0,
+     "choices_es": false
+    },
+    {
+     "id": "chk_b1_u2.q11",
+     "type": "choice",
+     "skill": "reading",
+     "can_do": "cd_b1_u2_career",
+     "prompt_ar": "كم سنة عمل كريم في البنك؟",
+     "prompt_es": "¿Cuántos años trabajó Karim en el banco?",
+     "stimulus_es": "Currículum de Karim: «Trabajé en un banco durante cuatro años. Me encargaba de las cuentas de empresas. Con el tiempo, aprendí mucho sobre ventas.»",
+     "choices": [
+      "أربع سنوات",
+      "سنتين",
+      "ست سنوات"
+     ],
+     "answer": 0,
+     "choices_es": false
+    },
+    {
+     "id": "chk_b1_u2.q12",
+     "type": "type",
+     "skill": "writing",
+     "can_do": "cd_b1_u2_career",
+     "prompt_ar": "اكتب بالإسبانية",
+     "stimulus_ar": "أول عمل لي",
+     "accepted": [
+      "mi primer trabajo"
+     ]
+    }
+   ],
+   "source": "original-v1"
+  },
+  {
+   "id": "chk_b1_u3",
+   "version": 1,
+   "kind": "unit",
+   "level": "b1",
+   "unit": "b1_u3",
+   "title_ar": "نقطة تحقق: حل المشكلات مع العملاء",
+   "intro_ar": "نقطة تحقق قصيرة. لا تلميحات ولا إظهار للإجابات قبل النهاية، ولا إعادة للأسئلة. من مستوى B1 تُحسب علامات النبر في الإجابات المكتوبة. النتيجة دليل على ما تستطيعه الآن، وليست شهادة مستوى.",
+   "can_do": [
+    {
+     "id": "cd_b1_u3_request",
+     "ar": "أطلب من شخص آخر أن يفعل شيئاً، وأعبّر عن تمنٍّ، بالـ subjuntivo",
+     "lessons": [
+      "b1_u3_l1",
+      "b1_u3_l2"
+     ]
+    },
+    {
+     "id": "cd_b1_u3_advice",
+     "ar": "أنصح وأعبّر عن رأي منفي بالـ subjuntivo",
+     "lessons": [
+      "b1_u3_l3"
+     ]
+    },
+    {
+     "id": "cd_b1_u3_complaint",
+     "ar": "أتعامل مع شكوى عميل وأقترح حلولاً",
+     "lessons": [
+      "b1_u3_l4",
+      "b1_u3_l5",
+      "b1_u3_l6"
+     ]
+    }
+   ],
+   "questions": [
+    {
+     "id": "chk_b1_u3.q1",
+     "type": "choice",
+     "skill": "grammar",
+     "can_do": "cd_b1_u3_request",
+     "prompt_ar": "اختر الصيغة الصحيحة:",
+     "stimulus_es": "Necesito que usted me ___ la factura.",
+     "choices": [
+      "envíe",
+      "envía",
+      "enviar"
+     ],
+     "answer": 0,
+     "explain_ar": "necesito que + شخص آخر ← subjuntivo: envíe."
+    },
+    {
+     "id": "chk_b1_u3.q2",
+     "type": "choice",
+     "skill": "listening",
+     "can_do": "cd_b1_u3_request",
+     "prompt_ar": "استمع إلى جملة من حوار «طلب عاجل»: ماذا تحتاج آنا؟",
+     "dialogue_turn": "dlg_b1_pedido_urgente.t3",
+     "choices": [
+      "أن يُرسل الطلب اليوم",
+      "أن يُلغى الطلب",
+      "خصماً"
+     ],
+     "answer": 0,
+     "choices_es": false
+    },
+    {
+     "id": "chk_b1_u3.q3",
+     "type": "type",
+     "skill": "writing",
+     "can_do": "cd_b1_u3_request",
+     "prompt_ar": "اكتب بالإسبانية (انتبه لعلامات النبر)",
+     "stimulus_ar": "أتمنى أن يكون كل شيء بخير.",
+     "accepted": [
+      "espero que todo esté bien"
+     ]
+    },
+    {
+     "id": "chk_b1_u3.q4",
+     "type": "choice",
+     "skill": "vocabulary",
+     "can_do": "cd_b1_u3_request",
+     "prompt_ar": "ما معنى العبارة؟",
+     "stimulus_es": "hoy mismo",
+     "choices": [
+      "اليوم نفسه",
+      "مثل اليوم",
+      "كل يوم"
+     ],
+     "answer": 0,
+     "choices_es": false
+    },
+    {
+     "id": "chk_b1_u3.q5",
+     "type": "choice",
+     "skill": "grammar",
+     "can_do": "cd_b1_u3_advice",
+     "prompt_ar": "اختر الجملة الصحيحة:",
+     "choices": [
+      "No creo que sea grave.",
+      "No creo que es grave.",
+      "No creo que ser grave."
+     ],
+     "answer": 0,
+     "choices_es": true,
+     "explain_ar": "no creo que ← subjuntivo: sea."
+    },
+    {
+     "id": "chk_b1_u3.q6",
+     "type": "choice",
+     "skill": "reading",
+     "can_do": "cd_b1_u3_advice",
+     "prompt_ar": "بماذا ينصح الدعم الفني؟",
+     "prompt_es": "¿Qué recomienda el soporte técnico?",
+     "stimulus_es": "Soporte: «Le recomiendo que reinicie el ordenador. Si sigue el problema, es mejor que pruebe otra contraseña.»",
+     "choices": [
+      "إعادة التشغيل ثم كلمة مرور أخرى",
+      "شراء حاسوب جديد",
+      "الانتظار حتى الغد"
+     ],
+     "answer": 0,
+     "choices_es": false
+    },
+    {
+     "id": "chk_b1_u3.q7",
+     "type": "choice",
+     "skill": "listening",
+     "can_do": "cd_b1_u3_advice",
+     "prompt_ar": "استمع إلى جملة من حوار «الدعم الفني»: ماذا تنصح لوثيا أولاً؟",
+     "dialogue_turn": "dlg_b1_soporte.t2",
+     "choices": [
+      "إعادة تشغيل الحاسوب",
+      "الاتصال بالمدير",
+      "تغيير الحاسوب"
+     ],
+     "answer": 0,
+     "choices_es": false
+    },
+    {
+     "id": "chk_b1_u3.q8",
+     "type": "type",
+     "skill": "writing",
+     "can_do": "cd_b1_u3_advice",
+     "prompt_ar": "اكتب بالإسبانية (لعميل)",
+     "stimulus_ar": "أنصحك أن تعيد تشغيل الحاسوب.",
+     "accepted": [
+      "le recomiendo que reinicie el ordenador",
+      "le aconsejo que reinicie el ordenador",
+      "le recomiendo que reinicie la computadora"
+     ]
+    },
+    {
+     "id": "chk_b1_u3.q9",
+     "type": "choice",
+     "skill": "grammar",
+     "can_do": "cd_b1_u3_complaint",
+     "prompt_ar": "اختر الصيغة الصحيحة:",
+     "stimulus_es": "¿Qué le parece si le ___ otro producto?",
+     "choices": [
+      "enviamos",
+      "enviemos",
+      "enviar"
+     ],
+     "answer": 0,
+     "explain_ar": "بعد si نستعمل الحاضر العادي (indicativo): enviamos."
+    },
+    {
+     "id": "chk_b1_u3.q10",
+     "type": "choice",
+     "skill": "listening",
+     "can_do": "cd_b1_u3_complaint",
+     "prompt_ar": "استمع إلى جملة من حوار «شكوى بالهاتف»: ما البديلان؟",
+     "dialogue_turn": "dlg_b1_queja.t7",
+     "choices": [
+      "خصم أو استرداد المبلغ",
+      "طلب جديد أو فني",
+      "اتصال أو بريد"
+     ],
+     "answer": 0,
+     "choices_es": false
+    },
+    {
+     "id": "chk_b1_u3.q11",
+     "type": "choice",
+     "skill": "reading",
+     "can_do": "cd_b1_u3_complaint",
+     "prompt_ar": "ماذا تعد الشركة العميل؟",
+     "prompt_es": "¿Qué le promete la empresa al cliente?",
+     "stimulus_es": "«Estimado señor Martín: lamento que el envío llegue dañado. Le prometo que le enviamos una impresora nueva de inmediato, sin coste.»",
+     "choices": [
+      "طابعة جديدة فوراً بلا تكلفة",
+      "خصماً على الطلب القادم",
+      "زيارة فني الأسبوع القادم"
+     ],
+     "answer": 0,
+     "choices_es": false
+    },
+    {
+     "id": "chk_b1_u3.q12",
+     "type": "type",
+     "skill": "writing",
+     "can_do": "cd_b1_u3_complaint",
+     "prompt_ar": "اكتب بالإسبانية",
+     "stimulus_ar": "يؤسفني أن الطلب متأخر.",
+     "accepted": [
+      "lamento que el pedido esté retrasado",
+      "lamento mucho que el pedido esté retrasado"
+     ]
+    }
+   ],
+   "source": "original-v1"
   }
  ]
 }

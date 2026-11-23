@@ -257,7 +257,11 @@ class ProgressRepository {
     if (userAnswer != null &&
         ex is TypeExercise &&
         (ex.type == 'type_es' || ex.type == 'respond')) {
-      final issue = evaluateAnswer(userAnswer, ex.accepted).issue;
+      final issue = evaluateAnswer(
+        userAnswer,
+        ex.accepted,
+        strictAccents: ex.strictAccents,
+      ).issue;
       switch (issue) {
         case AnswerIssue.accents ||
             AnswerIssue.accentMeaning ||

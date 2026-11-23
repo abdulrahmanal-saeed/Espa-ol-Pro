@@ -44,8 +44,14 @@ abstract final class Spelling {
   };
 
   /// Short Arabic label for the result screen; empty when there is nothing
-  /// to add to "right" or "wrong".
-  static String labelAr(String? outcome) => switch (outcome) {
+  /// to add to "right" or "wrong". A missing accent marked wrong (B1+)
+  /// says why.
+  static String labelAr(String? outcome, {bool correct = true}) =>
+      outcome == missingAccents && !correct
+      ? 'علامات النبر ناقصة — تُحسب خطأ من مستوى B1'
+      : _label(outcome);
+
+  static String _label(String? outcome) => switch (outcome) {
     missingAccents => 'المعنى صحيح، لكن علامات النبر ناقصة',
     accentMeaning => 'علامة النبر هنا تغيّر المعنى',
     enye => 'ñ حرف مستقل وليس n',
@@ -94,10 +100,24 @@ List<String> displayedChoices(AssessmentQuestion q, String seed) =>
 ///
 /// [answers] maps question id to the learner's answer: the chosen option
 /// text for choices, the typed text otherwise. A missing answer is wrong.
-List<GradedAnswer> gradeAssessment(Assessment a, Map<String, String> answers) =>
-    [for (final q in a.questions) _grade(q, answers[q.id] ?? '')];
+///
+/// With [strictAccents] (the assessment's level is B1 or above), a typed
+/// answer missing written accents is wrong; its outcome is still
+/// [Spelling.missingAccents].
+List<GradedAnswer> gradeAssessment(
+  Assessment a,
+  Map<String, String> answers, {
+  bool strictAccents = false,
+}) => [
+  for (final q in a.questions)
+    _grade(q, answers[q.id] ?? '', strictAccents: strictAccents),
+];
 
-GradedAnswer _grade(AssessmentQuestion q, String answer) {
+GradedAnswer _grade(
+  AssessmentQuestion q,
+  String answer, {
+  required bool strictAccents,
+}) {
   switch (q.type) {
     case 'choice':
       return GradedAnswer(
@@ -116,7 +136,7 @@ GradedAnswer _grade(AssessmentQuestion q, String answer) {
           spelling: Spelling.wrong,
         );
       }
-      final r = evaluateAnswer(answer, accepted);
+      final r = evaluateAnswer(answer, accepted, strictAccents: strictAccents);
       return GradedAnswer(
         question: q,
         userAnswer: answer,

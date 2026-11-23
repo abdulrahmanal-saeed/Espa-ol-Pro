@@ -256,6 +256,27 @@ void main() {
         );
     await app.pump(tester, location: '/assessment/lvl_a2/result/$passed');
     await shot(tester, '25_b1_opened_result');
+
+    // B1-U2 lesson 68: the long reading text with a Spanish-first prompt.
+    for (final l in pack.orderedLessons.where((l) => l.levelId == 'b1')) {
+      if (l.id == 'b1_u2_l6') break;
+      await gateRepo.completeLesson(
+        l,
+        score: 1,
+        seconds: 60,
+        contentVersion: pack.version,
+      );
+    }
+    final l6 = pack.lesson('b1_u2_l6')!;
+    final l6Steps = ExerciseBuilder(pack).buildLesson(l6);
+    await app.pump(tester, location: '/lesson/${l6.id}');
+    await tester.tapKey('start-lesson');
+    var k = 0;
+    while (!(l6Steps[k] is ChoiceExercise &&
+        (l6Steps[k] as ChoiceExercise).promptEs != null)) {
+      await tester.answer(l6Steps[k++]);
+    }
+    await shot(tester, '26_b1_spanish_prompt_reading');
     await app.dispose(tester);
   });
 }

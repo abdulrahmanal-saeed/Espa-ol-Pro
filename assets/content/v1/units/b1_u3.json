@@ -1,0 +1,2077 @@
+{
+ "unit": "b1_u3",
+ "grammar": [
+  {
+   "id": "g_b1_subj_intro",
+   "title_ar": "المضارع الالتزامي (subjuntivo): أريد أن «يفعل غيري»",
+   "body_ar": "حين أريد أو أطلب أن يفعل شخص آخر شيئاً: فعل رغبة أو طلب + que + subjuntivo.\nQuiero que usted revise el informe. · Le pido que me llame.\nإذا كان الفاعل نفسه ← مصدر: Quiero revisar el informe.\n\nالتكوين من yo في المضارع، مع تبديل الحرف:\n-ar ← e: hablo → hable · reviso → revise\n-er / -ir ← a: como → coma · escribo → escriba\nمع usted / él: revise · escriba. مع tú: revises · escribas.",
+   "examples": [
+    {
+     "es": "Quiero que usted revise el informe hoy.",
+     "ar": "أريد أن تراجع (حضرتك) التقرير اليوم."
+    },
+    {
+     "es": "Necesito que me envíe la factura.",
+     "ar": "أحتاج أن ترسل لي الفاتورة."
+    },
+    {
+     "es": "Le pido que me llame mañana.",
+     "ar": "أطلب منك أن تتصل بي غداً."
+    }
+   ]
+  },
+  {
+   "id": "g_b1_subj_irregular",
+   "title_ar": "subjuntivo: أفعال شاذّة شائعة",
+   "body_ar": "الجذر من yo في المضارع، فيبقى الشذوذ:\ntengo → tenga · hago → haga · salgo → salga · propongo → proponga\nوتغيير حرف العلة: pueda · quiera · piense (لكن podamos، queramos).\nشاذّة تماماً: ser → sea · estar → esté · ir → vaya · dar → dé · ver → vea\n\nEspero que + subjuntivo: Espero que todo esté bien.",
+   "examples": [
+    {
+     "es": "Espero que tenga un buen día.",
+     "ar": "أتمنى أن يكون يومك جيداً."
+    },
+    {
+     "es": "Le pido que tenga paciencia.",
+     "ar": "أطلب منك أن تتحلّى بالصبر."
+    },
+    {
+     "es": "Espero que el técnico pueda venir hoy.",
+     "ar": "أتمنى أن يستطيع الفني الحضور اليوم."
+    }
+   ]
+  },
+  {
+   "id": "g_b1_subj_advice",
+   "title_ar": "النصيحة والرأي المنفي",
+   "body_ar": "للنصيحة: Le recomiendo que… · Te aconsejo que… + subjuntivo.\nأحكام عامة: Es mejor que… · Es importante que… · Es necesario que… + subjuntivo.\nلكن من دون شخص محدّد ← مصدر: Es mejor esperar.\n\nالرأي المنفي (وعدناك به في B1-U1):\nCreo que es caro. (إثبات ← indicativo)\nNo creo que sea caro. (نفي ← subjuntivo)",
+   "examples": [
+    {
+     "es": "Le recomiendo que reinicie el ordenador.",
+     "ar": "أنصحك أن تعيد تشغيل الحاسوب."
+    },
+    {
+     "es": "Es importante que el cliente reciba una respuesta hoy.",
+     "ar": "من المهم أن يتلقّى العميل رداً اليوم."
+    },
+    {
+     "es": "No creo que sea un problema grave.",
+     "ar": "لا أظن أنها مشكلة خطيرة."
+    }
+   ]
+  },
+  {
+   "id": "g_b1_complaint",
+   "title_ar": "التعامل مع شكوى",
+   "body_ar": "1. اسمع وأظهر التفهّم: Entiendo su situación. · Lamento que el pedido esté retrasado. (lamento que + subjuntivo)\n2. طمْئن: No se preocupe. · Le prometo que lo solucionamos hoy. (le prometo que + indicativo)\n3. اعرض حلاً (الدرس التالي).\n\nفي الشكوى نستعمل usted دائماً.",
+   "examples": [
+    {
+     "es": "Lamento que el pedido esté retrasado.",
+     "ar": "يؤسفني أن الطلب متأخر."
+    },
+    {
+     "es": "No se preocupe, le prometo que lo solucionamos hoy.",
+     "ar": "لا تقلق، أعدك بأننا نحلّها اليوم."
+    },
+    {
+     "es": "El cliente está muy molesto por la factura.",
+     "ar": "العميل منزعج جداً من الفاتورة."
+    }
+   ]
+  },
+  {
+   "id": "g_b1_solutions",
+   "title_ar": "اقتراح حلول",
+   "body_ar": "Le propongo que + subjuntivo: Le propongo que cambiemos el producto.\n¿Qué le parece si + indicativo (حاضر)? ¿Qué le parece si le enviamos otro?\nEn lugar de + مصدر: En lugar de esperar, podemos enviarlo hoy.\nA cambio… · Sin coste… · De inmediato…",
+   "examples": [
+    {
+     "es": "Le propongo que cambiemos el producto sin coste.",
+     "ar": "أقترح عليك أن نستبدل المنتج بلا تكلفة."
+    },
+    {
+     "es": "¿Qué le parece si le enviamos otro de inmediato?",
+     "ar": "ما رأيك أن نرسل لك واحداً آخر فوراً؟"
+    },
+    {
+     "es": "En lugar de esperar, podemos ofrecerle un descuento.",
+     "ar": "بدلاً من الانتظار، يمكننا أن نقدّم لك خصماً."
+    }
+   ]
+  },
+  {
+   "id": "g_b1_case",
+   "title_ar": "حالة كاملة لخدمة العملاء",
+   "body_ar": "الشكوى ← التفهّم ← السؤال عن التفاصيل ← الحلّ ← التأكيد كتابةً.\nمفيدة: por escrito (كتابةً) · de nuevo (مرة أخرى) · la garantía (الضمان)",
+   "examples": [
+    {
+     "es": "El envío llegó dañado y el cliente quiere que lo reemplacemos.",
+     "ar": "وصلت الشحنة تالفة والعميل يريد أن نستبدلها."
+    },
+    {
+     "es": "Le confirmo la solución por escrito.",
+     "ar": "أؤكد لك الحلّ كتابةً."
+    },
+    {
+     "es": "Esperamos que esté satisfecho con la solución.",
+     "ar": "نتمنى أن تكون راضياً عن الحلّ."
+    }
+   ]
+  }
+ ],
+ "lessons": [
+  {
+   "id": "b1_u3_l1",
+   "title_ar": "أريد أن تفعل",
+   "title_es": "Quiero que…",
+   "objectives_ar": [
+    "طلب شيء من شخص آخر بـ quiero / necesito / le pido que",
+    "تكوين subjuntivo المنتظم",
+    "الفرق بين quiero + مصدر وquiero que"
+   ],
+   "prerequisites": [
+    "b1_u2_l6"
+   ],
+   "minutes": 20,
+   "work_relevance_ar": "طلب مهمة من مورّد أو زميل بوضوح وأدب.",
+   "source": "original-v1",
+   "grammar": [
+    "g_b1_subj_intro"
+   ],
+   "items": [
+    {
+     "id": "quiero_que",
+     "es": "quiero que…",
+     "ar": "أريد أن (يفعل غيري)…",
+     "en": "I want (someone) to…",
+     "pos": "تعبير",
+     "examples": [
+      {
+       "es": "Quiero que usted revise el informe hoy.",
+       "ar": "أريد أن تراجع (حضرتك) التقرير اليوم."
+      }
+     ],
+     "work": true,
+     "connections": [
+      {
+       "type": "grammar",
+       "ar": "قارن: Quiero revisar (أنا أراجع) ≠ Quiero que usted revise (أنت تراجع)."
+      },
+      {
+       "type": "usage",
+       "ar": "مع عميل أو مدير، الطلب المباشر قد يبدو حادّاً؛ الأنعم: ¿Podría revisar el informe? (من B1-U1)."
+      }
+     ]
+    },
+    {
+     "id": "necesito_que",
+     "es": "necesito que…",
+     "ar": "أحتاج أن (يفعل غيري)…",
+     "en": "I need (someone) to…",
+     "pos": "تعبير",
+     "examples": [
+      {
+       "es": "Necesito que me envíe la factura.",
+       "ar": "أحتاج أن ترسل لي الفاتورة."
+      }
+     ],
+     "work": true
+    },
+    {
+     "id": "le_pido_que",
+     "es": "le pido que…",
+     "ar": "أطلب منك (حضرتك) أن…",
+     "en": "I ask you to…",
+     "pos": "تعبير",
+     "examples": [
+      {
+       "es": "Le pido que me llame mañana.",
+       "ar": "أطلب منك أن تتصل بي غداً."
+      }
+     ],
+     "work": true
+    },
+    {
+     "id": "revise_subj",
+     "es": "revise",
+     "ar": "أن يراجع / أن تراجع (حضرتك)",
+     "en": "(that) he / you review",
+     "pos": "فعل",
+     "examples": [
+      {
+       "es": "¿Puede pedirle que revise el contrato?",
+       "ar": "هل يمكنك أن تطلب منه أن يراجع العقد؟"
+      }
+     ],
+     "note_ar": "subjuntivo من revisar: reviso ← revise."
+    },
+    {
+     "id": "envie_subj",
+     "es": "envíe",
+     "ar": "أن يرسل / أن ترسل (حضرتك)",
+     "en": "(that) he / you send",
+     "pos": "فعل",
+     "examples": [
+      {
+       "es": "Le pido que envíe el pedido hoy.",
+       "ar": "أطلب منك أن ترسل الطلب اليوم."
+      }
+     ],
+     "note_ar": "من enviar، والنبر على í: envíe, envíes, envíe, enviemos."
+    },
+    {
+     "id": "llame_subj",
+     "es": "llame",
+     "ar": "أن يتصل / أن تتصل (حضرتك)",
+     "en": "(that) he / you call",
+     "pos": "فعل",
+     "examples": [
+      {
+       "es": "Quiero que el técnico me llame.",
+       "ar": "أريد أن يتصل بي الفني."
+      }
+     ]
+    },
+    {
+     "id": "conteste",
+     "es": "conteste",
+     "ar": "أن يردّ / أن تردّ (حضرتك)",
+     "en": "(that) he / you answer",
+     "pos": "فعل",
+     "examples": [
+      {
+       "es": "Necesito que conteste el correo del cliente.",
+       "ar": "أحتاج أن تردّ على بريد العميل."
+      }
+     ]
+    },
+    {
+     "id": "hoy_mismo",
+     "es": "hoy mismo",
+     "ar": "اليوم نفسه",
+     "en": "today, this very day",
+     "pos": "تعبير",
+     "examples": [
+      {
+       "es": "Le pido que lo envíe hoy mismo.",
+       "ar": "أطلب منك أن ترسله اليوم نفسه."
+      },
+      {
+       "es": "Es difícil, pero vamos a intentarlo hoy mismo.",
+       "ar": "الأمر صعب، لكننا سنحاول اليوم نفسه."
+      }
+     ],
+     "work": true
+    }
+   ],
+   "activities": [
+    {
+     "type": "teach",
+     "item": "quiero_que"
+    },
+    {
+     "type": "teach",
+     "item": "necesito_que"
+    },
+    {
+     "type": "mcq_meaning",
+     "item": "quiero_que"
+    },
+    {
+     "type": "listen_choose",
+     "item": "necesito_que"
+    },
+    {
+     "type": "note",
+     "title_ar": "طلب من شخص آخر",
+     "body_ar": "Quiero / Necesito / Le pido + que + subjuntivo\n-ar ← e: revise, llame, conteste\n-er / -ir ← a: escriba, coma\nالفاعل نفسه ← مصدر: Quiero llamar.",
+     "examples": [
+      {
+       "es": "Necesito que me envíe la factura hoy mismo.",
+       "ar": "أحتاج أن ترسل لي الفاتورة اليوم نفسه."
+      }
+     ]
+    },
+    {
+     "type": "teach",
+     "item": "le_pido_que"
+    },
+    {
+     "type": "teach",
+     "item": "revise_subj"
+    },
+    {
+     "type": "teach",
+     "item": "envie_subj"
+    },
+    {
+     "type": "mcq_reverse",
+     "item": "le_pido_que"
+    },
+    {
+     "type": "listen_pick_es",
+     "item": "revise_subj"
+    },
+    {
+     "type": "mcq_meaning",
+     "item": "envie_subj"
+    },
+    {
+     "type": "teach",
+     "item": "llame_subj"
+    },
+    {
+     "type": "teach",
+     "item": "conteste"
+    },
+    {
+     "type": "teach",
+     "item": "hoy_mismo"
+    },
+    {
+     "type": "mcq_meaning",
+     "item": "hoy_mismo"
+    },
+    {
+     "type": "listen_choose",
+     "item": "llame_subj"
+    },
+    {
+     "type": "mcq_reverse",
+     "item": "conteste"
+    },
+    {
+     "type": "listen_pick_es",
+     "item": "envie_subj"
+    },
+    {
+     "type": "choice",
+     "prompt_ar": "اختر الصيغة الصحيحة:",
+     "choices": [
+      "revise",
+      "revisa",
+      "revisar"
+     ],
+     "answer": 0,
+     "skill": "grammar",
+     "choices_es": true,
+     "stimulus_es": "Quiero que usted ___ el informe.",
+     "explain_ar": "quiero que + شخص آخر ← subjuntivo: revise. revisa (indicativo) لا يأتي بعد quiero que."
+    },
+    {
+     "type": "fill",
+     "es": "Necesito que usted me ___ mañana.",
+     "answer": "llame",
+     "ar": "أحتاج أن تتصل بي غداً.",
+     "options": [
+      "llame",
+      "llama",
+      "llamar"
+     ],
+     "explain_ar": "necesito que + شخص آخر ← subjuntivo: llamar ← llame."
+    },
+    {
+     "type": "fill",
+     "es": "Le pido que ___ el correo hoy.",
+     "answer": "conteste",
+     "ar": "أطلب منك أن تردّ على البريد اليوم.",
+     "options": [
+      "conteste",
+      "contesta",
+      "contestar"
+     ],
+     "explain_ar": "le pido que ← subjuntivo: contesto ← conteste."
+    },
+    {
+     "type": "match",
+     "items": [
+      "quiero_que",
+      "le_pido_que",
+      "envie_subj",
+      "hoy_mismo"
+     ]
+    },
+    {
+     "type": "type_es",
+     "item": "hoy_mismo"
+    },
+    {
+     "type": "type_es",
+     "item": "revise_subj"
+    },
+    {
+     "type": "order",
+     "es": "Le pido que me llame mañana.",
+     "ar": "أطلب منك أن تتصل بي غداً."
+    },
+    {
+     "type": "dictation",
+     "es": "Necesito que me envíe la factura hoy mismo.",
+     "ar": "أحتاج أن ترسل لي الفاتورة اليوم نفسه."
+    },
+    {
+     "type": "choice",
+     "prompt_ar": "ماذا تطلب آنا من المورّد؟",
+     "choices": [
+      "أن يرسل الطلب اليوم",
+      "أن يلغي الطلب",
+      "أن يخفّض السعر"
+     ],
+     "answer": 0,
+     "skill": "reading",
+     "choices_es": false,
+     "prompt_es": "¿Qué le pide Ana al proveedor?",
+     "stimulus_es": "Correo de Ana: «Estimado señor Ruiz: el cliente necesita el pedido el lunes. Le pido que lo envíe hoy mismo y que me conteste para confirmar. Un saludo.»"
+    },
+    {
+     "type": "choice",
+     "prompt_ar": "استمع: ماذا يريد المتكلّم؟",
+     "choices": [
+      "أن يتصل به الفني",
+      "أن يذهب إلى الفني",
+      "أن يكتب للفني"
+     ],
+     "answer": 0,
+     "skill": "listening",
+     "choices_es": false,
+     "prompt_es": "¿Qué quiere la persona que habla?",
+     "audio_es": "Quiero que el técnico me llame esta tarde."
+    },
+    {
+     "type": "respond",
+     "prompt_ar": "اطلب من عميل (usted): «أطلب منك أن تتصل بي غداً».",
+     "accepted": [
+      "Le pido que me llame mañana.",
+      "Le pido que me llame mañana, por favor."
+     ],
+     "audio_es": "Le pido que me llame mañana."
+    },
+    {
+     "type": "speak",
+     "es": "Le pido que revise el contrato y que me conteste hoy mismo.",
+     "ar": "أطلب منك أن تراجع العقد وأن تردّ عليّ اليوم نفسه."
+    }
+   ]
+  },
+  {
+   "id": "b1_u3_l2",
+   "title_ar": "أتمنى أن…",
+   "title_es": "Espero que…",
+   "objectives_ar": [
+    "subjuntivo الشاذّ الشائع",
+    "التمنّي بـ espero que وojalá",
+    "esté مقابل este"
+   ],
+   "prerequisites": [
+    "b1_u3_l1"
+   ],
+   "minutes": 20,
+   "work_relevance_ar": "ختم الرسائل بتمنٍّ مهذّب ومتابعة طلب.",
+   "source": "original-v1",
+   "grammar": [
+    "g_b1_subj_irregular"
+   ],
+   "items": [
+    {
+     "id": "tenga",
+     "es": "tenga",
+     "ar": "أن يكون لديه / أن تتحلّى بـ",
+     "en": "(that) he / you have",
+     "pos": "فعل",
+     "examples": [
+      {
+       "es": "Le pido que tenga paciencia.",
+       "ar": "أطلب منك أن تتحلّى بالصبر."
+      }
+     ],
+     "note_ar": "من tengo ← tenga. وكذلك hago ← haga، salgo ← salga."
+    },
+    {
+     "id": "haga",
+     "es": "haga",
+     "ar": "أن يفعل / أن تفعل",
+     "en": "(that) he / you do",
+     "pos": "فعل",
+     "examples": [
+      {
+       "es": "Quiero que el técnico haga una revisión.",
+       "ar": "أريد أن يجري الفني فحصاً."
+      }
+     ]
+    },
+    {
+     "id": "pueda",
+     "es": "pueda",
+     "ar": "أن يستطيع",
+     "en": "(that) he / you can",
+     "pos": "فعل",
+     "examples": [
+      {
+       "es": "Espero que el técnico pueda venir hoy.",
+       "ar": "أتمنى أن يستطيع الفني الحضور اليوم."
+      }
+     ]
+    },
+    {
+     "id": "sea",
+     "es": "sea",
+     "ar": "أن يكون (ser)",
+     "en": "(that) it is",
+     "pos": "فعل",
+     "examples": [
+      {
+       "es": "Espero que no sea un problema grave.",
+       "ar": "أتمنى ألا تكون مشكلة خطيرة."
+      }
+     ]
+    },
+    {
+     "id": "este_subj",
+     "es": "esté",
+     "ar": "أن يكون (estar: حالة أو مكان)",
+     "en": "(that) it is (estar)",
+     "pos": "فعل",
+     "examples": [
+      {
+       "es": "Espero que todo esté bien.",
+       "ar": "أتمنى أن يكون كل شيء بخير."
+      }
+     ],
+     "note_ar": "esté بنبر (من estar) ≠ este بلا نبر (هذا). من B1 يُحسب النبر."
+    },
+    {
+     "id": "vaya",
+     "es": "vaya",
+     "ar": "أن يذهب",
+     "en": "(that) he / you go",
+     "pos": "فعل",
+     "examples": [
+      {
+       "es": "Necesito que alguien vaya a la oficina del cliente.",
+       "ar": "أحتاج أن يذهب أحدٌ إلى مكتب العميل."
+      }
+     ]
+    },
+    {
+     "id": "espero_que",
+     "es": "espero que…",
+     "ar": "أتمنى أن…",
+     "en": "I hope that…",
+     "pos": "تعبير",
+     "examples": [
+      {
+       "es": "Espero que tenga un buen día.",
+       "ar": "أتمنى أن يكون يومك جيداً."
+      }
+     ],
+     "work": true
+    },
+    {
+     "id": "ojala",
+     "es": "ojalá",
+     "ar": "يا ليت / إن شاء الله",
+     "en": "I hope so / hopefully",
+     "pos": "تعبير",
+     "examples": [
+      {
+       "es": "Ojalá el pedido llegue mañana.",
+       "ar": "يا ليت يصل الطلب غداً."
+      }
+     ],
+     "note_ar": "من العربية: لو شاء الله. بعدها دائماً subjuntivo.",
+     "connections": [
+      {
+       "type": "arabic_origin",
+       "ar": "ojalá من العربية الأندلسية «لو شاء الله»."
+      }
+     ]
+    }
+   ],
+   "activities": [
+    {
+     "type": "teach",
+     "item": "tenga"
+    },
+    {
+     "type": "teach",
+     "item": "haga"
+    },
+    {
+     "type": "mcq_meaning",
+     "item": "tenga"
+    },
+    {
+     "type": "listen_choose",
+     "item": "haga"
+    },
+    {
+     "type": "note",
+     "title_ar": "الشاذّ يبقى شاذّاً",
+     "body_ar": "من yo: tengo → tenga · hago → haga\nتغيير العلة: pueda · quiera (لكن podamos)\nشاذّة تماماً: sea · esté · vaya · dé · vea",
+     "examples": [
+      {
+       "es": "Espero que todo esté bien y que el técnico pueda venir.",
+       "ar": "أتمنى أن يكون كل شيء بخير وأن يستطيع الفني الحضور."
+      }
+     ]
+    },
+    {
+     "type": "teach",
+     "item": "pueda"
+    },
+    {
+     "type": "teach",
+     "item": "sea"
+    },
+    {
+     "type": "teach",
+     "item": "este_subj"
+    },
+    {
+     "type": "mcq_reverse",
+     "item": "pueda"
+    },
+    {
+     "type": "listen_pick_es",
+     "item": "sea"
+    },
+    {
+     "type": "mcq_meaning",
+     "item": "este_subj"
+    },
+    {
+     "type": "teach",
+     "item": "vaya"
+    },
+    {
+     "type": "teach",
+     "item": "espero_que"
+    },
+    {
+     "type": "teach",
+     "item": "ojala"
+    },
+    {
+     "type": "mcq_meaning",
+     "item": "ojala"
+    },
+    {
+     "type": "listen_choose",
+     "item": "espero_que"
+    },
+    {
+     "type": "mcq_reverse",
+     "item": "vaya"
+    },
+    {
+     "type": "listen_pick_es",
+     "item": "tenga"
+    },
+    {
+     "type": "choice",
+     "prompt_ar": "«أتمنى أن يكون كل شيء بخير»:",
+     "choices": [
+      "Espero que todo esté bien.",
+      "Espero que todo está bien.",
+      "Espero que todo estar bien."
+     ],
+     "answer": 0,
+     "skill": "grammar",
+     "choices_es": true,
+     "explain_ar": "espero que + subjuntivo: estar ← esté (بنبر). está (indicativo) لا يأتي هنا."
+    },
+    {
+     "type": "fill",
+     "es": "Le pido que ___ paciencia.",
+     "answer": "tenga",
+     "ar": "أطلب منك أن تتحلّى بالصبر.",
+     "options": [
+      "tenga",
+      "tiene",
+      "tener"
+     ],
+     "explain_ar": "le pido que ← subjuntivo، ومن tengo ← tenga."
+    },
+    {
+     "type": "fill",
+     "es": "Espero que el técnico ___ venir hoy.",
+     "answer": "pueda",
+     "ar": "أتمنى أن يستطيع الفني الحضور اليوم.",
+     "options": [
+      "pueda",
+      "puede",
+      "poder"
+     ],
+     "explain_ar": "espero que ← subjuntivo: puedo ← pueda."
+    },
+    {
+     "type": "match",
+     "items": [
+      "tenga",
+      "sea",
+      "vaya",
+      "ojala"
+     ]
+    },
+    {
+     "type": "type_es",
+     "item": "espero_que"
+    },
+    {
+     "type": "type_es",
+     "item": "ojala"
+    },
+    {
+     "type": "order",
+     "es": "Espero que tenga un buen día.",
+     "ar": "أتمنى أن يكون يومك جيداً."
+    },
+    {
+     "type": "dictation",
+     "es": "Espero que todo esté bien. Ojalá el técnico pueda venir hoy.",
+     "ar": "أتمنى أن يكون كل شيء بخير. يا ليت يستطيع الفني الحضور اليوم."
+    },
+    {
+     "type": "choice",
+     "prompt_ar": "ماذا تتمنّى لوثيا؟",
+     "choices": [
+      "أن يصل الطلب قبل الاجتماع",
+      "أن يُلغى الاجتماع",
+      "أن يتصل العميل"
+     ],
+     "answer": 0,
+     "skill": "reading",
+     "choices_es": false,
+     "prompt_es": "¿Qué espera Lucía?",
+     "stimulus_es": "Mensaje de Lucía: «El cliente viene el jueves. Ojalá el pedido llegue antes de la reunión. Espero que no sea un problema y que el proveedor pueda enviarlo mañana.»"
+    },
+    {
+     "type": "choice",
+     "prompt_ar": "استمع: ماذا يتمنّى المتكلّم؟",
+     "choices": [
+      "ألا تكون مشكلة خطيرة",
+      "أن يكون العطل كبيراً",
+      "أن يذهب الفني"
+     ],
+     "answer": 0,
+     "skill": "listening",
+     "choices_es": false,
+     "prompt_es": "¿Qué espera la persona que habla?",
+     "audio_es": "Espero que no sea un problema grave."
+    },
+    {
+     "type": "respond",
+     "prompt_ar": "اختم بريداً لعميل: «أتمنى أن يكون يومك جيداً».",
+     "accepted": [
+      "Espero que tenga un buen día.",
+      "Espero que tenga un buen día, un saludo."
+     ],
+     "audio_es": "Espero que tenga un buen día."
+    },
+    {
+     "type": "speak",
+     "es": "Le pido que tenga paciencia. Espero que el técnico pueda venir hoy.",
+     "ar": "أطلب منك أن تتحلّى بالصبر. أتمنى أن يستطيع الفني الحضور اليوم."
+    }
+   ]
+  },
+  {
+   "id": "b1_u3_l3",
+   "title_ar": "أنصحك أن…",
+   "title_es": "Le recomiendo que…",
+   "objectives_ar": [
+    "النصيحة بـ recomendar / aconsejar que",
+    "es mejor / importante / necesario que",
+    "no creo que + subjuntivo"
+   ],
+   "prerequisites": [
+    "b1_u3_l2"
+   ],
+   "minutes": 20,
+   "work_relevance_ar": "تقديم دعم فني أو نصيحة لعميل.",
+   "source": "original-v1",
+   "grammar": [
+    "g_b1_subj_advice"
+   ],
+   "items": [
+    {
+     "id": "le_recomiendo_que",
+     "es": "le recomiendo que…",
+     "ar": "أنصحك (حضرتك) أن…",
+     "en": "I recommend that you…",
+     "pos": "تعبير",
+     "examples": [
+      {
+       "es": "Le recomiendo que reinicie el ordenador.",
+       "ar": "أنصحك أن تعيد تشغيل الحاسوب."
+      }
+     ],
+     "work": true
+    },
+    {
+     "id": "te_aconsejo_que",
+     "es": "te aconsejo que…",
+     "ar": "أنصحك أن…",
+     "en": "I advise you to…",
+     "pos": "تعبير",
+     "examples": [
+      {
+       "es": "Te aconsejo que hables con tu jefe.",
+       "ar": "أنصحك أن تتحدث مع مديرك."
+      }
+     ]
+    },
+    {
+     "id": "es_mejor_que",
+     "es": "es mejor que…",
+     "ar": "من الأفضل أن (يفعل أحدٌ)…",
+     "en": "it's better that…",
+     "pos": "تعبير",
+     "examples": [
+      {
+       "es": "Es mejor que el técnico venga mañana.",
+       "ar": "من الأفضل أن يأتي الفني غداً."
+      }
+     ],
+     "note_ar": "مع شخص محدّد ← que + subjuntivo. من دون شخص ← مصدر: es mejor esperar."
+    },
+    {
+     "id": "es_importante_que",
+     "es": "es importante que…",
+     "ar": "من المهم أن…",
+     "en": "it's important that…",
+     "pos": "تعبير",
+     "examples": [
+      {
+       "es": "Es importante que el cliente reciba una respuesta hoy.",
+       "ar": "من المهم أن يتلقّى العميل رداً اليوم."
+      }
+     ],
+     "work": true
+    },
+    {
+     "id": "es_necesario_que",
+     "es": "es necesario que…",
+     "ar": "من الضروري أن…",
+     "en": "it's necessary that…",
+     "pos": "تعبير",
+     "examples": [
+      {
+       "es": "Es necesario que firme aquí.",
+       "ar": "من الضروري أن توقّع هنا."
+      }
+     ]
+    },
+    {
+     "id": "pruebe",
+     "es": "pruebe",
+     "ar": "أن يجرّب / أن تجرّب (حضرتك)",
+     "en": "(that) you try",
+     "pos": "فعل",
+     "examples": [
+      {
+       "es": "Le recomiendo que pruebe otra contraseña.",
+       "ar": "أنصحك أن تجرّب كلمة مرور أخرى."
+      }
+     ],
+     "note_ar": "من probar (o ← ue): pruebo ← pruebe."
+    },
+    {
+     "id": "reinicie",
+     "es": "reinicie",
+     "ar": "أن يعيد التشغيل",
+     "en": "(that) you restart",
+     "pos": "فعل",
+     "examples": [
+      {
+       "es": "Es mejor que reinicie el ordenador.",
+       "ar": "من الأفضل أن تعيد تشغيل الحاسوب."
+      },
+      {
+       "es": "No puedo entrar en el sistema.",
+       "ar": "لا أستطيع الدخول إلى النظام."
+      }
+     ]
+    },
+    {
+     "id": "no_creo_que",
+     "es": "no creo que…",
+     "ar": "لا أظن أنّ…",
+     "en": "I don't think that…",
+     "pos": "تعبير",
+     "examples": [
+      {
+       "es": "No creo que sea un problema grave.",
+       "ar": "لا أظن أنها مشكلة خطيرة."
+      }
+     ],
+     "note_ar": "Creo que es… (إثبات ← indicativo) لكن No creo que sea… (نفي ← subjuntivo).",
+     "work": true
+    }
+   ],
+   "activities": [
+    {
+     "type": "teach",
+     "item": "le_recomiendo_que"
+    },
+    {
+     "type": "teach",
+     "item": "te_aconsejo_que"
+    },
+    {
+     "type": "mcq_meaning",
+     "item": "le_recomiendo_que"
+    },
+    {
+     "type": "listen_choose",
+     "item": "te_aconsejo_que"
+    },
+    {
+     "type": "note",
+     "title_ar": "النصيحة",
+     "body_ar": "Le recomiendo que / Te aconsejo que + subjuntivo\nEs mejor / importante / necesario que + subjuntivo\nمن دون شخص: Es mejor esperar.\nNo creo que + subjuntivo",
+     "examples": [
+      {
+       "es": "Le recomiendo que reinicie el ordenador y que pruebe de nuevo.",
+       "ar": "أنصحك أن تعيد تشغيل الحاسوب وأن تجرّب مرة أخرى."
+      }
+     ]
+    },
+    {
+     "type": "teach",
+     "item": "es_mejor_que"
+    },
+    {
+     "type": "teach",
+     "item": "es_importante_que"
+    },
+    {
+     "type": "teach",
+     "item": "es_necesario_que"
+    },
+    {
+     "type": "mcq_reverse",
+     "item": "es_mejor_que"
+    },
+    {
+     "type": "listen_pick_es",
+     "item": "es_importante_que"
+    },
+    {
+     "type": "mcq_meaning",
+     "item": "es_necesario_que"
+    },
+    {
+     "type": "teach",
+     "item": "pruebe"
+    },
+    {
+     "type": "teach",
+     "item": "reinicie"
+    },
+    {
+     "type": "teach",
+     "item": "no_creo_que"
+    },
+    {
+     "type": "mcq_meaning",
+     "item": "no_creo_que"
+    },
+    {
+     "type": "listen_choose",
+     "item": "pruebe"
+    },
+    {
+     "type": "mcq_reverse",
+     "item": "reinicie"
+    },
+    {
+     "type": "choice",
+     "prompt_ar": "اختر الجملة الصحيحة:",
+     "choices": [
+      "No creo que sea un problema grave.",
+      "No creo que es un problema grave.",
+      "No creo que ser un problema grave."
+     ],
+     "answer": 0,
+     "skill": "grammar",
+     "choices_es": true,
+     "explain_ar": "بعد no creo que يأتي subjuntivo: ser ← sea. أما creo que فبعدها indicativo: Creo que es…"
+    },
+    {
+     "type": "fill",
+     "es": "Le recomiendo que ___ el ordenador.",
+     "answer": "reinicie",
+     "ar": "أنصحك أن تعيد تشغيل الحاسوب.",
+     "options": [
+      "reinicie",
+      "reinicia",
+      "reiniciar"
+     ],
+     "explain_ar": "le recomiendo que ← subjuntivo: reinicio ← reinicie."
+    },
+    {
+     "type": "fill",
+     "es": "Es importante que el cliente ___ una respuesta hoy.",
+     "answer": "reciba",
+     "ar": "من المهم أن يتلقّى العميل رداً اليوم.",
+     "options": [
+      "reciba",
+      "recibe",
+      "recibir"
+     ],
+     "explain_ar": "es importante que + شخص محدّد ← subjuntivo: recibo ← reciba."
+    },
+    {
+     "type": "match",
+     "items": [
+      "le_recomiendo_que",
+      "es_mejor_que",
+      "pruebe",
+      "no_creo_que"
+     ]
+    },
+    {
+     "type": "type_es",
+     "item": "reinicie"
+    },
+    {
+     "type": "type_es",
+     "item": "pruebe"
+    },
+    {
+     "type": "order",
+     "es": "Le recomiendo que reinicie el ordenador.",
+     "ar": "أنصحك أن تعيد تشغيل الحاسوب."
+    },
+    {
+     "type": "dictation",
+     "es": "Es mejor que pruebe otra contraseña. No creo que sea grave.",
+     "ar": "من الأفضل أن تجرّب كلمة مرور أخرى. لا أظن أنها خطيرة."
+    },
+    {
+     "type": "choice",
+     "prompt_ar": "بماذا ينصح الدعم الفني؟",
+     "choices": [
+      "إعادة التشغيل ثم كلمة مرور جديدة",
+      "شراء حاسوب جديد",
+      "الانتظار حتى الغد"
+     ],
+     "answer": 0,
+     "skill": "reading",
+     "choices_es": false,
+     "prompt_es": "¿Qué recomienda el soporte técnico?",
+     "stimulus_es": "Soporte técnico: «Le recomiendo que reinicie el ordenador. Si el problema sigue, es mejor que pruebe una contraseña nueva. No creo que sea necesario cambiar el ordenador.»"
+    },
+    {
+     "type": "choice",
+     "prompt_ar": "استمع: ما المهم؟",
+     "choices": [
+      "أن يتلقّى العميل رداً اليوم",
+      "أن ينتظر العميل",
+      "أن يتصل المدير"
+     ],
+     "answer": 0,
+     "skill": "listening",
+     "choices_es": false,
+     "prompt_es": "¿Qué es importante?",
+     "audio_es": "Es importante que el cliente reciba una respuesta hoy."
+    },
+    {
+     "type": "respond",
+     "prompt_ar": "انصح عميلاً (usted): «أنصحك أن تعيد تشغيل الحاسوب».",
+     "accepted": [
+      "Le recomiendo que reinicie el ordenador.",
+      "Le aconsejo que reinicie el ordenador."
+     ],
+     "audio_es": "Le recomiendo que reinicie el ordenador."
+    },
+    {
+     "type": "speak",
+     "es": "Le recomiendo que reinicie el ordenador. No creo que sea un problema grave.",
+     "ar": "أنصحك أن تعيد تشغيل الحاسوب. لا أظن أنها مشكلة خطيرة."
+    }
+   ]
+  },
+  {
+   "id": "b1_u3_l4",
+   "title_ar": "شكوى عميل",
+   "title_es": "La queja de un cliente",
+   "objectives_ar": [
+    "إظهار التفهّم: lamento que…",
+    "الطمأنة والوعد",
+    "الاعتراف بالخطأ بأدب"
+   ],
+   "prerequisites": [
+    "b1_u3_l3"
+   ],
+   "minutes": 20,
+   "work_relevance_ar": "الردّ على عميل منزعج هاتفياً أو كتابةً.",
+   "source": "original-v1",
+   "grammar": [
+    "g_b1_complaint"
+   ],
+   "items": [
+    {
+     "id": "la_queja",
+     "es": "la queja",
+     "ar": "الشكوى",
+     "en": "complaint",
+     "pos": "اسم",
+     "examples": [
+      {
+       "es": "El cliente tiene una queja.",
+       "ar": "لدى العميل شكوى."
+      },
+      {
+       "es": "El pedido está retrasado.",
+       "ar": "الطلب متأخر."
+      },
+      {
+       "es": "Lo necesitaba el lunes, pero llegó tarde.",
+       "ar": "كنتُ أحتاجه يوم الاثنين، لكنه وصل متأخراً."
+      }
+     ],
+     "note_ar": "la reclamación (A2) رسمية أكثر، وla queja أعمّ.",
+     "work": true
+    },
+    {
+     "id": "molesto",
+     "es": "molesto",
+     "ar": "منزعج",
+     "en": "upset, annoyed",
+     "pos": "صفة",
+     "examples": [
+      {
+       "es": "El cliente está muy molesto por la factura.",
+       "ar": "العميل منزعج جداً من الفاتورة."
+      },
+      {
+       "es": "La clienta está muy molesta.",
+       "ar": "العميلة منزعجة جداً."
+      }
+     ],
+     "alt": [
+      "molesta"
+     ]
+    },
+    {
+     "id": "lamento_que",
+     "es": "lamento que…",
+     "ar": "يؤسفني أن…",
+     "en": "I'm sorry that…",
+     "pos": "تعبير",
+     "examples": [
+      {
+       "es": "Lamento que el pedido esté retrasado.",
+       "ar": "يؤسفني أن الطلب متأخر."
+      }
+     ],
+     "work": true
+    },
+    {
+     "id": "entiendo_su_situacion",
+     "es": "entiendo su situación",
+     "ar": "أتفهّم وضعك",
+     "en": "I understand your situation",
+     "pos": "تعبير",
+     "examples": [
+      {
+       "es": "Entiendo su situación y quiero ayudarle.",
+       "ar": "أتفهّم وضعك وأريد أن أساعدك."
+      }
+     ],
+     "work": true
+    },
+    {
+     "id": "no_se_preocupe",
+     "es": "no se preocupe",
+     "ar": "لا تقلق (حضرتك)",
+     "en": "don't worry",
+     "pos": "تعبير",
+     "examples": [
+      {
+       "es": "No se preocupe, lo solucionamos hoy.",
+       "ar": "لا تقلق، نحلّها اليوم."
+      }
+     ]
+    },
+    {
+     "id": "le_prometo_que",
+     "es": "le prometo que…",
+     "ar": "أعدك بأنّ…",
+     "en": "I promise you that…",
+     "pos": "تعبير",
+     "examples": [
+      {
+       "es": "Le prometo que lo solucionamos hoy.",
+       "ar": "أعدك بأننا نحلّها اليوم."
+      }
+     ],
+     "note_ar": "بعد prometer que ← indicativo (وعد بحقيقة): le prometo que lo solucionamos."
+    },
+    {
+     "id": "el_reembolso",
+     "es": "el reembolso",
+     "ar": "استرداد المبلغ",
+     "en": "refund",
+     "pos": "اسم",
+     "examples": [
+      {
+       "es": "Le ofrecemos el reembolso completo.",
+       "ar": "نعرض عليك استرداد المبلغ كاملاً."
+      }
+     ],
+     "work": true
+    },
+    {
+     "id": "tiene_razon_usted",
+     "es": "tiene usted razón",
+     "ar": "معك حق (حضرتك)",
+     "en": "you're right (formal)",
+     "pos": "تعبير",
+     "examples": [
+      {
+       "es": "Tiene usted razón, fue un error nuestro.",
+       "ar": "معك حق، كان خطأً منا."
+      }
+     ]
+    }
+   ],
+   "activities": [
+    {
+     "type": "teach",
+     "item": "la_queja"
+    },
+    {
+     "type": "teach",
+     "item": "molesto"
+    },
+    {
+     "type": "mcq_meaning",
+     "item": "la_queja"
+    },
+    {
+     "type": "listen_choose",
+     "item": "molesto"
+    },
+    {
+     "type": "note",
+     "title_ar": "تفهّم ثم طمْئن",
+     "body_ar": "Lamento que + subjuntivo: Lamento que el pedido esté retrasado.\nLe prometo que + indicativo: Le prometo que lo solucionamos hoy.\nNo se preocupe. · Entiendo su situación.",
+     "examples": [
+      {
+       "es": "Lamento que el pedido esté retrasado. No se preocupe, lo solucionamos hoy.",
+       "ar": "يؤسفني أن الطلب متأخر. لا تقلق، نحلّها اليوم."
+      }
+     ]
+    },
+    {
+     "type": "teach",
+     "item": "lamento_que"
+    },
+    {
+     "type": "teach",
+     "item": "entiendo_su_situacion"
+    },
+    {
+     "type": "teach",
+     "item": "no_se_preocupe"
+    },
+    {
+     "type": "mcq_reverse",
+     "item": "lamento_que"
+    },
+    {
+     "type": "listen_pick_es",
+     "item": "entiendo_su_situacion"
+    },
+    {
+     "type": "mcq_meaning",
+     "item": "no_se_preocupe"
+    },
+    {
+     "type": "teach",
+     "item": "le_prometo_que"
+    },
+    {
+     "type": "teach",
+     "item": "el_reembolso"
+    },
+    {
+     "type": "teach",
+     "item": "tiene_razon_usted"
+    },
+    {
+     "type": "mcq_meaning",
+     "item": "el_reembolso"
+    },
+    {
+     "type": "listen_choose",
+     "item": "le_prometo_que"
+    },
+    {
+     "type": "mcq_reverse",
+     "item": "tiene_razon_usted"
+    },
+    {
+     "type": "choice",
+     "prompt_ar": "اختر الصيغة الصحيحة:",
+     "choices": [
+      "llegue",
+      "llega",
+      "llegar"
+     ],
+     "answer": 0,
+     "skill": "grammar",
+     "choices_es": true,
+     "stimulus_es": "El pedido sale mañana. Lamento que ___ tarde.",
+     "explain_ar": "lamento que (شعور) ← subjuntivo: llego ← llegue (gu قبل e)."
+    },
+    {
+     "type": "fill",
+     "es": "Le prometo que lo ___ hoy.",
+     "answer": "solucionamos",
+     "ar": "أعدك بأننا نحلّها اليوم.",
+     "options": [
+      "solucionamos",
+      "solucionar",
+      "solucionado"
+     ],
+     "explain_ar": "le prometo que + وعد بحقيقة ← indicativo: solucionamos."
+    },
+    {
+     "type": "fill",
+     "es": "Lamento que el cliente ___ tan molesto.",
+     "answer": "esté",
+     "ar": "يؤسفني أن يكون العميل منزعجاً إلى هذا الحد.",
+     "options": [
+      "esté",
+      "está",
+      "estar"
+     ],
+     "explain_ar": "lamento que ← subjuntivo: estar ← esté (بنبر)."
+    },
+    {
+     "type": "match",
+     "items": [
+      "la_queja",
+      "molesto",
+      "no_se_preocupe",
+      "el_reembolso"
+     ]
+    },
+    {
+     "type": "type_es",
+     "item": "la_queja"
+    },
+    {
+     "type": "type_es",
+     "item": "el_reembolso"
+    },
+    {
+     "type": "order",
+     "es": "No se preocupe, lo solucionamos hoy.",
+     "ar": "لا تقلق، نحلّها اليوم."
+    },
+    {
+     "type": "dictation",
+     "es": "Lamento que el pedido esté retrasado. Entiendo su situación.",
+     "ar": "يؤسفني أن الطلب متأخر. أتفهّم وضعك."
+    },
+    {
+     "type": "choice",
+     "prompt_ar": "ماذا تعد الموظفة العميل؟",
+     "choices": [
+      "أن تحلّ المشكلة اليوم",
+      "أن ترسل خصماً",
+      "أن تتصل الأسبوع القادم"
+     ],
+     "answer": 0,
+     "skill": "reading",
+     "choices_es": false,
+     "prompt_es": "¿Qué le promete la empleada a la clienta?",
+     "stimulus_es": "Respuesta a una queja: «Estimada señora Gil: lamento que la factura tenga un error. Tiene usted razón. No se preocupe: le prometo que lo solucionamos hoy y le enviamos la factura correcta.»"
+    },
+    {
+     "type": "choice",
+     "prompt_ar": "استمع: كيف حال العميل؟",
+     "choices": [
+      "منزعج جداً",
+      "راضٍ تماماً",
+      "مشغول"
+     ],
+     "answer": 0,
+     "skill": "listening",
+     "choices_es": false,
+     "prompt_es": "¿Cómo está el cliente?",
+     "audio_es": "El cliente está muy molesto por el retraso."
+    },
+    {
+     "type": "respond",
+     "prompt_ar": "ردّ على شكوى: «يؤسفني أن الطلب متأخر».",
+     "accepted": [
+      "Lamento que el pedido esté retrasado.",
+      "Lamento mucho que el pedido esté retrasado."
+     ],
+     "audio_es": "Lamento que el pedido esté retrasado."
+    },
+    {
+     "type": "speak",
+     "es": "Entiendo su situación. Lamento que el pedido esté retrasado. Le prometo que lo solucionamos hoy.",
+     "ar": "أتفهّم وضعك. يؤسفني أن الطلب متأخر. أعدك بأننا نحلّها اليوم."
+    }
+   ]
+  },
+  {
+   "id": "b1_u3_l5",
+   "title_ar": "اقتراح حلول",
+   "title_es": "Proponer soluciones",
+   "objectives_ar": [
+    "le propongo que + subjuntivo",
+    "¿Qué le parece si + حاضر?",
+    "عرض بديلين"
+   ],
+   "prerequisites": [
+    "b1_u3_l4"
+   ],
+   "minutes": 20,
+   "work_relevance_ar": "عرض حلول وتعويض على عميل.",
+   "source": "original-v1",
+   "grammar": [
+    "g_b1_solutions"
+   ],
+   "items": [
+    {
+     "id": "le_propongo_que",
+     "es": "le propongo que…",
+     "ar": "أقترح عليك أن…",
+     "en": "I suggest that…",
+     "pos": "تعبير",
+     "examples": [
+      {
+       "es": "Le propongo que cambiemos el producto.",
+       "ar": "أقترح عليك أن نستبدل المنتج."
+      }
+     ],
+     "work": true
+    },
+    {
+     "id": "que_le_parece_si",
+     "es": "¿Qué le parece si…?",
+     "ar": "ما رأيك (حضرتك) أن…؟",
+     "en": "how about if…?",
+     "pos": "تعبير",
+     "examples": [
+      {
+       "es": "¿Qué le parece si le enviamos otro?",
+       "ar": "ما رأيك أن نرسل لك واحداً آخر؟"
+      }
+     ],
+     "note_ar": "بعد si يأتي الحاضر (indicativo)، لا subjuntivo: ¿Qué le parece si le enviamos…?"
+    },
+    {
+     "id": "en_lugar_de",
+     "es": "en lugar de…",
+     "ar": "بدلاً من…",
+     "en": "instead of…",
+     "pos": "تعبير",
+     "examples": [
+      {
+       "es": "En lugar de esperar, podemos enviarlo hoy.",
+       "ar": "بدلاً من الانتظار، يمكننا إرساله اليوم."
+      }
+     ]
+    },
+    {
+     "id": "la_alternativa",
+     "es": "la alternativa",
+     "ar": "البديل",
+     "en": "alternative",
+     "pos": "اسم",
+     "examples": [
+      {
+       "es": "Tenemos dos alternativas.",
+       "ar": "لدينا بديلان."
+      },
+      {
+       "es": "¿Cuáles son las alternativas?",
+       "ar": "ما البدائل؟"
+      }
+     ]
+    },
+    {
+     "id": "a_cambio",
+     "es": "a cambio",
+     "ar": "في المقابل / مقابل ذلك",
+     "en": "in exchange",
+     "pos": "تعبير",
+     "examples": [
+      {
+       "es": "A cambio, le ofrecemos un descuento.",
+       "ar": "في المقابل، نقدّم لك خصماً."
+      }
+     ]
+    },
+    {
+     "id": "el_descuento",
+     "es": "el descuento",
+     "ar": "الخصم",
+     "en": "discount",
+     "pos": "اسم",
+     "examples": [
+      {
+       "es": "Podríamos ofrecerle un descuento del diez por ciento.",
+       "ar": "يمكننا أن نقدّم لك خصماً بنسبة عشرة في المئة."
+      }
+     ],
+     "work": true
+    },
+    {
+     "id": "sin_coste",
+     "es": "sin coste",
+     "ar": "بلا تكلفة / مجاناً",
+     "en": "free of charge",
+     "pos": "تعبير",
+     "examples": [
+      {
+       "es": "Le cambiamos el producto sin coste.",
+       "ar": "نستبدل لك المنتج بلا تكلفة."
+      }
+     ],
+     "work": true
+    },
+    {
+     "id": "de_inmediato",
+     "es": "de inmediato",
+     "ar": "فوراً",
+     "en": "immediately",
+     "pos": "تعبير",
+     "examples": [
+      {
+       "es": "Le enviamos otro de inmediato.",
+       "ar": "نرسل لك واحداً آخر فوراً."
+      }
+     ]
+    }
+   ],
+   "activities": [
+    {
+     "type": "teach",
+     "item": "le_propongo_que"
+    },
+    {
+     "type": "teach",
+     "item": "que_le_parece_si"
+    },
+    {
+     "type": "mcq_meaning",
+     "item": "le_propongo_que"
+    },
+    {
+     "type": "listen_choose",
+     "item": "que_le_parece_si"
+    },
+    {
+     "type": "note",
+     "title_ar": "اعرض الحلّ",
+     "body_ar": "Le propongo que + subjuntivo: Le propongo que cambiemos el producto.\n¿Qué le parece si + indicativo? ¿Qué le parece si le enviamos otro?\nEn lugar de + مصدر",
+     "examples": [
+      {
+       "es": "En lugar de esperar, le propongo que cambiemos el producto sin coste.",
+       "ar": "بدلاً من الانتظار، أقترح عليك أن نستبدل المنتج بلا تكلفة."
+      }
+     ]
+    },
+    {
+     "type": "teach",
+     "item": "en_lugar_de"
+    },
+    {
+     "type": "teach",
+     "item": "la_alternativa"
+    },
+    {
+     "type": "teach",
+     "item": "a_cambio"
+    },
+    {
+     "type": "mcq_reverse",
+     "item": "en_lugar_de"
+    },
+    {
+     "type": "listen_pick_es",
+     "item": "la_alternativa"
+    },
+    {
+     "type": "mcq_meaning",
+     "item": "a_cambio"
+    },
+    {
+     "type": "teach",
+     "item": "el_descuento"
+    },
+    {
+     "type": "teach",
+     "item": "sin_coste"
+    },
+    {
+     "type": "teach",
+     "item": "de_inmediato"
+    },
+    {
+     "type": "mcq_meaning",
+     "item": "sin_coste"
+    },
+    {
+     "type": "listen_choose",
+     "item": "el_descuento"
+    },
+    {
+     "type": "mcq_reverse",
+     "item": "de_inmediato"
+    },
+    {
+     "type": "choice",
+     "prompt_ar": "اختر الصيغة الصحيحة:",
+     "choices": [
+      "enviamos",
+      "enviemos",
+      "enviar"
+     ],
+     "answer": 0,
+     "skill": "grammar",
+     "choices_es": true,
+     "stimulus_es": "¿Qué le parece si le ___ otro producto?",
+     "explain_ar": "بعد si نستعمل الحاضر العادي (indicativo): enviamos، لا subjuntivo."
+    },
+    {
+     "type": "fill",
+     "es": "Le propongo que ___ el producto.",
+     "answer": "cambiemos",
+     "ar": "أقترح عليك أن نستبدل المنتج.",
+     "options": [
+      "cambiemos",
+      "cambiamos",
+      "cambiar"
+     ],
+     "explain_ar": "le propongo que ← subjuntivo مع nosotros: cambiemos."
+    },
+    {
+     "type": "fill",
+     "es": "En lugar de ___, podemos enviarlo hoy.",
+     "answer": "esperar",
+     "ar": "بدلاً من الانتظار، يمكننا إرساله اليوم.",
+     "options": [
+      "esperar",
+      "esperamos",
+      "esperemos"
+     ],
+     "explain_ar": "بعد en lugar de يأتي المصدر: esperar."
+    },
+    {
+     "type": "match",
+     "items": [
+      "la_alternativa",
+      "a_cambio",
+      "el_descuento",
+      "de_inmediato"
+     ]
+    },
+    {
+     "type": "type_es",
+     "item": "el_descuento"
+    },
+    {
+     "type": "type_es",
+     "item": "sin_coste"
+    },
+    {
+     "type": "order",
+     "es": "Le propongo que cambiemos el producto.",
+     "ar": "أقترح عليك أن نستبدل المنتج."
+    },
+    {
+     "type": "dictation",
+     "es": "¿Qué le parece si le enviamos otro de inmediato? A cambio, no paga el envío.",
+     "ar": "ما رأيك أن نرسل لك واحداً آخر فوراً؟ في المقابل، لا تدفع ثمن الشحن."
+    },
+    {
+     "type": "choice",
+     "prompt_ar": "ما البديلان اللذان تقترحهما الشركة؟",
+     "choices": [
+      "منتج جديد فوراً أو خصم",
+      "استرداد المبلغ أو الانتظار",
+      "فني أو اتصال"
+     ],
+     "answer": 0,
+     "skill": "reading",
+     "choices_es": false,
+     "prompt_es": "¿Qué dos alternativas propone la empresa?",
+     "stimulus_es": "Propuesta: «Tenemos dos alternativas. Le propongo que cambiemos el producto sin coste y se lo enviamos de inmediato. Si prefiere quedarse con él, le ofrecemos a cambio un descuento del veinte por ciento.»"
+    },
+    {
+     "type": "choice",
+     "prompt_ar": "استمع: ما الاقتراح؟",
+     "choices": [
+      "إرسال منتج آخر فوراً",
+      "إلغاء الطلب",
+      "زيارة المكتب"
+     ],
+     "answer": 0,
+     "skill": "listening",
+     "choices_es": false,
+     "prompt_es": "¿Qué propone la empresa?",
+     "audio_es": "¿Qué le parece si le enviamos otro de inmediato?"
+    },
+    {
+     "type": "respond",
+     "prompt_ar": "اعرض حلاً بأدب: «ما رأيك أن نرسل لك واحداً آخر؟»",
+     "accepted": [
+      "¿Qué le parece si le enviamos otro?",
+      "¿Qué le parece si le enviamos otro producto?"
+     ],
+     "audio_es": "¿Qué le parece si le enviamos otro?"
+    },
+    {
+     "type": "speak",
+     "es": "Tenemos dos alternativas. Le propongo que cambiemos el producto sin coste.",
+     "ar": "لدينا بديلان. أقترح عليك أن نستبدل المنتج بلا تكلفة."
+    }
+   ]
+  },
+  {
+   "id": "b1_u3_l6",
+   "title_ar": "قراءة واستماع: حالة خدمة عملاء",
+   "title_es": "Lectura y escucha: un caso de atención al cliente",
+   "objectives_ar": [
+    "فهم شكوى مكتوبة وردّها",
+    "متابعة مكالمة خدمة عملاء طويلة",
+    "تلخيص الحلّ المتفق عليه"
+   ],
+   "prerequisites": [
+    "b1_u3_l5"
+   ],
+   "minutes": 25,
+   "work_relevance_ar": "قراءة شكوى والردّ عليها بحلّ واضح.",
+   "source": "original-v1",
+   "grammar": [
+    "g_b1_case"
+   ],
+   "items": [
+    {
+     "id": "satisfecho",
+     "es": "satisfecho",
+     "ar": "راضٍ",
+     "en": "satisfied",
+     "pos": "صفة",
+     "examples": [
+      {
+       "es": "Esperamos que esté satisfecho con la solución.",
+       "ar": "نتمنى أن تكون راضياً عن الحلّ."
+      }
+     ],
+     "work": true,
+     "alt": [
+      "satisfecha"
+     ]
+    },
+    {
+     "id": "la_garantia",
+     "es": "la garantía",
+     "ar": "الضمان",
+     "en": "warranty, guarantee",
+     "pos": "اسم",
+     "examples": [
+      {
+       "es": "La impresora tiene dos años de garantía.",
+       "ar": "للطابعة ضمان لمدة سنتين."
+      }
+     ],
+     "work": true
+    },
+    {
+     "id": "el_envio",
+     "es": "el envío",
+     "ar": "الشحنة / الشحن",
+     "en": "shipment, delivery",
+     "pos": "اسم",
+     "examples": [
+      {
+       "es": "El envío llegó ayer.",
+       "ar": "وصلت الشحنة أمس."
+      },
+      {
+       "es": "El técnico recoge la caja mañana.",
+       "ar": "الفني يأخذ الصندوق غداً."
+      }
+     ],
+     "work": true
+    },
+    {
+     "id": "danado",
+     "es": "dañado",
+     "ar": "تالف",
+     "en": "damaged",
+     "pos": "صفة",
+     "examples": [
+      {
+       "es": "El envío llegó dañado.",
+       "ar": "وصلت الشحنة تالفة."
+      },
+      {
+       "es": "La impresora llegó dañada.",
+       "ar": "وصلت الطابعة تالفة."
+      }
+     ],
+     "alt": [
+      "dañada"
+     ]
+    },
+    {
+     "id": "por_escrito",
+     "es": "por escrito",
+     "ar": "كتابةً",
+     "en": "in writing",
+     "pos": "تعبير",
+     "examples": [
+      {
+       "es": "Le pido que me lo confirme por escrito.",
+       "ar": "أطلب منك أن تؤكد لي ذلك كتابةً."
+      }
+     ],
+     "work": true
+    },
+    {
+     "id": "de_nuevo",
+     "es": "de nuevo",
+     "ar": "مرة أخرى / من جديد",
+     "en": "again",
+     "pos": "تعبير",
+     "examples": [
+      {
+       "es": "Pruebe de nuevo, por favor.",
+       "ar": "جرّب مرة أخرى من فضلك."
+      }
+     ]
+    },
+    {
+     "id": "reemplazar",
+     "es": "reemplazar",
+     "ar": "يستبدل",
+     "en": "to replace",
+     "pos": "فعل",
+     "examples": [
+      {
+       "es": "Queremos que nos reemplacen la impresora.",
+       "ar": "نريد أن تستبدلوا لنا الطابعة."
+      }
+     ]
+    }
+   ],
+   "activities": [
+    {
+     "type": "teach",
+     "item": "satisfecho"
+    },
+    {
+     "type": "teach",
+     "item": "la_garantia"
+    },
+    {
+     "type": "mcq_meaning",
+     "item": "satisfecho"
+    },
+    {
+     "type": "listen_choose",
+     "item": "la_garantia"
+    },
+    {
+     "type": "note",
+     "title_ar": "حالة كاملة",
+     "body_ar": "الشكوى ← التفهّم ← الحلّ ← التأكيد كتابةً\nlamento que / le propongo que / le pido que / esperamos que + subjuntivo",
+     "examples": [
+      {
+       "es": "Esperamos que esté satisfecho con la solución.",
+       "ar": "نتمنى أن تكون راضياً عن الحلّ."
+      }
+     ]
+    },
+    {
+     "type": "teach",
+     "item": "el_envio"
+    },
+    {
+     "type": "teach",
+     "item": "danado"
+    },
+    {
+     "type": "teach",
+     "item": "por_escrito"
+    },
+    {
+     "type": "mcq_reverse",
+     "item": "el_envio"
+    },
+    {
+     "type": "listen_pick_es",
+     "item": "danado"
+    },
+    {
+     "type": "mcq_meaning",
+     "item": "por_escrito"
+    },
+    {
+     "type": "teach",
+     "item": "de_nuevo"
+    },
+    {
+     "type": "teach",
+     "item": "reemplazar"
+    },
+    {
+     "type": "mcq_meaning",
+     "item": "reemplazar"
+    },
+    {
+     "type": "mcq_reverse",
+     "item": "de_nuevo"
+    },
+    {
+     "type": "choice",
+     "prompt_ar": "اقرأ الشكوى والردّ: ما مشكلة السيد مارتن؟",
+     "choices": [
+      "وصلت الطابعة تالفة ولا تعمل",
+      "لم تصل الطابعة أبداً",
+      "السعر في الفاتورة خطأ"
+     ],
+     "answer": 0,
+     "skill": "reading",
+     "choices_es": false,
+     "prompt_es": "Lee la queja y la respuesta: ¿qué problema tiene el señor Martín?",
+     "stimulus_es": "Queja de un cliente: «Buenos días. Hace una semana compré una impresora en su tienda en línea. El envío llegó ayer, pero la caja estaba rota y la impresora no funciona. Estoy muy molesto, porque la necesito para mi oficina. Quiero que me envíen una impresora nueva lo antes posible.» Respuesta de la empresa: «Estimado señor Martín: lamento que el envío llegue dañado y entiendo su situación. Tiene usted razón. Le propongo dos alternativas: le enviamos una impresora nueva de inmediato, sin coste, o le devolvemos el dinero. Además, como la impresora tiene garantía, nuestro técnico puede recoger la caja mañana. Le pido que nos conteste por escrito con la alternativa que prefiere. Esperamos que esté satisfecho con la solución. Un saludo, Ana Gil, atención al cliente.»"
+    },
+    {
+     "type": "choice",
+     "prompt_ar": "ماذا يريد السيد مارتن؟",
+     "choices": [
+      "طابعة جديدة في أسرع وقت",
+      "استرداد المبلغ فقط",
+      "زيارة الفني"
+     ],
+     "answer": 0,
+     "skill": "reading",
+     "choices_es": false,
+     "prompt_es": "¿Qué quiere el señor Martín?",
+     "stimulus_es": "Queja de un cliente: «Buenos días. Hace una semana compré una impresora en su tienda en línea. El envío llegó ayer, pero la caja estaba rota y la impresora no funciona. Estoy muy molesto, porque la necesito para mi oficina. Quiero que me envíen una impresora nueva lo antes posible.» Respuesta de la empresa: «Estimado señor Martín: lamento que el envío llegue dañado y entiendo su situación. Tiene usted razón. Le propongo dos alternativas: le enviamos una impresora nueva de inmediato, sin coste, o le devolvemos el dinero. Además, como la impresora tiene garantía, nuestro técnico puede recoger la caja mañana. Le pido que nos conteste por escrito con la alternativa que prefiere. Esperamos que esté satisfecho con la solución. Un saludo, Ana Gil, atención al cliente.»"
+    },
+    {
+     "type": "choice",
+     "prompt_ar": "ما البديلان اللذان تقترحهما آنا؟",
+     "choices": [
+      "طابعة جديدة بلا تكلفة أو استرداد المبلغ",
+      "خصم أو انتظار",
+      "تصليح الطابعة أو تغيير الموعد"
+     ],
+     "answer": 0,
+     "skill": "reading",
+     "choices_es": false,
+     "prompt_es": "¿Qué alternativas propone Ana?",
+     "stimulus_es": "Queja de un cliente: «Buenos días. Hace una semana compré una impresora en su tienda en línea. El envío llegó ayer, pero la caja estaba rota y la impresora no funciona. Estoy muy molesto, porque la necesito para mi oficina. Quiero que me envíen una impresora nueva lo antes posible.» Respuesta de la empresa: «Estimado señor Martín: lamento que el envío llegue dañado y entiendo su situación. Tiene usted razón. Le propongo dos alternativas: le enviamos una impresora nueva de inmediato, sin coste, o le devolvemos el dinero. Además, como la impresora tiene garantía, nuestro técnico puede recoger la caja mañana. Le pido que nos conteste por escrito con la alternativa que prefiere. Esperamos que esté satisfecho con la solución. Un saludo, Ana Gil, atención al cliente.»"
+    },
+    {
+     "type": "choice",
+     "prompt_ar": "ماذا تطلب آنا من العميل؟",
+     "choices": [
+      "أن يردّ كتابةً بالبديل الذي يفضّله",
+      "أن يتصل غداً",
+      "أن يرسل الطابعة"
+     ],
+     "answer": 0,
+     "skill": "reading",
+     "choices_es": false,
+     "prompt_es": "¿Qué le pide Ana al cliente?",
+     "stimulus_es": "Queja de un cliente: «Buenos días. Hace una semana compré una impresora en su tienda en línea. El envío llegó ayer, pero la caja estaba rota y la impresora no funciona. Estoy muy molesto, porque la necesito para mi oficina. Quiero que me envíen una impresora nueva lo antes posible.» Respuesta de la empresa: «Estimado señor Martín: lamento que el envío llegue dañado y entiendo su situación. Tiene usted razón. Le propongo dos alternativas: le enviamos una impresora nueva de inmediato, sin coste, o le devolvemos el dinero. Además, como la impresora tiene garantía, nuestro técnico puede recoger la caja mañana. Le pido que nos conteste por escrito con la alternativa que prefiere. Esperamos que esté satisfecho con la solución. Un saludo, Ana Gil, atención al cliente.»"
+    },
+    {
+     "type": "fill",
+     "es": "Le pido que nos ___ por escrito.",
+     "answer": "conteste",
+     "ar": "أطلب منك أن تردّ علينا كتابةً.",
+     "options": [
+      "conteste",
+      "contesta",
+      "contestar"
+     ],
+     "explain_ar": "le pido que ← subjuntivo: contesto ← conteste."
+    },
+    {
+     "type": "match",
+     "items": [
+      "satisfecho",
+      "el_envio",
+      "danado",
+      "de_nuevo"
+     ]
+    },
+    {
+     "type": "type_es",
+     "item": "la_garantia"
+    },
+    {
+     "type": "type_es",
+     "item": "el_envio"
+    },
+    {
+     "type": "order",
+     "es": "Esperamos que esté satisfecho con la solución.",
+     "ar": "نتمنى أن تكون راضياً عن الحلّ."
+    },
+    {
+     "type": "dictation",
+     "es": "El envío llegó dañado. Le pido que me lo confirme por escrito.",
+     "ar": "وصلت الشحنة تالفة. أطلب منك أن تؤكد لي ذلك كتابةً."
+    },
+    {
+     "type": "choice",
+     "prompt_ar": "استمع: متى يأتي الفني؟",
+     "choices": [
+      "غداً",
+      "اليوم",
+      "الأسبوع القادم"
+     ],
+     "answer": 0,
+     "skill": "listening",
+     "choices_es": false,
+     "prompt_es": "¿Cuándo puede ir el técnico?",
+     "audio_es": "Nuestro técnico puede recoger la caja mañana."
+    },
+    {
+     "type": "choice",
+     "prompt_ar": "استمع: ماذا تتمنّى الشركة؟",
+     "choices": [
+      "أن يكون العميل راضياً عن الحلّ",
+      "أن يدفع العميل الشحن",
+      "أن ينتظر العميل"
+     ],
+     "answer": 0,
+     "skill": "listening",
+     "choices_es": false,
+     "prompt_es": "¿Qué espera la empresa?",
+     "audio_es": "Esperamos que esté satisfecho con la solución."
+    },
+    {
+     "type": "respond",
+     "prompt_ar": "اطلب من العميل: «أطلب منك أن تؤكد لي ذلك كتابةً».",
+     "accepted": [
+      "Le pido que me lo confirme por escrito.",
+      "Le pido que me lo confirme por escrito, por favor."
+     ],
+     "audio_es": "Le pido que me lo confirme por escrito."
+    },
+    {
+     "type": "speak",
+     "es": "Lamento que el envío llegue dañado. Le enviamos una impresora nueva sin coste.",
+     "ar": "يؤسفني أن تصل الشحنة تالفة. نرسل لك طابعة جديدة بلا تكلفة."
+    }
+   ]
+  }
+ ]
+}
