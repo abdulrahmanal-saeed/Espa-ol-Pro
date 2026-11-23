@@ -7,7 +7,7 @@ handoff_id: PHASE4-003
 updated_at_utc: 2026-11-23T12:00:00Z
 review_requested_for_sha: c456fc8 (application code; this handoff is the docs commit on top)
 branch: claude/hopeful-knuth-wbn3n3
-pull_request: see the open PR from this branch (base `main`, draft)
+pull_request: https://github.com/abdulrahmanal-saeed/Espa-ol-Pro/pull/19 (base `main`, draft)
 last_review_acknowledged: REVIEW-017
 project_status: B1_U1_MERGED__STRICT_ACCENTS_AND_SPANISH_PROMPTS_IN_REVIEW__DEVICE_AND_NATIVE_QA_PENDING
 
