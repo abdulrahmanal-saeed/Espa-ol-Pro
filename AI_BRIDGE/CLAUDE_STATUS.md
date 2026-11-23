@@ -3,6 +3,117 @@
 owner: Claude Code
 implementer: Claude Code
 handoff_status: READY_FOR_REVIEW
+handoff_id: PHASE3-007
+updated_at_utc: 2026-11-23T17:00:00Z
+review_requested_for_sha: f6246a9 (application code 54d4a2d)
+branch: feat/a2-level-test
+pull_request: https://github.com/abdulrahmanal-saeed/Espa-ol-Pro/pull/17 (stacked: #14 → #15 → #16 → #17)
+also_awaiting_review: PHASE3-004 (#14), PHASE3-005 (#15), PHASE3-006 (#16)
+last_review_acknowledged: REVIEW-015
+project_status: A2_CONTENT_COMPLETE_IN_REVIEW__DEVICE_AND_NATIVE_QA_PENDING
+
+## Review order
+
+Review the stack in order: #14 (A2-U3), then #15 (A2-U4), then #16 (A2-U5),
+then this PR (#17). Each PR adds only its own commits. With this PR, A2 has
+all its content:
+
+- 25 lessons in 5 units;
+- 5 unit checkpoints;
+- the level assessment.
+
+None of it is "accepted" until it has been reviewed, checked on a device and
+checked by a native speaker.
+
+## Codex finding on #17: fixed
+
+«Señor, ¿puedo firmar aquí?» is a valid request for permission, so `puedo`
+was a wrong distractor in `lvl_a2.q1`.
+
+- The prompt now states the intent: asking the gentleman to sign.
+- The distractors are now poder and podido.
+- The same fill in `a2_u1_l1`, already merged with #12, is fixed the same
+  way.
+
+## PR #17: A2 level assessment `lvl_a2` (content 1.10.0, `54d4a2d`)
+
+**No app code changed.** The level-assessment logic built for `lvl_a1`
+already works for any level:
+
+- `levelAssessmentFor`;
+- `levelCompleted`, which keeps the test locked until every lesson of the
+  level is done;
+- the tile at the end of the level on the path;
+- `awaitsLevelTest`, which keeps the level expanded until the test has been
+  taken.
+
+**Questions:**
+
+- 25 questions, in the `lvl_a1` format.
+- 5 can-dos, one per A2 unit. Their lesson lists together cover every A2
+  lesson. Each can-do has 4 to 5 questions.
+- Skills: grammar 9, reading 5, listening 5, writing 4, vocabulary 2. No
+  speaking.
+- Dialogue sentences: one from each unit (`dlg_a2_averia.t5`,
+  `dlg_a2_finde.t4`, `dlg_a2_cita_cliente.t5`, `dlg_a2_ofertas.t4`,
+  `dlg_a2_seguimiento.t6`).
+- Most items are new, not copies of the unit checkpoints. Two kinds repeat
+  deliberately because they test core A2 contrasts: the register question
+  (puede / puedes) and the formal email close.
+- Every grammar question has `explain_ar`.
+- Distractors are unambiguously wrong.
+- The four typed answers are «la pantalla está rota», «llegué», «prefiero el
+  negro» and «adjunto el archivo».
+- The accepted answers deliberately leave out the unaccented forms. Both
+  esta/está and llegue/llegué are meaning-accent pairs in the engine.
+
+### Tests — `test/a2_level_test.dart` (5)
+
+- Coverage of all A2 units and every A2 lesson.
+- Five skills, no speaking, at least 4 questions per can-do, and 5 dialogue
+  sentences.
+- Grading of a missing meaning accent (llegue, esta) and of a wrong answer.
+- The shuffle: the first displayed option is correct on fewer than half of
+  the questions.
+- Persistence across a database reopen.
+- Widget:
+  - locked with every A2 lesson but the last done;
+  - after the last lesson, the tile shows on the path;
+  - Start is enabled and the "not a CEFR certificate" note is shown.
+
+| Check | Result |
+|---|---|
+| format | 0 changed |
+| `flutter analyze --fatal-infos` | No issues |
+| content validator | OK: 16 assessments (199 questions) |
+| `flutter test` | **394 passed** (389 + 5) |
+| screenshots | 22 regenerated |
+
+## Questions for ChatGPT
+
+1. A1 → A2 progression does not require passing `lvl_a1`. Should A2 → B1
+   follow the same policy? I have left it unchanged until the owner
+   decides.
+2. Is 25 questions enough for A2, or should listening carry more weight?
+
+## Proposed next step
+
+Once the stack is merged:
+
+1. B1 unit 1, "Opinion and reasoning". It would follow the same model: 5
+   lessons, 3 dialogues and a checkpoint.
+2. Alongside it, the planned A2+ features: stricter accent marking and
+   gradually less Arabic in prompts.
+
+I will not merge #14–#17; that is the owner's decision.
+
+---
+
+# Previous handoff (PHASE3-006, still awaiting review)
+
+owner: Claude Code
+implementer: Claude Code
+handoff_status: READY_FOR_REVIEW
 handoff_id: PHASE3-006
 updated_at_utc: 2026-11-23T16:00:00Z
 review_requested_for_sha: latest #16 head (application code a3ec090 + the cuando fix)

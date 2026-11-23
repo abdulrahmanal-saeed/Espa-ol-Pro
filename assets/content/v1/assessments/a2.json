@@ -1041,6 +1041,433 @@
     }
    ],
    "source": "original-v1"
+  },
+  {
+   "id": "lvl_a2",
+   "version": 1,
+   "kind": "level",
+   "level": "a2",
+   "title_ar": "اختبار مستوى A2",
+   "intro_ar": "اختبار مستوى A2 داخل التطبيق: أسئلة من الوحدات الخمس، بلا تلميحات ولا إظهار للإجابات قبل النهاية. النتيجة دليل تدريبي على ما تستطيعه الآن في مستوى A2، وليست شهادة CEFR ولا امتحان DELE.",
+   "can_do": [
+    {
+     "id": "cd_lvl_a2_services",
+     "ar": "أنجز معاملات يومية وأصف مشكلة وأطلب حلّها",
+     "lessons": [
+      "a2_u1_l1",
+      "a2_u1_l2",
+      "a2_u1_l3",
+      "a2_u1_l4",
+      "a2_u1_l5"
+     ]
+    },
+    {
+     "id": "cd_lvl_a2_past",
+     "ar": "أحكي ما حدث في يوم أو رحلة أو مع عميل",
+     "lessons": [
+      "a2_u2_l1",
+      "a2_u2_l2",
+      "a2_u2_l3",
+      "a2_u2_l4",
+      "a2_u2_l5"
+     ]
+    },
+    {
+     "id": "cd_lvl_a2_plans",
+     "ar": "أتحدث عن خططي وأرتّب المواعيد وأفهم الجداول",
+     "lessons": [
+      "a2_u3_l1",
+      "a2_u3_l2",
+      "a2_u3_l3",
+      "a2_u3_l4",
+      "a2_u3_l5"
+     ]
+    },
+    {
+     "id": "cd_lvl_a2_compare",
+     "ar": "أعبّر عمّا أفضّله وأقارن وأبدي رأيي",
+     "lessons": [
+      "a2_u4_l1",
+      "a2_u4_l2",
+      "a2_u4_l3",
+      "a2_u4_l4",
+      "a2_u4_l5"
+     ]
+    },
+    {
+     "id": "cd_lvl_a2_work",
+     "ar": "أكتب رسائل عمل وأتابع مع العملاء بالأسلوب المناسب",
+     "lessons": [
+      "a2_u5_l1",
+      "a2_u5_l2",
+      "a2_u5_l3",
+      "a2_u5_l4",
+      "a2_u5_l5"
+     ]
+    }
+   ],
+   "questions": [
+    {
+     "id": "lvl_a2.q1",
+     "type": "choice",
+     "skill": "grammar",
+     "can_do": "cd_lvl_a2_services",
+     "prompt_ar": "تطلب من السيد أن يوقّع هو هنا. اختر الكلمة المناسبة للفراغ",
+     "stimulus_es": "Señor, ¿___ firmar aquí, por favor?",
+     "choices": [
+      "puede",
+      "poder",
+      "podido"
+     ],
+     "answer": 0,
+     "explain_ar": "تطلب من السيد (usted) أن يوقّع ← ¿Puede firmar…? (poder: o ← ue)."
+    },
+    {
+     "id": "lvl_a2.q2",
+     "type": "choice",
+     "skill": "listening",
+     "can_do": "cd_lvl_a2_services",
+     "prompt_ar": "استمع إلى جملة من حوار «المكيّف»: متى يأتي الفنّي؟",
+     "dialogue_turn": "dlg_a2_averia.t5",
+     "choices": [
+      "غداً في التاسعة",
+      "اليوم بعد الظهر",
+      "يوم الخميس"
+     ],
+     "answer": 0,
+     "choices_es": false
+    },
+    {
+     "id": "lvl_a2.q3",
+     "type": "type",
+     "skill": "writing",
+     "can_do": "cd_lvl_a2_services",
+     "prompt_ar": "اكتب بالإسبانية",
+     "stimulus_ar": "الشاشة مكسورة.",
+     "accepted": [
+      "la pantalla está rota"
+     ]
+    },
+    {
+     "id": "lvl_a2.q4",
+     "type": "choice",
+     "skill": "reading",
+     "can_do": "cd_lvl_a2_services",
+     "prompt_ar": "أين يمكن سحب النقود؟",
+     "stimulus_es": "El cajero automático no funciona desde ayer. Puede sacar dinero en el banco, al lado de la estación.",
+     "choices": [
+      "في البنك بجانب المحطة",
+      "في الصرّاف الآلي",
+      "في الفندق"
+     ],
+     "answer": 0,
+     "choices_es": false
+    },
+    {
+     "id": "lvl_a2.q5",
+     "type": "choice",
+     "skill": "grammar",
+     "can_do": "cd_lvl_a2_services",
+     "prompt_ar": "اختر الكلمة المناسبة للفراغ",
+     "stimulus_es": "¿El ordenador? El técnico ___ arregla mañana.",
+     "choices": [
+      "lo",
+      "la",
+      "le"
+     ],
+     "answer": 0,
+     "explain_ar": "ordenador مذكّر مفرد ← lo."
+    },
+    {
+     "id": "lvl_a2.q6",
+     "type": "choice",
+     "skill": "grammar",
+     "can_do": "cd_lvl_a2_past",
+     "prompt_ar": "اختر الكلمة المناسبة للفراغ",
+     "stimulus_es": "Ayer yo ___ el informe.",
+     "choices": [
+      "terminé",
+      "termino",
+      "terminó"
+     ],
+     "answer": 0,
+     "explain_ar": "ayer ← الماضي، ومع yo: terminé (بعلامة النبر)."
+    },
+    {
+     "id": "lvl_a2.q7",
+     "type": "choice",
+     "skill": "grammar",
+     "can_do": "cd_lvl_a2_past",
+     "prompt_ar": "اختر الكلمة المناسبة للفراغ",
+     "stimulus_es": "El año pasado yo ___ a Madrid.",
+     "choices": [
+      "fui",
+      "fue",
+      "voy"
+     ],
+     "answer": 0,
+     "explain_ar": "ir في الماضي مع yo: fui."
+    },
+    {
+     "id": "lvl_a2.q8",
+     "type": "choice",
+     "skill": "listening",
+     "can_do": "cd_lvl_a2_past",
+     "prompt_ar": "استمع إلى جملة من حوار «عطلة نهاية الأسبوع»: ماذا فعلوا بعد المطعم؟",
+     "dialogue_turn": "dlg_a2_finde.t4",
+     "choices": [
+      "زاروا والديه",
+      "ذهبوا إلى السينما",
+      "عملوا"
+     ],
+     "answer": 0,
+     "choices_es": false
+    },
+    {
+     "id": "lvl_a2.q9",
+     "type": "type",
+     "skill": "writing",
+     "can_do": "cd_lvl_a2_past",
+     "prompt_ar": "اكتب بالإسبانية (أنا، في الماضي)",
+     "stimulus_ar": "وصلتُ",
+     "accepted": [
+      "llegué"
+     ]
+    },
+    {
+     "id": "lvl_a2.q10",
+     "type": "choice",
+     "skill": "reading",
+     "can_do": "cd_lvl_a2_past",
+     "prompt_ar": "ماذا فعل بعد زيارة العميل؟",
+     "stimulus_es": "El lunes fui a Sevilla. Primero visité a un cliente y después hice una presentación. Al final, el vuelo de vuelta llegó tarde.",
+     "choices": [
+      "قدّم عرضاً",
+      "رجع إلى البيت",
+      "زار المدينة"
+     ],
+     "answer": 0,
+     "choices_es": false
+    },
+    {
+     "id": "lvl_a2.q11",
+     "type": "choice",
+     "skill": "grammar",
+     "can_do": "cd_lvl_a2_plans",
+     "prompt_ar": "اختر الكلمة المناسبة للفراغ",
+     "stimulus_es": "Mañana ellos ___ a visitar al cliente.",
+     "choices": [
+      "van",
+      "va",
+      "fueron"
+     ],
+     "answer": 0,
+     "explain_ar": "mañana ← المستقبل، ومع ellos: van a + مصدر."
+    },
+    {
+     "id": "lvl_a2.q12",
+     "type": "choice",
+     "skill": "grammar",
+     "can_do": "cd_lvl_a2_plans",
+     "prompt_ar": "اختر الكلمة المناسبة للفراغ",
+     "stimulus_es": "Según el horario, la reunión ___ mañana a las diez.",
+     "choices": [
+      "empieza",
+      "empezó",
+      "empezar"
+     ],
+     "answer": 0,
+     "explain_ar": "حدث مجدول في المستقبل ← الحاضر: empieza."
+    },
+    {
+     "id": "lvl_a2.q13",
+     "type": "choice",
+     "skill": "listening",
+     "can_do": "cd_lvl_a2_plans",
+     "prompt_ar": "استمع إلى جملة من حوار «موعد مع العميلة»: متى مكالمة الفيديو؟",
+     "dialogue_turn": "dlg_a2_cita_cliente.t5",
+     "choices": [
+      "الخميس في التاسعة",
+      "الثلاثاء في الحادية عشرة",
+      "الجمعة"
+     ],
+     "answer": 0,
+     "choices_es": false
+    },
+    {
+     "id": "lvl_a2.q14",
+     "type": "choice",
+     "skill": "vocabulary",
+     "can_do": "cd_lvl_a2_plans",
+     "prompt_ar": "ما معنى الكلمة؟",
+     "stimulus_es": "el plazo",
+     "choices": [
+      "المهلة / الموعد النهائي",
+      "الخطة",
+      "المرحلة"
+     ],
+     "answer": 0,
+     "choices_es": false
+    },
+    {
+     "id": "lvl_a2.q15",
+     "type": "choice",
+     "skill": "reading",
+     "can_do": "cd_lvl_a2_plans",
+     "prompt_ar": "ماذا يقترح كريم؟",
+     "stimulus_es": "Hola, Lucía: me encantaría ir a la comida, pero el viernes no puedo. ¿Quedamos el lunes? Karim",
+     "choices": [
+      "أن يلتقيا يوم الاثنين",
+      "أن يذهب يوم الجمعة",
+      "ألّا يلتقيا"
+     ],
+     "answer": 0,
+     "choices_es": false
+    },
+    {
+     "id": "lvl_a2.q16",
+     "type": "choice",
+     "skill": "grammar",
+     "can_do": "cd_lvl_a2_compare",
+     "prompt_ar": "اختر الكلمة المناسبة للفراغ",
+     "stimulus_es": "Me ___ las reuniones cortas.",
+     "choices": [
+      "gustan",
+      "gusta",
+      "gustar"
+     ],
+     "answer": 0,
+     "explain_ar": "las reuniones جمع ← gustan."
+    },
+    {
+     "id": "lvl_a2.q17",
+     "type": "choice",
+     "skill": "grammar",
+     "can_do": "cd_lvl_a2_compare",
+     "prompt_ar": "«هذا الموديل أفضل من الآخر»:",
+     "choices": [
+      "Este modelo es mejor que el otro.",
+      "Este modelo es más bueno que el otro.",
+      "Este modelo es mejor como el otro."
+     ],
+     "answer": 0,
+     "choices_es": true,
+     "explain_ar": "bueno شاذّ: mejor، والمقارنة بـ que."
+    },
+    {
+     "id": "lvl_a2.q18",
+     "type": "choice",
+     "skill": "listening",
+     "can_do": "cd_lvl_a2_compare",
+     "prompt_ar": "استمع إلى جملة من حوار «عرضان»: ما الأهمّ في رأي آنا؟",
+     "dialogue_turn": "dlg_a2_ofertas.t4",
+     "choices": [
+      "الجودة",
+      "السعر",
+      "موعد التسليم"
+     ],
+     "answer": 0,
+     "choices_es": false
+    },
+    {
+     "id": "lvl_a2.q19",
+     "type": "type",
+     "skill": "writing",
+     "can_do": "cd_lvl_a2_compare",
+     "prompt_ar": "اكتب بالإسبانية",
+     "stimulus_ar": "أفضّل الأسود.",
+     "accepted": [
+      "prefiero el negro",
+      "yo prefiero el negro"
+     ]
+    },
+    {
+     "id": "lvl_a2.q20",
+     "type": "choice",
+     "skill": "reading",
+     "can_do": "cd_lvl_a2_compare",
+     "prompt_ar": "أيّ فندق أرخص؟",
+     "stimulus_es": "El hotel Sol cuesta 90 euros y está cerca de la oficina. El hotel Mar es más barato, pero está lejos.",
+     "choices": [
+      "Mar",
+      "Sol",
+      "هما بنفس السعر"
+     ],
+     "answer": 0,
+     "choices_es": false
+    },
+    {
+     "id": "lvl_a2.q21",
+     "type": "choice",
+     "skill": "reading",
+     "can_do": "cd_lvl_a2_work",
+     "prompt_ar": "أيّ ختام مناسب لبريد رسمي إلى عميل؟",
+     "choices": [
+      "Quedo a la espera de su respuesta. Un saludo.",
+      "Un abrazo, guapo.",
+      "Adiós."
+     ],
+     "answer": 0,
+     "choices_es": true
+    },
+    {
+     "id": "lvl_a2.q22",
+     "type": "choice",
+     "skill": "grammar",
+     "can_do": "cd_lvl_a2_work",
+     "prompt_ar": "رسالة إلى عميل لا تعرفه. اختر الكلمة المناسبة:",
+     "stimulus_es": "Perdone, ¿___ enviarme el contrato?",
+     "choices": [
+      "puede",
+      "puedes",
+      "poder"
+     ],
+     "answer": 0,
+     "explain_ar": "مع عميل لا تعرفه: usted ← puede (ومعها perdone)."
+    },
+    {
+     "id": "lvl_a2.q23",
+     "type": "choice",
+     "skill": "listening",
+     "can_do": "cd_lvl_a2_work",
+     "prompt_ar": "استمع إلى جملة من حوار «اجتماع المتابعة»: على ماذا اتفقا؟",
+     "dialogue_turn": "dlg_a2_seguimiento.t6",
+     "choices": [
+      "التوقيع هذا الأسبوع",
+      "اجتماع جديد",
+      "تغيير السعر"
+     ],
+     "answer": 0,
+     "choices_es": false
+    },
+    {
+     "id": "lvl_a2.q24",
+     "type": "type",
+     "skill": "writing",
+     "can_do": "cd_lvl_a2_work",
+     "prompt_ar": "اكتب بالإسبانية (في بريد رسمي)",
+     "stimulus_ar": "أرفق الملف.",
+     "accepted": [
+      "adjunto el archivo"
+     ]
+    },
+    {
+     "id": "lvl_a2.q25",
+     "type": "choice",
+     "skill": "vocabulary",
+     "can_do": "cd_lvl_a2_work",
+     "prompt_ar": "ما معنى الكلمة؟",
+     "stimulus_es": "pendiente",
+     "choices": [
+      "معلّق / لم يُنجز بعد",
+      "جاهز",
+      "ملغى"
+     ],
+     "answer": 0,
+     "choices_es": false
+    }
+   ],
+   "source": "original-v1"
   }
  ]
 }
