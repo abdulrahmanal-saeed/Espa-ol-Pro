@@ -623,6 +623,215 @@
     }
    ],
    "source": "original-v1"
+  },
+  {
+   "id": "chk_a2_u4",
+   "version": 1,
+   "kind": "unit",
+   "level": "a2",
+   "unit": "a2_u4",
+   "title_ar": "نقطة تحقق: التفضيل والمقارنة",
+   "intro_ar": "نقطة تحقق قصيرة. لا تلميحات ولا إظهار للإجابات قبل النهاية، ولا إعادة للأسئلة. النتيجة دليل على ما تستطيعه الآن، وليست شهادة مستوى.",
+   "can_do": [
+    {
+     "id": "cd_a2_u4_likes",
+     "ar": "أقول ما يعجبني وما أفضّله وأسأل عن تفضيلات غيري",
+     "lessons": [
+      "a2_u4_l1",
+      "a2_u4_l2"
+     ]
+    },
+    {
+     "id": "cd_a2_u4_compare",
+     "ar": "أقارن بين منتجين أو خيارين",
+     "lessons": [
+      "a2_u4_l3"
+     ]
+    },
+    {
+     "id": "cd_a2_u4_opinion",
+     "ar": "أبدي رأيي بأدب وأوصي بخيار",
+     "lessons": [
+      "a2_u4_l4",
+      "a2_u4_l5"
+     ]
+    }
+   ],
+   "questions": [
+    {
+     "id": "chk_a2_u4.q1",
+     "type": "choice",
+     "skill": "grammar",
+     "can_do": "cd_a2_u4_likes",
+     "prompt_ar": "اختر الكلمة المناسبة للفراغ",
+     "stimulus_es": "Me ___ los idiomas.",
+     "choices": [
+      "gustan",
+      "gusta",
+      "gusto"
+     ],
+     "answer": 0,
+     "explain_ar": "los idiomas جمع ← gustan."
+    },
+    {
+     "id": "chk_a2_u4.q2",
+     "type": "choice",
+     "skill": "listening",
+     "can_do": "cd_a2_u4_likes",
+     "prompt_ar": "استمع إلى جملة من حوار «هاتف جديد»: ما اللون الذي لا يعجب عمر؟",
+     "dialogue_turn": "dlg_a2_gustos.t4",
+     "choices": [
+      "الأبيض",
+      "الأسود",
+      "الأزرق"
+     ],
+     "answer": 0,
+     "choices_es": false
+    },
+    {
+     "id": "chk_a2_u4.q3",
+     "type": "type",
+     "skill": "writing",
+     "can_do": "cd_a2_u4_likes",
+     "prompt_ar": "اكتب بالإسبانية (ردّاً على «لا تعجبني»)",
+     "stimulus_ar": "وأنا أيضاً لا",
+     "accepted": [
+      "a mí tampoco"
+     ]
+    },
+    {
+     "id": "chk_a2_u4.q4",
+     "type": "choice",
+     "skill": "vocabulary",
+     "can_do": "cd_a2_u4_likes",
+     "prompt_ar": "ما معنى الكلمة؟",
+     "stimulus_es": "azul",
+     "choices": [
+      "أزرق",
+      "أبيض",
+      "أسود"
+     ],
+     "answer": 0,
+     "choices_es": false
+    },
+    {
+     "id": "chk_a2_u4.q5",
+     "type": "choice",
+     "skill": "grammar",
+     "can_do": "cd_a2_u4_compare",
+     "prompt_ar": "اختر الكلمة المناسبة للفراغ",
+     "stimulus_es": "Este portátil es más rápido ___ ese.",
+     "choices": [
+      "que",
+      "como",
+      "de"
+     ],
+     "answer": 0,
+     "explain_ar": "más + صفة + que."
+    },
+    {
+     "id": "chk_a2_u4.q6",
+     "type": "choice",
+     "skill": "grammar",
+     "can_do": "cd_a2_u4_compare",
+     "prompt_ar": "«هذا العرض أفضل»:",
+     "choices": [
+      "Esta oferta es mejor.",
+      "Esta oferta es más buena.",
+      "Esta oferta es mejora."
+     ],
+     "answer": 0,
+     "choices_es": true,
+     "explain_ar": "مقارنة bueno شاذّة: mejor."
+    },
+    {
+     "id": "chk_a2_u4.q7",
+     "type": "choice",
+     "skill": "listening",
+     "can_do": "cd_a2_u4_compare",
+     "prompt_ar": "استمع إلى جملة من حوار «حاسوبان محمولان»: ما ميزة الحاسوب الأول؟",
+     "dialogue_turn": "dlg_a2_portatiles.t2",
+     "choices": [
+      "أسرع",
+      "أرخص",
+      "أصغر"
+     ],
+     "answer": 0,
+     "choices_es": false
+    },
+    {
+     "id": "chk_a2_u4.q8",
+     "type": "choice",
+     "skill": "reading",
+     "can_do": "cd_a2_u4_compare",
+     "prompt_ar": "أيّ حاسوب أرخص؟",
+     "stimulus_es": "El portátil Rayo cuesta ochocientos euros. El portátil Nube es más lento, pero es menos caro que el Rayo.",
+     "choices": [
+      "Nube",
+      "Rayo",
+      "هما بنفس السعر"
+     ],
+     "answer": 0,
+     "choices_es": false
+    },
+    {
+     "id": "chk_a2_u4.q9",
+     "type": "type",
+     "skill": "writing",
+     "can_do": "cd_a2_u4_opinion",
+     "prompt_ar": "اكتب بالإسبانية",
+     "stimulus_ar": "معك حق",
+     "accepted": [
+      "tienes razón",
+      "tiene razón"
+     ]
+    },
+    {
+     "id": "chk_a2_u4.q10",
+     "type": "choice",
+     "skill": "reading",
+     "can_do": "cd_a2_u4_opinion",
+     "prompt_ar": "زميلك يقترح فكرة لا توافق عليها. أيّ ردّ مهذّب؟",
+     "choices": [
+      "Es interesante, pero no estoy de acuerdo.",
+      "Tu idea es mala.",
+      "No."
+     ],
+     "answer": 0,
+     "choices_es": true
+    },
+    {
+     "id": "chk_a2_u4.q11",
+     "type": "choice",
+     "skill": "listening",
+     "can_do": "cd_a2_u4_opinion",
+     "prompt_ar": "استمع إلى جملة من حوار «عرضان»: بأيّ عرض توصي آنا؟",
+     "dialogue_turn": "dlg_a2_ofertas.t6",
+     "choices": [
+      "«سول»",
+      "«لونا»",
+      "لا توصي بأحد"
+     ],
+     "answer": 0,
+     "choices_es": false
+    },
+    {
+     "id": "chk_a2_u4.q12",
+     "type": "choice",
+     "skill": "grammar",
+     "can_do": "cd_a2_u4_opinion",
+     "prompt_ar": "«الخيار الأفضل»:",
+     "choices": [
+      "la mejor opción",
+      "la más buena opción",
+      "la opción mejor de"
+     ],
+     "answer": 0,
+     "choices_es": true,
+     "explain_ar": "bueno شاذّ: la mejor opción."
+    }
+   ],
+   "source": "original-v1"
   }
  ]
 }

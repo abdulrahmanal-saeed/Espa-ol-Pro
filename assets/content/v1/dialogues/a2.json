@@ -1479,6 +1479,460 @@
     }
    ],
    "source": "original-v1"
+  },
+  {
+   "id": "dlg_a2_gustos",
+   "level": "a2",
+   "unit": "a2_u4",
+   "lessons": [
+    "a2_u4_l1",
+    "a2_u4_l2"
+   ],
+   "title_es": "Un móvil nuevo",
+   "title_ar": "هاتف جديد",
+   "scenario_ar": "لوثيا وعمر يختاران هاتف عمل جديداً من موقع المورّد.",
+   "objectives_ar": [
+    "فهم ما يعجب كل شخص",
+    "فهم الاختيار بـ ¿Cuál prefieres?",
+    "فهم الألوان والموافقة"
+   ],
+   "speakers": [
+    {
+     "id": "lucia",
+     "name": "Lucía",
+     "role_ar": "زميلة"
+    },
+    {
+     "id": "omar",
+     "name": "Omar",
+     "role_ar": "زميل"
+    }
+   ],
+   "turns": [
+    {
+     "id": "dlg_a2_gustos.t1",
+     "speaker": "lucia",
+     "es": "Omar, el equipo necesita un móvil nuevo. ¿Te gusta este?",
+     "ar": "عمر، الفريق يحتاج هاتفاً جديداً. هل يعجبك هذا؟",
+     "en": "Omar, the team needs a new phone. Do you like this one?"
+    },
+    {
+     "id": "dlg_a2_gustos.t2",
+     "speaker": "omar",
+     "es": "Sí, me gusta. ¿Hay más colores?",
+     "ar": "نعم، يعجبني. هل توجد ألوان أخرى؟",
+     "en": "Yes, I like it. Are there more colours?"
+    },
+    {
+     "id": "dlg_a2_gustos.t3",
+     "speaker": "lucia",
+     "es": "Hay tres: negro, blanco y azul. ¿Cuál prefieres?",
+     "ar": "يوجد ثلاثة: أسود وأبيض وأزرق. أيّها تفضّل؟",
+     "en": "There are three: black, white and blue. Which do you prefer?"
+    },
+    {
+     "id": "dlg_a2_gustos.t4",
+     "speaker": "omar",
+     "es": "Prefiero el negro. No me gusta nada el blanco.",
+     "ar": "أفضّل الأسود. لا يعجبني الأبيض أبداً.",
+     "en": "I prefer the black one. I don't like the white one at all."
+    },
+    {
+     "id": "dlg_a2_gustos.t5",
+     "speaker": "lucia",
+     "es": "A mí tampoco. Y a Laura le gusta el azul.",
+     "ar": "وأنا أيضاً لا. ولاورا يعجبها الأزرق.",
+     "en": "Me neither. And Laura likes the blue one."
+    },
+    {
+     "id": "dlg_a2_gustos.t6",
+     "speaker": "omar",
+     "es": "Bueno, ¿el negro o el azul?",
+     "ar": "حسناً، الأسود أم الأزرق؟",
+     "en": "Well, the black or the blue?"
+    },
+    {
+     "id": "dlg_a2_gustos.t7",
+     "speaker": "lucia",
+     "es": "El negro. Me encanta ese modelo.",
+     "ar": "الأسود. يعجبني ذلك الموديل جداً.",
+     "en": "The black one. I love that model."
+    }
+   ],
+   "items": [
+    "te_gusta",
+    "me_gusta",
+    "el_color",
+    "negro",
+    "blanco",
+    "azul",
+    "cual_prefieres",
+    "prefiero",
+    "no_me_gusta_nada",
+    "a_mi_tampoco",
+    "le_gusta",
+    "me_encanta",
+    "ese",
+    "el_modelo"
+   ],
+   "grammar": [
+    "g_gustar",
+    "g_preferir"
+   ],
+   "questions": [
+    {
+     "type": "choice",
+     "prompt_ar": "كم لوناً يوجد؟",
+     "choices": [
+      "ثلاثة",
+      "اثنان",
+      "أربعة"
+     ],
+     "answer": 0,
+     "choices_es": false,
+     "turn": "dlg_a2_gustos.t3",
+     "id": "dlg_a2_gustos.q1",
+     "skill": "listening"
+    },
+    {
+     "type": "choice",
+     "prompt_ar": "ما اللون الذي لا يعجب عمر؟",
+     "choices": [
+      "الأبيض",
+      "الأسود",
+      "الأزرق"
+     ],
+     "answer": 0,
+     "choices_es": false,
+     "turn": "dlg_a2_gustos.t4",
+     "id": "dlg_a2_gustos.q2",
+     "skill": "listening"
+    },
+    {
+     "type": "choice",
+     "prompt_ar": "ما اللون الذي يعجب لاورا؟",
+     "choices": [
+      "الأزرق",
+      "الأسود",
+      "الأبيض"
+     ],
+     "answer": 0,
+     "choices_es": false,
+     "turn": "dlg_a2_gustos.t5",
+     "id": "dlg_a2_gustos.q3",
+     "skill": "listening"
+    },
+    {
+     "type": "speaker",
+     "turn": "dlg_a2_gustos.t4",
+     "id": "dlg_a2_gustos.q4",
+     "skill": "listening"
+    },
+    {
+     "type": "dictation",
+     "turn": "dlg_a2_gustos.t5",
+     "id": "dlg_a2_gustos.q5",
+     "skill": "listening"
+    }
+   ],
+   "source": "original-v1"
+  },
+  {
+   "id": "dlg_a2_portatiles",
+   "level": "a2",
+   "unit": "a2_u4",
+   "lessons": [
+    "a2_u4_l3"
+   ],
+   "title_es": "Dos portátiles",
+   "title_ar": "حاسوبان محمولان",
+   "scenario_ar": "كريم يسأل بائعة عن الفرق بين حاسوبين محمولين لمكتبه.",
+   "objectives_ar": [
+    "فهم المقارنة بـ más / menos … que",
+    "فهم mejor وpeor",
+    "فهم السعر والحجم"
+   ],
+   "speakers": [
+    {
+     "id": "karim",
+     "name": "Karim",
+     "role_ar": "عميل"
+    },
+    {
+     "id": "vendedora",
+     "name": "Elena",
+     "role_ar": "بائعة"
+    }
+   ],
+   "turns": [
+    {
+     "id": "dlg_a2_portatiles.t1",
+     "speaker": "karim",
+     "es": "Perdone, ¿cuál es mejor, este portátil o ese?",
+     "ar": "عذراً، أيّهما أفضل، هذا الحاسوب المحمول أم ذلك؟",
+     "en": "Excuse me, which is better, this laptop or that one?"
+    },
+    {
+     "id": "dlg_a2_portatiles.t2",
+     "speaker": "vendedora",
+     "es": "Este es más rápido que ese, pero es más caro.",
+     "ar": "هذا أسرع من ذلك، لكنه أغلى.",
+     "en": "This one is faster than that one, but it's more expensive."
+    },
+    {
+     "id": "dlg_a2_portatiles.t3",
+     "speaker": "karim",
+     "es": "¿Y cuál es más pequeño?",
+     "ar": "وأيّهما أصغر؟",
+     "en": "And which one is smaller?"
+    },
+    {
+     "id": "dlg_a2_portatiles.t4",
+     "speaker": "vendedora",
+     "es": "Este es tan pequeño como ese.",
+     "ar": "هذا صغير مثل ذلك.",
+     "en": "This one is as small as that one."
+    },
+    {
+     "id": "dlg_a2_portatiles.t5",
+     "speaker": "karim",
+     "es": "Necesito uno rápido para trabajar.",
+     "ar": "أحتاج واحداً سريعاً للعمل.",
+     "en": "I need a fast one for work."
+    },
+    {
+     "id": "dlg_a2_portatiles.t6",
+     "speaker": "vendedora",
+     "es": "Este es mejor para usted. El otro es más lento.",
+     "ar": "هذا أفضل لك. الآخر أبطأ.",
+     "en": "This one is better for you. The other one is slower."
+    }
+   ],
+   "items": [
+    "mas_que",
+    "rapido",
+    "pequeno",
+    "tan_como",
+    "grande",
+    "mejor_que",
+    "lento"
+   ],
+   "grammar": [
+    "g_comparison"
+   ],
+   "questions": [
+    {
+     "type": "choice",
+     "prompt_ar": "ما ميزة الحاسوب الأول؟",
+     "choices": [
+      "أسرع",
+      "أرخص",
+      "أصغر"
+     ],
+     "answer": 0,
+     "choices_es": false,
+     "turn": "dlg_a2_portatiles.t2",
+     "id": "dlg_a2_portatiles.q1",
+     "skill": "listening"
+    },
+    {
+     "type": "choice",
+     "prompt_ar": "أيّهما أصغر؟",
+     "choices": [
+      "هما بنفس الحجم",
+      "الأول",
+      "الثاني"
+     ],
+     "answer": 0,
+     "choices_es": false,
+     "turn": "dlg_a2_portatiles.t4",
+     "id": "dlg_a2_portatiles.q2",
+     "skill": "listening"
+    },
+    {
+     "type": "choice",
+     "prompt_ar": "لماذا تنصح البائعة بالأول؟",
+     "choices": [
+      "لأنه أسرع والآخر أبطأ",
+      "لأنه أرخص",
+      "لأنه أصغر"
+     ],
+     "answer": 0,
+     "choices_es": false,
+     "turn": "dlg_a2_portatiles.t6",
+     "id": "dlg_a2_portatiles.q3",
+     "skill": "listening"
+    },
+    {
+     "type": "speaker",
+     "turn": "dlg_a2_portatiles.t5",
+     "id": "dlg_a2_portatiles.q4",
+     "skill": "listening"
+    },
+    {
+     "type": "dictation",
+     "turn": "dlg_a2_portatiles.t2",
+     "id": "dlg_a2_portatiles.q5",
+     "skill": "listening"
+    }
+   ],
+   "source": "original-v1"
+  },
+  {
+   "id": "dlg_a2_ofertas",
+   "level": "a2",
+   "unit": "a2_u4",
+   "lessons": [
+    "a2_u4_l4",
+    "a2_u4_l5"
+   ],
+   "title_es": "Dos ofertas",
+   "title_ar": "عرضان",
+   "scenario_ar": "في اجتماع الفريق تقارن آنا وبيدرو عرضين من مورّدين.",
+   "objectives_ar": [
+    "فهم الآراء والموافقة والاعتراض",
+    "فهم الميزة والعيب",
+    "فهم التوصية النهائية"
+   ],
+   "speakers": [
+    {
+     "id": "ana",
+     "name": "Ana",
+     "role_ar": "مسؤولة المشتريات"
+    },
+    {
+     "id": "pedro",
+     "name": "Pedro",
+     "role_ar": "المدير"
+    }
+   ],
+   "turns": [
+    {
+     "id": "dlg_a2_ofertas.t1",
+     "speaker": "pedro",
+     "es": "Tenemos dos ofertas. ¿Qué te parecen?",
+     "ar": "عندنا عرضان. ما رأيك فيهما؟",
+     "en": "We have two offers. What do you think of them?"
+    },
+    {
+     "id": "dlg_a2_ofertas.t2",
+     "speaker": "ana",
+     "es": "En mi opinión, Luna es la más barata, pero la calidad es peor.",
+     "ar": "في رأيي، «لونا» هو الأرخص، لكن الجودة أسوأ.",
+     "en": "In my opinion, Luna is the cheapest, but the quality is worse."
+    },
+    {
+     "id": "dlg_a2_ofertas.t3",
+     "speaker": "pedro",
+     "es": "Creo que el precio es muy importante.",
+     "ar": "أظنّ أن السعر مهمّ جداً.",
+     "en": "I think the price is very important."
+    },
+    {
+     "id": "dlg_a2_ofertas.t4",
+     "speaker": "ana",
+     "es": "Tienes razón, pero la calidad es más importante que el precio.",
+     "ar": "معك حق، لكن الجودة أهمّ من السعر.",
+     "en": "You're right, but quality is more important than price."
+    },
+    {
+     "id": "dlg_a2_ofertas.t5",
+     "speaker": "pedro",
+     "es": "¿Y cuál es la desventaja de Sol?",
+     "ar": "وما عيب «سول»؟",
+     "en": "And what's Sol's disadvantage?"
+    },
+    {
+     "id": "dlg_a2_ofertas.t6",
+     "speaker": "ana",
+     "es": "Es más cara, pero recomiendo la oferta de Sol.",
+     "ar": "إنه أغلى، لكني أوصي بعرض «سول».",
+     "en": "It's more expensive, but I recommend Sol's offer."
+    },
+    {
+     "id": "dlg_a2_ofertas.t7",
+     "speaker": "pedro",
+     "es": "De acuerdo. Creo que es la mejor opción.",
+     "ar": "موافق. أظنّ أنه الخيار الأفضل.",
+     "en": "Agreed. I think it's the best option."
+    }
+   ],
+   "items": [
+    "la_oferta",
+    "me_parece",
+    "en_mi_opinion",
+    "el_mas_barato",
+    "la_calidad",
+    "peor",
+    "creo_que",
+    "el_precio",
+    "tienes_razon",
+    "la_desventaja",
+    "recomiendo",
+    "la_mejor_opcion",
+    "de_acuerdo"
+   ],
+   "grammar": [
+    "g_opinion",
+    "g_superlative"
+   ],
+   "questions": [
+    {
+     "type": "choice",
+     "prompt_ar": "ما ميزة «لونا»؟",
+     "choices": [
+      "هو الأرخص",
+      "جودته أفضل",
+      "تسليمه أسرع"
+     ],
+     "answer": 0,
+     "choices_es": false,
+     "turn": "dlg_a2_ofertas.t2",
+     "id": "dlg_a2_ofertas.q1",
+     "skill": "listening"
+    },
+    {
+     "type": "choice",
+     "prompt_ar": "ما الأهمّ في رأي آنا؟",
+     "choices": [
+      "الجودة",
+      "السعر",
+      "موعد التسليم"
+     ],
+     "answer": 0,
+     "choices_es": false,
+     "turn": "dlg_a2_ofertas.t4",
+     "id": "dlg_a2_ofertas.q2",
+     "skill": "listening"
+    },
+    {
+     "type": "choice",
+     "prompt_ar": "بأيّ عرض توصي آنا؟",
+     "choices": [
+      "«سول»",
+      "«لونا»",
+      "لا توصي بأحد"
+     ],
+     "answer": 0,
+     "choices_es": false,
+     "turn": "dlg_a2_ofertas.t6",
+     "id": "dlg_a2_ofertas.q3",
+     "skill": "listening"
+    },
+    {
+     "type": "speaker",
+     "turn": "dlg_a2_ofertas.t3",
+     "id": "dlg_a2_ofertas.q4",
+     "skill": "listening"
+    },
+    {
+     "type": "dictation",
+     "turn": "dlg_a2_ofertas.t4",
+     "id": "dlg_a2_ofertas.q5",
+     "skill": "listening"
+    }
+   ],
+   "source": "original-v1"
   }
  ]
 }

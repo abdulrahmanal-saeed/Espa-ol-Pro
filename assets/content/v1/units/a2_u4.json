@@ -1,0 +1,1856 @@
+{
+ "unit": "a2_u4",
+ "grammar": [
+  {
+   "id": "g_gustar",
+   "title_ar": "gustar: «يعجبني»",
+   "body_ar": "في gustar الشيء هو الفاعل، والشخص قبل الفعل:\nme gusta + مفرد أو مصدر: Me gusta el café. · Me gusta viajar.\nme gustan + جمع: Me gustan los idiomas.\n\nme (لي) · te (لك) · le (له / لها / لحضرتك) · nos (لنا) · les (لهم)\nencantar مثل gustar وأقوى: Me encanta = يعجبني جداً.\n\nللموافقة: A mí también (وأنا أيضاً) · A mí tampoco (وأنا أيضاً لا).",
+   "examples": [
+    {
+     "es": "¿Te gustan las reuniones largas?",
+     "ar": "هل تعجبك الاجتماعات الطويلة؟"
+    },
+    {
+     "es": "A Laura le gusta trabajar en equipo.",
+     "ar": "لاورا يعجبها العمل الجماعي."
+    }
+   ]
+  },
+  {
+   "id": "g_preferir",
+   "title_ar": "preferir، و¿Cuál?، وeste / ese",
+   "body_ar": "preferir e ← ie: prefiero · prefieres · prefiere · preferimos · prefieren\nPrefiero el modelo negro. · Prefiero trabajar por la mañana.\n\n¿Cuál prefieres? للاختيار بين أشياء محدّدة؛ ¿Qué prefieres? أعمّ.\neste / esta = هذا / هذه (قريب) · ese / esa = ذلك / تلك (أبعد قليلاً).\nالألوان صفات تتّفق مع الاسم: el móvil negro · la mesa blanca · los coches azules.",
+   "examples": [
+    {
+     "es": "¿Cuál prefieres, este o ese?",
+     "ar": "أيّهما تفضّل، هذا أم ذلك؟"
+    },
+    {
+     "es": "Prefiero esa, la blanca.",
+     "ar": "أفضّل تلك، البيضاء."
+    }
+   ]
+  },
+  {
+   "id": "g_comparison",
+   "title_ar": "المقارنة",
+   "body_ar": "más + صفة + que: Este portátil es más rápido que ese.\nmenos + صفة + que: Es menos caro que el otro.\ntan + صفة + como (المساواة): Es tan bueno como el otro.\n\nشاذّة: mejor (أفضل) وpeor (أسوأ)، وليس más bueno / más malo:\nEsta oferta es mejor que la otra.\nالصفة تتّفق مع الاسم: La mesa es más grande. · Los móviles son más caros.",
+   "examples": [
+    {
+     "es": "Madrid es más grande que Toledo.",
+     "ar": "مدريد أكبر من طليطلة."
+    },
+    {
+     "es": "El tren es tan rápido como el avión.",
+     "ar": "القطار سريع مثل الطائرة."
+    }
+   ]
+  },
+  {
+   "id": "g_opinion",
+   "title_ar": "إبداء الرأي",
+   "body_ar": "Creo que… · Pienso que… · En mi opinión… · Me parece + صفة\nCreo que es una buena idea. — أظن أنها فكرة جيدة.\nMe parece caro. — يبدو لي غالياً.\n\nالموافقة: Estoy de acuerdo. · Tienes razón.\nالاعتراض بأدب: No estoy de acuerdo, porque… · Depende.\n(بعد no creo que يأتي زمن آخر ستتعلّمه في B1؛ الآن استعمل creo que في الإثبات.)",
+   "examples": [
+    {
+     "es": "En mi opinión, el precio es muy alto.",
+     "ar": "في رأيي، السعر مرتفع جداً."
+    },
+    {
+     "es": "Tienes razón, es mejor esperar.",
+     "ar": "معك حق، من الأفضل أن ننتظر."
+    }
+   ]
+  },
+  {
+   "id": "g_superlative",
+   "title_ar": "التفضيل الأعلى والتوصية",
+   "body_ar": "el / la / los / las + más + صفة (+ de): el más barato · la más rápida de las tres.\nشاذّ: el mejor / la mejor · el peor / la peor: la mejor opción.\n\nrecomendar e ← ie: Recomiendo la oferta de Sol.\naunque = مع أنّ: Recomiendo esta, aunque es más cara.",
+   "examples": [
+    {
+     "es": "Es la oferta más completa.",
+     "ar": "إنه العرض الأكثر اكتمالاً."
+    },
+    {
+     "es": "Recomiendo el proveedor de Madrid, aunque es más caro.",
+     "ar": "أوصي بمورّد مدريد، مع أنه أغلى."
+    }
+   ]
+  }
+ ],
+ "lessons": [
+  {
+   "id": "a2_u4_l1",
+   "title_ar": "ما يعجبني",
+   "title_es": "Me gusta…",
+   "objectives_ar": [
+    "gustar وencantar مع me / te / le",
+    "gusta أم gustan",
+    "الموافقة: a mí también / tampoco"
+   ],
+   "prerequisites": [
+    "a2_u3_l5"
+   ],
+   "minutes": 16,
+   "work_relevance_ar": "الحديث مع زملاء جدد عن تفضيلاتك في العمل.",
+   "source": "original-v1",
+   "grammar": [
+    "g_gustar"
+   ],
+   "items": [
+    {
+     "id": "me_gusta",
+     "es": "me gusta",
+     "ar": "يعجبني",
+     "en": "I like (one thing / doing)",
+     "pos": "تعبير",
+     "examples": [
+      {
+       "es": "Me gusta el café.",
+       "ar": "تعجبني القهوة."
+      },
+      {
+       "es": "Me gusta viajar.",
+       "ar": "أحبّ السفر."
+      }
+     ],
+     "connections": [
+      {
+       "type": "grammar",
+       "ar": "الشيء هو الفاعل: me gusta + مفرد أو مصدر."
+      }
+     ]
+    },
+    {
+     "id": "me_gustan",
+     "es": "me gustan",
+     "ar": "تعجبني (أشياء)",
+     "en": "I like (several things)",
+     "pos": "تعبير",
+     "examples": [
+      {
+       "es": "Me gustan los idiomas.",
+       "ar": "تعجبني اللغات."
+      }
+     ],
+     "connections": [
+      {
+       "type": "grammar",
+       "ar": "مع الجمع: gustan."
+      }
+     ]
+    },
+    {
+     "id": "te_gusta",
+     "es": "¿Te gusta…?",
+     "ar": "هل يعجبك…؟",
+     "en": "Do you like…?",
+     "pos": "سؤال",
+     "examples": [
+      {
+       "es": "¿Te gusta tu trabajo?",
+       "ar": "هل يعجبك عملك؟"
+      }
+     ]
+    },
+    {
+     "id": "le_gusta",
+     "es": "le gusta",
+     "ar": "يعجبه / يعجبها / يعجب حضرتك",
+     "en": "he / she likes; you (formal) like",
+     "pos": "تعبير",
+     "examples": [
+      {
+       "es": "A mi jefe le gusta la puntualidad.",
+       "ar": "مديري يحبّ الالتزام بالمواعيد."
+      }
+     ],
+     "work": true,
+     "connections": [
+      {
+       "type": "usage",
+       "ar": "مع اسم الشخص: A Laura le gusta… (a + الشخص + le)."
+      }
+     ]
+    },
+    {
+     "id": "me_encanta",
+     "es": "me encanta",
+     "ar": "يعجبني جداً",
+     "en": "I love",
+     "pos": "تعبير",
+     "examples": [
+      {
+       "es": "Me encanta la comida mexicana.",
+       "ar": "أحبّ الطعام المكسيكي جداً."
+      }
+     ],
+     "connections": [
+      {
+       "type": "grammar",
+       "ar": "مثل gustar، وأقوى. قارن: me encantaría (A2-U3) = يسعدني (للدعوة)."
+      }
+     ]
+    },
+    {
+     "id": "no_me_gusta_nada",
+     "es": "no me gusta nada",
+     "ar": "لا يعجبني أبداً",
+     "en": "I don't like it at all",
+     "pos": "تعبير",
+     "examples": [
+      {
+       "es": "No me gusta nada el ruido.",
+       "ar": "لا يعجبني الضجيج أبداً."
+      }
+     ]
+    },
+    {
+     "id": "a_mi_tambien",
+     "es": "a mí también",
+     "ar": "وأنا أيضاً",
+     "en": "me too",
+     "pos": "تعبير",
+     "examples": [
+      {
+       "es": "Me gusta el té. — A mí también.",
+       "ar": "يعجبني الشاي. — وأنا أيضاً."
+      }
+     ],
+     "connections": [
+      {
+       "type": "pronunciation",
+       "ar": "mí بعلامة (ضمير بعد حرف جر)؛ mi بلا علامة = «ـي» للملكية."
+      }
+     ]
+    },
+    {
+     "id": "a_mi_tampoco",
+     "es": "a mí tampoco",
+     "ar": "وأنا أيضاً لا",
+     "en": "me neither",
+     "pos": "تعبير",
+     "examples": [
+      {
+       "es": "No me gustan las reuniones largas. — A mí tampoco.",
+       "ar": "لا تعجبني الاجتماعات الطويلة. — وأنا أيضاً لا."
+      }
+     ]
+    },
+    {
+     "id": "trabajar_en_equipo",
+     "es": "trabajar en equipo",
+     "ar": "العمل الجماعي",
+     "en": "teamwork",
+     "pos": "تعبير",
+     "examples": [
+      {
+       "es": "Me gusta trabajar en equipo.",
+       "ar": "أحبّ العمل الجماعي."
+      }
+     ],
+     "work": true
+    }
+   ],
+   "activities": [
+    {
+     "type": "teach",
+     "item": "me_gusta"
+    },
+    {
+     "type": "teach",
+     "item": "me_gustan"
+    },
+    {
+     "type": "mcq_meaning",
+     "item": "me_gusta"
+    },
+    {
+     "type": "listen_choose",
+     "item": "me_gustan"
+    },
+    {
+     "type": "note",
+     "title_ar": "gustar: «يعجبني»",
+     "body_ar": "me gusta + مفرد أو مصدر · me gustan + جمع\nme · te · le · nos · les + gusta(n)",
+     "examples": [
+      {
+       "es": "¿Te gustan las reuniones largas?",
+       "ar": "هل تعجبك الاجتماعات الطويلة؟"
+      }
+     ]
+    },
+    {
+     "type": "choice",
+     "prompt_ar": "أيّ جملة صحيحة؟",
+     "choices": [
+      "Me gustan los idiomas.",
+      "Me gusta los idiomas.",
+      "Yo gusto los idiomas."
+     ],
+     "answer": 0,
+     "skill": "grammar",
+     "choices_es": true,
+     "explain_ar": "los idiomas جمع ← gustan. والشخص قبل الفعل: me gustan (وليس yo gusto)."
+    },
+    {
+     "type": "teach",
+     "item": "te_gusta"
+    },
+    {
+     "type": "teach",
+     "item": "le_gusta"
+    },
+    {
+     "type": "teach",
+     "item": "me_encanta"
+    },
+    {
+     "type": "mcq_meaning",
+     "item": "le_gusta"
+    },
+    {
+     "type": "listen_pick_es",
+     "item": "te_gusta"
+    },
+    {
+     "type": "mcq_reverse",
+     "item": "me_encanta"
+    },
+    {
+     "type": "teach",
+     "item": "no_me_gusta_nada"
+    },
+    {
+     "type": "teach",
+     "item": "a_mi_tambien"
+    },
+    {
+     "type": "teach",
+     "item": "a_mi_tampoco"
+    },
+    {
+     "type": "mcq_meaning",
+     "item": "a_mi_tampoco"
+    },
+    {
+     "type": "listen_choose",
+     "item": "a_mi_tambien"
+    },
+    {
+     "type": "listen_pick_es",
+     "item": "no_me_gusta_nada"
+    },
+    {
+     "type": "teach",
+     "item": "trabajar_en_equipo"
+    },
+    {
+     "type": "mcq_meaning",
+     "item": "trabajar_en_equipo"
+    },
+    {
+     "type": "fill",
+     "es": "Me ___ las reuniones cortas.",
+     "answer": "gustan",
+     "ar": "تعجبني الاجتماعات القصيرة.",
+     "options": [
+      "gustan",
+      "gusta",
+      "gusto"
+     ],
+     "explain_ar": "las reuniones جمع ← gustan."
+    },
+    {
+     "type": "fill",
+     "es": "A mi jefe ___ gusta la puntualidad.",
+     "answer": "le",
+     "ar": "مديري يحبّ الالتزام بالمواعيد.",
+     "options": [
+      "le",
+      "me",
+      "se"
+     ],
+     "explain_ar": "a + شخص (مديري) ← le gusta."
+    },
+    {
+     "type": "match",
+     "items": [
+      "me_encanta",
+      "a_mi_tambien",
+      "a_mi_tampoco",
+      "no_me_gusta_nada"
+     ]
+    },
+    {
+     "type": "type_es",
+     "item": "me_gusta"
+    },
+    {
+     "type": "type_es",
+     "item": "a_mi_tambien"
+    },
+    {
+     "type": "order",
+     "es": "A mí también me gusta trabajar en equipo.",
+     "ar": "وأنا أيضاً أحبّ العمل الجماعي."
+    },
+    {
+     "type": "dictation",
+     "es": "No me gustan nada las reuniones largas.",
+     "ar": "لا تعجبني الاجتماعات الطويلة أبداً."
+    },
+    {
+     "type": "choice",
+     "prompt_ar": "ما الذي لا يعجب كريم؟",
+     "choices": [
+      "الاجتماعات الطويلة",
+      "العمل الجماعي",
+      "السفر"
+     ],
+     "answer": 0,
+     "skill": "reading",
+     "choices_es": false,
+     "stimulus_es": "Me llamo Karim. Me encanta mi trabajo: me gusta trabajar en equipo y me gustan los viajes de trabajo. Pero no me gustan nada las reuniones largas."
+    },
+    {
+     "type": "choice",
+     "prompt_ar": "استمع: هل يوافقه في الرأي؟",
+     "choices": [
+      "نعم، وهو أيضاً لا يعجبه",
+      "لا، هو يحبّها",
+      "لا يعرف"
+     ],
+     "answer": 0,
+     "skill": "listening",
+     "choices_es": false,
+     "audio_es": "A mí tampoco me gustan."
+    },
+    {
+     "type": "respond",
+     "prompt_ar": "زميل يقول: «Me gusta mucho el café de aquí». قل: وأنا أيضاً.",
+     "accepted": [
+      "A mí también",
+      "A mí también me gusta"
+     ],
+     "audio_es": "Me gusta mucho el café de aquí."
+    },
+    {
+     "type": "speak",
+     "es": "Me encanta mi trabajo. Me gusta trabajar en equipo, pero no me gustan las reuniones largas.",
+     "ar": "أحبّ عملي جداً. يعجبني العمل الجماعي، لكن لا تعجبني الاجتماعات الطويلة."
+    }
+   ]
+  },
+  {
+   "id": "a2_u4_l2",
+   "title_ar": "ماذا تفضّل؟",
+   "title_es": "¿Cuál prefieres?",
+   "objectives_ar": [
+    "preferir للاختيار",
+    "¿Cuál? وeste / ese",
+    "الألوان وتوافق الصفة"
+   ],
+   "prerequisites": [
+    "a2_u4_l1"
+   ],
+   "minutes": 16,
+   "work_relevance_ar": "اختيار جهاز أو منتج للمكتب مع زميل أو بائع.",
+   "source": "original-v1",
+   "grammar": [
+    "g_preferir"
+   ],
+   "items": [
+    {
+     "id": "prefiero",
+     "es": "prefiero…",
+     "ar": "أفضّل…",
+     "en": "I prefer…",
+     "pos": "فعل",
+     "examples": [
+      {
+       "es": "Prefiero el modelo negro.",
+       "ar": "أفضّل الموديل الأسود."
+      },
+      {
+       "es": "¿Qué prefieres, café o té?",
+       "ar": "ماذا تفضّل، قهوة أم شاي؟"
+      }
+     ],
+     "connections": [
+      {
+       "type": "grammar",
+       "ar": "preferir e ← ie: prefiero, prefieres, prefiere."
+      }
+     ]
+    },
+    {
+     "id": "cual_prefieres",
+     "es": "¿Cuál prefieres?",
+     "ar": "أيّهما تفضّل؟",
+     "en": "Which one do you prefer?",
+     "pos": "سؤال",
+     "examples": [
+      {
+       "es": "Hay dos modelos. ¿Cuál prefieres?",
+       "ar": "يوجد موديلان. أيّهما تفضّل؟"
+      }
+     ],
+     "work": true,
+     "connections": [
+      {
+       "type": "grammar",
+       "ar": "¿Cuál? للاختيار بين أشياء محدّدة؛ ¿Qué? أعمّ."
+      }
+     ]
+    },
+    {
+     "id": "ese",
+     "es": "ese",
+     "ar": "ذلك",
+     "en": "that (masc.)",
+     "pos": "ضمير",
+     "examples": [
+      {
+       "es": "¿Este móvil o ese?",
+       "ar": "هذا الهاتف أم ذلك؟"
+      }
+     ],
+     "connections": [
+      {
+       "type": "grammar",
+       "ar": "este = هذا (قريب)، ese = ذلك (أبعد قليلاً)."
+      }
+     ]
+    },
+    {
+     "id": "esa",
+     "es": "esa",
+     "ar": "تلك",
+     "en": "that (fem.)",
+     "pos": "ضمير",
+     "examples": [
+      {
+       "es": "Prefiero esa mesa.",
+       "ar": "أفضّل تلك الطاولة."
+      }
+     ]
+    },
+    {
+     "id": "el_modelo",
+     "es": "el modelo",
+     "ar": "الموديل / الطراز",
+     "en": "model",
+     "pos": "اسم",
+     "examples": [
+      {
+       "es": "Este modelo es nuevo.",
+       "ar": "هذا الموديل جديد."
+      }
+     ],
+     "work": true
+    },
+    {
+     "id": "el_color",
+     "es": "el color",
+     "ar": "اللون",
+     "en": "colour",
+     "pos": "اسم",
+     "examples": [
+      {
+       "es": "¿De qué color es?",
+       "ar": "ما لونه؟"
+      },
+      {
+       "es": "Hay tres colores: negro, blanco y azul.",
+       "ar": "توجد ثلاثة ألوان: أسود وأبيض وأزرق."
+      }
+     ]
+    },
+    {
+     "id": "negro",
+     "es": "negro",
+     "ar": "أسود",
+     "en": "black",
+     "pos": "صفة",
+     "examples": [
+      {
+       "es": "Quiero el ordenador negro.",
+       "ar": "أريد الحاسوب الأسود."
+      }
+     ],
+     "note_ar": "المؤنث negra: la impresora negra."
+    },
+    {
+     "id": "blanco",
+     "es": "blanco",
+     "ar": "أبيض",
+     "en": "white",
+     "pos": "صفة",
+     "examples": [
+      {
+       "es": "La oficina es blanca.",
+       "ar": "المكتب أبيض."
+      }
+     ],
+     "note_ar": "المؤنث blanca."
+    },
+    {
+     "id": "azul",
+     "es": "azul",
+     "ar": "أزرق",
+     "en": "blue",
+     "pos": "صفة",
+     "examples": [
+      {
+       "es": "Prefiero el modelo azul.",
+       "ar": "أفضّل الموديل الأزرق."
+      }
+     ],
+     "note_ar": "صيغة واحدة للمذكّر والمؤنث؛ الجمع azules."
+    }
+   ],
+   "activities": [
+    {
+     "type": "teach",
+     "item": "prefiero"
+    },
+    {
+     "type": "teach",
+     "item": "cual_prefieres"
+    },
+    {
+     "type": "mcq_meaning",
+     "item": "prefiero"
+    },
+    {
+     "type": "listen_choose",
+     "item": "cual_prefieres"
+    },
+    {
+     "type": "note",
+     "title_ar": "preferir و¿Cuál?",
+     "body_ar": "prefiero · prefieres · prefiere · preferimos · prefieren\n¿Cuál prefieres? — أيّهما تفضّل؟\neste = هذا · ese = ذلك · esa = تلك",
+     "examples": [
+      {
+       "es": "¿Cuál prefieres, este o ese?",
+       "ar": "أيّهما تفضّل، هذا أم ذلك؟"
+      }
+     ]
+    },
+    {
+     "type": "teach",
+     "item": "ese"
+    },
+    {
+     "type": "teach",
+     "item": "esa"
+    },
+    {
+     "type": "teach",
+     "item": "el_modelo"
+    },
+    {
+     "type": "mcq_reverse",
+     "item": "ese"
+    },
+    {
+     "type": "listen_pick_es",
+     "item": "esa"
+    },
+    {
+     "type": "mcq_meaning",
+     "item": "el_modelo"
+    },
+    {
+     "type": "teach",
+     "item": "el_color"
+    },
+    {
+     "type": "teach",
+     "item": "negro"
+    },
+    {
+     "type": "teach",
+     "item": "blanco"
+    },
+    {
+     "type": "teach",
+     "item": "azul"
+    },
+    {
+     "type": "mcq_meaning",
+     "item": "el_color"
+    },
+    {
+     "type": "listen_choose",
+     "item": "negro"
+    },
+    {
+     "type": "mcq_reverse",
+     "item": "blanco"
+    },
+    {
+     "type": "listen_pick_es",
+     "item": "azul"
+    },
+    {
+     "type": "choice",
+     "prompt_ar": "«الطابعة البيضاء»:",
+     "choices": [
+      "la impresora blanca",
+      "la impresora blanco",
+      "la blanca impresora"
+     ],
+     "answer": 0,
+     "skill": "grammar",
+     "choices_es": true,
+     "explain_ar": "الصفة بعد الاسم وتتّفق معه: impresora مؤنث ← blanca."
+    },
+    {
+     "type": "fill",
+     "es": "Yo ___ el modelo azul.",
+     "answer": "prefiero",
+     "ar": "أنا أفضّل الموديل الأزرق.",
+     "options": [
+      "prefiero",
+      "prefiere",
+      "preferir"
+     ],
+     "explain_ar": "مع yo: prefiero (e ← ie)."
+    },
+    {
+     "type": "fill",
+     "es": "Hay dos colores. ¿___ prefieres?",
+     "answer": "Cuál",
+     "ar": "يوجد لونان. أيّهما تفضّل؟",
+     "options": [
+      "Cuál",
+      "Qué",
+      "Cómo"
+     ],
+     "explain_ar": "للاختيار بين شيئين محدّدين: ¿Cuál?"
+    },
+    {
+     "type": "match",
+     "items": [
+      "negro",
+      "blanco",
+      "azul",
+      "el_color"
+     ]
+    },
+    {
+     "type": "type_es",
+     "item": "prefiero"
+    },
+    {
+     "type": "type_es",
+     "item": "el_modelo"
+    },
+    {
+     "type": "order",
+     "es": "Prefiero el modelo negro, no el blanco.",
+     "ar": "أفضّل الموديل الأسود، لا الأبيض."
+    },
+    {
+     "type": "dictation",
+     "es": "¿Cuál prefieres, el azul o el negro?",
+     "ar": "أيّهما تفضّل، الأزرق أم الأسود؟"
+    },
+    {
+     "type": "choice",
+     "prompt_ar": "أيّ موديل تفضّل آنا؟",
+     "choices": [
+      "الأزرق",
+      "الأسود",
+      "الأبيض"
+     ],
+     "answer": 0,
+     "skill": "reading",
+     "choices_es": false,
+     "stimulus_es": "Ana necesita un ordenador nuevo para la oficina. Hay tres modelos: negro, blanco y azul. A Ana no le gusta el negro y el blanco es caro. Prefiere el azul."
+    },
+    {
+     "type": "choice",
+     "prompt_ar": "استمع: ماذا يسأل البائع؟",
+     "choices": [
+      "أيّهما تفضّل؟",
+      "كم سعره؟",
+      "ما لونه؟"
+     ],
+     "answer": 0,
+     "skill": "listening",
+     "choices_es": false,
+     "audio_es": "Tenemos dos modelos. ¿Cuál prefiere usted?"
+    },
+    {
+     "type": "respond",
+     "prompt_ar": "البائع يسأل: «¿Cuál prefiere, el negro o el blanco?». قل: أفضّل الأسود.",
+     "accepted": [
+      "Prefiero el negro",
+      "El negro",
+      "Prefiero el negro, por favor"
+     ],
+     "audio_es": "¿Cuál prefiere, el negro o el blanco?"
+    },
+    {
+     "type": "speak",
+     "es": "Me gustan los dos modelos, pero prefiero el azul.",
+     "ar": "يعجبني الموديلان، لكني أفضّل الأزرق."
+    }
+   ]
+  },
+  {
+   "id": "a2_u4_l3",
+   "title_ar": "أسرع وأرخص",
+   "title_es": "Más rápido, más barato",
+   "objectives_ar": [
+    "المقارنة: más / menos … que، tan … como",
+    "mejor وpeor",
+    "صفات للمقارنة"
+   ],
+   "prerequisites": [
+    "a2_u4_l2"
+   ],
+   "minutes": 16,
+   "work_relevance_ar": "مقارنة منتجين أو خدمتين قبل الشراء.",
+   "source": "original-v1",
+   "grammar": [
+    "g_comparison"
+   ],
+   "items": [
+    {
+     "id": "mas_que",
+     "es": "más… que",
+     "ar": "أكثر… من",
+     "en": "more… than",
+     "pos": "تعبير",
+     "examples": [
+      {
+       "es": "Este portátil es más rápido que ese.",
+       "ar": "هذا الحاسوب المحمول أسرع من ذلك."
+      }
+     ]
+    },
+    {
+     "id": "menos_que",
+     "es": "menos… que",
+     "ar": "أقلّ… من",
+     "en": "less… than",
+     "pos": "تعبير",
+     "examples": [
+      {
+       "es": "El tren es menos caro que el avión.",
+       "ar": "القطار أقلّ تكلفة من الطائرة."
+      }
+     ]
+    },
+    {
+     "id": "tan_como",
+     "es": "tan… como",
+     "ar": "بقدر… / مثل…",
+     "en": "as… as",
+     "pos": "تعبير",
+     "examples": [
+      {
+       "es": "Es tan bueno como el otro.",
+       "ar": "إنه جيد مثل الآخر."
+      }
+     ]
+    },
+    {
+     "id": "mejor_que",
+     "es": "mejor que",
+     "ar": "أفضل من",
+     "en": "better than",
+     "pos": "تعبير",
+     "examples": [
+      {
+       "es": "Esta oferta es mejor que la otra.",
+       "ar": "هذا العرض أفضل من الآخر."
+      }
+     ],
+     "work": true,
+     "connections": [
+      {
+       "type": "grammar",
+       "ar": "شاذّة: mejor (وليس más bueno)."
+      }
+     ]
+    },
+    {
+     "id": "peor",
+     "es": "peor",
+     "ar": "أسوأ",
+     "en": "worse",
+     "pos": "صفة",
+     "examples": [
+      {
+       "es": "El servicio es peor que antes.",
+       "ar": "الخدمة أسوأ من قبل."
+      }
+     ],
+     "connections": [
+      {
+       "type": "grammar",
+       "ar": "شاذّة: peor (وليس más malo)."
+      }
+     ]
+    },
+    {
+     "id": "rapido",
+     "es": "rápido",
+     "ar": "سريع",
+     "en": "fast",
+     "pos": "صفة",
+     "examples": [
+      {
+       "es": "El tren es muy rápido.",
+       "ar": "القطار سريع جداً."
+      }
+     ],
+     "note_ar": "المؤنث rápida."
+    },
+    {
+     "id": "lento",
+     "es": "lento",
+     "ar": "بطيء",
+     "en": "slow",
+     "pos": "صفة",
+     "examples": [
+      {
+       "es": "El internet es lento hoy.",
+       "ar": "الإنترنت بطيء اليوم."
+      }
+     ],
+     "note_ar": "المؤنث lenta."
+    },
+    {
+     "id": "grande",
+     "es": "grande",
+     "ar": "كبير",
+     "en": "big",
+     "pos": "صفة",
+     "examples": [
+      {
+       "es": "La sala es grande.",
+       "ar": "القاعة كبيرة."
+      }
+     ],
+     "note_ar": "صيغة واحدة للمذكّر والمؤنث."
+    },
+    {
+     "id": "pequeno",
+     "es": "pequeño",
+     "ar": "صغير",
+     "en": "small",
+     "pos": "صفة",
+     "examples": [
+      {
+       "es": "Mi oficina es pequeña.",
+       "ar": "مكتبي صغير."
+      }
+     ],
+     "note_ar": "المؤنث pequeña."
+    }
+   ],
+   "activities": [
+    {
+     "type": "teach",
+     "item": "rapido"
+    },
+    {
+     "type": "teach",
+     "item": "lento"
+    },
+    {
+     "type": "teach",
+     "item": "grande"
+    },
+    {
+     "type": "teach",
+     "item": "pequeno"
+    },
+    {
+     "type": "mcq_meaning",
+     "item": "rapido"
+    },
+    {
+     "type": "listen_choose",
+     "item": "lento"
+    },
+    {
+     "type": "mcq_reverse",
+     "item": "grande"
+    },
+    {
+     "type": "listen_pick_es",
+     "item": "pequeno"
+    },
+    {
+     "type": "note",
+     "title_ar": "المقارنة",
+     "body_ar": "más + صفة + que · menos + صفة + que · tan + صفة + como\nشاذّة: mejor، peor.",
+     "examples": [
+      {
+       "es": "Madrid es más grande que Toledo.",
+       "ar": "مدريد أكبر من طليطلة."
+      }
+     ]
+    },
+    {
+     "type": "teach",
+     "item": "mas_que"
+    },
+    {
+     "type": "teach",
+     "item": "menos_que"
+    },
+    {
+     "type": "teach",
+     "item": "tan_como"
+    },
+    {
+     "type": "mcq_meaning",
+     "item": "mas_que"
+    },
+    {
+     "type": "listen_choose",
+     "item": "menos_que"
+    },
+    {
+     "type": "mcq_reverse",
+     "item": "tan_como"
+    },
+    {
+     "type": "teach",
+     "item": "mejor_que"
+    },
+    {
+     "type": "teach",
+     "item": "peor"
+    },
+    {
+     "type": "mcq_meaning",
+     "item": "mejor_que"
+    },
+    {
+     "type": "listen_pick_es",
+     "item": "peor"
+    },
+    {
+     "type": "choice",
+     "prompt_ar": "«هذا العرض أفضل»:",
+     "choices": [
+      "Esta oferta es mejor.",
+      "Esta oferta es más buena.",
+      "Esta oferta es mejora."
+     ],
+     "answer": 0,
+     "skill": "grammar",
+     "choices_es": true,
+     "explain_ar": "مقارنة bueno شاذّة: mejor (وليس más buena)."
+    },
+    {
+     "type": "fill",
+     "es": "Este portátil es más rápido ___ ese.",
+     "answer": "que",
+     "ar": "هذا الحاسوب المحمول أسرع من ذلك.",
+     "options": [
+      "que",
+      "como",
+      "de"
+     ],
+     "explain_ar": "más + صفة + que."
+    },
+    {
+     "type": "fill",
+     "es": "La sala nueva es tan grande ___ la otra.",
+     "answer": "como",
+     "ar": "القاعة الجديدة كبيرة مثل الأخرى.",
+     "options": [
+      "como",
+      "que",
+      "más"
+     ],
+     "explain_ar": "للمساواة: tan + صفة + como."
+    },
+    {
+     "type": "match",
+     "items": [
+      "rapido",
+      "lento",
+      "grande",
+      "pequeno"
+     ]
+    },
+    {
+     "type": "type_es",
+     "item": "rapido"
+    },
+    {
+     "type": "type_es",
+     "item": "peor"
+    },
+    {
+     "type": "order",
+     "es": "El tren es más rápido que el autobús.",
+     "ar": "القطار أسرع من الحافلة."
+    },
+    {
+     "type": "dictation",
+     "es": "Esta impresora es mejor que la otra, pero es más cara.",
+     "ar": "هذه الطابعة أفضل من الأخرى، لكنها أغلى."
+    },
+    {
+     "type": "choice",
+     "prompt_ar": "أيّ حاسوب أسرع؟",
+     "choices": [
+      "Rayo",
+      "Nube",
+      "هما متساويان"
+     ],
+     "answer": 0,
+     "skill": "reading",
+     "choices_es": false,
+     "stimulus_es": "El portátil Rayo cuesta ochocientos euros y es muy rápido. El portátil Nube cuesta seiscientos euros: es más barato, pero es más lento que el Rayo."
+    },
+    {
+     "type": "choice",
+     "prompt_ar": "استمع: ماذا يقول عن الخدمة الجديدة؟",
+     "choices": [
+      "أسوأ من القديمة",
+      "أفضل من القديمة",
+      "مثل القديمة"
+     ],
+     "answer": 0,
+     "skill": "listening",
+     "choices_es": false,
+     "audio_es": "El servicio nuevo es peor que el antiguo."
+    },
+    {
+     "type": "respond",
+     "prompt_ar": "زميل يسأل: «¿Qué es más rápido, el tren o el autobús?». قل: القطار أسرع من الحافلة.",
+     "accepted": [
+      "El tren es más rápido que el autobús",
+      "El tren es más rápido",
+      "El tren"
+     ],
+     "audio_es": "¿Qué es más rápido, el tren o el autobús?"
+    },
+    {
+     "type": "speak",
+     "es": "Este modelo es más rápido y más pequeño que el otro, pero es más caro.",
+     "ar": "هذا الموديل أسرع وأصغر من الآخر، لكنه أغلى."
+    }
+   ]
+  },
+  {
+   "id": "a2_u4_l4",
+   "title_ar": "في رأيي",
+   "title_es": "En mi opinión",
+   "objectives_ar": [
+    "إبداء الرأي: creo que، en mi opinión، me parece",
+    "الموافقة والاعتراض بأدب",
+    "الميزة والعيب"
+   ],
+   "prerequisites": [
+    "a2_u4_l3"
+   ],
+   "minutes": 16,
+   "work_relevance_ar": "المشاركة برأيك في اجتماع فريق دون إحراج أحد.",
+   "source": "original-v1",
+   "grammar": [
+    "g_opinion"
+   ],
+   "items": [
+    {
+     "id": "creo_que",
+     "es": "creo que…",
+     "ar": "أظنّ أنّ…",
+     "en": "I think that…",
+     "pos": "تعبير",
+     "examples": [
+      {
+       "es": "Creo que es una buena idea.",
+       "ar": "أظنّ أنها فكرة جيدة."
+      }
+     ],
+     "work": true,
+     "connections": [
+      {
+       "type": "grammar",
+       "ar": "creer: creo, crees, cree. creo que + جملة عادية."
+      }
+     ]
+    },
+    {
+     "id": "en_mi_opinion",
+     "es": "en mi opinión",
+     "ar": "في رأيي",
+     "en": "in my opinion",
+     "pos": "تعبير",
+     "examples": [
+      {
+       "es": "En mi opinión, el precio es alto.",
+       "ar": "في رأيي، السعر مرتفع."
+      }
+     ],
+     "work": true
+    },
+    {
+     "id": "me_parece",
+     "es": "me parece…",
+     "ar": "يبدو لي…",
+     "en": "it seems… to me",
+     "pos": "تعبير",
+     "examples": [
+      {
+       "es": "Me parece caro.",
+       "ar": "يبدو لي غالياً."
+      },
+      {
+       "es": "¿Qué te parecen las dos ofertas?",
+       "ar": "ما رأيك في العرضين؟"
+      }
+     ],
+     "connections": [
+      {
+       "type": "grammar",
+       "ar": "مثل gustar: me parece + مفرد، me parecen + جمع."
+      }
+     ]
+    },
+    {
+     "id": "estoy_de_acuerdo",
+     "es": "estoy de acuerdo",
+     "ar": "أنا موافق",
+     "en": "I agree",
+     "pos": "تعبير",
+     "examples": [
+      {
+       "es": "Estoy de acuerdo contigo.",
+       "ar": "أنا موافق معك."
+      }
+     ],
+     "work": true,
+     "connections": [
+      {
+       "type": "usage",
+       "ar": "de acuerdo (A1) وحدها = «حسناً / متّفقون»."
+      }
+     ]
+    },
+    {
+     "id": "no_estoy_de_acuerdo",
+     "es": "no estoy de acuerdo",
+     "ar": "لست موافقاً",
+     "en": "I don't agree",
+     "pos": "تعبير",
+     "examples": [
+      {
+       "es": "Lo siento, no estoy de acuerdo.",
+       "ar": "آسف، لست موافقاً."
+      }
+     ],
+     "work": true
+    },
+    {
+     "id": "tienes_razon",
+     "es": "tienes razón",
+     "ar": "معك حق",
+     "en": "you're right",
+     "pos": "تعبير",
+     "examples": [
+      {
+       "es": "Tienes razón, es mejor esperar.",
+       "ar": "معك حق، من الأفضل أن ننتظر."
+      }
+     ],
+     "note_ar": "مع usted: tiene razón."
+    },
+    {
+     "id": "depende",
+     "es": "depende",
+     "ar": "يعتمد (على الظروف)",
+     "en": "it depends",
+     "pos": "تعبير",
+     "examples": [
+      {
+       "es": "¿Es mejor el tren o el avión? — Depende.",
+       "ar": "هل القطار أفضل أم الطائرة؟ — يعتمد."
+      }
+     ]
+    },
+    {
+     "id": "interesante",
+     "es": "interesante",
+     "ar": "مثير للاهتمام",
+     "en": "interesting",
+     "pos": "صفة",
+     "examples": [
+      {
+       "es": "Es una propuesta interesante.",
+       "ar": "إنه اقتراح مثير للاهتمام."
+      }
+     ]
+    },
+    {
+     "id": "la_ventaja",
+     "es": "la ventaja",
+     "ar": "الميزة",
+     "en": "advantage",
+     "pos": "اسم",
+     "examples": [
+      {
+       "es": "La ventaja es el precio.",
+       "ar": "الميزة هي السعر."
+      }
+     ],
+     "work": true
+    }
+   ],
+   "activities": [
+    {
+     "type": "teach",
+     "item": "creo_que"
+    },
+    {
+     "type": "teach",
+     "item": "en_mi_opinion"
+    },
+    {
+     "type": "teach",
+     "item": "me_parece"
+    },
+    {
+     "type": "mcq_meaning",
+     "item": "creo_que"
+    },
+    {
+     "type": "listen_choose",
+     "item": "en_mi_opinion"
+    },
+    {
+     "type": "mcq_reverse",
+     "item": "me_parece"
+    },
+    {
+     "type": "note",
+     "title_ar": "إبداء الرأي",
+     "body_ar": "Creo que… · En mi opinión… · Me parece + صفة\nموافقة: Estoy de acuerdo. · Tienes razón.\nاعتراض بأدب: No estoy de acuerdo, porque… · Depende.",
+     "examples": [
+      {
+       "es": "En mi opinión, el precio es muy alto.",
+       "ar": "في رأيي، السعر مرتفع جداً."
+      }
+     ]
+    },
+    {
+     "type": "teach",
+     "item": "estoy_de_acuerdo"
+    },
+    {
+     "type": "teach",
+     "item": "no_estoy_de_acuerdo"
+    },
+    {
+     "type": "teach",
+     "item": "tienes_razon"
+    },
+    {
+     "type": "teach",
+     "item": "depende"
+    },
+    {
+     "type": "mcq_meaning",
+     "item": "tienes_razon"
+    },
+    {
+     "type": "listen_pick_es",
+     "item": "estoy_de_acuerdo"
+    },
+    {
+     "type": "mcq_reverse",
+     "item": "no_estoy_de_acuerdo"
+    },
+    {
+     "type": "listen_choose",
+     "item": "depende"
+    },
+    {
+     "type": "teach",
+     "item": "interesante"
+    },
+    {
+     "type": "teach",
+     "item": "la_ventaja"
+    },
+    {
+     "type": "mcq_meaning",
+     "item": "la_ventaja"
+    },
+    {
+     "type": "listen_pick_es",
+     "item": "interesante"
+    },
+    {
+     "type": "choice",
+     "prompt_ar": "زميلك يقترح فكرة لا توافق عليها. أيّ ردّ مهذّب؟",
+     "choices": [
+      "Es interesante, pero no estoy de acuerdo.",
+      "Tu idea es mala.",
+      "No."
+     ],
+     "answer": 0,
+     "skill": "reading",
+     "choices_es": true,
+     "explain_ar": "ابدأ بشيء إيجابي (es interesante) ثم اعترض: no estoy de acuerdo."
+    },
+    {
+     "type": "fill",
+     "es": "___ que es una buena idea.",
+     "answer": "Creo",
+     "ar": "أظنّ أنها فكرة جيدة.",
+     "options": [
+      "Creo",
+      "Creer",
+      "Cree"
+     ],
+     "explain_ar": "مع yo: creo que…"
+    },
+    {
+     "type": "fill",
+     "es": "Me ___ caros los dos modelos.",
+     "answer": "parecen",
+     "ar": "يبدو لي الموديلان غاليين.",
+     "options": [
+      "parecen",
+      "parece",
+      "parezco"
+     ],
+     "explain_ar": "مثل gustar: los dos modelos جمع ← parecen."
+    },
+    {
+     "type": "match",
+     "items": [
+      "estoy_de_acuerdo",
+      "tienes_razon",
+      "depende",
+      "la_ventaja"
+     ]
+    },
+    {
+     "type": "type_es",
+     "item": "creo_que"
+    },
+    {
+     "type": "type_es",
+     "item": "depende"
+    },
+    {
+     "type": "order",
+     "es": "En mi opinión, la ventaja es el precio.",
+     "ar": "في رأيي، الميزة هي السعر."
+    },
+    {
+     "type": "dictation",
+     "es": "Tienes razón, pero creo que es un poco caro.",
+     "ar": "معك حق، لكني أظنّ أنه غالٍ قليلاً."
+    },
+    {
+     "type": "choice",
+     "prompt_ar": "ماذا يرى عمر؟",
+     "choices": [
+      "الفكرة جيدة لكن غالية",
+      "الفكرة سيئة",
+      "الفكرة رخيصة"
+     ],
+     "answer": 0,
+     "skill": "reading",
+     "choices_es": false,
+     "stimulus_es": "Omar: «Creo que la idea de Lucía es interesante. La ventaja es que es rápida. Pero en mi opinión es un poco cara.»"
+    },
+    {
+     "type": "choice",
+     "prompt_ar": "استمع: هل هي موافقة؟",
+     "choices": [
+      "لا، ليست موافقة",
+      "نعم، موافقة",
+      "يعتمد"
+     ],
+     "answer": 0,
+     "skill": "listening",
+     "choices_es": false,
+     "audio_es": "Lo siento, no estoy de acuerdo."
+    },
+    {
+     "type": "respond",
+     "prompt_ar": "زميل يقول: «Creo que es mejor esperar». قل: معك حق.",
+     "accepted": [
+      "Tienes razón",
+      "Sí, tienes razón",
+      "Estoy de acuerdo, tienes razón"
+     ],
+     "audio_es": "Creo que es mejor esperar."
+    },
+    {
+     "type": "speak",
+     "es": "Creo que es una idea interesante. La ventaja es el precio, pero en mi opinión es un poco lenta.",
+     "ar": "أظنّ أنها فكرة مثيرة للاهتمام. الميزة هي السعر، لكن في رأيي هي بطيئة قليلاً."
+    }
+   ]
+  },
+  {
+   "id": "a2_u4_l5",
+   "title_ar": "مقارنة عرضين",
+   "title_es": "Dos ofertas",
+   "objectives_ar": [
+    "مقارنة عرضين من مورّدين",
+    "التفضيل الأعلى: el más…، la mejor",
+    "التوصية بـ recomiendo… aunque…"
+   ],
+   "prerequisites": [
+    "a2_u4_l4"
+   ],
+   "minutes": 17,
+   "work_relevance_ar": "كتابة توصية قصيرة لمديرك بين عرضين.",
+   "source": "original-v1",
+   "grammar": [
+    "g_superlative"
+   ],
+   "items": [
+    {
+     "id": "la_oferta",
+     "es": "la oferta",
+     "ar": "العرض (التجاري)",
+     "en": "offer",
+     "pos": "اسم",
+     "examples": [
+      {
+       "es": "Tenemos dos ofertas.",
+       "ar": "عندنا عرضان."
+      }
+     ],
+     "work": true
+    },
+    {
+     "id": "el_proveedor",
+     "es": "el proveedor",
+     "ar": "المورّد",
+     "en": "supplier",
+     "pos": "اسم",
+     "examples": [
+      {
+       "es": "El proveedor de Madrid es más caro.",
+       "ar": "مورّد مدريد أغلى."
+      }
+     ],
+     "work": true
+    },
+    {
+     "id": "el_precio",
+     "es": "el precio",
+     "ar": "السعر",
+     "en": "price",
+     "pos": "اسم",
+     "examples": [
+      {
+       "es": "El precio es muy bueno.",
+       "ar": "السعر جيد جداً."
+      }
+     ],
+     "work": true
+    },
+    {
+     "id": "la_calidad",
+     "es": "la calidad",
+     "ar": "الجودة",
+     "en": "quality",
+     "pos": "اسم",
+     "examples": [
+      {
+       "es": "La calidad es más importante que el precio.",
+       "ar": "الجودة أهمّ من السعر."
+      }
+     ],
+     "work": true
+    },
+    {
+     "id": "la_desventaja",
+     "es": "la desventaja",
+     "ar": "العيب",
+     "en": "disadvantage",
+     "pos": "اسم",
+     "examples": [
+      {
+       "es": "La desventaja es el plazo de entrega.",
+       "ar": "العيب هو موعد التسليم."
+      }
+     ],
+     "work": true
+    },
+    {
+     "id": "el_mas_barato",
+     "es": "el más barato",
+     "ar": "الأرخص",
+     "en": "the cheapest",
+     "pos": "تعبير",
+     "examples": [
+      {
+       "es": "Este proveedor es el más barato.",
+       "ar": "هذا المورّد هو الأرخص."
+      },
+      {
+       "es": "La oferta de Luna es la más barata.",
+       "ar": "عرض «لونا» هو الأرخص."
+      }
+     ],
+     "connections": [
+      {
+       "type": "grammar",
+       "ar": "el / la + más + صفة = الأكثر…"
+      }
+     ]
+    },
+    {
+     "id": "la_mejor_opcion",
+     "es": "la mejor opción",
+     "ar": "الخيار الأفضل",
+     "en": "the best option",
+     "pos": "تعبير",
+     "examples": [
+      {
+       "es": "Creo que es la mejor opción.",
+       "ar": "أظنّ أنه الخيار الأفضل."
+      }
+     ],
+     "work": true
+    },
+    {
+     "id": "recomiendo",
+     "es": "recomiendo…",
+     "ar": "أوصي بـ… / أنصح بـ…",
+     "en": "I recommend…",
+     "pos": "فعل",
+     "examples": [
+      {
+       "es": "Recomiendo la oferta de Sol.",
+       "ar": "أوصي بعرض «سول»."
+      }
+     ],
+     "work": true,
+     "connections": [
+      {
+       "type": "grammar",
+       "ar": "recomendar e ← ie: recomiendo, recomienda."
+      }
+     ]
+    },
+    {
+     "id": "aunque",
+     "es": "aunque",
+     "ar": "مع أنّ",
+     "en": "although",
+     "pos": "حرف عطف",
+     "examples": [
+      {
+       "es": "Recomiendo esta oferta, aunque es más cara.",
+       "ar": "أوصي بهذا العرض، مع أنه أغلى."
+      }
+     ]
+    }
+   ],
+   "activities": [
+    {
+     "type": "teach",
+     "item": "la_oferta"
+    },
+    {
+     "type": "teach",
+     "item": "el_proveedor"
+    },
+    {
+     "type": "teach",
+     "item": "el_precio"
+    },
+    {
+     "type": "teach",
+     "item": "la_calidad"
+    },
+    {
+     "type": "mcq_meaning",
+     "item": "la_oferta"
+    },
+    {
+     "type": "listen_choose",
+     "item": "el_proveedor"
+    },
+    {
+     "type": "mcq_reverse",
+     "item": "el_precio"
+    },
+    {
+     "type": "listen_pick_es",
+     "item": "la_calidad"
+    },
+    {
+     "type": "teach",
+     "item": "la_desventaja"
+    },
+    {
+     "type": "mcq_meaning",
+     "item": "la_desventaja"
+    },
+    {
+     "type": "note",
+     "title_ar": "التفضيل الأعلى والتوصية",
+     "body_ar": "el / la + más + صفة: el más barato · la más rápida\nشاذّ: el mejor / la mejor\nrecomiendo… aunque… = أوصي بـ… مع أنّ…",
+     "examples": [
+      {
+       "es": "Es la oferta más completa.",
+       "ar": "إنه العرض الأكثر اكتمالاً."
+      }
+     ]
+    },
+    {
+     "type": "teach",
+     "item": "el_mas_barato"
+    },
+    {
+     "type": "teach",
+     "item": "la_mejor_opcion"
+    },
+    {
+     "type": "teach",
+     "item": "recomiendo"
+    },
+    {
+     "type": "teach",
+     "item": "aunque"
+    },
+    {
+     "type": "mcq_meaning",
+     "item": "el_mas_barato"
+    },
+    {
+     "type": "listen_choose",
+     "item": "la_mejor_opcion"
+    },
+    {
+     "type": "mcq_reverse",
+     "item": "recomiendo"
+    },
+    {
+     "type": "listen_pick_es",
+     "item": "aunque"
+    },
+    {
+     "type": "choice",
+     "prompt_ar": "«أفضل خيار»:",
+     "choices": [
+      "la mejor opción",
+      "la más buena opción",
+      "la opción mejor de"
+     ],
+     "answer": 0,
+     "skill": "grammar",
+     "choices_es": true,
+     "explain_ar": "bueno شاذّ: la mejor opción (وليس la más buena)."
+    },
+    {
+     "type": "fill",
+     "es": "Este proveedor es ___ más barato de los tres.",
+     "answer": "el",
+     "ar": "هذا المورّد هو الأرخص بين الثلاثة.",
+     "options": [
+      "el",
+      "más",
+      "que"
+     ],
+     "explain_ar": "التفضيل الأعلى: el + más + صفة."
+    },
+    {
+     "type": "fill",
+     "es": "Recomiendo esta oferta, ___ es más cara.",
+     "answer": "aunque",
+     "ar": "أوصي بهذا العرض، مع أنه أغلى.",
+     "options": [
+      "aunque",
+      "porque",
+      "pero que"
+     ],
+     "explain_ar": "aunque = مع أنّ."
+    },
+    {
+     "type": "match",
+     "items": [
+      "el_precio",
+      "la_calidad",
+      "la_ventaja",
+      "la_desventaja"
+     ]
+    },
+    {
+     "type": "type_es",
+     "item": "la_oferta"
+    },
+    {
+     "type": "type_es",
+     "item": "el_precio"
+    },
+    {
+     "type": "order",
+     "es": "Creo que es la mejor opción, aunque es más cara.",
+     "ar": "أظنّ أنه الخيار الأفضل، مع أنه أغلى."
+    },
+    {
+     "type": "dictation",
+     "es": "La calidad es más importante que el precio.",
+     "ar": "الجودة أهمّ من السعر."
+    },
+    {
+     "type": "choice",
+     "prompt_ar": "بأيّ عرض يوصي الكاتب؟",
+     "choices": [
+      "عرض «سول»",
+      "عرض «لونا»",
+      "لا يوصي بأيّ منهما"
+     ],
+     "answer": 0,
+     "skill": "reading",
+     "choices_es": false,
+     "stimulus_es": "Informe: tenemos dos ofertas. Luna es la más barata, pero la calidad es peor y el plazo de entrega es más largo. Sol es más cara, aunque la calidad es mejor. Recomiendo la oferta de Sol."
+    },
+    {
+     "type": "choice",
+     "prompt_ar": "استمع: ما عيب هذا المورّد؟",
+     "choices": [
+      "التسليم بطيء",
+      "السعر مرتفع",
+      "الجودة سيئة"
+     ],
+     "answer": 0,
+     "skill": "listening",
+     "choices_es": false,
+     "audio_es": "La desventaja es que la entrega es lenta."
+    },
+    {
+     "type": "respond",
+     "prompt_ar": "مديرك يسأل: «¿Qué oferta recomienda?». قل: أوصي بعرض «سول»، مع أنه أغلى.",
+     "accepted": [
+      "Recomiendo la oferta de Sol, aunque es más cara",
+      "Recomiendo Sol, aunque es más cara",
+      "Recomiendo la de Sol, aunque es más cara"
+     ],
+     "audio_es": "¿Qué oferta recomienda?"
+    },
+    {
+     "type": "speak",
+     "es": "Recomiendo el proveedor Sol: la calidad es mejor, aunque el precio es más alto.",
+     "ar": "أوصي بالمورّد «سول»: الجودة أفضل، مع أن السعر أعلى."
+    }
+   ]
+  }
+ ]
+}

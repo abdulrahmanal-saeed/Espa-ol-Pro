@@ -1252,6 +1252,202 @@
     }
    ],
    "note_ar": "mandar = enviar في معنى «يرسل»، وهو أكثر شيوعاً في الكلام."
+  },
+  {
+   "id": "gustar",
+   "infinitive": "gustar",
+   "ar": "يُعجِب",
+   "regular": true,
+   "present": {
+    "yo": "gusto",
+    "tu": "gustas",
+    "el": "gusta",
+    "nosotros": "gustamos",
+    "vosotros": "gustáis",
+    "ellos": "gustan"
+   },
+   "preterite": {
+    "yo": "gusté",
+    "tu": "gustaste",
+    "el": "gustó",
+    "nosotros": "gustamos",
+    "vosotros": "gustasteis",
+    "ellos": "gustaron"
+   },
+   "lessons": [
+    "a2_u4_l1"
+   ],
+   "examples": [
+    {
+     "es": "Me gusta el café.",
+     "ar": "تعجبني القهوة."
+    }
+   ],
+   "note_ar": "يُستعمل غالباً بصيغتين: gusta (مفرد / مصدر) وgustan (جمع)، مع me / te / le / nos / les."
+  },
+  {
+   "id": "encantar",
+   "infinitive": "encantar",
+   "ar": "يُعجِب جداً",
+   "regular": true,
+   "present": {
+    "yo": "encanto",
+    "tu": "encantas",
+    "el": "encanta",
+    "nosotros": "encantamos",
+    "vosotros": "encantáis",
+    "ellos": "encantan"
+   },
+   "preterite": {
+    "yo": "encanté",
+    "tu": "encantaste",
+    "el": "encantó",
+    "nosotros": "encantamos",
+    "vosotros": "encantasteis",
+    "ellos": "encantaron"
+   },
+   "lessons": [
+    "a2_u4_l1"
+   ],
+   "examples": [
+    {
+     "es": "Me encanta mi trabajo.",
+     "ar": "أحبّ عملي جداً."
+    }
+   ],
+   "note_ar": "مثل gustar."
+  },
+  {
+   "id": "preferir",
+   "infinitive": "preferir",
+   "ar": "يفضّل",
+   "regular": false,
+   "present": {
+    "yo": "prefiero",
+    "tu": "prefieres",
+    "el": "prefiere",
+    "nosotros": "preferimos",
+    "vosotros": "preferís",
+    "ellos": "prefieren"
+   },
+   "preterite": {
+    "yo": "preferí",
+    "tu": "preferiste",
+    "el": "prefirió",
+    "nosotros": "preferimos",
+    "vosotros": "preferisteis",
+    "ellos": "prefirieron"
+   },
+   "lessons": [
+    "a2_u4_l2"
+   ],
+   "examples": [
+    {
+     "es": "Prefiero el modelo negro.",
+     "ar": "أفضّل الموديل الأسود."
+    }
+   ],
+   "preterite_regular": false,
+   "note_ar": "e ← ie في المضارع، وe ← i في الماضي مع él / ellos: prefirió، prefirieron."
+  },
+  {
+   "id": "creer",
+   "infinitive": "creer",
+   "ar": "يظنّ / يعتقد",
+   "regular": true,
+   "present": {
+    "yo": "creo",
+    "tu": "crees",
+    "el": "cree",
+    "nosotros": "creemos",
+    "vosotros": "creéis",
+    "ellos": "creen"
+   },
+   "preterite": {
+    "yo": "creí",
+    "tu": "creíste",
+    "el": "creyó",
+    "nosotros": "creímos",
+    "vosotros": "creísteis",
+    "ellos": "creyeron"
+   },
+   "lessons": [
+    "a2_u4_l4"
+   ],
+   "examples": [
+    {
+     "es": "Creo que es una buena idea.",
+     "ar": "أظنّ أنها فكرة جيدة."
+    }
+   ],
+   "preterite_regular": false,
+   "note_ar": "منتظم في المضارع. في الماضي: creyó، creyeron (y)، وعلامة على í."
+  },
+  {
+   "id": "parecer",
+   "infinitive": "parecer",
+   "ar": "يبدو",
+   "regular": false,
+   "present": {
+    "yo": "parezco",
+    "tu": "pareces",
+    "el": "parece",
+    "nosotros": "parecemos",
+    "vosotros": "parecéis",
+    "ellos": "parecen"
+   },
+   "preterite": {
+    "yo": "parecí",
+    "tu": "pareciste",
+    "el": "pareció",
+    "nosotros": "parecimos",
+    "vosotros": "parecisteis",
+    "ellos": "parecieron"
+   },
+   "lessons": [
+    "a2_u4_l4"
+   ],
+   "examples": [
+    {
+     "es": "Me parece caro.",
+     "ar": "يبدو لي غالياً."
+    }
+   ],
+   "preterite_regular": true,
+   "note_ar": "parezco مع yo. وme parece / me parecen مثل gustar."
+  },
+  {
+   "id": "recomendar",
+   "infinitive": "recomendar",
+   "ar": "يوصي / ينصح",
+   "regular": false,
+   "present": {
+    "yo": "recomiendo",
+    "tu": "recomiendas",
+    "el": "recomienda",
+    "nosotros": "recomendamos",
+    "vosotros": "recomendáis",
+    "ellos": "recomiendan"
+   },
+   "preterite": {
+    "yo": "recomendé",
+    "tu": "recomendaste",
+    "el": "recomendó",
+    "nosotros": "recomendamos",
+    "vosotros": "recomendasteis",
+    "ellos": "recomendaron"
+   },
+   "lessons": [
+    "a2_u4_l5"
+   ],
+   "examples": [
+    {
+     "es": "Recomiendo la oferta de Sol.",
+     "ar": "أوصي بعرض «سول»."
+    }
+   ],
+   "preterite_regular": true,
+   "note_ar": "e ← ie في المضارع، ومنتظم في الماضي."
   }
  ],
  "note_ar": "vosotros يُستعمل في إسبانيا للجمع غير الرسمي؛ وفي أمريكا اللاتينية يُستعمل ustedes لكل الجمع."
