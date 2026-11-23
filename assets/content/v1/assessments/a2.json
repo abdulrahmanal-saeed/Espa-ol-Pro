@@ -585,11 +585,11 @@
      "stimulus_es": "Si todo ___ bien, la entrega es a finales de mes.",
      "choices": [
       "va",
-      "fue",
-      "vamos"
+      "irá",
+      "ir"
      ],
      "answer": 0,
-     "explain_ar": "بعد si لشرط في المستقبل: الحاضر (va)."
+     "explain_ar": "بعد si لشرط في المستقبل: الحاضر (va)، لا المستقبل البسيط (irá)."
     },
     {
      "id": "chk_a2_u3.q11",

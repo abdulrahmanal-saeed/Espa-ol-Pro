@@ -94,7 +94,7 @@
   {
    "id": "g_si_presente",
    "title_ar": "si + الحاضر: شرط في المستقبل",
-   "body_ar": "بعد si نستعمل الحاضر، ثم الحاضر أو ir a:\nSi todo va bien, terminamos a finales de mes. — إذا سار كل شيء على ما يرام، ننتهي في نهاية الشهر.\nSi hay un problema, le voy a llamar. — إذا حدثت مشكلة، سأتصل بك.\n\nلا تستعمل ir a بعد si: Si todo va bien (وليس si todo va a ir bien).",
+   "body_ar": "بعد si نستعمل الحاضر، ثم الحاضر أو ir a:\nSi todo va bien, terminamos a finales de mes. — إذا سار كل شيء على ما يرام، ننتهي في نهاية الشهر.\nSi hay un problema, le voy a llamar. — إذا حدثت مشكلة، سأتصل بك.\n\nلا يأتي المستقبل البسيط بعد si: Si todo va bien (وليس si todo irá bien).\nأما ir a فممكن، لأن ir في الحاضر: Si vas a salir, llámame. — إذا كنتَ ستخرج، اتصل بي.",
    "examples": [
     {
      "es": "Si todo va bien, la entrega es a finales de mes.",
@@ -1744,7 +1744,7 @@
     {
      "type": "note",
      "title_ar": "si + الحاضر",
-     "body_ar": "Si todo va bien, terminamos a finales de mes.\nSi hay un problema, le voy a llamar.\nبعد si الحاضر، وليس ir a.",
+     "body_ar": "Si todo va bien, terminamos a finales de mes.\nSi hay un problema, le voy a llamar.\nبعد si الحاضر، وليس المستقبل البسيط (irá، terminaremos).\nوir a ممكنة: Si vas a salir, llámame.",
      "examples": [
       {
        "es": "Si tienes tiempo, quedamos el viernes.",
@@ -1773,13 +1773,13 @@
      "prompt_ar": "أيّ جملة صحيحة؟",
      "choices": [
       "Si todo va bien, la entrega es a finales de mes.",
-      "Si todo fue bien, la entrega es a finales de mes.",
-      "Si todo va a ir bien, la entrega es a finales de mes."
+      "Si todo irá bien, la entrega es a finales de mes.",
+      "Si todo ir bien, la entrega es a finales de mes."
      ],
      "answer": 0,
      "skill": "grammar",
      "choices_es": true,
-     "explain_ar": "شرط في المستقبل: si + الحاضر (va)، لا الماضي ولا ir a."
+     "explain_ar": "بعد si يأتي الحاضر (va)، لا المستقبل البسيط (irá)، ولا المصدر (ir)."
     },
     {
      "type": "teach",
@@ -1804,10 +1804,10 @@
      "ar": "إذا سار كل شيء على ما يرام، ننتهي في نهاية الشهر.",
      "options": [
       "va",
-      "fue",
-      "vamos"
+      "irá",
+      "ir"
      ],
-     "explain_ar": "بعد si نستعمل الحاضر: va."
+     "explain_ar": "بعد si نستعمل الحاضر: va، لا المستقبل البسيط irá."
     },
     {
      "type": "fill",

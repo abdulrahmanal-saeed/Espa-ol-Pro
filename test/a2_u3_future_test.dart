@@ -311,7 +311,7 @@ void main() {
         assessment: chk,
         graded: gradeAssessment(chk, {
           for (final q in chk.questions) q.id: q.correctAnswer,
-          'chk_a2_u3.q10': 'fue',
+          'chk_a2_u3.q10': 'irá',
         }),
         startedAt: clock(),
         contentVersion: pack.version,
