@@ -3,6 +3,128 @@
 owner: Claude Code
 implementer: Claude Code
 handoff_status: READY_FOR_REVIEW
+handoff_id: PHASE3-004
+updated_at_utc: 2026-11-23T12:00:00Z
+review_requested_for_sha: ab33be8 (application code a6c1ad9 on 7330136)
+branch: feat/a2-u3-future
+pull_request: https://github.com/abdulrahmanal-saeed/Espa-ol-Pro/pull/14
+last_review_acknowledged: REVIEW-015
+project_status: A2_U1_U2_MERGED__A2_U3_IN_REVIEW__DEVICE_AND_NATIVE_QA_PENDING
+
+## REVIEW-015 acknowledged; PR #13 merged
+
+The owner asked in this session to merge #13. Before merging I checked:
+
+- the head was still `8d89aae`, the SHA approved in REVIEW-015;
+- CI run 44139749592 was green (353 tests, APK);
+- the PR was `mergeable_state: clean`.
+
+It was merged with a normal merge as **`bb4c4b9`**
+(`bb4c4b907ffc44703f4a5928a4376ca8fc990d54`).
+
+## P3 from REVIEW-015 — fixed (`7330136`)
+
+- `answer_evaluator.dart` adds `finalStressNonVerbs`: bebé, canapé, carné,
+  chalé, cliché, comité, consomé, dominó, puré.
+- For those words a missing final accent is still `accentMeaning`, because
+  it is a different word. The explanation no longer mentions tense.
+- **New validator rule.** Every answer word of 5+ letters that ends in a
+  stressed é/ó must be one of:
+  - a verb form from the reference (present or past);
+  - a word from an item whose part of speech is a verb;
+  - a listed non-verb.
+- The rule checks items, fill, respond and checkpoint answers. New content
+  therefore cannot reach the tense explanation by mistake.
+- **Tests.** `a2_u3_future_test` covers:
+  - the evaluator: comité gets no tense text, habló still does;
+  - 4 negative content cases: parqué in an item, in a respond answer, and
+    plató in a checkpoint answer;
+  - one positive case: comité, which is listed.
+- **One scoped test.** The A2-U2 compatibility test now asserts that the
+  verb file is valid without past forms. The only remaining issues are the
+  new rule's: "terminó" loses its source once the past forms are removed.
+
+## PR #14: A2-U3 "Plans and the future" (content 1.7.0, `a6c1ad9`)
+
+**Lessons 43–47, starting after `a2_u2_l5`:**
+
+| Lesson | Content |
+|---|---|
+| `a2_u3_l1` ¿Qué vas a hacer? | ir a with every person, contrasted with the past and present; esta tarde, la semana que viene, el próximo lunes, dentro de, pronto |
+| `a2_u3_l2` ¿Quieres venir? | ¿Quieres venir? / ¿Te apetece…? (with a Spain vs LatAm note); me encantaría, vale, no puedo, otro día, tengo planes; pensar e→ie + infinitive; la comida de trabajo |
+| `a2_u3_l3` ¿Quedamos el lunes? | quedar; ¿Te / Le viene bien…? (agreement with the appointment); mejor, cambiar, confirmar, la videollamada, a primera hora, propongo |
+| `a2_u3_l4` La agenda de la semana | present for timetables (sale, empieza, termina); la feria, el horario, la fecha, el plazo, antes de, hasta las |
+| `a2_u3_l5` El plan del proyecto | el plan, el objetivo, la fase, la entrega, el presupuesto, le mando, si todo va bien, a finales de mes, la próxima reunión |
+
+**Each lesson has:**
+- listen-choose, listen-pick, type, order, dictation, fill, match;
+- a reply to a situation, a reading or listening task, and listen-and-repeat;
+- `explain_ar` on every fill and grammar choice;
+- work items, and FSRS cards (two per item).
+
+**Dialogues.** All three are rated "very easy" or "appropriate" right after
+their lessons:
+- `dlg_a2_invitacion` — an invitation, politely declined;
+- `dlg_a2_cita_cliente` — arranging a meeting with a client, which becomes a
+  video call;
+- `dlg_a2_proyecto` — a project plan, delivery and quote.
+
+**Checkpoint `chk_a2_u3`:**
+- 12 questions, 3 can-dos, 5 skills (grammar 4, listening 3, reading 2,
+  writing 2, vocabulary 1);
+- 3 questions play dialogue sentences;
+- options are shuffled.
+
+**Verbs:** 7 new, 39 in total.
+- pensar is entered by hand (present e→ie; regular past).
+- proponer is entered by hand (propongo / propuse).
+- quedar, cambiar, confirmar and mandar are machine-checked.
+- pasar was added for "¿Qué pasó?" in A2-U2.
+
+### Verification
+
+| Check | Result |
+|---|---|
+| format | 0 changed |
+| `flutter analyze --fatal-infos` | No issues |
+| content validator | OK: 47 lessons, 397 items, 799 graded, 25 dialogues, 13 assessments, 39 verbs |
+| `flutter test` | **368 passed** (353 + 14 in `a2_u3_future_test` + A2-U3 completion in `a2_units_test`) |
+| screenshots | 07 (A2 progress 0/15) and 22 regenerated |
+| debug APK | built by the PR CI (no Android SDK here) |
+
+## Known engineering issues
+
+1. **Short words stay lenient.** The final-accent rule still applies only to
+   words of 5+ letters, so pasó/paso and bebé/bebe are still accepted with
+   an accent reminder. Lowering the threshold would also catch café/cafe in
+   A1. That would be a policy change for the owner and reviewer.
+2. **Short irregular forms are not diagnosed.** "van" for "vamos" is marked
+   wrong, but the wrong-form diagnosis does not explain it, because the
+   words are too short for the inflection rule.
+
+## Questions for ChatGPT
+
+1. Should the final-accent threshold drop to 4 letters from A2 on (pasó),
+   with café as a listed exception?
+2. Is the Spain-centred vocabulary acceptable at this level, with the
+   LatAm equivalents given in notes? Examples: vale, ¿Te apetece?, la
+   comida = lunch.
+
+## Proposed next step
+
+A2-U4 "Preferences and comparison": gustar / encantar / preferir,
+comparatives (más / menos … que, mejor / peor), and opinions (creo que,
+para mí).
+
+I will not merge PR #14; that is the owner's decision.
+
+---
+
+# Previous handoff (PHASE3-003)
+
+owner: Claude Code
+implementer: Claude Code
+handoff_status: MERGED_AS_bb4c4b9
 handoff_id: PHASE3-003
 updated_at_utc: 2026-11-17T21:00:00Z
 review_requested_for_sha: b8d4d17 (application code 7bfbae6, on 10ac581 and 86dff95)
