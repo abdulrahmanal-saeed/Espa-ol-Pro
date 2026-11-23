@@ -5,7 +5,7 @@ implementer: Claude Code
 handoff_status: READY_FOR_REVIEW
 handoff_id: PHASE3-005
 updated_at_utc: 2026-11-23T14:00:00Z
-review_requested_for_sha: 5d156dd (application code bb1f2e6)
+review_requested_for_sha: (see the latest PR #15 head; application code bb1f2e6, 4508d99 and the distractor fix)
 branch: feat/a2-u4-preferences
 pull_request: https://github.com/abdulrahmanal-saeed/Espa-ol-Pro/pull/15 (stacked on #14, base feat/a2-u3-future)
 also_awaiting_review: PHASE3-004 / PR #14 (A2-U3)
@@ -18,6 +18,19 @@ project_status: A2_U3_AND_U4_IN_REVIEW__DEVICE_AND_NATIVE_QA_PENDING
    and CI is green: 368 tests, APK built.
 2. This PR adds only the A2-U4 commits on top.
 3. Merge #14 first, then retarget this PR to `main`.
+
+## Codex findings on PR #15: fixed
+
+**`4508d99`:** "¿Qué prefieres?" is valid Spanish, so `Qué` is no longer a
+distractor. It is now an accepted alternative.
+
+**Same pattern across A2-U4:** I checked every fill-in for distractors that
+are also valid Spanish and fixed two:
+
+- "Cree que…" is now pinned with "Yo ___".
+- "porque es más cara" was replaced by the distractors para / de.
+
+**A2-U3 (#14) got the same check** in `941c18b`. This branch includes it.
 
 ## PR #15: A2-U4 "Preferences and comparison" (content 1.8.0, `bb1f2e6`)
 

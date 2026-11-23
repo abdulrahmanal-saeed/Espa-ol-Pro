@@ -1412,15 +1412,15 @@
     },
     {
      "type": "fill",
-     "es": "___ que es una buena idea.",
-     "answer": "Creo",
-     "ar": "أظنّ أنها فكرة جيدة.",
+     "es": "Yo ___ que es una buena idea.",
+     "answer": "creo",
+     "ar": "أنا أظنّ أنها فكرة جيدة.",
      "options": [
-      "Creo",
-      "Creer",
-      "Cree"
+      "creo",
+      "creer",
+      "cree"
      ],
-     "explain_ar": "مع yo: creo que…"
+     "explain_ar": "مع yo: creo que… (cree مع él / usted)."
     },
     {
      "type": "fill",
@@ -1780,10 +1780,10 @@
      "ar": "أوصي بهذا العرض، مع أنه أغلى.",
      "options": [
       "aunque",
-      "porque",
-      "pero que"
+      "para",
+      "de"
      ],
-     "explain_ar": "aunque = مع أنّ."
+     "explain_ar": "aunque = مع أنّ، ويربط جملتين."
     },
     {
      "type": "match",
