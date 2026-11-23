@@ -49,7 +49,8 @@ Pre-A1 is a preparatory stage, not a DELE level.
 | | **A2 level assessment** (25 questions, all five units) | ✅ available (content 1.10.0) |
 | **B1** | Opinion and reasoning (5 lessons, connectors and the conditional) | ✅ available (content 1.11.0) |
 | | Narration and experiences (6 lessons, imperfecto vs indefinido, with a longer reading and listening lesson) | ✅ available (content 1.13.0) |
-| | Solving client problems · Professional correspondence | planned |
+| | Solving client problems (6 lessons, first subjunctive, with a longer reading and listening lesson) | ✅ available (content 1.14.0) |
+| | Professional correspondence | planned |
 | **B2** | Meetings · Presentations · Job interviews · Discovery and negotiation · Explaining technical services | planned |
 | **C1** | Persuasion · Precise professional writing · Advanced listening and accents | planned |
 | **C2** | Precision and nuance · Professional and academic discourse | planned |
@@ -130,6 +131,12 @@ no lessons and are never counted as progress.
 | 66 | My professional experience | 8 | mi primer trabajo, el puesto, me encargaba de…, hace dos años, durante, al principio, con el tiempo, aprendí mucho |
 | 67 | A problem in the project | 8 | resulta que, tuvimos que, conseguimos, el retraso, a tiempo, por suerte / por desgracia, hubo vs había |
 | 68 | Reading and listening: a success story | 7 | a ~150-word text with four questions and a 12-turn listening; el reto, el éxito, superar, los resultados, mejorar, orgulloso, contento |
+| 69 | I want you to… (B1-U3) | 8 | quiero / necesito / le pido que + regular subjunctive (revise, envíe, llame, conteste); same subject → infinitive; hoy mismo |
+| 70 | I hope that… | 8 | irregular subjunctive (tenga, haga, pueda, sea, esté, vaya); espero que, ojalá |
+| 71 | I recommend that… | 8 | le recomiendo / te aconsejo que; es mejor / importante / necesario que; no creo que + subjunctive (promised in B1-U1) |
+| 72 | A client's complaint | 8 | la queja, molesto, lamento que (+ subjunctive), le prometo que (+ indicative), no se preocupe, el reembolso |
+| 73 | Proposing solutions | 8 | le propongo que (+ subjunctive), ¿Qué le parece si…? (+ indicative), en lugar de, la alternativa, a cambio, el descuento, sin coste |
+| 74 | Reading and listening: a customer-service case | 7 | a ~170-word complaint and answer with four questions and a 12-turn call; la garantía, el envío, dañado, por escrito, reemplazar |
 
 A1 is complete in content: 23 lessons over 6 units, closed by six unit
 checkpoints and the A1 level assessment `lvl_a1`, which opens only when every
@@ -205,9 +212,17 @@ questions, and a 12-turn dialogue. It is also the first content with
 Spanish-first instructions. The verb reference now shows the imperfect of
 every verb.
 
-Totals (content 1.13.0, from the validator): 68 lessons, 574 items,
-1930 activities (1212 graded), 76 grammar notes, 38 dialogues, 18 assessments,
-61 verbs.
+B1-U3 (lessons 69–74, content 1.14.0) introduces the present subjunctive
+through its triggers: requests, wishes, advice, feelings, proposals and a
+negated opinion. It keeps the indicative where Spanish needs it:
+¿Qué le parece si…? and le prometo que…. It applies these to a customer
+complaint and to proposing solutions. Lesson 74 is the unit's longer reading
+and listening lesson. The verb reference is now complete: every verb shows
+the present, past, imperfect, conditional and present subjunctive.
+
+Totals (content 1.14.0, from the validator): 74 lessons, 621 items,
+2106 activities (1329 graded), 82 grammar notes, 42 dialogues, 19 assessments,
+68 verbs.
 
 ## Lesson shape
 
@@ -320,6 +335,16 @@ sentences) closes B1-U1.
 
 Checkpoint `chk_b1_u2` (12 questions, 3 can-dos, 5 skills, three dialogue
 sentences, two Spanish-first prompts) closes B1-U2.
+
+| Id | Level | Built on | Situation |
+|---|---|---|---|
+| `dlg_b1_pedido_urgente` | B1 | lessons 69–70 | Asking a supplier to ship an urgent order today |
+| `dlg_b1_soporte` | B1 | lesson 71 | Technical support gives advice on a login problem |
+| `dlg_b1_queja` | B1 | lessons 72–73 | A complaint by phone: empathy, two alternatives, a promise |
+| `dlg_b1_impresora` | B1 | lesson 74 | Longer listening (12 turns): a damaged printer replaced free of charge |
+
+Checkpoint `chk_b1_u3` (12 questions, 3 can-dos, 5 skills, three dialogue
+sentences, two Spanish-first prompts) closes B1-U3.
 
 Checkpoints `chk_a1_u4` and `chk_a1_u5` close the food and travel units.
 Checkpoints `chk_a1_u2` and `chk_a1_u3` (10 questions, 3 can-dos each) close

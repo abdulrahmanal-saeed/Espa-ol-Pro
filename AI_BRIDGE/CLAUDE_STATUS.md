@@ -3,6 +3,110 @@
 owner: Claude Code
 implementer: Claude Code
 handoff_status: READY_FOR_REVIEW
+handoff_id: PHASE4-005
+updated_at_utc: 2026-11-23T15:30:00Z
+review_requested_for_sha: 631c2fc (B1-U3 and the REVIEW-020 P3 fix; on top of PR #19 head `9a2f5ec`)
+branch: claude/hopeful-knuth-wbn3n3
+pull_request: https://github.com/abdulrahmanal-saeed/Espa-ol-Pro/pull/19 (the owner asked to keep stacking B1 units on #19)
+last_review_acknowledged: REVIEW-020
+project_status: B1_U1_MERGED__B1_U2_U3_IN_PR19__DEVICE_AND_NATIVE_QA_PENDING
+
+## REVIEW-020 acknowledged
+
+REVIEW-020 approved B1-U2 (`a442f82`), with green CI on `9a2f5ec`
+(465 tests). It raised two P3s:
+
+- **Aspect cues (fixed).** `g_b1_past_contrast` no longer calls
+  «de repente» and «hace + مدة» fixed rules. They are now "common patterns
+  (context always decides)", and the note includes a habitual
+  counter-example: «de repente, sonaba el teléfono». A regression test checks
+  the wording.
+- **Reading repeated on each screen (deferred, as you advised).** I'll
+  propose a shared-passage screen only after a device test.
+
+## B1-U3 «حل المشكلات مع العملاء» (content 1.14.0)
+
+| Lesson | Items | Focus |
+|---|---|---|
+| `b1_u3_l1` Quiero que… | 8 | quiero / necesito / le pido que + regular subjunctive (revise, envíe, llame, conteste); same subject → infinitive; hoy mismo |
+| `b1_u3_l2` Espero que… | 8 | irregular subjunctive (tenga, haga, pueda, sea, esté, vaya); espero que, ojalá |
+| `b1_u3_l3` Le recomiendo que… | 8 | recomendar / aconsejar que; es mejor / importante / necesario que; **no creo que** (promised in B1-U1) |
+| `b1_u3_l4` La queja de un cliente | 8 | la queja, molesto, lamento que (+ subjunctive), le prometo que (+ indicative), no se preocupe, el reembolso |
+| `b1_u3_l5` Proponer soluciones | 8 | le propongo que (+ subjunctive), ¿Qué le parece si…? (+ indicative), en lugar de + infinitive, la alternativa, el descuento, sin coste |
+| `b1_u3_l6` Lectura y escucha | 7 | a ~170-word complaint and answer with four questions, and the 12-turn `dlg_b1_impresora` |
+
+**Every lesson:**
+
+- all ten activity types;
+- `explain_ar` on every fill and grammar choice;
+- a `work` item;
+- the prerequisite chain continues from `b1_u2_l6`;
+- two FSRS cards per item, tested in the app.
+
+**Distractors.** The indicative is offered next to the subjunctive only
+after a trigger that makes the subjunctive obligatory: quiero que,
+necesito que, le pido que, espero que, no creo que, lamento que,
+le propongo que. The opposite traps are tested too: si (+ indicative),
+le prometo que (+ indicative), en lugar de (+ infinitive).
+
+**IDs.** `revise`, `envie` and `llame` already existed as the past forms
+(revisé, envié, llamé), so the subjunctive items are `revise_subj`,
+`envie_subj` and `llame_subj`.
+
+**Dialogues.** Four, all at 100 % known words. The estimator first flagged
+seven forms; they are now taught in item examples.
+
+**Checkpoint `chk_b1_u3`:**
+
+- 12 questions, 3 can-dos covering all six lessons;
+- five skills;
+- three dialogue sentences;
+- two Spanish-first prompts;
+- typed answers graded with strict accents (esté, not este).
+
+**Verbs (68):**
+
+- the present subjunctive for every verb: 26 irregular verbs by hand, the
+  rest machine-checked;
+- the conditional completed for the 41 verbs that lacked it (saldría and
+  propondría by hand);
+- new: contestar, reiniciar, aconsejar, lamentar, prometer, reemplazar
+  and probar (pruebe / probemos);
+- every verb now has all five tenses (tested).
+
+## Verification (local, Flutter 3.50.0)
+
+| Check | Result |
+|---|---|
+| format / analyze | clean |
+| validator | OK — 74 lessons, 621 items, 2106 activities (1329 graded), 82 grammar notes, 42 dialogues (286 turns, 216 questions), 19 assessments (235 questions), 68 verbs |
+| `flutter test` | **477 passed** (465 + 11 in `b1_u3_customers_test` + 1 REVIEW-020 regression) |
+| screenshots | regenerated (content version) |
+
+## Questions for ChatGPT
+
+1. «lamento que el pedido llegue tarde» uses the present subjunctive for a
+   delay that already happened. «haya llegado» is more precise, but the
+   perfect subjunctive has not been taught. Is the present acceptable at
+   this stage, or should the example be rephrased?
+2. «Quiero que usted revise…» is formal and direct. Should lesson 69 also
+   teach «¿Podría…?» as the softer option in the same context?
+
+## Next step
+
+1. B1-U4 «المراسلات المهنية» (professional correspondence).
+2. Then `lvl_b1` with the B2 gate, and the longer reading and listening
+   lesson for B1-U1.
+
+I will not merge without the owner.
+
+---
+
+# Previous handoff (PHASE4-004, B1-U2 on PR #19)
+
+owner: Claude Code
+implementer: Claude Code
+handoff_status: READY_FOR_REVIEW
 handoff_id: PHASE4-004
 updated_at_utc: 2026-11-23T13:00:00Z
 review_requested_for_sha: a442f82 (B1-U2 application code and content; built on PR #19 head `c941190`)

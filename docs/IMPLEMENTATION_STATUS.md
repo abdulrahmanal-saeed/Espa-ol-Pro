@@ -204,6 +204,9 @@ detect it.
 | B1-U2 (content 1.13.0): 6 lessons (63–68) after `b1_u1_l5` — imperfect habits, ser/ir/ver, background vs event, career story, project incident, and lesson 68 with a ~150-word reading (4 questions) and a 12-turn listening; 47 items, 6 grammar notes | `b1_u2_narration_test` (every lesson completed in the app, 2 FSRS cards per item) |
 | 4 dialogues at 100 % known words; checkpoint `chk_b1_u2` (12 questions, 5 skills, strict accents, shuffled); first `prompt_es` content (lessons, checkpoint, dialogues), never below B1 | `b1_u2_narration_test` |
 | Imperfect for all 61 verbs (ser, ir, ver by hand; the rest machine-checked); library shows it; evaluator diagnoses imperfect endings as a form mistake | `b1_u2_narration_test` |
+| B1-U3 (content 1.14.0): 6 lessons (69–74) after `b1_u2_l6` — subjunctive for requests, wishes, advice, negated opinion, complaint and proposals; the indicative kept after «¿Qué le parece si…?» and «le prometo que…»; lesson 74 longer reading (4 questions) and 12-turn listening; 46 items, 6 grammar notes | `b1_u3_customers_test` (every lesson completed in the app, 2 FSRS cards per item) |
+| 4 dialogues at 100 % known words; checkpoint `chk_b1_u3` (12 questions, strict accents, Spanish-first prompts) | `b1_u3_customers_test` |
+| Verb reference complete: every verb (68) has present, past, imperfect, conditional and present subjunctive; irregular forms by hand, regular ones machine-checked | `b1_u3_customers_test`, validator |
 | No subjunctive triggers or imperfect forms in B1-U1 (they arrive in B1-U3 / B1-U2); near-synonym groups keep valid answers out of the distractors | `b1_u1_opinion_test` |
 
 ## Android build and runtime
@@ -237,7 +240,7 @@ detect it.
   pronunciation assessment. Listen-and-repeat is self-practice and never scored.
 - CEFR level estimates and the A1 level assessment (unit checkpoints exist; they are practice evidence, not certification).
 - Verb conjugation reference, stories.
-- Interview coach, work missions, B1-U3, B1-U4, `lvl_b1` (with the B2 gate), the longer reading and listening lesson for B1-U1, and B2–C2.
+- Interview coach, work missions, B1-U4, `lvl_b1` (with the B2 gate), the longer reading and listening lesson for B1-U1, and B2–C2.
 - Cloud sync. AI usage budget controls (nothing to budget yet).
 - Native-speaker review of content.
 
