@@ -620,10 +620,10 @@
      "skill": "writing",
      "can_do": "cd_b1_u3_complaint",
      "prompt_ar": "اكتب بالإسبانية",
-     "stimulus_ar": "يؤسفني أن يصل الطلب متأخراً.",
+     "stimulus_ar": "يؤسفني أن الطلب متأخر.",
      "accepted": [
-      "lamento que el pedido llegue tarde",
-      "lamento mucho que el pedido llegue tarde"
+      "lamento que el pedido esté retrasado",
+      "lamento mucho que el pedido esté retrasado"
      ]
     }
    ],

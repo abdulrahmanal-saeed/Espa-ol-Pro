@@ -61,11 +61,11 @@
   {
    "id": "g_b1_complaint",
    "title_ar": "التعامل مع شكوى",
-   "body_ar": "1. اسمع وأظهر التفهّم: Entiendo su situación. · Lamento que el pedido llegue tarde. (lamento que + subjuntivo)\n2. طمْئن: No se preocupe. · Le prometo que lo solucionamos hoy. (le prometo que + indicativo)\n3. اعرض حلاً (الدرس التالي).\n\nفي الشكوى نستعمل usted دائماً.",
+   "body_ar": "1. اسمع وأظهر التفهّم: Entiendo su situación. · Lamento que el pedido esté retrasado. (lamento que + subjuntivo)\n2. طمْئن: No se preocupe. · Le prometo que lo solucionamos hoy. (le prometo que + indicativo)\n3. اعرض حلاً (الدرس التالي).\n\nفي الشكوى نستعمل usted دائماً.",
    "examples": [
     {
-     "es": "Lamento que el pedido llegue tarde.",
-     "ar": "يؤسفني أن يصل الطلب متأخراً."
+     "es": "Lamento que el pedido esté retrasado.",
+     "ar": "يؤسفني أن الطلب متأخر."
     },
     {
      "es": "No se preocupe, le prometo que lo solucionamos hoy.",
@@ -153,6 +153,10 @@
       {
        "type": "grammar",
        "ar": "قارن: Quiero revisar (أنا أراجع) ≠ Quiero que usted revise (أنت تراجع)."
+      },
+      {
+       "type": "usage",
+       "ar": "مع عميل أو مدير، الطلب المباشر قد يبدو حادّاً؛ الأنعم: ¿Podría revisar el informe? (من B1-U1)."
       }
      ]
     },
@@ -186,7 +190,7 @@
     },
     {
      "id": "revise_subj",
-     "es": "revise_subj",
+     "es": "revise",
      "ar": "أن يراجع / أن تراجع (حضرتك)",
      "en": "(that) he / you review",
      "pos": "فعل",
@@ -214,7 +218,7 @@
     },
     {
      "id": "llame_subj",
-     "es": "llame_subj",
+     "es": "llame",
      "ar": "أن يتصل / أن تتصل (حضرتك)",
      "en": "(that) he / you call",
      "pos": "فعل",
@@ -341,7 +345,7 @@
      "type": "choice",
      "prompt_ar": "اختر الصيغة الصحيحة:",
      "choices": [
-      "revise_subj",
+      "revise",
       "revisa",
       "revisar"
      ],
@@ -354,10 +358,10 @@
     {
      "type": "fill",
      "es": "Necesito que usted me ___ mañana.",
-     "answer": "llame_subj",
+     "answer": "llame",
      "ar": "أحتاج أن تتصل بي غداً.",
      "options": [
-      "llame_subj",
+      "llame",
       "llama",
       "llamar"
      ],
@@ -1117,6 +1121,10 @@
        "ar": "لدى العميل شكوى."
       },
       {
+       "es": "El pedido está retrasado.",
+       "ar": "الطلب متأخر."
+      },
+      {
        "es": "Lo necesitaba el lunes, pero llegó tarde.",
        "ar": "كنتُ أحتاجه يوم الاثنين، لكنه وصل متأخراً."
       }
@@ -1152,8 +1160,8 @@
      "pos": "تعبير",
      "examples": [
       {
-       "es": "Lamento que el pedido llegue tarde.",
-       "ar": "يؤسفني أن يصل الطلب متأخراً."
+       "es": "Lamento que el pedido esté retrasado.",
+       "ar": "يؤسفني أن الطلب متأخر."
       }
      ],
      "work": true
@@ -1247,11 +1255,11 @@
     {
      "type": "note",
      "title_ar": "تفهّم ثم طمْئن",
-     "body_ar": "Lamento que + subjuntivo: Lamento que el pedido llegue tarde.\nLe prometo que + indicativo: Le prometo que lo solucionamos hoy.\nNo se preocupe. · Entiendo su situación.",
+     "body_ar": "Lamento que + subjuntivo: Lamento que el pedido esté retrasado.\nLe prometo que + indicativo: Le prometo que lo solucionamos hoy.\nNo se preocupe. · Entiendo su situación.",
      "examples": [
       {
-       "es": "Lamento que el pedido llegue tarde. No se preocupe, lo solucionamos hoy.",
-       "ar": "يؤسفني أن يصل الطلب متأخراً. لا تقلق، نحلّها اليوم."
+       "es": "Lamento que el pedido esté retrasado. No se preocupe, lo solucionamos hoy.",
+       "ar": "يؤسفني أن الطلب متأخر. لا تقلق، نحلّها اليوم."
       }
      ]
     },
@@ -1314,7 +1322,7 @@
      "answer": 0,
      "skill": "grammar",
      "choices_es": true,
-     "stimulus_es": "Lamento que el pedido ___ tarde.",
+     "stimulus_es": "El pedido sale mañana. Lamento que ___ tarde.",
      "explain_ar": "lamento que (شعور) ← subjuntivo: llego ← llegue (gu قبل e)."
     },
     {
@@ -1365,8 +1373,8 @@
     },
     {
      "type": "dictation",
-     "es": "Lamento que el pedido llegue tarde. Entiendo su situación.",
-     "ar": "يؤسفني أن يصل الطلب متأخراً. أتفهّم وضعك."
+     "es": "Lamento que el pedido esté retrasado. Entiendo su situación.",
+     "ar": "يؤسفني أن الطلب متأخر. أتفهّم وضعك."
     },
     {
      "type": "choice",
@@ -1398,17 +1406,17 @@
     },
     {
      "type": "respond",
-     "prompt_ar": "ردّ على شكوى: «يؤسفني أن يصل الطلب متأخراً».",
+     "prompt_ar": "ردّ على شكوى: «يؤسفني أن الطلب متأخر».",
      "accepted": [
-      "Lamento que el pedido llegue tarde.",
-      "Lamento mucho que el pedido llegue tarde."
+      "Lamento que el pedido esté retrasado.",
+      "Lamento mucho que el pedido esté retrasado."
      ],
-     "audio_es": "Lamento que el pedido llegue tarde."
+     "audio_es": "Lamento que el pedido esté retrasado."
     },
     {
      "type": "speak",
-     "es": "Entiendo su situación. Lamento que el pedido llegue tarde. Le prometo que lo solucionamos hoy.",
-     "ar": "أتفهّم وضعك. يؤسفني أن يصل الطلب متأخراً. أعدك بأننا نحلّها اليوم."
+     "es": "Entiendo su situación. Lamento que el pedido esté retrasado. Le prometo que lo solucionamos hoy.",
+     "ar": "أتفهّم وضعك. يؤسفني أن الطلب متأخر. أعدك بأننا نحلّها اليوم."
     }
    ]
   },

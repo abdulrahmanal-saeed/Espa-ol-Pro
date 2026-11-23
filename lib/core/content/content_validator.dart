@@ -331,11 +331,97 @@ class ContentValidator {
     }
     _validateLevelGates(pack, err);
     _validateLevelPolicies(pack, err);
+    _validateNoInternalIds(pack, err);
     _validateDialogues(pack, sourceIds, grammarIds, err);
     _validateAssessments(pack, sourceIds, err);
     _validateVerbs(pack, err);
     _validateFinalStressWords(pack, err);
     return issues;
+  }
+
+  /// Learner-facing Spanish never contains an underscore: an id such as
+  /// `revise_subj` leaking into `es`, an answer or an option would be shown,
+  /// spoken and graded as Spanish (REVIEW-021 P2). The fill blank `___` is
+  /// the only exception.
+  void _validateNoInternalIds(
+    ContentPack pack,
+    void Function(String, String) err,
+  ) {
+    void check(String where, Object? text) {
+      if (text is String && text.replaceAll('___', '').contains('_')) {
+        err(where, 'Spanish text "$text" contains "_" (an internal id?)');
+      }
+    }
+
+    void checkAll(String where, Object? list) {
+      for (final t in list as List? ?? const []) {
+        check(where, t);
+      }
+    }
+
+    for (final l in pack.orderedLessons) {
+      for (final i in l.items) {
+        check('item:${i.id}', i.es);
+        checkAll('item:${i.id}', i.alt);
+        for (final e in i.examples) {
+          check('item:${i.id}', e.es);
+        }
+      }
+      for (final a in l.activities) {
+        final d = a.data;
+        final w = 'activity:${a.id}';
+        for (final k in [
+          'es',
+          'answer',
+          'stimulus_es',
+          'audio_es',
+          'prompt_es',
+        ]) {
+          check(w, d[k]);
+        }
+        checkAll(w, d['alt']);
+        checkAll(w, d['options']);
+        checkAll(w, d['accepted']);
+        if (d['choices_es'] as bool? ?? true) checkAll(w, d['choices']);
+        for (final e in d['examples'] as List? ?? const []) {
+          check(w, (e as Map)['es']);
+        }
+      }
+    }
+    for (final u in pack.levels.expand((l) => l.units)) {
+      for (final g in u.grammar) {
+        for (final e in g.examples) {
+          check('grammar:${g.id}', e.es);
+        }
+      }
+    }
+    for (final d in pack.dialogues) {
+      for (final t in d.turns) {
+        check('dialogue:${d.id}/${t.id}', t.es);
+      }
+      for (final q in d.questions) {
+        if (q.choicesEs) checkAll('dialogue:${d.id}/${q.id}', q.choices);
+        check('dialogue:${d.id}/${q.id}', q.promptEs);
+      }
+    }
+    for (final a in pack.assessments) {
+      for (final q in a.questions) {
+        final w = 'assessment:${a.id}/${q.id}';
+        check(w, q.stimulusEs);
+        check(w, q.audioEs);
+        check(w, q.promptEs);
+        checkAll(w, q.accepted);
+        if (q.choicesEs) checkAll(w, q.choices);
+      }
+    }
+    for (final v in pack.verbs) {
+      for (final f in v.allForms) {
+        check('verb:${v.id}', f);
+      }
+      for (final e in v.examples) {
+        check('verb:${v.id}', e.es);
+      }
+    }
   }
 
   /// A Spanish instruction: only where its level allows it, Spanish only,

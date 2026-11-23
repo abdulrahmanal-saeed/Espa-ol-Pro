@@ -1492,16 +1492,16 @@
     {
      "id": "dlg_b1_queja.t1",
      "speaker": "gil",
-     "es": "Buenos días. Tengo una queja: el pedido llegó tarde.",
-     "ar": "صباح الخير. عندي شكوى: الطلب وصل متأخراً.",
-     "en": "Good morning. I have a complaint: the order arrived late."
+     "es": "Buenos días. Tengo una queja: el pedido está retrasado.",
+     "ar": "صباح الخير. عندي شكوى: الطلب متأخر.",
+     "en": "Good morning. I have a complaint: the order is delayed."
     },
     {
      "id": "dlg_b1_queja.t2",
      "speaker": "ana",
-     "es": "Lamento que el pedido llegue tarde. Entiendo su situación.",
-     "ar": "يؤسفني أن يصل الطلب متأخراً. أتفهّم وضعك.",
-     "en": "I'm sorry the order arrived late. I understand your situation."
+     "es": "Lamento que el pedido esté retrasado. Entiendo su situación.",
+     "ar": "يؤسفني أن الطلب متأخر. أتفهّم وضعك.",
+     "en": "I'm sorry the order is delayed. I understand your situation."
     },
     {
      "id": "dlg_b1_queja.t3",

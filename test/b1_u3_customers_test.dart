@@ -1,5 +1,9 @@
+import 'dart:convert';
+import 'dart:io';
+
 import 'package:espanol_pro/core/assessment/assessment_engine.dart';
 import 'package:espanol_pro/core/assessment/assessment_repository.dart';
+import 'package:espanol_pro/core/content/content_parser.dart';
 import 'package:espanol_pro/core/content/content_validator.dart';
 import 'package:espanol_pro/core/content/models.dart';
 import 'package:espanol_pro/core/learning/answer_evaluator.dart';
@@ -117,6 +121,87 @@ void main() {
               a.data['answer'] == 'solucionamos',
         ),
         isTrue,
+      );
+    });
+  });
+
+  group('REVIEW-021', () {
+    test('P2: no internal id reaches the learner as Spanish', () {
+      // The items keep distinct ids but teach the real words.
+      expect(pack.item('revise_subj')!.es, 'revise');
+      expect(pack.item('llame_subj')!.es, 'llame');
+      expect(pack.item('envie_subj')!.es, 'envíe');
+      // Every exercise built from B1-U3: what is shown, spoken, offered and
+      // graded is free of ids.
+      final builder = ExerciseBuilder(pack);
+      final texts = <String, String>{};
+      for (final l in unit().lessons) {
+        for (final step in builder.buildLesson(l)) {
+          switch (step) {
+            case ChoiceExercise e:
+              texts['${e.id} expected'] = e.expected;
+              if (e.optionsAreSpanish) {
+                for (final o in e.options) {
+                  texts['${e.id} option $o'] = o;
+                }
+              }
+              if (e.audioEs != null) texts['${e.id} audio'] = e.audioEs!;
+            case TypeExercise e:
+              texts['${e.id} expected'] = e.expected;
+              for (final a in e.accepted) {
+                texts['${e.id} accepted $a'] = a;
+              }
+            case OrderExercise e:
+              texts['${e.id} expected'] = e.expected;
+            case _:
+              break;
+          }
+        }
+      }
+      for (final e in texts.entries) {
+        expect(e.value.contains('_'), isFalse, reason: e.key);
+      }
+    });
+
+    test('P2: the validator rejects an id leaking into Spanish', () async {
+      final broken = await parseContentPack((path) async {
+        final text = await File('$contentDir/$path').readAsString();
+        if (path != 'units/b1_u3.json') return text;
+        final doc = jsonDecode(text) as Map<String, dynamic>;
+        final l1 = (doc['lessons'] as List).cast<Map<String, dynamic>>().first;
+        (l1['items'] as List).cast<Map<String, dynamic>>().firstWhere(
+          (i) => i['id'] == 'revise_subj',
+        )['es'] = 'revise_subj';
+        return jsonEncode(doc);
+      });
+      expect(
+        ContentValidator().validate(broken).map((i) => '$i'),
+        contains(contains('"revise_subj" contains "_"')),
+      );
+    });
+
+    test('P3: the complaint models an ongoing delay, and the softer '
+        '«¿Podría…?» is pointed out', () {
+      final note = unit().grammar.firstWhere((g) => g.id == 'g_b1_complaint');
+      expect(
+        note.examples.map((e) => e.es),
+        contains('Lamento que el pedido esté retrasado.'),
+      );
+      final texts = [
+        for (final l in unit().lessons)
+          for (final a in l.activities)
+            for (final k in ['es', 'stimulus_es', 'audio_es'])
+              if (a.data[k] is String) a.data[k] as String,
+        for (final d in pack.dialogues.where((d) => d.unitId == 'b1_u3'))
+          for (final t in d.turns) t.es,
+      ];
+      expect(
+        texts.where((t) => t.contains('Lamento que el pedido llegue tarde')),
+        isEmpty,
+      );
+      expect(
+        pack.item('quiero_que')!.connections.map((c) => c.noteAr).join(),
+        contains('¿Podría revisar'),
       );
     });
   });
@@ -309,7 +394,7 @@ void main() {
       final wrong = gradeAssessment(chk, {
         for (final q in chk.questions) q.id: q.correctAnswer,
         'chk_b1_u3.q3': 'espero que todo este bien',
-        'chk_b1_u3.q12': 'lamento que el pedido llega tarde',
+        'chk_b1_u3.q12': 'lamento que el pedido es retrasado',
       }, strictAccents: true);
       expect(
         wrong.where((g) => !g.isCorrect).map((g) => g.question.id).toSet(),
