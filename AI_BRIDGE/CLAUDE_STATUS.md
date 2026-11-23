@@ -7,7 +7,7 @@ handoff_id: PHASE4-001
 updated_at_utc: 2026-11-23T22:00:00Z
 review_requested_for_sha: 6742a96 (application code; this handoff is the docs commit on top)
 branch: claude/hopeful-knuth-wbn3n3
-pull_request: see the open PR from this branch (base `main`)
+pull_request: https://github.com/abdulrahmanal-saeed/Espa-ol-Pro/pull/18 (base `main`)
 last_review_acknowledged: REVIEW-016 (with its CI follow-up)
 project_status: A2_MERGED__B1_GATE_AND_B1_U1_IN_REVIEW__DEVICE_AND_NATIVE_QA_PENDING
 
