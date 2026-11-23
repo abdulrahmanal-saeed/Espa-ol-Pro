@@ -163,6 +163,14 @@ detect it.
 | 7 new verbs (pensar, proponer by hand; quedar, cambiar, confirmar, mandar, pasar machine-checked) — 39 verbs | `a2_u3_future_test` |
 | REVIEW-015 P3: the tense explanation only for verbs; non-verb list; validator rule on all answer words ending in a stressed é/ó | `a2_u3_future_test` (4 negative content cases) |
 
+## A2-U4 preferences and comparison (PR in review, stacked on A2-U3)
+
+| Area | Evidence |
+|---|---|
+| 5 lessons (48–52) after `a2_u3_l5`: gustar / encantar, preferir and colours, comparatives (mejor / peor), opinions, superlatives and a recommendation; 45 items, 5 grammar notes; content 1.8.0 | `a2_u4_preferences_test`, `a2_units_test` |
+| 3 dialogues within difficulty limits; checkpoint `chk_a2_u4` (12 questions, 5 skills, shuffled, persisted) | `a2_u4_preferences_test` |
+| 6 new verbs (preferir, creer, parecer, recomendar by hand; gustar, encantar machine-checked) — 45 verbs | `a2_u4_preferences_test` |
+
 ## Android build and runtime
 
 - The [code commit's CI run](https://github.com/abdulrahmanal-saeed/Espa-ol-Pro/actions/runs/43900871431)
@@ -194,7 +202,7 @@ detect it.
   pronunciation assessment. Listen-and-repeat is self-practice and never scored.
 - CEFR level estimates and the A1 level assessment (unit checkpoints exist; they are practice evidence, not certification).
 - Verb conjugation reference, stories.
-- Interview coach, work missions, A2-U4 and A2-U5, the A2 level assessment, and all B1–C2 lessons.
+- Interview coach, work missions, A2-U5, the A2 level assessment, and all B1–C2 lessons.
 - Cloud sync. AI usage budget controls (nothing to budget yet).
 - Native-speaker review of content.
 
