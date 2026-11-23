@@ -3,15 +3,15 @@
 owner: ChatGPT
 review_status: BLOCKED_PENDING_CI
 review_id: REVIEW-016
-updated_at_utc: 2026-11-23T08:22:03.989Z
+updated_at_utc: 2026-11-23T08:23:51.904Z
 reviewed_pr14_head_sha: fb664aafb536644413e24c6ee3550860208e5c05
 reviewed_pr15_head_sha: 5254cf4e3da0cf19bb8d1922b776ac69b4ff6425
 reviewed_pr16_head_sha: 698de815a5968d1adfac24d8cefc253acff077a7
-reviewed_pr17_head_sha: a5c2fa4d3a883ad0d105803b35cf065d5e5fc8a8
+reviewed_pr17_head_sha: 4c2f3b56d7060ae7bcebaea8123430a1879c88e9
 reviewed_pull_requests: https://github.com/abdulrahmanal-saeed/Espa-ol-Pro/pull/14 ; https://github.com/abdulrahmanal-saeed/Espa-ol-Pro/pull/15 ; https://github.com/abdulrahmanal-saeed/Espa-ol-Pro/pull/16 ; https://github.com/abdulrahmanal-saeed/Espa-ol-Pro/pull/17
 pr14_review_status: APPROVED_WITH_RELEASE_GATES
 pr15_review_status: APPROVED_WITH_RELEASE_GATES
-pr16_review_status: PENDING_EXACT_HEAD_CI
+pr16_review_status: APPROVED_WITH_RELEASE_GATES
 pr17_review_status: PENDING_EXACT_HEAD_CI
 project_acceptance: A2_CONTENT_PRESENT_IN_OPEN_STACK__NATIVE_SPANISH_AND_DEVICE_QA_PENDING
 
@@ -25,6 +25,17 @@ Independent milestone review following REVIEW-015. Read main's bridge README, pr
 - **#15 A2-U4**: Actual PR changed-path diff; `units/a2_u4.json`, linked dialogues and checkpoint, verb data and `test/a2_u4_preferences_test.dart`. Five consecutive lessons each with 9 items, 31 activities, 3 objectives, multiple guided and production exercise types; three dialogues and 12-question checkpoint. Confirmed corrections described in branch handoff include accepting `¿Qué prefieres?` as valid and narrowing ambiguous fill distractors. **Exact-head CI independently verified successful**: https://github.com/abdulrahmanal-saeed/Espa-ol-Pro/actions/runs/45135403813 — test and APK jobs passed, analyzer and validator clean, **379 tests** in log. **Decision: APPROVED_WITH_RELEASE_GATES for inspected engineering scope**.
 - **#16 A2-U5**: Actual PR changed-path diff; `units/a2_u5.json`, dialogues and checkpoint, seven added verbs, `test/a2_u5_work_test.dart`. Five consecutive lessons, each with 9 items, 31 activities, 3 objectives, typed/listening/production practice; three dialogues and 12-question checkpoint. Checked the recent correction directly at PR #16 head `698de815`: `dlg_a2_mensajes.t5` now reads `Todavía no. Te aviso esta tarde.`, not the invalid future-oriented `Te aviso cuando está listo.`; companion lesson messages now say `Te aviso en diez minutos.`. **No new confirmed P0/P1/P2 defect in inspected changed content.** Claimed local **389 tests** are not yet an exact-head GitHub CI success: run https://github.com/abdulrahmanal-saeed/Espa-ol-Pro/actions/runs/45137409490 was **in progress** at check, with test and APK jobs not completed. **Decision: PENDING_EXACT_HEAD_CI**; verify both jobs and read test count/log before engineering approval.
 - **#17 A2 level assessment**: Actual PR diff; `assessments/a2.json` contains `lvl_a2`, 25 questions, five can-dos covering every A2 lesson, five measured skills and five dialogue-linked listening prompts, without pretending to measure speaking. `test/a2_level_test.dart` verifies coverage, answer grading, choice shuffling, SQLite persistence, locked-until-completion logic and path access. Assessed the actual question text and answer choices, including meaning-accent rejection for `llegué` and `está`. **PR #17 was updated DURING this review** from head `217e3357` to current `a5c2fa4` to incorporate the missing #16 language corrections. Independently re-fetched `dlg_a2_mensajes.t5` at the **new** #17 head and confirmed the corrected `Te aviso esta tarde.` and absence of `cuando` constructions in A2-U5. Do not repeat the already resolved branch divergence issue. Prior run https://github.com/abdulrahmanal-saeed/Espa-ol-Pro/actions/runs/45137094475 at old head `217e3357` had **394 passing tests** and analyzer/validator clean but APK job **cancelled**. The new exact-head run https://github.com/abdulrahmanal-saeed/Espa-ol-Pro/actions/runs/45137637683 was still **in progress**, and the passing *old-head* tests cannot be treated as final-head CI evidence. **Decision: PENDING_EXACT_HEAD_CI**, no new confirmed P0/P1/P2 in inspected assessment source.
+
+### REVIEW-016 live follow-up — new #17 code and completed #16 CI (2026-11-23T08:23:51.904Z)
+
+This is a focused update to the same review, **not a redo of unchanged lesson content**.
+
+- **PR #16 exact-head CI now GREEN.** Run https://github.com/abdulrahmanal-saeed/Espa-ol-Pro/actions/runs/45137409490 completed **success** at unchanged head `698de815a5968d1adfac24d8cefc253acff077a7`. Independently read the test job log: `flutter analyze` clean, content v1.9.0 validated with 57 lessons, 31 dialogues, 15 assessments, 52 verbs; **389 tests passed**. The Android debug APK job also completed successfully. **PR #16 is now APPROVED_WITH_RELEASE_GATES** at that exact head, subject to earlier stacked PR merge/rebase verification and owner authorization.
+- **PR #17 advanced to a genuinely new app code SHA, head `4c2f3b56d7060ae7bcebaea8123430a1879c88e9`.** Compared with previously inspected `a5c2fa4`: only `assets/content/v1/assessments/a2.json`, `assets/content/v1/units/a2_u1.json`, and the implementer status changed. Individually re-fetched the changed JSON at the current head and confirmed Codex's identified **ambiguous distractor** has been corrected: `lvl_a2.q1` now specifies in Arabic that the learner is asking the *gentleman to sign*, retains `¿Puede firmar aquí, por favor?`, and uses `poder/podido` rather than the valid alternative `puedo`; the existing A2-U1 `Señor, ¿___ firmar aquí?` fill also now uses `puede/poder/podido`. The former `puedo` option was legitimately possible as "May I sign here?" and should not have been a forced wrong answer; the new wording and distractors resolve the ambiguity in inspected content.
+- **PR #17 already incorporates PR #16's corrected `Te aviso esta tarde` dialogue and `Te aviso en diez minutos` examples; the previously observed outdated `cuando está/cuando llego` forms are absent** on the latest #17 head.
+- **PR #17 CI is NOT yet fully green:** new exact-head run https://github.com/abdulrahmanal-saeed/Espa-ol-Pro/actions/runs/45137924949 was `in_progress` at the last check. The earlier `394 tests passed` was on a superseded head with a cancelled APK job, and therefore does not establish current-head release/build readiness. Read the full exact-head test and APK logs on completion; request a new run if cancelled again. No newly confirmed remaining P0/P1/P2 from the newly revised files.
+
+**Updated decisions:** #14 APPROVED_WITH_RELEASE_GATES; #15 APPROVED_WITH_RELEASE_GATES; **#16 APPROVED_WITH_RELEASE_GATES**; #17 PENDING_EXACT_HEAD_CI. Overall remains `BLOCKED_PENDING_CI` until #17 has successful exact-head checks. Keep Spanish and physical-device acceptance separate. The authoring/implementation handoff should be refreshed to the new #17 code SHA by the implementer.
 
 ### Findings and acceptance boundaries
 
