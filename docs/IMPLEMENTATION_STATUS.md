@@ -179,6 +179,14 @@ detect it.
 | 3 dialogues within difficulty limits (the estimator flagged a spelled-out name and three untaught forms; they were rewritten); checkpoint `chk_a2_u5` (12 questions, 5 skills, shuffled, persisted) | `a2_u5_work_test` |
 | 7 new verbs (dar, seguir, recordar, acordar by hand; adjuntar, avisar, interesar machine-checked) — 52 verbs | `a2_u5_work_test` |
 
+## A2 level assessment (PR in review, stacked on A2-U5)
+
+| Area | Evidence |
+|---|---|
+| `lvl_a2`: 25 questions, five can-dos (one per A2 unit, covering every A2 lesson), five skills, no speaking, five dialogue sentences, explanations on every grammar question; content 1.10.0 | `a2_level_test` |
+| Locked until every A2 lesson is completed; tile at the end of A2 on the path; start enabled and no-certification note shown | `a2_level_test` (widget) |
+| Options shuffled per attempt; results persist across a database reopen; a missing meaning accent (llegué, está) is wrong | `a2_level_test` |
+
 ## Android build and runtime
 
 - The [code commit's CI run](https://github.com/abdulrahmanal-saeed/Espa-ol-Pro/actions/runs/43900871431)
@@ -210,7 +218,7 @@ detect it.
   pronunciation assessment. Listen-and-repeat is self-practice and never scored.
 - CEFR level estimates and the A1 level assessment (unit checkpoints exist; they are practice evidence, not certification).
 - Verb conjugation reference, stories.
-- Interview coach, work missions, the A2 level assessment, and all B1–C2 lessons.
+- Interview coach, work missions, and all B1–C2 lessons.
 - Cloud sync. AI usage budget controls (nothing to budget yet).
 - Native-speaker review of content.
 

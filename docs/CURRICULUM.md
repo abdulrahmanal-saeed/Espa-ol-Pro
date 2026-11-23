@@ -46,7 +46,7 @@ Pre-A1 is a preparatory stage, not a DELE level.
 | | Plans and the future (5 lessons) | ✅ available (content 1.7.0) |
 | | Preferences and comparison (5 lessons) | ✅ available (content 1.8.0) |
 | | Simple work conversations (5 lessons) | ✅ available (content 1.9.0) |
-| | **A2 level assessment** | planned |
+| | **A2 level assessment** (25 questions, all five units) | ✅ available (content 1.10.0) |
 | **B1** | Opinion and reasoning · Narration · Solving client problems · Professional correspondence | planned |
 | **B2** | Meetings · Presentations · Job interviews · Discovery and negotiation · Explaining technical services | planned |
 | **C1** | Persuasion · Precise professional writing · Advanced listening and accents | planned |
@@ -148,8 +148,15 @@ communication: formal emails, quick messages in the right register, a new
 client enquiry, a follow-up that combines past, present and future, and
 closing a meeting. All five A2 units are now available.
 
-Totals (content 1.9.0, from the validator): 57 lessons, 487 items,
-1608 activities (999 graded), 65 grammar notes, 31 dialogues, 15 assessments,
+The A2 level assessment `lvl_a2` (content 1.10.0) closes A2 in the same
+format as `lvl_a1`. It has 25 questions over five can-dos, one per unit,
+and covers five skills with no speaking. Five questions play a sentence
+from each unit's dialogues. It opens only when every A2 lesson is
+completed, and its tile sits at the end of A2 on the path. Like every
+checkpoint here, it is practice evidence, not a CEFR certificate.
+
+Totals (content 1.10.0, from the validator): 57 lessons, 487 items,
+1608 activities (999 graded), 65 grammar notes, 31 dialogues, 16 assessments,
 52 verbs.
 
 ## Lesson shape
