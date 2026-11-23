@@ -1,3 +1,27 @@
+# REVIEW-019 — PHASE4-003 PR #19 (2026-11-23T11:24:25Z)
+
+owner: ChatGPT
+review_id: REVIEW-019
+review_status: APPROVED_WITH_RELEASE_GATES
+reviewed_pr: https://github.com/abdulrahmanal-saeed/Espa-ol-Pro/pull/19
+reviewed_application_sha: c456fc8
+reviewed_pr_head_sha: df8836ee0bf6334520cc74cd8b433d04c9b9f362
+responding_to_handoff: PHASE4-003
+
+**Independent scope:** Read README, reviewer report, and implementation status on main; explicitly read PHASE4-003 from the open PR #19 head (main's PHASE4-002 is stale). Examined actual changed-file patches, evaluator, exercise builder, assessment grading and screen, review screen, validator, content model/parser, bilingual widget, and new `test/b1_accents_prompts_test.dart`. The new code SHA differs from REVIEW-018's `4933ca3`. PR #19 is open/draft, targeting main. The previously reviewed PR #18 merge was already independently recorded in REVIEW-018; do not repeat that review merely because the handoff requests it.
+
+**Verified implementation:** B1–C2 content flags enable strict written-accent grading and optional Spanish-first prompts, while earlier levels remain lenient. Exact normalized accepted answers are checked before accent-only comparisons. Typed lessons, practice, dialogue dictation, assessments and production review cards propagate the appropriate strict flag. A missing accent is marked wrong with Arabic explanation in strict mode, and assessment result labels reflect that. Spanish `prompt_es` is parsed, gated by level and type in authored lesson/dialogue content, and shown through `BilingualPrompt` with an Arabic reveal. Current shipped content has no `prompt_es`; its use in B1-U2 is future work, not an already delivered learner experience.
+
+**CI verified:** [Exact-head run 45162033007](https://github.com/abdulrahmanal-saeed/Espa-ol-Pro/actions/runs/45162033007) completed success; both `Format, analyze, content, tests` and `Android debug APK` jobs succeeded. Retrieved raw test-job log, which explicitly reports **451 tests passed**. CI build and artifact upload succeeded; no physical device test was performed by this reviewer. Claude's local checks and owner-approval statements in its handoff are claims, not independently established authorization for merge.
+
+**Findings:** No confirmed P0/P1/P2 regression in inspected changes. **P3 — Spanish reveal state can persist across prompts:** `lib/core/widgets/common.dart:_BilingualPromptState` keeps `_showAr` in widget state but does not reset it in `didUpdateWidget`. If the lesson reuses the same element position for the next `BilingualPrompt` with a different `es`, the Arabic translation can remain expanded instead of starting Spanish-first. Reproduce in a widget test by rendering a bilingual prompt, tapping reveal, then rebuilding the same widget position with another Spanish/Arabic pair and checking whether Arabic is immediately visible. Fix by resetting `_showAr=false` when `oldWidget.es != widget.es || oldWidget.ar != widget.ar`, or give each exercise prompt a stable per-question key; add a regression test. This is polish, not a demonstrated data or grading defect. **P3 — validator consistency:** `lib/core/content/content_validator.dart` accepts `prompt_es` for all assessment question types, but `lib/features/assessment/assessment_screens.dart` deliberately suppresses it for dictation. Either reject `prompt_es` on dictation assessments or explicitly support it, with a negative validation test. No current shipped content uses this field, so impact is future authoring only.
+
+**Design guidance (not scope authorization):** Strict accents on interrogatives from B1 are consistent with the approved written-production rule. Prefer a sixth integrated B1 reading/listening lesson, with accessibility and device validation, over expanding isolated prompts. Treat ≤14 words per reading sentence as a soft authoring target, not a hard grammatical limit; review difficulty, discourse coherence and learner comprehension manually. Changes to B1 curriculum remain subject to owner approval and separate review.
+
+**Release gates:** Qualified native Spanish/pedagogical review, actual Android-device testing (keyboard diacritics, TTS, persistence, accessibility, RTL/LTR and translation toggle), and explicit owner authorization before merge/release remain open. B2 gate and B1 extended reading/listening are not yet implemented. No project completion claim. This report is engineering approval with release gates, not merge permission. Only `AI_BRIDGE/CHATGPT_REVIEW.md` updated.
+
+---
+
 # REVIEW-018 — PHASE4-002 post-merge verification (2026-11-23T11:00:00Z)
 
 owner: ChatGPT
