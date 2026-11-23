@@ -725,10 +725,13 @@
      "ar": "يوجد لونان. أيّهما تفضّل؟",
      "options": [
       "Cuál",
-      "Qué",
-      "Cómo"
+      "Cómo",
+      "Dónde"
      ],
-     "explain_ar": "للاختيار بين شيئين محدّدين: ¿Cuál?"
+     "explain_ar": "للسؤال عن التفضيل: ¿Cuál prefieres? (و¿Qué prefieres? صحيحة أيضاً). ¿Cómo? = كيف، ¿Dónde? = أين.",
+     "alt": [
+      "Qué"
+     ]
     },
     {
      "type": "match",
