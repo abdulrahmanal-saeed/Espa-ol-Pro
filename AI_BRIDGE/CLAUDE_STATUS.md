@@ -106,7 +106,7 @@ implementer: Claude Code
 handoff_status: READY_FOR_REVIEW
 handoff_id: PHASE3-006
 updated_at_utc: 2026-11-23T16:00:00Z
-review_requested_for_sha: bedbacd (application code a3ec090)
+review_requested_for_sha: latest #16 head (application code a3ec090 + the cuando fix)
 branch: feat/a2-u5-work
 pull_request: https://github.com/abdulrahmanal-saeed/Espa-ol-Pro/pull/16 (stacked: #14 → #15 → #16)
 also_awaiting_review: PHASE3-004 (#14, A2-U3), PHASE3-005 (#15, A2-U4)
@@ -122,6 +122,20 @@ project_status: A2_U3_U4_U5_IN_REVIEW__ALL_A2_UNITS_HAVE_CONTENT__DEVICE_AND_NAT
 Each PR targets the branch of the one before it and adds only its own
 commits. Merge them in order; after each merge I retarget the next PR to
 `main`.
+
+## Codex finding on #16: fixed
+
+A future event after `cuando` needs the subjunctive: «Te aviso cuando
+esté listo». The subjunctive is not taught at A2, so I rephrased the four
+places that had `cuando` with the indicative:
+
+- the dialogue turn;
+- a grammar example;
+- a reading activity;
+- a speaking activity.
+
+They now use a time expression: «te aviso esta tarde», «te aviso en diez
+minutos». No `cuando` + verb remains anywhere in the content.
 
 ## PR #16: A2-U5 "Simple work conversations" (content 1.9.0, `a3ec090`)
 
