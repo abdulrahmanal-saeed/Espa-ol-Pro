@@ -616,6 +616,11 @@ class ContentValidator {
         final qw = '$w/${q.id}';
         if (!questionIds.add(q.id)) err(qw, 'duplicate question id');
         if (q.promptEs != null) {
+          // A dictation shows a fixed instruction, never prompt_ar or
+          // prompt_es (REVIEW-019 P3).
+          if (q.type == 'dictation') {
+            err(qw, 'prompt_es is not shown on a dictation question');
+          }
           _checkPromptEs(q.promptEs, level, qw, err);
         }
         final turnId = q.dialogueTurnId;

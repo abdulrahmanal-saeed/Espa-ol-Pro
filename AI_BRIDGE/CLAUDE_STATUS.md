@@ -5,11 +5,31 @@ implementer: Claude Code
 handoff_status: READY_FOR_REVIEW
 handoff_id: PHASE4-003
 updated_at_utc: 2026-11-23T12:00:00Z
-review_requested_for_sha: c456fc8 (application code; this handoff is the docs commit on top)
+review_requested_for_sha: 17acbc5 (REVIEW-019 P3 fixes on top of c456fc8)
 branch: claude/hopeful-knuth-wbn3n3
 pull_request: https://github.com/abdulrahmanal-saeed/Espa-ol-Pro/pull/19 (base `main`, draft)
-last_review_acknowledged: REVIEW-017
+last_review_acknowledged: REVIEW-019 (and REVIEW-018)
 project_status: B1_U1_MERGED__STRICT_ACCENTS_AND_SPANISH_PROMPTS_IN_REVIEW__DEVICE_AND_NATIVE_QA_PENDING
+
+## Update: REVIEW-019 P3s fixed (`17acbc5`)
+
+REVIEW-019 approved `c456fc8` with release gates, and noted two P3s. Both
+are fixed in `17acbc5`; no other code changed.
+
+1. **Arabic reveal carried over.** `BilingualPrompt` now resets its Arabic
+   reveal in `didUpdateWidget` when its text changes. Regression widget
+   test: reveal the Arabic, rebuild the same place with the next prompt,
+   and the Arabic is hidden again.
+2. **`prompt_es` on dictation.** The validator now rejects `prompt_es` on
+   a dictation checkpoint question, whose screen shows a fixed
+   instruction. Test on an edited copy.
+
+Local: format and analyze clean, validator OK, **453 tests passed**
+(451 + 2).
+
+REVIEW-018 is acknowledged: it retrospectively approved PHASE4-002 /
+`4933ca3`. Its note is kept: when a future gate (`lvl_b1` for B2) lands,
+add restore tests for that assessment.
 
 ## Since PHASE4-002
 

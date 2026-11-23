@@ -10,6 +10,7 @@ import 'package:espanol_pro/core/learning/answer_evaluator.dart';
 import 'package:espanol_pro/core/learning/exercises.dart';
 import 'package:espanol_pro/core/learning/progress_repository.dart';
 import 'package:espanol_pro/core/srs/review_repository.dart';
+import 'package:espanol_pro/core/widgets/common.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:fsrs/fsrs.dart' as fsrs;
 import 'package:material_ui/material_ui.dart';
@@ -257,6 +258,48 @@ void main() {
             'Por qué prefiere Marta?';
       });
       expect(unbalanced, isNotEmpty);
+    });
+
+    test('a dictation checkpoint question cannot carry prompt_es', () async {
+      final p = await packWith('assessments/b1.json', (doc) {
+        final chk = (doc['assessments'] as List)
+            .cast<Map<String, dynamic>>()
+            .firstWhere((a) => a['id'] == 'chk_b1_u1');
+        (chk['questions'] as List).cast<Map<String, dynamic>>().add({
+          'id': 'chk_b1_u1.q13',
+          'type': 'dictation',
+          'skill': 'listening',
+          'can_do': 'cd_b1_u1_opinion',
+          'audio_es': 'Pienso que es una buena idea.',
+          'prompt_es': 'Escucha y escribe.',
+        });
+      });
+      expect(
+        ContentValidator().validate(p).map((i) => '$i'),
+        contains(contains('prompt_es is not shown on a dictation question')),
+      );
+    });
+
+    testWidgets('a new prompt in the same place starts Spanish-first again '
+        '(REVIEW-019 P3)', (tester) async {
+      Widget host(String es, String ar) => MaterialApp(
+        home: Directionality(
+          textDirection: TextDirection.rtl,
+          child: Scaffold(
+            body: BilingualPrompt(ar: ar, es: es),
+          ),
+        ),
+      );
+      await tester.pumpWidget(host('¿Qué pasó?', 'ماذا حدث؟'));
+      await tester.tap(find.byKey(const ValueKey('prompt-show-ar')));
+      await tester.pumpAndSettle();
+      expect(find.text('ماذا حدث؟'), findsOneWidget);
+      // Same element position, next question.
+      await tester.pumpWidget(host('¿Dónde trabajaba?', 'أين كان يعمل؟'));
+      await tester.pumpAndSettle();
+      expect(find.text('¿Dónde trabajaba?'), findsOneWidget);
+      expect(find.text('أين كان يعمل؟'), findsNothing);
+      expect(find.byKey(const ValueKey('prompt-ar')), findsNothing);
     });
 
     testWidgets('the lesson shows the Spanish prompt first and the Arabic on '

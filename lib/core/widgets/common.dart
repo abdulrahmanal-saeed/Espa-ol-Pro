@@ -254,6 +254,16 @@ class BilingualPrompt extends StatefulWidget {
 class _BilingualPromptState extends State<BilingualPrompt> {
   bool _showAr = false;
 
+  /// A new prompt in the same place starts Spanish-first again
+  /// (REVIEW-019 P3): the reveal belongs to one prompt, not to the slot.
+  @override
+  void didUpdateWidget(BilingualPrompt oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    if (oldWidget.es != widget.es || oldWidget.ar != widget.ar) {
+      _showAr = false;
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     final es = widget.es;
