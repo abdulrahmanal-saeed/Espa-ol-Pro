@@ -45,7 +45,8 @@ Pre-A1 is a preparatory stage, not a DELE level.
 | | The past — what happened? (5 lessons, pretérito indefinido) | ✅ available (content 1.6.0) |
 | | Plans and the future (5 lessons) | ✅ available (content 1.7.0) |
 | | Preferences and comparison (5 lessons) | ✅ available (content 1.8.0) |
-| | Simple work conversations | planned |
+| | Simple work conversations (5 lessons) | ✅ available (content 1.9.0) |
+| | **A2 level assessment** | planned |
 | **B1** | Opinion and reasoning · Narration · Solving client problems · Professional correspondence | planned |
 | **B2** | Meetings · Presentations · Job interviews · Discovery and negotiation · Explaining technical services | planned |
 | **C1** | Persuasion · Precise professional writing · Advanced listening and accents | planned |
@@ -111,6 +112,11 @@ no lessons and are never counted as progress.
 | 50 | Faster, cheaper | 9 | más / menos … que, tan … como; mejor, peor; rápido, lento, grande, pequeño |
 | 51 | In my opinion | 9 | creo que, en mi opinión, me parece; agreeing and disagreeing politely; la ventaja |
 | 52 | Two offers | 9 | la oferta, el proveedor, la calidad; el más barato, la mejor opción; recomiendo… aunque… |
+| 53 | A formal email (A2-U5) | 9 | Estimado/a…; le escribo para…; adjunto…; quedo a la espera de su respuesta; un saludo |
+| 54 | Quick messages | 9 | tú vs usted in messages; ¿Puedes…?, perdona, llego tarde, te aviso, ya está, sin problema |
+| 55 | A new client | 9 | me interesa…; ¿Me da su…?; el correo electrónico; ¿Cómo se escribe?; le paso con… |
+| 56 | The follow-up | 9 | como hablamos…; ¿Pudo…?; le recuerdo que…; pendiente; el próximo paso — past, present and future together |
+| 57 | Closing the meeting | 9 | en resumen, acordamos, por último, entonces; gracias por su tiempo; seguimos en contacto |
 
 A1 is complete in content: 23 lessons over 6 units, closed by six unit
 checkpoints and the A1 level assessment `lvl_a1`, which opens only when every
@@ -137,9 +143,14 @@ A2-U4 (lessons 48–52, content 1.8.0) covers likes (gustar), choosing
 (preferir), comparison, polite opinions, and a recommendation between two
 supplier offers.
 
-Totals (content 1.8.0, from the validator): 52 lessons, 442 items,
-1453 activities (899 graded), 60 grammar notes, 28 dialogues, 14 assessments,
-45 verbs.
+A2-U5 (lessons 53–57, content 1.9.0) closes A2 with written and spoken work
+communication: formal emails, quick messages in the right register, a new
+client enquiry, a follow-up that combines past, present and future, and
+closing a meeting. All five A2 units are now available.
+
+Totals (content 1.9.0, from the validator): 57 lessons, 487 items,
+1608 activities (999 graded), 65 grammar notes, 31 dialogues, 15 assessments,
+52 verbs.
 
 ## Lesson shape
 
@@ -224,6 +235,15 @@ sentences) closes A2-U3.
 
 Checkpoint `chk_a2_u4` (12 questions, 3 can-dos, 5 skills, three dialogue
 sentences) closes A2-U4.
+
+| Id | Level | Built on | Situation |
+|---|---|---|---|
+| `dlg_a2_mensajes` | A2 | lessons 53–54 | Voice messages between colleagues before a meeting |
+| `dlg_a2_cliente_nuevo` | A2 | lesson 55 | A prospective client calls about a service |
+| `dlg_a2_seguimiento` | A2 | lessons 56–57 | Following up a proposal and closing the meeting |
+
+Checkpoint `chk_a2_u5` (12 questions, 3 can-dos, 5 skills, three dialogue
+sentences) closes A2-U5.
 
 Checkpoints `chk_a1_u4` and `chk_a1_u5` close the food and travel units.
 Checkpoints `chk_a1_u2` and `chk_a1_u3` (10 questions, 3 can-dos each) close
