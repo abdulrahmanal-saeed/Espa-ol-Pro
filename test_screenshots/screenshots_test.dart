@@ -221,5 +221,41 @@ void main() {
     await tester.tapKey('verb-tener');
     await shot(tester, '23_verb_reference');
     await app.dispose(tester);
+
+    // The B1 gate: every A2 lesson done, lvl_a2 not passed yet.
+    app = TestApp(pack);
+    final gateRepo = ProgressRepository(
+      app.db,
+      ReviewRepository(app.db, clock: app.clock.call, enableFuzzing: false),
+      clock: app.clock.call,
+    );
+    for (final l in pack.orderedLessons.takeWhile((l) => l.levelId != 'b1')) {
+      await gateRepo.completeLesson(
+        l,
+        score: 1,
+        seconds: 60,
+        contentVersion: pack.version,
+      );
+    }
+    await app.pump(tester, location: '/lesson/b1_u1_l1');
+    await tester.scrollUntilVisible(
+      find.byKey(const ValueKey('level-gate-b1')),
+      300,
+      scrollable: find.byType(Scrollable).first,
+    );
+    await shot(tester, '24_b1_locked_lesson');
+    final lvl = pack.levelAssessmentFor('a2')!;
+    final passed = await AssessmentRepository(app.db, clock: app.clock.call)
+        .submit(
+          assessment: lvl,
+          graded: gradeAssessment(lvl, {
+            for (final q in lvl.questions) q.id: q.correctAnswer,
+          }),
+          startedAt: app.clock(),
+          contentVersion: pack.version,
+        );
+    await app.pump(tester, location: '/assessment/lvl_a2/result/$passed');
+    await shot(tester, '25_b1_opened_result');
+    await app.dispose(tester);
   });
 }

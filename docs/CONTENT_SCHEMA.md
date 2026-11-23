@@ -18,11 +18,26 @@ units/<unit_id>.json     grammar notes + lessons of one *available* unit
     "id": "pre_a1|a1|a2|b1|b2|c1|c2",       // exactly these, in this order
     "code": "A1", "title_ar", "description_ar", "can_do_ar": ["…"],
     "preparatory": false,                   // true only for pre_a1
+    "requires_pass": "lvl_a2",              // optional (content ≥ 1.11.0)
     "units": [{ "id", "title_ar", "description_ar", "objectives_ar": ["…"],
                 "status": "available|planned" }]
   }]
 }
 ```
+
+`requires_pass` names the level assessment of an EARLIER level that must be
+passed once before any lesson of this level opens (B1 → `lvl_a2`). An
+attempt opens the level only when it is **complete** and passes:
+
+- complete: it answers exactly the questions of the assessment at the
+  attempt's version (the current one, or one listed in `retired_versions`),
+  once each, with the defined can-do on every answer;
+- passes: every can-do is met (`CanDoEvidence`, threshold 0.75).
+
+The gate is derived from stored attempts: no extra learner state. Restore
+rejects a backup whose attempt at a gating assessment (known version) is
+partial, before anything is deleted (REVIEW-017 P2). Validation: the id is
+an assessment, of kind `level`, of an earlier level.
 
 ## units/<unit_id>.json
 
@@ -183,6 +198,19 @@ Optional on any question:
 Changing a checkpoint's questions requires bumping its `version`; results
 taken against an earlier version are shown as recorded, with a note.
 
+A level assessment named by `requires_pass` must also keep its old question
+sets, so a complete pass at an older version keeps the level open:
+
+```jsonc
+"version": 2,
+"retired_versions": [
+  { "version": 1, "questions": { "lvl_a2.q1": "cd_lvl_a2_services", … } }
+]
+```
+
+Validation: each retired version is ≥ 1 and below `version`, with at least
+one question, and question and can-do ids are not empty.
+
 Validation: unique ids; `version ≥ 1`; title and intro present; known source;
 a `unit` checkpoint names an available unit of its level, one per unit; a
 `level` assessment names no unit; each can-do has Arabic text, lessons inside
@@ -217,6 +245,25 @@ Content ≥ 1.6.0 may add the pretérito indefinido:
 Both keys are optional, so older files keep loading. When `preterite` is
 given, all six persons are required. A regular past must equal the rules,
 including the yo spelling changes (-car → qué, -gar → gué, -zar → cé).
+
+Content ≥ 1.11.0 may add the B1 tenses, each optional and complete when
+given, each with a `<tense>_regular` override that defaults to `regular`:
+
+```jsonc
+  "imperfect":   { "yo": "hablaba", … },   // -aba… / -ía…
+  "conditional": { "yo": "hablaría", … },  // infinitive + -ía…
+  "subjunctive": { "yo": "hable", … },     // swapped vowel; -car → que,
+                                           // -gar → gue, -zar → ce, -ger → ja
+  "conditional_regular": true              // e.g. ser: irregular present,
+                                           // regular conditional (sería)
+```
+
+A regular form must equal its rule exactly (`Verb.regularImperfect`,
+`regularConditional`, `regularSubjunctive`). The library shows each tense a
+verb has after the present and the past (`verb-imperfect-…`,
+`verb-conditional-…`, `verb-subjunctive-…`; `verb-form-…` and
+`verb-past-…` are unchanged). A tense is added to the file only with the
+unit that teaches it.
 
 Validation: unique ids; Arabic gloss; all six persons present, no Arabic
 script, no unknown person keys; **a regular verb's six forms must equal the

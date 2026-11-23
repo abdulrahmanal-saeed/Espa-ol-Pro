@@ -3,6 +3,428 @@
 owner: Claude Code
 implementer: Claude Code
 handoff_status: READY_FOR_REVIEW
+handoff_id: PHASE4-002
+updated_at_utc: 2026-11-23T11:00:00Z
+review_requested_for_sha: 4933ca3 (application code; this handoff is the docs commit on top)
+branch: claude/hopeful-knuth-wbn3n3
+pull_request: https://github.com/abdulrahmanal-saeed/Espa-ol-Pro/pull/18 (base `main`, draft)
+last_review_acknowledged: REVIEW-017
+project_status: B1_GATE_AND_B1_U1_IN_REVIEW__REVIEW_017_P2_FIXED__DEVICE_AND_NATIVE_QA_PENDING
+
+## REVIEW-017 acknowledged
+
+The previous code SHA was `6742a96`. Its head `5fa9f80` had green CI:
+[run 45154086857](https://github.com/abdulrahmanal-saeed/Espa-ol-Pro/actions/runs/45154086857),
+431 tests, APK artifact. REVIEW-017 found one P2 and one P3. Both are fixed
+in `4933ca3`. No other code changed.
+
+### P2: a partial attempt could open B1 (fixed)
+
+I reproduced it first. An `AttemptRecord` for `lvl_a2` with one correct
+answer made `CanDoEvidence.passed` return true, and B1 opened.
+
+**The fix: completeness before a pass.**
+
+- `Assessment.questionSet(version)` returns question id → can-do id, either
+  for the current version or for a version listed in the new optional
+  `retired_versions`. An unknown version returns null.
+- `CanDoEvidence.isComplete(a, attempt)` requires:
+  - the right assessment id;
+  - a known version;
+  - exactly that version's questions, once each;
+  - the defined can-do on every answer.
+- `CanDoEvidence.passedComplete` = `isComplete` && `passed`. Only this can
+  open a level: in `passedAssessmentIds(pack, …)` / `LevelGates.from`, and in
+  the result screen's "B1 opened" message.
+- `passed` is unchanged for can-do states, since checkpoint evidence is
+  unaffected.
+
+**Older versions stay valid.**
+
+- When `lvl_a2` changes, its old question set goes into `retired_versions`.
+  A complete pass at that version still opens B1, so no legitimate learner
+  is re-locked.
+- `lvl_a2` is version 1 and unchanged since 1.10.0, so no retired list ships
+  today.
+- The validator rule: a retired version is ≥ 1 and below the current
+  version, it is not empty, and its ids are not empty.
+
+**Restore is checked before anything is deleted.**
+
+- `BackupService` now receives the content from its provider. For an
+  attempt at an assessment named by `requires_pass`, at a known version,
+  the answer rows must match that version's question set. Otherwise the
+  whole file is rejected (`BackupException`) before the transaction, and
+  existing data is kept (tested).
+- An unknown version is kept, because it may come from a newer app. It
+  never opens a level.
+- I limited this check to gating assessments, which have only ever had
+  complete transactional attempts. Rejecting older unit-checkpoint data
+  could lose real learner data if any checkpoint was ever edited without a
+  version bump.
+- No schema change.
+
+### P3: -guar spelling (fixed in the rules)
+
+- `regularSubjunctive('averiguar')` now gives averigüe / averigüemos.
+- `regularPreterite('averiguar')` gives averigüé. The same gap existed in
+  the past-tense rule, and it is fixed too.
+- -gar is unchanged (pague).
+- No shipped verb is affected.
+
+## Regression tests added (`level_gate_test`, `verb_tenses_test`)
+
+- The reviewer's repro: one correct answer: can-do rule true, completeness
+  false, B1 locked.
+- A full pass with all five can-dos opens B1.
+- Only one complete can-do group: locked.
+- A complete attempt missing one answer: locked.
+- A duplicated answer row: locked. A relabelled can-do: locked.
+- Everything answered but one can-do below 0.75: locked.
+- An unknown version (0): locked.
+- A complete pass at a retired version opens B1. The pack is edited so
+  `lvl_a2` is at v2, with v1 retired, and the validator stays clean.
+  A partial v1 attempt stays locked, and v1 answers labelled v2 stay locked.
+- A failed retry after a pass stays open (existing test, unchanged).
+- An edited backup is rejected before anything is deleted, and the device's
+  existing answers are untouched. The edited backup keeps one answer, and
+  `maxScore` and `score` are adjusted so the generic checks pass.
+  Restored without content, it loads, but the gate still ignores it.
+- The normal backup round trip keeps B1 open (existing test, now with the
+  content).
+- `retired_versions` validator: bounds, and empty sets.
+- averigüe, averigüemos, averigüé, averiguó; pague unchanged.
+
+Normal submission, SQLite uniqueness and FSRS behaviour are unchanged. The
+existing assessment, persistence and gate-flow tests pass untouched.
+
+## Verification (local, Flutter 3.50.0)
+
+| Check | Result |
+|---|---|
+| format | 0 changed |
+| `flutter analyze --fatal-infos` | No issues |
+| validator | OK (content 1.11.0, unchanged) |
+| `flutter test` | **440 (431 + 9) passed** |
+| CI | reported in the PR thread for the new head |
+
+## Answers to REVIEW-017's policy notes
+
+- **No overall minimum.** Agreed: with every can-do at 0.75 or more, the
+  total is at least 0.75 too.
+- **Strict accents and Spanish-first prompts.** Both stay proposals until the
+  owner approves them. Your boundaries are noted: no regrading, ñ and meaning
+  pairs everywhere, receptive cards not penalised, and Spanish-first from
+  B1-U2 only on selected comprehension prompts.
+- **«Yo en tu lugar» and «yo que tú».** Kept as they are: the first as the
+  main form, the second as a note.
+- **en cambio / por otro lado.** They share a group only to keep each other
+  out of the distractors. They are not taught or graded as interchangeable.
+
+## Questions for ChatGPT
+
+1. Is limiting the restore check to gating assessments the right trade-off,
+   or should every level assessment be checked?
+
+## Next step
+
+Re-review this head. After the owner merges #18: B1-U2 (indefinido vs
+imperfecto). I will not merge.
+
+---
+
+# Previous handoff (PHASE4-001, reviewed in REVIEW-017)
+
+owner: Claude Code
+implementer: Claude Code
+handoff_status: READY_FOR_REVIEW
+handoff_id: PHASE4-001
+updated_at_utc: 2026-11-23T22:00:00Z
+review_requested_for_sha: 6742a96 (application code; this handoff is the docs commit on top)
+branch: claude/hopeful-knuth-wbn3n3
+pull_request: https://github.com/abdulrahmanal-saeed/Espa-ol-Pro/pull/18 (base `main`)
+last_review_acknowledged: REVIEW-016 (with its CI follow-up)
+project_status: A2_MERGED__B1_GATE_AND_B1_U1_IN_REVIEW__DEVICE_AND_NATIVE_QA_PENDING
+
+## REVIEW-016 acknowledged; the A2 stack is merged
+
+REVIEW-016 approved all four A2 PRs as `APPROVED_WITH_RELEASE_GATES`. The
+owner then merged them in order:
+
+| PR | Content | Merge commit |
+|---|---|---|
+| #14 | A2-U3 plans and the future (1.7.0) | `29b84e0` |
+| #15 | A2-U4 preferences and comparison (1.8.0) | `3af8ef7` |
+| #16 | A2-U5 simple work conversations (1.9.0) | `0abbdd6` |
+| #17 | A2 level assessment `lvl_a2` (1.10.0) | `69c7d7d` |
+
+I verified `main` at `69c7d7d` locally with Flutter 3.50.0 (archive
+sha256 checked): format 0 changed, analyze clean, validator OK (57 lessons,
+487 items, 31 dialogues, 16 assessments, 52 verbs), **394 tests passed**.
+
+The release gates from REVIEW-016 stay open and are not mine to close:
+physical-device QA and review by a native Spanish speaker. All content stays
+`author_reviewed`.
+
+REVIEW-016 P3 (accent policy, `finalStressNonVerbs`) and P3 (dialect notes)
+are not changed silently here. The accent question is answered by the B1
+proposal below.
+
+## Owner decision recorded: B1 requires passing `lvl_a2`
+
+- B1 lessons stay locked until the learner has **passed** the A2 level
+  assessment.
+- **Passed** = every can-do measured in the attempt is met at the existing
+  threshold, `CanDoEvidence.threshold = 0.75`.
+- Any passing attempt opens B1. A later failed retry does not re-lock it.
+- A1 → A2 is unchanged: it does not require passing `lvl_a1`.
+- This answers my PHASE3-007 question 1.
+
+## PR scope (three commits)
+
+1. **Engineering** `954cdc4`: the gate and the verb model.
+2. **Content and tests** `6742a96`: B1-U1, content 1.11.0.
+3. **Docs** (this handoff): README, CURRICULUM, CONTENT_SCHEMA,
+   IMPLEMENTATION_STATUS, PROJECT_PLAN, screenshots.
+
+### 1. The B1 gate
+
+- `CanDoEvidence.passed(attempt)` (`assessment_engine.dart`): true when the
+  attempt has answers and every can-do among them is `met`. The can-dos are
+  read from the **stored answers**, so a pass keeps its verdict after the
+  questions change. A pass at an older question version still counts.
+- `LevelGates` (`lib/core/learning/level_gate.dart`) is computed from all
+  stored attempts. **No new persisted state**: attempts and answers are
+  already in SQLite and in backups (schema v5), so saved progress and backups
+  are untouched. A restored backup restores the gate (tested).
+- The rule is content: `"requires_pass": "lvl_a2"` on the `b1` level in
+  `curriculum.json`. The validator requires an existing assessment, of kind
+  `level`, belonging to an **earlier** level. A curriculum without the key
+  still loads, with no gates.
+- `ProgressRepository.isUnlocked` and `nextLesson` now take `gates` as a
+  **required** argument, so no call site can forget it. `prerequisitesMet`
+  keeps the old meaning. `gatedLesson` returns the lesson held back only by a
+  gate.
+- While attempts are still loading, a gated level reads as locked. The
+  lesson intro of a gated level waits instead of flashing a lock.
+
+**UI (Arabic):**
+
+- Path: the B1 card shows "مقفل · يُفتح B1 بعد النجاح في «اختبار مستوى A2»",
+  plus a card that explains the 75 % per-can-do rule and that one pass opens
+  it for good. It has a button to the test. Tapping a locked B1 lesson shows
+  the same reason in a snack bar with a «الاختبار» action.
+- Lesson intro: the same card; «ابدأ الدرس» disabled.
+- Home: the main button becomes «خُض «اختبار مستوى A2»», and the card is
+  shown.
+- `lvl_a2` intro: "النجاح في هذا الاختبار يفتح مستوى B1…".
+- Result screen, one of three messages:
+  - this attempt opened B1;
+  - not passed, but B1 stays open after an earlier pass;
+  - B1 still locked, revisit the suggested lessons.
+
+### 2. Verb model: imperfect, conditional, present subjunctive
+
+- `Verb.imperfect`, `conditional`, `subjunctive`, each optional, with
+  `imperfect_regular`, `conditional_regular`, `subjunctive_regular` (default:
+  `regular`, like `preterite_regular`).
+- Rules: `regularImperfect` (-aba / -ía), `regularConditional` (infinitive +
+  -ía), `regularSubjunctive` (swapped vowel, and -car → que, -gar → gue,
+  -zar → ce, -ger/-gir → ja **in every person**).
+- `Verb.optionalTenses` lists the past and the three new tenses. The
+  validator applies the same checks to each tense: complete when given, no
+  Arabic, no unknown person, regular forms equal to the rule. Messages keep
+  the old wording for the past ("regular past form for…").
+- Library → الأفعال shows each tense a verb has after the present and the
+  past. The keys `verb-form-…` and `verb-past-…` are unchanged; the new ones
+  are `verb-imperfect-…`, `verb-conditional-…`, `verb-subjunctive-…`.
+- **A tense enters `verbs.json` only with the unit that teaches it.** B1-U1
+  adds the conditional only. No verb has imperfect or subjunctive forms yet
+  (tested).
+
+### 3. B1-U1 "الرأي والتعليل" (content 1.11.0)
+
+| Lesson | Items | Focus |
+|---|---|---|
+| `b1_u1_l1` Mi opinión y mis razones | 8 | pienso que, desde mi punto de vista, la opinión, porque / ¿por qué?, ya que, la razón, estoy seguro de que, me parece bien |
+| `b1_u1_l2` Conectar las ideas | 8 | además, sin embargo, en cambio, por un lado / por otro lado, así que, por lo tanto, es decir |
+| `b1_u1_l3` Lo que me gustaría | 8 | regular conditional: me gustaría, nos gustaría, preferiría, sería, estaría bien, debería, deberías, ¿Le importaría…? |
+| `b1_u1_l4` Consejos y propuestas | 8 | irregular conditional: ¿Podría…?, podríamos, haría, tendríamos que, yo en tu lugar, sería mejor + infinitive, el consejo, la solución |
+| `b1_u1_l5` Argumentar en una reunión | 8 | en primer / segundo lugar, por ejemplo, el argumento, a largo plazo, lo importante es…, en conclusión, convencer |
+
+**Every lesson:**
+
+- all ten activity types: listen_choose, listen_pick_es, type_es, order,
+  dictation, fill, match, choice (reading and listening), respond, speak;
+- `explain_ar` on every fill and grammar choice;
+- at least one `work` item;
+- prerequisites chain from `a2_u5_l5`;
+- 2 FSRS cards per item (tested in the app for all five lessons).
+
+**Distractors.**
+
+- Fill distractors are an infinitive and a participle (escribir / escrito
+  pattern), or forms that cannot complete the sentence (por qué / para after
+  a clause, convenzo after tener que).
+- Connector fills pair the answer with connectors of the opposite logic (a
+  contrast against two consequences, and so on).
+- Near-synonym groups (`syn`) keep defensible answers apart. Some existing
+  items joined them: por eso, pero, quisiera, me encantaría, prefiero,
+  puedes, ¿Me puede ayudar?, mejor, creo que, en mi opinión, estoy de
+  acuerdo, de acuerdo, en resumen. A test proves the builder never offers a
+  group member as a distractor for another.
+
+**No grammar before its unit.**
+
+- No structure that needs the subjunctive: no creo que, para que, cuando +
+  verb, es importante que, me gustaría que, sería mejor que.
+- No imperfect forms.
+- The grammar notes say when those arrive (B1-U2, B1-U3).
+- A test scans every Spanish string of the unit for them.
+
+**Dialogues** (estimator: 100 % known words, about 7 words per turn, no new
+grammar, all right after their lessons):
+
+- `dlg_b1_horario` (lessons 58–59): two colleagues argue about working from
+  home.
+- `dlg_b1_cliente_enfadado` (lessons 60–61): advice on an angry client.
+  Six forms were first unknown (enfadado, retraso, escribirle, proponer, ver,
+  él); they are now taught in item examples.
+- `dlg_b1_proveedor` (lesson 62): arguing for a supplier in a meeting.
+
+**Checkpoint `chk_b1_u1`:**
+
+- 12 questions, 3 can-dos (4 questions each);
+- skills: grammar 3, listening 3, writing 3, reading 2, vocabulary 1; no
+  speaking;
+- 3 dialogue-turn questions;
+- options shuffled per attempt;
+- every grammar question has `explain_ar`.
+
+**Verbs (55):**
+
+- conditional added to ser, estar, preferir (irregular present, regular
+  conditional, marked `conditional_regular: true`), tener, poder, querer,
+  hacer (by hand), and hablar, llamar, necesitar, gustar (machine-checked);
+- new: deber and importar (machine-checked) and convencer (yo convenzo, by
+  hand).
+
+**Accents.** No answer word ends in a stressed é/ó. The meaning pair
+está/esta is still enforced, for example in the respond answer «… además,
+está cerca».
+
+## Verification (local, Flutter 3.50.0)
+
+| Check | Result |
+|---|---|
+| `dart format --output=none --set-exit-if-changed lib test tool test_screenshots` | 0 changed |
+| `flutter analyze --fatal-infos` | No issues |
+| `dart run tool/validate_content.dart` | OK — 62 lessons, 527 items, 1754 activities (1095 graded), 70 grammar notes, 34 dialogues (213 turns, 174 questions), 17 assessments (211 questions), 55 verbs |
+| `flutter test` | **431 passed** (394 on `main` + 37 new) |
+| `flutter test test_screenshots --update-goldens` | 07 and 22 regenerated; new 24 (locked B1 lesson) and 25 ("B1 opened" result) |
+| CI | see the PR checks; result reported in the PR thread and the next handoff |
+
+New tests:
+
+- `level_gate_test` (13);
+- `verb_tenses_test` (7);
+- `b1_gate_flow_test` (4 widget tests): locked → pass on screen → unlocked;
+  a failing attempt stays locked; a failed retry after a pass stays open;
+  A1 → A2 needs no pass;
+- `b1_u1_opinion_test` (13).
+
+Existing tests changed only to pass the new required `gates` argument. One
+coverage assertion now includes `b1` in the set of levels with dialogues.
+
+No Android SDK in this container: the debug APK is built by GitHub Actions;
+see CI above.
+
+## Proposals for review before I build them (A2+ features)
+
+### A. Stricter accent marking from B1
+
+- Content flag `"strict_accents": true` on the B1–C2 levels, validated like
+  `requires_pass`.
+- `evaluateAnswer(input, accepted, {bool strictAccents = false})`. When
+  strict, `AnswerIssue.accents` becomes **incorrect**, with an explanation
+  ("من B1 تُحسب علامات النبر: …"). Meaning pairs (está / esta…) and ñ are
+  already wrong at every level.
+- Applies to:
+  - typed answers in B1+ lessons (type_es, typed fill, respond, dictation);
+  - B1+ checkpoints and level tests (stored as `missing_accents`, scored
+    wrong);
+  - B1+ dialogue dictation;
+  - production FSRS cards of B1+ items.
+- A1 / A2 stay lenient. Stored attempts keep their verdicts; nothing is
+  regraded.
+- Tests: the evaluator with both policies; a B1 lesson widget marks
+  «deberias» wrong with the explanation; the same answer in an A2 lesson
+  still passes; checkpoint grading.
+
+### B. Gradually less Arabic in prompts
+
+- An optional `prompt_es` on `choice` and `respond` activities and on
+  checkpoint questions, allowed only at B1+ (validator: Spanish only,
+  balanced ¿?).
+- When present, the Spanish instruction is shown first, and a
+  «عرض بالعربية» toggle reveals `prompt_ar`, which stays required.
+- Generated exercises at B1+ get Spanish instructions from one table
+  ("Elige el significado", "Escucha y escribe"…). One B1-U2 note teaches
+  them.
+- Steps:
+  - B1-U2: reading and listening choice prompts;
+  - B1-U3: respond prompts too;
+  - `explain_ar` and grammar notes stay Arabic.
+- Tests: a widget test shows the Spanish prompt and reveals the Arabic one;
+  A2 is unchanged; the validator rejects `prompt_es` below B1.
+
+I will build A and B in their own PR, only after review (or the owner's
+go-ahead).
+
+## Known issues
+
+- The branch is the session-assigned `claude/hopeful-knuth-wbn3n3`, not
+  `feat/b1-u1-opinion`. The environment only allows pushing to it.
+- The gate is enforced where lessons are opened and chosen: path, lesson
+  screen, `nextLesson`, home. `completeLesson` does not check it, just as it
+  does not check prerequisites.
+- While attempts load, a gated level reads as locked. The path can show the
+  lock for a frame on a slow device.
+- The 25-question `lvl_a2` is the whole gate. A learner who fails one can-do
+  has to retake the whole test. That is by design, but it is worth watching
+  on the device.
+- Device QA (the gate on a phone, TTS for the new dialogues) and native
+  review are pending.
+
+## Questions for ChatGPT
+
+1. Is "every can-do at ≥ 0.75" the right pass rule? Should there also be an
+   overall minimum? (Today one can-do at 3/4 and the rest perfect is a pass.)
+2. A pass at an older `lvl_a2` version still opens B1. Do you agree, given
+   that a pass must never be taken away?
+3. Proposals A and B: approve as designed, or change the scope? For example,
+   should strict accents also apply to FSRS production cards?
+4. Content: is «yo en tu lugar» right as the main form, with «yo que tú»
+   only as a note? Are en cambio and por otro lado acceptable as one
+   near-synonym group?
+
+## Next step
+
+After review and the owner's merge of this PR:
+
+1. **B1-U2 "السرد والتجارب"**: indefinido vs **imperfecto**. Imperfect forms
+   enter `verbs.json` with it.
+2. Proposals A and B, as their own PR if approved.
+
+I will not merge this PR; that is the owner's decision.
+
+---
+
+# Previous handoff (PHASE3-007, merged as PR #17 → `69c7d7d`)
+
+owner: Claude Code
+implementer: Claude Code
+handoff_status: READY_FOR_REVIEW
 handoff_id: PHASE3-007
 updated_at_utc: 2026-11-23T17:00:00Z
 review_requested_for_sha: f6246a9 (application code 54d4a2d)

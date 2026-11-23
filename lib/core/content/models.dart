@@ -76,6 +76,7 @@ class Level {
     required this.canDoAr,
     required this.isPreparatory,
     required this.units,
+    this.requiresPass,
   });
 
   final String id;
@@ -85,6 +86,11 @@ class Level {
   final List<String> canDoAr;
   final bool isPreparatory;
   final List<Unit> units;
+
+  /// A level assessment of an earlier level that must be passed before any
+  /// lesson of this level opens (`requires_pass`, content ≥ 1.11.0). Null
+  /// when the level only needs its lesson prerequisites.
+  final String? requiresPass;
 
   Iterable<Lesson> get lessons => units.expand((u) => u.lessons);
 }
@@ -261,10 +267,19 @@ class Verb {
     required this.forms,
     this.preterite = const {},
     bool? preteriteRegular,
+    this.imperfect = const {},
+    bool? imperfectRegular,
+    this.conditional = const {},
+    bool? conditionalRegular,
+    this.subjunctive = const {},
+    bool? subjunctiveRegular,
     this.noteAr = '',
     this.examples = const [],
     this.lessonIds = const [],
-  }) : preteriteRegular = preteriteRegular ?? regular;
+  }) : preteriteRegular = preteriteRegular ?? regular,
+       imperfectRegular = imperfectRegular ?? regular,
+       conditionalRegular = conditionalRegular ?? regular,
+       subjunctiveRegular = subjunctiveRegular ?? regular;
 
   final String id;
   final String infinitive;
@@ -284,6 +299,30 @@ class Verb {
   /// to [regular]; a verb irregular in the present can be regular in the past
   /// (volver: vuelvo / volví).
   final bool preteriteRegular;
+
+  /// Pretérito imperfecto, keyed by [persons]; empty when not given
+  /// (content < 1.11.0).
+  final Map<String, String> imperfect;
+
+  /// Whether [imperfect] follows [regularImperfect]. Defaults to [regular];
+  /// most verbs irregular in the present are regular here (tener: tenía).
+  final bool imperfectRegular;
+
+  /// Condicional simple, keyed by [persons]; empty when not given.
+  final Map<String, String> conditional;
+
+  /// Whether [conditional] follows [regularConditional]. Defaults to
+  /// [regular]; stem changes in the present do not affect it (podría is
+  /// irregular, pensaría is not).
+  final bool conditionalRegular;
+
+  /// Presente de subjuntivo, keyed by [persons]; empty when not given.
+  final Map<String, String> subjunctive;
+
+  /// Whether [subjunctive] follows [regularSubjunctive]. Defaults to
+  /// [regular].
+  final bool subjunctiveRegular;
+
   final String noteAr;
   final List<Example> examples;
 
@@ -331,7 +370,10 @@ class Verb {
     if (endings == null) return null;
     var yoStem = stem;
     if (ending == 'ar') {
-      if (stem.endsWith('c')) {
+      if (stem.endsWith('gu')) {
+        // -guar: the u stays audible before e (averiguar → averigüé).
+        yoStem = '${stem.substring(0, stem.length - 1)}ü';
+      } else if (stem.endsWith('c')) {
         yoStem = '${stem.substring(0, stem.length - 1)}qu';
       } else if (stem.endsWith('g')) {
         yoStem = '${stem}u';
@@ -344,6 +386,142 @@ class Verb {
         persons[i]: '${i == 0 ? yoStem : stem}${endings[i]}',
     };
   }
+
+  /// The pretérito imperfecto a regular verb must have, or null for an
+  /// unknown ending: -ar → -aba…, -er / -ir → -ía….
+  static Map<String, String>? regularImperfect(String infinitive) {
+    if (infinitive.length < 3) return null;
+    final stem = infinitive.substring(0, infinitive.length - 2);
+    final endings = switch (infinitive.substring(infinitive.length - 2)) {
+      'ar' => ['aba', 'abas', 'aba', 'ábamos', 'abais', 'aban'],
+      'er' || 'ir' => ['ía', 'ías', 'ía', 'íamos', 'íais', 'ían'],
+      _ => null,
+    };
+    if (endings == null) return null;
+    return {for (var i = 0; i < 6; i++) persons[i]: '$stem${endings[i]}'};
+  }
+
+  /// The condicional simple a regular verb must have: the whole infinitive
+  /// plus -ía…. Null for an unknown ending.
+  static Map<String, String>? regularConditional(String infinitive) {
+    if (infinitive.length < 2 ||
+        !const {
+          'ar',
+          'er',
+          'ir',
+        }.contains(infinitive.substring(infinitive.length - 2))) {
+      return null;
+    }
+    const endings = ['ía', 'ías', 'ía', 'íamos', 'íais', 'ían'];
+    return {for (var i = 0; i < 6; i++) persons[i]: '$infinitive${endings[i]}'};
+  }
+
+  /// The presente de subjuntivo a regular verb must have, or null for an
+  /// unknown ending: -ar → -e…, -er / -ir → -a…. Spelling changes keep the
+  /// sound in every person: -car → qu (explique), -gar → gu (llegue),
+  /// -guar → gü (averigüe), -zar → c (organice), -ger / -gir → j (escoja).
+  static Map<String, String>? regularSubjunctive(String infinitive) {
+    if (infinitive.length < 3) return null;
+    var stem = infinitive.substring(0, infinitive.length - 2);
+    final ending = infinitive.substring(infinitive.length - 2);
+    final endings = switch (ending) {
+      'ar' => ['e', 'es', 'e', 'emos', 'éis', 'en'],
+      'er' || 'ir' => ['a', 'as', 'a', 'amos', 'áis', 'an'],
+      _ => null,
+    };
+    if (endings == null) return null;
+    final head = stem.substring(0, stem.length - 1);
+    if (ending == 'ar') {
+      if (stem.endsWith('gu')) {
+        stem = '$headü';
+      } else if (stem.endsWith('c')) {
+        stem = '${head}qu';
+      } else if (stem.endsWith('g')) {
+        stem = '${stem}u';
+      } else if (stem.endsWith('z')) {
+        stem = '${head}c';
+      }
+    } else if (stem.endsWith('g')) {
+      stem = '${head}j';
+    }
+    return {for (var i = 0; i < 6; i++) persons[i]: '$stem${endings[i]}'};
+  }
+
+  /// The optional tenses beyond the present, in teaching order. Each has a
+  /// JSON key, the rule a regular form must follow, an Arabic label and the
+  /// widget-key prefix used in Library → الأفعال (`verb-past-…` predates
+  /// this list and is kept for compatibility).
+  static final optionalTenses = <VerbTense>[
+    VerbTense(
+      key: 'preterite',
+      labelAr: 'الماضي البسيط · pretérito indefinido',
+      nameEn: 'past',
+      uiKey: 'verb-past',
+      forms: (v) => v.preterite,
+      isRegular: (v) => v.preteriteRegular,
+      rule: regularPreterite,
+    ),
+    VerbTense(
+      key: 'imperfect',
+      labelAr: 'الماضي المستمر · pretérito imperfecto',
+      nameEn: 'imperfect',
+      uiKey: 'verb-imperfect',
+      forms: (v) => v.imperfect,
+      isRegular: (v) => v.imperfectRegular,
+      rule: regularImperfect,
+    ),
+    VerbTense(
+      key: 'conditional',
+      labelAr: 'الشرطي · condicional',
+      nameEn: 'conditional',
+      uiKey: 'verb-conditional',
+      forms: (v) => v.conditional,
+      isRegular: (v) => v.conditionalRegular,
+      rule: regularConditional,
+    ),
+    VerbTense(
+      key: 'subjunctive',
+      labelAr: 'المضارع الالتزامي · presente de subjuntivo',
+      nameEn: 'subjunctive',
+      uiKey: 'verb-subjunctive',
+      forms: (v) => v.subjunctive,
+      isRegular: (v) => v.subjunctiveRegular,
+      rule: regularSubjunctive,
+    ),
+  ];
+
+  /// Every written form of this verb, all tenses.
+  Iterable<String> get allForms => [
+    ...forms.values,
+    for (final t in optionalTenses) ...t.forms(this).values,
+  ];
+}
+
+/// One optional tense of the verb reference (see [Verb.optionalTenses]).
+class VerbTense {
+  const VerbTense({
+    required this.key,
+    required this.labelAr,
+    required this.nameEn,
+    required this.uiKey,
+    required this.forms,
+    required this.isRegular,
+    required this.rule,
+  });
+
+  /// JSON key; `<key>_regular` overrides the verb's `regular` flag.
+  final String key;
+  final String labelAr;
+
+  /// Used in validator messages ("regular past form for …").
+  final String nameEn;
+
+  /// Widget-key prefix in the library: `<uiKey>-<verb>` for the header,
+  /// `<uiKey>-<verb>-<person>` for each form.
+  final String uiKey;
+  final Map<String, String> Function(Verb) forms;
+  final bool Function(Verb) isRegular;
+  final Map<String, String>? Function(String infinitive) rule;
 }
 
 /// The fully loaded and indexed content package.
@@ -667,12 +845,25 @@ class Assessment {
     required this.canDos,
     required this.questions,
     required this.sourceId,
+    this.retiredVersions = const {},
   });
 
   final String id;
 
   /// Bump whenever questions change; stored with every attempt.
   final int version;
+
+  /// Earlier versions whose attempts must still be recognised: version →
+  /// question id → can-do id (`retired_versions`, content ≥ 1.11.0). A level
+  /// assessment that gates a level lists its old question sets here when it
+  /// changes, so a complete pass at an older version keeps the level open.
+  final Map<int, Map<String, String>> retiredVersions;
+
+  /// The question set of [v] (question id → can-do id): the current
+  /// questions for [version], a retired set, or null for an unknown version.
+  Map<String, String>? questionSet(int v) => v == version
+      ? {for (final q in questions) q.id: q.canDoId}
+      : retiredVersions[v];
 
   /// `unit` checkpoint or `level` assessment.
   final String kind;

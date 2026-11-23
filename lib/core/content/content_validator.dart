@@ -322,11 +322,34 @@ class ContentValidator {
         }
       }
     }
+    _validateLevelGates(pack, err);
     _validateDialogues(pack, sourceIds, grammarIds, err);
     _validateAssessments(pack, sourceIds, err);
     _validateVerbs(pack, err);
     _validateFinalStressWords(pack, err);
     return issues;
+  }
+
+  /// `requires_pass` must name the level assessment of an EARLIER level, so
+  /// a gate can always be lifted by content the learner can already reach.
+  void _validateLevelGates(
+    ContentPack pack,
+    void Function(String, String) err,
+  ) {
+    final order = [for (final l in pack.levels) l.id];
+    for (final level in pack.levels) {
+      final gate = level.requiresPass;
+      if (gate == null) continue;
+      final w = 'level:${level.id}';
+      final test = pack.assessment(gate);
+      if (test == null) {
+        err(w, 'requires_pass "$gate" is not an assessment');
+      } else if (test.kind != 'level') {
+        err(w, 'requires_pass "$gate" must be a level assessment');
+      } else if (order.indexOf(test.levelId) >= order.indexOf(level.id)) {
+        err(w, 'requires_pass "$gate" must belong to an earlier level');
+      }
+    }
   }
 
   /// Every answer word of 5+ letters ending in a stressed é / ó must be a verb
@@ -339,7 +362,7 @@ class ContentValidator {
     void Function(String, String) err,
   ) {
     final verbForms = <String>{
-      for (final v in pack.verbs) ...[...v.forms.values, ...v.preterite.values],
+      for (final v in pack.verbs) ...v.allForms,
       for (final l in pack.orderedLessons)
         for (final i in l.items)
           if (i.pos.contains('فعل')) ...normalizeAnswer(i.es).split(' '),
@@ -417,26 +440,35 @@ class ContentValidator {
           }
         }
       }
-      // Past tense (content ≥ 1.6.0): optional, but complete when given.
-      if (v.preterite.isNotEmpty) {
+      // Optional tenses: the past (content ≥ 1.6.0), then the imperfect,
+      // conditional and present subjunctive (content ≥ 1.11.0). Each may be
+      // left out, but is complete when given; a regular one must equal the
+      // rules exactly.
+      for (final tense in Verb.optionalTenses) {
+        final forms = tense.forms(v);
+        if (forms.isEmpty) continue;
+        final name = tense.nameEn;
         for (final p in Verb.persons) {
-          final f = v.preterite[p] ?? '';
-          if (f.trim().isEmpty) err(w, 'missing past form for "$p"');
+          final f = forms[p] ?? '';
+          if (f.trim().isEmpty) err(w, 'missing $name form for "$p"');
           if (_arabic.hasMatch(f)) {
-            err(w, 'past form for "$p" contains Arabic script');
+            err(w, '$name form for "$p" contains Arabic script');
           }
         }
-        for (final k in v.preterite.keys) {
-          if (!Verb.persons.contains(k)) err(w, 'unknown past person "$k"');
+        for (final k in forms.keys) {
+          if (!Verb.persons.contains(k)) err(w, 'unknown $name person "$k"');
         }
-        if (v.preteriteRegular) {
-          final expected = Verb.regularPreterite(v.infinitive);
+        if (tense.isRegular(v)) {
+          final expected = tense.rule(v.infinitive);
           if (expected == null) {
-            err(w, 'a regular past needs an -ar, -er or -ir verb');
+            err(w, 'a regular $name needs an -ar, -er or -ir verb');
           } else {
             for (final p in Verb.persons) {
-              if (v.preterite[p] != null && v.preterite[p] != expected[p]) {
-                err(w, 'regular past form for "$p" should be "${expected[p]}"');
+              if (forms[p] != null && forms[p] != expected[p]) {
+                err(
+                  w,
+                  'regular $name form for "$p" should be "${expected[p]}"',
+                );
               }
             }
           }
@@ -467,6 +499,19 @@ class ContentValidator {
       final w = 'assessment:${a.id}';
       if (!ids.add(a.id)) err(w, 'duplicate assessment id');
       if (a.version < 1) err(w, 'version must be ≥ 1');
+      for (final e in a.retiredVersions.entries) {
+        if (e.key < 1 || e.key >= a.version) {
+          err(w, 'retired version ${e.key} must be ≥ 1 and below ${a.version}');
+        }
+        if (e.value.isEmpty) {
+          err(w, 'retired version ${e.key} has no questions');
+        }
+        if (e.value.entries.any(
+          (q) => q.key.trim().isEmpty || q.value.trim().isEmpty,
+        )) {
+          err(w, 'retired version ${e.key} needs question and can-do ids');
+        }
+      }
       if (a.titleAr.trim().isEmpty || a.introAr.trim().isEmpty) {
         err(w, 'needs title_ar and intro_ar');
       }

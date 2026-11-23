@@ -47,7 +47,8 @@ Pre-A1 is a preparatory stage, not a DELE level.
 | | Preferences and comparison (5 lessons) | ✅ available (content 1.8.0) |
 | | Simple work conversations (5 lessons) | ✅ available (content 1.9.0) |
 | | **A2 level assessment** (25 questions, all five units) | ✅ available (content 1.10.0) |
-| **B1** | Opinion and reasoning · Narration · Solving client problems · Professional correspondence | planned |
+| **B1** | Opinion and reasoning (5 lessons, connectors and the conditional) | ✅ available (content 1.11.0) |
+| | Narration · Solving client problems · Professional correspondence | planned |
 | **B2** | Meetings · Presentations · Job interviews · Discovery and negotiation · Explaining technical services | planned |
 | **C1** | Persuasion · Precise professional writing · Advanced listening and accents | planned |
 | **C2** | Precision and nuance · Professional and academic discourse | planned |
@@ -117,6 +118,11 @@ no lessons and are never counted as progress.
 | 55 | A new client | 9 | me interesa…; ¿Me da su…?; el correo electrónico; ¿Cómo se escribe?; le paso con… |
 | 56 | The follow-up | 9 | como hablamos…; ¿Pudo…?; le recuerdo que…; pendiente; el próximo paso — past, present and future together |
 | 57 | Closing the meeting | 9 | en resumen, acordamos, por último, entonces; gracias por su tiempo; seguimos en contacto |
+| 58 | My opinion and my reasons (B1-U1) | 8 | pienso que, desde mi punto de vista; porque vs ¿por qué?; ya que; estoy seguro de que; me parece bien |
+| 59 | Connecting ideas | 8 | además; sin embargo, en cambio; por un lado / por otro lado; así que, por lo tanto; es decir |
+| 60 | What I would like | 8 | regular conditional (infinitive + ía): me gustaría, nos gustaría, preferiría, sería, estaría bien; debería / deberías; ¿Le importaría…? |
+| 61 | Advice and proposals | 8 | irregular conditional (podría, tendría, haría); podríamos, tendríamos que; yo en tu lugar…; sería mejor + infinitive; el consejo, la solución |
+| 62 | Arguing in a meeting | 8 | en primer / segundo lugar, por ejemplo, el argumento, a largo plazo, lo importante es…, en conclusión; convencer |
 
 A1 is complete in content: 23 lessons over 6 units, closed by six unit
 checkpoints and the A1 level assessment `lvl_a1`, which opens only when every
@@ -155,9 +161,24 @@ from each unit's dialogues. It opens only when every A2 lesson is
 completed, and its tile sits at the end of A2 on the path. Like every
 checkpoint here, it is practice evidence, not a CEFR certificate.
 
-Totals (content 1.10.0, from the validator): 57 lessons, 487 items,
-1608 activities (999 graded), 65 grammar notes, 31 dialogues, 16 assessments,
-52 verbs.
+B1 requires passing `lvl_a2` (owner decision, PHASE4-001). An attempt
+passes when every can-do in it is met at the can-do threshold (75 %). Any
+passing attempt opens B1 for good; a later failed retry does not close it.
+A1 → A2 still needs no level-test pass. The rule is `requires_pass` in
+`curriculum.json` and is derived from stored attempts, so it adds no learner
+state and survives backup and restore.
+
+B1-U1 (lessons 58–62, content 1.11.0) teaches opinion with reasons,
+connectors, the simple conditional (regular, then irregular) for wishes,
+polite requests and advice, and a structured argument in a meeting. It
+avoids structures that need the subjunctive (no creo que…, para que…,
+sería mejor que…) until B1-U3, and the imperfect until B1-U2. The verb
+reference adds the conditional of 11 verbs and three new verbs (deber,
+importar, convencer).
+
+Totals (content 1.11.0, from the validator): 62 lessons, 527 items,
+1754 activities (1095 graded), 70 grammar notes, 34 dialogues, 17 assessments,
+55 verbs.
 
 ## Lesson shape
 
@@ -251,6 +272,15 @@ sentences) closes A2-U4.
 
 Checkpoint `chk_a2_u5` (12 questions, 3 can-dos, 5 skills, three dialogue
 sentences) closes A2-U5.
+
+| Id | Level | Built on | Situation |
+|---|---|---|---|
+| `dlg_b1_horario` | B1 | lessons 58–59 | Two colleagues argue for and against working from home |
+| `dlg_b1_cliente_enfadado` | B1 | lessons 60–61 | Advice on calling an angry client; a discount as a solution |
+| `dlg_b1_proveedor` | B1 | lesson 62 | Arguing for a supplier in a meeting |
+
+Checkpoint `chk_b1_u1` (12 questions, 3 can-dos, 5 skills, three dialogue
+sentences) closes B1-U1.
 
 Checkpoints `chk_a1_u4` and `chk_a1_u5` close the food and travel units.
 Checkpoints `chk_a1_u2` and `chk_a1_u3` (10 questions, 3 can-dos each) close

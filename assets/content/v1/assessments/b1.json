@@ -1,0 +1,214 @@
+{
+ "assessments": [
+  {
+   "id": "chk_b1_u1",
+   "version": 1,
+   "kind": "unit",
+   "level": "b1",
+   "unit": "b1_u1",
+   "title_ar": "نقطة تحقق: الرأي والتعليل",
+   "intro_ar": "نقطة تحقق قصيرة. لا تلميحات ولا إظهار للإجابات قبل النهاية، ولا إعادة للأسئلة. النتيجة دليل على ما تستطيعه الآن، وليست شهادة مستوى.",
+   "can_do": [
+    {
+     "id": "cd_b1_u1_opinion",
+     "ar": "أبدي رأيي وأعلّله بأسباب واضحة",
+     "lessons": [
+      "b1_u1_l1"
+     ]
+    },
+    {
+     "id": "cd_b1_u1_connect",
+     "ar": "أربط أفكاري وأرتّب حججي في نقاش عمل",
+     "lessons": [
+      "b1_u1_l2",
+      "b1_u1_l5"
+     ]
+    },
+    {
+     "id": "cd_b1_u1_conditional",
+     "ar": "أستعمل الشرطي للتمنّي والطلب المهذّب والنصيحة",
+     "lessons": [
+      "b1_u1_l3",
+      "b1_u1_l4"
+     ]
+    }
+   ],
+   "questions": [
+    {
+     "id": "chk_b1_u1.q1",
+     "type": "choice",
+     "skill": "reading",
+     "can_do": "cd_b1_u1_opinion",
+     "prompt_ar": "لماذا يفضّل لويس المورّد الأسرع؟",
+     "stimulus_es": "Luis: «Ya que el plazo es corto, prefiero el proveedor más rápido.»",
+     "choices": [
+      "لأن المهلة قصيرة",
+      "لأنه الأرخص",
+      "لأن جودته أفضل"
+     ],
+     "answer": 0,
+     "choices_es": false
+    },
+    {
+     "id": "chk_b1_u1.q2",
+     "type": "choice",
+     "skill": "grammar",
+     "can_do": "cd_b1_u1_opinion",
+     "prompt_ar": "اختر الكلمة المناسبة:",
+     "stimulus_es": "No firmo hoy ___ no tengo el contrato.",
+     "choices": [
+      "porque",
+      "por qué",
+      "para"
+     ],
+     "answer": 0,
+     "explain_ar": "سبب داخل الجملة ← porque. ¿Por qué? للسؤال فقط."
+    },
+    {
+     "id": "chk_b1_u1.q3",
+     "type": "choice",
+     "skill": "listening",
+     "can_do": "cd_b1_u1_opinion",
+     "prompt_ar": "استمع إلى جملة من حوار «الدوام الجديد»: لماذا يحب كريم العمل من البيت؟",
+     "dialogue_turn": "dlg_b1_horario.t4",
+     "choices": [
+      "يعمل أفضل ويرتاح أكثر",
+      "البيت قريب من المكتب",
+      "لا يحب الاجتماعات"
+     ],
+     "answer": 0,
+     "choices_es": false
+    },
+    {
+     "id": "chk_b1_u1.q4",
+     "type": "type",
+     "skill": "writing",
+     "can_do": "cd_b1_u1_opinion",
+     "prompt_ar": "اكتب بالإسبانية",
+     "stimulus_ar": "من وجهة نظري",
+     "accepted": [
+      "desde mi punto de vista"
+     ]
+    },
+    {
+     "id": "chk_b1_u1.q5",
+     "type": "choice",
+     "skill": "grammar",
+     "can_do": "cd_b1_u1_connect",
+     "prompt_ar": "اختر أداة الربط المناسبة:",
+     "stimulus_es": "Es caro. ___, la calidad es muy buena.",
+     "choices": [
+      "Sin embargo",
+      "Por lo tanto",
+      "Así que"
+     ],
+     "answer": 0,
+     "explain_ar": "غالٍ لكن جودته جيدة جداً: تعارض ← sin embargo. por lo tanto وasí que للنتيجة."
+    },
+    {
+     "id": "chk_b1_u1.q6",
+     "type": "choice",
+     "skill": "listening",
+     "can_do": "cd_b1_u1_connect",
+     "prompt_ar": "استمع إلى جملة من حوار «أيّ مورّد نختار؟»: ما المثال الذي يذكره كريم؟",
+     "dialogue_turn": "dlg_b1_proveedor.t6",
+     "choices": [
+      "الفني يأتي بسرعة",
+      "السعر أقل اليوم",
+      "المدير يفضّل Mar"
+     ],
+     "answer": 0,
+     "choices_es": false
+    },
+    {
+     "id": "chk_b1_u1.q7",
+     "type": "choice",
+     "skill": "vocabulary",
+     "can_do": "cd_b1_u1_connect",
+     "prompt_ar": "ما معنى العبارة؟",
+     "stimulus_es": "en conclusión",
+     "choices": [
+      "في الختام",
+      "على سبيل المثال",
+      "من ناحية أخرى"
+     ],
+     "answer": 0,
+     "choices_es": false
+    },
+    {
+     "id": "chk_b1_u1.q8",
+     "type": "type",
+     "skill": "writing",
+     "can_do": "cd_b1_u1_connect",
+     "prompt_ar": "اكتب بالإسبانية",
+     "stimulus_ar": "على سبيل المثال",
+     "accepted": [
+      "por ejemplo"
+     ]
+    },
+    {
+     "id": "chk_b1_u1.q9",
+     "type": "choice",
+     "skill": "grammar",
+     "can_do": "cd_b1_u1_conditional",
+     "prompt_ar": "«ينبغي أن ترتاح أكثر» (لزميلك):",
+     "choices": [
+      "Deberías descansar más.",
+      "Deberías descansas más.",
+      "Deber descansar más."
+     ],
+     "answer": 0,
+     "choices_es": true,
+     "explain_ar": "deber في الشرطي مع tú: deberías، وبعده مصدر: descansar."
+    },
+    {
+     "id": "chk_b1_u1.q10",
+     "type": "choice",
+     "skill": "listening",
+     "can_do": "cd_b1_u1_conditional",
+     "prompt_ar": "استمع إلى جملة من حوار «عميل غاضب»: بماذا تنصح آنا بابلو؟",
+     "dialogue_turn": "dlg_b1_cliente_enfadado.t4",
+     "choices": [
+      "أن يتصل بالعميل اليوم",
+      "أن يكتب للعميل بريداً",
+      "أن ينتظر أسبوعاً"
+     ],
+     "answer": 0,
+     "choices_es": false
+    },
+    {
+     "id": "chk_b1_u1.q11",
+     "type": "choice",
+     "skill": "reading",
+     "can_do": "cd_b1_u1_conditional",
+     "prompt_ar": "ماذا يطلب البريد؟",
+     "stimulus_es": "Estimado señor Ruiz: nos gustaría cambiar la reunión al jueves. ¿Le importaría confirmar la hora? Un saludo.",
+     "choices": [
+      "نقل الاجتماع إلى الخميس وتأكيد الوقت",
+      "إلغاء الاجتماع",
+      "إرسال عرض السعر"
+     ],
+     "answer": 0,
+     "choices_es": false
+    },
+    {
+     "id": "chk_b1_u1.q12",
+     "type": "type",
+     "skill": "writing",
+     "can_do": "cd_b1_u1_conditional",
+     "prompt_ar": "اكتب بالإسبانية (بأدب)",
+     "stimulus_ar": "أودّ تغيير الموعد.",
+     "accepted": [
+      "me gustaría cambiar la fecha",
+      "me gustaría cambiar la hora",
+      "me gustaría cambiar la cita",
+      "quisiera cambiar la fecha",
+      "quisiera cambiar la hora",
+      "quisiera cambiar la cita"
+     ]
+    }
+   ],
+   "source": "original-v1"
+  }
+ ]
+}

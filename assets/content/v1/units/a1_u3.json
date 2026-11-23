@@ -1030,7 +1030,8 @@
        "ar": "اتفقنا، الثلاثاء في الحادية عشرة."
       }
      ],
-     "work": true
+     "work": true,
+     "syn": "agree"
     },
     {
      "id": "perfecto",

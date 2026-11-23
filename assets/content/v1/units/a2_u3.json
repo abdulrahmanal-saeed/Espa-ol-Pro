@@ -519,7 +519,8 @@
        "ar": "يسعدني ذلك! في أي ساعة؟"
       }
      ],
-     "work": true
+     "work": true,
+     "syn": "wish"
     },
     {
      "id": "vale",
@@ -902,7 +903,8 @@
        "es": "Mejor el jueves, ¿vale?",
        "ar": "الخميس أفضل، حسناً؟"
       }
-     ]
+     ],
+     "syn": "better"
     },
     {
      "id": "cambiar",

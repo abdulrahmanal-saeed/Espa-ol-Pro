@@ -414,7 +414,11 @@ void main() {
     expect(ProgressRepository.isCompleted(map[lesson.id]), isTrue);
     expect(map[lesson.id]!.bestScore, 0.85);
     expect(
-      ProgressRepository.nextLesson(pack, map)!.id,
+      ProgressRepository.nextLesson(
+        pack,
+        map,
+        gates: LevelGates.from(pack, const []),
+      )!.id,
       pack.orderedLessons[1].id,
     );
     final cards = await reviews.allCards();

@@ -6,6 +6,9 @@ import '../db/database.dart';
 import '../srs/review_repository.dart';
 import 'answer_evaluator.dart';
 import 'exercises.dart';
+import 'level_gate.dart';
+
+export 'level_gate.dart' show LevelGates;
 
 String dayKey(DateTime local) =>
     '${local.year.toString().padLeft(4, '0')}-'
@@ -54,17 +57,46 @@ class ProgressRepository {
 
   static bool isCompleted(LessonProgressData? p) => p?.status == 'completed';
 
-  /// A lesson unlocks when every prerequisite has been completed.
-  static bool isUnlocked(Lesson lesson, Map<String, LessonProgressData> map) =>
-      lesson.prerequisites.every((id) => isCompleted(map[id]));
+  /// A lesson unlocks when its level is open (see [LevelGates]) and every
+  /// prerequisite has been completed.
+  static bool isUnlocked(
+    Lesson lesson,
+    Map<String, LessonProgressData> map, {
+    required LevelGates gates,
+  }) => gates.isOpen(lesson.levelId) && prerequisitesMet(lesson, map);
+
+  /// Whether every prerequisite of [lesson] has been completed, whatever
+  /// its level gate says.
+  static bool prerequisitesMet(
+    Lesson lesson,
+    Map<String, LessonProgressData> map,
+  ) => lesson.prerequisites.every((id) => isCompleted(map[id]));
 
   /// First unlocked, not-yet-completed lesson in curriculum order.
   static Lesson? nextLesson(
     ContentPack pack,
-    Map<String, LessonProgressData> map,
-  ) {
+    Map<String, LessonProgressData> map, {
+    required LevelGates gates,
+  }) {
     for (final l in pack.orderedLessons) {
-      if (!isCompleted(map[l.id]) && isUnlocked(l, map)) return l;
+      if (!isCompleted(map[l.id]) && isUnlocked(l, map, gates: gates)) {
+        return l;
+      }
+    }
+    return null;
+  }
+
+  /// The lesson the learner would reach next if gates were ignored, when
+  /// that lesson is held back only by a locked level. The path and the home
+  /// screen use it to point at the assessment that opens it.
+  static Lesson? gatedLesson(
+    ContentPack pack,
+    Map<String, LessonProgressData> map, {
+    required LevelGates gates,
+  }) {
+    for (final l in pack.orderedLessons) {
+      if (isCompleted(map[l.id]) || !prerequisitesMet(l, map)) continue;
+      return gates.isOpen(l.levelId) ? null : l;
     }
     return null;
   }

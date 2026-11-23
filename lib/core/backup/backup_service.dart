@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import '../assessment/assessment_engine.dart' show Spelling;
+import '../content/models.dart';
 import '../db/database.dart';
 import '../phrases/saved_phrases_repository.dart';
 import '../srs/review_repository.dart';
@@ -14,8 +15,12 @@ class BackupException implements Exception {
 
 /// Full export / restore of all learner data as one JSON document.
 class BackupService {
-  BackupService(this.db);
+  BackupService(this.db, {this.pack});
   final AppDatabase db;
+
+  /// The content, when known. Restore uses it to reject an incomplete
+  /// attempt at an assessment that gates a level (REVIEW-017 P2).
+  final ContentPack? pack;
 
   static const format = 'espanol-pro-backup';
 
@@ -220,6 +225,32 @@ class BackupService {
         throw BackupException(
           'النسخة الاحتياطية غير متّسقة: نتيجة تقييم لا تطابق إجاباتها.',
         );
+      }
+    }
+    // An attempt at an assessment that opens a level (B1 ← lvl_a2) must
+    // answer exactly that assessment's questions at its version. The app
+    // only ever stores complete attempts, so a partial one is an edited or
+    // damaged file. Unknown versions are kept: they never open a level.
+    final content = pack;
+    if (content != null) {
+      final gating = {
+        for (final l in content.levels)
+          if (l.requiresPass != null) l.requiresPass!,
+      };
+      for (final r in assessmentRuns) {
+        if (!gating.contains(r.assessmentId)) continue;
+        final set = content
+            .assessment(r.assessmentId)
+            ?.questionSet(r.assessmentVersion);
+        if (set == null) continue;
+        final mine = assessmentAnswers.where((x) => x.attemptId == r.id);
+        if (mine.length != set.length ||
+            mine.any((x) => set[x.questionId] != x.canDoId)) {
+          throw BackupException(
+            'النسخة الاحتياطية غير متّسقة: محاولة اختبار مستوى ناقصة أو لا '
+            'تطابق أسئلته.',
+          );
+        }
       }
     }
     if (assessmentAnswers.any(

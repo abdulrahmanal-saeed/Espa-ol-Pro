@@ -102,7 +102,10 @@ final progressRepositoryProvider = Provider<ProgressRepository>(
 );
 
 final backupServiceProvider = Provider<BackupService>(
-  (ref) => BackupService(ref.watch(databaseProvider)),
+  (ref) => BackupService(
+    ref.watch(databaseProvider),
+    pack: ref.watch(contentProvider),
+  ),
 );
 
 final exerciseBuilderProvider = Provider<ExerciseBuilder>(
@@ -246,4 +249,14 @@ final assessmentAttemptsProvider = StreamProvider<List<AssessmentAttempt>>(
 
 final assessmentRecordsProvider = StreamProvider<List<AttemptRecord>>(
   (ref) => ref.watch(assessmentRepositoryProvider).watchRecords(),
+);
+
+/// Which levels are locked behind a level assessment (B1 after `lvl_a2`).
+/// Derived from stored attempts only; while they load, gated levels read as
+/// locked.
+final levelGatesProvider = Provider<LevelGates>(
+  (ref) => LevelGates.from(
+    ref.watch(contentProvider),
+    ref.watch(assessmentRecordsProvider).value ?? const [],
+  ),
 );
