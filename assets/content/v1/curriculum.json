@@ -1,5 +1,5 @@
 {
- "version": "1.10.0",
+ "version": "1.11.0",
  "sources": [
   {
    "id": "original-v1",
@@ -12,12 +12,14 @@
  "dialogue_files": [
   "dialogues/pre_a1.json",
   "dialogues/a1.json",
-  "dialogues/a2.json"
+  "dialogues/a2.json",
+  "dialogues/b1.json"
  ],
  "assessment_files": [
   "assessments/pre_a1.json",
   "assessments/a1.json",
-  "assessments/a2.json"
+  "assessments/a2.json",
+  "assessments/b1.json"
  ],
  "verb_file": "verbs.json",
  "levels": [
@@ -225,11 +227,13 @@
     {
      "id": "b1_u1",
      "title_ar": "الرأي والتعليل",
-     "description_ar": "الصيغة الشرطية البسيطة وأدوات الربط.",
+     "description_ar": "إبداء الرأي وتعليله، أدوات الربط، الصيغة الشرطية البسيطة (للتمنّي والطلب المهذّب والنصيحة)، وبناء حجّة في اجتماع.",
      "objectives_ar": [
-      "إبداء رأي مدعوم بأسباب"
+      "إبداء رأي مدعوم بأسباب",
+      "ربط الأفكار وترتيب الحجج",
+      "التمنّي والطلب والنصيحة بالشرطي"
      ],
-     "status": "planned"
+     "status": "available"
     },
     {
      "id": "b1_u2",

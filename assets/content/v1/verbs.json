@@ -31,7 +31,16 @@
     "nosotros": "fuimos",
     "vosotros": "fuisteis",
     "ellos": "fueron"
-   }
+   },
+   "conditional": {
+    "yo": "sería",
+    "tu": "serías",
+    "el": "sería",
+    "nosotros": "seríamos",
+    "vosotros": "seríais",
+    "ellos": "serían"
+   },
+   "conditional_regular": true
   },
   {
    "id": "estar",
@@ -63,7 +72,16 @@
     "nosotros": "estuvimos",
     "vosotros": "estuvisteis",
     "ellos": "estuvieron"
-   }
+   },
+   "conditional": {
+    "yo": "estaría",
+    "tu": "estarías",
+    "el": "estaría",
+    "nosotros": "estaríamos",
+    "vosotros": "estaríais",
+    "ellos": "estarían"
+   },
+   "conditional_regular": true
   },
   {
    "id": "tener",
@@ -97,6 +115,14 @@
     "nosotros": "tuvimos",
     "vosotros": "tuvisteis",
     "ellos": "tuvieron"
+   },
+   "conditional": {
+    "yo": "tendría",
+    "tu": "tendrías",
+    "el": "tendría",
+    "nosotros": "tendríamos",
+    "vosotros": "tendríais",
+    "ellos": "tendrían"
    }
   },
   {
@@ -163,6 +189,14 @@
     "nosotros": "quisimos",
     "vosotros": "quisisteis",
     "ellos": "quisieron"
+   },
+   "conditional": {
+    "yo": "querría",
+    "tu": "querrías",
+    "el": "querría",
+    "nosotros": "querríamos",
+    "vosotros": "querríais",
+    "ellos": "querrían"
    }
   },
   {
@@ -197,6 +231,14 @@
     "nosotros": "pudimos",
     "vosotros": "pudisteis",
     "ellos": "pudieron"
+   },
+   "conditional": {
+    "yo": "podría",
+    "tu": "podrías",
+    "el": "podría",
+    "nosotros": "podríamos",
+    "vosotros": "podríais",
+    "ellos": "podrían"
    }
   },
   {
@@ -230,6 +272,14 @@
     "nosotros": "hablamos",
     "vosotros": "hablasteis",
     "ellos": "hablaron"
+   },
+   "conditional": {
+    "yo": "hablaría",
+    "tu": "hablarías",
+    "el": "hablaría",
+    "nosotros": "hablaríamos",
+    "vosotros": "hablaríais",
+    "ellos": "hablarían"
    }
   },
   {
@@ -358,6 +408,14 @@
     "nosotros": "necesitamos",
     "vosotros": "necesitasteis",
     "ellos": "necesitaron"
+   },
+   "conditional": {
+    "yo": "necesitaría",
+    "tu": "necesitarías",
+    "el": "necesitaría",
+    "nosotros": "necesitaríamos",
+    "vosotros": "necesitaríais",
+    "ellos": "necesitarían"
    }
   },
   {
@@ -390,6 +448,14 @@
     "nosotros": "llamamos",
     "vosotros": "llamasteis",
     "ellos": "llamaron"
+   },
+   "conditional": {
+    "yo": "llamaría",
+    "tu": "llamarías",
+    "el": "llamaría",
+    "nosotros": "llamaríamos",
+    "vosotros": "llamaríais",
+    "ellos": "llamarían"
    }
   },
   {
@@ -743,6 +809,14 @@
     "nosotros": "hicimos",
     "vosotros": "hicisteis",
     "ellos": "hicieron"
+   },
+   "conditional": {
+    "yo": "haría",
+    "tu": "harías",
+    "el": "haría",
+    "nosotros": "haríamos",
+    "vosotros": "haríais",
+    "ellos": "harían"
    }
   },
   {
@@ -1277,6 +1351,14 @@
     "vosotros": "gustasteis",
     "ellos": "gustaron"
    },
+   "conditional": {
+    "yo": "gustaría",
+    "tu": "gustarías",
+    "el": "gustaría",
+    "nosotros": "gustaríamos",
+    "vosotros": "gustaríais",
+    "ellos": "gustarían"
+   },
    "lessons": [
     "a2_u4_l1"
    ],
@@ -1351,6 +1433,15 @@
     }
    ],
    "preterite_regular": false,
+   "conditional": {
+    "yo": "preferiría",
+    "tu": "preferirías",
+    "el": "preferiría",
+    "nosotros": "preferiríamos",
+    "vosotros": "preferiríais",
+    "ellos": "preferirían"
+   },
+   "conditional_regular": true,
    "note_ar": "e ← ie في المضارع، وe ← i في الماضي مع él / ellos: prefirió، prefirieron."
   },
   {
@@ -1676,6 +1767,132 @@
    ],
    "preterite_regular": false,
    "note_ar": "e ← i في المضارع (sigo)، وفي الماضي مع él / ellos: siguió، siguieron."
+  },
+  {
+   "id": "deber",
+   "infinitive": "deber",
+   "ar": "يجب / ينبغي",
+   "regular": true,
+   "present": {
+    "yo": "debo",
+    "tu": "debes",
+    "el": "debe",
+    "nosotros": "debemos",
+    "vosotros": "debéis",
+    "ellos": "deben"
+   },
+   "preterite": {
+    "yo": "debí",
+    "tu": "debiste",
+    "el": "debió",
+    "nosotros": "debimos",
+    "vosotros": "debisteis",
+    "ellos": "debieron"
+   },
+   "conditional": {
+    "yo": "debería",
+    "tu": "deberías",
+    "el": "debería",
+    "nosotros": "deberíamos",
+    "vosotros": "deberíais",
+    "ellos": "deberían"
+   },
+   "note_ar": "للنصيحة نستعمل الشرطي غالباً: deberías (ينبغي أن)، فهو ألطف من debes (يجب أن). بعده مصدر.",
+   "examples": [
+    {
+     "es": "Deberías descansar más.",
+     "ar": "ينبغي أن ترتاح أكثر."
+    },
+    {
+     "es": "Debo terminar el informe hoy.",
+     "ar": "يجب أن أنهي التقرير اليوم."
+    }
+   ],
+   "lessons": [
+    "b1_u1_l3"
+   ]
+  },
+  {
+   "id": "importar",
+   "infinitive": "importar",
+   "ar": "يهمّ / يمانع",
+   "regular": true,
+   "present": {
+    "yo": "importo",
+    "tu": "importas",
+    "el": "importa",
+    "nosotros": "importamos",
+    "vosotros": "importáis",
+    "ellos": "importan"
+   },
+   "preterite": {
+    "yo": "importé",
+    "tu": "importaste",
+    "el": "importó",
+    "nosotros": "importamos",
+    "vosotros": "importasteis",
+    "ellos": "importaron"
+   },
+   "conditional": {
+    "yo": "importaría",
+    "tu": "importarías",
+    "el": "importaría",
+    "nosotros": "importaríamos",
+    "vosotros": "importaríais",
+    "ellos": "importarían"
+   },
+   "note_ar": "يُستعمل مثل gustar: ¿Le importa…? (هل يهمّك / هل تمانع؟) و¿Le importaría…? للطلب المهذّب.",
+   "examples": [
+    {
+     "es": "¿Le importaría esperar un momento?",
+     "ar": "هل تمانع الانتظار لحظة؟"
+    }
+   ],
+   "lessons": [
+    "b1_u1_l3"
+   ]
+  },
+  {
+   "id": "convencer",
+   "infinitive": "convencer",
+   "ar": "يُقنع",
+   "regular": false,
+   "present": {
+    "yo": "convenzo",
+    "tu": "convences",
+    "el": "convence",
+    "nosotros": "convencemos",
+    "vosotros": "convencéis",
+    "ellos": "convencen"
+   },
+   "preterite": {
+    "yo": "convencí",
+    "tu": "convenciste",
+    "el": "convenció",
+    "nosotros": "convencimos",
+    "vosotros": "convencisteis",
+    "ellos": "convencieron"
+   },
+   "preterite_regular": true,
+   "conditional": {
+    "yo": "convencería",
+    "tu": "convencerías",
+    "el": "convencería",
+    "nosotros": "convenceríamos",
+    "vosotros": "convenceríais",
+    "ellos": "convencerían"
+   },
+   "conditional_regular": true,
+   "note_ar": "yo convenzo: تتغيّر c إلى z أمام o لتبقى بصوت «ث». الباقي منتظم.",
+   "examples": [
+    {
+     "es": "Tenemos que convencer al cliente.",
+     "ar": "علينا أن نقنع العميل."
+    }
+   ],
+   "lessons": [
+    "b1_u1_l5"
+   ]
   }
  ],
  "note_ar": "vosotros يُستعمل في إسبانيا للجمع غير الرسمي؛ وفي أمريكا اللاتينية يُستعمل ustedes لكل الجمع."

@@ -1,0 +1,480 @@
+{
+ "dialogues": [
+  {
+   "id": "dlg_b1_horario",
+   "level": "b1",
+   "unit": "b1_u1",
+   "lessons": [
+    "b1_u1_l1",
+    "b1_u1_l2"
+   ],
+   "title_es": "El nuevo horario",
+   "title_ar": "الدوام الجديد",
+   "scenario_ar": "لوثيا وكريم يتناقشان في اقتراح العمل من البيت يومين في الأسبوع.",
+   "objectives_ar": [
+    "فهم رأي وسببه",
+    "فهم الاعتراض والحجّة المقابلة",
+    "فهم أدوات الربط في نقاش"
+   ],
+   "speakers": [
+    {
+     "id": "lucia",
+     "name": "Lucía",
+     "role_ar": "زميلة في فريق المبيعات"
+    },
+    {
+     "id": "karim",
+     "name": "Karim",
+     "role_ar": "زميل في فريق المبيعات"
+    }
+   ],
+   "turns": [
+    {
+     "id": "dlg_b1_horario.t1",
+     "speaker": "lucia",
+     "es": "Karim, ¿cuál es tu opinión del nuevo horario?",
+     "ar": "كريم، ما رأيك في الدوام الجديد؟",
+     "en": "Karim, what's your opinion of the new schedule?"
+    },
+    {
+     "id": "dlg_b1_horario.t2",
+     "speaker": "karim",
+     "es": "Pienso que es una buena idea.",
+     "ar": "أعتقد أنها فكرة جيدة.",
+     "en": "I think it's a good idea."
+    },
+    {
+     "id": "dlg_b1_horario.t3",
+     "speaker": "lucia",
+     "es": "¿Por qué? Yo no estoy de acuerdo.",
+     "ar": "لماذا؟ أنا لا أوافق.",
+     "en": "Why? I don't agree."
+    },
+    {
+     "id": "dlg_b1_horario.t4",
+     "speaker": "karim",
+     "es": "Porque en casa trabajo mejor y, además, descanso más.",
+     "ar": "لأنني أعمل أفضل في البيت، وبالإضافة إلى ذلك أرتاح أكثر.",
+     "en": "Because I work better at home and, besides, I rest more."
+    },
+    {
+     "id": "dlg_b1_horario.t5",
+     "speaker": "lucia",
+     "es": "Sin embargo, el equipo habla menos.",
+     "ar": "ومع ذلك، الفريق يتحدث أقل.",
+     "en": "However, the team talks less."
+    },
+    {
+     "id": "dlg_b1_horario.t6",
+     "speaker": "karim",
+     "es": "Tienes razón. Por un lado, es bueno; por otro lado, no.",
+     "ar": "معك حق. من ناحية هو جيد، ومن ناحية أخرى لا.",
+     "en": "You're right. On one hand it's good; on the other, it isn't."
+    },
+    {
+     "id": "dlg_b1_horario.t7",
+     "speaker": "lucia",
+     "es": "Entonces, el lunes todos en la oficina, ¿vale?",
+     "ar": "إذن، يوم الاثنين الجميع في المكتب، اتفقنا؟",
+     "en": "So on Monday everyone at the office, OK?"
+    },
+    {
+     "id": "dlg_b1_horario.t8",
+     "speaker": "karim",
+     "es": "Me parece bien.",
+     "ar": "لا مانع لديّ.",
+     "en": "Sounds good to me."
+    }
+   ],
+   "items": [
+    "la_opinion",
+    "pienso_que",
+    "porque",
+    "ademas",
+    "sin_embargo",
+    "tienes_razon",
+    "por_un_lado",
+    "por_otro_lado",
+    "me_parece_bien"
+   ],
+   "grammar": [
+    "g_b1_opinion",
+    "g_b1_connectors"
+   ],
+   "questions": [
+    {
+     "type": "choice",
+     "prompt_ar": "ما رأي كريم في الدوام الجديد؟",
+     "choices": [
+      "فكرة جيدة",
+      "فكرة سيئة",
+      "لا رأي له"
+     ],
+     "answer": 0,
+     "choices_es": false,
+     "turn": "dlg_b1_horario.t2",
+     "id": "dlg_b1_horario.q1",
+     "skill": "listening"
+    },
+    {
+     "type": "choice",
+     "prompt_ar": "لماذا يحب كريم العمل من البيت؟",
+     "choices": [
+      "يعمل أفضل ويرتاح أكثر",
+      "البيت قريب من المكتب",
+      "لا يحب الاجتماعات"
+     ],
+     "answer": 0,
+     "choices_es": false,
+     "turn": "dlg_b1_horario.t4",
+     "id": "dlg_b1_horario.q2",
+     "skill": "listening"
+    },
+    {
+     "type": "choice",
+     "prompt_ar": "ما المشكلة التي تراها لوثيا؟",
+     "choices": [
+      "الفريق يتحدث أقل",
+      "العمل أبطأ",
+      "الدوام أطول"
+     ],
+     "answer": 0,
+     "choices_es": false,
+     "turn": "dlg_b1_horario.t5",
+     "id": "dlg_b1_horario.q3",
+     "skill": "listening"
+    },
+    {
+     "type": "speaker",
+     "turn": "dlg_b1_horario.t3",
+     "id": "dlg_b1_horario.q4",
+     "skill": "listening"
+    },
+    {
+     "type": "dictation",
+     "turn": "dlg_b1_horario.t2",
+     "id": "dlg_b1_horario.q5",
+     "skill": "listening"
+    }
+   ],
+   "source": "original-v1"
+  },
+  {
+   "id": "dlg_b1_cliente_enfadado",
+   "level": "b1",
+   "unit": "b1_u1",
+   "lessons": [
+    "b1_u1_l3",
+    "b1_u1_l4"
+   ],
+   "title_es": "Un cliente enfadado",
+   "title_ar": "عميل غاضب",
+   "scenario_ar": "بابلو عنده مشكلة مع عميل غاضب بسبب تأخّر الطلب، ويطلب نصيحة آنا.",
+   "objectives_ar": [
+    "فهم طلب النصيحة",
+    "فهم النصيحة بالشرطي",
+    "فهم اقتراح حلّ"
+   ],
+   "speakers": [
+    {
+     "id": "pablo",
+     "name": "Pablo",
+     "role_ar": "مندوب مبيعات"
+    },
+    {
+     "id": "ana",
+     "name": "Ana",
+     "role_ar": "مديرة الفريق"
+    }
+   ],
+   "turns": [
+    {
+     "id": "dlg_b1_cliente_enfadado.t1",
+     "speaker": "pablo",
+     "es": "Ana, ¿podría hablar contigo un momento?",
+     "ar": "آنا، هل يمكنني أن أتحدث معك لحظة؟",
+     "en": "Ana, could I talk to you for a moment?"
+    },
+    {
+     "id": "dlg_b1_cliente_enfadado.t2",
+     "speaker": "ana",
+     "es": "Claro. ¿Qué pasó?",
+     "ar": "طبعاً. ماذا حدث؟",
+     "en": "Of course. What happened?"
+    },
+    {
+     "id": "dlg_b1_cliente_enfadado.t3",
+     "speaker": "pablo",
+     "es": "Un cliente está enfadado por el retraso del pedido.",
+     "ar": "عميل غاضب بسبب تأخّر الطلب.",
+     "en": "A client is angry about the delay in the order."
+    },
+    {
+     "id": "dlg_b1_cliente_enfadado.t4",
+     "speaker": "ana",
+     "es": "Yo en tu lugar, lo llamaría hoy.",
+     "ar": "لو كنتُ مكانك، لاتصلتُ به اليوم.",
+     "en": "If I were you, I'd call him today."
+    },
+    {
+     "id": "dlg_b1_cliente_enfadado.t5",
+     "speaker": "pablo",
+     "es": "¿No sería mejor escribirle un correo?",
+     "ar": "أليس من الأفضل أن أكتب له بريداً؟",
+     "en": "Wouldn't it be better to write him an email?"
+    },
+    {
+     "id": "dlg_b1_cliente_enfadado.t6",
+     "speaker": "ana",
+     "es": "No. Deberías hablar con él y proponer una solución.",
+     "ar": "لا. ينبغي أن تتحدث معه وتقترح حلاً.",
+     "en": "No. You should talk to him and propose a solution."
+    },
+    {
+     "id": "dlg_b1_cliente_enfadado.t7",
+     "speaker": "pablo",
+     "es": "Tienes razón. Podríamos ofrecerle un descuento.",
+     "ar": "معك حق. يمكننا أن نقدّم له خصماً.",
+     "en": "You're right. We could offer him a discount."
+    },
+    {
+     "id": "dlg_b1_cliente_enfadado.t8",
+     "speaker": "ana",
+     "es": "Me parece bien. Me gustaría ver la propuesta mañana.",
+     "ar": "لا مانع لديّ. أودّ أن أرى الاقتراح غداً.",
+     "en": "Sounds good. I'd like to see the proposal tomorrow."
+    }
+   ],
+   "items": [
+    "podria",
+    "yo_en_tu_lugar",
+    "seria_mejor",
+    "deberias",
+    "la_solucion",
+    "podriamos",
+    "me_parece_bien",
+    "me_gustaria",
+    "la_propuesta"
+   ],
+   "grammar": [
+    "g_b1_conditional",
+    "g_b1_conditional_irregular"
+   ],
+   "questions": [
+    {
+     "type": "choice",
+     "prompt_ar": "لماذا العميل غاضب؟",
+     "choices": [
+      "بسبب تأخّر الطلب",
+      "بسبب السعر",
+      "بسبب خطأ في الفاتورة"
+     ],
+     "answer": 0,
+     "choices_es": false,
+     "turn": "dlg_b1_cliente_enfadado.t3",
+     "id": "dlg_b1_cliente_enfadado.q1",
+     "skill": "listening"
+    },
+    {
+     "type": "choice",
+     "prompt_ar": "بماذا تنصح آنا؟",
+     "choices": [
+      "أن يتصل بالعميل اليوم",
+      "أن يكتب له بريداً",
+      "أن ينتظر أسبوعاً"
+     ],
+     "answer": 0,
+     "choices_es": false,
+     "turn": "dlg_b1_cliente_enfadado.t4",
+     "id": "dlg_b1_cliente_enfadado.q2",
+     "skill": "listening"
+    },
+    {
+     "type": "choice",
+     "prompt_ar": "ما الحل الذي يقترحه بابلو؟",
+     "choices": [
+      "خصم للعميل",
+      "طلب جديد مجاني",
+      "اجتماع مع المدير"
+     ],
+     "answer": 0,
+     "choices_es": false,
+     "turn": "dlg_b1_cliente_enfadado.t7",
+     "id": "dlg_b1_cliente_enfadado.q3",
+     "skill": "listening"
+    },
+    {
+     "type": "speaker",
+     "turn": "dlg_b1_cliente_enfadado.t5",
+     "id": "dlg_b1_cliente_enfadado.q4",
+     "skill": "listening"
+    },
+    {
+     "type": "dictation",
+     "turn": "dlg_b1_cliente_enfadado.t4",
+     "id": "dlg_b1_cliente_enfadado.q5",
+     "skill": "listening"
+    }
+   ],
+   "source": "original-v1"
+  },
+  {
+   "id": "dlg_b1_proveedor",
+   "level": "b1",
+   "unit": "b1_u1",
+   "lessons": [
+    "b1_u1_l5"
+   ],
+   "title_es": "¿Qué proveedor elegimos?",
+   "title_ar": "أيّ مورّد نختار؟",
+   "scenario_ar": "في اجتماع، يعرض كريم حججه لاختيار مورّد، والمديرة مارتا تناقشه.",
+   "objectives_ar": [
+    "فهم ترتيب الحجج",
+    "فهم المثال والمدى الطويل",
+    "فهم الخلاصة"
+   ],
+   "speakers": [
+    {
+     "id": "marta",
+     "name": "Marta",
+     "role_ar": "المديرة"
+    },
+    {
+     "id": "karim",
+     "name": "Karim",
+     "role_ar": "مسؤول المشتريات"
+    }
+   ],
+   "turns": [
+    {
+     "id": "dlg_b1_proveedor.t1",
+     "speaker": "marta",
+     "es": "Karim, ¿cuál prefieres?",
+     "ar": "كريم، أيّهما تفضّل؟",
+     "en": "Karim, which one do you prefer?"
+    },
+    {
+     "id": "dlg_b1_proveedor.t2",
+     "speaker": "karim",
+     "es": "Prefiero la oferta de Mar. Tengo dos argumentos.",
+     "ar": "أفضّل عرض Mar. عندي حجّتان.",
+     "en": "I prefer Mar's offer. I have two arguments."
+    },
+    {
+     "id": "dlg_b1_proveedor.t3",
+     "speaker": "marta",
+     "es": "¿Por qué? Es más cara.",
+     "ar": "لماذا؟ إنه أغلى.",
+     "en": "Why? It's more expensive."
+    },
+    {
+     "id": "dlg_b1_proveedor.t4",
+     "speaker": "karim",
+     "es": "En primer lugar, la calidad es mejor.",
+     "ar": "أولاً، الجودة أفضل.",
+     "en": "First of all, the quality is better."
+    },
+    {
+     "id": "dlg_b1_proveedor.t5",
+     "speaker": "marta",
+     "es": "¿Y en segundo lugar?",
+     "ar": "وثانياً؟",
+     "en": "And secondly?"
+    },
+    {
+     "id": "dlg_b1_proveedor.t6",
+     "speaker": "karim",
+     "es": "A largo plazo es más barata. Por ejemplo, el técnico viene rápido.",
+     "ar": "على المدى الطويل هو أرخص. على سبيل المثال، الفني يأتي بسرعة.",
+     "en": "In the long term it's cheaper. For example, the technician comes quickly."
+    },
+    {
+     "id": "dlg_b1_proveedor.t7",
+     "speaker": "marta",
+     "es": "Es un buen argumento. Sin embargo, tendríamos que convencer al jefe.",
+     "ar": "حجّة جيدة. ومع ذلك، سيكون علينا أن نقنع المدير.",
+     "en": "It's a good argument. However, we'd have to convince the boss."
+    },
+    {
+     "id": "dlg_b1_proveedor.t8",
+     "speaker": "karim",
+     "es": "En conclusión, lo importante es la calidad.",
+     "ar": "في الختام، المهم هو الجودة.",
+     "en": "In conclusion, what matters is quality."
+    }
+   ],
+   "items": [
+    "en_primer_lugar",
+    "en_segundo_lugar",
+    "a_largo_plazo",
+    "por_ejemplo",
+    "el_argumento",
+    "sin_embargo",
+    "tendriamos_que",
+    "convencer",
+    "en_conclusion",
+    "lo_importante"
+   ],
+   "grammar": [
+    "g_b1_argue"
+   ],
+   "questions": [
+    {
+     "type": "choice",
+     "prompt_ar": "أيّ عرض يفضّل كريم؟",
+     "choices": [
+      "عرض Mar",
+      "عرض Sol",
+      "لا يفضّل أيّاً منهما"
+     ],
+     "answer": 0,
+     "choices_es": false,
+     "turn": "dlg_b1_proveedor.t2",
+     "id": "dlg_b1_proveedor.q1",
+     "skill": "listening"
+    },
+    {
+     "type": "choice",
+     "prompt_ar": "ما حجّة كريم الأولى؟",
+     "choices": [
+      "الجودة أفضل",
+      "السعر أقل",
+      "التسليم أسرع"
+     ],
+     "answer": 0,
+     "choices_es": false,
+     "turn": "dlg_b1_proveedor.t4",
+     "id": "dlg_b1_proveedor.q2",
+     "skill": "listening"
+    },
+    {
+     "type": "choice",
+     "prompt_ar": "مَن يجب إقناعه؟",
+     "choices": [
+      "المدير",
+      "العميل",
+      "المورّد"
+     ],
+     "answer": 0,
+     "choices_es": false,
+     "turn": "dlg_b1_proveedor.t7",
+     "id": "dlg_b1_proveedor.q3",
+     "skill": "listening"
+    },
+    {
+     "type": "speaker",
+     "turn": "dlg_b1_proveedor.t5",
+     "id": "dlg_b1_proveedor.q4",
+     "skill": "listening"
+    },
+    {
+     "type": "dictation",
+     "turn": "dlg_b1_proveedor.t8",
+     "id": "dlg_b1_proveedor.q5",
+     "skill": "listening"
+    }
+   ],
+   "source": "original-v1"
+  }
+ ]
+}

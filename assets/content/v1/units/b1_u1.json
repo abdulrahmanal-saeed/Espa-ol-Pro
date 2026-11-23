@@ -1,0 +1,1765 @@
+{
+ "unit": "b1_u1",
+ "grammar": [
+  {
+   "id": "g_b1_opinion",
+   "title_ar": "الرأي والسبب",
+   "body_ar": "لإبداء الرأي: Creo que… · Pienso que… · Me parece que…\nEn mi opinión, … · Desde mi punto de vista, …\nبعدها جملة عادية: Pienso que es una buena idea.\n\nللتعليل: porque في وسط الجملة، وya que في أولها أو وسطها:\nYa que el precio es bueno, prefiero esta oferta.\n\nللاعتراض الآن: No estoy de acuerdo. · Creo que no.\n(أما «no creo que…» فبعدها صيغة subjuntivo، وتأتي في الوحدة الثالثة.)",
+   "examples": [
+    {
+     "es": "Pienso que es una buena idea porque es más barato.",
+     "ar": "أعتقد أنها فكرة جيدة لأنها أرخص."
+    },
+    {
+     "es": "Ya que tenemos poco tiempo, prefiero la opción más rápida.",
+     "ar": "بما أن وقتنا قليل، أفضّل الخيار الأسرع."
+    },
+    {
+     "es": "Desde mi punto de vista, en casa trabajo mejor.",
+     "ar": "من وجهة نظري، أعمل أفضل في البيت."
+    }
+   ]
+  },
+  {
+   "id": "g_b1_connectors",
+   "title_ar": "أدوات الربط",
+   "body_ar": "إضافة: además (وأيضاً también)\nتعارض: pero · sin embargo · en cambio · aunque\nنتيجة: por eso · así que · por lo tanto\nتوضيح: es decir\nجانبا المسألة: por un lado… por otro lado…\n\nsin embargo يربط جملتين، وغالباً بعد نقطة: Es caro. Sin embargo, es muy bueno.",
+   "examples": [
+    {
+     "es": "Es caro. Sin embargo, la calidad es muy buena.",
+     "ar": "إنه غالٍ. ومع ذلك، الجودة جيدة جداً."
+    },
+    {
+     "es": "Por un lado, es rápido; por otro lado, es caro.",
+     "ar": "من ناحية، هو سريع؛ ومن ناحية أخرى، هو غالٍ."
+    },
+    {
+     "es": "El equipo habla menos, así que tenemos reunión el lunes.",
+     "ar": "الفريق يتحدث أقل، لذا عندنا اجتماع يوم الاثنين."
+    }
+   ]
+  },
+  {
+   "id": "g_b1_conditional",
+   "title_ar": "الشرطي البسيط (condicional)",
+   "body_ar": "يُبنى من المصدر كاملاً + ía · ías · ía · íamos · íais · ían:\nhablar → hablaría · ser → sería · deber → debería · gustar → me gustaría\n\nيُستعمل لـ:\n1. التمنّي بأدب: Me gustaría cambiar la fecha.\n2. الطلب المهذّب: ¿Le importaría esperar un momento?\n3. النصيحة: Deberías descansar más.\n\nme gusta (يعجبني عادةً) ≠ me gustaría (أودّ).",
+   "examples": [
+    {
+     "es": "Me gustaría trabajar desde casa los viernes.",
+     "ar": "أودّ أن أعمل من البيت أيام الجمعة."
+    },
+    {
+     "es": "Deberías hablar con tu jefe.",
+     "ar": "ينبغي أن تتحدث مع مديرك."
+    },
+    {
+     "es": "¿Qué harías tú en mi lugar?",
+     "ar": "ماذا كنتَ ستفعل لو كنتَ مكاني؟"
+    }
+   ]
+  },
+  {
+   "id": "g_b1_conditional_irregular",
+   "title_ar": "الشرطي: أفعال شاذّة والنصيحة",
+   "body_ar": "بعض الأفعال تغيّر الجذر، والنهايات نفسها:\npoder → podría · tener → tendría · hacer → haría\ndecir → diría · salir → saldría · querer → querría\n\nللنصيحة والاقتراح:\nYo en tu lugar + شرطي: Yo en tu lugar, hablaría con él.\n(في إسبانيا يقال أيضاً: Yo que tú…)\nSería mejor + مصدر: Sería mejor esperar.\nPodríamos + مصدر: Podríamos cambiar el plan.\nTendríamos que + مصدر: Tendríamos que hablar con el cliente.",
+   "examples": [
+    {
+     "es": "Yo en tu lugar, llamaría al cliente hoy.",
+     "ar": "لو كنتُ مكانك، لاتصلتُ بالعميل اليوم."
+    },
+    {
+     "es": "¿Podría enviarme el informe, por favor?",
+     "ar": "هل يمكنك (حضرتك) أن ترسل لي التقرير من فضلك؟"
+    },
+    {
+     "es": "Podríamos ofrecerle un descuento al cliente.",
+     "ar": "يمكننا أن نقدّم للعميل خصماً."
+    }
+   ]
+  },
+  {
+   "id": "g_b1_argue",
+   "title_ar": "بناء حجّة في اجتماع",
+   "body_ar": "1. رتّب: En primer lugar… · En segundo lugar…\n2. مثّل: Por ejemplo…\n3. الأهم: Lo importante es + اسم أو مصدر.\n4. المدى: a corto plazo / a largo plazo\n5. اختم: En conclusión… · Por lo tanto…",
+   "examples": [
+    {
+     "es": "En primer lugar, la calidad es mejor; en segundo lugar, el servicio es más rápido.",
+     "ar": "أولاً الجودة أفضل، وثانياً الخدمة أسرع."
+    },
+    {
+     "es": "Lo importante es convencer al jefe.",
+     "ar": "المهم هو إقناع المدير."
+    },
+    {
+     "es": "Tengo dos argumentos: la calidad y el servicio.",
+     "ar": "عندي حجّتان: الجودة والخدمة."
+    }
+   ]
+  }
+ ],
+ "lessons": [
+  {
+   "id": "b1_u1_l1",
+   "title_ar": "رأيي وأسبابي",
+   "title_es": "Mi opinión y mis razones",
+   "objectives_ar": [
+    "إبداء الرأي بعبارات متنوّعة",
+    "تعليل الرأي بـ porque وya que",
+    "الموافقة والاعتراض بأدب"
+   ],
+   "prerequisites": [
+    "a2_u5_l5"
+   ],
+   "minutes": 18,
+   "work_relevance_ar": "إبداء رأي مدعوم بأسباب في اجتماع أو بريد.",
+   "source": "original-v1",
+   "grammar": [
+    "g_b1_opinion"
+   ],
+   "items": [
+    {
+     "id": "pienso_que",
+     "es": "pienso que…",
+     "ar": "أعتقد أنّ…",
+     "en": "I think that…",
+     "pos": "تعبير",
+     "examples": [
+      {
+       "es": "Pienso que el proyecto va bien.",
+       "ar": "أعتقد أن المشروع يسير جيداً."
+      }
+     ],
+     "work": true,
+     "syn": "opinion",
+     "connections": [
+      {
+       "type": "grammar",
+       "ar": "من pensar (e → ie): pienso, piensas, piensa. ومثلها creo que."
+      }
+     ]
+    },
+    {
+     "id": "desde_mi_punto_de_vista",
+     "es": "desde mi punto de vista",
+     "ar": "من وجهة نظري",
+     "en": "from my point of view",
+     "pos": "تعبير",
+     "examples": [
+      {
+       "es": "Desde mi punto de vista, la calidad es lo más importante.",
+       "ar": "من وجهة نظري، الجودة هي الأهم."
+      }
+     ],
+     "work": true,
+     "syn": "opinion"
+    },
+    {
+     "id": "la_opinion",
+     "es": "la opinión",
+     "ar": "الرأي",
+     "en": "opinion",
+     "pos": "اسم",
+     "examples": [
+      {
+       "es": "¿Cuál es tu opinión del nuevo horario?",
+       "ar": "ما رأيك في الدوام الجديد؟"
+      },
+      {
+       "es": "Todos tenemos una opinión diferente.",
+       "ar": "لكلٍّ منا رأي مختلف."
+      }
+     ],
+     "connections": [
+      {
+       "type": "cognate",
+       "ar": "تشبه opinion بالإنجليزية، وعليها نبر: opinión."
+      }
+     ]
+    },
+    {
+     "id": "porque",
+     "es": "porque",
+     "ar": "لأنّ",
+     "en": "because",
+     "pos": "أداة ربط",
+     "examples": [
+      {
+       "es": "Prefiero el tren porque es más rápido.",
+       "ar": "أفضّل القطار لأنه أسرع."
+      }
+     ],
+     "note_ar": "porque (لأنّ) كلمة واحدة بلا نبر. ¿Por qué? (لماذا) كلمتان وعلى qué نبر.",
+     "syn": "because"
+    },
+    {
+     "id": "ya_que",
+     "es": "ya que",
+     "ar": "بما أنّ",
+     "en": "since, given that",
+     "pos": "أداة ربط",
+     "examples": [
+      {
+       "es": "Ya que estás aquí, hablamos del informe.",
+       "ar": "بما أنك هنا، لنتحدث عن التقرير."
+      }
+     ],
+     "work": true,
+     "syn": "because"
+    },
+    {
+     "id": "la_razon",
+     "es": "la razón",
+     "ar": "السبب",
+     "en": "reason",
+     "pos": "اسم",
+     "examples": [
+      {
+       "es": "La razón es el precio.",
+       "ar": "السبب هو السعر."
+      }
+     ],
+     "note_ar": "tener razón = أن يكون محقاً: tienes razón."
+    },
+    {
+     "id": "estoy_seguro",
+     "es": "estoy seguro de que…",
+     "ar": "أنا متأكد أنّ…",
+     "en": "I'm sure that…",
+     "pos": "تعبير",
+     "examples": [
+      {
+       "es": "Estoy seguro de que el cliente va a firmar.",
+       "ar": "أنا متأكد أن العميل سيوقّع."
+      }
+     ],
+     "note_ar": "المتكلّمة: estoy segura de que…",
+     "work": true,
+     "alt": [
+      "estoy segura de que…"
+     ]
+    },
+    {
+     "id": "me_parece_bien",
+     "es": "me parece bien",
+     "ar": "لا مانع لديّ / فكرة جيدة",
+     "en": "sounds good to me",
+     "pos": "تعبير",
+     "examples": [
+      {
+       "es": "¿Quedamos el lunes? — Me parece bien.",
+       "ar": "هل نلتقي الاثنين؟ — لا مانع لديّ."
+      }
+     ],
+     "work": true,
+     "syn": "agree"
+    }
+   ],
+   "activities": [
+    {
+     "type": "teach",
+     "item": "pienso_que"
+    },
+    {
+     "type": "teach",
+     "item": "desde_mi_punto_de_vista"
+    },
+    {
+     "type": "mcq_meaning",
+     "item": "pienso_que"
+    },
+    {
+     "type": "listen_choose",
+     "item": "desde_mi_punto_de_vista"
+    },
+    {
+     "type": "note",
+     "title_ar": "عبارات الرأي",
+     "body_ar": "Creo que… · Pienso que… · Me parece que…\nEn mi opinión, … · Desde mi punto de vista, …\nبعدها جملة عادية: Pienso que es caro.",
+     "examples": [
+      {
+       "es": "Desde mi punto de vista, es una buena idea.",
+       "ar": "من وجهة نظري، هذه فكرة جيدة."
+      }
+     ]
+    },
+    {
+     "type": "teach",
+     "item": "la_opinion"
+    },
+    {
+     "type": "teach",
+     "item": "porque"
+    },
+    {
+     "type": "teach",
+     "item": "ya_que"
+    },
+    {
+     "type": "mcq_reverse",
+     "item": "la_opinion"
+    },
+    {
+     "type": "listen_pick_es",
+     "item": "porque"
+    },
+    {
+     "type": "mcq_meaning",
+     "item": "ya_que"
+    },
+    {
+     "type": "teach",
+     "item": "la_razon"
+    },
+    {
+     "type": "teach",
+     "item": "estoy_seguro"
+    },
+    {
+     "type": "teach",
+     "item": "me_parece_bien"
+    },
+    {
+     "type": "mcq_meaning",
+     "item": "la_razon"
+    },
+    {
+     "type": "listen_choose",
+     "item": "estoy_seguro"
+    },
+    {
+     "type": "mcq_reverse",
+     "item": "me_parece_bien"
+    },
+    {
+     "type": "listen_pick_es",
+     "item": "me_parece_bien"
+    },
+    {
+     "type": "choice",
+     "prompt_ar": "اختر الكلمة المناسبة:",
+     "choices": [
+      "porque",
+      "por qué",
+      "por"
+     ],
+     "answer": 0,
+     "skill": "grammar",
+     "choices_es": true,
+     "stimulus_es": "Prefiero esta oferta ___ es más barata.",
+     "explain_ar": "سبب داخل الجملة ← porque (كلمة واحدة). ¿Por qué? للسؤال فقط."
+    },
+    {
+     "type": "fill",
+     "es": "___ que el proyecto va bien.",
+     "answer": "Pienso",
+     "ar": "أعتقد أن المشروع يسير جيداً.",
+     "options": [
+      "Pienso",
+      "Pensar",
+      "Pensado"
+     ],
+     "explain_ar": "مع yo: pienso (e → ie)، وبعده que + جملة."
+    },
+    {
+     "type": "fill",
+     "es": "No voy a la reunión ___ tengo una cita con un cliente.",
+     "answer": "porque",
+     "ar": "لن أذهب إلى الاجتماع لأن عندي موعداً مع عميل.",
+     "options": [
+      "porque",
+      "por qué",
+      "para"
+     ],
+     "explain_ar": "porque + جملة فيها فعل: porque tengo… ، أما por qué فللسؤال."
+    },
+    {
+     "type": "match",
+     "items": [
+      "pienso_que",
+      "la_opinion",
+      "porque",
+      "la_razon"
+     ]
+    },
+    {
+     "type": "type_es",
+     "item": "la_razon"
+    },
+    {
+     "type": "type_es",
+     "item": "la_opinion"
+    },
+    {
+     "type": "order",
+     "es": "Ya que el precio es bueno, prefiero esta oferta.",
+     "ar": "بما أن السعر جيد، أفضّل هذا العرض."
+    },
+    {
+     "type": "dictation",
+     "es": "Desde mi punto de vista, la razón es el precio.",
+     "ar": "من وجهة نظري، السبب هو السعر."
+    },
+    {
+     "type": "choice",
+     "prompt_ar": "لماذا تفضّل مارتا عرض Sol؟",
+     "choices": [
+      "لأن خدمته أسرع",
+      "لأن سعره أقل",
+      "لأن لويس يفضّله"
+     ],
+     "answer": 0,
+     "skill": "reading",
+     "choices_es": false,
+     "stimulus_es": "Reunión del lunes. Marta: «Pienso que la oferta de Sol es mejor, ya que el servicio es más rápido.» Luis: «No estoy de acuerdo. El precio es más alto.»"
+    },
+    {
+     "type": "choice",
+     "prompt_ar": "استمع: ماذا يقول عن العميل؟",
+     "choices": [
+      "متأكد أنه سيوقّع",
+      "لا يعرف إن كان سيوقّع",
+      "العميل وقّع أمس"
+     ],
+     "answer": 0,
+     "skill": "listening",
+     "choices_es": false,
+     "audio_es": "Estoy seguro de que el cliente va a firmar."
+    },
+    {
+     "type": "respond",
+     "prompt_ar": "زميلك يسأل: «¿Quedamos el lunes a las diez?». وافِق بعبارة من الدرس.",
+     "accepted": [
+      "Me parece bien.",
+      "Me parece bien, el lunes a las diez.",
+      "Estoy de acuerdo.",
+      "De acuerdo."
+     ],
+     "audio_es": "Me parece bien."
+    },
+    {
+     "type": "speak",
+     "es": "Pienso que es una buena idea, ya que el precio es mejor.",
+     "ar": "أعتقد أنها فكرة جيدة، بما أن السعر أفضل."
+    }
+   ]
+  },
+  {
+   "id": "b1_u1_l2",
+   "title_ar": "ربط الأفكار",
+   "title_es": "Conectar las ideas",
+   "objectives_ar": [
+    "إضافة فكرة أو تقديم فكرة معارضة",
+    "التعبير عن النتيجة",
+    "عرض جانبَي المسألة"
+   ],
+   "prerequisites": [
+    "b1_u1_l1"
+   ],
+   "minutes": 18,
+   "work_relevance_ar": "كتابة رسائل وتقارير مترابطة بدل جمل منفصلة.",
+   "source": "original-v1",
+   "grammar": [
+    "g_b1_connectors"
+   ],
+   "items": [
+    {
+     "id": "ademas",
+     "es": "además",
+     "ar": "بالإضافة إلى ذلك",
+     "en": "besides, moreover",
+     "pos": "أداة ربط",
+     "examples": [
+      {
+       "es": "El hotel es barato y, además, está cerca.",
+       "ar": "الفندق رخيص، وبالإضافة إلى ذلك قريب."
+      },
+      {
+       "es": "Trabajo en casa y, además, descanso más.",
+       "ar": "أعمل في البيت، وبالإضافة إلى ذلك أرتاح أكثر."
+      }
+     ]
+    },
+    {
+     "id": "sin_embargo",
+     "es": "sin embargo",
+     "ar": "ومع ذلك",
+     "en": "however",
+     "pos": "أداة ربط",
+     "examples": [
+      {
+       "es": "Es caro. Sin embargo, es muy bueno.",
+       "ar": "إنه غالٍ. ومع ذلك، هو جيد جداً."
+      }
+     ],
+     "work": true,
+     "syn": "contrast"
+    },
+    {
+     "id": "en_cambio",
+     "es": "en cambio",
+     "ar": "أمّا… / في المقابل",
+     "en": "whereas, on the other hand",
+     "pos": "أداة ربط",
+     "examples": [
+      {
+       "es": "Yo trabajo en casa; Ana, en cambio, trabaja en la oficina.",
+       "ar": "أنا أعمل في البيت؛ أمّا آنا فتعمل في المكتب."
+      }
+     ],
+     "syn": "contrast"
+    },
+    {
+     "id": "por_un_lado",
+     "es": "por un lado…",
+     "ar": "من ناحية…",
+     "en": "on the one hand…",
+     "pos": "تعبير",
+     "examples": [
+      {
+       "es": "Por un lado, el plan es bueno.",
+       "ar": "من ناحية، الخطة جيدة."
+      }
+     ]
+    },
+    {
+     "id": "por_otro_lado",
+     "es": "por otro lado…",
+     "ar": "من ناحية أخرى…",
+     "en": "on the other hand…",
+     "pos": "تعبير",
+     "examples": [
+      {
+       "es": "Por otro lado, necesitamos más tiempo.",
+       "ar": "من ناحية أخرى، نحتاج وقتاً أكثر."
+      }
+     ],
+     "syn": "contrast"
+    },
+    {
+     "id": "asi_que",
+     "es": "así que",
+     "ar": "لذا / إذن",
+     "en": "so",
+     "pos": "أداة ربط",
+     "examples": [
+      {
+       "es": "Llegué tarde, así que no vi la presentación.",
+       "ar": "وصلتُ متأخراً، لذا لم أرَ العرض التقديمي."
+      }
+     ],
+     "work": true,
+     "syn": "therefore"
+    },
+    {
+     "id": "por_lo_tanto",
+     "es": "por lo tanto",
+     "ar": "وبالتالي",
+     "en": "therefore",
+     "pos": "أداة ربط",
+     "examples": [
+      {
+       "es": "El cliente aceptó la oferta; por lo tanto, firmamos mañana.",
+       "ar": "وافق العميل على العرض، وبالتالي نوقّع غداً."
+      }
+     ],
+     "work": true,
+     "syn": "therefore",
+     "connections": [
+      {
+       "type": "usage",
+       "ar": "أرسمى من así que؛ شائعة في البريد والتقارير."
+      }
+     ]
+    },
+    {
+     "id": "es_decir",
+     "es": "es decir",
+     "ar": "أي / بمعنى آخر",
+     "en": "that is, in other words",
+     "pos": "تعبير",
+     "examples": [
+      {
+       "es": "El plazo es el viernes, es decir, dentro de tres días.",
+       "ar": "المهلة يوم الجمعة، أي بعد ثلاثة أيام."
+      }
+     ],
+     "work": true
+    }
+   ],
+   "activities": [
+    {
+     "type": "teach",
+     "item": "ademas"
+    },
+    {
+     "type": "teach",
+     "item": "sin_embargo"
+    },
+    {
+     "type": "mcq_meaning",
+     "item": "ademas"
+    },
+    {
+     "type": "listen_choose",
+     "item": "sin_embargo"
+    },
+    {
+     "type": "note",
+     "title_ar": "أنواع أدوات الربط",
+     "body_ar": "إضافة: además\nتعارض: pero · sin embargo · en cambio\nنتيجة: por eso · así que · por lo tanto\nتوضيح: es decir",
+     "examples": [
+      {
+       "es": "El precio es bueno y, además, el servicio es rápido.",
+       "ar": "السعر جيد، وبالإضافة إلى ذلك الخدمة سريعة."
+      }
+     ]
+    },
+    {
+     "type": "teach",
+     "item": "en_cambio"
+    },
+    {
+     "type": "teach",
+     "item": "por_un_lado"
+    },
+    {
+     "type": "teach",
+     "item": "por_otro_lado"
+    },
+    {
+     "type": "mcq_reverse",
+     "item": "en_cambio"
+    },
+    {
+     "type": "listen_pick_es",
+     "item": "por_un_lado"
+    },
+    {
+     "type": "mcq_meaning",
+     "item": "por_otro_lado"
+    },
+    {
+     "type": "teach",
+     "item": "asi_que"
+    },
+    {
+     "type": "teach",
+     "item": "por_lo_tanto"
+    },
+    {
+     "type": "teach",
+     "item": "es_decir"
+    },
+    {
+     "type": "mcq_meaning",
+     "item": "es_decir"
+    },
+    {
+     "type": "listen_choose",
+     "item": "por_lo_tanto"
+    },
+    {
+     "type": "mcq_reverse",
+     "item": "asi_que"
+    },
+    {
+     "type": "choice",
+     "prompt_ar": "اختر أداة الربط المناسبة:",
+     "choices": [
+      "Sin embargo",
+      "Por lo tanto",
+      "Así que"
+     ],
+     "answer": 0,
+     "skill": "grammar",
+     "choices_es": true,
+     "stimulus_es": "El precio es alto. ___, la calidad es excelente.",
+     "explain_ar": "السعر عالٍ لكن الجودة ممتازة: تعارض ← sin embargo. por lo tanto وasí que للنتيجة."
+    },
+    {
+     "type": "fill",
+     "es": "Es rápido y, ___, es barato.",
+     "answer": "además",
+     "ar": "إنه سريع، وبالإضافة إلى ذلك رخيص.",
+     "options": [
+      "además",
+      "sin embargo",
+      "en cambio"
+     ],
+     "explain_ar": "ميزة تُضاف إلى ميزة ← además. sin embargo وen cambio للتعارض."
+    },
+    {
+     "type": "fill",
+     "es": "El cliente no puede venir el lunes; ___, cambiamos la reunión al martes.",
+     "answer": "por lo tanto",
+     "ar": "العميل لا يستطيع الحضور يوم الاثنين، وبالتالي ننقل الاجتماع إلى الثلاثاء.",
+     "options": [
+      "por lo tanto",
+      "sin embargo",
+      "además"
+     ],
+     "alt": [
+      "así que",
+      "por eso"
+     ],
+     "explain_ar": "الجملة الثانية نتيجة للأولى ← por lo tanto (أو así que / por eso)."
+    },
+    {
+     "type": "match",
+     "items": [
+      "ademas",
+      "sin_embargo",
+      "asi_que",
+      "es_decir"
+     ]
+    },
+    {
+     "type": "type_es",
+     "item": "ademas"
+    },
+    {
+     "type": "type_es",
+     "item": "sin_embargo"
+    },
+    {
+     "type": "order",
+     "es": "No tenemos tiempo, así que cambiamos la fecha.",
+     "ar": "ليس لدينا وقت، لذا نغيّر الموعد."
+    },
+    {
+     "type": "dictation",
+     "es": "Por un lado, el plan es bueno; por otro lado, es caro.",
+     "ar": "من ناحية، الخطة جيدة؛ ومن ناحية أخرى، هي مكلفة."
+    },
+    {
+     "type": "choice",
+     "prompt_ar": "أيّ عرض يفضّل لويس، ولماذا؟",
+     "choices": [
+      "عرض Mar، لأن جودة Sol أسوأ",
+      "عرض Sol، لأنه أرخص",
+      "عرض Sol، لأن خدمته سريعة"
+     ],
+     "answer": 0,
+     "skill": "reading",
+     "choices_es": false,
+     "stimulus_es": "Correo de Luis: «La oferta de Sol es barata y, además, el servicio es rápido. Sin embargo, la calidad es peor. Por lo tanto, prefiero la oferta de Mar.»"
+    },
+    {
+     "type": "choice",
+     "prompt_ar": "استمع: ماذا يريد المتكلّم؟",
+     "choices": [
+      "أن يبدأ الآن",
+      "أن ينتظر",
+      "أن يسأل مديره"
+     ],
+     "answer": 0,
+     "skill": "listening",
+     "choices_es": false,
+     "audio_es": "Mi jefe quiere esperar; yo, en cambio, quiero empezar ya."
+    },
+    {
+     "type": "respond",
+     "prompt_ar": "أضف ميزة ثانية بـ además: «الفندق رخيص، وبالإضافة إلى ذلك قريب».",
+     "accepted": [
+      "El hotel es barato y, además, está cerca.",
+      "El hotel es barato. Además, está cerca."
+     ],
+     "audio_es": "El hotel es barato y, además, está cerca."
+    },
+    {
+     "type": "speak",
+     "es": "Es caro. Sin embargo, la calidad es muy buena; por lo tanto, lo recomiendo.",
+     "ar": "إنه غالٍ. ومع ذلك الجودة جيدة جداً؛ وبالتالي أوصي به."
+    }
+   ]
+  },
+  {
+   "id": "b1_u1_l3",
+   "title_ar": "ما أودّه",
+   "title_es": "Lo que me gustaría",
+   "objectives_ar": [
+    "التعبير عن رغبة بأدب: me gustaría",
+    "طلب مهذّب: ¿Le importaría…?",
+    "النصيحة بـ debería / deberías"
+   ],
+   "prerequisites": [
+    "b1_u1_l2"
+   ],
+   "minutes": 18,
+   "work_relevance_ar": "طلب تغيير أو خدمة من عميل أو مدير بأسلوب مهذّب.",
+   "source": "original-v1",
+   "grammar": [
+    "g_b1_conditional"
+   ],
+   "items": [
+    {
+     "id": "me_gustaria",
+     "es": "me gustaría…",
+     "ar": "أودّ أن…",
+     "en": "I would like…",
+     "pos": "تعبير",
+     "examples": [
+      {
+       "es": "Me gustaría cambiar la fecha de la reunión.",
+       "ar": "أودّ تغيير موعد الاجتماع."
+      },
+      {
+       "es": "Me gustaría ver el informe mañana.",
+       "ar": "أودّ أن أرى التقرير غداً."
+      }
+     ],
+     "work": true,
+     "syn": "wish",
+     "connections": [
+      {
+       "type": "grammar",
+       "ar": "شرطي gustar: me gusta (يعجبني) ← me gustaría (أودّ)."
+      }
+     ]
+    },
+    {
+     "id": "nos_gustaria",
+     "es": "nos gustaría…",
+     "ar": "نودّ أن…",
+     "en": "we would like…",
+     "pos": "تعبير",
+     "examples": [
+      {
+       "es": "Nos gustaría recibir el presupuesto esta semana.",
+       "ar": "نودّ أن نستلم عرض السعر هذا الأسبوع."
+      }
+     ],
+     "work": true,
+     "syn": "wish"
+    },
+    {
+     "id": "preferiria",
+     "es": "preferiría…",
+     "ar": "أفضّل لو… / كنتُ سأفضّل…",
+     "en": "I would prefer…",
+     "pos": "فعل",
+     "examples": [
+      {
+       "es": "Preferiría hablar por teléfono.",
+       "ar": "أفضّل لو نتحدث بالهاتف."
+      }
+     ],
+     "syn": "prefer"
+    },
+    {
+     "id": "seria",
+     "es": "sería",
+     "ar": "سيكون (لو…)",
+     "en": "it would be",
+     "pos": "فعل",
+     "examples": [
+      {
+       "es": "Sería una buena solución.",
+       "ar": "سيكون ذلك حلاً جيداً."
+      }
+     ]
+    },
+    {
+     "id": "estaria_bien",
+     "es": "estaría bien",
+     "ar": "سيكون جيداً / يناسب",
+     "en": "that would be fine",
+     "pos": "تعبير",
+     "examples": [
+      {
+       "es": "El martes estaría bien.",
+       "ar": "يوم الثلاثاء سيكون مناسباً."
+      }
+     ]
+    },
+    {
+     "id": "deberia",
+     "es": "debería",
+     "ar": "ينبغي أن (أنا / هو / حضرتك)",
+     "en": "I / he / you (formal) should",
+     "pos": "فعل",
+     "examples": [
+      {
+       "es": "El equipo debería revisar el plan.",
+       "ar": "ينبغي أن يراجع الفريق الخطة."
+      }
+     ],
+     "work": true
+    },
+    {
+     "id": "deberias",
+     "es": "deberías",
+     "ar": "ينبغي أن (أنت)",
+     "en": "you should",
+     "pos": "فعل",
+     "examples": [
+      {
+       "es": "Deberías descansar más.",
+       "ar": "ينبغي أن ترتاح أكثر."
+      },
+      {
+       "es": "Deberías hablar con él.",
+       "ar": "ينبغي أن تتحدث معه."
+      }
+     ]
+    },
+    {
+     "id": "le_importaria",
+     "es": "¿Le importaría…?",
+     "ar": "هل تمانع (حضرتك)…؟",
+     "en": "would you mind…?",
+     "pos": "تعبير",
+     "examples": [
+      {
+       "es": "¿Le importaría esperar un momento?",
+       "ar": "هل تمانع الانتظار لحظة؟"
+      }
+     ],
+     "work": true
+    }
+   ],
+   "activities": [
+    {
+     "type": "teach",
+     "item": "me_gustaria"
+    },
+    {
+     "type": "teach",
+     "item": "nos_gustaria"
+    },
+    {
+     "type": "mcq_meaning",
+     "item": "me_gustaria"
+    },
+    {
+     "type": "listen_choose",
+     "item": "nos_gustaria"
+    },
+    {
+     "type": "note",
+     "title_ar": "الشرطي: المصدر + ía",
+     "body_ar": "hablar → hablaría · ser → sería · deber → debería\nyo -ía · tú -ías · él/usted -ía\nnosotros -íamos · vosotros -íais · ellos -ían\nme gusta (عادةً) ≠ me gustaría (أودّ)",
+     "examples": [
+      {
+       "es": "Me gustaría trabajar desde casa los viernes.",
+       "ar": "أودّ أن أعمل من البيت أيام الجمعة."
+      }
+     ]
+    },
+    {
+     "type": "teach",
+     "item": "preferiria"
+    },
+    {
+     "type": "teach",
+     "item": "seria"
+    },
+    {
+     "type": "teach",
+     "item": "estaria_bien"
+    },
+    {
+     "type": "mcq_reverse",
+     "item": "preferiria"
+    },
+    {
+     "type": "listen_pick_es",
+     "item": "seria"
+    },
+    {
+     "type": "mcq_meaning",
+     "item": "estaria_bien"
+    },
+    {
+     "type": "teach",
+     "item": "deberia"
+    },
+    {
+     "type": "teach",
+     "item": "deberias"
+    },
+    {
+     "type": "teach",
+     "item": "le_importaria"
+    },
+    {
+     "type": "mcq_meaning",
+     "item": "le_importaria"
+    },
+    {
+     "type": "listen_choose",
+     "item": "deberias"
+    },
+    {
+     "type": "mcq_reverse",
+     "item": "deberia"
+    },
+    {
+     "type": "choice",
+     "prompt_ar": "«أودّ أن أتكلّم مع المدير» بأدب:",
+     "choices": [
+      "Me gustaría hablar con el director.",
+      "Me gusta hablar con el director.",
+      "Me gustar hablar con el director."
+     ],
+     "answer": 0,
+     "skill": "grammar",
+     "choices_es": true,
+     "explain_ar": "التمنّي المهذّب بالشرطي: me gustaría + مصدر. me gusta = يعجبني (عادةً)."
+    },
+    {
+     "type": "fill",
+     "es": "Tú ___ descansar más.",
+     "answer": "deberías",
+     "ar": "ينبغي أن ترتاح أكثر.",
+     "options": [
+      "deberías",
+      "deber",
+      "debido"
+     ],
+     "explain_ar": "مع tú: deber + ías ← deberías، وبعده مصدر."
+    },
+    {
+     "type": "fill",
+     "es": "Nos ___ recibir la factura hoy.",
+     "answer": "gustaría",
+     "ar": "نودّ أن نستلم الفاتورة اليوم.",
+     "options": [
+      "gustaría",
+      "gustar",
+      "gustado"
+     ],
+     "explain_ar": "nos + gustaría + مصدر: الفعل مفرد لأن ما يُرغب فيه فعل واحد."
+    },
+    {
+     "type": "match",
+     "items": [
+      "me_gustaria",
+      "preferiria",
+      "deberia",
+      "le_importaria"
+     ]
+    },
+    {
+     "type": "type_es",
+     "item": "estaria_bien"
+    },
+    {
+     "type": "type_es",
+     "item": "seria"
+    },
+    {
+     "type": "order",
+     "es": "¿Le importaría enviar el informe hoy?",
+     "ar": "هل تمانع إرسال التقرير اليوم؟"
+    },
+    {
+     "type": "dictation",
+     "es": "Me gustaría cambiar la fecha. ¿El martes estaría bien?",
+     "ar": "أودّ تغيير الموعد. هل يناسب يوم الثلاثاء؟"
+    },
+    {
+     "type": "choice",
+     "prompt_ar": "ماذا يطلب بابلو؟",
+     "choices": [
+      "لقاء صباح الغد للحديث عن المشروع",
+      "تغيير موعد تسليم المشروع",
+      "أن ترسل آنا التقرير اليوم"
+     ],
+     "answer": 0,
+     "skill": "reading",
+     "choices_es": false,
+     "stimulus_es": "Mensaje de Pablo: «Hola, Ana. Me gustaría hablar contigo del proyecto. ¿Te importaría quedar mañana a las diez? Preferiría por la mañana.»"
+    },
+    {
+     "type": "choice",
+     "prompt_ar": "استمع: ما النصيحة؟",
+     "choices": [
+      "أن يتحدث مع العميل اليوم",
+      "أن يرسل بريداً غداً",
+      "أن ينتظر العميل"
+     ],
+     "answer": 0,
+     "skill": "listening",
+     "choices_es": false,
+     "audio_es": "Deberías hablar con el cliente hoy."
+    },
+    {
+     "type": "respond",
+     "prompt_ar": "اطلب بأدب من عميل (usted) أن ينتظر لحظة.",
+     "accepted": [
+      "¿Le importaría esperar un momento?",
+      "¿Le importaría esperar un momento, por favor?"
+     ],
+     "audio_es": "¿Le importaría esperar un momento?"
+    },
+    {
+     "type": "speak",
+     "es": "Me gustaría trabajar desde casa los viernes. ¿Estaría bien?",
+     "ar": "أودّ أن أعمل من البيت أيام الجمعة. هل يناسب ذلك؟"
+    }
+   ]
+  },
+  {
+   "id": "b1_u1_l4",
+   "title_ar": "نصائح واقتراحات",
+   "title_es": "Consejos y propuestas",
+   "objectives_ar": [
+    "طلب مهذّب بـ ¿Podría…?",
+    "اقتراح حلّ بـ podríamos وsería mejor",
+    "نصيحة زميل بـ yo en tu lugar"
+   ],
+   "prerequisites": [
+    "b1_u1_l3"
+   ],
+   "minutes": 18,
+   "work_relevance_ar": "اقتراح حلول ونصح زميل في مشكلة مع عميل.",
+   "source": "original-v1",
+   "grammar": [
+    "g_b1_conditional_irregular"
+   ],
+   "items": [
+    {
+     "id": "podria",
+     "es": "¿Podría…?",
+     "ar": "هل يمكنك (حضرتك)…؟ بأدب",
+     "en": "could you…?",
+     "pos": "تعبير",
+     "examples": [
+      {
+       "es": "¿Podría repetir, por favor?",
+       "ar": "هل يمكنك أن تعيد من فضلك؟"
+      }
+     ],
+     "work": true,
+     "syn": "can_you",
+     "connections": [
+      {
+       "type": "grammar",
+       "ar": "شرطي poder: podr- + ía. أكثر أدباً من ¿Puede…?"
+      }
+     ]
+    },
+    {
+     "id": "podriamos",
+     "es": "podríamos…",
+     "ar": "يمكننا أن… (اقتراح)",
+     "en": "we could…",
+     "pos": "فعل",
+     "examples": [
+      {
+       "es": "Podríamos cambiar el plan.",
+       "ar": "يمكننا تغيير الخطة."
+      },
+      {
+       "es": "Podríamos proponer otra fecha.",
+       "ar": "يمكننا أن نقترح موعداً آخر."
+      }
+     ],
+     "work": true
+    },
+    {
+     "id": "haria",
+     "es": "haría",
+     "ar": "كنتُ سأفعل",
+     "en": "I would do",
+     "pos": "فعل",
+     "examples": [
+      {
+       "es": "¿Qué harías tú? — Yo haría lo mismo.",
+       "ar": "ماذا كنتَ ستفعل؟ — كنتُ سأفعل الشيء نفسه."
+      }
+     ]
+    },
+    {
+     "id": "tendriamos_que",
+     "es": "tendríamos que…",
+     "ar": "سيكون علينا أن…",
+     "en": "we would have to…",
+     "pos": "تعبير",
+     "examples": [
+      {
+       "es": "Tendríamos que hablar con el cliente.",
+       "ar": "سيكون علينا أن نتحدث مع العميل."
+      }
+     ],
+     "work": true
+    },
+    {
+     "id": "yo_en_tu_lugar",
+     "es": "yo en tu lugar…",
+     "ar": "لو كنتُ مكانك…",
+     "en": "if I were you…",
+     "pos": "تعبير",
+     "examples": [
+      {
+       "es": "Yo en tu lugar, lo llamaría hoy.",
+       "ar": "لو كنتُ مكانك، لاتصلتُ به اليوم."
+      }
+     ],
+     "note_ar": "بعدها فعل في الشرطي. في إسبانيا يقال أيضاً: Yo que tú…"
+    },
+    {
+     "id": "seria_mejor",
+     "es": "sería mejor…",
+     "ar": "من الأفضل أن…",
+     "en": "it would be better to…",
+     "pos": "تعبير",
+     "examples": [
+      {
+       "es": "Sería mejor esperar una semana.",
+       "ar": "من الأفضل أن ننتظر أسبوعاً."
+      },
+      {
+       "es": "Sería mejor escribirle un correo.",
+       "ar": "من الأفضل أن نكتب له بريداً."
+      }
+     ],
+     "note_ar": "بعدها مصدر: sería mejor esperar. (sería mejor que… تحتاج subjuntivo، وتأتي لاحقاً.)",
+     "syn": "better"
+    },
+    {
+     "id": "el_consejo",
+     "es": "el consejo",
+     "ar": "النصيحة",
+     "en": "advice",
+     "pos": "اسم",
+     "examples": [
+      {
+       "es": "Gracias por el consejo.",
+       "ar": "شكراً على النصيحة."
+      }
+     ]
+    },
+    {
+     "id": "la_solucion",
+     "es": "la solución",
+     "ar": "الحلّ",
+     "en": "solution",
+     "pos": "اسم",
+     "examples": [
+      {
+       "es": "Tenemos una solución para el cliente.",
+       "ar": "لدينا حلّ للعميل."
+      },
+      {
+       "es": "El cliente está enfadado por el retraso.",
+       "ar": "العميل غاضب بسبب التأخير."
+      }
+     ],
+     "work": true,
+     "connections": [
+      {
+       "type": "cognate",
+       "ar": "تشبه solution بالإنجليزية، ومنها solucionar (درستَه في A2)."
+      }
+     ]
+    }
+   ],
+   "activities": [
+    {
+     "type": "teach",
+     "item": "podria"
+    },
+    {
+     "type": "teach",
+     "item": "podriamos"
+    },
+    {
+     "type": "mcq_meaning",
+     "item": "podria"
+    },
+    {
+     "type": "listen_choose",
+     "item": "podriamos"
+    },
+    {
+     "type": "note",
+     "title_ar": "شرطي شاذّ",
+     "body_ar": "poder → podría · tener → tendría · hacer → haría\ndecir → diría · salir → saldría · querer → querría\nالنهايات نفسها: -ía, -ías, -ía, -íamos, -íais, -ían",
+     "examples": [
+      {
+       "es": "¿Qué harías tú en mi lugar?",
+       "ar": "ماذا كنتَ ستفعل لو كنتَ مكاني؟"
+      }
+     ]
+    },
+    {
+     "type": "teach",
+     "item": "haria"
+    },
+    {
+     "type": "teach",
+     "item": "tendriamos_que"
+    },
+    {
+     "type": "teach",
+     "item": "yo_en_tu_lugar"
+    },
+    {
+     "type": "mcq_reverse",
+     "item": "haria"
+    },
+    {
+     "type": "listen_pick_es",
+     "item": "tendriamos_que"
+    },
+    {
+     "type": "mcq_meaning",
+     "item": "yo_en_tu_lugar"
+    },
+    {
+     "type": "teach",
+     "item": "seria_mejor"
+    },
+    {
+     "type": "teach",
+     "item": "el_consejo"
+    },
+    {
+     "type": "teach",
+     "item": "la_solucion"
+    },
+    {
+     "type": "mcq_meaning",
+     "item": "seria_mejor"
+    },
+    {
+     "type": "listen_choose",
+     "item": "la_solucion"
+    },
+    {
+     "type": "mcq_reverse",
+     "item": "el_consejo"
+    },
+    {
+     "type": "choice",
+     "prompt_ar": "أيّ جملة صحيحة؟",
+     "choices": [
+      "Podríamos cambiar el plan.",
+      "Poderíamos cambiar el plan.",
+      "Podemos cambiaríamos el plan."
+     ],
+     "answer": 0,
+     "skill": "grammar",
+     "choices_es": true,
+     "explain_ar": "poder شاذّ في الشرطي: podr- ← podríamos (لا poderíamos)، وبعده مصدر."
+    },
+    {
+     "type": "fill",
+     "es": "Yo en tu lugar, ___ al cliente hoy.",
+     "answer": "llamaría",
+     "ar": "لو كنتُ مكانك، لاتصلتُ بالعميل اليوم.",
+     "options": [
+      "llamaría",
+      "llamar",
+      "llamado"
+     ],
+     "explain_ar": "yo en tu lugar + شرطي: llamar + ía ← llamaría."
+    },
+    {
+     "type": "fill",
+     "es": "___ que revisar el contrato otra vez.",
+     "answer": "Tendríamos",
+     "ar": "سيكون علينا أن نراجع العقد مرة أخرى.",
+     "options": [
+      "Tendríamos",
+      "Tener",
+      "Tenido"
+     ],
+     "explain_ar": "tener شاذّ: tendr- + íamos ← tendríamos que + مصدر."
+    },
+    {
+     "type": "match",
+     "items": [
+      "podria",
+      "haria",
+      "el_consejo",
+      "la_solucion"
+     ]
+    },
+    {
+     "type": "type_es",
+     "item": "la_solucion"
+    },
+    {
+     "type": "type_es",
+     "item": "el_consejo"
+    },
+    {
+     "type": "order",
+     "es": "Sería mejor esperar una semana.",
+     "ar": "من الأفضل الانتظار أسبوعاً."
+    },
+    {
+     "type": "dictation",
+     "es": "¿Podría enviarme el contrato? Tendríamos que firmar hoy.",
+     "ar": "هل يمكنك إرسال العقد لي؟ سيكون علينا التوقيع اليوم."
+    },
+    {
+     "type": "choice",
+     "prompt_ar": "بماذا تنصح آنا؟",
+     "choices": [
+      "أن يتصل بالعميل اليوم",
+      "أن يكتب له بريداً",
+      "أن ينتظر أسبوعاً"
+     ],
+     "answer": 0,
+     "skill": "reading",
+     "choices_es": false,
+     "stimulus_es": "Pablo: «El cliente está enfadado por el retraso.» Ana: «Yo en tu lugar, lo llamaría hoy. Sería mejor hablar con él.»"
+    },
+    {
+     "type": "choice",
+     "prompt_ar": "استمع: ما الاقتراح؟",
+     "choices": [
+      "تقديم خصم للعميل",
+      "رفع السعر",
+      "إلغاء الطلب"
+     ],
+     "answer": 0,
+     "skill": "listening",
+     "choices_es": false,
+     "audio_es": "Podríamos ofrecerle un descuento al cliente."
+    },
+    {
+     "type": "respond",
+     "prompt_ar": "انصح زميلك: «لو كنتُ مكانك، لاتصلتُ بالعميل».",
+     "accepted": [
+      "Yo en tu lugar, llamaría al cliente.",
+      "Yo que tú, llamaría al cliente."
+     ],
+     "audio_es": "Yo en tu lugar, llamaría al cliente."
+    },
+    {
+     "type": "speak",
+     "es": "Yo en tu lugar, hablaría con el jefe. Sería mejor buscar una solución.",
+     "ar": "لو كنتُ مكانك لتحدثتُ مع المدير. من الأفضل البحث عن حلّ."
+    }
+   ]
+  },
+  {
+   "id": "b1_u1_l5",
+   "title_ar": "حجّتي في الاجتماع",
+   "title_es": "Argumentar en una reunión",
+   "objectives_ar": [
+    "ترتيب الحجج: en primer lugar…",
+    "دعم الرأي بمثال",
+    "ختم النقاش بخلاصة"
+   ],
+   "prerequisites": [
+    "b1_u1_l4"
+   ],
+   "minutes": 20,
+   "work_relevance_ar": "الدفاع عن اقتراح أو مورّد أمام المدير بحجج مرتّبة.",
+   "source": "original-v1",
+   "grammar": [
+    "g_b1_argue"
+   ],
+   "items": [
+    {
+     "id": "en_primer_lugar",
+     "es": "en primer lugar",
+     "ar": "أولاً",
+     "en": "first of all",
+     "pos": "تعبير",
+     "examples": [
+      {
+       "es": "En primer lugar, el precio es mejor.",
+       "ar": "أولاً، السعر أفضل."
+      }
+     ],
+     "work": true
+    },
+    {
+     "id": "en_segundo_lugar",
+     "es": "en segundo lugar",
+     "ar": "ثانياً",
+     "en": "secondly",
+     "pos": "تعبير",
+     "examples": [
+      {
+       "es": "En segundo lugar, el servicio es más rápido.",
+       "ar": "ثانياً، الخدمة أسرع."
+      }
+     ]
+    },
+    {
+     "id": "por_ejemplo",
+     "es": "por ejemplo",
+     "ar": "على سبيل المثال",
+     "en": "for example",
+     "pos": "تعبير",
+     "examples": [
+      {
+       "es": "Hay ventajas; por ejemplo, el técnico viene rápido.",
+       "ar": "هناك مزايا؛ على سبيل المثال، الفني يأتي بسرعة."
+      }
+     ]
+    },
+    {
+     "id": "el_argumento",
+     "es": "el argumento",
+     "ar": "الحجّة",
+     "en": "argument (reason)",
+     "pos": "اسم",
+     "examples": [
+      {
+       "es": "Es un buen argumento.",
+       "ar": "إنها حجّة جيدة."
+      }
+     ],
+     "connections": [
+      {
+       "type": "false_friend",
+       "ar": "argumento = حجّة تدعم رأياً، لا «شجار» كما قد تعني argument بالإنجليزية."
+      }
+     ]
+    },
+    {
+     "id": "a_largo_plazo",
+     "es": "a largo plazo",
+     "ar": "على المدى الطويل",
+     "en": "in the long term",
+     "pos": "تعبير",
+     "examples": [
+      {
+       "es": "A largo plazo, esta opción es más barata.",
+       "ar": "على المدى الطويل، هذا الخيار أرخص."
+      }
+     ],
+     "work": true,
+     "connections": [
+      {
+       "type": "grammar",
+       "ar": "plazo = المهلة (من A2). وعكسها: a corto plazo = على المدى القصير."
+      }
+     ]
+    },
+    {
+     "id": "lo_importante",
+     "es": "lo importante es…",
+     "ar": "المهم هو…",
+     "en": "the important thing is…",
+     "pos": "تعبير",
+     "examples": [
+      {
+       "es": "Lo importante es la calidad.",
+       "ar": "المهم هو الجودة."
+      }
+     ],
+     "work": true
+    },
+    {
+     "id": "en_conclusion",
+     "es": "en conclusión",
+     "ar": "في الختام / خلاصة القول",
+     "en": "in conclusion",
+     "pos": "تعبير",
+     "examples": [
+      {
+       "es": "En conclusión, recomiendo la oferta de Sol.",
+       "ar": "في الختام، أوصي بعرض Sol."
+      }
+     ],
+     "syn": "summary"
+    },
+    {
+     "id": "convencer",
+     "es": "convencer",
+     "ar": "يُقنع",
+     "en": "to convince",
+     "pos": "فعل",
+     "examples": [
+      {
+       "es": "Tenemos que convencer al cliente.",
+       "ar": "علينا أن نقنع العميل."
+      }
+     ],
+     "note_ar": "yo convenzo (c ← z أمام o)، والباقي منتظم: convences, convence…",
+     "work": true
+    }
+   ],
+   "activities": [
+    {
+     "type": "teach",
+     "item": "en_primer_lugar"
+    },
+    {
+     "type": "teach",
+     "item": "en_segundo_lugar"
+    },
+    {
+     "type": "mcq_meaning",
+     "item": "en_primer_lugar"
+    },
+    {
+     "type": "listen_choose",
+     "item": "en_segundo_lugar"
+    },
+    {
+     "type": "note",
+     "title_ar": "ترتيب الحجّة",
+     "body_ar": "En primer lugar… ← En segundo lugar… ← Por ejemplo… ← En conclusión…\nواستعمل معها: además · sin embargo · por lo tanto",
+     "examples": [
+      {
+       "es": "En primer lugar, el precio es mejor; en segundo lugar, el servicio es más rápido.",
+       "ar": "أولاً السعر أفضل، وثانياً الخدمة أسرع."
+      }
+     ]
+    },
+    {
+     "type": "teach",
+     "item": "por_ejemplo"
+    },
+    {
+     "type": "teach",
+     "item": "el_argumento"
+    },
+    {
+     "type": "teach",
+     "item": "a_largo_plazo"
+    },
+    {
+     "type": "mcq_reverse",
+     "item": "por_ejemplo"
+    },
+    {
+     "type": "listen_pick_es",
+     "item": "el_argumento"
+    },
+    {
+     "type": "mcq_meaning",
+     "item": "a_largo_plazo"
+    },
+    {
+     "type": "teach",
+     "item": "lo_importante"
+    },
+    {
+     "type": "teach",
+     "item": "en_conclusion"
+    },
+    {
+     "type": "teach",
+     "item": "convencer"
+    },
+    {
+     "type": "mcq_meaning",
+     "item": "convencer"
+    },
+    {
+     "type": "listen_choose",
+     "item": "lo_importante"
+    },
+    {
+     "type": "mcq_reverse",
+     "item": "en_conclusion"
+    },
+    {
+     "type": "choice",
+     "prompt_ar": "اختر الجملة الصحيحة:",
+     "choices": [
+      "Lo importante es convencer al cliente.",
+      "El importante es convencer al cliente.",
+      "Lo importante es convence al cliente."
+     ],
+     "answer": 0,
+     "skill": "grammar",
+     "choices_es": true,
+     "explain_ar": "lo + صفة = الشيء الـ… (lo importante). وبعد es يأتي المصدر: convencer."
+    },
+    {
+     "type": "fill",
+     "es": "___ ejemplo, el servicio es más rápido.",
+     "answer": "Por",
+     "ar": "على سبيل المثال، الخدمة أسرع.",
+     "options": [
+      "Por",
+      "Para",
+      "En"
+     ],
+     "explain_ar": "التعبير ثابت: por ejemplo."
+    },
+    {
+     "type": "fill",
+     "es": "Tenemos que ___ al cliente.",
+     "answer": "convencer",
+     "ar": "علينا أن نقنع العميل.",
+     "options": [
+      "convencer",
+      "convenzo",
+      "convencido"
+     ],
+     "explain_ar": "بعد tener que يأتي المصدر: convencer."
+    },
+    {
+     "type": "match",
+     "items": [
+      "en_primer_lugar",
+      "por_ejemplo",
+      "el_argumento",
+      "en_conclusion"
+     ]
+    },
+    {
+     "type": "type_es",
+     "item": "el_argumento"
+    },
+    {
+     "type": "type_es",
+     "item": "por_ejemplo"
+    },
+    {
+     "type": "order",
+     "es": "En conclusión, recomiendo la oferta de Sol.",
+     "ar": "في الختام، أوصي بعرض Sol."
+    },
+    {
+     "type": "dictation",
+     "es": "En primer lugar, el precio es mejor. En segundo lugar, el servicio es más rápido.",
+     "ar": "أولاً السعر أفضل. ثانياً الخدمة أسرع."
+    },
+    {
+     "type": "choice",
+     "prompt_ar": "لماذا يوصي كريم بعرض Mar مع أنه أغلى؟",
+     "choices": [
+      "لأنه أرخص على المدى الطويل بفضل جودته",
+      "لأنه الأسرع في التسليم",
+      "لأن المدير يفضّله"
+     ],
+     "answer": 0,
+     "skill": "reading",
+     "choices_es": false,
+     "stimulus_es": "Resumen de Karim: «En primer lugar, la oferta de Mar es más cara. Sin embargo, a largo plazo es más barata, ya que la calidad es mejor. En conclusión, recomiendo Mar.»"
+    },
+    {
+     "type": "choice",
+     "prompt_ar": "استمع: ما الأهم بالنسبة للمتكلّم؟",
+     "choices": [
+      "الجودة",
+      "السعر",
+      "الموعد"
+     ],
+     "answer": 0,
+     "skill": "listening",
+     "choices_es": false,
+     "audio_es": "Lo importante es la calidad, no el precio."
+    },
+    {
+     "type": "respond",
+     "prompt_ar": "اختم النقاش: «في الختام، المهم هو الجودة».",
+     "accepted": [
+      "En conclusión, lo importante es la calidad."
+     ],
+     "audio_es": "En conclusión, lo importante es la calidad."
+    },
+    {
+     "type": "speak",
+     "es": "En primer lugar, el precio es mejor. Además, a largo plazo es más barato. En conclusión, recomiendo esta oferta.",
+     "ar": "أولاً السعر أفضل. وبالإضافة إلى ذلك هو أرخص على المدى الطويل. في الختام، أوصي بهذا العرض."
+    }
+   ]
+  }
+ ]
+}

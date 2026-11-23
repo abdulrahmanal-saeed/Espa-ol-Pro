@@ -452,6 +452,7 @@
       }
      ],
      "work": true,
+     "syn": "can_you",
      "connections": [
       {
        "type": "usage",
@@ -1532,7 +1533,8 @@
        "ar": "باختصار، المشروع يسير جيداً."
       }
      ],
-     "work": true
+     "work": true,
+     "syn": "summary"
     },
     {
      "id": "acordamos",

@@ -1747,7 +1747,8 @@
        "es": "El cliente llamó; por eso revisé la factura.",
        "ar": "اتصل العميل؛ لذلك راجعتُ الفاتورة."
       }
-     ]
+     ],
+     "syn": "therefore"
     },
     {
      "id": "seguimiento",

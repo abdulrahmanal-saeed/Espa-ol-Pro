@@ -126,6 +126,7 @@
       }
      ],
      "note_ar": "أكثر تهذيباً من quiero؛ تناسب البنك والمكاتب والعملاء.",
+     "syn": "wish",
      "connections": [
       {
        "type": "usage",
@@ -1286,6 +1287,7 @@
        "ar": "عذراً، هل يمكنك مساعدتي في هذه الفاتورة؟"
       }
      ],
+     "syn": "can_you",
      "connections": [
       {
        "type": "grammar",

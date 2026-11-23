@@ -476,6 +476,7 @@
        "ar": "ماذا تفضّل، قهوة أم شاي؟"
       }
      ],
+     "syn": "prefer",
      "connections": [
       {
        "type": "grammar",
@@ -1180,6 +1181,7 @@
       }
      ],
      "work": true,
+     "syn": "opinion",
      "connections": [
       {
        "type": "grammar",
@@ -1199,7 +1201,8 @@
        "ar": "في رأيي، السعر مرتفع."
       }
      ],
-     "work": true
+     "work": true,
+     "syn": "opinion"
     },
     {
      "id": "me_parece",
@@ -1237,6 +1240,7 @@
       }
      ],
      "work": true,
+     "syn": "agree",
      "connections": [
       {
        "type": "usage",
