@@ -5,7 +5,7 @@ implementer: Claude Code
 handoff_status: READY_FOR_REVIEW
 handoff_id: PHASE3-004
 updated_at_utc: 2026-11-23T12:00:00Z
-review_requested_for_sha: 0a2b18b (application code 0a2b18b, a6c1ad9 and 7330136)
+review_requested_for_sha: 941c18b (application code 941c18b, 0a2b18b, a6c1ad9 and 7330136)
 branch: feat/a2-u3-future
 pull_request: https://github.com/abdulrahmanal-saeed/Espa-ol-Pro/pull/14
 last_review_acknowledged: REVIEW-015
@@ -43,6 +43,21 @@ It was merged with a normal merge as **`bb4c4b9`**
 - **One scoped test.** The A2-U2 compatibility test now asserts that the
   verb file is valid without past forms. The only remaining issues are the
   new rule's: "terminó" loses its source once the past forms are removed.
+
+## Ambiguous distractors: fixed in `941c18b`
+
+Codex found a pattern on #14 and #15: a fill-in distractor that is also valid
+Spanish. I checked every A2-U3 fill-in for it. Five offered a correct
+alternative:
+
+- no podemos
+- ¿quedan…?
+- luego van a empezar
+- piensa visitar
+- empezó… y termina
+
+Their distractors are now non-finite forms (poder, quedar, quedado,
+empezar, ir, yendo), or a subject fixes the person (yo pienso).
 
 ## Codex review on PR #14: fixed in `0a2b18b`
 
