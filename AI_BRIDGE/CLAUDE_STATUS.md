@@ -3,6 +3,117 @@
 owner: Claude Code
 implementer: Claude Code
 handoff_status: READY_FOR_REVIEW
+handoff_id: PHASE3-006
+updated_at_utc: 2026-11-23T16:00:00Z
+review_requested_for_sha: latest #16 head (application code a3ec090 + the cuando fix)
+branch: feat/a2-u5-work
+pull_request: https://github.com/abdulrahmanal-saeed/Espa-ol-Pro/pull/16 (stacked: #14 → #15 → #16)
+also_awaiting_review: PHASE3-004 (#14, A2-U3), PHASE3-005 (#15, A2-U4)
+last_review_acknowledged: REVIEW-015
+project_status: A2_U3_U4_U5_IN_REVIEW__ALL_A2_UNITS_HAVE_CONTENT__DEVICE_AND_NATIVE_QA_PENDING
+
+## Stack and review order
+
+1. #14 (A2-U3) — PHASE3-004
+2. #15 (A2-U4) — PHASE3-005
+3. #16 (A2-U5) — this handoff
+
+Each PR targets the branch of the one before it and adds only its own
+commits. Merge them in order; after each merge I retarget the next PR to
+`main`.
+
+## Codex finding on #16: fixed
+
+A future event after `cuando` needs the subjunctive: «Te aviso cuando
+esté listo». The subjunctive is not taught at A2, so I rephrased the four
+places that had `cuando` with the indicative:
+
+- the dialogue turn;
+- a grammar example;
+- a reading activity;
+- a speaking activity.
+
+They now use a time expression: «te aviso esta tarde», «te aviso en diez
+minutos». No `cuando` + verb remains anywhere in the content.
+
+## PR #16: A2-U5 "Simple work conversations" (content 1.9.0, `a3ec090`)
+
+This PR completes the content of all five A2 units.
+
+| Lesson | Content |
+|---|---|
+| `a2_u5_l1` Un correo formal | estimado, le escribo para…, el asunto, adjunto…, el archivo, la respuesta, quedo a la espera de su respuesta, un saludo, saludos cordiales |
+| `a2_u5_l2` Mensajes rápidos | ¿Puedes…?, perdona, llego tarde, te aviso, sin problema, gracias por…, ya está, ahora voy, un abrazo; tú vs usted |
+| `a2_u5_l3` Un cliente nuevo | me interesa…, el servicio, la información, el catálogo, ¿Me da su…?, el correo electrónico, ¿Cómo se escribe?, le paso con…, con mucho gusto |
+| `a2_u5_l4` El seguimiento | como hablamos…, la semana pasada, la propuesta, ¿Pudo…?, le recuerdo que…, pendiente, quedamos en…, el próximo paso, cualquier duda |
+| `a2_u5_l5` Cerrar la reunión | en resumen, acordamos…, el acuerdo, el contrato, entonces, por último, gracias por su tiempo, seguimos en contacto, hasta pronto |
+
+**Activities.** Every lesson has the full set of activity types. Every
+fill-in and grammar choice has an explanation for wrong answers.
+
+**Distractors.** Each fill-in distractor is an infinitive or a participle,
+so no distractor is also valid Spanish. This applies the Codex finding from
+#14 and #15.
+
+**Dialogues.** The estimator flagged two dialogues; both were rewritten and
+all three now pass:
+
+- `dlg_a2_mensajes`: no changes needed.
+- `dlg_a2_cliente_nuevo`: the first version spelled a name letter by letter
+  and used *mantenimiento*, which is not taught. The spelling turn was
+  removed, and the word is now taught in an example.
+- `dlg_a2_seguimiento`: *revisarla*, *firma* and *exacto* were not taught.
+  They became *la revisé*, *para firmar* and *muy bien*.
+
+**Checkpoint `chk_a2_u5`.**
+
+- 12 questions covering 3 can-dos.
+- Skills: reading 2, writing 3, grammar 3, listening 3, vocabulary 1.
+- 3 questions play dialogue sentences.
+- Options are shuffled.
+
+**Verbs.** 7 new verbs, 52 in total:
+
+- **dar:** doy; past di / dio, without an accent.
+- **seguir:** sigo; past siguió.
+- **recordar and acordar:** o→ue in the present; regular past.
+- **adjuntar, avisar, interesar:** machine-checked.
+
+### Verification
+
+| Check | Result |
+|---|---|
+| format | 0 changed |
+| `flutter analyze --fatal-infos` | No issues |
+| content validator | OK: 57 lessons, 487 items, 999 graded, 31 dialogues, 15 assessments, 52 verbs |
+| `flutter test` | **389 passed** (379 + 9 in `a2_u5_work_test` + completing A2-U5 in `a2_units_test`) |
+| screenshots | 07 and 22 regenerated |
+
+## Questions for ChatGPT
+
+1. Lesson 53 teaches "Estimado/a + name:" with a colon, which is standard
+   in Spanish letters. Should we also mention "Hola, + name:" for
+   semi-formal emails?
+2. Should `lvl_a2` cover all five units with roughly 25 questions, like
+   `lvl_a1`?
+
+## Proposed next step
+
+The **A2 level assessment `lvl_a2`**, built the same way as `lvl_a1`:
+
+- it opens only when every A2 lesson is complete;
+- it covers all five units and five skills, with no speaking;
+- its tile appears at the end of A2 on the learning path.
+
+I will not merge #14, #15 or #16. That is the owner's decision.
+
+---
+
+# Previous handoff (PHASE3-005, still awaiting review)
+
+owner: Claude Code
+implementer: Claude Code
+handoff_status: READY_FOR_REVIEW
 handoff_id: PHASE3-005
 updated_at_utc: 2026-11-23T14:00:00Z
 review_requested_for_sha: (see the latest PR #15 head; application code bb1f2e6, 4508d99 and the distractor fix)

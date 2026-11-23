@@ -180,7 +180,8 @@
    },
    "lessons": [
     "a1_u4_l3",
-    "a2_u1_l1"
+    "a2_u1_l1",
+    "a2_u5_l4"
    ],
    "examples": [
     {
@@ -984,7 +985,8 @@
     "ellos": "escriben"
    },
    "lessons": [
-    "a2_u2_l5"
+    "a2_u2_l5",
+    "a2_u5_l1"
    ],
    "examples": [
     {
@@ -1054,7 +1056,8 @@
     "ellos": "pasaron"
    },
    "lessons": [
-    "a2_u2_l5"
+    "a2_u2_l5",
+    "a2_u5_l3"
    ],
    "examples": [
     {
@@ -1448,6 +1451,231 @@
    ],
    "preterite_regular": true,
    "note_ar": "e ← ie في المضارع، ومنتظم في الماضي."
+  },
+  {
+   "id": "adjuntar",
+   "infinitive": "adjuntar",
+   "ar": "يُرفق",
+   "regular": true,
+   "present": {
+    "yo": "adjunto",
+    "tu": "adjuntas",
+    "el": "adjunta",
+    "nosotros": "adjuntamos",
+    "vosotros": "adjuntáis",
+    "ellos": "adjuntan"
+   },
+   "preterite": {
+    "yo": "adjunté",
+    "tu": "adjuntaste",
+    "el": "adjuntó",
+    "nosotros": "adjuntamos",
+    "vosotros": "adjuntasteis",
+    "ellos": "adjuntaron"
+   },
+   "lessons": [
+    "a2_u5_l1"
+   ],
+   "examples": [
+    {
+     "es": "Adjunto el presupuesto.",
+     "ar": "أرفق عرض السعر."
+    }
+   ]
+  },
+  {
+   "id": "avisar",
+   "infinitive": "avisar",
+   "ar": "يُعلم / يُخبر",
+   "regular": true,
+   "present": {
+    "yo": "aviso",
+    "tu": "avisas",
+    "el": "avisa",
+    "nosotros": "avisamos",
+    "vosotros": "avisáis",
+    "ellos": "avisan"
+   },
+   "preterite": {
+    "yo": "avisé",
+    "tu": "avisaste",
+    "el": "avisó",
+    "nosotros": "avisamos",
+    "vosotros": "avisasteis",
+    "ellos": "avisaron"
+   },
+   "lessons": [
+    "a2_u5_l2"
+   ],
+   "examples": [
+    {
+     "es": "Te aviso mañana.",
+     "ar": "أُعلمك غداً."
+    }
+   ]
+  },
+  {
+   "id": "dar",
+   "infinitive": "dar",
+   "ar": "يعطي",
+   "regular": false,
+   "present": {
+    "yo": "doy",
+    "tu": "das",
+    "el": "da",
+    "nosotros": "damos",
+    "vosotros": "dais",
+    "ellos": "dan"
+   },
+   "preterite": {
+    "yo": "di",
+    "tu": "diste",
+    "el": "dio",
+    "nosotros": "dimos",
+    "vosotros": "disteis",
+    "ellos": "dieron"
+   },
+   "lessons": [
+    "a2_u5_l3"
+   ],
+   "examples": [
+    {
+     "es": "¿Me da su nombre?",
+     "ar": "هل تعطيني اسمك؟"
+    }
+   ],
+   "note_ar": "شاذّ: doy مع yo؛ وفي الماضي di / dio بلا علامة نبر، بنهايات ‎-er."
+  },
+  {
+   "id": "interesar",
+   "infinitive": "interesar",
+   "ar": "يهمّ",
+   "regular": true,
+   "present": {
+    "yo": "intereso",
+    "tu": "interesas",
+    "el": "interesa",
+    "nosotros": "interesamos",
+    "vosotros": "interesáis",
+    "ellos": "interesan"
+   },
+   "preterite": {
+    "yo": "interesé",
+    "tu": "interesaste",
+    "el": "interesó",
+    "nosotros": "interesamos",
+    "vosotros": "interesasteis",
+    "ellos": "interesaron"
+   },
+   "lessons": [
+    "a2_u5_l3"
+   ],
+   "examples": [
+    {
+     "es": "Me interesa su servicio.",
+     "ar": "أنا مهتم بخدمتكم."
+    }
+   ],
+   "note_ar": "يُستعمل مثل gustar."
+  },
+  {
+   "id": "recordar",
+   "infinitive": "recordar",
+   "ar": "يتذكّر / يذكّر",
+   "regular": false,
+   "present": {
+    "yo": "recuerdo",
+    "tu": "recuerdas",
+    "el": "recuerda",
+    "nosotros": "recordamos",
+    "vosotros": "recordáis",
+    "ellos": "recuerdan"
+   },
+   "preterite": {
+    "yo": "recordé",
+    "tu": "recordaste",
+    "el": "recordó",
+    "nosotros": "recordamos",
+    "vosotros": "recordasteis",
+    "ellos": "recordaron"
+   },
+   "lessons": [
+    "a2_u5_l4"
+   ],
+   "examples": [
+    {
+     "es": "Le recuerdo que la reunión es el lunes.",
+     "ar": "أذكّرك بأن الاجتماع يوم الاثنين."
+    }
+   ],
+   "preterite_regular": true,
+   "note_ar": "o ← ue في المضارع، ومنتظم في الماضي."
+  },
+  {
+   "id": "acordar",
+   "infinitive": "acordar",
+   "ar": "يتّفق على",
+   "regular": false,
+   "present": {
+    "yo": "acuerdo",
+    "tu": "acuerdas",
+    "el": "acuerda",
+    "nosotros": "acordamos",
+    "vosotros": "acordáis",
+    "ellos": "acuerdan"
+   },
+   "preterite": {
+    "yo": "acordé",
+    "tu": "acordaste",
+    "el": "acordó",
+    "nosotros": "acordamos",
+    "vosotros": "acordasteis",
+    "ellos": "acordaron"
+   },
+   "lessons": [
+    "a2_u5_l5"
+   ],
+   "examples": [
+    {
+     "es": "Acordamos una nueva fecha.",
+     "ar": "اتفقنا على تاريخ جديد."
+    }
+   ],
+   "preterite_regular": true,
+   "note_ar": "o ← ue في المضارع، ومنتظم في الماضي. acordamos = نتّفق / اتفقنا."
+  },
+  {
+   "id": "seguir",
+   "infinitive": "seguir",
+   "ar": "يستمرّ / يتابع",
+   "regular": false,
+   "present": {
+    "yo": "sigo",
+    "tu": "sigues",
+    "el": "sigue",
+    "nosotros": "seguimos",
+    "vosotros": "seguís",
+    "ellos": "siguen"
+   },
+   "preterite": {
+    "yo": "seguí",
+    "tu": "seguiste",
+    "el": "siguió",
+    "nosotros": "seguimos",
+    "vosotros": "seguisteis",
+    "ellos": "siguieron"
+   },
+   "lessons": [
+    "a2_u5_l5"
+   ],
+   "examples": [
+    {
+     "es": "Seguimos en contacto.",
+     "ar": "نبقى على تواصل."
+    }
+   ],
+   "preterite_regular": false,
+   "note_ar": "e ← i في المضارع (sigo)، وفي الماضي مع él / ellos: siguió، siguieron."
   }
  ],
  "note_ar": "vosotros يُستعمل في إسبانيا للجمع غير الرسمي؛ وفي أمريكا اللاتينية يُستعمل ustedes لكل الجمع."

@@ -832,6 +832,215 @@
     }
    ],
    "source": "original-v1"
+  },
+  {
+   "id": "chk_a2_u5",
+   "version": 1,
+   "kind": "unit",
+   "level": "a2",
+   "unit": "a2_u5",
+   "title_ar": "نقطة تحقق: محادثات العمل البسيطة",
+   "intro_ar": "نقطة تحقق قصيرة. لا تلميحات ولا إظهار للإجابات قبل النهاية، ولا إعادة للأسئلة. النتيجة دليل على ما تستطيعه الآن، وليست شهادة مستوى.",
+   "can_do": [
+    {
+     "id": "cd_a2_u5_write",
+     "ar": "أكتب بريداً رسمياً قصيراً ورسائل سريعة بالأسلوب المناسب",
+     "lessons": [
+      "a2_u5_l1",
+      "a2_u5_l2"
+     ]
+    },
+    {
+     "id": "cd_a2_u5_client",
+     "ar": "أستقبل طلب عميل جديد وآخذ بياناته",
+     "lessons": [
+      "a2_u5_l3"
+     ]
+    },
+    {
+     "id": "cd_a2_u5_follow",
+     "ar": "أتابع مع عميل وألخّص اجتماعاً وأتفق على الخطوة التالية",
+     "lessons": [
+      "a2_u5_l4",
+      "a2_u5_l5"
+     ]
+    }
+   ],
+   "questions": [
+    {
+     "id": "chk_a2_u5.q1",
+     "type": "choice",
+     "skill": "reading",
+     "can_do": "cd_a2_u5_write",
+     "prompt_ar": "أيّ بداية مناسبة لبريد رسمي إلى عميلة؟",
+     "choices": [
+      "Estimada señora Gil:",
+      "Hola, guapa:",
+      "¿Qué tal, Gil?"
+     ],
+     "answer": 0,
+     "choices_es": true
+    },
+    {
+     "id": "chk_a2_u5.q2",
+     "type": "type",
+     "skill": "writing",
+     "can_do": "cd_a2_u5_write",
+     "prompt_ar": "اكتب بالإسبانية (في بريد رسمي)",
+     "stimulus_ar": "أرفق عرض السعر.",
+     "accepted": [
+      "adjunto el presupuesto"
+     ]
+    },
+    {
+     "id": "chk_a2_u5.q3",
+     "type": "choice",
+     "skill": "grammar",
+     "can_do": "cd_a2_u5_write",
+     "prompt_ar": "رسالة إلى عميل لا تعرفه. اختر الكلمة المناسبة:",
+     "stimulus_es": "Perdone, ¿___ enviarme la factura?",
+     "choices": [
+      "puede",
+      "puedes",
+      "poder"
+     ],
+     "answer": 0,
+     "explain_ar": "مع عميل لا تعرفه: usted ← puede (ومعها perdone)."
+    },
+    {
+     "id": "chk_a2_u5.q4",
+     "type": "choice",
+     "skill": "listening",
+     "can_do": "cd_a2_u5_write",
+     "prompt_ar": "استمع إلى جملة من حوار «رسائل صوتية»: هل عرض السعر جاهز؟",
+     "dialogue_turn": "dlg_a2_mensajes.t5",
+     "choices": [
+      "ليس بعد",
+      "نعم",
+      "أُرسل أمس"
+     ],
+     "answer": 0,
+     "choices_es": false
+    },
+    {
+     "id": "chk_a2_u5.q5",
+     "type": "choice",
+     "skill": "vocabulary",
+     "can_do": "cd_a2_u5_client",
+     "prompt_ar": "ما معنى العبارة؟",
+     "stimulus_es": "le paso con mi compañera",
+     "choices": [
+      "أحوّلك إلى زميلتي",
+      "أتصل بزميلتي",
+      "زميلتي ليست هنا"
+     ],
+     "answer": 0,
+     "choices_es": false
+    },
+    {
+     "id": "chk_a2_u5.q6",
+     "type": "choice",
+     "skill": "grammar",
+     "can_do": "cd_a2_u5_client",
+     "prompt_ar": "«أنا مهتم بالأسعار»:",
+     "choices": [
+      "Me interesan los precios.",
+      "Me interesa los precios.",
+      "Yo intereso los precios."
+     ],
+     "answer": 0,
+     "choices_es": true,
+     "explain_ar": "مثل gustar: los precios جمع ← interesan."
+    },
+    {
+     "id": "chk_a2_u5.q7",
+     "type": "choice",
+     "skill": "listening",
+     "can_do": "cd_a2_u5_client",
+     "prompt_ar": "استمع إلى جملة من حوار «عميل جديد»: بماذا يهتم بابلو؟",
+     "dialogue_turn": "dlg_a2_cliente_nuevo.t2",
+     "choices": [
+      "خدمة الصيانة",
+      "الكتالوج فقط",
+      "وظيفة في الشركة"
+     ],
+     "answer": 0,
+     "choices_es": false
+    },
+    {
+     "id": "chk_a2_u5.q8",
+     "type": "type",
+     "skill": "writing",
+     "can_do": "cd_a2_u5_client",
+     "prompt_ar": "اكتب بالإسبانية",
+     "stimulus_ar": "البريد الإلكتروني",
+     "accepted": [
+      "el correo electrónico",
+      "correo electrónico",
+      "el correo",
+      "correo"
+     ]
+    },
+    {
+     "id": "chk_a2_u5.q9",
+     "type": "choice",
+     "skill": "grammar",
+     "can_do": "cd_a2_u5_follow",
+     "prompt_ar": "أيّ جملة تصف ما حدث الأسبوع الماضي؟",
+     "choices": [
+      "La semana pasada hablamos del proyecto.",
+      "La semana pasada vamos a hablar del proyecto.",
+      "La semana pasada hablar del proyecto."
+     ],
+     "answer": 0,
+     "choices_es": true,
+     "explain_ar": "la semana pasada ← الماضي: hablamos."
+    },
+    {
+     "id": "chk_a2_u5.q10",
+     "type": "choice",
+     "skill": "listening",
+     "can_do": "cd_a2_u5_follow",
+     "prompt_ar": "استمع إلى جملة من حوار «اجتماع المتابعة»: ما الذي ما زال معلّقاً؟",
+     "dialogue_turn": "dlg_a2_seguimiento.t3",
+     "choices": [
+      "العقد",
+      "الاقتراح",
+      "الدفع"
+     ],
+     "answer": 0,
+     "choices_es": false
+    },
+    {
+     "id": "chk_a2_u5.q11",
+     "type": "choice",
+     "skill": "reading",
+     "can_do": "cd_a2_u5_follow",
+     "prompt_ar": "على ماذا اتفقوا؟",
+     "stimulus_es": "Resumen de la reunión: el cliente revisó la propuesta. Acordamos una nueva fecha de entrega: el quince. Por último, Ana va a enviar el contrato mañana.",
+     "choices": [
+      "على تاريخ تسليم جديد",
+      "على سعر جديد",
+      "على إلغاء العقد"
+     ],
+     "answer": 0,
+     "choices_es": false
+    },
+    {
+     "id": "chk_a2_u5.q12",
+     "type": "type",
+     "skill": "writing",
+     "can_do": "cd_a2_u5_follow",
+     "prompt_ar": "اكتب بالإسبانية",
+     "stimulus_ar": "الخطوة التالية",
+     "accepted": [
+      "el próximo paso",
+      "próximo paso",
+      "el siguiente paso"
+     ]
+    }
+   ],
+   "source": "original-v1"
   }
  ]
 }

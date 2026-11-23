@@ -171,6 +171,14 @@ detect it.
 | 3 dialogues within difficulty limits; checkpoint `chk_a2_u4` (12 questions, 5 skills, shuffled, persisted) | `a2_u4_preferences_test` |
 | 6 new verbs (preferir, creer, parecer, recomendar by hand; gustar, encantar machine-checked) — 45 verbs | `a2_u4_preferences_test` |
 
+## A2-U5 simple work conversations (PR in review, stacked on A2-U4)
+
+| Area | Evidence |
+|---|---|
+| 5 lessons (53–57) after `a2_u4_l5`: formal email, quick messages and register, a new client, follow-up across tenses, closing a meeting; 45 items, 5 grammar notes; content 1.9.0 — all five A2 units available | `a2_u5_work_test`, `a2_units_test` |
+| 3 dialogues within difficulty limits (the estimator flagged a spelled-out name and three untaught forms; they were rewritten); checkpoint `chk_a2_u5` (12 questions, 5 skills, shuffled, persisted) | `a2_u5_work_test` |
+| 7 new verbs (dar, seguir, recordar, acordar by hand; adjuntar, avisar, interesar machine-checked) — 52 verbs | `a2_u5_work_test` |
+
 ## Android build and runtime
 
 - The [code commit's CI run](https://github.com/abdulrahmanal-saeed/Espa-ol-Pro/actions/runs/43900871431)
@@ -202,7 +210,7 @@ detect it.
   pronunciation assessment. Listen-and-repeat is self-practice and never scored.
 - CEFR level estimates and the A1 level assessment (unit checkpoints exist; they are practice evidence, not certification).
 - Verb conjugation reference, stories.
-- Interview coach, work missions, A2-U5, the A2 level assessment, and all B1–C2 lessons.
+- Interview coach, work missions, the A2 level assessment, and all B1–C2 lessons.
 - Cloud sync. AI usage budget controls (nothing to budget yet).
 - Native-speaker review of content.
 
