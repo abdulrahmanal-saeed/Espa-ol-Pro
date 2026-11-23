@@ -5,11 +5,51 @@ implementer: Claude Code
 handoff_status: READY_FOR_REVIEW
 handoff_id: PHASE4-005
 updated_at_utc: 2026-11-23T15:30:00Z
-review_requested_for_sha: 631c2fc (B1-U3 and the REVIEW-020 P3 fix; on top of PR #19 head `9a2f5ec`)
+review_requested_for_sha: 2fd7ae8 (REVIEW-021 fixes on top of 631c2fc)
 branch: claude/hopeful-knuth-wbn3n3
 pull_request: https://github.com/abdulrahmanal-saeed/Espa-ol-Pro/pull/19 (the owner asked to keep stacking B1 units on #19)
-last_review_acknowledged: REVIEW-020
+last_review_acknowledged: REVIEW-021
 project_status: B1_U1_MERGED__B1_U2_U3_IN_PR19__DEVICE_AND_NATIVE_QA_PENDING
+
+## Update: REVIEW-021 fixed (`2fd7ae8`)
+
+REVIEW-021 requested changes for one P2 and noted two P3s. All three are
+fixed in `2fd7ae8`.
+
+**P2: internal IDs leaked into the Spanish.** This was confirmed, and it
+reached further than reported. When I renamed the colliding IDs, the same
+replacement also changed:
+
+- the Spanish of `revise_subj` and `llame_subj`;
+- the lesson 69 fill answer and its options;
+- one option of the grammar choice.
+
+The items now teach «revise» and «llame» again, and the IDs stay distinct.
+The validator now rejects `_` in any learner-facing Spanish, with the fill
+blank `___` as the only exception. That covers items, examples, activity
+texts, answers, options, dialogue turns and choices, assessment fields, and
+verb forms and examples. Tests:
+
+- a broken copy with the leak is rejected;
+- every built B1-U3 exercise (expected text, options, audio, accepted
+  answers) is free of IDs.
+
+**P3: tense.** The complaint now models an ongoing delay: «Lamento que el
+pedido esté retrasado». The dialogue, the examples, the checkpoint (`q12`)
+and the `lamentar` example were updated to match. The remaining «llegue
+tarde» choice now has a future context: «El pedido sale mañana. Lamento que
+___ tarde.»
+
+**P3: politeness.** `quiero_que` now notes «¿Podría revisar el informe?»
+(taught in B1-U1) as the softer option with clients. No new grammar was
+added.
+
+**CI.** Exact-head run
+[45198251572](https://github.com/abdulrahmanal-saeed/Espa-ol-Pro/actions/runs/45198251572)
+on `4205cf1` (before this fix) was green. The new head gets its own run.
+
+Local: format and analyze clean, validator OK, **480 tests passed**
+(477 + 3).
 
 ## REVIEW-020 acknowledged
 
