@@ -1,3 +1,24 @@
+# REVIEW-022 — PHASE4-005 fixes / PR #19 (2026-11-23T16:40:00Z)
+
+owner: ChatGPT
+review_id: REVIEW-022
+review_status: APPROVED_WITH_RELEASE_GATES
+reviewed_pr: https://github.com/abdulrahmanal-saeed/Espa-ol-Pro/pull/19
+reviewed_application_sha: 2fd7ae81056f5565a172e131e810717ae7244eb8
+responding_to_handoff: PHASE4-005 (REVIEW-021 remediation)
+
+**Discovery:** Read the three bridge files on main and the newer READY_FOR_REVIEW handoff directly on PR #19 head branch `claude/hopeful-knuth-wbn3n3`. Main's PHASE4-002 pointer remains stale. PR search returned #19. Comparing the previously reviewed application SHA `631c2fcea22c1dd37e9ebc234a9a4eec5459e6f7` to the branch found three commits (one code fix, documentation and handoff), with 14 changed paths. Inspected the actual `2fd7ae8` commit patch, the new content validator, B1-U3 lesson items, and the regression test source. Earlier unchanged B1 code was not re-reviewed.
+
+**Verified P2 resolution:** `assets/content/v1/units/b1_u3.json` now preserves IDs `revise_subj` and `llame_subj` while displaying Spanish `revise` and `llame`; the fill answer/options and grammar-choice option were also corrected. `lib/core/content/content_validator.dart` adds `_validateNoInternalIds`, rejecting underscores in major learner-facing Spanish fields (except fill blanks `___`). `test/b1_u3_customers_test.dart` adds a negative validator test and checks built lesson exercise text/answers/options for leaked IDs. The previously reported reproduction is addressed in source.
+
+**Verified P3 follow-ups:** The complaint's present situation is now `Lamento que el pedido esté retrasado` across the lesson, dialogue and checkpoint; the `llegue tarde` example has an explicit future context. The lesson adds the more polite `¿Podría revisar…?` alternative. These changes address REVIEW-021's wording concerns, subject to qualified linguistic sign-off.
+
+**New findings:** No newly confirmed P0/P1/P2 defect in the inspected remediation. **P3 — validator coverage caveat:** `lib/core/content/content_validator.dart:_validateNoInternalIds` checks enumerated typed fields but not all nested free-text Spanish embedded in `body_ar`, `note_ar`, or arbitrary future activity keys. This does not demonstrate another leaked token in current content. Keep the schema-specific validation field list synchronized with future learner-facing fields; add a negative regression for each new Spanish-bearing field. Do not expand to rejecting underscores in internal IDs.
+
+**Verification limits:** Implementer reports 480 local tests, clean analyzer and content validation; these are claims, not independently executed checks. The GitHub connector's commit-workflow lookup returned no runs for exact application commit `2fd7ae8`; no exact-head Actions job logs or Android APK build could be verified. An earlier run cited in the handoff belongs to pre-fix SHA `4205cf1` and cannot certify this fix. Approval is **engineering source review only, with release gates**: obtain green exact-head CI (format/analyze/content/tests and APK), test on a physical Android device, native-qualified Spanish review, and explicit owner authorization before any merge or release. B1-U4 and B2–C2 remain unfinished; do not declare project complete. No merge, deployment or status-file edit performed.
+
+---
+
 # REVIEW-021 — PHASE4-005 / updated PR #19 (2026-11-23T15:33:00Z)
 
 owner: ChatGPT
