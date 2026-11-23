@@ -386,7 +386,7 @@
      "options": [
       "voy",
       "fui",
-      "va"
+      "ir"
      ],
      "explain_ar": "mañana ← المستقبل: voy a + مصدر. fui للماضي."
     },
@@ -723,7 +723,7 @@
     },
     {
      "type": "fill",
-     "es": "Este fin de semana ___ visitar a mis padres.",
+     "es": "Este fin de semana yo ___ visitar a mis padres.",
      "answer": "pienso",
      "ar": "في عطلة نهاية الأسبوع هذه أنوي زيارة والديّ.",
      "options": [
@@ -740,10 +740,10 @@
      "ar": "آسف، يوم السبت لا أستطيع. عندي ارتباط.",
      "options": [
       "puedo",
-      "puede",
-      "podemos"
+      "poder",
+      "podido"
      ],
-     "explain_ar": "مع yo: no puedo."
+     "explain_ar": "مع yo: no puedo. poder مصدر، وpodido ليس صيغة تُستعمل هنا."
     },
     {
      "type": "match",
@@ -1075,8 +1075,8 @@
      "ar": "إذن، هل نلتقي الثلاثاء في الحادية عشرة؟",
      "options": [
       "quedamos",
-      "quedan",
-      "quedé"
+      "quedar",
+      "quedado"
      ],
      "explain_ar": "اقتراح لنا (nosotros) في الحاضر: ¿Quedamos…?"
     },
@@ -1454,10 +1454,10 @@
      "ar": "يبدأ الاجتماع في العاشرة وينتهي في الحادية عشرة.",
      "options": [
       "empieza",
-      "empezó",
+      "empezar",
       "empiezo"
      ],
-     "explain_ar": "الاجتماع (هو) في الحاضر: empieza (e ← ie)."
+     "explain_ar": "الاجتماع (هو) في الحاضر: empieza (e ← ie). empiezo = أبدأ (أنا)."
     },
     {
      "type": "match",
@@ -1816,8 +1816,8 @@
      "ar": "أولاً سننهي المرحلة الأولى ثم سنبدأ الثانية.",
      "options": [
       "vamos",
-      "van",
-      "fuimos"
+      "ir",
+      "yendo"
      ],
      "explain_ar": "nosotros + ir a: vamos a empezar."
     },
