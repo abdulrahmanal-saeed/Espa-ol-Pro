@@ -370,7 +370,10 @@ class Verb {
     if (endings == null) return null;
     var yoStem = stem;
     if (ending == 'ar') {
-      if (stem.endsWith('c')) {
+      if (stem.endsWith('gu')) {
+        // -guar: the u stays audible before e (averiguar → averigüé).
+        yoStem = '${stem.substring(0, stem.length - 1)}ü';
+      } else if (stem.endsWith('c')) {
         yoStem = '${stem.substring(0, stem.length - 1)}qu';
       } else if (stem.endsWith('g')) {
         yoStem = '${stem}u';
@@ -416,7 +419,7 @@ class Verb {
   /// The presente de subjuntivo a regular verb must have, or null for an
   /// unknown ending: -ar → -e…, -er / -ir → -a…. Spelling changes keep the
   /// sound in every person: -car → qu (explique), -gar → gu (llegue),
-  /// -zar → c (organice), -ger / -gir → j (escoja).
+  /// -guar → gü (averigüe), -zar → c (organice), -ger / -gir → j (escoja).
   static Map<String, String>? regularSubjunctive(String infinitive) {
     if (infinitive.length < 3) return null;
     var stem = infinitive.substring(0, infinitive.length - 2);
@@ -429,7 +432,9 @@ class Verb {
     if (endings == null) return null;
     final head = stem.substring(0, stem.length - 1);
     if (ending == 'ar') {
-      if (stem.endsWith('c')) {
+      if (stem.endsWith('gu')) {
+        stem = '$headü';
+      } else if (stem.endsWith('c')) {
         stem = '${head}qu';
       } else if (stem.endsWith('g')) {
         stem = '${stem}u';
@@ -840,12 +845,25 @@ class Assessment {
     required this.canDos,
     required this.questions,
     required this.sourceId,
+    this.retiredVersions = const {},
   });
 
   final String id;
 
   /// Bump whenever questions change; stored with every attempt.
   final int version;
+
+  /// Earlier versions whose attempts must still be recognised: version →
+  /// question id → can-do id (`retired_versions`, content ≥ 1.11.0). A level
+  /// assessment that gates a level lists its old question sets here when it
+  /// changes, so a complete pass at an older version keeps the level open.
+  final Map<int, Map<String, String>> retiredVersions;
+
+  /// The question set of [v] (question id → can-do id): the current
+  /// questions for [version], a retired set, or null for an unknown version.
+  Map<String, String>? questionSet(int v) => v == version
+      ? {for (final q in questions) q.id: q.canDoId}
+      : retiredVersions[v];
 
   /// `unit` checkpoint or `level` assessment.
   final String kind;

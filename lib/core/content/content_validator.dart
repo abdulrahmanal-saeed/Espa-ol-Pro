@@ -499,6 +499,19 @@ class ContentValidator {
       final w = 'assessment:${a.id}';
       if (!ids.add(a.id)) err(w, 'duplicate assessment id');
       if (a.version < 1) err(w, 'version must be ≥ 1');
+      for (final e in a.retiredVersions.entries) {
+        if (e.key < 1 || e.key >= a.version) {
+          err(w, 'retired version ${e.key} must be ≥ 1 and below ${a.version}');
+        }
+        if (e.value.isEmpty) {
+          err(w, 'retired version ${e.key} has no questions');
+        }
+        if (e.value.entries.any(
+          (q) => q.key.trim().isEmpty || q.value.trim().isEmpty,
+        )) {
+          err(w, 'retired version ${e.key} needs question and can-do ids');
+        }
+      }
       if (a.titleAr.trim().isEmpty || a.introAr.trim().isEmpty) {
         err(w, 'needs title_ar and intro_ar');
       }

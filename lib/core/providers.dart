@@ -102,7 +102,10 @@ final progressRepositoryProvider = Provider<ProgressRepository>(
 );
 
 final backupServiceProvider = Provider<BackupService>(
-  (ref) => BackupService(ref.watch(databaseProvider)),
+  (ref) => BackupService(
+    ref.watch(databaseProvider),
+    pack: ref.watch(contentProvider),
+  ),
 );
 
 final exerciseBuilderProvider = Provider<ExerciseBuilder>(

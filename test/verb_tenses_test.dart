@@ -87,6 +87,13 @@ void main() {
       expect(Verb.regularSubjunctive('llegar')!['el'], 'llegue');
       expect(Verb.regularSubjunctive('organizar')!['ellos'], 'organicen');
       expect(Verb.regularSubjunctive('escoger')!['yo'], 'escoja');
+      // -guar keeps the u audible before e (REVIEW-017 P3): averigüe.
+      expect(Verb.regularSubjunctive('averiguar')!['yo'], 'averigüe');
+      expect(Verb.regularSubjunctive('averiguar')!['nosotros'], 'averigüemos');
+      expect(Verb.regularPreterite('averiguar')!['yo'], 'averigüé');
+      expect(Verb.regularPreterite('averiguar')!['el'], 'averiguó');
+      // -gar is unchanged.
+      expect(Verb.regularSubjunctive('pagar')!['yo'], 'pague');
       expect(Verb.regularSubjunctive('x'), isNull);
     });
 

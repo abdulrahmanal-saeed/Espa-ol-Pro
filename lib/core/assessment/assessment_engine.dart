@@ -227,15 +227,38 @@ abstract final class CanDoEvidence {
     return correct >= threshold * relevant.length;
   }
 
-  /// Whether [attempt] is a pass: it holds answers and **every** can-do it
-  /// measures is [met]. The can-dos come from the stored answers, so an
-  /// attempt keeps its verdict after the assessment's questions change.
-  /// Used by level gates (B1 opens after passing `lvl_a2`).
+  /// Whether [attempt] meets **every** can-do among its answers.
+  ///
+  /// This alone does not prove the attempt is complete (an edited backup
+  /// could hold one answer). Anything that unlocks content uses
+  /// [passedComplete], which also checks the question set (REVIEW-017 P2).
   static bool passed(AttemptRecord attempt) {
     if (attempt.answers.isEmpty) return false;
     final canDos = {for (final a in attempt.answers) a.canDoId};
     return canDos.every((c) => met(c, attempt));
   }
+
+  /// Whether [attempt] answers exactly the questions of [a] at the attempt's
+  /// version (current or retired), once each, with the defined can-do on
+  /// every answer. An unknown version is never complete.
+  static bool isComplete(Assessment a, AttemptRecord attempt) {
+    if (attempt.assessmentId != a.id) return false;
+    final set = a.questionSet(attempt.assessmentVersion);
+    if (set == null || set.isEmpty) return false;
+    if (attempt.answers.length != set.length) return false;
+    final seen = <String>{};
+    for (final x in attempt.answers) {
+      if (!seen.add(x.questionId)) return false;
+      if (set[x.questionId] != x.canDoId) return false;
+    }
+    return true;
+  }
+
+  /// A complete attempt (see [isComplete]) that meets every can-do: the
+  /// pass that opens a gated level. Can-dos are checked from the stored
+  /// answers, so a complete pass at a retired version still counts.
+  static bool passedComplete(Assessment a, AttemptRecord attempt) =>
+      isComplete(a, attempt) && passed(attempt);
 
   /// [attempts] are the attempts at the assessment that defines [canDoId].
   static CanDoState state(String canDoId, List<AttemptRecord> attempts) {

@@ -138,14 +138,15 @@ void main() {
         LevelGates.from(pack, [fail, pass, failHard]).isOpen('b1'),
         isTrue,
       );
-      expect(passedAssessmentIds([fail, pass, failHard]), {'lvl_a2'});
+      expect(passedAssessmentIds(pack, [fail, pass, failHard]), {'lvl_a2'});
     });
 
-    test('a pass at an earlier question version still counts', () {
-      expect(
-        LevelGates.from(pack, [attempt(lvl, version: 0)]).isOpen('b1'),
-        isTrue,
-      );
+    test('an unknown question version never opens B1', () {
+      // Version 0 was never shipped: its question set cannot be checked.
+      final r = attempt(lvl, version: 0);
+      expect(CanDoEvidence.passed(r), isTrue);
+      expect(CanDoEvidence.isComplete(lvl, r), isFalse);
+      expect(LevelGates.from(pack, [r]).isOpen('b1'), isFalse);
     });
 
     test('passing another assessment does not open B1', () {
@@ -156,6 +157,174 @@ void main() {
         isFalse,
       );
     });
+  });
+
+  group('REVIEW-017 P2: only complete evidence opens B1', () {
+    AttemptRecord withAnswers(List<AnswerRecord> answers, {int version = 1}) =>
+        AttemptRecord(
+          id: nextId++,
+          assessmentId: lvl.id,
+          assessmentVersion: version,
+          completedAtMs: 0,
+          localDay: '2026-11-01',
+          answers: answers,
+        );
+    List<AnswerRecord> full() => attempt(lvl).answers;
+    bool opens(AttemptRecord r) => LevelGates.from(pack, [r]).isOpen('b1');
+
+    test('the reviewer\'s repro: one correct answer is not a pass', () {
+      final q = lvl.questions.first;
+      final one = withAnswers([
+        AnswerRecord(
+          questionId: q.id,
+          skill: q.skill,
+          canDoId: q.canDoId,
+          isCorrect: true,
+        ),
+      ]);
+      // The can-do rule alone would accept it…
+      expect(CanDoEvidence.passed(one), isTrue);
+      // …completeness does not.
+      expect(CanDoEvidence.isComplete(lvl, one), isFalse);
+      expect(CanDoEvidence.passedComplete(lvl, one), isFalse);
+      expect(opens(one), isFalse);
+    });
+
+    test('all five can-dos present and answered: a pass', () {
+      expect(lvl.canDos, hasLength(5));
+      final r = withAnswers(full());
+      expect({for (final x in r.answers) x.canDoId}, hasLength(5));
+      expect(CanDoEvidence.isComplete(lvl, r), isTrue);
+      expect(opens(r), isTrue);
+    });
+
+    test('only one complete can-do group is not a pass', () {
+      final c = lvl.canDos.first.id;
+      final r = withAnswers([
+        for (final x in full())
+          if (x.canDoId == c) x,
+      ]);
+      expect(CanDoEvidence.passed(r), isTrue);
+      expect(opens(r), isFalse);
+    });
+
+    test('a complete attempt missing one answer is not a pass', () {
+      final r = withAnswers(full().skip(1).toList());
+      expect(CanDoEvidence.passed(r), isTrue);
+      expect(opens(r), isFalse);
+    });
+
+    test('a duplicated answer row or a relabelled can-do is not a pass', () {
+      final answers = full();
+      final duplicated = withAnswers([
+        ...answers.take(answers.length - 1),
+        answers.first,
+      ]);
+      expect(opens(duplicated), isFalse);
+      final relabelled = withAnswers([
+        for (final x in answers)
+          AnswerRecord(
+            questionId: x.questionId,
+            skill: x.skill,
+            canDoId: lvl.canDos.first.id,
+            isCorrect: x.isCorrect,
+          ),
+      ]);
+      expect(opens(relabelled), isFalse);
+    });
+
+    test('all answered but one can-do below 0.75 is not a pass', () {
+      final c = lvl.canDos.last.id;
+      final r = attempt(lvl, wrong: questionsOf(c).toSet());
+      expect(CanDoEvidence.isComplete(lvl, r), isTrue);
+      expect(opens(r), isFalse);
+    });
+
+    test('a complete pass at a retired version still opens B1', () async {
+      // A future lvl_a2 v2 changes one question and records v1's set.
+      final v2 = await parseContentPack((path) async {
+        final text = await File('$contentDir/$path').readAsString();
+        if (path != 'assessments/a2.json') return text;
+        final doc = jsonDecode(text) as Map<String, dynamic>;
+        final a = (doc['assessments'] as List)
+            .cast<Map<String, dynamic>>()
+            .firstWhere((a) => a['id'] == 'lvl_a2');
+        final qs = (a['questions'] as List).cast<Map<String, dynamic>>();
+        a['retired_versions'] = [
+          {
+            'version': 1,
+            'questions': {for (final q in qs) q['id']: q['can_do']},
+          },
+        ];
+        a['version'] = 2;
+        qs.last['id'] = 'lvl_a2.q26';
+        return jsonEncode(doc);
+      });
+      expect(ContentValidator().validate(v2), isEmpty);
+      final newLvl = v2.assessment('lvl_a2')!;
+      expect(newLvl.version, 2);
+      // The learner passed v1 before the update: still open.
+      final old = withAnswers(full());
+      expect(CanDoEvidence.isComplete(newLvl, old), isTrue);
+      expect(LevelGates.from(v2, [old]).isOpen('b1'), isTrue);
+      // A partial v1 attempt still does not count.
+      expect(
+        LevelGates.from(v2, [
+          withAnswers(full().skip(3).toList()),
+        ]).isOpen('b1'),
+        isFalse,
+      );
+      // v1 answers presented as v2 do not match v2's questions.
+      expect(
+        LevelGates.from(v2, [withAnswers(full(), version: 2)]).isOpen('b1'),
+        isFalse,
+      );
+    });
+  });
+
+  group('validator: retired_versions', () {
+    Future<List<String>> issuesWith(
+      void Function(Map<String, dynamic>) edit,
+    ) async {
+      final broken = await parseContentPack((path) async {
+        final text = await File('$contentDir/$path').readAsString();
+        if (path != 'assessments/a2.json') return text;
+        final doc = jsonDecode(text) as Map<String, dynamic>;
+        edit(
+          (doc['assessments'] as List).cast<Map<String, dynamic>>().firstWhere(
+            (a) => a['id'] == 'lvl_a2',
+          ),
+        );
+        return jsonEncode(doc);
+      });
+      return ContentValidator().validate(broken).map((i) => '$i').toList();
+    }
+
+    test(
+      'a retired version must be below the current one and not empty',
+      () async {
+        expect(
+          await issuesWith(
+            (a) => a['retired_versions'] = [
+              {
+                'version': 1,
+                'questions': {'lvl_a2.q1': 'cd_x'},
+              },
+            ],
+          ),
+          contains(contains('retired version 1 must be ≥ 1 and below 1')),
+        );
+        expect(
+          await issuesWith((a) {
+            a['version'] = 2;
+            a['retired_versions'] = [
+              {'version': 1, 'questions': <String, String>{}},
+            ];
+          }),
+          contains(contains('retired version 1 has no questions')),
+        );
+      },
+    );
   });
 
   test(
@@ -183,7 +352,7 @@ void main() {
       ).watchRecords().first;
       expect(LevelGates.from(pack, before).isOpen('b1'), isFalse);
 
-      await BackupService(target).restoreJson(json);
+      await BackupService(target, pack: pack).restoreJson(json);
       final after = await AssessmentRepository(
         target,
         clock: clock.call,
@@ -191,6 +360,61 @@ void main() {
       expect(LevelGates.from(pack, after).isOpen('b1'), isTrue);
     },
   );
+
+  test('an edited backup with a partial lvl_a2 attempt is rejected before '
+      'anything is deleted', () async {
+    final clock = FakeClock();
+    final source = memoryDb();
+    addTearDown(source.close);
+    await AssessmentRepository(source, clock: clock.call).submit(
+      assessment: lvl,
+      graded: gradeAssessment(lvl, {
+        for (final q in lvl.questions) q.id: q.correctAnswer,
+      }),
+      startedAt: clock(),
+      contentVersion: pack.version,
+    );
+    final doc = jsonDecode(
+      await BackupService(source)
+          .exportJson(now: clock(), contentVersion: pack.version),
+    ) as Map<String, dynamic>;
+    // Keep one correct answer and make the totals agree with it, so the
+    // generic score checks pass (the reviewer's restore repro).
+    final tables = doc['tables'] as Map<String, dynamic>;
+    final answers = (tables['assessment_answers'] as List);
+    tables['assessment_answers'] = [answers.first];
+    final run = (tables['assessment_attempts'] as List).first as Map;
+    run['maxScore'] = 1;
+    run['score'] = 1;
+    final edited = jsonEncode(doc);
+
+    // The device already holds progress that must survive the rejection.
+    final device = memoryDb();
+    addTearDown(device.close);
+    await AssessmentRepository(device, clock: clock.call).submit(
+      assessment: pack.checkpointFor('a2_u5')!,
+      graded: gradeAssessment(pack.checkpointFor('a2_u5')!, const {}),
+      startedAt: clock(),
+      contentVersion: pack.version,
+    );
+    final before = await device.select(device.assessmentAnswers).get();
+
+    await expectLater(
+      BackupService(device, pack: pack).restoreJson(edited),
+      throwsA(isA<BackupException>()),
+    );
+    expect(await device.select(device.assessmentAnswers).get(), before);
+    // Without the content the file restores, but the gate still ignores it.
+    final other = memoryDb();
+    addTearDown(other.close);
+    await BackupService(other).restoreJson(edited);
+    final records = await AssessmentRepository(
+      other,
+      clock: clock.call,
+    ).watchRecords().first;
+    expect(records.single.answers, hasLength(1));
+    expect(LevelGates.from(pack, records).isOpen('b1'), isFalse);
+  });
 
   group('validator: requires_pass', () {
     Future<List<String>> issuesWith(

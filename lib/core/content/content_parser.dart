@@ -309,6 +309,13 @@ Assessment _assessment(Map<String, dynamic> j, Map<String, String> turns) {
         ),
     ],
     sourceId: j['source'] as String? ?? '',
+    retiredVersions: {
+      for (final raw in j['retired_versions'] as List? ?? const [])
+        ((raw as Map)['version'] as int? ?? 0): {
+          for (final e in ((raw['questions'] as Map?) ?? const {}).entries)
+            e.key as String: e.value as String,
+        },
+    },
   );
 }
 

@@ -13,11 +13,17 @@ library;
 import '../assessment/assessment_engine.dart';
 import '../content/models.dart';
 
-/// Ids of the assessments with at least one passing attempt
-/// (see [CanDoEvidence.passed]). A later failed retry never removes an id.
-Set<String> passedAssessmentIds(Iterable<AttemptRecord> attempts) => {
-  for (final a in attempts)
-    if (CanDoEvidence.passed(a)) a.assessmentId,
+/// Ids of the assessments of [pack] with at least one complete, passing
+/// attempt (see [CanDoEvidence.passedComplete]). A later failed retry never
+/// removes an id. Attempts at unknown assessments or versions, or with a
+/// partial question set (an edited backup), never count.
+Set<String> passedAssessmentIds(
+  ContentPack pack,
+  Iterable<AttemptRecord> attempts,
+) => {
+  for (final r in attempts)
+    if (pack.assessment(r.assessmentId) case final a?)
+      if (CanDoEvidence.passedComplete(a, r)) r.assessmentId,
 };
 
 class LevelGates {
@@ -31,7 +37,7 @@ class LevelGates {
   /// While attempts are still loading, pass an empty list: gated levels then
   /// read as locked, which is the safe side.
   factory LevelGates.from(ContentPack pack, Iterable<AttemptRecord> attempts) {
-    final passed = passedAssessmentIds(attempts);
+    final passed = passedAssessmentIds(pack, attempts);
     return LevelGates._({
       for (final level in pack.levels)
         if (level.requiresPass != null && !passed.contains(level.requiresPass))

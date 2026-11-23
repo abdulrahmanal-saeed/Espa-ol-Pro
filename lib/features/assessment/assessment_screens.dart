@@ -713,7 +713,7 @@ class AssessmentResultScreen extends ConsumerWidget {
               for (final opened in levelsOpenedBy(pack, a.id))
                 _GateOutcome(
                   level: opened,
-                  passedNow: CanDoEvidence.passed(run),
+                  passedNow: CanDoEvidence.passedComplete(a, run),
                   open: ref.watch(levelGatesProvider).isOpen(opened.id),
                 ),
               if (stale)
